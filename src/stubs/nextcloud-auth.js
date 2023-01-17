@@ -19,6 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { getCredentials } from '../accounts/credentials.service.js'
+import { getUserMetadata } from '../shared/globalsStore.service.js'
+
 export {
 	getRequestToken,
 	onRequestTokenUpdate,
@@ -29,8 +32,8 @@ export {
  */
 export function getCurrentUser() {
 	return {
-		uid: 'admin',
-		displayName: 'Admin',
-		isAdmin: true,
+		uid: getCredentials().user,
+		displayName: getUserMetadata().displayname,
+		isAdmin: getUserMetadata().groups.includes('admin'), // TODO: Is it true way to detect admin?
 	}
 }

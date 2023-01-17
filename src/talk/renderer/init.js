@@ -21,11 +21,24 @@
 
 import { register, getLocale } from '@nextcloud/l10n'
 import { loadServerCss } from '../../shared/utils/loadCss.js'
+import { getCapabilities, getUserMetadata } from '../../shared/capabilities.service.js'
+import { getCredentials } from '../../accounts/credentials.service.js'
+import { setCapabilities, setUserMetadata } from '../../shared/globalsStore.service.js'
 
 export async function init() {
 	// Manually redirect on Talk's main page
 	// TODO: better add alias to router
 	window.location.hash = '/apps/spreed'
+
+	// TODO: Move this part to application initialization
+	// Capabilities
+	const capabilities = await getCapabilities()
+	setCapabilities(capabilities)
+
+	// TODO: Move this part to application initialization
+	// UserMetadata
+	const userData = await getUserMetadata({ userId: getCredentials().user })
+	setUserMetadata(userData)
 
 	// Load application styles from server
 	loadServerCss(`/apps/theming/css/default.css`)

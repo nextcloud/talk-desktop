@@ -20,12 +20,14 @@
  */
 
 import { translate } from '@nextcloud/l10n'
-
+import { loadState } from './nextcloud-initial-state.js'
+import { getCredentials } from '../accounts/credentials.service.js'
+import { getUserMetadata } from '../shared/globalsStore.service.js'
 
 export const OC = {
-	coreApps: [],
-	appswebroots: {},
-	isUserAdmin: () => false,
+	isUserAdmin() {
+		return getUserMetadata()?.groups?.includes('admin')
+	},
 
 	L10N: {
 		translate,
@@ -35,7 +37,7 @@ export const OC = {
 	get webroot() {
 		// Original method returns only path, for example, /nextcloud-webroot
 		// Desktop needs to have full URL: https://nextcloud.host/nextcloud-webroot
-		return JSON.parse(localStorage.credentials).server
+		return getCredentials().server
 	},
 
 	config: {
@@ -50,18 +52,27 @@ export const OC = {
 			callback(confirm(text))
 		},
 	},
+
 	theme: {
-		productName: 'Nextcloud',
+		get productName() {
+			return loadState('theming', 'data').name
+		},
 	},
+
 	getHost() {
-		return 'nextcloud.local'
+		const [protocol, host] = getCredentials().server.split('://')
+		return host.split(':')[0]
 	},
+
 	getHostname() {
-		return 'nextcloud.local'
+		const [protocol, host] = getCredentials().server.split('://')
+		return host
 	},
+
 	getProtocol() {
-		return 'https'
-	}
+		const [protocol, host] = getCredentials().server.split('://')
+		return protocol
+	},
 }
 
 export const OCA = {}

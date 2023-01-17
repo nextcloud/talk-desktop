@@ -122,6 +122,7 @@ app.whenReady().then(async () => {
 		console.log('Credentials available')
 		setCredentials(JSON.parse(maybeCredentials))
 		fixmeSetupRequestPatching(getCredentials().server)
+		// TODO: Load Capabilities and UserMetadata here
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
 	} else {

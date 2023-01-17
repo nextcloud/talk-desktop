@@ -21,10 +21,10 @@
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { init } from './init.js'
-import './desktop.app.js'
 import 'talk/css/icons.css'
 
 (async () => {
 	await init();
+	await import('./desktop.app.js')
 	await import('talk/src/main.js')
 })();

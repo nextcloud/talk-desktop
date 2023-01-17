@@ -19,5 +19,41 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-let UserMetadata;
+let userMetadata;
 let capabilities;
+
+export function restoreUserMetadata() {
+	const restored = localStorage.getItem('userMetadata')
+	if (restored) {
+		return JSON.parse(restored)
+	}
+}
+
+export function getUserMetadata() {
+	if (!setUserMetadata) {
+		setCredentials(restoreUserMetadata())
+	}
+	return userMetadata
+}
+
+export function setUserMetadata(value) {
+	userMetadata = value
+}
+
+export function restoreCapabilities() {
+	const restored = localStorage.getItem('capabilities')
+	if (restored) {
+		return JSON.parse(restored)
+	}
+}
+
+export function getCapabilities() {
+	if (!setCapabilities) {
+		setCredentials(restoreCapabilities())
+	}
+	return capabilities
+}
+
+export function setCapabilities(value) {
+	capabilities = value
+}

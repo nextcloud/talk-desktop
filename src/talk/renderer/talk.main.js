@@ -20,17 +20,11 @@
  */
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import 'talk/src/main.js'
-import 'talk/css/icons.css'
+import { init } from './init.js'
 import './desktop.app.js'
-import { loadServerCss } from '../../shared/utils/loadCss.js'
+import 'talk/css/icons.css'
 
-// Manually redirect on Talk's main page
-// TODO: better add alias to router
-window.location.hash = '/apps/spreed'
-
-// Load application styles from server
-loadServerCss(`/apps/theming/css/default.css`)
-loadServerCss(`/index.php/apps/theming/theme/light.css`)
-loadServerCss(`/index.php/apps/theming/theme/dark.css`)
-loadServerCss(`/core/css/server.css`)
+(async () => {
+	await init();
+	await import('talk/src/main.js')
+})();

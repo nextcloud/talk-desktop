@@ -1,0 +1,69 @@
+{
+	"private": true,
+	"name": "talk-desktop",
+	"productName": "Nextcloud Talk Desktop",
+	"version": "0.0.1",
+	"description": "Official Desktop client for Nextcloud Talk",
+	"main": "./.webpack/main",
+	"scripts": {
+		"start": "electron-forge start",
+		"package": "electron-forge package",
+		"make": "electron-forge make",
+		"publish": "electron-forge publish",
+		"lint": "eslint --ext .js,.vue src/ --fix"
+	},
+	"keywords": [],
+	"author": {
+		"name": "Grigorii Shartsev",
+		"email": "grigorii.shartsev@nextcloud.com"
+	},
+	"license": "agpl",
+	"dependencies": {
+		"@nextcloud/l10n": "^1.6.0",
+		"@nextcloud/vue": "^7.1.0-beta.1",
+		"core-js": "^3.26.1",
+		"electron-squirrel-startup": "^1.0.0",
+		"vue": "^2.7.14"
+	},
+	"devDependencies": {
+		"@babel/eslint-parser": "^7.19.1",
+		"@electron-forge/cli": "^6.0.4",
+		"@electron-forge/maker-deb": "^6.0.4",
+		"@electron-forge/maker-rpm": "^6.0.4",
+		"@electron-forge/maker-squirrel": "^6.0.4",
+		"@electron-forge/maker-zip": "^6.0.4",
+		"@electron-forge/plugin-webpack": "^6.0.4",
+		"@nextcloud/babel-config": "^1.0.0",
+		"@nextcloud/eslint-config": "^8.1.4",
+		"@nextcloud/eslint-plugin": "^2.0.0",
+		"@nextcloud/webpack-vue-config": "^5.4.0",
+		"@vercel/webpack-asset-relocator-loader": "^1.7.3",
+		"babel-loader-exclude-node-modules-except": "^1.2.1",
+		"babel-plugin-add-module-exports": "^1.0.4",
+		"css-loader": "^6.7.2",
+		"dotenv": "^16.0.3",
+		"electron": "21.2.2",
+		"electron-devtools-installer": "^3.2.0",
+		"eslint": "^8.28.0",
+		"eslint-config-standard": "^17.0.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-jsdoc": "^39.6.4",
+		"eslint-plugin-n": "^15.5.1",
+		"eslint-plugin-promise": "^6.1.1",
+		"eslint-plugin-vue": "^9.8.0",
+		"node-loader": "^2.0.0",
+		"regenerator-runtime": "^0.13.11",
+		"style-loader": "^3.3.1",
+		"vue-loader": "^15.10.0",
+		"webpack": "^5.74.0",
+		"webpack-merge": "^5.8.0",
+		"worker-loader": "^3.0.8"
+	},
+	"engines": {
+		"node": "^16.0.0 || ^18.0.0",
+		"npm": "^7.0.0 || ^8.0.0 || ^9.0.0"
+	},
+	"volta": {
+		"node": "16.18.1"
+	}
+}

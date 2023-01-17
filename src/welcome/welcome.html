@@ -1,0 +1,133 @@
+<!--
+  ~ @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+  ~
+  ~ @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+  ~
+  ~ @license GNU AGPL version 3 or any later version
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as
+  ~ published by the Free Software Foundation, either version 3 of the
+  ~ License, or (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		padding: 0;
+		margin: 0;
+		height: 100vh;
+		background-color: #0082c9;
+		color: white;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell, Ubuntu, 'Helvetica Neue', Arial, sans-serif, 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 100vh
+	}
+
+	.spacer {
+		flex: 1 0;
+	}
+
+	.logo {
+		background: no-repeat center url("<%= require('talk/img/app.svg') %>");
+		background-size: contain;
+		width: 175px;
+		height: 130px;
+	}
+
+	@keyframes animateCloud {
+		0% {
+			margin-left: -100%;
+		}
+		100% {
+			margin-left: 100%;
+		}
+	}
+
+	.footer {
+		margin: 16px;
+	}
+
+	.clouds {
+		position: relative;
+		overflow: hidden;
+		height: 150px;
+		width: 100%;
+	}
+
+	.cloud {
+		--height: 30px;
+		--width: calc(var(--height) * 3);
+		background: #fff;
+		border-radius: calc(var(--height) * 0.75);
+		height: var(--height);
+		position: absolute;
+		width: var(--width);
+		top: var(--height);
+		transform: scale(1);
+		animation: animateCloud 5s linear infinite;
+	}
+
+	.cloud:after {
+		border-radius: 100%;
+		height: 80%;
+		aspect-ratio: 1/1;
+		left: 15%;
+		top: -45%;
+	}
+
+	.cloud:after, .cloud:before {
+		background: #fff;
+		content: '';
+		position: absolute;
+		z-index: -1;
+	}
+
+	.cloud:before {
+		border-radius: 100%;
+		aspect-ratio: 1/1;
+		height: 150%;
+		right: 15%;
+		top: -80%;
+	}
+	</style>
+	<title>Talk Desktop</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="spacer"></div>
+		<div class="logo"></div>
+		<h1 class="header">Nextcloud Talk</h1>
+		<div class="clouds">
+			<div class="cloud" style="--height: 20px; animation: animateCloud 2s linear infinite;"></div>
+			<div class="cloud" style="--height: 16px; animation: animateCloud 1.5s linear infinite; top: 80px; left: 50px"></div>
+			<div class="cloud" style="--height: 28px; animation: animateCloud 3s linear infinite; top: 50px; left: 20px"></div>
+			<div class="cloud" style="--height: 30px; animation: animateCloud 5s linear infinite; top: 75px;"></div>
+			<div class="cloud" style="--height: 40px; animation: animateCloud 10s linear infinite; top: 100px; left: 150px"></div>
+		</div>
+		<div class="spacer"></div>
+		<div class="footer">v0.0.1-dev</div>
+	</div>
+</body>
+</html>

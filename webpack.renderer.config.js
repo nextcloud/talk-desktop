@@ -57,9 +57,11 @@ module.exports = merge(commonTalkWebpackConfig, {
 				use: {
 					loader: 'worker-loader',
 					options: {
-						// By default, electron-forge/webpack loads workers to new sub-folder, same as new entrypoint.
-						// It brakes loading wasm resources from talk's Web Worker, expecting it to be in the same path.
-						// Fix: load worker the same way as asset/resources - to root.
+						/**
+						 * By default, webpack loads async js to new sub-folder, same as new entrypoint.
+						 * It brakes loading wasm resources from talk's Web Worker, expecting it to be in the same path.
+						 * To fix - load worker the same way as asset/resources - to the root.
+						 */
 						filename: '[name].js?v=[contenthash]',
 					},
 				},
@@ -69,7 +71,7 @@ module.exports = merge(commonTalkWebpackConfig, {
 
 	resolve: {
 		alias: {
-			'talk': TALK_PATH,
+			'@talk': TALK_PATH,
 			'@nextcloud/initial-state$': path.resolve(__dirname, 'src/stubs/nextcloud-initial-state.js'),
 			'@nextcloud/axios$': path.resolve(__dirname, 'src/stubs/nextcloud-axios.js'),
 			'@nextcloud/router$': path.resolve(__dirname, 'src/stubs/nextcloud-router.js'),

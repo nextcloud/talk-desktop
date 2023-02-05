@@ -2,7 +2,7 @@
 	"private": true,
 	"name": "talk-desktop",
 	"productName": "Nextcloud Talk Desktop",
-	"version": "0.0.1",
+	"version": "0.0.1-beta",
 	"description": "Official Desktop client for Nextcloud Talk",
 	"main": "./.webpack/main",
 	"scripts": {
@@ -19,7 +19,7 @@
 	},
 	"license": "agpl",
 	"dependencies": {
-		"@nextcloud/l10n": "^2.0.0",
+		"@nextcloud/l10n": "^2.0.1",
 		"@nextcloud/vue": "^7.1.0-beta.1",
 		"core-js": "^3.26.1",
 		"electron-squirrel-startup": "^1.0.0",
@@ -54,8 +54,7 @@
 		"node-loader": "^2.0.0",
 		"regenerator-runtime": "^0.13.11",
 		"style-loader": "^3.3.1",
-		"vue-loader": "^15.10.0",
-		"webpack": "^5.74.0",
+		"webpack": "^5.75.0",
 		"webpack-merge": "^5.8.0",
 		"worker-loader": "^3.0.8"
 	},

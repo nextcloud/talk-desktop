@@ -19,10 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { register, getLocale } from '@nextcloud/l10n'
+import { register } from '@nextcloud/l10n'
 import { loadServerCss } from '../../shared/utils/loadCss.js'
-import { getCapabilities, getUserMetadata } from '../../shared/capabilities.service.js'
-import { getCredentials } from '../../accounts/credentials.service.js'
+import { getCapabilities, getCurrentUserData } from '../../shared/ocs.service.js'
 import { setCapabilities, setUserMetadata } from '../../shared/globalsStore.service.js'
 
 export async function init() {
@@ -33,12 +32,12 @@ export async function init() {
 	// TODO: Move this part to application initialization
 	// Capabilities
 	const capabilities = await getCapabilities()
-	setCapabilities(capabilities)
+	setCapabilities(capabilities.capabilities)
 
 	// TODO: Move this part to application initialization
 	// UserMetadata
-	const userData = await getUserMetadata({ userId: getCredentials().user })
-	setUserMetadata(userData)
+	const userMetadata = await getCurrentUserData()
+	setUserMetadata(userMetadata)
 
 	// Load application styles from server
 	loadServerCss(`/apps/theming/css/default.css`)
@@ -46,12 +45,17 @@ export async function init() {
 	loadServerCss(`/index.php/apps/theming/theme/dark.css`)
 	loadServerCss(`/core/css/server.css`)
 
-	// Translations
-	// TODO: Remove hotfix after merge https://github.com/nextcloud/nextcloud-l10n/pull/556
-	window._oc_l10n_registry_translations = {}
-	window._oc_l10n_registry_plural_functions = {}
-	// TODO: End of hotfix
-
-	const { default: translationsBundle } = await import(`talk/l10n/${getLocale()}.json`)
-	register('spreed', translationsBundle.translations)
+	// Set locale
+	document.documentElement.lang = userMetadata.language
+	document.documentElement.dataset.locale = userMetadata.locale
+	userMetadata.language = 'de'
+	// l10n
+	if (userMetadata.language !== 'en') {
+		try {
+			const { default: translationsBundle } = await import(`@talk/l10n/${userMetadata.language}.json`)
+			register('spreed', translationsBundle.translations)
+		} catch (e) {
+			console.log(`Language pack "${userMetadata.language}" not found...`)
+		}
+	}
 }

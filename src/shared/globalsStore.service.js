@@ -38,6 +38,7 @@ export function getUserMetadata() {
 
 export function setUserMetadata(value) {
 	userMetadata = value
+	localStorage.setItem('userMetadata', JSON.stringify(value))
 }
 
 export function restoreCapabilities() {
@@ -56,4 +57,5 @@ export function getCapabilities() {
 
 export function setCapabilities(value) {
 	capabilities = value
+	localStorage.setItem('capabilities', JSON.stringify(value))
 }

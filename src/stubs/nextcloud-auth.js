@@ -25,7 +25,7 @@ import { getUserMetadata } from '../shared/globalsStore.service.js'
 export {
 	getRequestToken,
 	onRequestTokenUpdate,
-} from 'talk/node_modules/@nextcloud/auth/dist/index.esm.js'
+} from '@talk/node_modules/@nextcloud/auth/dist/index.esm.js'
 
 /**
  *

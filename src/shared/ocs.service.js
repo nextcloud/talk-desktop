@@ -33,7 +33,7 @@ import { generateOcsUrl } from '../stubs/nextcloud-router'
  */
 export async function getCapabilities() {
 	const response = await axios.get(generateOcsUrl('/cloud/capabilities'))
-	return response.data.ocs.data.capabilities
+	return response.data.ocs.data
 }
 
 /**
@@ -44,5 +44,16 @@ export async function getCapabilities() {
  */
 export async function getUserMetadata({ userId }) {
 	const response = await axios.get(generateOcsUrl('/cloud/users/{userId}', { userId }))
+	return response.data.ocs.data
+}
+
+/**
+ * Request current user
+ * @see TODO: ADD LINKS
+ * @return {Promise<*>}
+ *
+ */
+export async function getCurrentUserData() {
+	const response = await axios.get(generateOcsUrl('/cloud/user'))
 	return response.data.ocs.data
 }

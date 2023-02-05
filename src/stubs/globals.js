@@ -25,6 +25,13 @@ import { getCredentials } from '../accounts/credentials.service.js'
 import { getUserMetadata } from '../shared/globalsStore.service.js'
 
 export const OC = {
+	// TODO: Add OC.MimeType
+	MimeType: {
+		getIconUrl() {
+			return undefined;
+		},
+	},
+
 	isUserAdmin() {
 		return getUserMetadata()?.groups?.includes('admin')
 	},

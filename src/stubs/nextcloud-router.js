@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { getRootUrl  } from '../../node_modules/@nextcloud/router/dist/index.js'
+import { getRootUrl } from '../../node_modules/@nextcloud/router/dist/index.js'
 import { formattedString } from './stubs-utils.js'
 
 export {

@@ -21,7 +21,7 @@
 
 <template>
 	<header id="header" class="header">
-		<img class="header__item header__logo" src="~talk/img/app.svg" alt="Talk Logo">
+		<img class="header__item header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
 		<h2 class="header__item header__title">
 			Talk Desktop
 		</h2>
@@ -38,6 +38,7 @@
 
 <script>
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+// TODO: not import all the package.json
 import packageJson from '../../../package.json'
 
 export default {
@@ -49,11 +50,16 @@ export default {
 		NcButton,
 	},
 
-	methods: {
-		logout() {
+	setup() {
+		const logout = () => {
 			localStorage.clear()
 			window.TALK_DESKTOP.logout()
-		},
+		}
+
+		return {
+			version: packageJson.version,
+			logout,
+		}
 	},
 }
 </script>

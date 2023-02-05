@@ -38,6 +38,7 @@ const {
 	setCredentials,
 } = require('./accounts/credentials.service')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
+const { setTimeout } = require('timers/promises')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // if (require('electron-squirrel-startup')) {
@@ -116,7 +117,11 @@ app.whenReady().then(async () => {
 		})
 	})
 
-	// await setTimeout(7000)
+	// Timeout to emulate startup loading
+	// TODO: replace with real initialization
+	if (process.env.NODE_ENV === 'production') {
+		await setTimeout(7000)
+	}
 	const maybeCredentials = await welcomeWindow.webContents.executeJavaScript(`localStorage['credentials'] ?? ''`)
 	if (maybeCredentials) {
 		console.log('Credentials available')
@@ -126,6 +131,8 @@ app.whenReady().then(async () => {
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
 	} else {
+		// TODO: hotfix to remove credentials and cookies from invalid or old session
+		await welcomeWindow.webContents.session.clearStorageData()
 		mainWindow = createAccountsWindow()
 		createMainWindow = createAccountsWindow
 	}

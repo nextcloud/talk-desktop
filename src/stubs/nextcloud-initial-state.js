@@ -19,26 +19,26 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { getCapabilities } from '../shared/globalsStore.service.js'
+import { getCapabilities, getUserMetadata } from '../shared/globalsStore.service.js'
 
-function getInitialStateFromCapabilities(capabilities) {
+function getInitialStateFromCapabilities(capabilities, userMetadata) {
 	return {
 		// Todo check all used loadState for spreed
 		spreed: {
 			call_enabled: capabilities?.spreed?.config?.call?.enabled,
-			signaling_mode: 'external', // TODO: Find in Capabilities
-			sip_dialin_info: undefined, // TODO: Find in Capabilities
-			grid_videos_limit: 19, // TODO: Find in Capabilities
-			grid_videos_limit_enforced: false, // TODO: Find in Capabilities
-			federation_enabled: false, // TODO: Find in Capabilities
-			start_conversations: true, // TODO: Find in Capabilities
-			circles_enabled: true, // TODO: Find in Capabilities
-			guests_accounts_enabled: true, // TODO: Find in Capabilities
-			read_status_privacy: capabilities?.spreed?.config?.chat['read-privacy'],
-			play_sounds: true, // TODO: Find in Capabilities
-			attachment_folder: capabilities?.spreed?.config?.attachment?.folder,
-			attachment_folder_free_space: 750430371840, // TODO: Find in Capabilities
-			enable_matterbridge: false, // TODO: Find in Capabilities
+			signaling_mode: 'external', // TODO: Missed in Capabilities. Is it a problem?
+			sip_dialin_info: undefined, // TODO: Missed in Capabilities. Is it a problem?
+			grid_videos_limit: 19, // TODO: Missed in Capabilities. Is it a problem?
+			grid_videos_limit_enforced: false, // TODO: Missed in Capabilities. Is it a problem?
+			federation_enabled: false, // TODO: Missed in Capabilities. Is it a problem?
+			start_conversations: capabilities?.spreed?.config?.conversations?.['can-create'],
+			circles_enabled: false, // TODO: Missed in Capabilities. Is it a problem?
+			guests_accounts_enabled: true, // TODO: Missed in Capabilities. It is a problem
+			read_status_privacy: capabilities?.spreed?.config?.chat?.['read-privacy'],
+			play_sounds: true, // TODO: Missed in Capabilities. Is it a problem?
+			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
+			attachment_folder_free_space: userMetadata?.quota?.free ?? 0, // TODO: Is User's Quota free equal to attachment_folder_free_space
+			enable_matterbridge: false, // TODO: Missed in Capabilities. Is it a problem?
 		},
 		theming: {
 			background: capabilities?.theming?.background,
@@ -58,6 +58,7 @@ function getInitialStateFromCapabilities(capabilities) {
 			shortcutsDisabled: false, // TODO: Find in Capabilities
 		},
 		core: {
+			capabilities,
 			config: {
 				version: '25.0.2.3', // TODO: Find in Capabilities
 				versionstring: '25.0.2', // TODO: Find in Capabilities
@@ -68,7 +69,7 @@ function getInitialStateFromCapabilities(capabilities) {
 }
 
 export function loadState(app, key, fallback) {
-	const capabilities = getInitialStateFromCapabilities(getCapabilities())
+	const capabilities = getInitialStateFromCapabilities(getCapabilities(), getUserMetadata())
 	const elem = capabilities[app][key]
 	if (elem === null) {
 		if (fallback !== undefined) {

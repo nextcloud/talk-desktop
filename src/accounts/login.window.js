@@ -56,6 +56,7 @@ function createLoginWindow({
 		parent: parentWindow,
 		modal: true,
 		webPreferences: {
+			partition: 'non-persist:login-web-view',
 			nodeIntegration: false,
 		},
 	})

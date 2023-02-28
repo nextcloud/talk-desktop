@@ -23,7 +23,6 @@ const {
 	app,
 	BrowserWindow,
 	ipcMain,
-	session,
 } = require('electron')
 const {
 	default: installExtension,
@@ -31,11 +30,7 @@ const {
 } = require('electron-devtools-installer')
 const { createTalkWindow } = require('./talk/talk.window')
 const { createAccountsWindow } = require('./accounts/accounts.window')
-const { createLoginWindow } = require('./accounts/login.window')
-const {
-	getCredentials,
-	setCredentials,
-} = require('./accounts/credentials.service')
+const { openLoginWebView } = require('./accounts/login.window')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { setTimeout } = require('timers/promises')
 const {
@@ -47,22 +42,6 @@ const {
 // if (require('electron-squirrel-startup')) {
 //   app.quit();
 // }
-
-/**
- * @param {import('electron').BrowserWindow} parentWindow
- * @param {string} serverUrl
- * @return {Promise<Credentials>}
- */
-async function authenticateWithLoginFlow(parentWindow, serverUrl) {
-	return new Promise((resolve, reject) => {
-		createLoginWindow({
-			parentWindow,
-			serverUrl,
-			onSuccess: resolve,
-			onFail: reject,
-		})
-	})
-}
 
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
@@ -94,19 +73,17 @@ app.whenReady().then(async () => {
 	if (process.env.NODE_ENV === 'production') {
 		await setTimeout(7000)
 	}
-	const maybeCredentials = await welcomeWindow.webContents.executeJavaScript(`localStorage['credentials'] ?? ''`)
-	if (maybeCredentials) {
-		console.log('Credentials available')
-		setCredentials(JSON.parse(maybeCredentials))
-		enableWebRequestInterceptor(getCredentials().server, {
+
+	// TODO: handle JSON parsing error
+	const maybeAppData = await welcomeWindow.webContents.executeJavaScript(`JSON.parse(localStorage['AppData'] ?? null)`)
+	if (maybeAppData) {
+		enableWebRequestInterceptor(maybeAppData.serverUrl, {
 			enableCors: true,
 			enableCookies: true,
 		})
-		// TODO: Load Capabilities and UserMetadata here
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
 	} else {
-		// TODO: hotfix to remove credentials and cookies from invalid or old session
 		await welcomeWindow.webContents.session.clearStorageData()
 		mainWindow = createAccountsWindow()
 		createMainWindow = createAccountsWindow
@@ -117,14 +94,12 @@ app.whenReady().then(async () => {
 		welcomeWindow.close()
 	})
 
-	ipcMain.handle('accounts:openLoginView', async (event, serverUrl) => {
-		const credentials = await authenticateWithLoginFlow(mainWindow, serverUrl)
-		setCredentials(credentials)
-		// fixmeSetupRequestPatching(getCredentials().server)
-		//mainWindow.close()
+	ipcMain.handle('accounts:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
+
+	ipcMain.handle('accounts:login', async () => {
+		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
-		return credentials
 	})
 
 	ipcMain.handle('accounts:logout', async (event) => {

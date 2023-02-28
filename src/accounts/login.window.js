@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const { BrowserWindow, BrowserView } = require('electron')
+const { BrowserWindow } = require('electron')
 const {
 	BASE_TITLE,
 	USER_AGENT,
@@ -29,80 +29,71 @@ const { parseLoginRedirectUrl } = require('./login.service')
 /**
  * Open a web-view modal window with Nextcloud Server login page
  *
- * @param {Electron.BrowserWindow} parentWindow
+ * @param {import('electron').BrowserWindow} parentWindow
  * @param {string} serverUrl
- * @param {Function} onSuccess
- * @param {Function} onFail
+ * @return {Promise<Credentials|Error>}
  */
-function createLoginWindow({
-	parentWindow,
-	serverUrl,
-	onSuccess,
-	onFail,
-}) {
-	const WIDTH = 750
-	const HEIGHT = 750
-	const TITLE = `Login - ${BASE_TITLE}`
+function openLoginWebView(parentWindow, serverUrl) {
+	return new Promise((resolve, reject) => {
+		const WIDTH = 750
+		const HEIGHT = 750
+		const TITLE = `Login - ${BASE_TITLE}`
 
-	const window = new BrowserWindow({
-		title: TITLE,
-		width: WIDTH,
-		height: HEIGHT,
-		minWidth: WIDTH,
-		minHeight: HEIGHT,
-		resizable: true,
-		center: true,
-		fullscreenable: false,
-		parent: parentWindow,
-		modal: true,
-		webPreferences: {
-			partition: 'non-persist:login-web-view',
-			nodeIntegration: false,
-		},
-	})
-	window.removeMenu()
+		const window = new BrowserWindow({
+			title: TITLE,
+			width: WIDTH,
+			height: HEIGHT,
+			minWidth: WIDTH,
+			minHeight: HEIGHT,
+			resizable: true,
+			center: true,
+			fullscreenable: false,
+			parent: parentWindow,
+			modal: true,
+			webPreferences: {
+				partition: 'non-persist:login-web-view',
+				nodeIntegration: false,
+			},
+		})
+		window.removeMenu()
 
-	const browserView = new BrowserView()
-	window.setBrowserView(browserView)
-	browserView.setBounds({ x: 0, y: 0, width: WIDTH, height: HEIGHT })
+		window.loadURL(`${serverUrl}/index.php/login/flow`, {
+			userAgent: USER_AGENT,
+			extraHeaders: 'OCS-APIRequest: true',
+		})
 
-	browserView.webContents.on('did-start-loading', () => {
-		window.setTitle(`${TITLE} [Loading...]`)
-		window.setProgressBar(2, { mode: 'indeterminate' })
-	})
+		window.webContents.on('did-start-loading', () => {
+			window.setTitle(`${TITLE} [Loading...]`)
+			window.setProgressBar(2, { mode: 'indeterminate' })
+		})
 
-	browserView.webContents.on('did-stop-loading', () => {
-		window.setTitle(TITLE)
-		window.setProgressBar(-1)
-	})
+		window.webContents.on('did-stop-loading', () => {
+			window.setTitle(TITLE)
+			window.setProgressBar(-1)
+		})
 
-	browserView.webContents.on('will-redirect', (event, url) => {
-		if (url.startsWith('nc://')) {
-			// Stop redirect to nc:// app protocol
-			event.preventDefault()
-			try {
-				const credentials = parseLoginRedirectUrl(url)
-				onSuccess(credentials)
-			} catch (e) {
-				onFail(e)
+		window.webContents.on('will-redirect', (event, url) => {
+			if (url.startsWith('nc://')) {
+				// Stop redirect to nc:// app protocol
+				event.preventDefault()
+				try {
+					const credentials = parseLoginRedirectUrl(url)
+					resolve(credentials)
+				} catch (e) {
+					resolve(new Error('Unexpected server error'))
+				} finally {
+					// Anyway close the window
+					window.close()
+				}
 			}
-			// Anyway close the window
-			window.close()
-		}
-	})
+		})
 
-	browserView.webContents.loadURL(`${serverUrl}/index.php/login/flow`, {
-		userAgent: USER_AGENT,
-		extraHeaders: 'OCS-APIRequest: true',
+		window.on('close', () => {
+			resolve(new Error('Login window was closed'))
+		})
 	})
-
-	window.on('close', () => {
-		onFail()
-	})
-
-	return window
 }
 
 module.exports = {
-	createLoginWindow,
+	openLoginWebView,
 }

@@ -25,11 +25,12 @@
 		<h2 class="header__item header__title">
 			Talk Desktop
 		</h2>
-		<div class="header__item">
-			{{ $options.version }}
-		</div>
+		<div class="header__item">{{ version }}</div>
 		<div class="header__logout">
 			<NcButton @click="logout">
+				<template #icon>
+					<ExitToApp />
+				</template>
 				Log out
 			</NcButton>
 		</div>
@@ -37,27 +38,25 @@
 </template>
 
 <script>
+import ExitToApp from 'vue-material-design-icons/ExitToApp.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-// TODO: not import all the package.json
-import packageJson from '../../../package.json'
+import { appData } from '../../app/AppData.js'
 
 export default {
 	name: 'DesktopHeader',
 
-	version: packageJson.version,
-
 	components: {
 		NcButton,
+		ExitToApp,
 	},
 
 	setup() {
 		const logout = () => {
-			localStorage.clear()
 			window.TALK_DESKTOP.logout()
 		}
 
 		return {
-			version: packageJson.version,
+			version: appData.version.desktop,
 			logout,
 		}
 	},

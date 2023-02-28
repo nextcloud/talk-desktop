@@ -26,25 +26,42 @@
 		</div>
 		<div class="login-box">
 			<form @submit.prevent="login">
-				<h2 class="login-box__header">
-					Login to Nextcloud
-				</h2>
-				<NcTextField label="Nextcloud server URL"
-					:label-visible="true"
-					:value.sync="serverUrl"
-					placeholder="https://..."
-					type="url" />
-				<NcButton class="submit-button"
-					type="primary"
-					native-type="submit"
-					wide>
-					Log in
-				</NcButton>
+				<fieldset :disabled="state === 'loading'">
+					<h2 class="login-box__header">
+						Login to Nextcloud
+					</h2>
+					<NcTextField label="Nextcloud server URL"
+						:label-visible="true"
+						:value.sync="serverUrl"
+						placeholder="https://"
+						type="url"
+						:success="state === 'success'"
+						:error="state === 'error'"
+						:helper-text="stateText"
+					/>
+					<NcButton v-if="state !== 'loading'"
+						class="submit-button"
+						type="primary"
+						native-type="submit"
+						wide>
+						Log in
+					</NcButton>
+					<NcButton v-else-if="state ==='loading'"
+						class="submit-button"
+						type="primary"
+						native-type="submit"
+						wide>
+						<template #icon>
+							<NcLoadingIcon appearance="light" />
+						</template>
+						Logging in...
+					</NcButton>
+				</fieldset>
 			</form>
 		</div>
 		<div class="spacer">
 			<footer class="footer">
-				Talk Desktop {{ $options.version }}
+				Talk Desktop {{ version }}
 			</footer>
 		</div>
 	</div>
@@ -52,30 +69,105 @@
 
 <script>
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import { getCapabilities, getCurrentUserData } from '../../shared/ocs.service.js'
+import { appData } from '../../app/AppData.js'
 import packageJson from '../../../package.json'
 
 export default {
 	name: 'WindowAccounts',
 
-	version: packageJson.version,
-
 	components: {
 		NcButton,
+		NcLoadingIcon,
 		NcTextField,
+	},
+
+	setup() {
+		return {
+			version: packageJson.version,
+		}
 	},
 
 	data() {
 		return {
 			serverUrl: process.env.NODE_ENV !== 'production' ? 'https://nextcloud.local' : '',
+			/** @type {'idle'|'loading'|'error'|'success'} */
+			state: 'idle',
+			stateText: '',
 		}
 	},
 
 	methods: {
+		setSuccess() {
+			this.state = 'success'
+			this.stateText = 'Login successfully'
+		},
+
+		setLoading() {
+			this.state = 'loading'
+		},
+
+		setError(error) {
+			this.state = 'error'
+			this.stateText = error
+		},
+
 		async login() {
-			const credentials = await window.TALK_DESKTOP.login(this.serverUrl)
-			window.localStorage.setItem('credentials', JSON.stringify(credentials))
-			window.close()
+			this.setLoading()
+
+			// Prepare to request the server
+			window.TALK_DESKTOP.disableWebRequestInterceptor()
+			window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true })
+			appData.reset()
+			appData.serverUrl = this.serverUrl
+
+			// Check the server
+			try {
+				const capabilities = await getCapabilities()
+				const talkCapabilities = capabilities.capabilities.spreed
+				if (!talkCapabilities) {
+					return this.setError('Talk is not enabled on this server')
+				}
+				// TODO: use semver package?
+				if (parseInt(talkCapabilities.version.split('.')[0]) < 16) {
+					return this.error('Talk Desktop requires Talk v16 or higher')
+				}
+				appData.version.nextcloud = capabilities.version
+				appData.version.talk = talkCapabilities.version
+				appData.version.desktop = this.version
+			} catch {
+				return this.setError('Server URL is not correct')
+			}
+
+			// Login with web view
+			try {
+				const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(this.serverUrl)
+				if (maybeCredentials instanceof Error) {
+					return this.setError(maybeCredentials.message)
+				}
+				appData.credentials = maybeCredentials
+			} catch (error) {
+				console.error(error)
+				return this.setError('Unexpected error')
+			}
+
+			// Get UserMetadata
+			try {
+				appData.userMetadata = await getCurrentUserData()
+				// Update capabilities for authenticated user
+				const capabilitiesResponse = await getCapabilities()
+				appData.capabilities = capabilitiesResponse.capabilities
+				// Save all AppData
+				appData.persist()
+				// Bye
+				this.setSuccess()
+				window.TALK_DESKTOP.login()
+			} catch (error) {
+				console.error(error)
+				return this.setError('Error... Try again...')
+			}
 		},
 	},
 }

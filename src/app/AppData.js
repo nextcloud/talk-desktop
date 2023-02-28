@@ -25,8 +25,13 @@ export class AppData {
 	serverUrl = null
 	userMetadata = null
 	capabilities = null
+	version = {
+		nextcloud: null,
+		talk: null,
+		desktop: null,
+	}
 	credentials = null
-	storageKey = 'TALK_DESKTOP'
+	storageKey = 'AppData'
 
 	constructor() {}
 
@@ -35,12 +40,27 @@ export class AppData {
 			serverUrl: this.serverUrl,
 			userMetadata: this.userMetadata,
 			capabilities: this.capabilities,
+			version: this.version,
 			credentials: this.credentials,
 		}))
 	}
 
 	restore() {
 		Object.assign(this, JSON.parse(localStorage.getItem(this.storageKey)))
+	}
+
+	reset() {
+		Object.assign(this, {
+			serverUrl: null,
+			userMetadata: null,
+			capabilities: null,
+			version: {
+				nextcloud: null,
+				talk: null,
+				desktop: null,
+			},
+			credentials: null,
+		})
 	}
 }
 

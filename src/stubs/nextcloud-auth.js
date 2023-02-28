@@ -31,7 +31,7 @@ export {
  */
 export function getCurrentUser() {
 	return {
-		uid: appData.userMetadata.userid,
+		uid: appData.userMetadata.id,
 		displayName: appData.userMetadata.displayname,
 		isAdmin: appData.userMetadata.groups.includes('admin'), // TODO: Is it true way to detect admin?
 	}

@@ -34,6 +34,7 @@ function createTalkWindow() {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
+	window.removeMenu()
 
 	window.once('ready-to-show', () => {
 		window.maximize()

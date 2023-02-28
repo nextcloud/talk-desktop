@@ -35,7 +35,7 @@ function parseLoginRedirectUrl(url) {
 	}
 	return {
 		server: parsed[1],
-		user: parsed[2],
+		user: decodeURIComponent(parsed[2]),
 		password: parsed[3],
 	}
 }

@@ -32,7 +32,6 @@ function createTalkWindow() {
 		backgroundColor: '#171717',
 		webPreferences: {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
-			webSecurity: false, // TODO: fix for CORS. Better to use main process for requests
 		},
 	})
 

@@ -29,7 +29,6 @@ const {
 	default: installExtension,
 	VUEJS3_DEVTOOLS,
 } = require('electron-devtools-installer')
-const { DEVSERVER_HOST } = require('./constants')
 const { createTalkWindow } = require('./talk/talk.window')
 const { createAccountsWindow } = require('./accounts/accounts.window')
 const { createLoginWindow } = require('./accounts/login.window')
@@ -39,6 +38,10 @@ const {
 } = require('./accounts/credentials.service')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { setTimeout } = require('timers/promises')
+const {
+	enableWebRequestInterceptor,
+	disableWebRequestInterceptor,
+} = require('./app/webRequestInterceptor.js')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // if (require('electron-squirrel-startup')) {
@@ -61,39 +64,8 @@ async function authenticateWithLoginFlow(parentWindow, serverUrl) {
 	})
 }
 
-/**
- * Patch requests to solve CORS and sequire cookies problems
- * TODO: ONLY FOR PROTOTYPING. NOT SECURE.
- *
- * @param serverUrl
- */
-function fixmeSetupRequestPatching(serverUrl) {
-	const filter = {
-		urls: [`${serverUrl}/*`],
-	}
-
-	session.defaultSession.webRequest.onBeforeSendHeaders(
-		filter,
-		(details, callback) => {
-			details.requestHeaders.Origin = '*'
-			callback({ requestHeaders: details.requestHeaders })
-		},
-	)
-
-	session.defaultSession.webRequest.onHeadersReceived(
-		filter,
-		(details, callback) => {
-			// For Talk Session Cookies as well as Files integration
-			if (Array.isArray(details.responseHeaders['set-cookie'])) {
-				details.responseHeaders['set-cookie'] = details.responseHeaders['set-cookie'].map(cookie => cookie.replace(/SameSite=(lax|strict)/i, 'SameSite=None'))
-			}
-			// For CORS
-			details.responseHeaders['Access-Control-Allow-Origin'] = [DEVSERVER_HOST]
-			details.responseHeaders['Access-Control-Allow-Credentials'] = ['true']
-			callback({ responseHeaders: details.responseHeaders })
-		},
-	)
-}
+ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
+ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 
 app.whenReady().then(async () => {
 	if (process.env.NODE_ENV !== 'production') {
@@ -126,7 +98,10 @@ app.whenReady().then(async () => {
 	if (maybeCredentials) {
 		console.log('Credentials available')
 		setCredentials(JSON.parse(maybeCredentials))
-		fixmeSetupRequestPatching(getCredentials().server)
+		enableWebRequestInterceptor(getCredentials().server, {
+			enableCors: true,
+			enableCookies: true,
+		})
 		// TODO: Load Capabilities and UserMetadata here
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
@@ -142,10 +117,10 @@ app.whenReady().then(async () => {
 		welcomeWindow.close()
 	})
 
-	ipcMain.handle('accounts:open-login-view', async (event, serverUrl) => {
+	ipcMain.handle('accounts:openLoginView', async (event, serverUrl) => {
 		const credentials = await authenticateWithLoginFlow(mainWindow, serverUrl)
 		setCredentials(credentials)
-		fixmeSetupRequestPatching(getCredentials().server)
+		// fixmeSetupRequestPatching(getCredentials().server)
 		//mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow

@@ -20,8 +20,8 @@
  */
 
 // We need to use a copy of default styles here because we do not have real server styles before login on the server
-import '../../shared/assets/default/default.css'
-import '../../shared/assets/default/server.css'
+import '../../shared/assets/default/css/default.css'
+import '../../shared/assets/default/css/server.css'
 
 import Vue from 'vue'
 import WindowAccounts from './WindowAccounts.vue'

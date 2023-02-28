@@ -22,7 +22,7 @@
 import { register } from '@nextcloud/l10n'
 import { loadServerCss } from '../../shared/utils/loadCss.js'
 import { getCapabilities, getCurrentUserData } from '../../shared/ocs.service.js'
-import { setCapabilities, setUserMetadata } from '../../shared/globalsStore.service.js'
+import { appData } from '../../app/AppData.js'
 
 export async function init() {
 	// Manually redirect on Talk's main page
@@ -32,12 +32,12 @@ export async function init() {
 	// TODO: Move this part to application initialization
 	// Capabilities
 	const capabilities = await getCapabilities()
-	setCapabilities(capabilities.capabilities)
+	appData.capabilities = capabilities
 
 	// TODO: Move this part to application initialization
 	// UserMetadata
 	const userMetadata = await getCurrentUserData()
-	setUserMetadata(userMetadata)
+	appData.userMetadata = userMetadata
 
 	// Load application styles from server
 	loadServerCss(`/apps/theming/css/default.css`)

@@ -19,8 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { getCredentials } from '../accounts/credentials.service.js'
-import { getUserMetadata } from '../shared/globalsStore.service.js'
+import { appData } from '../app/AppData.js'
 
 export {
 	getRequestToken,
@@ -32,8 +31,8 @@ export {
  */
 export function getCurrentUser() {
 	return {
-		uid: getCredentials().user,
-		displayName: getUserMetadata().displayname,
-		isAdmin: getUserMetadata().groups.includes('admin'), // TODO: Is it true way to detect admin?
+		uid: appData.userMetadata.userid,
+		displayName: appData.userMetadata.displayname,
+		isAdmin: appData.userMetadata.groups.includes('admin'), // TODO: Is it true way to detect admin?
 	}
 }

@@ -19,43 +19,29 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-let userMetadata;
-let capabilities;
+// TODO: use safeStorage for credentials
 
-export function restoreUserMetadata() {
-	const restored = localStorage.getItem('userMetadata')
-	if (restored) {
-		return JSON.parse(restored)
+export class AppData {
+	serverUrl = null
+	userMetadata = null
+	capabilities = null
+	credentials = null
+	storageKey = 'TALK_DESKTOP'
+
+	constructor() {}
+
+	persist() {
+		localStorage.setItem(this.storageKey, JSON.stringify({
+			serverUrl: this.serverUrl,
+			userMetadata: this.userMetadata,
+			capabilities: this.capabilities,
+			credentials: this.credentials,
+		}))
+	}
+
+	restore() {
+		Object.assign(this, JSON.parse(localStorage.getItem(this.storageKey)))
 	}
 }
 
-export function getUserMetadata() {
-	if (!setUserMetadata) {
-		setCredentials(restoreUserMetadata())
-	}
-	return userMetadata
-}
-
-export function setUserMetadata(value) {
-	userMetadata = value
-	localStorage.setItem('userMetadata', JSON.stringify(value))
-}
-
-export function restoreCapabilities() {
-	const restored = localStorage.getItem('capabilities')
-	if (restored) {
-		return JSON.parse(restored)
-	}
-}
-
-export function getCapabilities() {
-	if (!setCapabilities) {
-		setCredentials(restoreCapabilities())
-	}
-	return capabilities
-}
-
-export function setCapabilities(value) {
-	capabilities = value
-	localStorage.setItem('capabilities', JSON.stringify(value))
-}
+export const appData = new AppData()

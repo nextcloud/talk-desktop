@@ -19,7 +19,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { translate } from '@nextcloud/l10n'
 import { loadState } from './nextcloud-initial-state.js'
 import { getCredentials } from '../accounts/credentials.service.js'
 import { getUserMetadata } from '../shared/globalsStore.service.js'
@@ -34,10 +33,6 @@ export const OC = {
 
 	isUserAdmin() {
 		return getUserMetadata()?.groups?.includes('admin')
-	},
-
-	L10N: {
-		translate,
 	},
 
 	// For router

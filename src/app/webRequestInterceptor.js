@@ -20,7 +20,7 @@
  */
 
 const { session } = require('electron')
-const { DEVSERVER_HOST } = require('../constants.js')
+const { DEV_SERVER_ORIGIN } = require('../constants.js')
 
 /**
  * Patch requests on the default session to a specific Nextcloud server for Cookies or CORS.
@@ -65,7 +65,7 @@ function enableWebRequestInterceptor(serverUrl, {
 		}
 	}
 
-	const ALLOWED_ORIGIN = [process.env.NODE_ENV === 'production' ? 'file://' : `${DEVSERVER_HOST}`]
+	const ALLOWED_ORIGIN = [process.env.NODE_ENV === 'production' ? 'file://' : `${DEV_SERVER_ORIGIN}`]
 	const ALLOWED_CREDENTIALS_TRUE = ['true']
 	const ALLOWED_HEADERS = [[
 		// Common headers

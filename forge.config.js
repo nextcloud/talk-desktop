@@ -21,8 +21,6 @@
 
 require('dotenv').config()
 
-const DEV_SERVER_HOST = process.env.NEXTCLOUD_DEV_SERVER_HOSTS ?? 'https://nextcloud.local'
-
 module.exports = {
 	packagerConfig: {
 		icon: './spreed/img/favicon.ico',
@@ -51,7 +49,7 @@ module.exports = {
 			name: '@electron-forge/plugin-webpack',
 			config: {
 				mainConfig: './webpack.main.config.js',
-				devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' data: blob: ${DEV_SERVER_HOST}; script-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob:`,
+				devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' data: blob: ${process.env.NEXTCLOUD_DEV_SERVER_HOSTS}; script-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob:`,
 				renderer: {
 					config: './webpack.renderer.config.js',
 					entryPoints: [

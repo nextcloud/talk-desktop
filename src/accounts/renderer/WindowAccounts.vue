@@ -92,7 +92,7 @@ export default {
 
 	data() {
 		return {
-			serverUrl: process.env.NODE_ENV !== 'production' ? 'https://nextcloud.local' : '',
+			serverUrl: process.env.NODE_ENV !== 'production' ? process.env.NEXTCLOUD_DEV_SERVER_HOSTS?.split?.(' ')?.[0] : '',
 			/** @type {'idle'|'loading'|'error'|'success'} */
 			state: 'idle',
 			stateText: '',

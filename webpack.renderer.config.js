@@ -93,6 +93,9 @@ module.exports = merge(commonTalkWebpackConfig, {
 			t: ['@nextcloud/l10n', 'translate'],
 		}),
 
-		new webpack.DefinePlugin({ IS_TALK_DESKTOP: true }),
+		new webpack.DefinePlugin({
+			IS_TALK_DESKTOP: true,
+			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),
+		}),
 	],
 })

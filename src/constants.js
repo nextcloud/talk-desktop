@@ -21,12 +21,10 @@
 
 const BASE_TITLE = 'Talk Desktop'
 const USER_AGENT = 'Talk Desktop'
-const DEVSERVER_HOST = 'http://localhost:3000'
-const SERVER_URL = process.env.NEXTCLOUD_DEV_SERVER_HOSTS
+const DEV_SERVER_ORIGIN = 'http://localhost:3000'
 
 module.exports = {
 	BASE_TITLE,
 	USER_AGENT,
-	DEVSERVER_HOST,
-	SERVER_URL,
+	DEV_SERVER_ORIGIN,
 }

@@ -41,7 +41,10 @@ function createAccountsWindow() {
 			preload: ACCOUNTS_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
-	window.removeMenu()
+
+	if (process.env.NODE_ENV === 'production') {
+		window.removeMenu()
+	}
 
 	window.loadURL(ACCOUNTS_WINDOW_WEBPACK_ENTRY)
 

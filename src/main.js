@@ -103,13 +103,15 @@ app.whenReady().then(async () => {
 	})
 
 	ipcMain.handle('accounts:logout', async (event) => {
-		await mainWindow.webContents.session.clearStorageData()
-		mainWindow.close()
-		mainWindow = createAccountsWindow()
-		createMainWindow = createAccountsWindow
-		mainWindow.once('ready-to-show', () => {
-			mainWindow.show()
-		})
+		if (createMainWindow === createTalkWindow) {
+			await mainWindow.webContents.session.clearStorageData()
+			mainWindow.close()
+			mainWindow = createAccountsWindow()
+			createMainWindow = createAccountsWindow
+			mainWindow.once('ready-to-show', () => {
+				mainWindow.show()
+			})
+		}
 	})
 
 	// On OS X it's common to re-create a window in the app when the

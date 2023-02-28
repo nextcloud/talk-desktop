@@ -20,8 +20,7 @@
  */
 
 import { loadState } from './nextcloud-initial-state.js'
-import { getCredentials } from '../accounts/credentials.service.js'
-import { getUserMetadata } from '../shared/globalsStore.service.js'
+import { appData } from '../app/AppData.js'
 
 export const OC = {
 	// TODO: Add OC.MimeType
@@ -32,14 +31,14 @@ export const OC = {
 	},
 
 	isUserAdmin() {
-		return getUserMetadata()?.groups?.includes('admin')
+		return appData.userMetadata?.groups?.includes('admin')
 	},
 
 	// For router
 	get webroot() {
 		// Original method returns only path, for example, /nextcloud-webroot
 		// Desktop needs to have full URL: https://nextcloud.host/nextcloud-webroot
-		return getCredentials().server
+		return appData.serverUrl
 	},
 
 	config: {
@@ -62,17 +61,17 @@ export const OC = {
 	},
 
 	getHost() {
-		const [protocol, host] = getCredentials().server.split('://')
+		const [_, host] = appData.serverUrl.split('://')
 		return host.split(':')[0]
 	},
 
 	getHostname() {
-		const [protocol, host] = getCredentials().server.split('://')
+		const [_, host] = appData.serverUrl.split('://')
 		return host
 	},
 
 	getProtocol() {
-		const [protocol, host] = getCredentials().server.split('://')
+		const [protocol, _] = appData.serverUrl.split('://')
 		return protocol
 	},
 }

@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { getCapabilities, getUserMetadata } from '../shared/globalsStore.service.js'
+import { appData } from '../app/AppData.js'
 
 function getInitialStateFromCapabilities(capabilities, userMetadata) {
 	return {
@@ -69,7 +69,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 }
 
 export function loadState(app, key, fallback) {
-	const capabilities = getInitialStateFromCapabilities(getCapabilities(), getUserMetadata())
+	const capabilities = getInitialStateFromCapabilities(appData.capabilities, appData.userMetadata)
 	const elem = capabilities[app][key]
 	if (elem === null) {
 		if (fallback !== undefined) {

@@ -23,7 +23,8 @@
 		"@nextcloud/vue": "^7.1.0-beta.1",
 		"core-js": "^3.26.1",
 		"electron-squirrel-startup": "^1.0.0",
-		"vue": "^2.7.14"
+		"vue": "^2.7.14",
+		"vue-material-design-icons": "^5.2.0"
 	},
 	"devDependencies": {
 		"@babel/eslint-parser": "^7.19.1",

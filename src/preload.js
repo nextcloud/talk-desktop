@@ -19,17 +19,26 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const { contextBridge, ipcRenderer } = require('electron')
+const {
+	contextBridge,
+	ipcRenderer,
+} = require('electron')
 
 /**
  * @typedef TALK_DESKTOP
- * @property {Function} login - login with web-view
- * @property {Function} logout - logout and return to accounts
+ * @property {Function} openLoginWebView
+ * @property {Function} login
+ * @property {Function} logout
+ * @property {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor} enableWebRequestInterceptor
+ * @property {typeof import('./app/webRequestInterceptor').disableWebRequestInterceptor} disableWebRequestInterceptor
  */
 
 /** @type {TALK_DESKTOP} */
 const TALK_DESKTOP = {
-	login: (server) => ipcRenderer.invoke('accounts:open-login-view', server),
+	enableWebRequestInterceptor: (...args) => ipcRenderer.invoke('app:enableWebRequestInterceptor', ...args),
+	disableWebRequestInterceptor: (...args) => ipcRenderer.invoke('app:disableWebRequestInterceptor', ...args),
+	openLoginWebView: (server) => ipcRenderer.invoke('accounts:openLoginWebView', server),
+	login: () => ipcRenderer.invoke('accounts:login'),
 	logout: () => ipcRenderer.invoke('accounts:logout'),
 }
 

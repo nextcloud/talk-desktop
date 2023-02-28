@@ -20,20 +20,19 @@
  */
 
 import axios from '../../node_modules/@nextcloud/axios/dist/index.esm.js'
-
-const credentials = JSON.parse(localStorage.credentials)
+import { appData } from '../app/AppData.js'
 
 axios.interceptors.request.use((config) => {
 	config.withCredentials = true
 	delete config.headers.requesttoken
 	config.headers['OCS-APIRequest'] = 'true'
-	config.auth = {
-		username: credentials.user,
-		password: credentials.password,
+	if (appData.credentials) {
+		config.auth = {
+			username: appData.credentials.user,
+			password: appData.credentials.password,
+		}
 	}
 	return config
-}, function(error) {
-	return Promise.reject(error)
-})
+}, (error) => Promise.reject(error))
 
 export default axios

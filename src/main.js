@@ -23,77 +23,28 @@ const {
 	app,
 	BrowserWindow,
 	ipcMain,
-	session,
 } = require('electron')
 const {
 	default: installExtension,
 	VUEJS3_DEVTOOLS,
 } = require('electron-devtools-installer')
-const { DEVSERVER_HOST } = require('./constants')
 const { createTalkWindow } = require('./talk/talk.window')
 const { createAccountsWindow } = require('./accounts/accounts.window')
-const { createLoginWindow } = require('./accounts/login.window')
-const {
-	getCredentials,
-	setCredentials,
-} = require('./accounts/credentials.service')
+const { openLoginWebView } = require('./accounts/login.window')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { setTimeout } = require('timers/promises')
+const {
+	enableWebRequestInterceptor,
+	disableWebRequestInterceptor,
+} = require('./app/webRequestInterceptor.js')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // if (require('electron-squirrel-startup')) {
 //   app.quit();
 // }
 
-/**
- * @param {import('electron').BrowserWindow} parentWindow
- * @param {string} serverUrl
- * @return {Promise<Credentials>}
- */
-async function authenticateWithLoginFlow(parentWindow, serverUrl) {
-	return new Promise((resolve, reject) => {
-		createLoginWindow({
-			parentWindow,
-			serverUrl,
-			onSuccess: resolve,
-			onFail: reject,
-		})
-	})
-}
-
-/**
- * Patch requests to solve CORS and sequire cookies problems
- * TODO: ONLY FOR PROTOTYPING. NOT SECURE.
- *
- * @param serverUrl
- */
-function fixmeSetupRequestPatching(serverUrl) {
-	const filter = {
-		urls: [`${serverUrl}/*`],
-	}
-
-	session.defaultSession.webRequest.onBeforeSendHeaders(
-		filter,
-		(details, callback) => {
-			details.requestHeaders.Origin = '*'
-			callback({ requestHeaders: details.requestHeaders })
-		},
-	)
-
-	session.defaultSession.webRequest.onHeadersReceived(
-		filter,
-		(details, callback) => {
-			// For Talk Session Cookies as well as Files integration
-			if (Array.isArray(details.responseHeaders['set-cookie'])) {
-				details.responseHeaders['set-cookie'] = details.responseHeaders['set-cookie'].map(cookie => cookie.replace(/SameSite=(lax|strict)/i, 'SameSite=None'))
-			}
-			// For CORS
-			details.responseHeaders['Access-Control-Allow-Origin'] = [DEVSERVER_HOST]
-			details.responseHeaders['Access-Control-Allow-Credentials'] = ['true']
-			callback({ responseHeaders: details.responseHeaders })
-		},
-	)
-}
+ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
+ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 
 app.whenReady().then(async () => {
 	if (process.env.NODE_ENV !== 'production') {
@@ -122,16 +73,17 @@ app.whenReady().then(async () => {
 	if (process.env.NODE_ENV === 'production') {
 		await setTimeout(7000)
 	}
-	const maybeCredentials = await welcomeWindow.webContents.executeJavaScript(`localStorage['credentials'] ?? ''`)
-	if (maybeCredentials) {
-		console.log('Credentials available')
-		setCredentials(JSON.parse(maybeCredentials))
-		fixmeSetupRequestPatching(getCredentials().server)
-		// TODO: Load Capabilities and UserMetadata here
+
+	// TODO: handle JSON parsing error
+	const maybeAppData = await welcomeWindow.webContents.executeJavaScript(`JSON.parse(localStorage['AppData'] ?? null)`)
+	if (maybeAppData) {
+		enableWebRequestInterceptor(maybeAppData.serverUrl, {
+			enableCors: true,
+			enableCookies: true,
+		})
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
 	} else {
-		// TODO: hotfix to remove credentials and cookies from invalid or old session
 		await welcomeWindow.webContents.session.clearStorageData()
 		mainWindow = createAccountsWindow()
 		createMainWindow = createAccountsWindow
@@ -142,14 +94,12 @@ app.whenReady().then(async () => {
 		welcomeWindow.close()
 	})
 
-	ipcMain.handle('accounts:open-login-view', async (event, serverUrl) => {
-		const credentials = await authenticateWithLoginFlow(mainWindow, serverUrl)
-		setCredentials(credentials)
-		fixmeSetupRequestPatching(getCredentials().server)
-		//mainWindow.close()
+	ipcMain.handle('accounts:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
+
+	ipcMain.handle('accounts:login', async () => {
+		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
-		return credentials
 	})
 
 	ipcMain.handle('accounts:logout', async (event) => {

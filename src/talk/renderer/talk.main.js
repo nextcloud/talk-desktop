@@ -22,9 +22,11 @@
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { init } from './init.js'
 import '@talk/css/icons.css'
+import { appData } from '../../app/AppData.js'
 
 (async () => {
-	await init();
+	appData.restore()
+	await init()
 	await import('./desktop.app.js')
 	await import('@talk/src/main.js')
 })();

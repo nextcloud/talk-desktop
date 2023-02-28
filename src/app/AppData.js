@@ -19,46 +19,49 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * @typedef Credentials
- * @property {string} server
- * @property {string} user
- * @property {string} password
- */
+// TODO: use safeStorage for credentials
 
-/**
- * @type {Credentials}
- */
-let credentials
+export class AppData {
+	serverUrl = null
+	userMetadata = null
+	capabilities = null
+	version = {
+		nextcloud: null,
+		talk: null,
+		desktop: null,
+	}
+	credentials = null
+	storageKey = 'AppData'
 
-/**
- * @return {Credentials}
- */
-function restoreCredentials() {
-	if (localStorage['credentials']) {
-		return JSON.parse(localStorage['credentials'])
+	constructor() {}
+
+	persist() {
+		localStorage.setItem(this.storageKey, JSON.stringify({
+			serverUrl: this.serverUrl,
+			userMetadata: this.userMetadata,
+			capabilities: this.capabilities,
+			version: this.version,
+			credentials: this.credentials,
+		}))
+	}
+
+	restore() {
+		Object.assign(this, JSON.parse(localStorage.getItem(this.storageKey)))
+	}
+
+	reset() {
+		Object.assign(this, {
+			serverUrl: null,
+			userMetadata: null,
+			capabilities: null,
+			version: {
+				nextcloud: null,
+				talk: null,
+				desktop: null,
+			},
+			credentials: null,
+		})
 	}
 }
 
-/**
- * @return {Credentials}
- */
-function getCredentials() {
-	if (!credentials) {
-		setCredentials(restoreCredentials())
-	}
-	return credentials
-}
-
-/**
- * @param {Credentials} value
- */
-function setCredentials(value) {
-	credentials = value
-}
-
-module.exports = {
-	restoreCredentials,
-	getCredentials,
-	setCredentials,
-}
+export const appData = new AppData()

@@ -21,23 +21,11 @@
 
 import { register } from '@nextcloud/l10n'
 import { loadServerCss } from '../../shared/utils/loadCss.js'
-import { getCapabilities, getCurrentUserData } from '../../shared/ocs.service.js'
-import { setCapabilities, setUserMetadata } from '../../shared/globalsStore.service.js'
+import { appData } from '../../app/AppData.js'
 
 export async function init() {
 	// Manually redirect on Talk's main page
-	// TODO: better add alias to router
 	window.location.hash = '/apps/spreed'
-
-	// TODO: Move this part to application initialization
-	// Capabilities
-	const capabilities = await getCapabilities()
-	setCapabilities(capabilities.capabilities)
-
-	// TODO: Move this part to application initialization
-	// UserMetadata
-	const userMetadata = await getCurrentUserData()
-	setUserMetadata(userMetadata)
 
 	// Load application styles from server
 	loadServerCss(`/apps/theming/css/default.css`)
@@ -46,16 +34,16 @@ export async function init() {
 	loadServerCss(`/core/css/server.css`)
 
 	// Set locale
-	document.documentElement.lang = userMetadata.language
-	document.documentElement.dataset.locale = userMetadata.locale
-	userMetadata.language = 'de'
+	document.documentElement.lang = appData.userMetadata.language
+	document.documentElement.dataset.locale = appData.userMetadata.locale
+
 	// l10n
-	if (userMetadata.language !== 'en') {
+	if (appData.userMetadata.language !== 'en') {
 		try {
-			const { default: translationsBundle } = await import(`@talk/l10n/${userMetadata.language}.json`)
+			const { default: translationsBundle } = await import(`@talk/l10n/${appData.userMetadata.language}.json`)
 			register('spreed', translationsBundle.translations)
 		} catch (e) {
-			console.log(`Language pack "${userMetadata.language}" not found...`)
+			console.log(`Language pack "${appData.userMetadata.language}" not found...`)
 		}
 	}
 }

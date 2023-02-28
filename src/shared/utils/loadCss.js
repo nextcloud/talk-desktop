@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { getCredentials } from '../../accounts/credentials.service.js'
+import { appData } from '../../app/AppData.js'
 
 /**
  * Load styles from URL via new <link> element
@@ -40,6 +40,5 @@ export function loadCss(url) {
  * @return {HTMLLinkElement} Created styles link element
  */
 export function loadServerCss(url) {
-	const SERVER_URL = getCredentials().server
-	loadCss(`${SERVER_URL}${url}`)
+	loadCss(`${appData.serverUrl}${url}`)
 }

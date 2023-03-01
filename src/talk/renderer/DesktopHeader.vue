@@ -22,32 +22,94 @@
 <template>
 	<header id="header" class="header">
 		<img class="header__item header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
-		<h2 class="header__item header__title">
-			Nextcloud Talk
-		</h2>
-		<div class="header__item">{{ version }}</div>
-		<div class="header__logout">
-			<NcButton @click="logout">
-				<template #icon>
-					<ExitToApp />
-				</template>
-				Log out
-			</NcButton>
+
+		<div class="header__item">
+			<span class="header__title">Nextcloud Talk</span>
+			<span style="margin-left: var(--default-grid-baseline)">Preview</span>
 		</div>
+
+		<div class="spacer"></div>
+
+		<NcButton type="tertiary-no-background" class="header__item header__button">
+			<template #icon>
+				<Magnify />
+			</template>
+		</NcButton>
+
+		<NcButton type="tertiary-no-background" class="header__item header__button">
+			<template #icon>
+				<Bell />
+			</template>
+		</NcButton>
+
+		<NcAvatar class="header__item" :user="user.id" @click="logout" />
+<!--		<NcButton type="tertiary-no-background" class="header__item header__button" @click="logout">-->
+<!--			<template #icon>-->
+<!--				<ExitToApp />-->
+<!--			</template>-->
+<!--		</NcButton>-->
+<!--		<NcActions class="header__item">-->
+<!--			<NcActionButton @click="logout">-->
+<!--				<template #icon>-->
+<!--					<ExitToApp size="20" />-->
+<!--				</template>-->
+<!--				Log out-->
+<!--			</NcActionButton>-->
+<!--			<NcActionButton @click="logout">-->
+<!--				<template #icon>-->
+<!--					<ExitToApp size="20" />-->
+<!--				</template>-->
+<!--				Log out-->
+<!--			</NcActionButton>-->
+<!--		</NcActions>-->
+
+<!--		<NcPopover class="header__item">-->
+<!--			<template #trigger>-->
+<!--				<NcAvatar :user="user.id" />-->
+<!--			</template>-->
+
+<!--			<NcActions>-->
+<!--				<NcActionButton @click="logout">-->
+<!--					<template #icon>-->
+<!--						<ExitToApp size="20" />-->
+<!--					</template>-->
+<!--					Log out-->
+<!--				</NcActionButton>-->
+<!--				<NcActionButton @click="logout">-->
+<!--					<template #icon>-->
+<!--						<ExitToApp size="20" />-->
+<!--					</template>-->
+<!--					Log out-->
+<!--				</NcActionButton>-->
+
+<!--			</NcActions>-->
+<!--		</NcPopover>-->
 	</header>
 </template>
 
 <script>
+import Bell from 'vue-material-design-icons/Bell.vue'
 import ExitToApp from 'vue-material-design-icons/ExitToApp.vue'
+import Magnify from 'vue-material-design-icons/Magnify.vue'
+import NcActions from '@nextcloud/vue/dist/Components/NcActions.js'
+import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
+import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcPopover from '@nextcloud/vue/dist/Components/NcPopover.js'
 import { appData } from '../../app/AppData.js'
 
 export default {
 	name: 'DesktopHeader',
 
 	components: {
-		NcButton,
+		Bell,
 		ExitToApp,
+		Magnify,
+		NcActions,
+		NcActionButton,
+		NcAvatar,
+		NcButton,
+		NcPopover,
 	},
 
 	setup() {
@@ -57,6 +119,7 @@ export default {
 
 		return {
 			version: appData.version.desktop,
+			user: appData.userMetadata,
 			logout,
 		}
 	},
@@ -83,10 +146,25 @@ export default {
 }
 
 .header__title {
-	color: inherit;
+	font-size: 20px;
+	font-weight: bold;
 }
 
-.header__logout {
-	margin-left: auto;
+.header__button {
+	color: inherit;
+	opacity: .85;
+	/* We have to use !important here because NcButton already has !important */
+	transition: opacity ease var(--animation-quick) !important;
+}
+
+.header__button:hover,
+.header__button:active,
+.header__button:focus {
+	color: inherit;
+	opacity: 1;
+}
+
+.spacer {
+	flex: 1 0 auto;
 }
 </style>

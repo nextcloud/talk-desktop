@@ -20,7 +20,7 @@
  */
 
 const { session } = require('electron')
-const { DEV_SERVER_ORIGIN } = require('../constants.js')
+const { USER_AGENT, DEV_SERVER_ORIGIN } = require('../constants.js')
 
 /**
  * Patch requests on the default session to a specific Nextcloud server for Cookies or CORS.
@@ -110,6 +110,7 @@ function enableWebRequestInterceptor(serverUrl, {
 	session.defaultSession.webRequest.onBeforeSendHeaders(
 		filter,
 		(details, callback) => {
+			details.requestHeaders['User-Agent'] = USER_AGENT
 			if (enableCookies) {
 				includeCookies(details)
 			}

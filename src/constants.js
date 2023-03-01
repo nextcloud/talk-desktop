@@ -19,7 +19,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+const { version } = require('../package.json');
+
 const BASE_TITLE = 'Nextcloud Talk'
+const USER_AGENT = `Mozilla/5.0 (Desktop) Nextcloud-Talk v${version}`
 const DEV_SERVER_ORIGIN = 'http://localhost:3000'
 
 module.exports = {

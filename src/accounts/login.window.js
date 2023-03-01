@@ -50,6 +50,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 			fullscreenable: false,
 			parent: parentWindow,
 			modal: true,
+			autoHideMenuBar: true,
 			webPreferences: {
 				partition: 'non-persist:login-web-view',
 				nodeIntegration: false,
@@ -58,7 +59,9 @@ function openLoginWebView(parentWindow, serverUrl) {
 		window.removeMenu()
 
 		window.loadURL(`${serverUrl}/index.php/login/flow`, {
-			userAgent: USER_AGENT,
+			// This header value is used as an application name on the Login page
+			// Use BASE_TITLE instead of the USER_AGENT as User-Agent header
+			userAgent: BASE_TITLE,
 			extraHeaders: 'OCS-APIRequest: true',
 		})
 

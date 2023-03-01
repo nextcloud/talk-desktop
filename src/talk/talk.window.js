@@ -30,6 +30,7 @@ function createTalkWindow() {
 		height: 600,
 		show: false,
 		backgroundColor: '#171717',
+		autoHideMenuBar: true,
 		webPreferences: {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},

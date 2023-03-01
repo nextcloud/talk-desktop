@@ -37,6 +37,7 @@ function createAccountsWindow() {
 		maximizable: false,
 		resizable: false,
 		fullscreenable: false,
+		autoHideMenuBar: true,
 		webPreferences: {
 			preload: ACCOUNTS_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},

@@ -33,6 +33,9 @@ export async function init() {
 	loadServerCss(`/index.php/apps/theming/theme/dark.css`)
 	loadServerCss(`/core/css/server.css`)
 
+	// Load styles overrides
+	await import('./assets/overrides.css')
+
 	// Set locale
 	document.documentElement.lang = appData.userMetadata.language
 	document.documentElement.dataset.locale = appData.userMetadata.locale

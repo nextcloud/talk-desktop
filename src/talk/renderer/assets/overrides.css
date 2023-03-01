@@ -1,5 +1,5 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
  *
  * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
  *
@@ -19,14 +19,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import '@talk/css/icons.css'
-import { init } from './init.js'
-import { appData } from '../../app/AppData.js'
+/*
+ * Overrides default Nextcloud styles
+ */
+:root {
+	/* It is IMPORTANT to set "px" here, not just "0" */
+	--body-container-margin: 0px;
+}
 
-(async () => {
-	appData.restore()
-	await init()
-	await import('./desktop.app.js')
-	await import('@talk/src/main.js')
-})();
+#content-vue {
+	border-radius: var(--body-container-radius) var(--body-container-radius) 0 0 !important;
+}

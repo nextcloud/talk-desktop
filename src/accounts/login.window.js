@@ -19,6 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+const os = require('node:os')
 const { BrowserWindow } = require('electron')
 const {
 	BASE_TITLE,
@@ -61,7 +62,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 		window.loadURL(`${serverUrl}/index.php/login/flow`, {
 			// This header value is used as an application name on the Login page
 			// Use BASE_TITLE instead of the USER_AGENT as User-Agent header
-			userAgent: BASE_TITLE,
+			userAgent: `${os.hostname()} (${BASE_TITLE})`,
 			extraHeaders: 'OCS-APIRequest: true',
 		})
 

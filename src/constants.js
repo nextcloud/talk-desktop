@@ -24,9 +24,13 @@ const { version } = require('../package.json');
 const BASE_TITLE = 'Nextcloud Talk'
 const USER_AGENT = `Mozilla/5.0 (Desktop) Nextcloud-Talk v${version}`
 const DEV_SERVER_ORIGIN = 'http://localhost:3000'
+const MIN_REQUIRED_NEXTCLOUD_VERSION = 26
+const MIN_REQUIRED_TALK_VERSION = 16
 
 module.exports = {
 	BASE_TITLE,
 	USER_AGENT,
 	DEV_SERVER_ORIGIN,
+	MIN_REQUIRED_NEXTCLOUD_VERSION,
+	MIN_REQUIRED_TALK_VERSION,
 }

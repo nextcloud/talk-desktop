@@ -73,6 +73,7 @@ import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import { getCapabilities, getCurrentUserData } from '../../shared/ocs.service.js'
 import { appData } from '../../app/AppData.js'
+import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
 import packageJson from '../../../package.json'
 
 export default {
@@ -127,7 +128,7 @@ export default {
 			try {
 				const capabilities = await getCapabilities()
 				if (capabilities.version.major < 26) {
-					return this.error(`${capabilities.version.string} does not satisfy Nextcloud 26 or higher requirements`)
+					return this.error(`Nextcloud ${MIN_REQUIRED_NEXTCLOUD_VERSION} or higher required but ${capabilities.version.string} is installed`)
 				}
 				const talkCapabilities = capabilities.capabilities.spreed
 				if (!talkCapabilities) {
@@ -135,7 +136,7 @@ export default {
 				}
 				// TODO: use semver package?
 				if (parseInt(talkCapabilities.version.split('.')[0]) < 16) {
-					return this.error(`${talkCapabilities.version} does not satisfy Nextcloud Talk 16 or higher requirements`)
+					return this.error(`Nextcloud Talk ${MIN_REQUIRED_TALK_VERSION} or higher required but ${talkCapabilities.version} is installed`)
 				}
 				appData.version.nextcloud = capabilities.version
 				appData.version.talk = talkCapabilities.version
@@ -169,7 +170,7 @@ export default {
 				window.TALK_DESKTOP.login()
 			} catch (error) {
 				console.error(error)
-				return this.setError('Error... Try again...')
+				return this.setError('Login was successful but something went wrong...')
 			}
 		},
 	},

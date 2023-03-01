@@ -61,7 +61,7 @@
 		</div>
 		<div class="spacer">
 			<footer class="footer">
-				Talk Desktop {{ version }}
+				Nextcloud Talk Desktop {{ version }}
 			</footer>
 		</div>
 	</div>
@@ -126,19 +126,22 @@ export default {
 			// Check the server
 			try {
 				const capabilities = await getCapabilities()
+				if (capabilities.version.major < 26) {
+					return this.error(`${capabilities.version.string} does not satisfy Nextcloud 26 or higher requirements`)
+				}
 				const talkCapabilities = capabilities.capabilities.spreed
 				if (!talkCapabilities) {
-					return this.setError('Talk is not enabled on this server')
+					return this.setError('Nextcloud Talk is not enabled on this server')
 				}
 				// TODO: use semver package?
 				if (parseInt(talkCapabilities.version.split('.')[0]) < 16) {
-					return this.error('Talk Desktop requires Talk v16 or higher')
+					return this.error(`${talkCapabilities.version} does not satisfy Nextcloud Talk 16 or higher requirements`)
 				}
 				appData.version.nextcloud = capabilities.version
 				appData.version.talk = talkCapabilities.version
 				appData.version.desktop = this.version
 			} catch {
-				return this.setError('Server URL is not correct')
+				return this.setError('Unable to connect to server')
 			}
 
 			// Login with web view

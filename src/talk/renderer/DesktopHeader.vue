@@ -23,7 +23,7 @@
 	<header id="header" class="header">
 		<img class="header__item header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
 		<h2 class="header__item header__title">
-			Talk Desktop
+			Nextcloud Talk
 		</h2>
 		<div class="header__item">{{ version }}</div>
 		<div class="header__logout">

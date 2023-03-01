@@ -1,6 +1,6 @@
 # 🖥️ Nextcloud Talk Desktop 💬
 
-> Talk Desktop client based on magic Talk Web bundling ✨
+> Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling ✨
 
 ## 🧑‍💻 Development Setup
 
@@ -16,17 +16,17 @@ cp .env.example .env
 # Don't forget to configure ENV variables! 
 ```
 
-Talk Desktop requires [Talk source code](https://github.com/nextcloud/spreed).
+Nextcloud Talk Desktop requires [Nextcloud Talk source code](https://github.com/nextcloud/spreed).
 
-### No talk is cloned?
+### No `nextcloud/spreed` is cloned?
 
-Clone talk and install dependencies:
+Clone `nextcloud/spreed` and install dependencies:
 
 ```bash
-# Clone spreed in this repository root
+# Clone in the repository root
 git clone -b shgkme https://github.com/nextcloud/spreed
 
-# Install Talk dependencies
+# Install dependencies
 cd ./spreed/
 npm ci
 
@@ -34,7 +34,7 @@ npm ci
 cd ../
 ```
 
-### Talk is already cloned?
+### `nextcloud/spreed` is already cloned?
 
 Set `TALK_PATH` ENV variable or edit `.env` file:
 
@@ -54,4 +54,4 @@ npm run package
 
 ## Contribution Guidelines
 
-See spreed repo: https://github.com/nextcloud/spreed#contribution-guidelines
+See: https://github.com/nextcloud/spreed#contribution-guidelines

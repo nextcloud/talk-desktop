@@ -31,7 +31,7 @@ const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 if (!fs.existsSync(process.env.TALK_PATH)) {
 	throw new Error(`TALK_PATH path is not correct: ${path.resolve(TALK_PATH)}`)
 }
-console.log(`Using Talk on path: ${path.resolve(TALK_PATH)}`)
+console.log(`Using Nextcloud Talk on path: ${path.resolve(TALK_PATH)}`)
 
 const commonTalkWebpackConfig = require(`${TALK_PATH}/webpack.common.config`)
 

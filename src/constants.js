@@ -19,8 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const BASE_TITLE = 'Talk Desktop'
-const USER_AGENT = 'Talk Desktop'
+const BASE_TITLE = 'Nextcloud Talk'
 const DEV_SERVER_ORIGIN = 'http://localhost:3000'
 
 module.exports = {

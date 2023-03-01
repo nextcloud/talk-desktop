@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "talk-desktop",
-	"productName": "Nextcloud Talk Desktop",
+	"productName": "Nextcloud Talk",
 	"version": "0.0.1-beta",
 	"description": "Official Desktop client for Nextcloud Talk",
 	"main": "./.webpack/main",

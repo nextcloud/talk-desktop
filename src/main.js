@@ -58,8 +58,6 @@ app.whenReady().then(async () => {
 	let mainWindow
 	let createMainWindow
 
-	console.log('Start Welcome Window')
-
 	const welcomeWindow = createWelcomeWindow()
 	await new Promise((resolve) => {
 		welcomeWindow.once('ready-to-show', () => {

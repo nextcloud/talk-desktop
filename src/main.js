@@ -69,7 +69,7 @@ app.whenReady().then(async () => {
 	// Timeout to emulate startup loading
 	// TODO: replace with real initialization
 	if (process.env.NODE_ENV === 'production') {
-		await setTimeout(7000)
+		await setTimeout(5000)
 	}
 
 	// TODO: handle JSON parsing error

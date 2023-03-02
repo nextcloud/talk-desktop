@@ -43,9 +43,10 @@ function createAccountsWindow() {
 		},
 	})
 
-	if (process.env.NODE_ENV === 'production') {
-		window.removeMenu()
-	}
+	// TODO: return this on release
+	// if (process.env.NODE_ENV === 'production') {
+	// 	window.removeMenu()
+	// }
 
 	window.loadURL(ACCOUNTS_WINDOW_WEBPACK_ENTRY)
 

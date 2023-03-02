@@ -36,9 +36,10 @@ function createTalkWindow() {
 		},
 	})
 
-	if (process.env.NODE_ENV === 'production') {
-		window.removeMenu()
-	}
+	// TODO: return it on release
+	// if (process.env.NODE_ENV === 'production') {
+	// 	window.removeMenu()
+	// }
 
 	window.once('ready-to-show', () => {
 		window.maximize()

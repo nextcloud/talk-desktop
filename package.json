@@ -18,6 +18,7 @@
 		"make:windows": "electron-forge make --skip-package --platform=win32",
 		"make:all": "npm run make:linux && npm run make:mac && npm run make:windows",
 		"publish": "electron-forge publish",
+		"generate-icons": "node ./img/generate-icons.js",
 		"lint": "eslint --ext .js,.vue src/ --fix"
 	},
 	"keywords": [],
@@ -60,6 +61,7 @@
 		"eslint-plugin-n": "^15.5.1",
 		"eslint-plugin-promise": "^6.1.1",
 		"eslint-plugin-vue": "^9.8.0",
+		"icon-gen": "^3.0.1",
 		"node-loader": "^2.0.0",
 		"regenerator-runtime": "^0.13.11",
 		"style-loader": "^3.3.1",

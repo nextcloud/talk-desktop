@@ -23,7 +23,7 @@ require('dotenv').config()
 
 module.exports = {
 	packagerConfig: {
-		icon: './img/talk-icon-rounded',
+		icon: './img/icons/icon',
 	},
 	rebuildConfig: {},
 	makers: [

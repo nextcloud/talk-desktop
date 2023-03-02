@@ -21,28 +21,36 @@
 
 <template>
 	<header id="header" class="header">
-		<img class="header__item header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
+		<img class="header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
 
-		<div class="header__item">
+		<div>
 			<span class="header__title">Nextcloud Talk</span>
 			<span style="margin-left: var(--default-grid-baseline)">Preview</span>
 		</div>
 
 		<div class="spacer"></div>
 
-		<NcButton type="tertiary-no-background" class="header__item header__button">
-			<template #icon>
-				<Magnify />
-			</template>
-		</NcButton>
+		<div class="header__item">
+			<NcButton type="tertiary-no-background" class="header__button">
+				<template #icon>
+					<Magnify />
+				</template>
+			</NcButton>
+		</div>
 
-		<NcButton type="tertiary-no-background" class="header__item header__button">
-			<template #icon>
-				<Bell />
-			</template>
-		</NcButton>
+		<div class="header__item">
+			<NcButton type="tertiary-no-background" class="header__button">
+				<template #icon>
+					<Bell />
+				</template>
+			</NcButton>
+		</div>
 
-		<NcAvatar class="header__item" :user="user.id" @click.native="logout" />
+		<div class="header__item">
+			<NcAvatar class="header__avatar" tabindex="0" :user="user.id" @click.native="logout" />
+		</div>
+
+
 <!--		<NcButton type="tertiary-no-background" class="header__item header__button" @click="logout">-->
 <!--			<template #icon>-->
 <!--				<ExitToApp />-->
@@ -132,17 +140,20 @@ export default {
 	box-sizing: border-box;
 	margin-bottom: -50px;
 	color: #FFF;
-	padding: 0 0.5rem;
+	padding: 0 calc(var(--body-container-margin) + 4px) 0 var(--body-container-margin);
 	display: flex;
 	align-items: center;
 }
 
 .header__item {
-	margin: 0 0.5rem;
+	width: 50px;
+	display: flex;
+	justify-content: center;
 }
 
 .header__logo {
 	height: 32px;
+	margin: 0 14px 0 20px;
 }
 
 .header__title {
@@ -162,6 +173,16 @@ export default {
 .header__button:focus {
 	color: inherit;
 	opacity: 1;
+}
+
+.header__avatar {
+	cursor: pointer;
+}
+
+.header__avatar:hover,
+.header__avatar:active,
+.header__avatar:focus {
+	border: 2px solid var(--color-primary-text)
 }
 
 .spacer {

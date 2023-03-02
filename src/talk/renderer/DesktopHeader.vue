@@ -42,7 +42,7 @@
 			</template>
 		</NcButton>
 
-		<NcAvatar class="header__item" :user="user.id" @click="logout" />
+		<NcAvatar class="header__item" :user="user.id" @click.native="logout" />
 <!--		<NcButton type="tertiary-no-background" class="header__item header__button" @click="logout">-->
 <!--			<template #icon>-->
 <!--				<ExitToApp />-->

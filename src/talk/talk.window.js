@@ -26,8 +26,10 @@ const { BrowserWindow } = require('electron')
  */
 function createTalkWindow() {
 	const window = new BrowserWindow({
-		width: 800,
-		height: 600,
+		width: 1280,
+		height: 800,
+		minWidth: 600,
+		minHeight: 400,
 		show: false,
 		backgroundColor: '#171717',
 		autoHideMenuBar: true,
@@ -42,9 +44,7 @@ function createTalkWindow() {
 	// }
 
 	window.once('ready-to-show', () => {
-		window.maximize()
 		window.show()
-		//window.webContents.openDevTools({ mode: 'detach' })
 	})
 
 	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)

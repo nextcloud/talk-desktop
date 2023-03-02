@@ -66,6 +66,7 @@ function enableWebRequestInterceptor(serverUrl, {
 	}
 
 	const ALLOWED_ORIGIN = [process.env.NODE_ENV === 'production' ? 'file://' : `${DEV_SERVER_ORIGIN}`]
+	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE']
 	const ALLOWED_CREDENTIALS_TRUE = ['true']
 	const ALLOWED_HEADERS = [[
 		// Common headers

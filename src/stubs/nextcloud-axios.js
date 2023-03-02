@@ -26,12 +26,6 @@ axios.interceptors.request.use((config) => {
 	config.withCredentials = true
 	delete config.headers.requesttoken
 	config.headers['OCS-APIRequest'] = 'true'
-	if (appData.credentials) {
-		config.auth = {
-			username: appData.credentials.user,
-			password: appData.credentials.password,
-		}
-	}
 	return config
 }, (error) => Promise.reject(error))
 

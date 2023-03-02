@@ -80,6 +80,7 @@ app.whenReady().then(async () => {
 		enableWebRequestInterceptor(maybeAppData.serverUrl, {
 			enableCors: true,
 			enableCookies: true,
+			credentials: maybeAppData.credentials,
 		})
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow

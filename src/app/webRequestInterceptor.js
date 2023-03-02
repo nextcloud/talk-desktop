@@ -29,14 +29,19 @@ const { USER_AGENT, DEV_SERVER_ORIGIN } = require('../constants.js')
  * @param {boolean=false} enableCors - Enable CORS for OCS and other APIs
  * @param {boolean=false} enableCookies - Enable aka cross-origin cookie without setting SameSate=None.
  * 																				Some Talk and Files API requests require cookie session.
+ * @param {Credentials=null} credentials - User credentials for the Authentication header
  */
 function enableWebRequestInterceptor(serverUrl, {
 	enableCors = false,
 	enableCookies = false,
+	credentials = null,
 }) {
 	/**
 	 * Note: this function affects ALL requests. Performance is important here.
 	 */
+
+	// Cleanup because Electron doesn't support an interceptor update...
+	disableWebRequestInterceptor()
 
 	/**
 	 * CookieStorage. There are not many cookies (2-3). POJO is faster, than a Map.
@@ -66,24 +71,25 @@ function enableWebRequestInterceptor(serverUrl, {
 	}
 
 	const ALLOWED_ORIGIN = [process.env.NODE_ENV === 'production' ? 'file://' : `${DEV_SERVER_ORIGIN}`]
-	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE']
+	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE, PROPFIND']
 	const ALLOWED_CREDENTIALS_TRUE = ['true']
 	const ALLOWED_HEADERS = [[
 		// Common headers
 		'Authorization',
 		'OCS-APIRequest',
 		'Content-Type',
-		'Set-Cookie',
-		// Nextcloud Talk custom headers
+		// DAV
+		// TODO: should we add any other WebDAV headers?
+		'Depth',
+	].join(', ')]
+	const EXPOSED_HEADERS = [[
+		// Nextcloud Talk custom Response Headers
 		'x-nextcloud-talk-modified-before',
 		'x-nextcloud-talk-hash',
 		'x-nextcloud-has-user-statuses',
 		'x-chat-last-given',
 		'x-chat-last-common-read',
-	].join(', ')]
-	const EXPOSED_HEADERS = [[
-		'x-chat-last-given',
-		'x-chat-last-common-read',
+		// TODO: should we add any WebDAV headers?
 	].join(', ')]
 
 	/**
@@ -96,6 +102,7 @@ function enableWebRequestInterceptor(serverUrl, {
 			details.statusLine = details.statusLine.replace('405', '200')
 		}
 		details.responseHeaders['Access-Control-Allow-Origin'] = ALLOWED_ORIGIN
+		details.responseHeaders['Access-Control-Allow-Methods'] = ALLOWED_METHODS
 		details.responseHeaders['Access-Control-Allow-Credentials'] = ALLOWED_CREDENTIALS_TRUE
 		details.responseHeaders['Access-Control-Allow-Headers'] = ALLOWED_HEADERS
 		details.responseHeaders['Access-Control-Expose-Headers'] = EXPOSED_HEADERS
@@ -112,6 +119,9 @@ function enableWebRequestInterceptor(serverUrl, {
 		filter,
 		(details, callback) => {
 			details.requestHeaders['User-Agent'] = USER_AGENT
+			if (credentials) {
+				details.requestHeaders['Authorization'] = `Basic ${btoa(`${credentials.user}:${credentials.password}`)}`
+			}
 			if (enableCookies) {
 				includeCookies(details)
 			}

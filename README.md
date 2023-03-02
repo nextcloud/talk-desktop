@@ -18,7 +18,7 @@ cp .env.example .env
 
 Nextcloud Talk Desktop requires [Nextcloud Talk source code](https://github.com/nextcloud/spreed).
 
-### No `nextcloud/spreed` is cloned?
+#### No `nextcloud/spreed` is cloned?
 
 Clone `nextcloud/spreed` and install dependencies:
 
@@ -34,7 +34,7 @@ npm ci
 cd ../
 ```
 
-### `nextcloud/spreed` is already cloned?
+#### `nextcloud/spreed` is already cloned?
 
 Set `TALK_PATH` ENV variable or edit `.env` file:
 
@@ -47,11 +47,45 @@ TALK_PATH=/path/to/nextcloud-dev/apps/spreed/
 ```bash
 # Start development server
 npm start
-
-# Build to production and package to executable
-npm run package
 ```
 
-## Contribution Guidelines
+## 📦 Packaging
+
+```bash
+#########################
+# Package to executable #
+#########################
+
+# 🐧 Linux
+npm run package:linux
+
+# 🍏 Mac (Darwin)
+npm run package:mac
+
+# 🪟 Windows (win32)
+npm run package:windows
+
+#  All
+npm run package:all
+
+#########################
+# Make ZIP distribution #
+#########################
+
+# 🐧 Linux
+npm run make:linux
+
+# 🍏 Mac (Darwin)
+# Note: doesn't work on Windows, use WSL
+npm run make:mac
+
+# 🪟 Windows (win32)
+npm run make:windows
+
+#  All
+npm run make:all
+```
+
+## 👥 Contribution Guidelines
 
 See: https://github.com/nextcloud/spreed#contribution-guidelines

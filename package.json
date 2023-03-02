@@ -8,7 +8,15 @@
 	"scripts": {
 		"start": "electron-forge start",
 		"package": "electron-forge package",
-		"make": "electron-forge make",
+		"package:linux": "electron-forge package --platform=linux",
+		"package:mac": "electron-forge package --platform=darwin",
+		"package:windows": "electron-forge package --platform=win32",
+		"package:all": "electron-forge package --platform=all",
+		"make": "electron-forge make --skip-package",
+		"make:linux": "electron-forge make --skip-package --platform=linux",
+		"make:mac": "electron-forge make --skip-package --platform=darwin",
+		"make:windows": "electron-forge make --skip-package --platform=win32",
+		"make:all": "npm run make:linux && npm run make:mac && npm run make:windows",
 		"publish": "electron-forge publish",
 		"lint": "eslint --ext .js,.vue src/ --fix"
 	},

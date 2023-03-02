@@ -153,7 +153,7 @@ export default {
 				}
 				appData.credentials = maybeCredentials
 				// Add credentials to the request
-				window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true, credentials: maybeCredentials })
+				window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true, enableCookies: true, credentials: maybeCredentials })
 			} catch (error) {
 				console.error(error)
 				return this.setError('Unexpected error')

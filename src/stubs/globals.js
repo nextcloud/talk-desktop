@@ -34,7 +34,6 @@ export const OC = {
 		return appData.userMetadata?.groups?.includes('admin')
 	},
 
-	// For router
 	get webroot() {
 		// Original method returns only path, for example, /nextcloud-webroot
 		// Desktop needs to have full URL: https://nextcloud.host/nextcloud-webroot
@@ -42,6 +41,7 @@ export const OC = {
 	},
 
 	config: {
+		// TODO: It works in any case, but may make links with redundant index.php. Should get actual value of modRewriteWorking?
 		modRewriteWorking: false,
 	},
 
@@ -61,18 +61,19 @@ export const OC = {
 	},
 
 	getHost() {
-		const [_, host] = appData.serverUrl.split('://')
-		return host.split(':')[0]
+		return new URL(appData.serverUrl).host
 	},
 
 	getHostname() {
-		const [_, host] = appData.serverUrl.split('://')
-		return host
+		return new URL(appData.serverUrl).hostname
 	},
 
 	getProtocol() {
-		const [protocol, _] = appData.serverUrl.split('://')
-		return protocol
+		return new URL(appData.serverUrl).protocol
+	},
+
+	getPort() {
+		return new URL(appData.serverUrl).port
 	},
 }
 

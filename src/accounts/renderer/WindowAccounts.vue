@@ -28,13 +28,13 @@
 			<form @submit.prevent="login">
 				<fieldset :disabled="state === 'loading'">
 					<h2 class="login-box__header">
-						Login to Nextcloud
+						Log in to Nextcloud
 					</h2>
-					<NcTextField label="Nextcloud server URL"
-						:label-visible="true"
-						:value.sync="serverUrl"
-						placeholder="https://"
-						type="url"
+					<NcTextField label="Nextcloud server address"
+						label-visible
+						:value.sync="rawServerUrl"
+						placeholder="https://try.nextcloud.com"
+						inputmode="url"
 						:success="state === 'success'"
 						:error="state === 'error'"
 						:helper-text="stateText"
@@ -44,6 +44,9 @@
 						type="primary"
 						native-type="submit"
 						wide>
+						<template #icon>
+							<MdiArrowRight :size="20" />
+						</template>
 						Log in
 					</NcButton>
 					<NcButton v-else-if="state ==='loading'"
@@ -68,6 +71,7 @@
 </template>
 
 <script>
+import MdiArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
@@ -80,6 +84,7 @@ export default {
 	name: 'WindowAccounts',
 
 	components: {
+		MdiArrowRight,
 		NcButton,
 		NcLoadingIcon,
 		NcTextField,
@@ -93,21 +98,30 @@ export default {
 
 	data() {
 		return {
-			serverUrl: process.env.NODE_ENV !== 'production' ? process.env.NEXTCLOUD_DEV_SERVER_HOSTS?.split?.(' ')?.[0] : '',
+			rawServerUrl: process.env.NODE_ENV !== 'production' ? process.env.NEXTCLOUD_DEV_SERVER_HOSTS?.split?.(' ')?.[0] : '',
 			/** @type {'idle'|'loading'|'error'|'success'} */
 			state: 'idle',
 			stateText: '',
 		}
 	},
 
+	computed: {
+		serverUrl() {
+			const addHTTPS = (url) => url.startsWith('http') ? url : `https://${url}`
+			const removeTrailingSlash = (url) => url.endsWith('/') ? url.slice(0, -1) : url
+			return removeTrailingSlash(addHTTPS(this.rawServerUrl)).trim()
+		},
+	},
+
 	methods: {
 		setSuccess() {
 			this.state = 'success'
-			this.stateText = 'Login successfully'
+			this.stateText = 'Logged in successfully'
 		},
 
 		setLoading() {
 			this.state = 'loading'
+			this.stateText = ''
 		},
 
 		setError(error) {
@@ -118,62 +132,82 @@ export default {
 		async login() {
 			this.setLoading()
 
+			// Check if valid URL
+			try {
+				new URL(this.serverUrl)
+			} catch {
+				return this.setError('Invalid server address')
+			}
+
 			// Prepare to request the server
 			window.TALK_DESKTOP.disableWebRequestInterceptor()
 			window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true })
 			appData.reset()
 			appData.serverUrl = this.serverUrl
 
-			// Check the server
+			// Check if there is Nextcloud server and get capabilities
+			let capabilitiesResponse;
 			try {
-				const capabilities = await getCapabilities()
-				if (capabilities.version.major < 26) {
-					return this.error(`Nextcloud ${MIN_REQUIRED_NEXTCLOUD_VERSION} or higher required but ${capabilities.version.string} is installed`)
-				}
-				const talkCapabilities = capabilities.capabilities.spreed
-				if (!talkCapabilities) {
-					return this.setError('Nextcloud Talk is not enabled on this server')
-				}
-				// TODO: use semver package?
-				if (parseInt(talkCapabilities.version.split('.')[0]) < 16) {
-					return this.error(`Nextcloud Talk ${MIN_REQUIRED_TALK_VERSION} or higher required but ${talkCapabilities.version} is installed`)
-				}
-				appData.version.nextcloud = capabilities.version
-				appData.version.talk = talkCapabilities.version
-				appData.version.desktop = this.version
+				capabilitiesResponse = await getCapabilities()
 			} catch {
-				return this.setError('Unable to connect to server')
+				return this.setError('Nextcloud server not found')
+			}
+
+			// Check if Talk is installed and enabled
+			const talkCapabilities = capabilitiesResponse.capabilities.spreed
+			if (!talkCapabilities) {
+				return this.setError('Nextcloud Talk is not installed in the server')
+			}
+
+			// Check versions compatibilities
+			if (capabilitiesResponse.version.major < MIN_REQUIRED_NEXTCLOUD_VERSION) {
+				return this.error(`Nextcloud ${MIN_REQUIRED_NEXTCLOUD_VERSION} or higher is required but ${capabilitiesResponse.version.string} is installed`)
+			}
+			if (parseInt(talkCapabilities.version.split('.')[0]) < MIN_REQUIRED_TALK_VERSION) {
+				// TODO: use semver package and check not only major version?
+				return this.error(`Nextcloud Talk ${MIN_REQUIRED_TALK_VERSION} or higher is required but ${talkCapabilities.version} is installed`)
 			}
 
 			// Login with web view
+			let credentials
 			try {
 				const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(this.serverUrl)
 				if (maybeCredentials instanceof Error) {
 					return this.setError(maybeCredentials.message)
 				}
-				appData.credentials = maybeCredentials
-				// Add credentials to the request
-				window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true, enableCookies: true, credentials: maybeCredentials })
+				credentials = maybeCredentials
 			} catch (error) {
 				console.error(error)
 				return this.setError('Unexpected error')
 			}
 
-			// Get UserMetadata
+			// Add credentials to the request
+			window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true, enableCookies: true, credentials })
+
+			// Get user's metadata and update capabilities for an authenticated user
+			let userMetadata;
 			try {
-				appData.userMetadata = await getCurrentUserData()
-				// Update capabilities for authenticated user
-				const capabilitiesResponse = await getCapabilities()
-				appData.capabilities = capabilitiesResponse.capabilities
-				// Save all AppData
-				appData.persist()
-				// Bye
-				this.setSuccess()
-				window.TALK_DESKTOP.login()
+				[userMetadata, capabilitiesResponse] = await Promise.all([
+					getCurrentUserData(),
+					getCapabilities(),
+				]);
 			} catch (error) {
+				// This may happen if a network connection was lost after some successful requests or something went wrong
 				console.error(error)
 				return this.setError('Login was successful but something went wrong...')
 			}
+
+			// Yay! Save all and go to the Talk
+			appData.userMetadata = userMetadata
+			appData.capabilities = capabilitiesResponse.capabilities
+			appData.credentials = credentials
+			appData.version.nextcloud = capabilitiesResponse.version
+			appData.version.talk = talkCapabilities.version
+			appData.version.desktop = this.version
+			appData.persist()
+
+			this.setSuccess()
+			window.TALK_DESKTOP.login()
 		},
 	},
 }

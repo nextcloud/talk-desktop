@@ -91,6 +91,7 @@ module.exports = merge(commonTalkWebpackConfig, {
 			OCP: [path.join(path.resolve(__dirname), './src/stubs/globals.js'), 'OCP'],
 			'window.OCP': [path.join(path.resolve(__dirname), './src/stubs/globals.js'), 'OCP'],
 			t: ['@nextcloud/l10n', 'translate'],
+			n: ['@nextcloud/l10n', 'translatePlural'],
 		}),
 
 		new webpack.DefinePlugin({

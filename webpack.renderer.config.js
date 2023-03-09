@@ -25,7 +25,6 @@ const path = require('node:path')
 const fs = require('node:fs')
 const webpack = require('webpack')
 const { mergeWithRules } = require('webpack-merge')
-const nextcloudWebpackConfig = require('@nextcloud/webpack-vue-config')
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 if (!fs.existsSync(process.env.TALK_PATH)) {
@@ -33,6 +32,16 @@ if (!fs.existsSync(process.env.TALK_PATH)) {
 }
 console.log(`Using Nextcloud Talk on path: ${path.resolve(TALK_PATH)}`)
 
+/**
+ * appName and appVersion constants are set by process.env.npm_package_* in @nextcloud/webpack-vue-config.
+ * During build in this project, env variables will be different and constants will be incorrect.
+ * To keep values correct - set implicitly.
+ */
+const talkPackage = require(`${TALK_PATH}/package.json`)
+process.env.npm_package_name = talkPackage.name
+process.env.npm_package_version = talkPackage.version
+
+const nextcloudWebpackConfig = require('@nextcloud/webpack-vue-config')
 const commonTalkWebpackConfig = require(`${TALK_PATH}/webpack.common.config`)
 
 const merge = mergeWithRules({

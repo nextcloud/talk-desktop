@@ -2,6 +2,11 @@
 
 > Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling ✨
 
+## Prerequisites
+
+- [Nextcloud Server](https://github.com/nextcloud/server) version 26 only.
+- [Nextcloud Talk](https://github.com/nextcloud/spreed) version 16 only.
+
 ## 🧑‍💻 Development Setup
 
 ### Initial setup

@@ -19,7 +19,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const { BrowserWindow } = require('electron')
+const {
+	BrowserWindow,
+	shell,
+} = require('electron')
+const {
+	windowOpenExternalLinkHandler,
+	willNavigateExternalLinkHandler,
+} = require('../app/externalLinkHandlers.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -42,6 +49,9 @@ function createTalkWindow() {
 	// if (process.env.NODE_ENV === 'production') {
 	// 	window.removeMenu()
 	// }
+
+	window.webContents.setWindowOpenHandler(windowOpenExternalLinkHandler)
+	window.webContents.on('will-navigate', willNavigateExternalLinkHandler)
 
 	window.once('ready-to-show', () => {
 		window.show()

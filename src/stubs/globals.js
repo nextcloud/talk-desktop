@@ -52,6 +52,9 @@ export const OC = {
 		confirmDestructive(text, title, options, callback) {
 			callback(confirm(text))
 		},
+		filepicker() {
+			alert('Unfortunately, Share from Nextcloud is not supported by Nextcloud Talk Preview')
+		},
 	},
 
 	theme: {

@@ -19,10 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const {
-	BrowserWindow,
-	shell,
-} = require('electron')
+const { BrowserWindow } = require('electron')
 const {
 	windowOpenExternalLinkHandler,
 	willNavigateExternalLinkHandler,
@@ -32,17 +29,21 @@ const {
  * @return {import('electron').BrowserWindow}
  */
 function createTalkWindow() {
-	const window = new BrowserWindow({
-		width: 1280,
-		height: 800,
+	const talkWindowOptions = {
 		minWidth: 600,
 		minHeight: 400,
-		show: false,
 		backgroundColor: '#171717',
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
+	}
+
+	const window = new BrowserWindow({
+		...talkWindowOptions,
+		width: 1280,
+		height: 800,
+		show: false,
 	})
 
 	// TODO: return it on release
@@ -50,8 +51,12 @@ function createTalkWindow() {
 	// 	window.removeMenu()
 	// }
 
-	window.webContents.setWindowOpenHandler(windowOpenExternalLinkHandler)
 	window.webContents.on('will-navigate', willNavigateExternalLinkHandler)
+	window.webContents.setWindowOpenHandler((details) => windowOpenExternalLinkHandler(details, {
+		...talkWindowOptions,
+		width: 800,
+		height: 600,
+	}))
 
 	window.once('ready-to-show', () => {
 		window.show()

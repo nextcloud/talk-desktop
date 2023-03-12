@@ -24,9 +24,6 @@ import { loadServerCss } from '../../shared/utils/loadCss.js'
 import { appData } from '../../app/AppData.js'
 
 export async function init() {
-	// Manually redirect on Talk's main page
-	window.location.hash = '/apps/spreed'
-
 	// Load application styles from server
 	loadServerCss(`/apps/theming/css/default.css`)
 	loadServerCss(`/index.php/apps/theming/theme/light.css`)

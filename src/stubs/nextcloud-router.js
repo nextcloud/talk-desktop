@@ -19,15 +19,12 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { getRootUrl } from '../../node_modules/@nextcloud/router/dist/index.js'
+import { getRootUrl, generateFilePath as _generateFilePath } from '../../node_modules/@nextcloud/router/dist/index.js'
 import { formattedString } from './stubs-utils.js'
 
 export {
-	linkTo, imagePath, generateFilePath, getRootUrl, generateUrl
+	linkTo, imagePath, getRootUrl, generateUrl,
 } from '../../node_modules/@nextcloud/router/dist/index.js'
-
-// const credentials = JSON.parse(localStorage.credentials)
-// const serverHost = credentials.server
 
 export function generateOcsUrl(url, params = {}, options = {}) {
 	// Reason to patch: it uses window.location
@@ -41,4 +38,20 @@ const linkToRemoteBase = (service) => getRootUrl() + '/remote.php/' + service
 export function generateRemoteUrl(service) {
 	// Reason to patch: it uses window.location
 	return linkToRemoteBase(service)
+}
+
+export function generateFilePath(app, type, file) {
+	/**
+	 * By default, Talk requests sounds as a file from server assets using generateFilePath
+	 * Desktop app should use path to the local file
+	 */
+	if (app === 'spreed' && type === 'img') {
+		if (file.endsWith('.ogg')) {
+			const filename = file.slice(0, -4)
+			// Keep .ogg implicitly so Webpack adds only .ogg files to the build using require context
+			return require(`@talk/img/${filename}.ogg`)
+		}
+	}
+
+	return _generateFilePath(app, type, file)
 }

@@ -23,10 +23,18 @@ import { loadState } from './nextcloud-initial-state.js'
 import { appData } from '../app/AppData.js'
 
 export const OC = {
+	// Constant from: https://github.com/nextcloud/server/blob/master/core/src/OC/constants.js
+	coreApps: ['', 'admin', 'log', 'core/search', 'core', '3rdparty'],
+
+	// For sounds loading
+	appswebroots: {
+		spreed: '/apps/spreed',
+	},
+
 	// TODO: Add OC.MimeType
 	MimeType: {
 		getIconUrl() {
-			return undefined;
+			return undefined
 		},
 	},
 

@@ -75,6 +75,10 @@ module.exports = merge(commonTalkWebpackConfig, {
 					},
 				},
 			},
+			{
+				test: /\.ogg$/,
+				type: 'asset/resource',
+			},
 		],
 	},
 

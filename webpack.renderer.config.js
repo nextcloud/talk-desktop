@@ -104,7 +104,7 @@ module.exports = merge(commonTalkWebpackConfig, {
 		}),
 
 		new webpack.DefinePlugin({
-			IS_TALK_DESKTOP: true,
+			IS_DESKTOP: true,
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),
 		}),
 	],

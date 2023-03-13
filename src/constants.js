@@ -19,10 +19,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const { version } = require('../package.json');
+const packageJson = require('../package.json')
 
-const BASE_TITLE = 'Nextcloud Talk'
-const USER_AGENT = `Mozilla/5.0 (Desktop) Nextcloud-Talk v${version}`
+const BASE_TITLE = packageJson.productName
+const USER_AGENT = `Mozilla/5.0 (Desktop) Nextcloud-Talk v${packageJson.version}`
 const DEV_SERVER_ORIGIN = 'http://localhost:3000'
 const MIN_REQUIRED_NEXTCLOUD_VERSION = 26
 const MIN_REQUIRED_TALK_VERSION = 16

@@ -18,15 +18,25 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 const {
 	contextBridge,
 	ipcRenderer,
 } = require('electron')
 
+const packageJson = require('../package.json')
+const packageInfo = {
+	productName: packageJson.productName,
+	version: packageJson.version,
+	description: packageJson.description,
+	bugs: packageJson.bugs,
+	license: packageJson.license,
+	author: packageJson.author,
+	repository: packageJson.repository.url,
+}
+
 /**
  * @typedef TALK_DESKTOP
- * @property {Function} openLoginWebView
+ * @property {typeof packageInfo} packageInfo - Subset of package.json meta-data
  * @property {Function} login
  * @property {Function} logout
  * @property {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor} enableWebRequestInterceptor
@@ -35,6 +45,7 @@ const {
 
 /** @type {TALK_DESKTOP} */
 const TALK_DESKTOP = {
+	packageInfo,
 	enableWebRequestInterceptor: (...args) => ipcRenderer.invoke('app:enableWebRequestInterceptor', ...args),
 	disableWebRequestInterceptor: (...args) => ipcRenderer.invoke('app:disableWebRequestInterceptor', ...args),
 	openLoginWebView: (server) => ipcRenderer.invoke('accounts:openLoginWebView', server),

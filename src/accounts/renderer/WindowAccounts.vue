@@ -78,7 +78,6 @@ import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import { getCapabilities, getCurrentUserData } from '../../shared/ocs.service.js'
 import { appData } from '../../app/AppData.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
-import packageJson from '../../../package.json'
 
 export default {
 	name: 'WindowAccounts',
@@ -92,7 +91,7 @@ export default {
 
 	setup() {
 		return {
-			version: packageJson.version,
+			version: window.TALK_DESKTOP.packageInfo.version,
 		}
 	},
 

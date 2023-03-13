@@ -160,11 +160,11 @@ export default {
 
 			// Check versions compatibilities
 			if (capabilitiesResponse.version.major < MIN_REQUIRED_NEXTCLOUD_VERSION) {
-				return this.error(`Nextcloud ${MIN_REQUIRED_NEXTCLOUD_VERSION} or higher is required but ${capabilitiesResponse.version.string} is installed`)
+				return this.setError(`Nextcloud ${MIN_REQUIRED_NEXTCLOUD_VERSION} or higher is required but ${capabilitiesResponse.version.string} is installed`)
 			}
 			if (parseInt(talkCapabilities.version.split('.')[0]) < MIN_REQUIRED_TALK_VERSION) {
 				// TODO: use semver package and check not only major version?
-				return this.error(`Nextcloud Talk ${MIN_REQUIRED_TALK_VERSION} or higher is required but ${talkCapabilities.version} is installed`)
+				return this.setError(`Nextcloud Talk ${MIN_REQUIRED_TALK_VERSION} or higher is required but ${talkCapabilities.version} is installed`)
 			}
 
 			// Login with web view

@@ -26,7 +26,13 @@ import { appData } from '../../app/AppData.js'
 
 (async () => {
 	appData.restore()
+	/**
+	 * Cached OS version
+	 *
+	 * @type {import('../../shared/os.utils.js').OsVersion}
+	 */
+	window.OS = await window.TALK_DESKTOP.getOs()
 	await init()
 	await import('./desktop.app.js')
 	await import('@talk/src/main.js')
-})();
+})()

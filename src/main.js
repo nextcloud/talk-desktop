@@ -37,12 +37,14 @@ const {
 	enableWebRequestInterceptor,
 	disableWebRequestInterceptor,
 } = require('./app/webRequestInterceptor.js')
+const { getOs } = require('./shared/os.utils.js')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // if (require('electron-squirrel-startup')) {
 //   app.quit();
 // }
 
+ipcMain.handle('app:getOs', () => getOs())
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 

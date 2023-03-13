@@ -35,21 +35,51 @@ const packageInfo = {
 }
 
 /**
- * @typedef TALK_DESKTOP
- * @property {typeof packageInfo} packageInfo - Subset of package.json meta-data
- * @property {Function} login
- * @property {Function} logout
- * @property {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor} enableWebRequestInterceptor
- * @property {typeof import('./app/webRequestInterceptor').disableWebRequestInterceptor} disableWebRequestInterceptor
+ * @global
  */
-
-/** @type {TALK_DESKTOP} */
 const TALK_DESKTOP = {
+	/**
+	 * Subset of package.json meta-data
+	 *
+	 * @type {typeof packageInfo} packageInfo
+	 */
 	packageInfo,
+	/**
+	 * Get OS version and versions as flags
+	 *
+	 * @return {Promise<import('./shared/os.utils.js').OsVersion>}
+	 */
+	getOs: () => ipcRenderer.invoke('app:getOs'),
+	/**
+	 * Enable web request intercepting
+	 *
+	 * @type {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor}
+	 */
 	enableWebRequestInterceptor: (...args) => ipcRenderer.invoke('app:enableWebRequestInterceptor', ...args),
+	/**
+	 * Disable web request intercepting
+	 *
+	 * @type {typeof import('./app/webRequestInterceptor').disableWebRequestInterceptor}
+	 */
 	disableWebRequestInterceptor: (...args) => ipcRenderer.invoke('app:disableWebRequestInterceptor', ...args),
+	/**
+	 * Open a web-view modal window with Nextcloud Server login page
+	 *
+	 * @param {string} server - Server URL
+	 * @return {Promise<import('./accounts/login.service.js').Credentials|Error>}
+	 */
 	openLoginWebView: (server) => ipcRenderer.invoke('accounts:openLoginWebView', server),
+	/**
+	 * Open main window after logging in
+	 *
+	 * @return {Promise<void>}
+	 */
 	login: () => ipcRenderer.invoke('accounts:login'),
+	/**
+	 * Logout and open accounts window
+	 *
+	 * @return {Promise<void>}
+	 */
 	logout: () => ipcRenderer.invoke('accounts:logout'),
 }
 

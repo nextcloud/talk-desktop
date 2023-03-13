@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { translate, translatePlural } from '@nextcloud/l10n';
+import {translate, translatePlural} from '@nextcloud/l10n'
 
 // TODO: Separate main and renderer globals
 

@@ -20,7 +20,7 @@
   -->
 
 <template>
-	<div class="user-status-icon" :class="{ [status]: isDefaultStatusIcon }"></div>
+	<div class="user-status-icon" :class="{ [status]: isDefaultStatusIcon }" />
 </template>
 
 <script>

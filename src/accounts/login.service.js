@@ -20,6 +20,13 @@
  */
 
 /**
+ * @typedef Credentials
+ * @property {string} server - Server URL
+ * @property {string} user - User's Login (user@example.com, not userid)
+ * @property {string} password - App password
+ */
+
+/**
  * Parse redirect URL
  *
  * @param {string} url - Redirect URL nc://login/server:URL&user:USER&password:PASSWORD

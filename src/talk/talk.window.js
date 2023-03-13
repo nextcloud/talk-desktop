@@ -47,9 +47,11 @@ function createTalkWindow() {
 	})
 
 	// TODO: return it on release
-	// if (process.env.NODE_ENV === 'production') {
-	// 	window.removeMenu()
-	// }
+	/*
+	if (process.env.NODE_ENV === 'production') {
+		window.removeMenu()
+	}
+	 */
 
 	window.webContents.on('will-navigate', willNavigateExternalLinkHandler)
 	window.webContents.setWindowOpenHandler((details) => windowOpenExternalLinkHandler(details, {

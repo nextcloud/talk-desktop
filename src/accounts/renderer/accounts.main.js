@@ -26,6 +26,4 @@ import '../../shared/assets/default/css/server.css'
 import Vue from 'vue'
 import WindowAccounts from './WindowAccounts.vue'
 
-new Vue({
-	render: (h) => h(WindowAccounts),
-}).$mount('#app')
+new Vue(WindowAccounts).$mount('#app')

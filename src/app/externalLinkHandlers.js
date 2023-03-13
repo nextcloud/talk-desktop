@@ -20,22 +20,22 @@
  */
 
 const { shell } = require('electron')
-const { DEV_SERVER_ORIGIN } = require('../constants')
+const { DEV_SERVER_ORIGIN } = require('../constants.js')
 
 /**
  * A link is internal, if it is file:// link or devServer's origin on non-production
  *
- * @param {string} url
+ * @param {string} url - URL
  * @return {boolean}
  */
 function isInternalLink(url) {
-	return url.startsWith('file') || process.env.NODE_ENV !== 'production' && url.startsWith(DEV_SERVER_ORIGIN)
+	return url.startsWith('file') || (process.env.NODE_ENV !== 'production' && url.startsWith(DEV_SERVER_ORIGIN))
 }
 
 /**
  * A link is external, if it not file:// link and not devServer's origin on non-production
  *
- * @param {string} url
+ * @param {string} url - URL
  * @return {boolean}
  */
 function isExternalLink(url) {
@@ -45,7 +45,7 @@ function isExternalLink(url) {
 /**
  * Open external link in the default OS handler (i.e. Web-Browser) on new window open
  *
- * @param {import('electron').HandlerDetails} details
+ * @param {import('electron').HandlerDetails} details - HandlerDetails
  * @param {import('electron').BrowserWindowConstructorOptions} [browserWindowOptions={}] - options for new BrowserWindow, usually based on parent options
  * @return {{action: 'deny'} | {action: 'allow', outlivesOpener?: boolean, overrideBrowserWindowOptions?: import('electron').BrowserWindowConstructorOptions}}
  */
@@ -64,8 +64,8 @@ function windowOpenExternalLinkHandler(details, browserWindowOptions = {}) {
 /**
  * Open external link in the default OS handler (i.e. Web-Browser) on navigate
  *
- * @param {import('electron').Event} event
- * @param {string} url
+ * @param {import('electron').Event} event - Will Navigate Electron Event
+ * @param {string} url - URL
  */
 function willNavigateExternalLinkHandler(event, url) {
 	if (isExternalLink(url)) {

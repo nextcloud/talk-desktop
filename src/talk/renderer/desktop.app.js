@@ -22,6 +22,4 @@
 import Vue from 'vue'
 import DesktopHeader from './DesktopHeader.vue'
 
-new Vue({
-	render: (h) => h(DesktopHeader),
-}).$mount('#header')
+new Vue(DesktopHeader).$mount('#header')

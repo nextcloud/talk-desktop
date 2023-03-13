@@ -37,8 +37,7 @@
 						inputmode="url"
 						:success="state === 'success'"
 						:error="state === 'error'"
-						:helper-text="stateText"
-					/>
+						:helper-text="stateText" />
 					<NcButton v-if="state !== 'loading'"
 						class="submit-button"
 						type="primary"
@@ -133,6 +132,8 @@ export default {
 
 			// Check if valid URL
 			try {
+				// new URL will throw an exception on invalid URL
+				// eslint-disable-next-line no-new
 				new URL(this.serverUrl)
 			} catch {
 				return this.setError('Invalid server address')
@@ -145,7 +146,7 @@ export default {
 			appData.serverUrl = this.serverUrl
 
 			// Check if there is Nextcloud server and get capabilities
-			let capabilitiesResponse;
+			let capabilitiesResponse
 			try {
 				capabilitiesResponse = await getCapabilities()
 			} catch {
@@ -184,12 +185,12 @@ export default {
 			window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true, enableCookies: true, credentials })
 
 			// Get user's metadata and update capabilities for an authenticated user
-			let userMetadata;
+			let userMetadata
 			try {
 				[userMetadata, capabilitiesResponse] = await Promise.all([
 					getCurrentUserData(),
 					getCapabilities(),
-				]);
+				])
 			} catch (error) {
 				// This may happen if a network connection was lost after some successful requests or something went wrong
 				console.error(error)
@@ -206,7 +207,7 @@ export default {
 			appData.persist()
 
 			this.setSuccess()
-			window.TALK_DESKTOP.login()
+			await window.TALK_DESKTOP.login()
 		},
 	},
 }

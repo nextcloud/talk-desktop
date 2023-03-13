@@ -22,6 +22,7 @@
 // TODO: use safeStorage for credentials
 
 export class AppData {
+
 	serverUrl = null
 	userMetadata = null
 	capabilities = null
@@ -30,10 +31,9 @@ export class AppData {
 		talk: null,
 		desktop: null,
 	}
+
 	credentials = null
 	storageKey = 'AppData'
-
-	constructor() {}
 
 	persist() {
 		localStorage.setItem(this.storageKey, JSON.stringify({
@@ -62,6 +62,7 @@ export class AppData {
 			credentials: null,
 		})
 	}
+
 }
 
 export const appData = new AppData()

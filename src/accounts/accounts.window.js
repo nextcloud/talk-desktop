@@ -20,7 +20,7 @@
  */
 
 const { BrowserWindow } = require('electron')
-const { BASE_TITLE } = require('../constants')
+const { BASE_TITLE } = require('../constants.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -45,7 +45,7 @@ function createAccountsWindow() {
 
 	// TODO: return this on release
 	// if (process.env.NODE_ENV === 'production') {
-	// 	window.removeMenu()
+	// window.removeMenu()
 	// }
 
 	window.loadURL(ACCOUNTS_WINDOW_WEBPACK_ENTRY)

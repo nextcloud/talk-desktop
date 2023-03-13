@@ -23,12 +23,17 @@ import { register } from '@nextcloud/l10n'
 import { loadServerCss } from '../../shared/utils/loadCss.js'
 import { appData } from '../../app/AppData.js'
 
+/**
+ * Initialize Talk application: styles, localization etc.
+ *
+ * @return {Promise<void>}
+ */
 export async function init() {
 	// Load application styles from server
-	loadServerCss(`/apps/theming/css/default.css`)
-	loadServerCss(`/index.php/apps/theming/theme/light.css`)
-	loadServerCss(`/index.php/apps/theming/theme/dark.css`)
-	loadServerCss(`/core/css/server.css`)
+	loadServerCss('/apps/theming/css/default.css')
+	loadServerCss('/index.php/apps/theming/theme/light.css')
+	loadServerCss('/index.php/apps/theming/theme/dark.css')
+	loadServerCss('/core/css/server.css')
 
 	// Load styles overrides
 	await import('./assets/overrides.css')

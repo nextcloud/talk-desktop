@@ -21,18 +21,15 @@
 
 const os = require('node:os')
 const { BrowserWindow } = require('electron')
-const {
-	BASE_TITLE,
-	USER_AGENT,
-} = require('../constants')
-const { parseLoginRedirectUrl } = require('./login.service')
+const { BASE_TITLE } = require('../constants.js')
+const { parseLoginRedirectUrl } = require('./login.service.js')
 
 /**
  * Open a web-view modal window with Nextcloud Server login page
  *
- * @param {import('electron').BrowserWindow} parentWindow
- * @param {string} serverUrl
- * @return {Promise<Credentials|Error>}
+ * @param {import('electron').BrowserWindow} parentWindow - Parent window
+ * @param {string} serverUrl - Server URL
+ * @return {Promise<import('./login.service.js').Credentials|Error>}
  */
 function openLoginWebView(parentWindow, serverUrl) {
 	return new Promise((resolve, reject) => {

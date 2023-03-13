@@ -12,8 +12,8 @@
 	},
 	"main": "./.webpack/main",
 	"repository": {
-		"type" : "git",
-		"url" : "https://github.com/nextcloud-gmbh/talk-desktop"
+		"type": "git",
+		"url": "https://github.com/nextcloud-gmbh/talk-desktop"
 	},
 	"scripts": {
 		"start": "electron-forge start",
@@ -65,7 +65,7 @@
 		"eslint-plugin-jsdoc": "^39.6.4",
 		"eslint-plugin-n": "^15.5.1",
 		"eslint-plugin-promise": "^6.1.1",
-		"eslint-plugin-vue": "^9.8.0",
+		"eslint-plugin-vue": "^9.9.0",
 		"icon-gen": "^3.0.1",
 		"node-loader": "^2.0.0",
 		"regenerator-runtime": "^0.13.11",

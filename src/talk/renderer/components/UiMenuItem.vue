@@ -43,6 +43,7 @@ export default {
 		MdiInformationOutline,
 		MdiWeb,
 	},
+
 	inheritAttrs: false,
 
 	props: {

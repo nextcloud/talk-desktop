@@ -26,10 +26,11 @@ const { USER_AGENT, DEV_SERVER_ORIGIN } = require('../constants.js')
  * Patch requests on the default session to a specific Nextcloud server for Cookies or CORS.
  *
  * @param {string} serverUrl - Nextcloud server URL
- * @param {boolean=false} enableCors - Enable CORS for OCS and other APIs
- * @param {boolean=false} enableCookies - Enable aka cross-origin cookie without setting SameSate=None.
- * 																				Some Talk and Files API requests require cookie session.
- * @param {Credentials=null} credentials - User credentials for the Authentication header
+ * @param {object} [options] - Patching options
+ * @param {boolean} [options.enableCors=false] - Enable CORS for OCS and other APIs
+ * @param {boolean} [options.enableCookies=false] - Enable aka cross-origin cookie without setting SameSate=None.
+ *                                                  Some Talk and Files API requests require cookie session.
+ * @param {import('../accounts/login.service.js').Credentials} [options.credentials=null] - User credentials for the Authentication header
  */
 function enableWebRequestInterceptor(serverUrl, {
 	enableCors = false,
@@ -45,19 +46,20 @@ function enableWebRequestInterceptor(serverUrl, {
 
 	/**
 	 * CookieStorage. There are not many cookies (2-3). POJO is faster, than a Map.
+	 *
 	 * @type {Object<string,string>}
 	 */
 	const cookiesStorage = {}
 
 	/**
-	 * @param {import('electron').OnBeforeSendHeadersListenerDetails} details
+	 * @param {import('electron').OnBeforeSendHeadersListenerDetails} details - OnBeforeSendHeadersListenerDetails
 	 */
 	function includeCookies(details) {
-		details.requestHeaders['Cookie'] = Object.entries(cookiesStorage).map(([cookieName, cookieValue]) => `${cookieName}=${cookieValue}`).join('; ')
+		details.requestHeaders.Cookie = Object.entries(cookiesStorage).map(([cookieName, cookieValue]) => `${cookieName}=${cookieValue}`).join('; ')
 	}
 
 	/**
-	 * @param {import('electron').OnHeadersReceivedListenerDetails} details
+	 * @param {import('electron').OnHeadersReceivedListenerDetails} details - OnHeadersReceivedListenerDetails
 	 */
 	function persistCookies(details) {
 		// OPTIONS will have new session - ignore
@@ -93,7 +95,7 @@ function enableWebRequestInterceptor(serverUrl, {
 	].join(', ')]
 
 	/**
-	 * @param {import('electron').OnHeadersReceivedListenerDetails} details
+	 * @param {import('electron').OnHeadersReceivedListenerDetails} details - OnHeadersReceivedListenerDetails
 	 */
 	function addCorsHeaders(details) {
 		if (details.method === 'OPTIONS') {
@@ -120,7 +122,7 @@ function enableWebRequestInterceptor(serverUrl, {
 		(details, callback) => {
 			details.requestHeaders['User-Agent'] = USER_AGENT
 			if (credentials) {
-				details.requestHeaders['Authorization'] = `Basic ${btoa(`${credentials.user}:${credentials.password}`)}`
+				details.requestHeaders.Authorization = `Basic ${btoa(`${credentials.user}:${credentials.password}`)}`
 			}
 			if (enableCookies) {
 				includeCookies(details)

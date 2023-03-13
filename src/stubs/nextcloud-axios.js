@@ -20,7 +20,6 @@
  */
 
 import axios from '../../node_modules/@nextcloud/axios/dist/index.esm.js'
-import { appData } from '../app/AppData.js'
 
 axios.interceptors.request.use((config) => {
 	config.withCredentials = true

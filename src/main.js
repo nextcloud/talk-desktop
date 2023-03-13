@@ -28,9 +28,9 @@ const {
 	default: installExtension,
 	VUEJS3_DEVTOOLS,
 } = require('electron-devtools-installer')
-const { createTalkWindow } = require('./talk/talk.window')
-const { createAccountsWindow } = require('./accounts/accounts.window')
-const { openLoginWebView } = require('./accounts/login.window')
+const { createTalkWindow } = require('./talk/talk.window.js')
+const { createAccountsWindow } = require('./accounts/accounts.window.js')
+const { openLoginWebView } = require('./accounts/login.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { setTimeout } = require('timers/promises')
 const {
@@ -75,7 +75,7 @@ app.whenReady().then(async () => {
 	}
 
 	// TODO: handle JSON parsing error
-	const maybeAppData = await welcomeWindow.webContents.executeJavaScript(`JSON.parse(localStorage['AppData'] ?? null)`)
+	const maybeAppData = await welcomeWindow.webContents.executeJavaScript('JSON.parse(localStorage[\'AppData\'] ?? null)')
 	if (maybeAppData) {
 		enableWebRequestInterceptor(maybeAppData.serverUrl, {
 			enableCors: true,

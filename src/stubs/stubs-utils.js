@@ -20,11 +20,10 @@
  */
 
 /**
- *
- * @param {string} s
- * @param {Object<string,string>} [tokens]
+ * @param {string} s - String with "{token}" blocks
+ * @param {Object<string,string>} [tokens] - Dict with replacements
  * @return {string}
  */
-export function formattedString(s, tokens= {}) {
+export function formattedString(s, tokens = {}) {
 	return Object.entries(tokens).reduce((acc, [token, replacement]) => acc.replaceAll(`{${token}}`, replacement), s)
 }

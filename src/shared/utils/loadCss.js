@@ -23,7 +23,8 @@ import { appData } from '../../app/AppData.js'
 
 /**
  * Load styles from URL via new <link> element
- * @param {string} url
+ *
+ * @param {string} url - Styles URL
  * @return {HTMLLinkElement} Created styles link element
  */
 export function loadCss(url) {
@@ -36,9 +37,10 @@ export function loadCss(url) {
 
 /**
  * Load styles from URL via loadCss from server host
- * @param {string} url
+ *
+ * @param {string} url - Styles URL
  * @return {HTMLLinkElement} Created styles link element
  */
 export function loadServerCss(url) {
-	loadCss(`${appData.serverUrl}${url}`)
+	return loadCss(`${appData.serverUrl}${url}`)
 }

@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* eslint-disable jsdoc/require-jsdoc */
+
 import { getRootUrl, generateFilePath as _generateFilePath } from '../../node_modules/@nextcloud/router/dist/index.js'
 import { formattedString } from './stubs-utils.js'
 

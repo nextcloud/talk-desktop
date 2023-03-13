@@ -34,6 +34,7 @@ declare global {
 	// ENV
 	namespace NodeJS {
 		interface ProcessEnv {
+			NODE_ENV: 'production' | 'development'
 			NEXTCLOUD_DEV_SERVER_HOSTS: string
 		}
 	}
@@ -48,7 +49,7 @@ declare global {
 	const appName: string
 	const appVersion: string
 	// Talk Desktop
-	const IS_TALK_DESKTOP: true
+	const IS_DESKTOP: true
 }
 
 export {}

@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+import '@talk/css/icons.css'
+import './assets/styles.css'
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import '@talk/css/icons.css'
 import { init } from './init.js'
@@ -26,7 +28,13 @@ import { appData } from '../../app/AppData.js'
 
 (async () => {
 	appData.restore()
+	/**
+	 * Cached OS version
+	 *
+	 * @type {import('../../shared/os.utils.js').OsVersion}
+	 */
+	window.OS = await window.TALK_DESKTOP.getOs()
 	await init()
 	await import('./desktop.app.js')
 	await import('@talk/src/main.js')
-})();
+})()

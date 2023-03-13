@@ -1,5 +1,5 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
  *
  * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
  *
@@ -19,18 +19,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const packageJson = require('../package.json')
-
-const BASE_TITLE = packageJson.productName
-const USER_AGENT = `Mozilla/5.0 (Desktop) Nextcloud-Talk v${packageJson.version}`
-const DEV_SERVER_ORIGIN = 'http://localhost:3000'
-const MIN_REQUIRED_NEXTCLOUD_VERSION = 26
-const MIN_REQUIRED_TALK_VERSION = 16
-
-module.exports = {
-	BASE_TITLE,
-	USER_AGENT,
-	DEV_SERVER_ORIGIN,
-	MIN_REQUIRED_NEXTCLOUD_VERSION,
-	MIN_REQUIRED_TALK_VERSION,
+* {
+	/*
+		It's safe to reset box-sizing for all the page.
+		In Nextcloud (at least 26) box-sizing is set to border-box to the entire <NcContent> (#content-vue .content).
+		Nextcloud Talk Desktop has only <NcContent> and its own components.
+	*/
+	box-sizing: border-box;
 }

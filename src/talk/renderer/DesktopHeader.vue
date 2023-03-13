@@ -20,121 +20,90 @@
   -->
 
 <template>
-	<header id="header" class="header">
+	<header class="header">
+		<!-- Nextcloud Apps use #header selector to get its height -->
+		<!-- This is invisible stub with the same height -->
+		<div id="header" class="header-stub" />
+
 		<img class="header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
 
 		<div>
 			<span class="header__title">Nextcloud Talk</span>
-			<span style="margin-left: var(--default-grid-baseline)">Preview</span>
+			<span class="header__preview-badge">Preview</span>
 		</div>
 
-		<div class="spacer"></div>
+		<div class="spacer" />
 
 		<div class="header__item">
-			<NcButton type="tertiary-no-background" class="header__button">
+			<NcButton type="tertiary-no-background" class="header__button" @click="showNotSupportedAlert('Search')">
 				<template #icon>
-					<Magnify />
+					<MdiMagnify />
 				</template>
 			</NcButton>
 		</div>
 
 		<div class="header__item">
-			<NcButton type="tertiary-no-background" class="header__button">
+			<NcButton type="tertiary-no-background" class="header__button" @click="showNotSupportedAlert('Notifications')">
 				<template #icon>
-					<Bell />
+					<MdiBell />
 				</template>
 			</NcButton>
 		</div>
 
 		<div class="header__item">
-			<NcAvatar class="header__avatar" tabindex="0" :user="user.id" @click.native="logout" />
+			<UserMenu :user="$options.userMetadata" @about="isAboutModalShown = true" @logout="logout" />
 		</div>
 
-
-<!--		<NcButton type="tertiary-no-background" class="header__item header__button" @click="logout">-->
-<!--			<template #icon>-->
-<!--				<ExitToApp />-->
-<!--			</template>-->
-<!--		</NcButton>-->
-<!--		<NcActions class="header__item">-->
-<!--			<NcActionButton @click="logout">-->
-<!--				<template #icon>-->
-<!--					<ExitToApp size="20" />-->
-<!--				</template>-->
-<!--				Log out-->
-<!--			</NcActionButton>-->
-<!--			<NcActionButton @click="logout">-->
-<!--				<template #icon>-->
-<!--					<ExitToApp size="20" />-->
-<!--				</template>-->
-<!--				Log out-->
-<!--			</NcActionButton>-->
-<!--		</NcActions>-->
-
-<!--		<NcPopover class="header__item">-->
-<!--			<template #trigger>-->
-<!--				<NcAvatar :user="user.id" />-->
-<!--			</template>-->
-
-<!--			<NcActions>-->
-<!--				<NcActionButton @click="logout">-->
-<!--					<template #icon>-->
-<!--						<ExitToApp size="20" />-->
-<!--					</template>-->
-<!--					Log out-->
-<!--				</NcActionButton>-->
-<!--				<NcActionButton @click="logout">-->
-<!--					<template #icon>-->
-<!--						<ExitToApp size="20" />-->
-<!--					</template>-->
-<!--					Log out-->
-<!--				</NcActionButton>-->
-
-<!--			</NcActions>-->
-<!--		</NcPopover>-->
+		<AboutModal :show.sync="isAboutModalShown" />
 	</header>
 </template>
 
 <script>
-import Bell from 'vue-material-design-icons/Bell.vue'
-import ExitToApp from 'vue-material-design-icons/ExitToApp.vue'
-import Magnify from 'vue-material-design-icons/Magnify.vue'
-import NcActions from '@nextcloud/vue/dist/Components/NcActions.js'
-import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
-import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
+import MdiBell from 'vue-material-design-icons/Bell.vue'
+import MdiMagnify from 'vue-material-design-icons/Magnify.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcPopover from '@nextcloud/vue/dist/Components/NcPopover.js'
+import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
+import AboutModal from './components/AboutModal.vue'
 
 export default {
 	name: 'DesktopHeader',
 
+	userMetadata: appData.userMetadata,
+
 	components: {
-		Bell,
-		ExitToApp,
-		Magnify,
-		NcActions,
-		NcActionButton,
-		NcAvatar,
+		AboutModal,
+		MdiBell,
+		MdiMagnify,
 		NcButton,
-		NcPopover,
+		UserMenu,
 	},
 
-	setup() {
-		const logout = () => {
-			window.TALK_DESKTOP.logout()
-		}
-
+	data() {
 		return {
-			version: appData.version.desktop,
-			user: appData.userMetadata,
-			logout,
+			isAboutModalShown: false,
 		}
+	},
+
+	methods: {
+		logout() {
+			window.TALK_DESKTOP.logout()
+		},
+
+		showNotSupportedAlert(feature) {
+			alert(`Unfortunately, ${feature} is not currently supported by Nextcloud Talk Desktop`)
+		},
 	},
 }
 </script>
 
 <style scoped>
+.header-stub {
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+}
+
 .header {
 	height: 50px;
 	box-sizing: border-box;
@@ -143,6 +112,7 @@ export default {
 	padding: 0 calc(var(--body-container-margin) + 4px) 0 var(--body-container-margin);
 	display: flex;
 	align-items: center;
+	user-select: none;
 }
 
 .header__item {
@@ -161,28 +131,22 @@ export default {
 	font-weight: bold;
 }
 
+.header__preview-badge {
+	margin-left: var(--default-grid-baseline);
+}
+
 .header__button {
-	color: inherit;
 	opacity: .85;
 	/* We have to use !important here because NcButton already has !important */
+	color: inherit !important;
 	transition: opacity ease var(--animation-quick) !important;
 }
 
 .header__button:hover,
 .header__button:active,
-.header__button:focus {
-	color: inherit;
+.header__button:focus-visible {
+	color: inherit !important;
 	opacity: 1;
-}
-
-.header__avatar {
-	cursor: pointer;
-}
-
-.header__avatar:hover,
-.header__avatar:active,
-.header__avatar:focus {
-	border: 2px solid var(--color-primary-text)
 }
 
 .spacer {

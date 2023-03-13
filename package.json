@@ -4,7 +4,17 @@
 	"productName": "Nextcloud Talk",
 	"version": "0.1.0",
 	"description": "Official Desktop client for Nextcloud Talk",
+	"bugs": "https://github.com/nextcloud-gmbh/talk-desktop/issues",
+	"license": "AGPL-3.0",
+	"author": {
+		"name": "Grigorii Shartsev",
+		"email": "grigorii.shartsev@nextcloud.com"
+	},
 	"main": "./.webpack/main",
+	"repository": {
+		"type" : "git",
+		"url" : "https://github.com/nextcloud-gmbh/talk-desktop"
+	},
 	"scripts": {
 		"start": "electron-forge start",
 		"package": "electron-forge package",
@@ -21,17 +31,12 @@
 		"generate-icons": "node ./img/generate-icons.js",
 		"lint": "eslint --ext .js,.vue src/ --fix"
 	},
-	"keywords": [],
-	"author": {
-		"name": "Grigorii Shartsev",
-		"email": "grigorii.shartsev@nextcloud.com"
-	},
-	"license": "agpl",
 	"dependencies": {
 		"@nextcloud/l10n": "^2.1.0",
-		"@nextcloud/vue": "^7.1.0-beta.1",
+		"@nextcloud/vue": "^7.8.0",
 		"core-js": "^3.26.1",
 		"electron-squirrel-startup": "^1.0.0",
+		"floating-vue": "^1.0.0-beta.19",
 		"vue": "^2.7.14",
 		"vue-material-design-icons": "^5.2.0"
 	},

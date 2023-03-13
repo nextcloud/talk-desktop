@@ -1,5 +1,5 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
  *
  * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
  *
@@ -19,22 +19,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import '@talk/css/icons.css'
-import './assets/styles.css'
-import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import '@talk/css/icons.css'
-import { init } from './init.js'
-import { appData } from '../../app/AppData.js'
-
-(async () => {
-	appData.restore()
-	/**
-	 * Cached OS version
-	 *
-	 * @type {import('../../shared/os.utils.js').OsVersion}
-	 */
-	window.OS = await window.TALK_DESKTOP.getOs()
-	await init()
-	await import('./desktop.app.js')
-	await import('@talk/src/main.js')
-})()
+* {
+	/*
+		It's safe to reset box-sizing for all the page.
+		In Nextcloud (at least 26) box-sizing is set to border-box to the entire <NcContent> (#content-vue .content).
+		Nextcloud Talk Desktop has only <NcContent> and its own components.
+	*/
+	box-sizing: border-box;
+}

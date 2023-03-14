@@ -55,6 +55,12 @@ if (process.env.NODE_ENV === 'development') {
 	app.setPath('userData', path.join(app.getPath('appData'), 'Nextcloud Talk (dev)'))
 }
 
+app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
+	event.preventDefault()
+
+	callback(process.env.NODE_ENV !== 'production')
+})
+
 app.whenReady().then(async () => {
 	if (process.env.NODE_ENV !== 'production') {
 		await installExtension(VUEJS3_DEVTOOLS)

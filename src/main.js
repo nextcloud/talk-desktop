@@ -19,6 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+const path = require('node:path')
 const {
 	app,
 	BrowserWindow,
@@ -47,6 +48,12 @@ const { getOs } = require('./shared/os.utils.js')
 ipcMain.handle('app:getOs', () => getOs())
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
+
+// Separate production and development appData
+if (process.env.NODE_ENV === 'development') {
+	app.setName('Nextcloud Talk (dev)')
+	app.setPath('userData', path.join(app.getPath('appData'), 'Nextcloud Talk (dev)'))
+}
 
 app.whenReady().then(async () => {
 	if (process.env.NODE_ENV !== 'production') {

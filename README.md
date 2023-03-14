@@ -7,6 +7,20 @@
 - [Nextcloud Server](https://github.com/nextcloud/server) version 26 only.
 - [Nextcloud Talk](https://github.com/nextcloud/spreed) version 16 only.
 
+## 👾 Drawbacks
+
+- Currently not supported by Desktop:
+  - Screen sharing ([#11](https://github.com/nextcloud-gmbh/talk-desktop/issues/11))
+  - Share from Nextcloud (including files creation) ([#12](https://github.com/nextcloud-gmbh/talk-desktop/issues/12))
+  - Contacts menu on user avatars menus ([#34](https://github.com/nextcloud-gmbh/talk-desktop/issues/34))
+  - Setting User Status ([#26](https://github.com/nextcloud-gmbh/talk-desktop/issues/26))
+  - Search ([#30](https://github.com/nextcloud-gmbh/talk-desktop/issues/30))
+  - Notifications ([#31](https://github.com/nextcloud-gmbh/talk-desktop/issues/31))
+  - Untrusted certificate ([#23](https://github.com/nextcloud-gmbh/talk-desktop/issues/23))
+  - Dark/light theme ([#17](https://github.com/nextcloud-gmbh/talk-desktop/issues/17))
+- Work with limitations:
+	- File view - opened in the default web-browser 
+
 ## 🧑‍💻 Development Setup
 
 ### Initial setup

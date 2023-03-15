@@ -23,6 +23,7 @@ const os = require('node:os')
 const { BrowserWindow } = require('electron')
 const { BASE_TITLE } = require('../constants.js')
 const { parseLoginRedirectUrl } = require('./login.service.js')
+const { getOsTitle } = require('../shared/os.utils.js')
 
 /**
  * Open a web-view modal window with Nextcloud Server login page
@@ -59,7 +60,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 		window.loadURL(`${serverUrl}/index.php/login/flow`, {
 			// This header value is used as an application name on the Login page
 			// Use BASE_TITLE instead of the USER_AGENT as User-Agent header
-			userAgent: `${os.hostname()} (${BASE_TITLE})`,
+			userAgent: `${os.hostname()} (Talk Desktop Client - ${getOsTitle()})`,
 			extraHeaders: 'OCS-APIRequest: true',
 		})
 

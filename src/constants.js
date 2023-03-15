@@ -19,18 +19,17 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const os = require('os')
-
 const packageJson = require('../package.json')
+const { getOsTitle } = require('./shared/os.utils.js')
 
 const BASE_TITLE = packageJson.productName
 /**
  * @see https://github.com/nextcloud/server/blob/master/lib/public/IRequest.php
- * @example "Mozilla/5.0 (Darwin) Nextcloud-Talk v1.2.3-rc.1
+ * @example "Mozilla/5.0 (Mac) Nextcloud-Talk v1.2.3-rc.1
  * @example "Mozilla/5.0 (Linux) Nextcloud-Talk v0.0.1
- * @example "Mozilla/5.0 (Windows_NT) Nextcloud-Talk v42.16.64
+ * @example "Mozilla/5.0 (Windows) Nextcloud-Talk v42.16.64
  */
-const USER_AGENT = `Mozilla/5.0 (${os.type()}) Nextcloud-Talk v${packageJson.version}`
+const USER_AGENT = `Mozilla/5.0 (${getOsTitle()}) Nextcloud-Talk v${packageJson.version}`
 const DEV_SERVER_ORIGIN = 'http://localhost:3000'
 const MIN_REQUIRED_NEXTCLOUD_VERSION = 26
 const MIN_REQUIRED_TALK_VERSION = 16

@@ -34,6 +34,22 @@ function getOsVersion() {
 }
 
 /**
+ * Transform os.type() to a "human-readable" well-known OS title
+ *
+ * @return {string}
+ */
+function getOsTitle() {
+	const typeToTitle = {
+		Darwin: 'Macintosh',
+		Linux: 'Linux',
+		Windows_NT: 'Windows',
+		WindowsNT: 'Windows',
+	}
+
+	return typeToTitle[os.type()] ?? os.type()
+}
+
+/**
  * Is it Linux?
  *
  * @return {boolean}
@@ -84,6 +100,7 @@ function getOs() {
 
 module.exports = {
 	getOsVersion,
+	getOsTitle,
 	isLinux,
 	isMac,
 	isWindows,

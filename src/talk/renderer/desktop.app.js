@@ -22,4 +22,4 @@
 import Vue from 'vue'
 import DesktopHeader from './DesktopHeader.vue'
 
-new Vue(DesktopHeader).$mount('#header')
+new Vue(DesktopHeader).$mount('#desktop-header')

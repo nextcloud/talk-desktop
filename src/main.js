@@ -38,7 +38,14 @@ const {
 	enableWebRequestInterceptor,
 	disableWebRequestInterceptor,
 } = require('./app/webRequestInterceptor.js')
-const { getOs } = require('./shared/os.utils.js')
+const { getOs, isLinux } = require('./shared/os.utils.js')
+
+/**
+ * Only one instance is allowed at time
+ */
+if (!app.requestSingleInstanceLock()) {
+	app.quit()
+}
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // if (require('electron-squirrel-startup')) {
@@ -72,6 +79,18 @@ app.whenReady().then(async () => {
 	 */
 	let mainWindow
 	let createMainWindow
+
+	const focusMainWindow = () => {
+		if (mainWindow.isMinimized()) {
+			mainWindow.restore()
+		}
+		mainWindow.focus()
+	}
+
+	/**
+	 * Instead of creating a new app instance - focus existence one
+	 */
+	app.on('second-instance', () => focusMainWindow())
 
 	const welcomeWindow = createWelcomeWindow()
 	await new Promise((resolve) => {

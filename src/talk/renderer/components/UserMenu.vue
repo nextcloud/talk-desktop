@@ -46,6 +46,18 @@
 							Online
 						</template>
 					</UiMenuItem>
+					<UiMenuItem tag="button" @click.native="reload">
+						<template #icon>
+							<MdiReload />
+						</template>
+						Force reload
+					</UiMenuItem>
+					<UiMenuItem tag="a" :href="$options.packageInfo.bugs" target="_blank">
+						<template #icon>
+							<MdiBug />
+						</template>
+						Report a bug
+					</UiMenuItem>
 					<UiMenuItem tag="a" :href="talkWebLink" target="_blank">
 						<template #icon>
 							<MdiWeb />
@@ -77,8 +89,10 @@
 </template>
 
 <script>
+import MdiBug from 'vue-material-design-icons/Bug.vue'
 import MdiInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
 import MdiPower from 'vue-material-design-icons/Power.vue'
+import MdiReload from 'vue-material-design-icons/Reload.vue'
 import MdiWeb from 'vue-material-design-icons/Web.vue'
 import { generateUrl } from '@nextcloud/router'
 import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
@@ -90,11 +104,15 @@ import UiMenuItem from './UiMenuItem.vue'
 export default {
 	name: 'UserMenu',
 
+	packageInfo: window.TALK_DESKTOP.packageInfo,
+
 	components: {
 		UiMenuItem,
 		UiMenu,
+		MdiBug,
 		MdiInformationOutline,
 		MdiPower,
+		MdiReload,
 		MdiWeb,
 		NcAvatar,
 		NcPopover,
@@ -134,6 +152,10 @@ export default {
 	methods: {
 		openUserStatusDialog() {
 			alert('Unfortunately, changing the user status is not currently supported by Nextcloud Talk Desktop')
+		},
+
+		reload() {
+			window.location.reload()
 		},
 	},
 }

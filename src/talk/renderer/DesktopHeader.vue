@@ -25,7 +25,9 @@
 		<!-- This is invisible stub with the same height -->
 		<div id="header" class="header-stub" />
 
-		<img class="header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
+		<a class="header__root-link" @click.prevent="pushToRoot">
+			<img class="header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
+		</a>
 
 		<div>
 			<span class="header__title">Nextcloud Talk</span>
@@ -65,6 +67,7 @@ import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
 import AboutModal from './components/AboutModal.vue'
+import TalkRouter from '@talk/src/router/router.js'
 
 export default {
 	name: 'DesktopHeader',
@@ -86,6 +89,10 @@ export default {
 	},
 
 	methods: {
+		pushToRoot() {
+			TalkRouter.push({ name: 'root' }).catch(() => {})
+		},
+
 		logout() {
 			window.TALK_DESKTOP.logout()
 		},
@@ -98,6 +105,10 @@ export default {
 </script>
 
 <style scoped>
+.header__root-link {
+	cursor: pointer;
+}
+
 .header-stub {
 	height: 100%;
 	position: absolute;

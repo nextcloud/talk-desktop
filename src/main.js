@@ -40,6 +40,7 @@ const {
 	disableWebRequestInterceptor,
 } = require('./app/webRequestInterceptor.js')
 const { getOs, isLinux } = require('./shared/os.utils.js')
+const { createHelpWindow } = require('./help/help.window.js')
 
 /**
  * Only one instance is allowed at time
@@ -74,6 +75,7 @@ app.whenReady().then(async () => {
 	 */
 	let mainWindow
 	let createMainWindow
+	const getMainWindow = () => mainWindow
 
 	const focusMainWindow = () => {
 		if (mainWindow.isMinimized()) {
@@ -185,6 +187,10 @@ app.whenReady().then(async () => {
 				mainWindow.show()
 			})
 		}
+	})
+
+	ipcMain.handle('help:show', () => {
+		createHelpWindow(mainWindow)
 	})
 
 	// On OS X it's common to re-create a window in the app when the

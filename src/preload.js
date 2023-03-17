@@ -24,9 +24,12 @@ const {
 } = require('electron')
 
 const packageJson = require('../package.json')
+const talkPackageJson = require('@talk/package.json')
+
 const packageInfo = {
 	productName: packageJson.productName,
 	version: packageJson.version,
+	talkVersion: talkPackageJson.version,
 	description: packageJson.description,
 	bugs: packageJson.bugs,
 	license: packageJson.license,
@@ -81,6 +84,12 @@ const TALK_DESKTOP = {
 	 * @return {Promise<void>}
 	 */
 	logout: () => ipcRenderer.invoke('accounts:logout'),
+	/**
+	 * Show the help window (aka About)
+	 *
+	 * @return {Promise<void>}
+	 */
+	showHelp: () => ipcRenderer.invoke('help:show'),
 }
 
 // Set global window.TALK_DESKTOP

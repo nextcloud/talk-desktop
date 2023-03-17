@@ -19,39 +19,45 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import {translate, translatePlural} from '@nextcloud/l10n'
+const { BASE_TITLE } = require('../constants.js')
+const { BrowserWindow } = require('electron')
 
-// TODO: Separate main and renderer globals
+/**
+ *
+ * @param {import('electron').BrowserWindow} parentWindow - main window (parent)
+ * @return {import('electron').BrowserWindow}
+ */
+function createHelpWindow(parentWindow) {
+	const WIDTH = 720
+	const HEIGHT = 500
+	const TITLE = `About - ${BASE_TITLE}`
+	const window = new BrowserWindow({
+		title: TITLE,
+		width: WIDTH,
+		height: HEIGHT,
+		show: false,
+		maximizable: false,
+		resizable: false,
+		fullscreenable: false,
+		autoHideMenuBar: true,
+		parent: parentWindow,
+		modal: true,
+		webPreferences: {
+			preload: HELP_WINDOW_PRELOAD_WEBPACK_ENTRY,
+		},
+	})
 
-declare global {
-	// Electron Forge built constants
-	const ACCOUNTS_WINDOW_WEBPACK_ENTRY: string
-	const ACCOUNTS_WINDOW_PRELOAD_WEBPACK_ENTRY: string
-	const TALK_WINDOW_WEBPACK_ENTRY: string
-	const TALK_WINDOW_PRELOAD_WEBPACK_ENTRY: string
-	const HELP_WINDOW_WEBPACK_ENTRY: string
-	const HELP_WINDOW_PRELOAD_WEBPACK_ENTRY: string
-	const WELCOME_WINDOW_WEBPACK_ENTRY: string
+	window.removeMenu()
 
-	// ENV
-	namespace NodeJS {
-		interface ProcessEnv {
-			NODE_ENV: 'production' | 'development'
-			NEXTCLOUD_DEV_SERVER_HOSTS: string
-		}
-	}
+	window.loadURL(HELP_WINDOW_WEBPACK_ENTRY)
 
-	// Nextcloud Globals
-	const OC: Object
-	const OCA: Object
-	const OCP: Object
-	const t: typeof translate
-	const n: typeof translatePlural
-	// @nextcloud/webpack-vue-config
-	const appName: string
-	const appVersion: string
-	// Talk Desktop
-	const IS_DESKTOP: true
+	window.on('ready-to-show', () => {
+		window.show()
+	})
+
+	return window
 }
 
-export {}
+module.exports = {
+	createHelpWindow,
+}

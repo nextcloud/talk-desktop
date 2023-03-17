@@ -74,6 +74,14 @@ module.exports = {
 								js: './src/preload.js',
 							},
 						},
+						{
+							name: 'help_window',
+							html: './src/help/renderer/help.html',
+							js: './src/help/renderer/help.app.js',
+							preload: {
+								js: './src/preload.js',
+							},
+						},
 					],
 				},
 			},

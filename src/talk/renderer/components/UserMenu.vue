@@ -66,7 +66,7 @@
 							Open in Web-Browser
 						</template>
 					</UiMenuItem>
-					<UiMenuItem tag="button" @click.native="$emit('about')">
+					<UiMenuItem tag="button" @click.native="showHelp">
 						<template #icon>
 							<MdiInformationOutline />
 						</template>
@@ -126,12 +126,11 @@ export default {
 		},
 	},
 
-	emits: ['about', 'logout'],
+	emits: ['logout'],
 
 	data() {
 		return {
 			userMenuContainer: null,
-			isAboutModalShown: false,
 		}
 	},
 
@@ -150,6 +149,10 @@ export default {
 	},
 
 	methods: {
+		showHelp() {
+			window.TALK_DESKTOP.showHelp()
+		},
+
 		openUserStatusDialog() {
 			alert('Unfortunately, changing the user status is not currently supported by Nextcloud Talk Desktop')
 		},

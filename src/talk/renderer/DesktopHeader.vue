@@ -53,10 +53,8 @@
 		</div>
 
 		<div class="header__item">
-			<UserMenu :user="$options.userMetadata" @about="isAboutModalShown = true" @logout="logout" />
+			<UserMenu :user="$options.userMetadata" @logout="logout" />
 		</div>
-
-		<AboutModal :show.sync="isAboutModalShown" />
 	</header>
 </template>
 
@@ -66,7 +64,6 @@ import MdiMagnify from 'vue-material-design-icons/Magnify.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
-import AboutModal from './components/AboutModal.vue'
 import TalkRouter from '@talk/src/router/router.js'
 
 export default {
@@ -75,17 +72,10 @@ export default {
 	userMetadata: appData.userMetadata,
 
 	components: {
-		AboutModal,
 		MdiBell,
 		MdiMagnify,
 		NcButton,
 		UserMenu,
-	},
-
-	data() {
-		return {
-			isAboutModalShown: false,
-		}
 	},
 
 	methods: {

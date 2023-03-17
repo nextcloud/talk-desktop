@@ -22,6 +22,7 @@
 const path = require('node:path')
 const {
 	app,
+	dialog,
 	BrowserWindow,
 	ipcMain,
 } = require('electron')
@@ -62,12 +63,6 @@ if (process.env.NODE_ENV === 'development') {
 	app.setPath('userData', path.join(app.getPath('appData'), 'Nextcloud Talk (dev)'))
 }
 
-app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
-	event.preventDefault()
-
-	callback(process.env.NODE_ENV !== 'production')
-})
-
 app.whenReady().then(async () => {
 	if (process.env.NODE_ENV !== 'production') {
 		await installExtension(VUEJS3_DEVTOOLS)
@@ -91,6 +86,51 @@ app.whenReady().then(async () => {
 	 * Instead of creating a new app instance - focus existence one
 	 */
 	app.on('second-instance', () => focusMainWindow())
+
+	app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
+		event.preventDefault()
+
+		if (isLinux()) {
+			return callback(process.env.NODE_ENV !== 'production')
+		}
+
+		dialog.showCertificateTrustDialog(mainWindow, {
+			certificate,
+			message: 'Untrusted certificate',
+		}).then(() => {
+			callback(true)
+		}).catch(() => {
+			callback(false)
+		})
+
+		// TODO: showCertificateTrustDialog supports only Windows and Mac OS. Create custom window on Linux:
+		/* dialog.showMessageBox(mainWindow, {
+			type: 'warning',
+			title: 'Security Warning',
+			detail:
+				[
+					`Error: ${error}`,
+					'',
+					`Subject: ${certificate.subjectName}`,
+					'',
+					`Issuer: ${certificate.issuerName ?? 'UNKNOWN'}`,
+					`- Organisations: ${certificate.issuer.organizations.join(', ')}`,
+					`- Organisation units: ${certificate.issuer.organizationUnits.join(', ')}`,
+					`- Country: ${certificate.issuer.country}`,
+					`- State: ${certificate.issuer.state}`,
+					`- Locality: ${certificate.issuer.locality}`,
+					'',
+					`Fingerprint: ${certificate.fingerprint}`,
+					'',
+					`Valid from: ${new Date(certificate.validStart * 1_000).toLocaleDateString()}`,
+					`Valid until: ${new Date(certificate.validExpiry * 1_000).toLocaleDateString()}`,
+					'',
+					'Do you trust this certificate?',
+				].join('\n'),
+			buttons: ['Yes', 'Cancel'],
+		})
+ 		*/
+	})
 
 	const welcomeWindow = createWelcomeWindow()
 	await new Promise((resolve) => {

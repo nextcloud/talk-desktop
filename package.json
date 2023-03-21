@@ -19,7 +19,7 @@
 		"start": "electron-forge start",
 		"package": "electron-forge package",
 		"package:linux": "electron-forge package --platform=linux",
-		"package:mac": "electron-forge package --platform=darwin",
+		"package:mac": "electron-forge package --platform=darwin --arch=universal",
 		"package:windows": "electron-forge package --platform=win32",
 		"package:all": "electron-forge package --platform=all",
 		"make": "electron-forge make --skip-package",

@@ -4,7 +4,7 @@
 	"productName": "Nextcloud Talk",
 	"version": "0.2.0",
 	"description": "Official Desktop client for Nextcloud Talk",
-	"bugs": "https://github.com/nextcloud-gmbh/talk-desktop/issues",
+	"bugs": "https://github.com/nextcloud/talk-desktop/issues",
 	"license": "AGPL-3.0",
 	"author": {
 		"name": "Grigorii Shartsev",
@@ -13,7 +13,7 @@
 	"main": "./.webpack/main",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/nextcloud-gmbh/talk-desktop"
+		"url": "https://github.com/nextcloud/talk-desktop"
 	},
 	"scripts": {
 		"start": "electron-forge start",

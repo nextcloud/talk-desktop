@@ -9,17 +9,17 @@
 
 ## 👾 Drawbacks
 
-- Currently not supported by Desktop:
+- Currently not supported:
   - Screen sharing ([#11](https://github.com/nextcloud-gmbh/talk-desktop/issues/11))
   - Share from Nextcloud (including files creation) ([#12](https://github.com/nextcloud-gmbh/talk-desktop/issues/12))
   - Contacts menu on user avatars menus ([#34](https://github.com/nextcloud-gmbh/talk-desktop/issues/34))
   - Setting User Status ([#26](https://github.com/nextcloud-gmbh/talk-desktop/issues/26))
   - Search ([#30](https://github.com/nextcloud-gmbh/talk-desktop/issues/30))
   - Notifications ([#31](https://github.com/nextcloud-gmbh/talk-desktop/issues/31))
-  - Untrusted certificate ([#23](https://github.com/nextcloud-gmbh/talk-desktop/issues/23))
+  - Untrusted certificate on Linux ([#23](https://github.com/nextcloud-gmbh/talk-desktop/issues/23))
   - Dark/light theme ([#17](https://github.com/nextcloud-gmbh/talk-desktop/issues/17))
 - Work with limitations:
-	- File view - opened in the default web-browser 
+	- File viewer - opened in the default web-browser 
 
 ## 🧑‍💻 Development Setup
 
@@ -39,11 +39,11 @@ Nextcloud Talk Desktop requires [Nextcloud Talk source code](https://github.com/
 
 #### No `nextcloud/spreed` is cloned?
 
-Clone `nextcloud/spreed` and install dependencies:
+Clone `nextcloud/spreed` on `desktop-stable26` branch and install dependencies:
 
 ```bash
 # Clone in the repository root
-git clone -b shgkme https://github.com/nextcloud/spreed
+git clone -b desktop-stable26 https://github.com/nextcloud/spreed
 
 # Install dependencies
 cd ./spreed/
@@ -55,11 +55,11 @@ cd ../
 
 #### `nextcloud/spreed` is already cloned?
 
-Set `TALK_PATH` ENV variable or edit `.env` file:
-
-```dotenv
-TALK_PATH=/path/to/nextcloud-dev/apps/spreed/
-```
+1. Switch to `desktop-stable26` branch.
+2. Set `TALK_PATH` ENV variable or edit `.env` file:
+   ```dotenv
+   TALK_PATH=/path/to/nextcloud-dev/apps/spreed/
+   ```
 
 ### Development
 

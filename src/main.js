@@ -34,7 +34,6 @@ const { createTalkWindow } = require('./talk/talk.window.js')
 const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
 const { openLoginWebView } = require('./authentication/login.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
-const { setTimeout } = require('timers/promises')
 const {
 	enableWebRequestInterceptor,
 	disableWebRequestInterceptor,
@@ -144,12 +143,6 @@ app.whenReady().then(async () => {
 			resolve()
 		})
 	})
-
-	// Timeout to emulate startup loading
-	// TODO: replace with real initialization
-	if (process.env.NODE_ENV === 'production') {
-		await setTimeout(5000)
-	}
 
 	// TODO: handle JSON parsing error
 	const maybeAppData = await welcomeWindow.webContents.executeJavaScript('JSON.parse(localStorage[\'AppData\'] ?? null)')

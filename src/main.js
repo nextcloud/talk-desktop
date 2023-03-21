@@ -40,6 +40,7 @@ const {
 	disableWebRequestInterceptor,
 } = require('./app/webRequestInterceptor.js')
 const { getOs, isLinux } = require('./shared/os.utils.js')
+const { setupMenu } = require('./app/app.menu.js')
 const { createHelpWindow } = require('./help/help.window.js')
 
 /**
@@ -76,7 +77,8 @@ app.whenReady().then(async () => {
 	 */
 	let mainWindow
 	let createMainWindow
-	const getMainWindow = () => mainWindow
+
+	setupMenu()
 
 	const focusMainWindow = () => {
 		if (mainWindow.isMinimized()) {

@@ -43,6 +43,14 @@ const { setupMenu } = require('./app/app.menu.js')
 const { createHelpWindow } = require('./help/help.window.js')
 
 /**
+ * Separate production and development instances, including application and user data
+ */
+if (process.env.NODE_ENV === 'development') {
+	app.setName('Nextcloud Talk (dev)')
+	app.setPath('userData', path.join(app.getPath('appData'), 'Nextcloud Talk (dev)'))
+}
+
+/**
  * Only one instance is allowed at time
  */
 if (!app.requestSingleInstanceLock()) {
@@ -58,12 +66,6 @@ ipcMain.handle('app:getOs', () => getOs())
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(count))
-
-// Separate production and development appData
-if (process.env.NODE_ENV === 'development') {
-	app.setName('Nextcloud Talk (dev)')
-	app.setPath('userData', path.join(app.getPath('appData'), 'Nextcloud Talk (dev)'))
-}
 
 app.whenReady().then(async () => {
 	if (process.env.NODE_ENV !== 'production') {

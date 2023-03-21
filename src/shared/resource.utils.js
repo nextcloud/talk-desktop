@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { appData } from '../../app/AppData.js'
+import { appData } from '../app/AppData.js'
 
 /**
  * Load styles from URL via new <link> element

@@ -20,6 +20,7 @@
  */
 
 const { BrowserWindow } = require('electron')
+const { windowIcon } = require('../app/windowIcon.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -35,6 +36,7 @@ function createWelcomeWindow() {
 		movable: false,
 		titleBarStyle: 'hidden',
 		show: false,
+		icon: windowIcon,
 	})
 
 	window.loadURL(WELCOME_WINDOW_WEBPACK_ENTRY)

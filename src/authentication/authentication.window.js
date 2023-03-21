@@ -21,6 +21,7 @@
 
 const { BrowserWindow } = require('electron')
 const { BASE_TITLE } = require('../constants.js')
+const { windowIcon } = require('../app/windowIcon.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -38,6 +39,7 @@ function createAuthenticationWindow() {
 		resizable: false,
 		fullscreenable: false,
 		autoHideMenuBar: true,
+		icon: windowIcon,
 		webPreferences: {
 			preload: AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},

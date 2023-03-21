@@ -19,47 +19,26 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const { BrowserWindow } = require('electron')
-const { BASE_TITLE } = require('../constants.js')
-const { windowIcon } = require('../app/windowIcon.js')
+const path = require('node:path')
+const {
+	isLinux,
+	isWindows,
+	isMac,
+} = require('../shared/os.utils.js')
 
-/**
- *
- * @param {import('electron').BrowserWindow} parentWindow - main window (parent)
- * @return {import('electron').BrowserWindow}
- */
-function createHelpWindow(parentWindow) {
-	const WIDTH = 720
-	const HEIGHT = 500
-	const TITLE = `About - ${BASE_TITLE}`
-	const window = new BrowserWindow({
-		title: TITLE,
-		width: WIDTH,
-		height: HEIGHT,
-		show: false,
-		maximizable: false,
-		resizable: false,
-		fullscreenable: false,
-		autoHideMenuBar: true,
-		parent: parentWindow,
-		modal: true,
-		icon: windowIcon,
-		webPreferences: {
-			preload: HELP_WINDOW_PRELOAD_WEBPACK_ENTRY,
-		},
-	})
+let windowIcon
 
-	window.removeMenu()
-
-	window.loadURL(HELP_WINDOW_WEBPACK_ENTRY)
-
-	window.on('ready-to-show', () => {
-		window.show()
-	})
-
-	return window
+if (isWindows()) {
+	windowIcon = path.join(__dirname, '../img/icons/icon.ico')
+} else if (isMac()) {
+	windowIcon = path.join(__dirname, '../img/icons/icon.icns')
+} else if (isLinux()) {
+	windowIcon = path.join(__dirname, '../img/icon.png')
+} else {
+	// Also use PNG as default
+	windowIcon = path.join(__dirname, '../img/icon.png')
 }
 
 module.exports = {
-	createHelpWindow,
+	windowIcon,
 }

@@ -24,6 +24,7 @@ const {
 	windowOpenExternalLinkHandler,
 	willNavigateExternalLinkHandler,
 } = require('../app/externalLinkHandlers.js')
+const { windowIcon } = require('../app/windowIcon.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -34,6 +35,7 @@ function createTalkWindow() {
 		minHeight: 400,
 		backgroundColor: '#171717',
 		autoHideMenuBar: true,
+		icon: windowIcon,
 		webPreferences: {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},

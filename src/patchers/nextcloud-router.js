@@ -22,11 +22,19 @@
 /* eslint-disable jsdoc/require-jsdoc */
 
 import { getRootUrl, generateFilePath as _generateFilePath } from '../../node_modules/@nextcloud/router/dist/index.js'
-import { formattedString } from './stubs-utils.js'
 
 export {
 	linkTo, imagePath, getRootUrl, generateUrl,
 } from '../../node_modules/@nextcloud/router/dist/index.js'
+
+/**
+ * @param {string} s - String with "{token}" blocks
+ * @param {Object<string,string>} [tokens] - Dict with replacements
+ * @return {string}
+ */
+function formattedString(s, tokens = {}) {
+	return Object.entries(tokens).reduce((acc, [token, replacement]) => acc.replaceAll(`{${token}}`, replacement), s)
+}
 
 export function generateOcsUrl(url, params = {}, options = {}) {
 	// Reason to patch: it uses window.location

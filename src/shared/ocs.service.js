@@ -25,7 +25,7 @@
  */
 
 import axios from '@nextcloud/axios'
-import { generateOcsUrl } from '../stubs/nextcloud-router.js'
+import { generateOcsUrl } from '@nextcloud/router'
 
 /**
  * @see https://docs.nextcloud.com/server/latest/developer_manual/client_apis/OCS/ocs-api-overview.html#capabilities-api

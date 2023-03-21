@@ -85,11 +85,11 @@ module.exports = merge(commonTalkWebpackConfig, {
 	resolve: {
 		alias: {
 			'@talk': TALK_PATH,
-			'@nextcloud/initial-state$': path.resolve(__dirname, 'src/stubs/nextcloud-initial-state.js'),
-			'@nextcloud/axios$': path.resolve(__dirname, 'src/stubs/nextcloud-axios.js'),
-			'@nextcloud/router$': path.resolve(__dirname, 'src/stubs/nextcloud-router.js'),
-			'@nextcloud/auth$': path.resolve(__dirname, 'src/stubs/nextcloud-auth.js'),
-			'@nextcloud/notify_push$': path.resolve(__dirname, 'src/stubs/nextcloud-notify_push.js'),
+			'@nextcloud/initial-state$': path.resolve(__dirname, 'src/patchers/nextcloud-initial-state.js'),
+			'@nextcloud/axios$': path.resolve(__dirname, 'src/patchers/nextcloud-axios.js'),
+			'@nextcloud/router$': path.resolve(__dirname, 'src/patchers/nextcloud-router.js'),
+			'@nextcloud/auth$': path.resolve(__dirname, 'src/patchers/nextcloud-auth.js'),
+			'@nextcloud/notify_push$': path.resolve(__dirname, 'src/patchers/nextcloud-notify_push.js'),
 		},
 	},
 
@@ -98,12 +98,12 @@ module.exports = merge(commonTalkWebpackConfig, {
 		...nextcloudWebpackConfig.plugins,
 
 		new webpack.ProvidePlugin({
-			OC: [path.join(path.resolve(__dirname), './src/stubs/globals.js'), 'OC'],
-			'window.OC': [path.join(path.resolve(__dirname), './src/stubs/globals.js'), 'OC'],
-			OCA: [path.join(path.resolve(__dirname), './src/stubs/globals.js'), 'OCA'],
-			'window.OCA': [path.join(path.resolve(__dirname), './src/stubs/globals.js'), 'OCA'],
-			OCP: [path.join(path.resolve(__dirname), './src/stubs/globals.js'), 'OCP'],
-			'window.OCP': [path.join(path.resolve(__dirname), './src/stubs/globals.js'), 'OCP'],
+			OC: [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OC'],
+			'window.OC': [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OC'],
+			OCA: [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OCA'],
+			'window.OCA': [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OCA'],
+			OCP: [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OCP'],
+			'window.OCP': [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OCP'],
 			t: ['@nextcloud/l10n', 'translate'],
 			n: ['@nextcloud/l10n', 'translatePlural'],
 		}),

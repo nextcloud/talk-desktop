@@ -25,20 +25,16 @@ import './assets/styles.css'
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { init } from './init.js'
 import { appData } from '../../app/AppData.js'
-import { createNotificationStore } from './notifications/notifications.store.js'
 
-appData.restore()
-
-createNotificationStore();
+appData.restore();
 
 (async () => {
-	/**
-	 * Cached OS version
-	 *
-	 * @type {import('../../shared/os.utils.js').OsVersion}
-	 */
-	window.OS = await window.TALK_DESKTOP.getOs()
-	await init()
-	await import('./desktop.app.js')
+	const { router } = await init()
+
+	const { createDesktopApp } = await import('./desktop.app.js')
+	createDesktopApp(router)
+
 	await import('@talk/src/main.js')
+
+	await import('./notifications/notifications.store.js')
 })()

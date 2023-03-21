@@ -26,7 +26,7 @@ import { appData } from '../../app/AppData.js'
 /**
  * Initialize Talk application: styles, localization etc.
  *
- * @return {Promise<void>}
+ * @return {Promise<object>}
  */
 export async function init() {
 	// Load application styles from server
@@ -50,5 +50,12 @@ export async function init() {
 		} catch (e) {
 			console.log(`Language pack "${appData.userMetadata.language}" not found...`)
 		}
+	}
+
+	// Get Talk's router
+	const { default: router } = await import('@talk/src/router/router.js')
+
+	return {
+		router,
 	}
 }

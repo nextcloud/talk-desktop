@@ -64,7 +64,6 @@ import MdiMagnify from 'vue-material-design-icons/Magnify.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
-import TalkRouter from '@talk/src/router/router.js'
 
 export default {
 	name: 'DesktopHeader',
@@ -78,9 +77,11 @@ export default {
 		UserMenu,
 	},
 
+	inject: ['router'],
+
 	methods: {
 		pushToRoot() {
-			TalkRouter.push({ name: 'root' }).catch(() => {})
+			this.router.push({ name: 'root' }).catch(() => {})
 		},
 
 		logout() {

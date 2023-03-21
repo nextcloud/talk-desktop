@@ -325,3 +325,5 @@ export function createNotificationStore() {
 		state,
 	}
 }
+
+export const notificationsStore = createNotificationStore()

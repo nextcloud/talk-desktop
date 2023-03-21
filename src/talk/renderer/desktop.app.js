@@ -22,4 +22,15 @@
 import Vue from 'vue'
 import DesktopHeader from './DesktopHeader.vue'
 
-new Vue(DesktopHeader).$mount('#desktop-header')
+export function createDesktopApp(router) {
+	// eslint-disable-next-line vue/require-name-property
+	return new Vue({
+	  provide() {
+			return {
+				router,
+			}
+		},
+
+		render: (h) => h(DesktopHeader),
+	}).$mount('#desktop-header')
+}

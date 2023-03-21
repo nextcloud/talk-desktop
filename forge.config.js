@@ -59,9 +59,9 @@ module.exports = {
 							js: './src/welcome/welcome.js',
 						},
 						{
-							name: 'accounts_window',
-							html: './src/accounts/renderer/accounts.html',
-							js: './src/accounts/renderer/accounts.main.js',
+							name: 'authentication_window',
+							html: './src/authentication/renderer/authentication.html',
+							js: './src/authentication/renderer/authentication.main.js',
 							preload: {
 								js: './src/preload.js',
 							},

@@ -24,6 +24,6 @@ import '../../shared/assets/default/css/default.css'
 import '../../shared/assets/default/css/server.css'
 
 import Vue from 'vue'
-import WindowAccounts from './WindowAccounts.vue'
+import AuthenticationApp from './AuthenticationApp.vue'
 
-new Vue(WindowAccounts).$mount('#app')
+new Vue(AuthenticationApp).$mount('#app')

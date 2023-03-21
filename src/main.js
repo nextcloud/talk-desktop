@@ -31,8 +31,8 @@ const {
 	VUEJS3_DEVTOOLS,
 } = require('electron-devtools-installer')
 const { createTalkWindow } = require('./talk/talk.window.js')
-const { createAccountsWindow } = require('./accounts/accounts.window.js')
-const { openLoginWebView } = require('./accounts/login.window.js')
+const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
+const { openLoginWebView } = require('./authentication/login.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { setTimeout } = require('timers/promises')
 const {
@@ -163,8 +163,8 @@ app.whenReady().then(async () => {
 		createMainWindow = createTalkWindow
 	} else {
 		await welcomeWindow.webContents.session.clearStorageData()
-		mainWindow = createAccountsWindow()
-		createMainWindow = createAccountsWindow
+		mainWindow = createAuthenticationWindow()
+		createMainWindow = createAuthenticationWindow
 	}
 
 	mainWindow.once('ready-to-show', () => {
@@ -174,20 +174,20 @@ app.whenReady().then(async () => {
 
 	ipcMain.handle('talk:focus', async (event) => focusMainWindow())
 
-	ipcMain.handle('accounts:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
+	ipcMain.handle('authentication:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
 
-	ipcMain.handle('accounts:login', async () => {
+	ipcMain.handle('authentication:login', async () => {
 		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
 	})
 
-	ipcMain.handle('accounts:logout', async (event) => {
+	ipcMain.handle('authentication:logout', async (event) => {
 		if (createMainWindow === createTalkWindow) {
 			await mainWindow.webContents.session.clearStorageData()
 			mainWindow.close()
-			mainWindow = createAccountsWindow()
-			createMainWindow = createAccountsWindow
+			mainWindow = createAuthenticationWindow()
+			createMainWindow = createAuthenticationWindow
 			mainWindow.once('ready-to-show', () => {
 				mainWindow.show()
 			})

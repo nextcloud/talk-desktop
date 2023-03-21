@@ -79,7 +79,7 @@ import { appData } from '../../app/AppData.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
 
 export default {
-	name: 'WindowAccounts',
+	name: 'AuthenticationApp',
 
 	components: {
 		MdiArrowRight,

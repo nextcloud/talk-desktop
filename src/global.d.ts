@@ -25,8 +25,8 @@ import {translate, translatePlural} from '@nextcloud/l10n'
 
 declare global {
 	// Electron Forge built constants
-	const ACCOUNTS_WINDOW_WEBPACK_ENTRY: string
-	const ACCOUNTS_WINDOW_PRELOAD_WEBPACK_ENTRY: string
+	const AUTHENTICATION_WINDOW_WEBPACK_ENTRY: string
+	const AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY: string
 	const TALK_WINDOW_WEBPACK_ENTRY: string
 	const TALK_WINDOW_PRELOAD_WEBPACK_ENTRY: string
 	const HELP_WINDOW_WEBPACK_ENTRY: string

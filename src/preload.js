@@ -78,19 +78,19 @@ const TALK_DESKTOP = {
 	 * @param {string} server - Server URL
 	 * @return {Promise<import('./accounts/login.service.js').Credentials|Error>}
 	 */
-	openLoginWebView: (server) => ipcRenderer.invoke('accounts:openLoginWebView', server),
+	openLoginWebView: (server) => ipcRenderer.invoke('authentication:openLoginWebView', server),
 	/**
 	 * Open main window after logging in
 	 *
 	 * @return {Promise<void>}
 	 */
-	login: () => ipcRenderer.invoke('accounts:login'),
+	login: () => ipcRenderer.invoke('authentication:login'),
 	/**
 	 * Logout and open accounts window
 	 *
 	 * @return {Promise<void>}
 	 */
-	logout: () => ipcRenderer.invoke('accounts:logout'),
+	logout: () => ipcRenderer.invoke('authentication:logout'),
 	/**
 	 * Focus and restore the talk window
 	 *

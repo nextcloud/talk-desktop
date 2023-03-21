@@ -25,10 +25,10 @@ const { BASE_TITLE } = require('../constants.js')
 /**
  * @return {import('electron').BrowserWindow}
  */
-function createAccountsWindow() {
+function createAuthenticationWindow() {
 	const WIDTH = 450
 	const HEIGHT = 500
-	const TITLE = `Accounts - ${BASE_TITLE}`
+	const TITLE = `Authentication - ${BASE_TITLE}`
 	const window = new BrowserWindow({
 		title: TITLE,
 		width: WIDTH,
@@ -39,7 +39,7 @@ function createAccountsWindow() {
 		fullscreenable: false,
 		autoHideMenuBar: true,
 		webPreferences: {
-			preload: ACCOUNTS_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			preload: AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
 
@@ -48,11 +48,11 @@ function createAccountsWindow() {
 	// window.removeMenu()
 	// }
 
-	window.loadURL(ACCOUNTS_WINDOW_WEBPACK_ENTRY)
+	window.loadURL(AUTHENTICATION_WINDOW_WEBPACK_ENTRY)
 
 	return window
 }
 
 module.exports = {
-	createAccountsWindow,
+	createAuthenticationWindow,
 }

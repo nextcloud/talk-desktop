@@ -7,8 +7,8 @@ module.exports = {
 
 	globals: {
 		// Electron Forge build vars
-		ACCOUNTS_WINDOW_WEBPACK_ENTRY: 'readonly',
-		ACCOUNTS_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
+		AUTHENTICATION_WINDOW_WEBPACK_ENTRY: 'readonly',
+		AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
 		TALK_WINDOW_WEBPACK_ENTRY: 'readonly',
 		TALK_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
 		HELP_WINDOW_WEBPACK_ENTRY: 'readonly',

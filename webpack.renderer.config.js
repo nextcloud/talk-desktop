@@ -89,6 +89,7 @@ module.exports = merge(commonTalkWebpackConfig, {
 			'@nextcloud/axios$': path.resolve(__dirname, 'src/stubs/nextcloud-axios.js'),
 			'@nextcloud/router$': path.resolve(__dirname, 'src/stubs/nextcloud-router.js'),
 			'@nextcloud/auth$': path.resolve(__dirname, 'src/stubs/nextcloud-auth.js'),
+			'@nextcloud/notify_push$': path.resolve(__dirname, 'src/stubs/nextcloud-notify_push.js'),
 		},
 	},
 

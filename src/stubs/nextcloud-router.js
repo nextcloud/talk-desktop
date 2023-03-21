@@ -47,13 +47,10 @@ export function generateFilePath(app, type, file) {
 	 * By default, Talk requests sounds as a file from server assets using generateFilePath
 	 * Desktop app should use path to the local file
 	 */
-	if (app === 'spreed' && type === 'img') {
-		if (file.endsWith('.ogg')) {
-			const filename = file.slice(0, -4)
-			// Keep .ogg implicitly so Webpack adds only .ogg files to the build using require context
-			return require(`@talk/img/${filename}.ogg`)
-		}
+	if (file.endsWith('.ogg')) {
+		// Keep .ogg implicitly so Webpack adds only .ogg files to the build using require context
+		return require(`../../sounds/${file.slice(0, -4)}.ogg`)
 	}
 
-	return _generateFilePath(app, type, file)
+	return getRootUrl() + _generateFilePath(app, type, file)
 }

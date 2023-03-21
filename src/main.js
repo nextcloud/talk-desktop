@@ -57,6 +57,7 @@ if (!app.requestSingleInstanceLock()) {
 ipcMain.handle('app:getOs', () => getOs())
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
+ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(count))
 
 // Separate production and development appData
 if (process.env.NODE_ENV === 'development') {
@@ -168,6 +169,8 @@ app.whenReady().then(async () => {
 		mainWindow.show()
 		welcomeWindow.close()
 	})
+
+	ipcMain.handle('talk:focus', async (event) => focusMainWindow())
 
 	ipcMain.handle('accounts:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
 

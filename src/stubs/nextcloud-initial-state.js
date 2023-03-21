@@ -72,6 +72,11 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 				modRewriteWorking: false, // Forced to false. Is it used?
 			},
 		},
+		notifications: {
+			throttled_push_notifications: false, // TODO
+			sound_talk: true, // TODO
+			sound_notification: true, // TODO
+		},
 	}
 }
 

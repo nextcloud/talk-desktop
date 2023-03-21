@@ -66,6 +66,13 @@ const TALK_DESKTOP = {
 	 */
 	disableWebRequestInterceptor: (...args) => ipcRenderer.invoke('app:disableWebRequestInterceptor', ...args),
 	/**
+	 * Set or remove notifications badge
+	 *
+	 * @param {number} [count] - Count of notification or 0 to disable
+	 * @return {Promise<void>}
+	 */
+	setBadgeCount: (count) => ipcRenderer.invoke('app:setBadgeCount', count),
+	/**
 	 * Open a web-view modal window with Nextcloud Server login page
 	 *
 	 * @param {string} server - Server URL
@@ -84,6 +91,12 @@ const TALK_DESKTOP = {
 	 * @return {Promise<void>}
 	 */
 	logout: () => ipcRenderer.invoke('accounts:logout'),
+	/**
+	 * Focus and restore the talk window
+	 *
+	 * @return {Promise<void>}
+	 */
+	focusTalk: () => ipcRenderer.invoke('talk:focus'),
 	/**
 	 * Show the help window (aka About)
 	 *

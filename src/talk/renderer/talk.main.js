@@ -25,9 +25,13 @@ import './assets/styles.css'
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { init } from './init.js'
 import { appData } from '../../app/AppData.js'
+import { createNotificationStore } from './notifications/notifications.store.js'
+
+appData.restore()
+
+createNotificationStore();
 
 (async () => {
-	appData.restore()
 	/**
 	 * Cached OS version
 	 *

@@ -19,22 +19,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* eslint-disable jsdoc/require-returns-type,jsdoc/require-param-description,jsdoc/require-jsdoc,jsdoc/require-param-type */
+
 // Based on https://github.com/icewind1991/notify_push-client/blob/main/lib/index.ts
 // TODO: Merge this module to the original repository
 
 import { getCapabilities } from '@nextcloud/capabilities'
-import axios from '@nextcloud/axios'
 import { subscribe } from '@nextcloud/event-bus'
-
-/* declare global {
-	interface Window {
-		_notify_push_listeners: { [event: string]: ((string, any) => void)[] },
-		_notify_push_ws: WebSocket | null | true,
-			_notify_push_online: boolean,
-			_notify_push_available: boolean,
-			_notify_push_error_count: number,
-	}
-} */
 
 /**
  * Get the list of supported notification types as reported by the server
@@ -56,6 +47,9 @@ export function getSupportedTypes() {
  *
  * @param name name of the event
  * @param handler callback invoked for every matching event pushed
+ * @param root0
+ * @param root0.user
+ * @param root0.password
  * @return boolean whether or not push is setup correctly
  */
 export function listen(name, handler, { user, password } = {}) {

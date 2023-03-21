@@ -22,6 +22,10 @@
 import Vue from 'vue'
 import DesktopHeader from './DesktopHeader.vue'
 
+/**
+ * @param {import('VueRouter').Router} router - Vue Router instance
+ * @return {import('vue').ComponentPublicInstance}
+ */
 export function createDesktopApp(router) {
 	// eslint-disable-next-line vue/require-name-property
 	return new Vue({

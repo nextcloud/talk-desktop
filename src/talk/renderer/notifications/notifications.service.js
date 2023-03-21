@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* eslint-disable jsdoc/require-param-type,jsdoc/require-param-description */
+
 /**
  * @see https://github.com/nextcloud/notifications/blob/master/src/services/notificationsService.js
  * @todo this is mostly a copy. Should be reusing.

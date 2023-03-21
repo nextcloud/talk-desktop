@@ -44,12 +44,14 @@ module.exports = {
 		'n/no-unpublished-import': 'off',
 		'n/no-callback-literal': 'off', // conflicts with Electron API
 		'n/no-missing-import': 'off', // TODO: Find a way to configure @talk alias
+		'n/no-missing-require': 'off',
 		'n/no-extraneous-import': ['error', {
 			// These modules are resolved with Webpack Provide plugin
 			allowModules: [
 				'@nextcloud/auth',
 				'@nextcloud/axios',
 				'@nextcloud/initial-state',
+				'@nextcloud/notify_push',
 				'@nextcloud/router',
 			],
 		}],

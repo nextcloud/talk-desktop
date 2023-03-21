@@ -19,6 +19,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* eslint-disable jsdoc/require-param-type,jsdoc/require-param-description */
+
+/**
+ * @see https://github.com/nextcloud/notifications/
+ * @todo this is mostly a copy. Should be reusing.
+ */
+
 import { getRequestToken } from '@nextcloud/auth'
 import { listen } from '@nextcloud/notify_push'
 import { loadState } from '@nextcloud/initial-state'
@@ -28,6 +35,9 @@ import TalkRouter from '@talk/src/router/router.js'
 import { generateFilePath } from '@nextcloud/router'
 import { Howl } from 'howler'
 
+/**
+ *
+ */
 export function createNotificationStore() {
 	let _oldcount = 0
 	let notificationsSet = new Set()
@@ -69,6 +79,9 @@ export function createNotificationStore() {
 		_setPollingInterval(state.pollIntervalBase)
 	})
 
+	/**
+	 *
+	 */
 	function setupBackgroundFetcher() {
 		// if (OC.config.session_keepalive) {
 		console.debug('Started background fetcher as session_keepalive is enabled')
@@ -125,6 +138,10 @@ export function createNotificationStore() {
 		}
 	}
 
+	/**
+	 *
+	 * @param isCall
+	 */
 	function playSound(isCall) {
 		if (isCall) {
 			if (loadState('notifications', 'sound_talk')) {
@@ -147,6 +164,10 @@ export function createNotificationStore() {
 		}
 	}
 
+	/**
+	 *
+	 * @param notification
+	 */
 	function showNativeNotification(notification) {
 		if (notification.app !== 'spreed') {
 			return
@@ -212,21 +233,34 @@ export function createNotificationStore() {
 		}
 	}
 
+	/**
+	 *
+	 */
 	function _backgroundFetch() {
 		state.backgroundFetching = true
 		_fetch()
 	}
 
+	/**
+	 *
+	 */
 	function _watchTabVisibility() {
 		document.addEventListener('visibilitychange', _visibilityChange, false)
 	}
 
+	/**
+	 *
+	 */
 	function _visibilityChange() {
 		if (!document.hidden) {
 			_restoreTitle()
 		}
 	}
 
+	/**
+	 *
+	 * @param pollInterval
+	 */
 	function _setPollingInterval(pollInterval) {
 		console.debug('Polling interval updated to ' + pollInterval)
 		if (state.interval && pollInterval === state.pollIntervalCurrent) {

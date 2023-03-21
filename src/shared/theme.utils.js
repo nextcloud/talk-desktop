@@ -1,5 +1,5 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
  *
  * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
  *
@@ -19,25 +19,22 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import '@talk/css/icons.css'
-import './assets/styles.css'
+/**
+ * @return {boolean}
+ */
+export function prefersDark() {
+	return window.matchMedia('(prefers-color-scheme: dark)').matches
+}
 
-import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import { init } from './init.js'
-import { appData } from '../../app/AppData.js'
-import { applyBodyThemeAttrs } from '../../shared/theme.utils.js'
-
-appData.restore()
-
-applyBodyThemeAttrs();
-
-(async () => {
-	const { router } = await init()
-
-	const { createDesktopApp } = await import('./desktop.app.js')
-	createDesktopApp(router)
-
-	await import('@talk/src/main.js')
-
-	await import('./notifications/notifications.store.js')
-})()
+/**
+ * @param {'light'|'dark'} [theme] - Light or Dark theme. If not set then system theme is used
+ */
+export function applyBodyThemeAttrs(theme) {
+	if (!theme) {
+		theme = prefersDark() ? 'dark' : 'light'
+	}
+	delete document.body.dataset.themeLight
+	delete document.body.dataset.themeDark
+	document.body.dataset[`theme${theme[0].toUpperCase() + theme.substring(1)}`] = ''
+	document.body.dataset.themes = theme
+}

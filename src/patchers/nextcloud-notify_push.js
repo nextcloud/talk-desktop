@@ -26,6 +26,7 @@
 
 import { getCapabilities } from '@nextcloud/capabilities'
 import { subscribe } from '@nextcloud/event-bus'
+import axios from '@nextcloud/axios'
 
 /**
  * Get the list of supported notification types as reported by the server
@@ -47,13 +48,12 @@ export function getSupportedTypes() {
  *
  * @param name name of the event
  * @param handler callback invoked for every matching event pushed
- * @param root0
- * @param root0.user
- * @param root0.password
+ * @param {object} [options={}] options
+ * @param {{ user: string, password: string}} [options.credentials] Application credentials. If none is provided, pre-auth is used.
  * @return boolean whether or not push is setup correctly
  */
-export function listen(name, handler, { user, password } = {}) {
-	setupGlobals({ user, password })
+export function listen(name, handler, { credentials } = {}) {
+	setupGlobals({ credentials })
 
 	if (!window._notify_push_listeners[name]) {
 		window._notify_push_listeners[name] = []
@@ -63,13 +63,19 @@ export function listen(name, handler, { user, password } = {}) {
 	if (window._notify_push_ws !== null && typeof window._notify_push_ws === 'object') {
 		window._notify_push_ws.send('listen ' + name)
 	} else {
-		setupSocket({ user, password })
+		setupSocket({ credentials })
 	}
 
 	return window._notify_push_available
 }
 
-function setupGlobals({ user, password } = {}) {
+/**
+ * Setup notify_push
+ *
+ * @param {object} [options={}] options
+ * @param {{ user: string, password: string}} [options.credentials] Application credentials. If none is provided, pre-auth is used.
+ */
+function setupGlobals({ credentials } = {}) {
 	if (typeof window._notify_push_listeners === 'undefined') {
 		window._notify_push_listeners = {}
 		window._notify_push_ws = null
@@ -84,12 +90,18 @@ function setupGlobals({ user, password } = {}) {
 		subscribe('networkOnline', () => {
 			window._notify_push_error_count = 0
 			window._notify_push_online = true
-			setupSocket({ user, password })
+			setupSocket({ credentials })
 		})
 	}
 }
 
-async function setupSocket({ user, password } = {}) {
+/**
+ * Setup socket connection
+ *
+ * @param {object} [options={}] options
+ * @param {{ user: string, password: string}} [options.credentials] Application credentials. If none is provided, pre-auth is used.
+ */
+async function setupSocket({ credentials } = {}) {
 	if (window._notify_push_ws) {
 		return true
 	}
@@ -103,13 +115,22 @@ async function setupSocket({ user, password } = {}) {
 	}
 	window._notify_push_available = true
 
-	// const response = await axios.post(capabilities.notify_push.endpoints.pre_auth)
+	let preAuth
+	if (!credentials) {
+		const response = await axios.post(capabilities.notify_push.endpoints.pre_auth)
+		preAuth = response.data
+	}
 
 	window._notify_push_ws = new WebSocket(capabilities.notify_push.endpoints.websocket)
 	window._notify_push_ws.onopen = () => {
 		if (typeof window._notify_push_ws === 'object' && window._notify_push_ws) {
-			window._notify_push_ws.send(user)
-			window._notify_push_ws.send(password)
+			if (preAuth) {
+				window._notify_push_ws.send('')
+				window._notify_push_ws.send(preAuth)
+			} else if (credentials) {
+				window._notify_push_ws.send(credentials.user)
+				window._notify_push_ws.send(credentials.password)
+			}
 
 			for (const name in window._notify_push_listeners) {
 				window._notify_push_ws.send('listen ' + name)
@@ -141,7 +162,7 @@ async function setupSocket({ user, password } = {}) {
 
 		setTimeout(() => {
 			if (window._notify_push_online) {
-				setupSocket()
+				setupSocket({ credentials })
 			}
 		}, 1000 * window._notify_push_error_count)
 	}

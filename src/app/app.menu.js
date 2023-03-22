@@ -93,6 +93,13 @@ function setupMenu() {
 			{ type: 'separator' },
 			{ role: 'resetZoom' },
 			{ role: 'zoomIn' },
+			// By default zoomIn works by "CommandOrControl + +" ("CommandOrControl + SHIFT + =")
+			// Hidden menu item adds zoomIn without SHIFT
+			{
+				role: 'zoomIn',
+				accelerator: 'CommandOrControl+=',
+				visible: false,
+			},
 			{ role: 'zoomOut' },
 			{ type: 'separator' },
 			{ role: 'togglefullscreen' },

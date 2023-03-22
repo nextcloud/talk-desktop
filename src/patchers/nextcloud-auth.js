@@ -32,7 +32,9 @@ export {
 export function getCurrentUser() {
 	return {
 		uid: appData.userMetadata.id,
-		displayName: appData.userMetadata.displayname,
-		isAdmin: appData.userMetadata.groups.includes('admin'), // TODO: Is it true way to detect admin?
+		// Current user metadata had different property name for display name than userMetadata
+		// @see https://github.com/nextcloud/server/pull/36665
+		displayName: appData.userMetadata.displayname ?? appData.userMetadata['display-name'],
+		isAdmin: appData.userMetadata.groups.includes('admin'),
 	}
 }

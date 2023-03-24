@@ -24,6 +24,7 @@ const {
 	windowOpenExternalLinkHandler,
 	willNavigateExternalLinkHandler,
 } = require('../app/externalLinkHandlers.js')
+const { applyWheelZoom } = require('../app/applyWheelZoom.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -63,6 +64,8 @@ function createTalkWindow() {
 	window.once('ready-to-show', () => {
 		window.show()
 	})
+
+	applyWheelZoom(window)
 
 	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)
 

@@ -25,6 +25,7 @@ const {
 	dialog,
 	BrowserWindow,
 	ipcMain,
+	session,
 } = require('electron')
 const {
 	default: installExtension,
@@ -41,6 +42,7 @@ const {
 const { getOs, isLinux } = require('./shared/os.utils.js')
 const { setupMenu } = require('./app/app.menu.js')
 const { createHelpWindow } = require('./help/help.window.js')
+const { permissionHandler } = require('./app/permissionHandlers.js')
 
 /**
  * Separate production and development instances, including application and user data
@@ -175,6 +177,7 @@ app.whenReady().then(async () => {
 		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
+		session.defaultSession.setPermissionRequestHandler(permissionHandler)
 	})
 
 	ipcMain.handle('authentication:logout', async (event) => {
@@ -186,6 +189,7 @@ app.whenReady().then(async () => {
 			mainWindow.once('ready-to-show', () => {
 				mainWindow.show()
 			})
+			session.defaultSession.setPermissionRequestHandler(null)
 		}
 	})
 

@@ -24,6 +24,7 @@ require('dotenv').config()
 module.exports = {
 	packagerConfig: {
 		icon: './img/icons/icon',
+		extendInfo: './build/mac/entitlements.mac.plist',
 	},
 	rebuildConfig: {},
 	makers: [

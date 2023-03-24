@@ -17,7 +17,7 @@ tab_width = 2
 [*.json]
 tab_width = 2
 
-[*.html]
+[{*.html,*.xml,*.plist}]
 tab_width = 2
 
 [{*.markdown,*.md}]

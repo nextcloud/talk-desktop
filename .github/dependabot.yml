@@ -1,0 +1,8 @@
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: saturday
+    time: "03:00"
+    timezone: Europe/Berlin
+  open-pull-requests-limit: 10

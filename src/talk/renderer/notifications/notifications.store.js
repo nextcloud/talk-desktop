@@ -26,14 +26,14 @@
  * @todo this is mostly a copy. Should be reusing.
  */
 
+import { Howl } from 'howler'
 import { getRequestToken } from '@nextcloud/auth'
 import { listen } from '@nextcloud/notify_push'
 import { loadState } from '@nextcloud/initial-state'
+import { emit } from '@nextcloud/event-bus'
+import { generateFilePath } from '@nextcloud/router'
 import { getNotificationsData } from './notifications.service.js'
 import { appData } from '../../../app/AppData.js'
-import TalkRouter from '@talk/src/router/router.js'
-import { generateFilePath } from '@nextcloud/router'
-import { Howl } from 'howler'
 
 /**
  *
@@ -172,7 +172,6 @@ export function createNotificationStore() {
 		if (notification.app !== 'spreed') {
 			return
 		}
-		const [token, messageId] = notification.objectId.split('/')
 		const n = new Notification(notification.subject, {
 			title: notification.subject,
 			lang: appData.userMetadata.locale,
@@ -181,12 +180,17 @@ export function createNotificationStore() {
 			tag: notification.notificationId,
 		})
 		n.addEventListener('click', () => {
-			TalkRouter.push({
-				name: 'conversation',
-				params: { token },
-				hash: messageId && `#message_${messageId}`,
-			})
+			const event = {
+				cancelAction: false,
+				notification,
+				action: {
+					url: notification.link,
+					type: 'WEB',
+				},
+			}
 			window.TALK_DESKTOP.focusTalk()
+			// Talk will open the call from notification if necessary
+			emit('notifications:action:execute', event)
 		}, false)
 		playSound(notification.objectType === 'call')
 	}
@@ -210,6 +214,7 @@ export function createNotificationStore() {
 			if (state.backgroundFetching) {
 				for (const notification of newNotifications) {
 					showNativeNotification(notification)
+					emit('notifications:notification:received', { notification })
 				}
 			}
 			console.debug('Got notification data')

@@ -23,28 +23,45 @@ const path = require('node:path')
 const fs = require('node:fs/promises')
 const icongen = require('icon-gen')
 
-const originalPath = path.join(__dirname, './talk-icon-rounded.svg')
-const outputPath = path.join(__dirname, './icons')
+/**
+ * Generate all icons from original SVGs
+ *
+ * @return {Promise<void>}
+ */
+async function generateIcons() {
+	const originalPath = path.join(__dirname, '../img/talk-icon-rounded.svg')
+	const originalMacPath = path.join(__dirname, '../img/talk-icon-mac.svg')
+	const outputPath = path.join(__dirname, '../img/icons')
 
-icongen(originalPath, path.join(__dirname, './icons'), {
-	// Windows
-	ico: {
-		name: 'icon',
-		sizes: [16, 24, 32, 48, 256],
-	},
-	// Mac
-	icns: {
-		name: 'icon',
-		sizes: [16, 32, 64, 128, 256, 512, 1024],
-	},
-	// Linux (PNG)
-	favicon: {
-		name: 'icon',
-		pngSizes: [512],
-		icoSizes: [],
-	},
-})
-	.then(() => fs.rename(path.join(outputPath, 'icon512.png'), path.join(outputPath, 'icon.png')))
-	.then(() => fs.unlink(path.join(outputPath, 'favicon.ico')))
+	await icongen(originalPath, outputPath, {
+		// Windows
+		ico: {
+			name: 'icon',
+			sizes: [16, 24, 32, 48, 256],
+		},
+		// Linux (PNG)
+		favicon: {
+			name: 'icon',
+			pngSizes: [512],
+			icoSizes: [],
+		},
+	})
+
+	await icongen(originalMacPath, outputPath, {
+		// Mac
+		icns: {
+			name: 'icon',
+			sizes: [16, 32, 64, 128, 256, 512, 1024],
+		},
+	})
+
+	// Rename icon512.png -> icon.png
+	await fs.rename(path.join(outputPath, 'icon512.png'), path.join(outputPath, 'icon.png'))
+
+	// Remove unused favicon
+	await fs.unlink(path.join(outputPath, 'favicon.ico'))
+}
+
+generateIcons()
 	.then(() => console.log('✅ Done'))
 	.catch((err) => console.error(err))

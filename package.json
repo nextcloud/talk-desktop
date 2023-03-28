@@ -28,7 +28,7 @@
 		"make:windows": "electron-forge make --skip-package --platform=win32",
 		"make:all": "npm run make:linux && npm run make:mac && npm run make:windows",
 		"publish": "electron-forge publish",
-		"generate-icons": "node ./img/generate-icons.js",
+		"generate-icons": "node ./scripts/generate-icons.js",
 		"lint": "eslint --ext .js,.vue src/ --fix"
 	},
 	"dependencies": {

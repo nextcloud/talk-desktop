@@ -30,7 +30,7 @@ const icongen = require('icon-gen')
  */
 async function generateIcons() {
 	const originalPath = path.join(__dirname, '../img/talk-icon-rounded.svg')
-	const originalMacPath = path.join(__dirname, '../img/talk-icon-mac.svg')
+	const originalMacPath = path.join(__dirname, '../img/talk-icon-mac-shadow.svg')
 	const outputPath = path.join(__dirname, '../img/icons')
 
 	await icongen(originalPath, outputPath, {

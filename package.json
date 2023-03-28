@@ -59,7 +59,7 @@
 		"@vercel/webpack-asset-relocator-loader": "^1.7.3",
 		"babel-loader-exclude-node-modules-except": "^1.2.1",
 		"babel-plugin-add-module-exports": "^1.0.4",
-		"css-loader": "^6.7.2",
+		"css-loader": "^6.7.3",
 		"dotenv": "^16.0.3",
 		"electron": "21.2.2",
 		"electron-devtools-installer": "^3.2.0",

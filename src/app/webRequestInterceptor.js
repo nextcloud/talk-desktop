@@ -80,11 +80,14 @@ function enableWebRequestInterceptor(serverUrl, {
 		'Authorization',
 		'OCS-APIRequest',
 		'Content-Type',
+		'If-None-Match',
 		// DAV
 		// TODO: should we add any other WebDAV headers?
 		'Depth',
 	].join(', ')]
 	const EXPOSED_HEADERS = [[
+		// Common headers
+		'ETag',
 		// Nextcloud Talk custom Response Headers
 		'x-nextcloud-talk-modified-before',
 		'x-nextcloud-talk-hash',

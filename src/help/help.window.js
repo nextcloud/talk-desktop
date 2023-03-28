@@ -29,7 +29,7 @@ const { BrowserWindow } = require('electron')
  */
 function createHelpWindow(parentWindow) {
 	const WIDTH = 720
-	const HEIGHT = 500
+	const HEIGHT = 525
 	const TITLE = `About - ${BASE_TITLE}`
 	const window = new BrowserWindow({
 		title: TITLE,

@@ -42,15 +42,30 @@
 			rows="11"
 			readonly
 			@focus="$event.target.setSelectionRange(0, -1)" />
-		<p>This is a Preview version. Drawbacks and issues are in the repository.</p>
+		<p>
+			<NcButton type="secondary" wide @click="close">
+				<template #icon>
+					<MdiWindowClose />
+				</template>
+				Close
+			</NcButton>
+		</p>
 	</div>
 </template>
 
 <script>
+import MdiWindowClose from 'vue-material-design-icons/WindowClose.vue'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+
 import { appData } from '../../app/AppData.js'
 
 export default {
 	name: 'HelpApp',
+
+	components: {
+		MdiWindowClose,
+		NcButton,
+	},
 
 	inheritAttrs: false,
 
@@ -75,6 +90,26 @@ export default {
 				`OS: ${window.OS.version}`,
 				'----------------------------System report----------------------------',
 			].join('\n')
+		},
+	},
+
+	mounted() {
+		window.addEventListener('keyup', this.handleEscape)
+	},
+
+	beforeDestroy() {
+		window.removeEventListener('keyup', this.handleEscape)
+	},
+
+	methods: {
+		handleEscape(event) {
+			if (event.key === 'Escape') {
+				this.close()
+			}
+		},
+
+		close() {
+			window.close()
 		},
 	},
 }

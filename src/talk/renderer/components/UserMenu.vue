@@ -36,34 +36,34 @@
 				<UiMenu aria-label="Settings menu">
 					<UiMenuItem tag="a" :href="userProfileLink" target="_blank">
 						<div><strong>{{ user['display-name'] }}</strong></div>
-						<div>View profile</div>
+						<div>{{ t('talk_desktop', 'View profile') }}</div>
 					</UiMenuItem>
 					<UiMenuItem tag="button" @click.native="openUserStatusDialog">
 						<template #icon>
 							<UserStatusIcon status="online" />
 						</template>
 						<template #default>
-							Online
+							{{ t('talk_desktop', 'Online') }}
 						</template>
 					</UiMenuItem>
 					<UiMenuItem tag="button" @click.native="reload">
 						<template #icon>
 							<MdiReload />
 						</template>
-						Force reload
+						{{ t('talk_desktop', 'Force reload') }}
 					</UiMenuItem>
 					<UiMenuItem tag="a" :href="$options.packageInfo.bugs" target="_blank">
 						<template #icon>
 							<MdiBug />
 						</template>
-						Report a bug
+						{{ t('talk_desktop', 'Report a bug') }}
 					</UiMenuItem>
 					<UiMenuItem tag="a" :href="talkWebLink" target="_blank">
 						<template #icon>
 							<MdiWeb />
 						</template>
 						<template #default>
-							Open in Web-Browser
+							{{ t('talk_desktop', 'Open in Web-Browser') }}
 						</template>
 					</UiMenuItem>
 					<UiMenuItem tag="button" @click.native="showHelp">
@@ -71,7 +71,7 @@
 							<MdiInformationOutline />
 						</template>
 						<template #default>
-							About
+							{{ t('talk_desktop', 'About') }}
 						</template>
 					</UiMenuItem>
 					<UiMenuItem tag="button" @click.native="$emit('logout')">
@@ -79,7 +79,7 @@
 							<MdiPower />
 						</template>
 						<template #default>
-							Log out
+							{{ t('talk_desktop', 'Log out') }}
 						</template>
 					</UiMenuItem>
 				</UiMenu>

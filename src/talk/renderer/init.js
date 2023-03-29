@@ -50,7 +50,14 @@ export async function init() {
 			const { default: translationsBundle } = await import(`@talk/l10n/${appData.userMetadata.language}.json`)
 			register('spreed', translationsBundle.translations)
 		} catch (e) {
-			console.log(`Language pack "${appData.userMetadata.language}" not found...`)
+			console.log(`Language pack "${appData.userMetadata.language}" for spreed not found...`)
+		}
+
+		try {
+			const { default: translationsBundle } = await import(`../../../l10n/${appData.userMetadata.language}.json`)
+			register('talk_desktop', translationsBundle.translations)
+		} catch (e) {
+			console.log(`Language pack "${appData.userMetadata.language}" for talk_desktop not found...`)
 		}
 	}
 

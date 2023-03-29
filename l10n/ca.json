@@ -1,0 +1,7 @@
+{ "translations": {
+    "View profile" : "Visualitza el perfil",
+    "Report a bug" : "Informa d'un error",
+    "About" : "Sobre",
+    "Log out" : "Surt"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

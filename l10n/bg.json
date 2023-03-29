@@ -1,0 +1,7 @@
+{ "translations": {
+    "View profile" : "Преглед на профил",
+    "Report a bug" : "Докладване за грешка",
+    "About" : "Относно",
+    "Log out" : "Изход"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -1,0 +1,7 @@
+{ "translations": {
+    "View profile" : "Näytä profiili",
+    "Online" : "Online",
+    "Report a bug" : "Ilmoita viasta",
+    "About" : "Tietoja"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -1,0 +1,10 @@
+{ "translations": {
+    "View profile" : "View profile",
+    "Online" : "Online",
+    "Force reload" : "Force reload",
+    "Report a bug" : "Report a bug",
+    "Open in Web-Browser" : "Open in Web-Browser",
+    "About" : "About",
+    "Log out" : "Log out"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

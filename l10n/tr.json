@@ -1,0 +1,8 @@
+{ "translations": {
+    "View profile" : "Profili görüntüle",
+    "Online" : "Çevrimiçi",
+    "Report a bug" : "Hata bildirin",
+    "About" : "Hakkında",
+    "Log out" : "Oturumu kapat"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}

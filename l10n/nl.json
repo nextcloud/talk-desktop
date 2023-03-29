@@ -1,0 +1,7 @@
+{ "translations": {
+    "View profile" : "Bekijk profiel",
+    "Report a bug" : "Rapporteer een fout",
+    "About" : "Over",
+    "Log out" : "Uitloggen"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

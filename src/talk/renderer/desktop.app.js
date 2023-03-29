@@ -21,6 +21,10 @@
 
 import Vue from 'vue'
 import DesktopHeader from './DesktopHeader.vue'
+import { translate, translatePlural } from '@nextcloud/l10n'
+
+Vue.prototype.t = translate
+Vue.prototype.n = translatePlural
 
 /**
  * @param {import('VueRouter').Router} router - Vue Router instance

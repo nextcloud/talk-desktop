@@ -2,6 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "View profile" : "Ver perfil",
+    "Online" : "En línea",
+    "Force reload" : "Forzar recarga",
     "Report a bug" : "Notificar un error",
     "About" : "Acerca de",
     "Log out" : "Cerrar sersión"

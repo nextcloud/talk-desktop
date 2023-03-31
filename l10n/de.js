@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Talk Desktop" : "Talk Desktop",
     "View profile" : "Profil ansehen",
     "Online" : "Online",
     "Force reload" : "Anwendung neuladen",

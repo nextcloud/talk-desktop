@@ -1,7 +1,10 @@
 { "translations": {
+    "Talk Desktop" : "Talk masaüstü",
     "View profile" : "Profili görüntüle",
     "Online" : "Çevrimiçi",
+    "Force reload" : "Zorla yeniden yükle",
     "Report a bug" : "Hata bildirin",
+    "Open in Web-Browser" : "Tarayıcıda aç",
     "About" : "Hakkında",
     "Log out" : "Oturumu kapat"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"

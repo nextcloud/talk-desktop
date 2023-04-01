@@ -53,7 +53,7 @@
 		"@electron-forge/maker-zip": "^6.0.5",
 		"@electron-forge/plugin-webpack": "^6.0.4",
 		"@nextcloud/babel-config": "^1.0.0",
-		"@nextcloud/eslint-config": "^8.1.4",
+		"@nextcloud/eslint-config": "^8.2.1",
 		"@nextcloud/eslint-plugin": "^2.0.0",
 		"@nextcloud/webpack-vue-config": "^5.4.0",
 		"@vercel/webpack-asset-relocator-loader": "^1.7.3",

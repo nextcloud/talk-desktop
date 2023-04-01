@@ -65,7 +65,7 @@
 		"electron-devtools-installer": "^3.2.0",
 		"eslint": "^8.36.0",
 		"eslint-config-standard": "^17.0.0",
-		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-jsdoc": "^39.6.4",
 		"eslint-plugin-n": "^15.6.1",
 		"eslint-plugin-promise": "^6.1.1",

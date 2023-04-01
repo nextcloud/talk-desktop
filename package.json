@@ -55,7 +55,7 @@
 		"@nextcloud/babel-config": "^1.0.0",
 		"@nextcloud/eslint-config": "^8.2.1",
 		"@nextcloud/eslint-plugin": "^2.0.0",
-		"@nextcloud/webpack-vue-config": "^5.4.0",
+		"@nextcloud/webpack-vue-config": "^5.5.0",
 		"@vercel/webpack-asset-relocator-loader": "^1.7.3",
 		"babel-loader-exclude-node-modules-except": "^1.2.1",
 		"babel-plugin-add-module-exports": "^1.0.4",

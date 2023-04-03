@@ -25,6 +25,7 @@ const {
 	Menu,
 } = require('electron')
 const path = require('path')
+const { isMac, isWindows } = require('../shared/os.utils')
 
 /**
  * Setup tray icon
@@ -32,7 +33,10 @@ const path = require('path')
  * @param clickCb
  */
 function setupTrayIcon(clickCb) {
-	const tray = new Tray(path.join(__dirname, '..', '..', 'img', 'icons', 'icon.png'))
+	const tray = new Tray(path.join(
+		__dirname, '..', '..', 'img', 'icons',
+		isMac() ? 'TrayIconTemplate.png' : isWindows() ? 'icon.ico' : 'icon.png',
+	))
 	tray.setToolTip(app.name)
 	tray.setContextMenu(Menu.buildFromTemplate([
 		{

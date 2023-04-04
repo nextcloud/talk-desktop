@@ -32,7 +32,7 @@ const packageJson = require('../../package.json')
  */
 async function getLatestReleaseVersion() {
 	try {
-		const response = await fetch('https://api.github.com/repos/nextcloud/talk-desktop/releases/latest', {
+		const response = await fetch('https://api.github.com/repos/nextcloud-releases/talk-desktop/releases/latest', {
 			headers: {
 				Accept: 'application/vnd.github+json',
 				'X-GitHub-Api-Version': '2022-11-28',
@@ -60,7 +60,7 @@ function notifyAboutNewVersion(version) {
 		body: `Nextcloud Talk ${version} is now available to download from the release page. Click to open the page.`,
 	})
 	notification.on('click', () => {
-		shell.openExternal('https://github.com/nextcloud/talk-desktop/releases/latest')
+		shell.openExternal('https://github.com/nextcloud-releases/talk-desktop/releases/latest')
 	})
 	notification.show()
 }

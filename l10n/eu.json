@@ -1,6 +1,10 @@
 { "translations": {
+    "Talk Desktop" : "Talk Mahaigaina",
     "View profile" : "Ikusi profila",
+    "Online" : "Linean",
+    "Force reload" : "Behartu birkargatzea",
     "Report a bug" : "Jakinarazi errore bat",
+    "Open in Web-Browser" : "Ireki web nabigatzailean",
     "About" : "Honi buruz",
     "Log out" : "Saioa itxi"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

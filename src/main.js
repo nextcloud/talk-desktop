@@ -49,7 +49,7 @@ if (!app.requestSingleInstanceLock()) {
 }
 
 /**
- * Check for a new version available to download from GitHub every hour
+ * Schedule check for a new version available to download from GitHub
  */
 setupReleaseNotificationScheduler(2 * 60)
 

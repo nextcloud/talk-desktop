@@ -20,27 +20,17 @@
  */
 
 const path = require('node:path')
-const {
-	app,
-	dialog,
-	BrowserWindow,
-	ipcMain,
-} = require('electron')
-const {
-	default: installExtension,
-	VUEJS3_DEVTOOLS,
-} = require('electron-devtools-installer')
-const { createTalkWindow } = require('./talk/talk.window.js')
+const { app, dialog, BrowserWindow, ipcMain } = require('electron')
+const { default: installExtension, VUEJS3_DEVTOOLS } = require('electron-devtools-installer')
+const { setupMenu } = require('./app/app.menu.js')
+const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
+const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
 const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
 const { openLoginWebView } = require('./authentication/login.window.js')
-const { createWelcomeWindow } = require('./welcome/welcome.window.js')
-const {
-	enableWebRequestInterceptor,
-	disableWebRequestInterceptor,
-} = require('./app/webRequestInterceptor.js')
-const { getOs, isLinux } = require('./shared/os.utils.js')
-const { setupMenu } = require('./app/app.menu.js')
 const { createHelpWindow } = require('./help/help.window.js')
+const { getOs, isLinux } = require('./shared/os.utils.js')
+const { createTalkWindow } = require('./talk/talk.window.js')
+const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 
 /**
  * Separate production and development instances, including application and user data
@@ -49,6 +39,7 @@ if (process.env.NODE_ENV === 'development') {
 	app.setName('Nextcloud Talk (dev)')
 	app.setPath('userData', path.join(app.getPath('appData'), 'Nextcloud Talk (dev)'))
 }
+app.setAppUserModelId(app.getName())
 
 /**
  * Only one instance is allowed at time
@@ -56,6 +47,11 @@ if (process.env.NODE_ENV === 'development') {
 if (!app.requestSingleInstanceLock()) {
 	app.quit()
 }
+
+/**
+ * Schedule check for a new version available to download from GitHub
+ */
+setupReleaseNotificationScheduler(2 * 60)
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // if (require('electron-squirrel-startup')) {

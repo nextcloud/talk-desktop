@@ -25,7 +25,7 @@ const { fetch } = require('undici')
 const packageJson = require('../../package.json')
 
 /**
- * Request latest release with GitHub REST API and get version from tag name
+ * Request the latest release with GitHub REST API and get version from tag name
  *
  * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
  * @return {Promise<string>} Version tag, for example, v0.2.1
@@ -50,7 +50,7 @@ async function getLatestReleaseVersion() {
 }
 
 /**
- * Show native notification about new version. Opens releases page on click
+ * Show native notification about new version. It opens the releases page on click
  *
  * @param {string} version - New version
  */

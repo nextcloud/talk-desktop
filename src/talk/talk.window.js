@@ -24,6 +24,8 @@ const {
 	windowOpenExternalLinkHandler,
 	willNavigateExternalLinkHandler,
 } = require('../app/externalLinkHandlers.js')
+const { applyContextMenu } = require('../app/applyContextMenu.js')
+const { applyDownloadNotification } = require('../app/applyDownloadNotification.js')
 const { applyWheelZoom } = require('../app/applyWheelZoom.js')
 
 /**
@@ -65,6 +67,8 @@ function createTalkWindow() {
 		window.show()
 	})
 
+	applyContextMenu(window)
+	applyDownloadNotification(window)
 	applyWheelZoom(window)
 
 	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)

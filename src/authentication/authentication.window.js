@@ -21,6 +21,7 @@
 
 const { BrowserWindow } = require('electron')
 const { BASE_TITLE } = require('../constants.js')
+const { applyContextMenu } = require('../app/applyContextMenu.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -47,6 +48,8 @@ function createAuthenticationWindow() {
 	// if (process.env.NODE_ENV === 'production') {
 	// window.removeMenu()
 	// }
+
+	applyContextMenu(window)
 
 	window.loadURL(AUTHENTICATION_WINDOW_WEBPACK_ENTRY)
 

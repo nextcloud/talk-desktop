@@ -24,6 +24,7 @@ const { BrowserWindow } = require('electron')
 const { BASE_TITLE } = require('../constants.js')
 const { parseLoginRedirectUrl } = require('./login.service.js')
 const { getOsTitle } = require('../shared/os.utils.js')
+const { applyContextMenu } = require('../app/applyContextMenu.js')
 
 /**
  * Open a web-view modal window with Nextcloud Server login page
@@ -89,6 +90,8 @@ function openLoginWebView(parentWindow, serverUrl) {
 				}
 			}
 		})
+
+		applyContextMenu(window)
 
 		window.on('close', () => {
 			resolve(new Error('Login window was closed'))

@@ -51,7 +51,9 @@ if (!app.requestSingleInstanceLock()) {
 /**
  * Schedule check for a new version available to download from GitHub
  */
-setupReleaseNotificationScheduler(2 * 60)
+if (process.env.NODE_ENV === 'production') {
+	setupReleaseNotificationScheduler(2 * 60)
+}
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // if (require('electron-squirrel-startup')) {

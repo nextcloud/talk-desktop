@@ -25,6 +25,13 @@ const { fetch } = require('undici')
 const packageJson = require('../../package.json')
 
 /**
+ * Cached new version. If a new version was found we may stop requesting a new version.
+ *
+ * @type {string|undefined}
+ */
+let cachedNewLatestVersion
+
+/**
  * Request the latest release with GitHub REST API and get version from tag name
  *
  * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
@@ -68,21 +75,31 @@ function notifyAboutNewVersion(version) {
 /**
  * Check if there is a new Nextcloud Talk
  *
- * @param {boolean} [showNotification=false] Show native notification if new version is available
- * @return {Promise<boolean>} true if new version was found
+ * @param {object} options options
+ * @param {boolean} [options.showNotification=false] Show native notification if new version is available
+ * @param {boolean} [options.forceRequest=false] Force request even if there is a cached new version
+ * @return {Promise<boolean>} true if there is a new version
  */
-async function checkForNewVersion(showNotification = false) {
-	const latest = await getLatestReleaseVersion()
-	// Something goes wrong. No worries, we will try again later.
+async function checkForNewVersion({ showNotification = false, forceRequest = false }) {
+	// Request new version or get cached
+	const latest = (!forceRequest && cachedNewLatestVersion) ? cachedNewLatestVersion : await getLatestReleaseVersion()
+
+	// Something goes wrong... No worries, we will try again later.
 	if (!latest) {
 		return false
 	}
+
 	if (semver.lte(latest, packageJson.version)) {
 		return false
 	}
+
+	// There is a new version! Now we may cache it and stop requesting a new version
+	cachedNewLatestVersion = latest
+
 	if (showNotification) {
 		notifyAboutNewVersion(latest)
 	}
+
 	return true
 }
 
@@ -100,10 +117,10 @@ function setupReleaseNotificationScheduler(intervalInMin = 60) {
 	if (schedulerIntervalId !== undefined) {
 		stopReleaseNotificationScheduler()
 	}
-	checkForNewVersion(true)
+	checkForNewVersion({ showNotification: true })
 	const MS_IN_MIN = 60 * 1000
 	schedulerIntervalId = setInterval(() => {
-		checkForNewVersion(true)
+		checkForNewVersion({ showNotification: true })
 	}, intervalInMin * MS_IN_MIN)
 }
 

@@ -63,12 +63,20 @@ function enableWebRequestInterceptor(serverUrl, {
 	 */
 	function persistCookies(details) {
 		// OPTIONS will have new session - ignore
-		if (details.method !== 'OPTIONS' && details.responseHeaders['set-cookie']) {
-			for (const cookie of details.responseHeaders['set-cookie']) {
+		if (details.method === 'OPTIONS') {
+			return
+		}
+
+		// Set-Cookie header may have any casing
+		const setCookieRE = /set-cookie/i
+		const setCookieHeaders = Object.keys(details.responseHeaders).filter((header) => setCookieRE.test(header))
+		// Persist all cookies
+		for (const setCookieHeader of setCookieHeaders) {
+			for (const cookie of details.responseHeaders[setCookieHeader]) {
 				const [name, value] = cookie.split('=')
 				cookiesStorage[name] = value.split(';')[0]
 			}
-			delete details.responseHeaders['set-cookie']
+			delete details.responseHeaders[setCookieHeader]
 		}
 	}
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.3.1 - 2023-04-16
+
+### Fixes
+
+- Fix issue with opening a chat [#141](https://github.com/nextcloud/talk-desktop/pull/141)
+- Fix GitHub rate limit error on development [#125](https://github.com/nextcloud/talk-desktop/pull/125) 
+
+### Development notes
+
+- Now Nextcloud Talk can be built with [Nextcloud Talk `stable26` branch](https://github.com/nextcloud/spreed/tree/stable26)
+
 ## v0.3.0 - 2023-04-06
 
 ### Features

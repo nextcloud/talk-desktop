@@ -2,7 +2,11 @@
 
 > Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling ✨
 
-## Prerequisites
+## 📥 Download Binaries
+
+### https://github.com/nextcloud-releases/talk-desktop/releases
+
+## 🏗️ Prerequisites
 
 - [Nextcloud Server](https://github.com/nextcloud/server) version 26 only.
 - [Nextcloud Talk](https://github.com/nextcloud/spreed) version 16 only.
@@ -42,7 +46,7 @@ Clone `nextcloud/spreed` on `desktop-stable26` branch and install dependencies:
 
 ```bash
 # Clone in the repository root
-git clone -b desktop-stable26 https://github.com/nextcloud/spreed
+git clone -b stable26 https://github.com/nextcloud/spreed
 
 # Install dependencies
 cd ./spreed/
@@ -54,7 +58,7 @@ cd ../
 
 #### `nextcloud/spreed` is already cloned?
 
-1. Switch to `desktop-stable26` branch.
+1. Switch to `stable26` branch.
 2. Set `TALK_PATH` ENV variable or edit `.env` file:
    ```dotenv
    TALK_PATH=/path/to/nextcloud-dev/apps/spreed/

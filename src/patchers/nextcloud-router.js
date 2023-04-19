@@ -23,9 +23,7 @@
 
 import { getRootUrl, generateFilePath as _generateFilePath } from '../../node_modules/@nextcloud/router/dist/index.js'
 
-export {
-	linkTo, imagePath, getRootUrl, generateUrl,
-} from '../../node_modules/@nextcloud/router/dist/index.js'
+export { linkTo, getRootUrl, generateUrl } from '../../node_modules/@nextcloud/router/dist/index.js'
 
 /**
  * @param {string} s - String with "{token}" blocks
@@ -52,13 +50,40 @@ export function generateRemoteUrl(service) {
 
 export function generateFilePath(app, type, file) {
 	/**
-	 * By default, Talk requests sounds as a file from server assets using generateFilePath
-	 * Desktop app should use path to the local file
+	 * By default, Talk requests images and sounds as a file from server assets using generateFilePath
+	 * Desktop app should use path to the local file in the build
 	 */
-	if (file.endsWith('.ogg')) {
-		// Keep .ogg implicitly so Webpack adds only .ogg files to the build using require context
-		return require(`../../sounds/${file.slice(0, -4)}.ogg`)
+
+	const filename = file.substring(0, file.lastIndexOf('.'))
+	const ext = file.substring(file.lastIndexOf('.'))
+
+	if (app === 'spreed' && type === 'img') {
+		// Implicitly keep the extension so Webpack adds only this type of files to the build using require context
+		const requiresByExt = {
+			'.svg': () => require(`@talk/img/${filename}.svg`),
+			'.png': () => require(`@talk/img/${filename}.png`),
+			'.jpg': () => require(`@talk/img/${filename}.jpg`),
+			'.jpeg': () => require(`@talk/img/${filename}.jpeg`),
+			'.webp': () => require(`@talk/img/${filename}.webp`),
+			// Note: spreed uses img for both images and sounds
+			'.ogg': () => require(`@talk/img/${filename}.ogg`),
+		}
+		if (requiresByExt[ext]) {
+			return requiresByExt[ext]()
+		}
+	} else if (app === 'notifications' && ext === '.ogg') {
+		// For now notifications sounds are just a copy of the notifications app sounds
+		return require(`../../sounds/${filename}.ogg`)
 	}
 
 	return getRootUrl() + _generateFilePath(app, type, file)
+}
+
+// Copy of original function, but using patched generateFilePath
+export function imagePath(app, file) {
+	if (file.indexOf('.') === -1) {
+		return generateFilePath(app, 'img', file + '.svg')
+	}
+
+	return generateFilePath(app, 'img', file)
 }

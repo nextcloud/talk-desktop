@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.3.2 - 2023-04-20
+
+### Fixes
+
+- Fix importing images to support video backgrounds in Nextcloud Talk 17
+
+### Build-in Talk update
+
+Built-in Talk in binaries is updated to 16.0.3. Talk changelog: https://github.com/nextcloud/spreed/releases/tag/v16.0.3
+
 ## v0.3.1 - 2023-04-16
 
 ### Fixes

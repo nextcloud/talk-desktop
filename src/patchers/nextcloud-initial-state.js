@@ -46,6 +46,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
 			attachment_folder_free_space: userMetadata?.quota?.free ?? 0, // TODO: Is User's Quota free equal to attachment_folder_free_space
 			enable_matterbridge: false, // TODO: Missed in Capabilities. Is it a problem?
+			user_group_ids: userMetadata.groups,
 		},
 		theming: {
 			background: capabilities?.theming?.background,

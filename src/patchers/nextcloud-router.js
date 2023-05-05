@@ -76,7 +76,7 @@ export function generateFilePath(app, type, file) {
 		return require(`../../sounds/${filename}.ogg`)
 	}
 
-	return getRootUrl() + _generateFilePath(app, type, file)
+	return _generateFilePath(app, type, file)
 }
 
 // Copy of original function, but using patched generateFilePath

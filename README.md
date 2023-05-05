@@ -8,8 +8,8 @@
 
 ## 🏗️ Prerequisites
 
-- [Nextcloud Server](https://github.com/nextcloud/server) version 26 only.
-- [Nextcloud Talk](https://github.com/nextcloud/spreed) version 16 only.
+- [Nextcloud Server](https://github.com/nextcloud/server) version 26 or higher.
+- [Nextcloud Talk](https://github.com/nextcloud/spreed) version 16 or higher.
 
 ## 👾 Drawbacks
 
@@ -46,7 +46,7 @@ Clone `nextcloud/spreed` on `desktop-stable26` branch and install dependencies:
 
 ```bash
 # Clone in the repository root
-git clone -b stable26 https://github.com/nextcloud/spreed
+git clone https://github.com/nextcloud/spreed
 
 # Install dependencies
 cd ./spreed/
@@ -58,11 +58,10 @@ cd ../
 
 #### `nextcloud/spreed` is already cloned?
 
-1. Switch to `stable26` branch.
-2. Set `TALK_PATH` ENV variable or edit `.env` file:
-   ```dotenv
-   TALK_PATH=/path/to/nextcloud-dev/apps/spreed/
-   ```
+Set `TALK_PATH` ENV variable or edit `.env` file:
+ ```dotenv
+TALK_PATH=/path/to/nextcloud-dev/apps/spreed/
+ ```
 
 ### Development
 

@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.0 - 2023-05-09
+
+### Fixes
+
+- Fix doubling webroot cause failing loading the default file icon [#173](https://github.com/nextcloud/talk-desktop/pull/173)
+- Allow MKCOL requests for creating virtual bg folder [#174](https://github.com/nextcloud/talk-desktop/pull/174)
+- Fix initial state patching to add highlight own group mentions support [#171](https://github.com/nextcloud/talk-desktop/pull/171)
+
+### Build-in Talk update
+
+Built-in Talk in binaries is updated to new major 17.0.0-beta.1. Talk changelog: https://github.com/nextcloud/spreed/releases/tag/v17.0.0-beta.1
+
 ## v0.3.2 - 2023-04-20
 
 ### Fixes

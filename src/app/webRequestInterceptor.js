@@ -81,7 +81,7 @@ function enableWebRequestInterceptor(serverUrl, {
 	}
 
 	const ALLOWED_ORIGIN = [process.env.NODE_ENV === 'production' ? 'file://' : `${DEV_SERVER_ORIGIN}`]
-	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE, PROPFIND']
+	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE, PROPFIND, MKCOL'] // Includes WebDAV
 	const ALLOWED_CREDENTIALS_TRUE = ['true']
 	const ALLOWED_HEADERS = [[
 		// Common headers
@@ -90,7 +90,6 @@ function enableWebRequestInterceptor(serverUrl, {
 		'Content-Type',
 		'If-None-Match',
 		// DAV
-		// TODO: should we add any other WebDAV headers?
 		'Depth',
 	].join(', ')]
 	const EXPOSED_HEADERS = [[

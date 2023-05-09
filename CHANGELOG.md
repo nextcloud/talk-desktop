@@ -10,7 +10,7 @@
 
 ### Build-in Talk update
 
-Built-in Talk in binaries is updated to new major 17.0.0-beta.1. Talk changelog: https://github.com/nextcloud/spreed/releases/tag/v17.0.0-beta.1
+Built-in Talk in binaries is updated to new major 17.0.0-beta.2. Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
 
 ## v0.3.2 - 2023-04-20
 

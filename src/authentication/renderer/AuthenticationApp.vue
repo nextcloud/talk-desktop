@@ -106,8 +106,9 @@ export default {
 	computed: {
 		serverUrl() {
 			const addHTTPS = (url) => url.startsWith('http') ? url : `https://${url}`
+			const removeIndexPhp = (url) => url.includes('/index.php') ? url.slice(0, url.indexOf('/index.php')) : url
 			const removeTrailingSlash = (url) => url.endsWith('/') ? url.slice(0, -1) : url
-			return removeTrailingSlash(addHTTPS(this.rawServerUrl)).trim()
+			return removeTrailingSlash(removeIndexPhp(addHTTPS(this.rawServerUrl))).trim()
 		},
 	},
 

@@ -42,7 +42,7 @@ function parseLoginRedirectUrl(url) {
 	}
 	return {
 		server: parsed[1],
-		user: decodeURIComponent(parsed[2]),
+		user: decodeURIComponent(parsed[2].replaceAll('+', ' ')),
 		password: parsed[3],
 	}
 }

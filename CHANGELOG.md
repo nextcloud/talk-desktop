@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.7.0 - 2023-06-27
+
+### Build-in Talk update
+
+Built-in Talk in binaries is updated to 17.0.1. Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
+
+### Features
+
+- Allow to log in with a copy-pasted URL from browser [#204](https://github.com/nextcloud/talk-desktop/pull/204)
+
+### Fixes
+
+- Fix capabilities update only with re-login [#198](https://github.com/nextcloud/talk-desktop/issues/198)
+- Fix login for users with a space in userid [#199](https://github.com/nextcloud/talk-desktop/issues/199)
+- Urldecode the app password [#203](https://github.com/nextcloud/talk-desktop/pull/203)
+
 ## v0.6.0 - 2023-05-22
 
 ### Build-in Talk update

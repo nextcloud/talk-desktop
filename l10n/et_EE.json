@@ -1,4 +1,6 @@
 { "translations": {
+    "View profile" : "Vaata profiili",
+    "Online" : "Online",
     "Report a bug" : "Teata veast"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

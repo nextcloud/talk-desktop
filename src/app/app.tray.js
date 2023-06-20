@@ -25,14 +25,14 @@ const {
 	Menu,
 } = require('electron')
 const path = require('path')
-const { isMac, isWindows } = require('../shared/os.utils')
+const { isMac, isWindows } = require('../shared/os.utils.js')
 
 /**
- * Setup tray icon
+ * Setup tray with an icon that provides a context menu.
  *
- * @param clickCb
+ * @param {object} options Object with one property 'click' which is a function that will be called when a user clicks the tray icon or the 'Open' tray menu item.
  */
-function setupTrayIcon(clickCb) {
+function setupTray(options) {
 	const tray = new Tray(path.join(
 		__dirname, '..', '..', 'img', 'icons',
 		isMac() ? 'TrayIconTemplate.png' : isWindows() ? 'icon.ico' : 'icon.png',
@@ -40,15 +40,18 @@ function setupTrayIcon(clickCb) {
 	tray.setToolTip(app.name)
 	tray.setContextMenu(Menu.buildFromTemplate([
 		{
-			label: 'Quit',
-			click: () => app.quit(),
+			label: 'Open',
+			click: () => options.click(),
+		},
+		{
+			role: 'quit',
 		},
 	]))
 	tray.on('click', () => {
-		clickCb()
+		options.click()
 	})
 }
 
 module.exports = {
-	setupTrayIcon,
+	setupTray,
 }

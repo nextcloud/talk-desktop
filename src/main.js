@@ -31,7 +31,7 @@ const { createHelpWindow } = require('./help/help.window.js')
 const { getOs, isLinux } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
-const { setupTrayIcon } = require('./app/app.tray.js')
+const { setupTray } = require('./app/app.tray.js')
 
 /**
  * Separate production and development instances, including application and user data
@@ -98,7 +98,7 @@ app.whenReady().then(async () => {
 	app.on('second-instance', () => focusMainWindow())
 
 	/**
-	 * Allow
+	 * Allow to quit the app if requested. It minimizes to tray otherwise.
 	 */
 	app.on('before-quit', function() { isAppQuitting = true })
 
@@ -170,9 +170,9 @@ app.whenReady().then(async () => {
 		}
 
 		// Minimize to tray, do not quit unless quitting is explicitly requested
-		mainWindow.on('close', evt => {
+		mainWindow.on('close', event => {
 			if (!isAppQuitting) {
-				evt.preventDefault()
+				event.preventDefault()
 				mainWindow.hide()
 			}
 		})
@@ -209,8 +209,8 @@ app.whenReady().then(async () => {
 		createHelpWindow(mainWindow)
 	})
 
-	setupTrayIcon(() => {
-		mainWindow.show()
+	setupTray({
+		click: () => mainWindow.show(),
 	})
 
 	// On OS X it's common to re-create a window in the app when the

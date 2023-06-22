@@ -44,6 +44,35 @@ process.env.npm_package_version = talkPackage.version
 const nextcloudWebpackConfig = require('@nextcloud/webpack-vue-config')
 const commonTalkWebpackConfig = require(`${TALK_PATH}/webpack.common.config`)
 
+/**
+ * Create webpack aliases config to patch a package
+ *
+ * @param {string} packageName - name of the package to patch, for example, @nextcloud/axios
+ * @return {Object<string, string>} webpack.resolve.alice config object with at most 3 aliases:
+ *                                  - Alias from package to the patcher (e.g. @nextcloud/axios)
+ *                                  - Alias to the original module in spreed (e.g. @talk-modules--@nextcloud/axios)
+ *                                  - Alias to the original module in talk-desktop (e.g. @desktop-modules--@nextcloud/axios)
+ */
+function createPatcherAliases(packageName) {
+	// Try to resolve a package. If it throws then there is no such package, do not create an alias
+	let talkModulePath = false
+	try {
+		talkModulePath = require.resolve(packageName, { paths: [TALK_PATH] })
+	} catch {}
+
+	let desktopModulePath = false
+	try {
+		desktopModulePath = require.resolve(packageName)
+	} catch {}
+
+	// webpack.resolve.aliases
+	return {
+		[`${packageName}$`]: path.resolve(__dirname, `src/patchers/${packageName}.js`),
+		[`@talk-modules--${packageName}$`]: talkModulePath,
+		[`@desktop-modules--${packageName}$`]: desktopModulePath,
+	}
+}
+
 const merge = mergeWithRules({
 	module: {
 		rules: {
@@ -85,11 +114,11 @@ module.exports = merge(commonTalkWebpackConfig, {
 	resolve: {
 		alias: {
 			'@talk': TALK_PATH,
-			'@nextcloud/initial-state$': path.resolve(__dirname, 'src/patchers/nextcloud-initial-state.js'),
-			'@nextcloud/axios$': path.resolve(__dirname, 'src/patchers/nextcloud-axios.js'),
-			'@nextcloud/router$': path.resolve(__dirname, 'src/patchers/nextcloud-router.js'),
-			'@nextcloud/auth$': path.resolve(__dirname, 'src/patchers/nextcloud-auth.js'),
-			'@nextcloud/notify_push$': path.resolve(__dirname, 'src/patchers/nextcloud-notify_push.js'),
+			...createPatcherAliases('@nextcloud/initial-state'),
+			...createPatcherAliases('@nextcloud/axios'),
+			...createPatcherAliases('@nextcloud/router'),
+			...createPatcherAliases('@nextcloud/auth'),
+			...createPatcherAliases('@nextcloud/notify_push'),
 		},
 	},
 

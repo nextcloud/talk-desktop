@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { loadState } from './nextcloud-initial-state.js'
+import { loadState } from '@nextcloud/initial-state'
 import { appData } from '../app/AppData.js'
 
 export const OC = {

@@ -1,9 +1,9 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -21,9 +21,9 @@
 
 /* eslint-disable jsdoc/require-jsdoc */
 
-import { getRootUrl, generateFilePath as _generateFilePath } from '../../node_modules/@nextcloud/router/dist/index.js'
+import { getRootUrl, generateFilePath as _generateFilePath } from '@desktop-modules--@nextcloud/router'
 
-export { linkTo, getRootUrl, generateUrl } from '../../node_modules/@nextcloud/router/dist/index.js'
+export { linkTo, getRootUrl, generateUrl } from '@desktop-modules--@nextcloud/router'
 
 /**
  * @param {string} s - String with "{token}" blocks
@@ -73,7 +73,7 @@ export function generateFilePath(app, type, file) {
 		}
 	} else if (app === 'notifications' && ext === '.ogg') {
 		// For now notifications sounds are just a copy of the notifications app sounds
-		return require(`../../sounds/${filename}.ogg`)
+		return require(`../../../sounds/${filename}.ogg`)
 	}
 
 	return _generateFilePath(app, type, file)

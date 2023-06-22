@@ -24,7 +24,7 @@ import { appData } from '../app/AppData.js'
 export {
 	getRequestToken,
 	onRequestTokenUpdate,
-} from '@talk/node_modules/@nextcloud/auth/dist/index.esm.js'
+} from '@talk/node_modules/@nextcloud/auth/dist/index.es.mjs'
 
 /**
  *

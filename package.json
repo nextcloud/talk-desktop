@@ -48,7 +48,7 @@
     "vue-material-design-icons": "^5.2.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.21.8",
+    "@babel/eslint-parser": "^7.22.5",
     "@electron-forge/cli": "^6.1.1",
     "@electron-forge/maker-deb": "^6.1.1",
     "@electron-forge/maker-rpm": "^6.1.1",

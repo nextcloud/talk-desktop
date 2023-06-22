@@ -45,6 +45,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 			height: HEIGHT,
 			minWidth: WIDTH,
 			minHeight: HEIGHT,
+			useContentSize: true,
 			resizable: true,
 			center: true,
 			fullscreenable: false,

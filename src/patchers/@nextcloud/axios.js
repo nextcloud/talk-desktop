@@ -1,9 +1,9 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import axios from '../../node_modules/@nextcloud/axios/dist/index.esm.js'
+import axios from '@desktop-modules--@nextcloud/axios'
 
 axios.interceptors.request.use((config) => {
 	config.withCredentials = true

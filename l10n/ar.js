@@ -5,7 +5,7 @@ OC.L10N.register(
     "View profile" : "عرض الملف الشخصي",
     "Online" : "متصل على الخط",
     "Force reload" : "إفرض إعادة التحميل",
-    "Report a bug" : "الإبلاغ عن عِلّة",
+    "Report a bug" : "الإبلاغ عن خطإٍ",
     "Open in Web-Browser" : "إفتح في مستعرض الوب",
     "About" : "حول",
     "Log out" : "خروج"

@@ -14,6 +14,7 @@ module.exports = {
 		HELP_WINDOW_WEBPACK_ENTRY: 'readonly',
 		HELP_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
 		WELCOME_WINDOW_WEBPACK_ENTRY: 'readonly',
+		WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
 		// Build constants
 		IS_DESKTOP: 'readonly',
 	},

@@ -1,9 +1,9 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2022 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -35,6 +35,9 @@ function createWelcomeWindow() {
 		movable: false,
 		titleBarStyle: 'hidden',
 		show: false,
+		webPreferences: {
+			preload: WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY,
+		},
 	})
 
 	window.loadURL(WELCOME_WINDOW_WEBPACK_ENTRY)

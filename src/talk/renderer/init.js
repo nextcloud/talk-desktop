@@ -1,9 +1,9 @@
 /*
- * @copyright Copyright (c) 2023 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -61,10 +61,27 @@ export async function init() {
 		}
 	}
 
-	// Get Talk's router
+	// Get Talk's router and store
 	const { default: router } = await import('@talk/src/router/router.js')
+	const { default: store } = await import('@talk/src/store/index.js')
+
+	// If there is a talkHash - set it before the app start
+	if (appData.talkHash) {
+		await store.dispatch('setNextcloudTalkHash', appData.talkHash)
+	}
+	// Subscribe store to react on talk hash update
+	store.subscribe((mutation, state) => {
+		if (mutation.type === 'setInitialNextcloudTalkHash') {
+			appData.setTalkHash(state.talkHashStore.initialNextcloudTalkHash).persist()
+		} else if (mutation.type === 'markNextcloudTalkHashDirty') {
+			appData.setTalkHashDirty(true).persist()
+			// TODO: make soft restart?
+			window.TALK_DESKTOP.relaunch()
+		}
+	})
 
 	return {
 		router,
+		store,
 	}
 }

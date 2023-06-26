@@ -1,9 +1,9 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2022 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -32,23 +32,99 @@ export class AppData {
 		desktop: null,
 	}
 
+	talkHash = null
+	talkHashDirty = false
+
 	credentials = null
 	storageKey = 'AppData'
 
+	/**
+	 * Persist appData to LocalStorage
+	 */
 	persist() {
-		localStorage.setItem(this.storageKey, JSON.stringify({
-			serverUrl: this.serverUrl,
-			userMetadata: this.userMetadata,
-			capabilities: this.capabilities,
-			version: this.version,
-			credentials: this.credentials,
-		}))
+		localStorage.setItem(this.storageKey, JSON.stringify(this.toJSON()))
 	}
 
+	/**
+	 * Restore appData from LocalStorage
+	 *
+	 * @return {AppData} this
+	 */
 	restore() {
-		Object.assign(this, JSON.parse(localStorage.getItem(this.storageKey)))
+		try {
+			const parsed = JSON.parse(localStorage.getItem(this.storageKey))
+			if (parsed) {
+				this.fromJSON(parsed)
+			}
+		} catch (error) {
+			// Most likely parsing JSON error
+			console.error('Error on appData restore', error)
+		}
+		return this
 	}
 
+	/**
+	 * Convert appData to plain object to serialize to JSON
+	 *
+	 * @return {object}
+	 */
+	toJSON() {
+		return {
+			serverUrl: appData.serverUrl,
+			userMetadata: appData.userMetadata,
+			capabilities: appData.capabilities,
+			version: appData.version,
+			credentials: appData.credentials,
+			talkHash: appData.talkHash,
+			talkHashDirty: appData.talkHashDirty,
+		}
+	}
+
+	/**
+	 * Set appData values from plain object
+	 *
+	 * @param {object} obj plain object
+	 * @return {AppData} this
+	 */
+	fromJSON(obj) {
+		this.serverUrl = obj.serverUrl
+		this.userMetadata = obj.userMetadata
+		this.capabilities = obj.capabilities
+		this.version = obj.version
+		this.credentials = obj.credentials
+		this.talkHash = obj.talkHash
+		this.talkHashDirty = obj.talkHashDirty
+		return this
+	}
+
+	/**
+	 * Set TalkHash and reset dirty flag
+	 *
+	 * @param {string} hash new hash
+	 * @return {AppData} this
+	 */
+	setTalkHash(hash) {
+		if (this.talkHash) {
+			this.talkHashDirty = true
+		}
+		this.talkHash = hash
+		return this
+	}
+
+	/**
+	 * @param {boolean} isDirty is talk hash dirty
+	 * @return {AppData} this
+	 */
+	setTalkHashDirty(isDirty) {
+		this.talkHashDirty = isDirty
+		return this
+	}
+
+	/**
+	 * Reset appData
+	 *
+	 * @return {AppData} this
+	 */
 	reset() {
 		Object.assign(this, {
 			serverUrl: null,
@@ -61,8 +137,14 @@ export class AppData {
 			},
 			credentials: null,
 		})
+		return this
 	}
 
 }
 
+/**
+ * Global application's appData
+ *
+ * @type {AppData}
+ */
 export const appData = new AppData()

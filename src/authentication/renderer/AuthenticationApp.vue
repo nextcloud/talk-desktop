@@ -1,9 +1,9 @@
 <!--
-  - @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+  - @copyright Copyright (c) 2022 Grigorii Shartsev <me@shgk.me>
   -
-  - @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+  - @author Grigorii Shartsev <me@shgk.me>
   -
-  - @license GNU AGPL version 3 or any later version
+  - @license AGPL-3.0-or-later
   -
   - This program is free software: you can redistribute it and/or modify
   - it under the terms of the GNU Affero General Public License as
@@ -74,9 +74,10 @@ import MdiArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
-import { getCapabilities, getCurrentUserData } from '../../shared/ocs.service.js'
+import { getCapabilities } from '../../shared/ocs.service.js'
 import { appData } from '../../app/AppData.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
+import { refetchAppData } from '../../app/appData.service.js'
 
 export default {
 	name: 'AuthenticationApp',
@@ -184,29 +185,20 @@ export default {
 
 			// Add credentials to the request
 			window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true, enableCookies: true, credentials })
+			// Save credentials
+			appData.credentials = credentials
 
 			// Get user's metadata and update capabilities for an authenticated user
-			let userMetadata
 			try {
-				[userMetadata, capabilitiesResponse] = await Promise.all([
-					getCurrentUserData(),
-					getCapabilities(),
-				])
+				await refetchAppData(appData)
 			} catch (error) {
-				// This may happen if a network connection was lost after some successful requests or something went wrong
+				// A network connection was lost after successful requests or something unexpected went wrong
 				console.error(error)
 				return this.setError('Login was successful but something went wrong...')
 			}
 
-			// Yay! Save all and go to the Talk
-			appData.userMetadata = userMetadata
-			appData.capabilities = capabilitiesResponse.capabilities
-			appData.credentials = credentials
-			appData.version.nextcloud = capabilitiesResponse.version
-			appData.version.talk = talkCapabilities.version
-			appData.version.desktop = this.version
+			// Yay!
 			appData.persist()
-
 			this.setSuccess()
 			await window.TALK_DESKTOP.login()
 		},

@@ -1,9 +1,9 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -18,3 +18,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+import { appData } from '../app/AppData.js'
+import { refetchAppDataIfDirty } from '../app/appData.service.js'
+
+appData.restore()
+
+if (appData.credentials) {
+	await window.TALK_DESKTOP.enableWebRequestInterceptor(appData.serverUrl, { enableCors: true, enableCookies: true, credentials: appData.credentials })
+	await refetchAppDataIfDirty(appData)
+}
+
+window.TALK_DESKTOP.sendAppData(appData.toJSON())

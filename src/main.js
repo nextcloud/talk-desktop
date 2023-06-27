@@ -1,9 +1,9 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2022 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -64,6 +64,10 @@ ipcMain.handle('app:getOs', () => getOs())
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(count))
+ipcMain.on('app:relaunch', () => {
+	app.relaunch()
+	app.exit(0)
+})
 
 app.whenReady().then(async () => {
 	if (process.env.NODE_ENV !== 'production') {
@@ -137,32 +141,31 @@ app.whenReady().then(async () => {
 	})
 
 	const welcomeWindow = createWelcomeWindow()
-	await new Promise((resolve) => {
-		welcomeWindow.once('ready-to-show', () => {
-			welcomeWindow.show()
-			resolve()
-		})
+	welcomeWindow.once('ready-to-show', () => {
+		welcomeWindow.show()
 	})
 
-	// TODO: handle JSON parsing error
-	const maybeAppData = await welcomeWindow.webContents.executeJavaScript('JSON.parse(localStorage[\'AppData\'] ?? null)')
-	if (maybeAppData) {
-		enableWebRequestInterceptor(maybeAppData.serverUrl, {
-			enableCors: true,
-			enableCookies: true,
-			credentials: maybeAppData.credentials,
-		})
-		mainWindow = createTalkWindow()
-		createMainWindow = createTalkWindow
-	} else {
-		await welcomeWindow.webContents.session.clearStorageData()
-		mainWindow = createAuthenticationWindow()
-		createMainWindow = createAuthenticationWindow
-	}
+	ipcMain.once('appData:receive', async (event, appData) => {
+		if (appData.credentials) {
+			// User is authenticated - setup and start main window
+			enableWebRequestInterceptor(appData.serverUrl, {
+				enableCors: true,
+				enableCookies: true,
+				credentials: appData.credentials,
+			})
+			mainWindow = createTalkWindow()
+			createMainWindow = createTalkWindow
+		} else {
+			// User is unauthenticated - start login window
+			await welcomeWindow.webContents.session.clearStorageData()
+			mainWindow = createAuthenticationWindow()
+			createMainWindow = createAuthenticationWindow
+		}
 
-	mainWindow.once('ready-to-show', () => {
-		mainWindow.show()
-		welcomeWindow.close()
+		mainWindow.once('ready-to-show', () => {
+			mainWindow.show()
+			welcomeWindow.close()
+		})
 	})
 
 	ipcMain.handle('talk:focus', async (event) => focusMainWindow())

@@ -1,9 +1,9 @@
 /*
- * @copyright Copyright (c) 2023 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2022 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import {translate, translatePlural} from '@nextcloud/l10n'
+import { translate, translatePlural } from '@nextcloud/l10n'
 
 // TODO: Separate main and renderer globals
 
@@ -32,6 +32,7 @@ declare global {
 	const HELP_WINDOW_WEBPACK_ENTRY: string
 	const HELP_WINDOW_PRELOAD_WEBPACK_ENTRY: string
 	const WELCOME_WINDOW_WEBPACK_ENTRY: string
+	const WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY: string
 
 	// ENV
 	namespace NodeJS {
@@ -42,9 +43,9 @@ declare global {
 	}
 
 	// Nextcloud Globals
-	const OC: Object
-	const OCA: Object
-	const OCP: Object
+	const OC: object
+	const OCA: object
+	const OCP: object
 	const t: typeof translate
 	const n: typeof translatePlural
 	// @nextcloud/webpack-vue-config

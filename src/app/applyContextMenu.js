@@ -29,7 +29,7 @@ const { isExternalLink } = require('./externalLinkHandlers.js')
  */
 export function applyContextMenu(browserWindow) {
 	browserWindow.webContents.on('context-menu', (event, params) => {
-		let menuItems = [];
+		const menuItems = []
 
 		// Add context actions for misspelling words and typos
 		const menuMisspellingItems = [

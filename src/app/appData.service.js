@@ -55,8 +55,8 @@ export async function refetchAppData(appData, persist = false) {
  * @throws {Error}
  */
 export async function refetchAppDataIfDirty(appData) {
-	// In old versions there were no talkHashDirty. In this case consider it to be dirty
-	if (appData.talkHashDirty || appData.talkHashDirty === undefined) {
+	// Re-fetch on dirty Talk hash and any desktop client upgrade
+	if (appData.talkHashDirty || version !== appData.version.desktop) {
 		return await refetchAppData(appData, true)
 	}
 }

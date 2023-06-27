@@ -20,11 +20,12 @@
  */
 
 import { getCurrentUserData, getCapabilities } from '../shared/ocs.service.js'
+import { version } from '../../package.json'
 
 /**
  * Re-fetch capabilities and userMetadata and update appData
  *
- * @param {AppData} appData
+ * @param {import('./AppData.js').appData} appData appData
  * @param {boolean} [persist=false] Persist after re-fetch
  * @return {Promise<void>}
  * @throws {Error}
@@ -49,7 +50,7 @@ export async function refetchAppData(appData, persist = false) {
 /**
  * If talk hash is dirty, re-fetch capabilities and userMetadata and update appData
  *
- * @param {AppData} appData
+ * @param {import('./AppData.js').appData} appData appData
  * @return {Promise<void>}
  * @throws {Error}
  */

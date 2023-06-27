@@ -42,6 +42,7 @@ export async function refetchAppData(appData, persist = false) {
 	appData.capabilities = capabilitiesResponse.capabilities
 	appData.version.nextcloud = capabilitiesResponse.version
 	appData.version.talk = talkCapabilities.version
+	appData.version.desktop = version
 	if (persist) {
 		appData.persist()
 	}

@@ -146,7 +146,6 @@ export default {
 			window.TALK_DESKTOP.enableWebRequestInterceptor(this.serverUrl, { enableCors: true })
 			appData.reset()
 			appData.serverUrl = this.serverUrl
-			appData.version.desktop = this.version
 
 			// Check if there is Nextcloud server and get capabilities
 			let capabilitiesResponse

@@ -162,20 +162,19 @@ app.whenReady().then(async () => {
 			})
 			mainWindow = createTalkWindow()
 			createMainWindow = createTalkWindow
+			// Minimize to tray, do not quit unless quitting is explicitly requested
+			mainWindow.on('close', event => {
+				if (!isAppQuitting) {
+					event.preventDefault()
+					mainWindow.hide()
+				}
+			})
 		} else {
 			// User is unauthenticated - start login window
 			await welcomeWindow.webContents.session.clearStorageData()
 			mainWindow = createAuthenticationWindow()
 			createMainWindow = createAuthenticationWindow
 		}
-
-		// Minimize to tray, do not quit unless quitting is explicitly requested
-		mainWindow.on('close', event => {
-			if (!isAppQuitting) {
-				event.preventDefault()
-				mainWindow.hide()
-			}
-		})
 
 		mainWindow.once('ready-to-show', () => {
 			mainWindow.show()

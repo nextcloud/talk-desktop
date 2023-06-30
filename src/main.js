@@ -31,7 +31,7 @@ const { createHelpWindow } = require('./help/help.window.js')
 const { getOs, isLinux } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
-const { setupTray } = require('./app/app.tray.js')
+const { setupTray, setupMinimizeToTray } = require('./app/app.tray.js')
 
 /**
  * Separate production and development instances, including application and user data
@@ -162,13 +162,7 @@ app.whenReady().then(async () => {
 			})
 			mainWindow = createTalkWindow()
 			createMainWindow = createTalkWindow
-			// Minimize to tray, do not quit unless quitting is explicitly requested
-			mainWindow.on('close', event => {
-				if (!isAppQuitting) {
-					event.preventDefault()
-					mainWindow.hide()
-				}
-			})
+			setupMinimizeToTray(mainWindow, () => isAppQuitting)
 		} else {
 			// User is unauthenticated - start login window
 			await welcomeWindow.webContents.session.clearStorageData()
@@ -190,6 +184,7 @@ app.whenReady().then(async () => {
 		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
+		setupMinimizeToTray(mainWindow, () => isAppQuitting)
 	})
 
 	ipcMain.handle('authentication:logout', async (event) => {

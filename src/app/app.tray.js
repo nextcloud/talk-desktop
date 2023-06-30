@@ -51,7 +51,22 @@ function setupTray(options) {
 		options.click()
 	})
 }
+/**
+ * Sets up a window to minimize to tray.
+ *
+ * @param {import('electron').BrowserWindow} window Reference to the window.
+ * @param {Function} isAppQuitting Function that returns a bool value whether the app is in the process of quitting. In this case, minimizing to tray will be skipped.
+ */
+function setupMinimizeToTray(window, isAppQuitting) {
+	window.on('close', event => {
+		if (!isAppQuitting()) {
+			event.preventDefault()
+			window.hide()
+		}
+	})
+}
 
 module.exports = {
 	setupTray,
+	setupMinimizeToTray,
 }

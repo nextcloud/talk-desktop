@@ -42,7 +42,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "floating-vue": "^1.0.0-beta.19",
     "howler": "^2.2.3",
-    "semver": "^7.5.3",
+    "semver": "^7.5.4",
     "undici": "^5.22.1",
     "vue": "^2.7.14",
     "vue-material-design-icons": "^5.2.0"

@@ -1,9 +1,12 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Talk Desktop" : "Talk para Escritorio",
     "View profile" : "Ver perfil",
     "Online" : "En línea",
+    "Force reload" : "Forzar recarga",
     "Report a bug" : "Reporta un detalle",
+    "Open in Web-Browser" : "Abrir en navegador web",
     "About" : "Acerca",
     "Log out" : "Cerrar sesión"
 },

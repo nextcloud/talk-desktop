@@ -77,7 +77,7 @@
     "node-loader": "^2.0.0",
     "regenerator-runtime": "^0.13.11",
     "style-loader": "^3.3.3",
-    "webpack": "^5.88.1",
+    "webpack": "^5.88.2",
     "webpack-merge": "^5.9.0",
     "worker-loader": "^3.0.8"
   },

@@ -20,7 +20,7 @@
  */
 
 import { getCurrentUserData, getCapabilities } from '../shared/ocs.service.js'
-import { version } from '../../package.json'
+import packageJson from '../../package.json'
 
 /**
  * Re-fetch capabilities and userMetadata and update appData
@@ -42,7 +42,7 @@ export async function refetchAppData(appData, persist = false) {
 	appData.capabilities = capabilitiesResponse.capabilities
 	appData.version.nextcloud = capabilitiesResponse.version
 	appData.version.talk = talkCapabilities.version
-	appData.version.desktop = version
+	appData.version.desktop = packageJson.version
 	if (persist) {
 		appData.persist()
 	}
@@ -57,7 +57,7 @@ export async function refetchAppData(appData, persist = false) {
  */
 export async function refetchAppDataIfDirty(appData) {
 	// Re-fetch on dirty Talk hash and any desktop client upgrade
-	if (appData.talkHashDirty || version !== appData.version.desktop) {
+	if (appData.talkHashDirty || packageJson.version !== appData.version.desktop) {
 		return await refetchAppData(appData, true)
 	}
 }

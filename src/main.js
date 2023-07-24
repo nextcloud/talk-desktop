@@ -61,6 +61,7 @@ if (process.env.NODE_ENV === 'production') {
 //   app.quit();
 // }
 
+ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getOs', () => getOs())
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))

@@ -57,7 +57,58 @@ export async function refetchAppData(appData, persist = false) {
  */
 export async function refetchAppDataIfDirty(appData) {
 	// Re-fetch on dirty Talk hash and any desktop client upgrade
-	if (appData.talkHashDirty || packageJson.version !== appData.version.desktop) {
-		return await refetchAppData(appData, true)
+	if (!appData.talkHashDirty && packageJson.version === appData.version.desktop) {
+		return
 	}
+
+	await new Promise((resolve) => {
+		/**
+		 * Try to re-fetch appData
+		 *
+		 * @return {Promise<boolean>} true if re-fetch finished and should not be retried
+		 */
+		async function doRefetch() {
+			try {
+				await refetchAppData(appData, true)
+				console.debug('AppData re-fetched')
+				return true
+			} catch (error) {
+				// In development mode unauthenticated response will be ERR_NETWORK due to CORS error
+				if (error.response?.status === 401 || process.env.NODE_ENV === 'development') {
+					appData.reset().persist()
+					console.debug('AppData credentials are invalid... Resetting')
+					return true
+				}
+				// Network error, maintenance, service unavailable etc.
+				// Let's try again later
+				console.debug(`Cannot get AppData... Error: ${error.code}. Response status: ${error.response?.status || 'unknown'}`)
+				return false
+			}
+		}
+
+		/**
+		 * Recursively re-try a re-fetch attempt with a timeout
+		 *
+		 * @param {number} [delay=1000] delay in milliseconds
+		 */
+		function retryRefetch(delay = 1_000) {
+			const MAX_DELAY = 2 ** 7 * 1000 // 128_000 = ~2 minutes
+
+			console.debug(`Retry in ${delay} ms...`)
+			setTimeout(async () => {
+				if (await doRefetch()) {
+					return resolve()
+				}
+				retryRefetch(delay < MAX_DELAY ? delay * 2 : delay)
+			}, delay)
+		}
+
+		doRefetch()
+			.then((success) => {
+				if (success) {
+					return resolve()
+				}
+				retryRefetch()
+			})
+	})
 }

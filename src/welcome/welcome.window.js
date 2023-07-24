@@ -32,7 +32,6 @@ function createWelcomeWindow() {
 		autoHideMenuBar: true,
 		center: true,
 		fullscreenable: false,
-		movable: false,
 		titleBarStyle: 'hidden',
 		show: false,
 		webPreferences: {

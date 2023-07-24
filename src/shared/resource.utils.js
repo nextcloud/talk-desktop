@@ -25,21 +25,25 @@ import { appData } from '../app/AppData.js'
  * Load styles from URL via new <link> element
  *
  * @param {string} url - Styles URL
- * @return {HTMLLinkElement} Created styles link element
+ * @return {Promise<HTMLLinkElement>} Created styles link element
  */
-export function loadCss(url) {
-	const link = document.createElement('link')
-	link.rel = 'stylesheet'
-	link.href = url
-	document.querySelector('head').appendChild(link)
-	return link
+export async function loadCss(url) {
+	return new Promise((resolve, reject) => {
+		const link = document.createElement('link')
+		link.rel = 'stylesheet'
+		link.href = url
+		document.querySelector('head').appendChild(link)
+		link.onload = () => resolve(link)
+		link.onerror = (error) => reject(error)
+	})
+
 }
 
 /**
  * Load styles from URL via loadCss from server host
  *
  * @param {string} url - Styles URL
- * @return {HTMLLinkElement} Created styles link element
+ * @return {Promise<HTMLLinkElement>} Created styles link element
  */
 export function loadServerCss(url) {
 	return loadCss(`${appData.serverUrl}${url}`)

@@ -34,6 +34,7 @@ function createWelcomeWindow() {
 		fullscreenable: false,
 		titleBarStyle: 'hidden',
 		show: false,
+		useContentSize: true,
 		webPreferences: {
 			preload: WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},

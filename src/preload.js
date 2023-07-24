@@ -49,6 +49,10 @@ const TALK_DESKTOP = {
 	 */
 	packageInfo,
 	/**
+	 * Quit the application
+	 */
+	quit: () => ipcRenderer.send('app:quit'),
+	/**
 	 * Get OS version and versions as flags
 	 *
 	 * @return {Promise<import('./shared/os.utils.js').OsVersion>}

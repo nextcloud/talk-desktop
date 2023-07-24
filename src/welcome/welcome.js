@@ -19,8 +19,20 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+import '../shared/assets/default/css/icons.css'
+
 import { appData } from '../app/AppData.js'
 import { refetchAppDataIfDirty } from '../app/appData.service.js'
+
+const quitButton = document.querySelector('.quit')
+quitButton.addEventListener('click', () => window.TALK_DESKTOP.quit())
+
+window.TALK_DESKTOP.getOs().then(os => {
+	quitButton.classList.remove('hidden')
+	if (os.isMac) {
+		quitButton.classList.add('quit_mac')
+	}
+})
 
 appData.restore()
 

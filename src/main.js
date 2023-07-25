@@ -31,7 +31,6 @@ const { createHelpWindow } = require('./help/help.window.js')
 const { getOs, isLinux } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
-const { setupTray, setupMinimizeToTray } = require('./app/app.tray.js')
 
 /**
  * Separate production and development instances, including application and user data
@@ -82,7 +81,6 @@ app.whenReady().then(async () => {
 	 */
 	let mainWindow
 	let createMainWindow
-	let isAppQuitting = false
 
 	setupMenu()
 
@@ -97,11 +95,6 @@ app.whenReady().then(async () => {
 	 * Instead of creating a new app instance - focus existence one
 	 */
 	app.on('second-instance', () => focusMainWindow())
-
-	/**
-	 * Allow to quit the app if requested. It minimizes to tray otherwise.
-	 */
-	app.on('before-quit', function() { isAppQuitting = true })
 
 	app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
 		event.preventDefault()
@@ -163,7 +156,6 @@ app.whenReady().then(async () => {
 			})
 			mainWindow = createTalkWindow()
 			createMainWindow = createTalkWindow
-			setupMinimizeToTray(mainWindow, () => isAppQuitting)
 		} else {
 			// User is unauthenticated - start login window
 			await welcomeWindow.webContents.session.clearStorageData()
@@ -185,27 +177,24 @@ app.whenReady().then(async () => {
 		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
-		setupMinimizeToTray(mainWindow, () => isAppQuitting)
 	})
 
 	ipcMain.handle('authentication:logout', async (event) => {
 		if (createMainWindow === createTalkWindow) {
 			await mainWindow.webContents.session.clearStorageData()
-			mainWindow.close()
-			mainWindow = createAuthenticationWindow()
+			const authenticationWindow = createAuthenticationWindow()
 			createMainWindow = createAuthenticationWindow
-			mainWindow.once('ready-to-show', () => {
-				mainWindow.show()
+			authenticationWindow.once('ready-to-show', () => {
+				authenticationWindow.show()
 			})
+
+			mainWindow.destroy()
+			mainWindow = authenticationWindow
 		}
 	})
 
 	ipcMain.handle('help:show', () => {
 		createHelpWindow(mainWindow)
-	})
-
-	setupTray({
-		click: () => mainWindow.show(),
 	})
 
 	// On OS X it's common to re-create a window in the app when the

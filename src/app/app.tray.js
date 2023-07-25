@@ -1,6 +1,8 @@
 /**
  * @copyright Copyright (c) 2023, Julian Petri <julian.petri@iconics.de>
+ *
  * @author Julian Petri <julian.petri@iconics.de>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
  * @license AGPL-3.0-or-later
  *
@@ -27,12 +29,20 @@ const {
 const path = require('path')
 const { isMac, isWindows } = require('../shared/os.utils.js')
 
+let isAppQuitting = false
+
+/**
+ * Allow quitting the app if requested. It minimizes to a tray otherwise.
+ */
+app.on('before-quit', () => { isAppQuitting = true })
+
 /**
  * Setup tray with an icon that provides a context menu.
  *
- * @param {object} options Object with one property 'click' which is a function that will be called when a user clicks the tray icon or the 'Open' tray menu item.
+ * @param {import('electron').BrowserWindow} browserWindow Browser window, associated with the tray
+ * @return {import('electron').Tray} Tray instance
  */
-function setupTray(options) {
+function setupTray(browserWindow) {
 	const tray = new Tray(path.join(
 		__dirname, '..', '..', 'img', 'icons',
 		isMac() ? 'TrayIconTemplate.png' : isWindows() ? 'icon.ico' : 'icon.png',
@@ -41,32 +51,28 @@ function setupTray(options) {
 	tray.setContextMenu(Menu.buildFromTemplate([
 		{
 			label: 'Open',
-			click: () => options.click(),
+			click: () => browserWindow.show(),
 		},
 		{
 			role: 'quit',
 		},
 	]))
-	tray.on('click', () => {
-		options.click()
-	})
-}
-/**
- * Sets up a window to minimize to tray.
- *
- * @param {import('electron').BrowserWindow} window Reference to the window.
- * @param {Function} isAppQuitting Function that returns a bool value whether the app is in the process of quitting. In this case, minimizing to tray will be skipped.
- */
-function setupMinimizeToTray(window, isAppQuitting) {
-	window.on('close', event => {
-		if (!isAppQuitting()) {
+	tray.on('click', () => browserWindow.show())
+
+	browserWindow.on('close', event => {
+		if (!isAppQuitting) {
 			event.preventDefault()
-			window.hide()
+			browserWindow.hide()
 		}
 	})
+
+	browserWindow.on('closed', event => {
+		tray.destroy()
+	})
+
+	return tray
 }
 
 module.exports = {
 	setupTray,
-	setupMinimizeToTray,
 }

@@ -1,7 +1,7 @@
 /*
- * @copyright Copyright (c) 2022 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2022 Grigorii Shartsev <me@shgk.me>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @author Grigorii Shartsev <me@shgk.me>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -27,6 +27,7 @@ const {
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadNotification } = require('../app/applyDownloadNotification.js')
 const { applyWheelZoom } = require('../app/applyWheelZoom.js')
+const { setupTray } = require('../app/app.tray.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -70,6 +71,7 @@ function createTalkWindow() {
 	applyContextMenu(window)
 	applyDownloadNotification(window)
 	applyWheelZoom(window)
+	setupTray(window)
 
 	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)
 

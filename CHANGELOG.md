@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.8.0 - 2023-07-25
+
+### Build-in Talk update
+
+Built-in Talk in binaries is updated to 17.0.2. Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
+
+### Features
+
+- Add System Tray icon [#79](https://github.com/nextcloud/talk-desktop/pull/79)
+- Add quit button on the Welcome screen [#271](https://github.com/nextcloud/talk-desktop/pull/271)
+
+### Fixes
+
+- Fix incorrect dark theme detection [#254](https://github.com/nextcloud/talk-desktop/pull/254)
+- Fix infinity Welcome loading on revoked credentials [#270](https://github.com/nextcloud/talk-desktop/pull/270)
+
 ## v0.7.0 - 2023-06-27
 
 ### Build-in Talk update

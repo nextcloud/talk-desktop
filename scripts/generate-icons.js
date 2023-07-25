@@ -31,7 +31,8 @@ const icongen = require('icon-gen')
 async function generateIcons() {
 	const originalPath = path.join(__dirname, '../img/talk-icon-rounded.svg')
 	const originalMacPath = path.join(__dirname, '../img/talk-icon-mac-shadow.svg')
-	const originalMacTrayPath = path.join(__dirname, '../img/talk-icon-plain.svg')
+	const originalMacTrayLightPath = path.join(__dirname, '../img/talk-icon-plain-light.svg')
+	const originalMacTrayDarkPath = path.join(__dirname, '../img/talk-icon-plain-dark.svg')
 	const outputPath = path.join(__dirname, '../img/icons')
 
 	await icongen(originalPath, outputPath, {
@@ -56,10 +57,16 @@ async function generateIcons() {
 		},
 	})
 
-	await icongen(originalMacTrayPath, outputPath, {
-		// Mac
+	// Tray icon - Mac
+	await icongen(originalMacTrayLightPath, outputPath, {
 		favicon: {
-			name: 'icon-tray-mac',
+			name: 'icon-tray-mac-light',
+			pngSizes: [16, 32],
+		},
+	})
+	await icongen(originalMacTrayDarkPath, outputPath, {
+		favicon: {
+			name: 'icon-tray-mac-dark',
 			pngSizes: [16, 32],
 		},
 	})
@@ -72,9 +79,11 @@ async function generateIcons() {
 	// Remove unused favicon
 	await fs.unlink(path.join(outputPath, 'favicon.ico'))
 
-	// Rename icon-tray-mac16.png -> icon-tray-mac.png, icon-tray-mac32.png -> icon-tray-mac@2x.png
-	await fs.rename(path.join(outputPath, 'icon-tray-mac16.png'), path.join(outputPath, 'icon-tray-mac.png'))
-	await fs.rename(path.join(outputPath, 'icon-tray-mac32.png'), path.join(outputPath, 'icon-tray-mac@2x.png'))
+	// Rename icon-tray-mac-(light|dark)16.png -> icon-tray-mac-(light|dark).png, icon-tray-mac-(light|dark)32.png -> icon-tray-mac-(light|dark)@2x.png
+	await fs.rename(path.join(outputPath, 'icon-tray-mac-light16.png'), path.join(outputPath, 'icon-tray-mac-light.png'))
+	await fs.rename(path.join(outputPath, 'icon-tray-mac-light32.png'), path.join(outputPath, 'icon-tray-mac-light@2x.png'))
+	await fs.rename(path.join(outputPath, 'icon-tray-mac-dark16.png'), path.join(outputPath, 'icon-tray-mac-dark.png'))
+	await fs.rename(path.join(outputPath, 'icon-tray-mac-dark32.png'), path.join(outputPath, 'icon-tray-mac-dark@2x.png'))
 }
 
 generateIcons()

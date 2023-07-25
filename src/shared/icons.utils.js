@@ -19,13 +19,21 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+const { nativeTheme } = require('electron')
+
 const icons = {
 	tray: {
-		darwin: require('../../img/icons/icon-tray-mac.png'),
+		darwin: {
+			light: require('../../img/icons/icon-tray-mac-light.png'),
+			dark: require('../../img/icons/icon-tray-mac-dark.png'),
+		},
 
 		// This property is not used, but import is required to add the icon to the bundle.
 		// It will be used by electron internally
-		darwin_x2: require('../../img/icons/icon-tray-mac@2x.png'),
+		darwin_x2: {
+			light: require('../../img/icons/icon-tray-mac-light@2x.png'),
+			dark: require('../../img/icons/icon-tray-mac-dark@2x.png'),
+		},
 
 		win32: require('../../img/icons/icon.ico'),
 
@@ -37,11 +45,12 @@ const icons = {
  * Get tray icon for the given platform
  *
  * @param {'darwin'|'win32'|'cygwin'|string} [platform] platform otherwise current process.platform is used
+ * @param {'light'|'dark'} [theme] theme for the darwin platform
  */
-function getTrayIcon(platform) {
+function getTrayIcon(platform, theme) {
 	switch (platform ?? process.platform) {
 	case 'darwin':
-		return icons.tray.darwin
+		return nativeTheme.shouldUseDarkColors || theme === 'dark' ? icons.tray.darwin.dark : icons.tray.darwin.light
 	case 'win32':
 		return icons.tray.win32
 	default:

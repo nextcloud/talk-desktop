@@ -21,13 +21,9 @@
  *
  */
 
-const {
-	app,
-	Tray,
-	Menu,
-} = require('electron')
+const { app, Tray, Menu } = require('electron')
 const path = require('path')
-const { isMac, isWindows } = require('../shared/os.utils.js')
+const { getTrayIcon } = require('../shared/icons.utils.js')
 
 let isAppQuitting = false
 
@@ -43,10 +39,8 @@ app.on('before-quit', () => { isAppQuitting = true })
  * @return {import('electron').Tray} Tray instance
  */
 function setupTray(browserWindow) {
-	const tray = new Tray(path.join(
-		__dirname, '..', '..', 'img', 'icons',
-		isMac() ? 'TrayIconTemplate.png' : isWindows() ? 'icon.ico' : 'icon.png',
-	))
+	const icon = path.resolve(__dirname, getTrayIcon())
+	const tray = new Tray(icon)
 	tray.setToolTip(app.name)
 	tray.setContextMenu(Menu.buildFromTemplate([
 		{

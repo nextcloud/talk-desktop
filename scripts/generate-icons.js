@@ -59,7 +59,7 @@ async function generateIcons() {
 	await icongen(originalMacTrayPath, outputPath, {
 		// Mac
 		favicon: {
-			name: 'TrayIconTemplate',
+			name: 'icon-tray-mac',
 			pngSizes: [16, 32],
 		},
 	})
@@ -70,9 +70,9 @@ async function generateIcons() {
 	// Remove unused favicon
 	await fs.unlink(path.join(outputPath, 'favicon.ico'))
 
-	// Rename TrayIconTemplate16.png -> TrayIconTemplate.png, TrayIconTemplate32.png -> TrayIconTemplate@2x.png
-	await fs.rename(path.join(outputPath, 'TrayIconTemplate16.png'), path.join(outputPath, 'TrayIconTemplate.png'))
-	await fs.rename(path.join(outputPath, 'TrayIconTemplate32.png'), path.join(outputPath, 'TrayIconTemplate@2x.png'))
+	// Rename icon-tray-mac16.png -> icon-tray-mac.png, icon-tray-mac32.png -> icon-tray-mac@2x.png
+	await fs.rename(path.join(outputPath, 'icon-tray-mac16.png'), path.join(outputPath, 'icon-tray-mac.png'))
+	await fs.rename(path.join(outputPath, 'icon-tray-mac32.png'), path.join(outputPath, 'icon-tray-mac@2x.png'))
 }
 
 generateIcons()

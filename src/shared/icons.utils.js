@@ -29,7 +29,7 @@ const icons = {
 
 		win32: require('../../img/icons/icon.ico'),
 
-		linux: require('../../img/icons/icon.png'),
+		linux: require('../../img/icons/icon-tray-linux.png'),
 	},
 }
 

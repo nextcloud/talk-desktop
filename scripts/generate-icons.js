@@ -43,7 +43,7 @@ async function generateIcons() {
 		// Linux (PNG)
 		favicon: {
 			name: 'icon',
-			pngSizes: [512],
+			pngSizes: [32, 512],
 			icoSizes: [],
 		},
 	})
@@ -66,6 +66,8 @@ async function generateIcons() {
 
 	// Rename icon512.png -> icon.png
 	await fs.rename(path.join(outputPath, 'icon512.png'), path.join(outputPath, 'icon.png'))
+	// Rename icon32.png -> icon-tray-linux.png
+	await fs.rename(path.join(outputPath, 'icon32.png'), path.join(outputPath, 'icon-tray-linux.png'))
 
 	// Remove unused favicon
 	await fs.unlink(path.join(outputPath, 'favicon.ico'))

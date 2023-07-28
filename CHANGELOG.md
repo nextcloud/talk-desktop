@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.9.0 - 2023-07-28
+
+### Build-in Talk update
+
+Built-in Talk in binaries is updated to 17.0.3. Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
+
 ## v0.8.0 - 2023-07-25
 
 ### Build-in Talk update

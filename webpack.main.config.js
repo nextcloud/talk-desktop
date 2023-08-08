@@ -37,6 +37,12 @@ module.exports = merge(baseConfig, {
 				include: path.resolve(__dirname, './img/icons'),
 				type: 'asset/resource',
 			},
+			// Chromium extension
+			{
+				test: /\.crx$/,
+				include: path.resolve(__dirname, './resources'),
+				type: 'asset/resource',
+			},
 		],
 	},
 })

@@ -21,7 +21,6 @@
 
 const path = require('node:path')
 const { app, dialog, BrowserWindow, ipcMain } = require('electron')
-const { default: installExtension, VUEJS3_DEVTOOLS } = require('electron-devtools-installer')
 const { setupMenu } = require('./app/app.menu.js')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -31,6 +30,7 @@ const { createHelpWindow } = require('./help/help.window.js')
 const { getOs, isLinux } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
+const { installVueDevtools } = require('./install-vue-devtools.js')
 
 /**
  * Separate production and development instances, including application and user data
@@ -71,8 +71,11 @@ ipcMain.on('app:relaunch', () => {
 })
 
 app.whenReady().then(async () => {
-	if (process.env.NODE_ENV !== 'production') {
-		await installExtension(VUEJS3_DEVTOOLS)
+	try {
+		await installVueDevtools()
+	} catch (error) {
+		console.log('Unable to install Vue Devtools')
+		console.error(error)
 	}
 
 	// TODO: add windows manager

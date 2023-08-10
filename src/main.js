@@ -27,6 +27,7 @@ const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('.
 const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
 const { openLoginWebView } = require('./authentication/login.window.js')
 const { createHelpWindow } = require('./help/help.window.js')
+const { createUpgradeWindow } = require('./upgrade/upgrade.window.js')
 const { getOs, isLinux } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
@@ -198,6 +199,14 @@ app.whenReady().then(async () => {
 
 	ipcMain.handle('help:show', () => {
 		createHelpWindow(mainWindow)
+	})
+
+	ipcMain.handle('upgrade:show', () => {
+		const upgradeWindow = createUpgradeWindow()
+		createMainWindow = createUpgradeWindow
+
+		mainWindow.destroy()
+		mainWindow = upgradeWindow
 	})
 
 	// On OS X it's common to re-create a window in the app when the

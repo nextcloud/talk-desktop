@@ -118,6 +118,12 @@ const TALK_DESKTOP = {
 	 * @return {Promise<void>}
 	 */
 	showHelp: () => ipcRenderer.invoke('help:show'),
+	/**
+	 * Show the upgrade window
+	 *
+	 * @return {Promise<void>}
+	 */
+	showUpgrade: () => ipcRenderer.invoke('upgrade:show'),
 }
 
 // Set global window.TALK_DESKTOP

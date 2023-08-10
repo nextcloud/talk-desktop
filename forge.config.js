@@ -85,6 +85,14 @@ module.exports = {
 								js: './src/preload.js',
 							},
 						},
+						{
+							name: 'upgrade_window',
+							html: './src/upgrade/renderer/upgrade.html',
+							js: './src/upgrade/renderer/upgrade.app.js',
+							preload: {
+								js: './src/preload.js',
+							},
+						},
 					],
 				},
 			},

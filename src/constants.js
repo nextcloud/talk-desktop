@@ -31,8 +31,9 @@ const BASE_TITLE = packageJson.productName
  */
 const USER_AGENT = `Mozilla/5.0 (${getOsTitle()}) Nextcloud-Talk v${packageJson.version}`
 const DEV_SERVER_ORIGIN = 'http://localhost:3000'
-const MIN_REQUIRED_NEXTCLOUD_VERSION = 26
-const MIN_REQUIRED_TALK_VERSION = 16
+const MIN_REQUIRED_NEXTCLOUD_VERSION = 27
+const MIN_REQUIRED_TALK_VERSION = 17
+const MIN_REQUIRED_BUILT_IN_TALK_VERSION = '17.0.0'
 
 module.exports = {
 	BASE_TITLE,
@@ -40,4 +41,5 @@ module.exports = {
 	DEV_SERVER_ORIGIN,
 	MIN_REQUIRED_NEXTCLOUD_VERSION,
 	MIN_REQUIRED_TALK_VERSION,
+	MIN_REQUIRED_BUILT_IN_TALK_VERSION,
 }

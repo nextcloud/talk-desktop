@@ -19,13 +19,53 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+const path = require('node:path')
+const fs = require('node:fs')
+const semver = require('semver')
+const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
+
 require('dotenv').config()
+
+const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
+let talkPackageJson
 
 module.exports = {
 	packagerConfig: {
 		icon: './img/icons/icon',
 	},
+
+	hooks: {
+		generateAssets() {
+			if (!fs.existsSync(process.env.TALK_PATH)) {
+				throw new Error(`Path does not exist TALK_PATH=${TALK_PATH}`)
+			}
+
+			try {
+				talkPackageJson = require(path.join(TALK_PATH, 'package.json'))
+			} catch {
+				throw new Error(`No Nextcloud Talk (spreed repository) has been found in TALK_PATH=${TALK_PATH}`)
+			}
+
+			if (talkPackageJson.name !== 'talk') {
+				throw new Error(`No Nextcloud Talk (spreed repository) but "${talkPackageJson.name}" has been found in TALK_PATH=${TALK_PATH}`)
+			}
+
+			if (semver.lte(talkPackageJson.version, MIN_REQUIRED_BUILT_IN_TALK_VERSION)) {
+				throw new Error(`The minimum supported version of built-in Nextcloud Talk is ${MIN_REQUIRED_BUILT_IN_TALK_VERSION}, but ${talkPackageJson.version} has been found in TALK_PATH=${TALK_PATH}`)
+			}
+		},
+
+		postStart() {
+			console.log(`Started with built-in Nextcloud Talk v${talkPackageJson.version} on path: ${TALK_PATH}`)
+		},
+
+		postPackage() {
+			console.log(`Packaged with built-in Nextcloud Talk v${talkPackageJson.version} on path: ${TALK_PATH}`)
+		},
+	},
+
 	rebuildConfig: {},
+
 	makers: [
 		// {
 		// 	name: '@electron-forge/maker-squirrel',
@@ -44,6 +84,7 @@ module.exports = {
 		// 	config: {},
 		// },
 	],
+
 	plugins: [
 		{
 			name: '@electron-forge/plugin-webpack',

@@ -8,8 +8,8 @@
 
 ## 🏗️ Prerequisites
 
-- [Nextcloud Server](https://github.com/nextcloud/server) version 26 or higher.
-- [Nextcloud Talk](https://github.com/nextcloud/spreed) version 16 or higher.
+- [Nextcloud Server](https://github.com/nextcloud/server) version 27 or higher.
+- [Nextcloud Talk](https://github.com/nextcloud/spreed) version 17 or higher.
 
 ## 👾 Drawbacks
 
@@ -42,7 +42,7 @@ Nextcloud Talk Desktop requires [Nextcloud Talk source code](https://github.com/
 
 #### No `nextcloud/spreed` is cloned?
 
-Clone `nextcloud/spreed` on `desktop-stable26` branch and install dependencies:
+Clone `nextcloud/spreed` and install dependencies:
 
 ```bash
 # Clone in the repository root

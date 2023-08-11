@@ -22,15 +22,10 @@
 require('dotenv').config()
 
 const path = require('node:path')
-const fs = require('node:fs')
 const webpack = require('webpack')
 const { mergeWithRules } = require('webpack-merge')
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
-if (!fs.existsSync(process.env.TALK_PATH)) {
-	throw new Error(`TALK_PATH path is not correct: ${path.resolve(TALK_PATH)}`)
-}
-console.log(`Using Nextcloud Talk on path: ${path.resolve(TALK_PATH)}`)
 
 /**
  * appName and appVersion constants are set by process.env.npm_package_* in @nextcloud/webpack-vue-config.

@@ -19,6 +19,7 @@
 
 const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
+const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 
 /**
  *
@@ -45,6 +46,8 @@ function createUpgradeWindow() {
 	window.removeMenu()
 
 	window.loadURL(UPGRADE_WINDOW_WEBPACK_ENTRY)
+
+	applyExternalLinkHandler(window)
 
 	window.on('ready-to-show', () => {
 		window.show()

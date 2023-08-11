@@ -20,10 +20,7 @@
  */
 
 const { BrowserWindow } = require('electron')
-const {
-	windowOpenExternalLinkHandler,
-	willNavigateExternalLinkHandler,
-} = require('../app/externalLinkHandlers.js')
+const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadNotification } = require('../app/applyDownloadNotification.js')
 const { applyWheelZoom } = require('../app/applyWheelZoom.js')
@@ -57,12 +54,11 @@ function createTalkWindow() {
 	}
 	 */
 
-	window.webContents.on('will-navigate', willNavigateExternalLinkHandler)
-	window.webContents.setWindowOpenHandler((details) => windowOpenExternalLinkHandler(details, {
+	applyExternalLinkHandler(window, {
 		...talkWindowOptions,
 		width: 800,
 		height: 600,
-	}))
+	})
 
 	window.once('ready-to-show', () => {
 		window.show()

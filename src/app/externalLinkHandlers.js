@@ -74,9 +74,19 @@ function willNavigateExternalLinkHandler(event, url) {
 	}
 }
 
+/**
+ * Apply external links handling at BrowserWindow
+ *
+ * @param {import('electron').BrowserWindow} browserWindow - Browser window
+ * @param {import('electron').BrowserWindowConstructorOptions} [browserWindowOptions={}] - options for new BrowserWindow, usually based on parent options
+ */
+function applyExternalLinkHandler(browserWindow, browserWindowOptions = {}) {
+	browserWindow.webContents.on('will-navigate', willNavigateExternalLinkHandler)
+	browserWindow.webContents.setWindowOpenHandler((details) => windowOpenExternalLinkHandler(details, browserWindowOptions))
+}
+
 module.exports = {
 	isInternalLink,
 	isExternalLink,
-	windowOpenExternalLinkHandler,
-	willNavigateExternalLinkHandler,
+	applyExternalLinkHandler,
 }

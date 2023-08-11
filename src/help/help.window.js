@@ -21,6 +21,7 @@
 
 const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
+const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 
 /**
  *
@@ -50,6 +51,8 @@ function createHelpWindow(parentWindow) {
 	window.removeMenu()
 
 	window.loadURL(HELP_WINDOW_WEBPACK_ENTRY)
+
+	applyExternalLinkHandler(window)
 
 	window.on('ready-to-show', () => {
 		window.show()

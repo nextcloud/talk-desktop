@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.0 - 2023-08-11
+
+### Features
+
+- Add support for "Upgrade required" server response [#289](https://github.com/nextcloud/talk-desktop/pull/289)
+
+### Build-in Talk update
+
+Built-in Talk in binaries is updated to 17.1.0-rc.1. Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
+
 ## v0.9.0 - 2023-07-28
 
 ### Build-in Talk update

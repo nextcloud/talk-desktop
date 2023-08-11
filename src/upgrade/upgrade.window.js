@@ -1,9 +1,7 @@
 /*
- * @copyright Copyright (c) 2023 Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
+ * @copyright Copyright (c) 2023 Maksim Sukharev <antreesy.web@gmail.com>
  *
- * @author Grigorii Shartsev <grigorii.shartsev@nextcloud.com>
- *
- * @license GNU AGPL version 3 or any later version
+ * @license AGPL-3.0-or-later
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -25,13 +23,12 @@ const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 
 /**
  *
- * @param {import('electron').BrowserWindow} parentWindow - main window (parent)
  * @return {import('electron').BrowserWindow}
  */
-function createHelpWindow(parentWindow) {
-	const WIDTH = 720
-	const HEIGHT = 525
-	const TITLE = `About - ${BASE_TITLE}`
+function createUpgradeWindow() {
+	const WIDTH = 350
+	const HEIGHT = 300
+	const TITLE = `Upgrade required - ${BASE_TITLE}`
 	const window = new BrowserWindow({
 		title: TITLE,
 		width: WIDTH,
@@ -41,16 +38,14 @@ function createHelpWindow(parentWindow) {
 		resizable: false,
 		fullscreenable: false,
 		autoHideMenuBar: true,
-		parent: parentWindow,
-		modal: true,
 		webPreferences: {
-			preload: HELP_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			preload: UPGRADE_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 	})
 
 	window.removeMenu()
 
-	window.loadURL(HELP_WINDOW_WEBPACK_ENTRY)
+	window.loadURL(UPGRADE_WINDOW_WEBPACK_ENTRY)
 
 	applyExternalLinkHandler(window)
 
@@ -62,5 +57,5 @@ function createHelpWindow(parentWindow) {
 }
 
 module.exports = {
-	createHelpWindow,
+	createUpgradeWindow,
 }

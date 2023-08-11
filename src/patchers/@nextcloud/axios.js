@@ -28,9 +28,17 @@ axios.interceptors.request.use((config) => {
 	return config
 }, (error) => Promise.reject(error))
 
+let upgradeInterceptorHasBeenTriggeredOnce = false
+
 axios.interceptors.response.use((response) => response, (error) => {
 	if (error?.response?.status === 401) {
 		window.TALK_DESKTOP.logout()
+	}
+	if (error?.response?.status === 426) {
+		if (!upgradeInterceptorHasBeenTriggeredOnce) {
+			upgradeInterceptorHasBeenTriggeredOnce = true
+			window.TALK_DESKTOP.showUpgrade()
+		}
 	}
 	return Promise.reject(error)
 })

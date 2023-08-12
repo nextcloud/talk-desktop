@@ -72,7 +72,7 @@
     "eslint-plugin-jsdoc": "^39.9.1",
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-vue": "^9.16.1",
+    "eslint-plugin-vue": "^9.17.0",
     "icon-gen": "^3.0.1",
     "node-loader": "^2.0.0",
     "regenerator-runtime": "^0.13.11",

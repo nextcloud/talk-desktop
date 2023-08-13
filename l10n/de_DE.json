@@ -6,6 +6,7 @@
     "Report a bug" : "Einen technischen Fehler melden",
     "Open in Web-Browser" : "Im Web-Browser öffnen",
     "About" : "Über",
-    "Log out" : "Abmelden"
+    "Log out" : "Abmelden",
+    "Continue in Web-Browser ↗" : "Im Web-Browser fortsetzen ↗"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Report a bug" : "Einen technischen Fehler melden",
     "Open in Web-Browser" : "Im Web-Browser öffnen",
     "About" : "Über",
-    "Log out" : "Abmelden"
+    "Log out" : "Abmelden",
+    "Continue in Web-Browser ↗" : "Im Web-Browser fortsetzen ↗"
 },
 "nplurals=2; plural=(n != 1);");

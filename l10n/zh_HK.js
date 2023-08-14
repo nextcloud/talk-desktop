@@ -8,6 +8,7 @@ OC.L10N.register(
     "Report a bug" : "舉報錯誤",
     "Open in Web-Browser" : "用瀏覽器開啟",
     "About" : "關於",
-    "Log out" : "登出"
+    "Log out" : "登出",
+    "Upgrade required" : "需要升級"
 },
 "nplurals=1; plural=0;");

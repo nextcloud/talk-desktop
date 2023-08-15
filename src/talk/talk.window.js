@@ -25,6 +25,7 @@ const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadNotification } = require('../app/applyDownloadNotification.js')
 const { applyWheelZoom } = require('../app/applyWheelZoom.js')
 const { setupTray } = require('../app/app.tray.js')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -38,6 +39,7 @@ function createTalkWindow() {
 		webPreferences: {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
+		icon: getBrowserWindowIcon(),
 	}
 
 	const window = new BrowserWindow({

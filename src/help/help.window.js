@@ -22,6 +22,7 @@
 const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  *
@@ -46,6 +47,7 @@ function createHelpWindow(parentWindow) {
 		webPreferences: {
 			preload: HELP_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
+		icon: getBrowserWindowIcon(),
 	})
 
 	window.removeMenu()

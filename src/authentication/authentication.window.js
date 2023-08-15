@@ -22,6 +22,7 @@
 const { BrowserWindow } = require('electron')
 const { BASE_TITLE } = require('../constants.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -42,6 +43,7 @@ function createAuthenticationWindow() {
 		webPreferences: {
 			preload: AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
+		icon: getBrowserWindowIcon(),
 	})
 
 	// TODO: return this on release

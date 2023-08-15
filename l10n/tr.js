@@ -8,6 +8,10 @@ OC.L10N.register(
     "Report a bug" : "Hata bildirin",
     "Open in Web-Browser" : "Tarayıcıda aç",
     "About" : "Hakkında",
-    "Log out" : "Oturumu kapat"
+    "Log out" : "Oturumu kapat",
+    "Upgrade required" : "Yükseltme gerekiyor",
+    "The client version is too old and no longer supported by this server. Update is required." : "İstemci sürümü çok eski ve artık bu sunucu tarafından desteklenmiyor. Güncellenmesi gerekli.",
+    "Update Talk Desktop ↗" : "Talk uygulamasını güncelle ↗",
+    "Continue in Web-Browser ↗" : "Tarayıcıda aç ↗"
 },
 "nplurals=2; plural=(n > 1);");

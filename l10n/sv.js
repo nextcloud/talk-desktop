@@ -8,6 +8,10 @@ OC.L10N.register(
     "Report a bug" : "Rapportera ett problem",
     "Open in Web-Browser" : "Öppna i webbläsare",
     "About" : "Om",
-    "Log out" : "Logga ut"
+    "Log out" : "Logga ut",
+    "Upgrade required" : "Uppgradering krävs",
+    "The client version is too old and no longer supported by this server. Update is required." : "Klientversionen är för gammal och stöds inte längre av denna server. Uppgradering krävs.",
+    "Update Talk Desktop ↗" : "Uppgradera Talk Desktop ↗",
+    "Continue in Web-Browser ↗" : "Fortsätt i webbläsare ↗"
 },
 "nplurals=2; plural=(n != 1);");

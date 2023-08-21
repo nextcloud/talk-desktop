@@ -68,17 +68,14 @@ function createPatcherAliases(packageName) {
 	}
 }
 
-const merge = mergeWithRules({
+let webpackRendererConfig = mergeWithRules({
 	module: {
 		rules: {
 			test: 'match',
 			use: 'merge',
 		},
 	},
-})
-
-/** @type {import('webpack').Configuration} */
-module.exports = merge(commonTalkWebpackConfig, {
+})(commonTalkWebpackConfig, {
 	output: {
 		assetModuleFilename: '[name][ext]?v=[contenthash]',
 	},
@@ -138,3 +135,34 @@ module.exports = merge(commonTalkWebpackConfig, {
 		}),
 	],
 })
+
+if (require.resolve('esbuild-loader', { paths: [TALK_PATH] })) {
+	console.log('Using esbuild-loader')
+	// With Electron we can use the most modern features
+	// But with web client - we cannot
+	// Replace target to support Top-level await
+	webpackRendererConfig = mergeWithRules({
+		module: {
+			rules: {
+				test: 'match',
+				loader: 'replace',
+				options: 'replace',
+			},
+		},
+	})(webpackRendererConfig, {
+		module: {
+			rules: [
+				{
+					test: /\.js$/,
+					loader: 'esbuild-loader',
+					options: {
+						loader: 'js',
+						target: 'es2022',
+					},
+				},
+			],
+		},
+	})
+}
+
+module.exports = webpackRendererConfig

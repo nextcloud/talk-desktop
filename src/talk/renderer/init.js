@@ -22,6 +22,7 @@
 import { register } from '@nextcloud/l10n'
 import { loadServerCss } from '../../shared/resource.utils.js'
 import { appData } from '../../app/AppData.js'
+import { Viewer } from '../../patchers/Viewer.js'
 
 /**
  * Initialize Talk application: styles, localization etc.
@@ -79,6 +80,10 @@ export async function init() {
 			window.TALK_DESKTOP.relaunch()
 		}
 	})
+
+	// Init externals stubs
+	OCA.Viewer = Viewer
+	OCA.Viewer.mount()
 
 	return {
 		router,

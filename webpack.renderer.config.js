@@ -136,7 +136,21 @@ let webpackRendererConfig = mergeWithRules({
 	],
 })
 
-if (require.resolve('esbuild-loader', { paths: [TALK_PATH] })) {
+// Check if there is esbuild-loader in the Talk repo, not in the Talk Desktop
+let hasEsbuildLoader = false
+try {
+	const esbuildLoaderPath = require.resolve('esbuild-loader', { paths: [TALK_PATH] })
+	// If there is esbuild-loader, it might be in its parents, not in Talk itself
+	// e.g. in server or in talk-desktop
+	// Check if it is inside Talk
+	if (esbuildLoaderPath.startsWith(TALK_PATH)) {
+		hasEsbuildLoader = true
+	}
+} catch {
+	// There is no esbuild-loader in Talk or its parents
+}
+
+if (hasEsbuildLoader) {
 	console.log('Using esbuild-loader')
 	// With Electron we can use the most modern features
 	// But with web client - we cannot

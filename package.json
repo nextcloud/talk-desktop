@@ -55,7 +55,7 @@
     "@electron-forge/maker-rpm": "^6.4.0",
     "@electron-forge/maker-squirrel": "^6.4.1",
     "@electron-forge/maker-zip": "^6.4.0",
-    "@electron-forge/plugin-webpack": "^6.3.0",
+    "@electron-forge/plugin-webpack": "^6.4.1",
     "@nextcloud/babel-config": "^1.0.0",
     "@nextcloud/eslint-config": "^8.2.1",
     "@nextcloud/eslint-plugin": "^2.1.0",

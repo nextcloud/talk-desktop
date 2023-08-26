@@ -6,6 +6,10 @@
     "Report a bug" : "Notificar un error",
     "Open in Web-Browser" : "Abrir en navegador web",
     "About" : "Acerca de",
-    "Log out" : "Cerrar sersión"
+    "Log out" : "Cerrar sersión",
+    "Upgrade required" : "Se requiere actualización",
+    "The client version is too old and no longer supported by this server. Update is required." : "Esta versión del cliente es muy antigua y no está soportada por este servidor. Se requiere una actualización.",
+    "Update Talk Desktop ↗" : "Actualizar Talk Desktop ↗",
+    "Continue in Web-Browser ↗" : "Continuar en Navegador Web ↗"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

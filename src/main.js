@@ -92,7 +92,8 @@ app.whenReady().then(async () => {
 		if (mainWindow.isMinimized()) {
 			mainWindow.restore()
 		}
-		mainWindow.focus()
+		// Show window if it's hidden in the system tray and focus it
+		mainWindow.show()
 	}
 
 	/**

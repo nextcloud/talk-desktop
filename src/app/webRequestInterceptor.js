@@ -91,6 +91,7 @@ function enableWebRequestInterceptor(serverUrl, {
 		'If-None-Match',
 		// DAV
 		'Depth',
+		'requesttoken',
 	].join(', ')]
 	const EXPOSED_HEADERS = [[
 		// Common headers

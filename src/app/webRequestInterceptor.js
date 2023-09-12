@@ -91,6 +91,7 @@ function enableWebRequestInterceptor(serverUrl, {
 		'If-None-Match',
 		// DAV
 		'Depth',
+		'requesttoken',
 	].join(', ')]
 	const EXPOSED_HEADERS = [[
 		// Common headers
@@ -109,10 +110,29 @@ function enableWebRequestInterceptor(serverUrl, {
 	 */
 	function addCorsHeaders(details) {
 		if (details.method === 'OPTIONS') {
-			// OPTIONS method for CORS on OCS and API is not allowed at all... Let's make a hack...
-			// 405 Method Not Allowed -> 200 OK
-			details.statusLine = details.statusLine.replace('405', '200')
+			if (details.statusCode >= 400) {
+				// OPTIONS request may not be successful for many reasons, but it is not related to actual error.
+				// For example:
+				// - 405 Method Not Allowed -> 200 OK
+				//   OPTIONS method for CORS on OCS and API is not allowed at all.
+				//   Emulate allowed CORS.
+				// - 401 Unauthorized -> 200 OK
+				//   There is an authentication issue.
+				//   But if OPTIONS request fails, an actual request will fail with general Network error.
+				//   ClientRequest sender will not be able to detect the reason.
+				// - 500 Server error -> 200 OK
+				//   Same as 401 on some requests
+				//
+				// Replacing status is safe here, because it is only used for OPTIONS request.
+				// The following actual request will return the actual status anyway
+				details.statusCode = 200
+				// eslint-disable-next-line no-unused-vars
+				const [httpVersion, statusCode, optionalReason] = details.statusLine.split(' ')
+				details.statusLine = [httpVersion, '200', optionalReason].join(' ')
+			}
 		}
+
+		// Emulate CORS
 		details.responseHeaders['Access-Control-Allow-Origin'] = ALLOWED_ORIGIN
 		details.responseHeaders['Access-Control-Allow-Methods'] = ALLOWED_METHODS
 		details.responseHeaders['Access-Control-Allow-Credentials'] = ALLOWED_CREDENTIALS_TRUE

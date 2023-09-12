@@ -80,7 +80,8 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-merge": "^5.9.0",
-    "worker-loader": "^3.0.8"
+    "worker-loader": "^3.0.8",
+    "zx": "^7.2.3"
   },
   "engines": {
     "node": "^20.0.0",

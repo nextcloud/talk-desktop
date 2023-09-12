@@ -73,8 +73,7 @@ export async function refetchAppDataIfDirty(appData) {
 				console.debug('AppData re-fetched')
 				return true
 			} catch (error) {
-				// In development mode unauthenticated response will be ERR_NETWORK due to CORS error
-				if (error.response?.status === 401 || process.env.NODE_ENV === 'development') {
+				if (error.response?.status === 401) {
 					appData.reset().persist()
 					console.debug('AppData credentials are invalid... Resetting')
 					return true

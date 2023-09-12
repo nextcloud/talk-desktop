@@ -29,7 +29,8 @@
     "make:all": "npm run make:linux && npm run make:mac && npm run make:windows",
     "publish": "electron-forge publish",
     "generate-icons": "node ./scripts/generate-icons.js",
-    "lint": "eslint --ext .js,.vue src/ --fix"
+    "lint": "eslint --ext .js,.vue src/ --fix",
+    "release:package": "zx ./scripts/prepare-release-packages.mjs"
   },
   "dependencies": {
     "@nextcloud/axios": "^2.4.0",

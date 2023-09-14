@@ -19,6 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+const TALK_PATH = './out/.temp/spreed/'
+const talkDotGit = `${TALK_PATH}.git`
+
 import { $, echo, spinner, argv, fs, quotePowerShell, os, which } from 'zx'
 
 function exit(message, code) {
@@ -30,7 +33,7 @@ function exit(message, code) {
  * Show help
  */
 function help() {
-	echo`Prepare release packages for Talk Desktop with Talk in ./spreed/.
+	echo`Prepare release packages for Talk Desktop with Talk in ${TALK_PATH}
 
 	Usage: npm run release:package -- --version=v17.0.0 --linux --mac --windows
 
@@ -46,7 +49,7 @@ function help() {
 }
 
 /**
- * Prepare release packages for Talk Desktop with Talk in ./spreed/
+ * Prepare release packages for Talk Desktop with Talk in TALK_PATH
  *
  * @return {Promise<void>}
  */
@@ -61,7 +64,7 @@ async function prepareRelease() {
 	}
 
 	// Git wrapper for Talk repository
-	const gitSpreed = (command) => $`git --git-dir=./spreed/.git --work-tree=./spreed ${command}`
+	const gitSpreed = (command) => $`git --git-dir=${talkDotGit} --work-tree=${TALK_PATH} ${command}`
 
 	// Check Talk Desktop repository
 	echo`[1/5] Check for uncommitted changes in Talk Desktop`
@@ -70,9 +73,9 @@ async function prepareRelease() {
 	}
 
 	// Check and prepare Talk repository
-	echo`[2/5] Check for Talk repository in ./spreed/`
-	if (fs.existsSync('./spreed/')) {
-		echo`- Talk has been found in ./spreed/`
+	echo`[2/5] Check for Talk repository in ${TALK_PATH}`
+	if (fs.existsSync(TALK_PATH)) {
+		echo`- Talk has been found in ${TALK_PATH}`
 		echo`[3.1/5] Check for uncommitted changes in Talk repository`
 		if ((await gitSpreed(['status', '-s']).quiet()).stdout) {
 			exit(`❌ You have uncommitted changes in the Talk repository`, 1)
@@ -88,11 +91,11 @@ async function prepareRelease() {
 			() => gitSpreed(['checkout', version])
 		)
 	} else {
-		echo`- No Talk has been found in ./spreed/`
-		echo`[3/5] Clone Talk@${version} to ./spreed/`
+		echo`- No Talk has been found in ${TALK_PATH}`
+		echo`[3/5] Clone Talk@${version} to ${TALK_PATH}`
 		await spinner(
-			`Cloning Talk@${version} to ./spreed/`,
-			() => $`git clone --branch=${version} --depth=1 -- https://github.com/nextcloud/spreed spreed`
+			`Cloning Talk@${version} to ${TALK_PATH}`,
+			() => $`git clone --branch=${version} --depth=1 -- https://github.com/nextcloud/spreed ${TALK_PATH}`
 		)
 	}
 
@@ -106,15 +109,15 @@ async function prepareRelease() {
 
 		await spinner(
 			'Installing dependencies in Talk',
-			() => $`npm ci --prefix ./spreed`
+			() => $`npm ci --prefix ${TALK_PATH}`
 		)
 	} else {
 		echo`SKIPPED [5/5] Install dependencies`
 	}
 
-	// Package with Talk from ./spreed/
-	echo`[5/5] Package with Talk from ./spreed/`
-	$.env.TALK_PATH = 'spreed'
+	// Package with Talk from TALK_PATH
+	echo`[5/5] Package with Talk from ${TALK_PATH}`
+	$.env.TALK_PATH = TALK_PATH
 	argv.windows && await spinner('Package Windows', () => $`npm run package:windows && npm run make:windows`)
 	argv.linux && await spinner('Package Linux', () => $`npm run package:linux && npm run make:linux`)
 	argv.mac && await spinner('Package MacOS', () => $`npm run package:mac && npm run make:mac`)

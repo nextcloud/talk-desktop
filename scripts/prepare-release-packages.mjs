@@ -87,7 +87,7 @@ async function prepareRelease() {
 		echo`[3/5] Clone Talk@${version} to ./spreed/`
 		await spinner(
 			`Cloning Talk@${version} to ./spreed/`,
-			() => $`git clone -b ${version} -- https://github.com/nextcloud/spreed spreed`
+			() => $`git clone --branch=${version} --depth=1 -- https://github.com/nextcloud/spreed spreed`
 		)
 	}
 

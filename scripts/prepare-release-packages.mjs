@@ -77,7 +77,12 @@ async function prepareRelease() {
 		if ((await gitSpreed(['status', '-s']).quiet()).stdout) {
 			exit(`❌ You have uncommitted changes in the Talk repository`, 1)
 		}
-		echo`[3.2/5] Checkout Talk ${version}`
+		echo`[3.2/5] Fetch Talk ${version} from origin`
+		await spinner(
+			`Fetch Talk ${version} from origin`,
+			() => gitSpreed(['fetch', '--no-tags', '--depth=1', 'origin', 'tag', version])
+		)
+		echo`[3.3/5] Checkout Talk ${version}`
 		await spinner(
 			`Checkout Talk ${version}`,
 			() => gitSpreed(['checkout', version])

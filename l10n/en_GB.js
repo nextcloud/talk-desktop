@@ -12,6 +12,7 @@ OC.L10N.register(
     "Upgrade required" : "Upgrade required",
     "The client version is too old and no longer supported by this server. Update is required." : "The client version is too old and no longer supported by this server. Update is required.",
     "Update Talk Desktop ↗" : "Update Talk Desktop ↗",
-    "Continue in Web-Browser ↗" : "Continue in Web-Browser ↗"
+    "Continue in Web-Browser ↗" : "Continue in Web-Browser ↗",
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Cannot connect to the server. Please check your internet connection and try again later."
 },
 "nplurals=2; plural=(n != 1);");

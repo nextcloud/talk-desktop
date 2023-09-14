@@ -10,6 +10,7 @@
     "Upgrade required" : "Uppgradering krävs",
     "The client version is too old and no longer supported by this server. Update is required." : "Klientversionen är för gammal och stöds inte längre av denna server. Uppgradering krävs.",
     "Update Talk Desktop ↗" : "Uppgradera Talk Desktop ↗",
-    "Continue in Web-Browser ↗" : "Fortsätt i webbläsare ↗"
+    "Continue in Web-Browser ↗" : "Fortsätt i webbläsare ↗",
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Kan inte ansluta till servern. Kontrollera din internetanslutning och försök igen senare."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

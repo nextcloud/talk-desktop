@@ -12,6 +12,7 @@ OC.L10N.register(
     "Upgrade required" : "Aktualisierung erforderlich",
     "The client version is too old and no longer supported by this server. Update is required." : "Die Client-Version ist zu alt und wird von diesem Server nicht mehr unterstützt. Aktualisierung ist erforderlich.",
     "Update Talk Desktop ↗" : "Talk Desktop aktualisieren ↗",
-    "Continue in Web-Browser ↗" : "Im Web-Browser fortsetzen ↗"
+    "Continue in Web-Browser ↗" : "Im Web-Browser fortsetzen ↗",
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Kann nicht mit dem Server verbinden. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es später erneut."
 },
 "nplurals=2; plural=(n != 1);");

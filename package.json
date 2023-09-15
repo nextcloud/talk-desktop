@@ -29,7 +29,8 @@
     "make:all": "npm run make:linux && npm run make:mac && npm run make:windows",
     "publish": "electron-forge publish",
     "generate-icons": "node ./scripts/generate-icons.js",
-    "lint": "eslint --ext .js,.vue src/ --fix"
+    "lint": "eslint --ext .js,.vue src/ --fix",
+    "release:package": "zx ./scripts/prepare-release-packages.mjs"
   },
   "dependencies": {
     "@nextcloud/axios": "^2.4.0",
@@ -80,7 +81,8 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-merge": "^5.9.0",
-    "worker-loader": "^3.0.8"
+    "worker-loader": "^3.0.8",
+    "zx": "^7.2.3"
   },
   "engines": {
     "node": "^20.0.0",

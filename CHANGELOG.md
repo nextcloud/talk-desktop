@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.11.0 - 2023-09-18
+
+### Fixes
+
+- Restore app from system tray on reopen by @ShGKme in [#348](https://github.com/nextcloud/talk-desktop/pull/348)
+- Catch http errors on development and styles loading by @ShGKme in [#347](https://github.com/nextcloud/talk-desktop/pull/347)
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v17.1.0 Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
+
 ## v0.10.0 - 2023-08-11
 
 ### Features

@@ -42,7 +42,7 @@
     "core-js": "^3.32.2",
     "electron-squirrel-startup": "^1.0.0",
     "floating-vue": "^1.0.0-beta.19",
-    "howler": "^2.2.3",
+    "howler": "^2.2.4",
     "semver": "^7.5.4",
     "undici": "^5.24.0",
     "unzip-crx-3": "^0.2.0",

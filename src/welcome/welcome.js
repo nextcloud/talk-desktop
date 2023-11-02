@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import '../shared/assets/default/css/icons.css'
+import '../shared/assets/default/icons.css'
 
 import { appData } from '../app/AppData.js'
 import { refetchAppDataIfDirty } from '../app/appData.service.js'

@@ -63,6 +63,10 @@ if (process.env.NODE_ENV === 'production') {
 
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getOs', () => getOs())
+ipcMain.handle('app:getSystemL10n', () => ({
+	locale: app.getLocale(),
+	language: app.getPreferredSystemLanguages()[0],
+}))
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(count))

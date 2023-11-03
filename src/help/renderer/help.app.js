@@ -22,12 +22,12 @@ import '../../shared/assets/default/default.css'
 import '../../shared/assets/default/server.css'
 
 import Vue from 'vue'
+import { translate as t } from '@nextcloud/l10n'
 import HelpApp from './HelpApp.vue'
-import { appData } from '../../app/AppData.js'
+import { setupWebPage } from '../../shared/setupWebPage.js'
 
-appData.restore()
+await setupWebPage()
 
-window.TALK_DESKTOP.getOs().then(os => {
-	window.OS = os
-	new Vue(HelpApp).$mount('#app')
-})
+Vue.prototype.t = t
+
+new Vue(HelpApp).$mount('#app')

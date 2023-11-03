@@ -59,6 +59,12 @@ const TALK_DESKTOP = {
 	 */
 	getOs: () => ipcRenderer.invoke('app:getOs'),
 	/**
+	 * Get system locale and preferred language
+	 *
+	 * @return {Promise<{ locale: string, language: string }>}
+	 */
+	getSystemL10n: () => ipcRenderer.invoke('app:getSystemL10n'),
+	/**
 	 * Enable web request intercepting
 	 *
 	 * @type {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor}

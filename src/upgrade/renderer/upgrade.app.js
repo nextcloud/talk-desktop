@@ -21,11 +21,11 @@ import '../../shared/assets/default/server.css'
 
 import Vue from 'vue'
 import UpgradeApp from './UpgradeApp.vue'
-import { appData } from '../../app/AppData.js'
 import { translate } from '@nextcloud/l10n'
+import { setupWebPage } from '../../shared/setupWebPage.js'
+
+await setupWebPage()
 
 Vue.prototype.t = translate
-
-appData.restore()
 
 new Vue(UpgradeApp).$mount('#app')

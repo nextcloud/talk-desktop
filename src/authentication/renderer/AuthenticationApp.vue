@@ -28,9 +28,9 @@
 			<form @submit.prevent="login">
 				<fieldset :disabled="state === 'loading'">
 					<h2 class="login-box__header">
-						Log in to Nextcloud
+						{{ t('talk_desktop', 'Log in to Nextcloud') }}
 					</h2>
-					<NcTextField label="Nextcloud server address"
+					<NcTextField :label="t('talk_desktop', 'Nextcloud server address')"
 						label-visible
 						:value.sync="rawServerUrl"
 						placeholder="https://try.nextcloud.com"
@@ -46,7 +46,7 @@
 						<template #icon>
 							<MdiArrowRight :size="20" />
 						</template>
-						Log in
+						{{ t('talk_desktop', 'Log in') }}
 					</NcButton>
 					<NcButton v-else-if="state ==='loading'"
 						class="submit-button"
@@ -56,7 +56,7 @@
 						<template #icon>
 							<NcLoadingIcon appearance="light" />
 						</template>
-						Logging in...
+						{{ t('talk_desktop', 'Logging in...') }}
 					</NcButton>
 				</fieldset>
 			</form>
@@ -116,7 +116,7 @@ export default {
 	methods: {
 		setSuccess() {
 			this.state = 'success'
-			this.stateText = 'Logged in successfully'
+			this.stateText = t('talk_desktop', 'Logged in successfully')
 		},
 
 		setLoading() {
@@ -138,7 +138,7 @@ export default {
 				// eslint-disable-next-line no-new
 				new URL(this.serverUrl)
 			} catch {
-				return this.setError('Invalid server address')
+				return this.setError(t('talk_desktop', 'Invalid server address'))
 			}
 
 			// Prepare to request the server
@@ -152,22 +152,28 @@ export default {
 			try {
 				capabilitiesResponse = await getCapabilities()
 			} catch {
-				return this.setError('Nextcloud server not found')
+				return this.setError(t('talk_desktop', 'Nextcloud server not found'))
 			}
 
 			// Check if Talk is installed and enabled
 			const talkCapabilities = capabilitiesResponse.capabilities.spreed
 			if (!talkCapabilities) {
-				return this.setError('Nextcloud Talk is not installed in the server')
+				return this.setError(t('talk_desktop', 'Nextcloud Talk is not installed in the server'))
 			}
 
 			// Check versions compatibilities
+			const createVersionError = (componentName, minRequiredVersion, foundVersion) => t('talk_desktop', '{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed', {
+				componentName,
+				minRequiredVersion,
+				foundVersion,
+			})
 			if (capabilitiesResponse.version.major < MIN_REQUIRED_NEXTCLOUD_VERSION) {
-				return this.setError(`Nextcloud ${MIN_REQUIRED_NEXTCLOUD_VERSION} or higher is required but ${capabilitiesResponse.version.string} is installed`)
+				return this.setError(createVersionError('Nextcloud', MIN_REQUIRED_NEXTCLOUD_VERSION, capabilitiesResponse.version.string))
 			}
 			if (parseInt(talkCapabilities.version.split('.')[0]) < MIN_REQUIRED_TALK_VERSION) {
 				// TODO: use semver package and check not only major version?
-				return this.setError(`Nextcloud Talk ${MIN_REQUIRED_TALK_VERSION} or higher is required but ${talkCapabilities.version} is installed`)
+				return this.setError(createVersionError('Nextcloud Talk', MIN_REQUIRED_TALK_VERSION, talkCapabilities.version,
+				))
 			}
 
 			// Login with web view
@@ -180,7 +186,7 @@ export default {
 				credentials = maybeCredentials
 			} catch (error) {
 				console.error(error)
-				return this.setError('Unexpected error')
+				return this.setError(t('talk_desktop', 'Unexpected error'))
 			}
 
 			// Add credentials to the request
@@ -194,7 +200,7 @@ export default {
 			} catch (error) {
 				// A network connection was lost after successful requests or something unexpected went wrong
 				console.error(error)
-				return this.setError('Login was successful but something went wrong...')
+				return this.setError(t('talk_desktop', 'Login was successful but something went wrong...'))
 			}
 
 			// Yay!

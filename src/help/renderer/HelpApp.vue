@@ -21,23 +21,24 @@
 
 <template>
 	<div class="about">
-		<h2>About</h2>
+		<h2>{{ t('talk_desktop', 'About') }}</h2>
 		<p>{{ $options.packageInfo.productName }} - {{ $options.packageInfo.description }}</p>
 		<ul class="about__list">
 			<li>
-				Privacy and Legal Policy: <a class="link" href="https://nextcloud.com/privacy/" target="_blank">https://nextcloud.com/privacy/</a>
+				{{ t('talk_desktop', 'Privacy and Legal Policy') }}: <a class="link" href="https://nextcloud.com/privacy/" target="_blank">https://nextcloud.com/privacy/</a>
 			</li>
 			<li>
-				License: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ $options.packageInfo.license }}</a>
+				{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ $options.packageInfo.license }}</a>
 			</li>
 			<li>
-				Issues: <a :href="$options.packageInfo.bugs" class="link" target="_blank">{{ $options.packageInfo.bugs }}</a>
+				{{ t('talk_desktop', 'Issues') }}: <a :href="$options.packageInfo.bugs" class="link" target="_blank">{{ $options.packageInfo.bugs }}</a>
 			</li>
 			<li>
-				Source Code: <a :href="$options.packageInfo.repository" class="link" target="_blank">{{ $options.packageInfo.repository }}</a>
+				{{ t('talk_desktop', 'Source Code') }}: <a :href="$options.packageInfo.repository" class="link" target="_blank">{{ $options.packageInfo.repository }}</a>
 			</li>
 		</ul>
-		<NcTextArea :value="report"
+		<NcTextArea :aria-label="t('talk_desktop', 'System report')"
+			:value="report"
 			rows="11"
 			readonly
 			class="about__report"
@@ -47,7 +48,7 @@
 				<template #icon>
 					<MdiWindowClose />
 				</template>
-				Close
+				{{ t('talk_desktop', 'Close') }}
 			</NcButton>
 		</p>
 	</div>

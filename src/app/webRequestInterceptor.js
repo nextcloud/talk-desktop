@@ -27,10 +27,10 @@ const { USER_AGENT, DEV_SERVER_ORIGIN } = require('../constants.js')
  *
  * @param {string} serverUrl - Nextcloud server URL
  * @param {object} [options] - Patching options
- * @param {boolean} [options.enableCors=false] - Enable CORS for OCS and other APIs
- * @param {boolean} [options.enableCookies=false] - Enable aka cross-origin cookie without setting SameSate=None.
+ * @param {boolean} [options.enableCors] - Enable CORS for OCS and other APIs
+ * @param {boolean} [options.enableCookies] - Enable aka cross-origin cookie without setting SameSate=None.
  *                                                  Some Talk and Files API requests require cookie session.
- * @param {import('../accounts/login.service.js').Credentials} [options.credentials=null] - User credentials for the Authentication header
+ * @param {import('../accounts/login.service.js').Credentials} [options.credentials] - User credentials for the Authentication header
  */
 function enableWebRequestInterceptor(serverUrl, {
 	enableCors = false,
@@ -47,7 +47,7 @@ function enableWebRequestInterceptor(serverUrl, {
 	/**
 	 * CookieStorage. There are not many cookies (2-3). POJO is faster, than a Map.
 	 *
-	 * @type {Object<string,string>}
+	 * @type {{[cookieName: string]: string}}
 	 */
 	const cookiesStorage = {}
 

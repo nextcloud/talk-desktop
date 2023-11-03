@@ -37,10 +37,10 @@
 				Source Code: <a :href="$options.packageInfo.repository" class="link" target="_blank">{{ $options.packageInfo.repository }}</a>
 			</li>
 		</ul>
-		<textarea class="about__report"
-			:value="report"
+		<NcTextArea :value="report"
 			rows="11"
 			readonly
+			class="about__report"
 			@focus="$event.target.setSelectionRange(0, -1)" />
 		<p>
 			<NcButton type="secondary" wide @click="close">
@@ -56,6 +56,7 @@
 <script>
 import MdiWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcTextArea from '@nextcloud/vue/dist/Components/NcTextArea.js'
 
 import { appData } from '../../app/AppData.js'
 
@@ -65,6 +66,7 @@ export default {
 	components: {
 		MdiWindowClose,
 		NcButton,
+		NcTextArea,
 	},
 
 	inheritAttrs: false,

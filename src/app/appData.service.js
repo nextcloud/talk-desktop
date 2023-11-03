@@ -26,7 +26,7 @@ import packageJson from '../../package.json'
  * Re-fetch capabilities and userMetadata and update appData
  *
  * @param {import('./AppData.js').appData} appData appData
- * @param {boolean} [persist=false] Persist after re-fetch
+ * @param {boolean} [persist] Persist after re-fetch
  * @return {Promise<void>}
  * @throws {Error}
  */
@@ -88,7 +88,7 @@ export async function refetchAppDataIfDirty(appData) {
 		/**
 		 * Recursively re-try a re-fetch attempt with a timeout
 		 *
-		 * @param {number} [delay=1000] delay in milliseconds
+		 * @param {number} [delay] delay in milliseconds
 		 */
 		function retryRefetch(delay = 1_000) {
 			const MAX_DELAY = 2 ** 7 * 1000 // 128_000 = ~2 minutes

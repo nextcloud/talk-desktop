@@ -37,7 +37,10 @@
 		<div class="spacer" />
 
 		<div class="header__item">
-			<NcButton type="tertiary-no-background" class="header__button" @click="showNotSupportedAlert('Search')">
+			<NcButton :aria-label="t('talk_desktop', 'Search')"
+				type="tertiary-no-background"
+				class="header__button"
+				@click="showNotSupportedAlert('Search')">
 				<template #icon>
 					<MdiMagnify />
 				</template>
@@ -45,7 +48,10 @@
 		</div>
 
 		<div class="header__item">
-			<NcButton type="tertiary-no-background" class="header__button" @click="showNotSupportedAlert('Notifications')">
+			<NcButton :aria-label="t('talk_desktop', 'Notifications')"
+				type="tertiary-no-background"
+				class="header__button"
+				@click="showNotSupportedAlert('Notifications')">
 				<template #icon>
 					<MdiBell />
 				</template>

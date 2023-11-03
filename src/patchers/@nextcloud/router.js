@@ -27,7 +27,7 @@ export { linkTo, getRootUrl, generateUrl } from '@desktop-modules--@nextcloud/ro
 
 /**
  * @param {string} s - String with "{token}" blocks
- * @param {Object<string,string>} [tokens] - Dict with replacements
+ * @param {{[token: string]: string}} [tokens] - Dict with replacements
  * @return {string}
  */
 function formattedString(s, tokens = {}) {

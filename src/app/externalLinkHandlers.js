@@ -46,7 +46,7 @@ function isExternalLink(url) {
  * Open external link in the default OS handler (i.e. Web-Browser) on new window open
  *
  * @param {import('electron').HandlerDetails} details - HandlerDetails
- * @param {import('electron').BrowserWindowConstructorOptions} [browserWindowOptions={}] - options for new BrowserWindow, usually based on parent options
+ * @param {import('electron').BrowserWindowConstructorOptions} [browserWindowOptions] - options for new BrowserWindow, usually based on parent options
  * @return {{action: 'deny'} | {action: 'allow', outlivesOpener?: boolean, overrideBrowserWindowOptions?: import('electron').BrowserWindowConstructorOptions}}
  */
 function windowOpenExternalLinkHandler(details, browserWindowOptions = {}) {
@@ -78,7 +78,7 @@ function willNavigateExternalLinkHandler(event, url) {
  * Apply external links handling at BrowserWindow
  *
  * @param {import('electron').BrowserWindow} browserWindow - Browser window
- * @param {import('electron').BrowserWindowConstructorOptions} [browserWindowOptions={}] - options for new BrowserWindow, usually based on parent options
+ * @param {import('electron').BrowserWindowConstructorOptions} [browserWindowOptions] - options for new BrowserWindow, usually based on parent options
  */
 function applyExternalLinkHandler(browserWindow, browserWindowOptions = {}) {
 	browserWindow.webContents.on('will-navigate', willNavigateExternalLinkHandler)

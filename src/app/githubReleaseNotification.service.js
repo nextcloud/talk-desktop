@@ -76,8 +76,8 @@ function notifyAboutNewVersion(version) {
  * Check if there is a new Nextcloud Talk
  *
  * @param {object} options options
- * @param {boolean} [options.showNotification=false] Show native notification if new version is available
- * @param {boolean} [options.forceRequest=false] Force request even if there is a cached new version
+ * @param {boolean} [options.showNotification] Show native notification if new version is available
+ * @param {boolean} [options.forceRequest] Force request even if there is a cached new version
  * @return {Promise<boolean>} true if there is a new version
  */
 async function checkForNewVersion({ showNotification = false, forceRequest = false }) {
@@ -109,7 +109,7 @@ let schedulerIntervalId
 /**
  * Start scheduler with regular update checks
  *
- * @param {number} [intervalInMin=60] Checking interval in minutes
+ * @param {number} [intervalInMin] Checking an interval in minutes
  * @return {void}
  */
 function setupReleaseNotificationScheduler(intervalInMin = 60) {

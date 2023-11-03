@@ -5,6 +5,10 @@ module.exports = {
 		'plugin:vue/recommended',
 	],
 
+	parserOptions: {
+		ecmaVersion: 'latest',
+	},
+
 	globals: {
 		// Electron Forge build vars
 		AUTHENTICATION_WINDOW_WEBPACK_ENTRY: 'readonly',
@@ -63,10 +67,6 @@ module.exports = {
 		 *
 		 * @see https://github.com/import-js/eslint-plugin-import
 		 */
-		'import/extensions': ['error', 'always', {
-			commonjs: false,
-			module: true,
-		}],
 		'import/no-unresolved': 'off', // TODO: Find a way to configure @talk alias
 		/**
 		 * Vue

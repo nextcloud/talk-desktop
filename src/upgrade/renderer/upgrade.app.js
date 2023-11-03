@@ -16,8 +16,8 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import '../../shared/assets/default/css/default.css'
-import '../../shared/assets/default/css/server.css'
+import '../../shared/assets/default/default.css'
+import '../../shared/assets/default/server.css'
 
 import Vue from 'vue'
 import UpgradeApp from './UpgradeApp.vue'

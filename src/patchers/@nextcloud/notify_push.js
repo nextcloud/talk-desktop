@@ -48,7 +48,7 @@ export function getSupportedTypes() {
  *
  * @param name name of the event
  * @param handler callback invoked for every matching event pushed
- * @param {object} [options={}] options
+ * @param {object} [options] options
  * @param {{ user: string, password: string}} [options.credentials] Application credentials. If none is provided, pre-auth is used.
  * @return boolean whether or not push is setup correctly
  */
@@ -72,7 +72,7 @@ export function listen(name, handler, { credentials } = {}) {
 /**
  * Setup notify_push
  *
- * @param {object} [options={}] options
+ * @param {object} [options] options
  * @param {{ user: string, password: string}} [options.credentials] Application credentials. If none is provided, pre-auth is used.
  */
 function setupGlobals({ credentials } = {}) {
@@ -98,7 +98,7 @@ function setupGlobals({ credentials } = {}) {
 /**
  * Setup socket connection
  *
- * @param {object} [options={}] options
+ * @param {object} [options] options
  * @param {{ user: string, password: string}} [options.credentials] Application credentials. If none is provided, pre-auth is used.
  */
 async function setupSocket({ credentials } = {}) {

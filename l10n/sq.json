@@ -1,4 +1,6 @@
 { "translations": {
+    "Search" : "Kërko",
+    "Notifications" : "Njoftime",
     "Report a bug" : "Njoftoni një të metë",
     "About" : "Rreth",
     "Log out" : "Shkyçu"

@@ -1,4 +1,5 @@
 { "translations": {
+    "Search" : "සොයන්න",
     "About" : "පිළිබඳ",
     "Log out" : "නික්මෙන්න"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Ieškoti",
     "View profile" : "Rodyti profilį",
     "Report a bug" : "Pranešti apie klaidą",
     "Open in Web-Browser" : "Atverti saityno naršyklėje",

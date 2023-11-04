@@ -1,6 +1,8 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Поиск",
+    "Notifications" : "Уведомления",
     "View profile" : "Открыть профиль",
     "Report a bug" : "Сообщить об ошибке",
     "About" : "О себе",

@@ -2,6 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk Desktop",
+    "Search" : "جستجو",
+    "Notifications" : "هشدارها",
     "View profile" : "مشاهده پروفایل",
     "Online" : "آنلاین",
     "Force reload" : "Force reload",

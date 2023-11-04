@@ -1,4 +1,6 @@
 { "translations": {
+    "Search" : "חיפוש",
+    "Notifications" : "התראות",
     "Online" : "מקוון",
     "Report a bug" : "דיווח על באג",
     "About" : "אודות",

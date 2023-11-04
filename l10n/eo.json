@@ -1,4 +1,6 @@
 { "translations": {
+    "Search" : "Serĉi",
+    "Notifications" : "Atentigoj",
     "View profile" : "Vidi profilon",
     "Report a bug" : "Raporti problemon"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

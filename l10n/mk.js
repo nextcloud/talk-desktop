@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Барај",
     "View profile" : "Прегледај профил",
     "Online" : "Присутен",
     "Report a bug" : "Пријави грешка",

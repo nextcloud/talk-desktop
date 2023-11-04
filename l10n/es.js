@@ -2,6 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk para escritorio",
+    "Search" : "Buscar",
+    "Notifications" : "Notificaciones",
     "View profile" : "Ver perfil",
     "Online" : "En línea",
     "Force reload" : "Forzar recarga",

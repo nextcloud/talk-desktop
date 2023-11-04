@@ -1,4 +1,6 @@
 { "translations": {
+    "Search" : "Etsi",
+    "Notifications" : "Ilmoitukset",
     "View profile" : "Näytä profiili",
     "Online" : "Online",
     "Report a bug" : "Ilmoita viasta",

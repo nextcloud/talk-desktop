@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Meklēt",
     "View profile" : "Skatīt profilu",
     "Report a bug" : "Ziņot par kļūdu",
     "Log out" : "Izrakstīties"

@@ -2,6 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Beszélgetés asztali alkalmazás",
+    "Search" : "Keresés",
+    "Notifications" : "Értesítések",
     "View profile" : "Profil megtekintése",
     "Online" : "Elérhető",
     "Force reload" : "Kényszerített újratöltés",

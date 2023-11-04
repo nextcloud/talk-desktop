@@ -2,6 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk Десктоп",
+    "Search" : "Претрага",
+    "Notifications" : "Упозорења",
     "View profile" : "Погледај профил",
     "Online" : "На мрежи",
     "Force reload" : "Форсирај поновно учитавање",

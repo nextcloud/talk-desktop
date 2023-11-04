@@ -1,6 +1,8 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Lorg",
+    "Notifications" : "Brathan",
     "Online" : "Air loidhne",
     "About" : "Mu dhèidhinn",
     "Log out" : "Clàraich a-mach"

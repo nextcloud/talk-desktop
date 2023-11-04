@@ -1,4 +1,6 @@
 { "translations": {
+    "Search" : "Søk",
+    "Notifications" : "Varsel",
     "Report a bug" : "Rapporter feil"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

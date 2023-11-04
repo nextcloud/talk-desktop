@@ -1,6 +1,8 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Tìm kiếm",
+    "Notifications" : "Thông báo",
     "View profile" : "Xem hồ sơ",
     "Online" : "Trực tuyến",
     "Report a bug" : "Báo cáo lỗi",

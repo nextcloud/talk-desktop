@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Search",
     "Online" : "Á netinu",
     "Report a bug" : "Tilkynna um villu",
     "About" : "Um"

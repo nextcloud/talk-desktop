@@ -2,6 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk 桌面版",
+    "Search" : "搜尋",
+    "Notifications" : "通知",
     "View profile" : "查看個人資料",
     "Online" : "在線",
     "Force reload" : "強制重新加載",

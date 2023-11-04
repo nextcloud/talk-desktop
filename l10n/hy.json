@@ -1,4 +1,6 @@
 { "translations": {
+    "Search" : "Search",
+    "Notifications" : "Ծանուցում",
     "About" : "Մասին"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

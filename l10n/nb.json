@@ -1,4 +1,6 @@
 { "translations": {
+    "Search" : "Søk",
+    "Notifications" : "Varsel",
     "View profile" : "Vis profil",
     "Online" : "Pålogget",
     "Report a bug" : "Rapporter en feil"

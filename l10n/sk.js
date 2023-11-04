@@ -1,6 +1,8 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Hľadať",
+    "Notifications" : "Upozornenia",
     "View profile" : "Zobraziť profil",
     "Online" : "Pripojený",
     "Report a bug" : "Nahlásiť chybu",

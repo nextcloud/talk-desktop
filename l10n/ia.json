@@ -1,4 +1,5 @@
 { "translations": {
+    "Search" : "Cercar",
     "Report a bug" : "Reportar un defecto"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

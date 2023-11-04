@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk Desktop",
+    "Notifications" : "Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet (de_DE).",
     "View profile" : "Profil ansehen",
     "Online" : "Online",
     "Force reload" : "Anwendung neuladen",

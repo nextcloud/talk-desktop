@@ -1,6 +1,8 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Search" : "Cerca",
+    "Notifications" : "Notifiche",
     "View profile" : "Vedi profilo",
     "Online" : "In linea",
     "Report a bug" : "Segnala un bug",

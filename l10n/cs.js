@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk pro desktop",
+    "Notifications" : "Upozornění",
     "View profile" : "Zobrazit profil ",
     "Online" : "Online",
     "Force reload" : "Vynutit opětovné načtení",

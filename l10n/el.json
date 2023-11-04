@@ -1,4 +1,6 @@
 { "translations": {
+    "Search" : "Αναζήτηση",
+    "Notifications" : "Ειδοποιήσεις",
     "View profile" : "Προβολή προφίλ",
     "Report a bug" : "Αναφορά σφάλματος",
     "About" : "Σχετικά με",

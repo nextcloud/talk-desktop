@@ -2,6 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Приложение Talk Desktop",
+    "Search" : "Търсене",
+    "Notifications" : "Известия",
     "View profile" : "Преглед на профил",
     "Online" : "На линия /онлайн/",
     "Force reload" : "Принудително повторно зареждане",

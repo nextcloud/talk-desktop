@@ -1,4 +1,5 @@
 { "translations": {
+    "Search" : "Soek",
     "About" : "Aangaande",
     "Log out" : "Teken af"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

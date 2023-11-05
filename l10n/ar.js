@@ -2,6 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "تطبيق المحادثة \"talk\" المكتبي",
+    "Search" : "بحث",
+    "Notifications" : "الإشعارات",
     "View profile" : "عرض الملف الشخصي",
     "Online" : "متصل على الخط",
     "Force reload" : "إفرض إعادة التحميل",

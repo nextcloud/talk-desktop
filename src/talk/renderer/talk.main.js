@@ -24,20 +24,15 @@ import './assets/styles.css'
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { init } from './init.js'
-import { appData } from '../../app/AppData.js'
-import { applyBodyThemeAttrs } from '../../shared/theme.utils.js'
+import { setupWebPage } from '../../shared/setupWebPage.js'
 
-appData.restore()
+await setupWebPage()
 
-applyBodyThemeAttrs();
+const { router } = await init()
 
-(async () => {
-	const { router } = await init()
+const { createDesktopApp } = await import('./desktop.app.js')
+createDesktopApp(router)
 
-	const { createDesktopApp } = await import('./desktop.app.js')
-	createDesktopApp(router)
+await import('@talk/src/main.js')
 
-	await import('@talk/src/main.js')
-
-	await import('./notifications/notifications.store.js')
-})()
+await import('./notifications/notifications.store.js')

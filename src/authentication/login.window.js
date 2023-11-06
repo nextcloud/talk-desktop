@@ -20,7 +20,7 @@
  */
 
 const os = require('node:os')
-const { BrowserWindow } = require('electron')
+const { BrowserWindow, app } = require('electron')
 const { BASE_TITLE } = require('../constants.js')
 const { parseLoginRedirectUrl } = require('./login.service.js')
 const { getOsTitle } = require('../shared/os.utils.js')
@@ -63,7 +63,10 @@ function openLoginWebView(parentWindow, serverUrl) {
 			// This header value is used as an application name on the Login page
 			// Use BASE_TITLE instead of the USER_AGENT as User-Agent header
 			userAgent: `${os.hostname()} (Talk Desktop Client - ${getOsTitle()})`,
-			extraHeaders: 'OCS-APIRequest: true',
+			extraHeaders: [
+				'OCS-APIRequest: true',
+				`Accept-Language: ${app.getPreferredSystemLanguages().join(',')}`,
+			].join('\n'),
 		})
 
 		window.webContents.on('did-start-loading', () => {

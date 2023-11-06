@@ -19,7 +19,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { register } from '@nextcloud/l10n'
 import { loadServerCss } from '../../shared/resource.utils.js'
 import { appData } from '../../app/AppData.js'
 import { getCapabilities } from '../../shared/ocs.service.js'
@@ -57,27 +56,6 @@ export async function init() {
 
 	// Load styles overrides
 	await import('./assets/overrides.css')
-
-	// Set locale
-	document.documentElement.lang = appData.userMetadata.language
-	document.documentElement.dataset.locale = appData.userMetadata.locale
-
-	// l10n
-	if (appData.userMetadata.language !== 'en') {
-		try {
-			const { default: translationsBundle } = await import(`@talk/l10n/${appData.userMetadata.language}.json`)
-			register('spreed', translationsBundle.translations)
-		} catch (e) {
-			console.log(`Language pack "${appData.userMetadata.language}" for spreed not found...`)
-		}
-
-		try {
-			const { default: translationsBundle } = await import(`../../../l10n/${appData.userMetadata.language}.json`)
-			register('talk_desktop', translationsBundle.translations)
-		} catch (e) {
-			console.log(`Language pack "${appData.userMetadata.language}" for talk_desktop not found...`)
-		}
-	}
 
 	// Get Talk's router and store
 	const { default: router } = await import('@talk/src/router/router.js')

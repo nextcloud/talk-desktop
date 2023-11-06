@@ -2,7 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk masaüstü",
-    "Search" : "Arama",
+    "Search" : "Ara",
     "Notifications" : "Bildirimler",
     "View profile" : "Profili görüntüle",
     "Online" : "Çevrim içi",

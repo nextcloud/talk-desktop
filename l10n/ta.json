@@ -1,4 +1,6 @@
 { "translations": {
+    "Log in" : "புகுபதிகை",
+    "Close" : "மூடுக",
     "Search" : "தேடுதல்"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

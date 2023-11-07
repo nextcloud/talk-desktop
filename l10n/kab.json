@@ -1,7 +1,10 @@
 { "translations": {
+    "Log in" : "Qqen",
+    "About" : "Γef",
+    "License" : "Licence",
+    "Close" : "Mdel",
     "Search" : "Nadi",
     "Notifications" : "Ilɣa",
-    "About" : "Γef",
     "Log out" : "Senser"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

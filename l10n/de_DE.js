@@ -2,6 +2,9 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk Desktop",
+    "Unexpected error" : "Unerwarteter Fehler",
+    "About" : "Über",
+    "Issues" : "Issues",
     "Search" : "Suche",
     "Notifications" : "Benachrichtigungen",
     "View profile" : "Profil ansehen",
@@ -9,7 +12,6 @@ OC.L10N.register(
     "Force reload" : "Anwendung neuladen",
     "Report a bug" : "Einen technischen Fehler melden",
     "Open in Web-Browser" : "Im Web-Browser öffnen",
-    "About" : "Über",
     "Log out" : "Abmelden",
     "Upgrade required" : "Aktualisierung erforderlich",
     "The client version is too old and no longer supported by this server. Update is required." : "Die Client-Version ist zu alt und wird von diesem Server nicht mehr unterstützt. Aktualisierung ist erforderlich.",

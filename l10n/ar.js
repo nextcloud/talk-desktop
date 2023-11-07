@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "تطبيق المحادثة \"talk\" المكتبي",
+    "About" : "حول",
     "Search" : "بحث",
     "Notifications" : "الإشعارات",
     "View profile" : "عرض الملف الشخصي",
@@ -9,7 +10,6 @@ OC.L10N.register(
     "Force reload" : "إفرض إعادة التحميل",
     "Report a bug" : "الإبلاغ عن خطإٍ",
     "Open in Web-Browser" : "إفتح في مستعرض الوب",
-    "About" : "حول",
     "Log out" : "خروج",
     "Upgrade required" : "يلزم الترقية لإصدارٍ أحدث",
     "The client version is too old and no longer supported by this server. Update is required." : "إصدار العميل قديم جداً و لم يعد مدعوماً من الخادوم. يلزم الترقية لإصدارٍ أحدث.",

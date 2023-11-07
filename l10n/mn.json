@@ -1,4 +1,6 @@
 { "translations": {
+    "Log in" : "Нэвтрэх",
+    "License" : "Тусгай зөвшөөрөл",
     "Search" : "Хайх"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

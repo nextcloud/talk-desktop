@@ -1,6 +1,10 @@
 { "translations": {
+    "Log in" : "Մուտք գործել",
+    "About" : "Մասին",
+    "License" : "լիցենզիա",
+    "Issues" : "հայց",
+    "Close" : "Փակել",
     "Search" : "Search",
-    "Notifications" : "Ծանուցում",
-    "About" : "Մասին"
+    "Notifications" : "Ծանուցում"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

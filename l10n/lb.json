@@ -1,4 +1,6 @@
 { "translations": {
+    "Log in" : "Umellen",
+    "Close" : "Zoumaachen",
     "Search" : "Search",
     "Report a bug" : "E Feeler melden"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

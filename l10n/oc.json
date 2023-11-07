@@ -1,5 +1,10 @@
 { "translations": {
     "Talk Desktop" : "Talk pel burèu",
+    "Log in" : "Connexion",
+    "About" : "A prepaus",
+    "License" : "Licéncia",
+    "Issues" : "Avarias",
+    "Close" : "Tampar",
     "Search" : "Recercar",
     "Notifications" : "Notificacions",
     "View profile" : "Veire perfil",
@@ -7,7 +12,6 @@
     "Force reload" : "Forçar lo recargament",
     "Report a bug" : "Raportar un bug",
     "Open in Web-Browser" : "Dobrir dins lo navegador",
-    "About" : "A prepaus",
     "Log out" : "Se desconnectar"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

@@ -1,8 +1,12 @@
 { "translations": {
+    "Log in" : "Hyni",
+    "About" : "Rreth",
+    "License" : "Liçenca",
+    "Issues" : "Çështjet",
+    "Close" : "Mbylleni",
     "Search" : "Kërko",
     "Notifications" : "Njoftime",
     "Report a bug" : "Njoftoni një të metë",
-    "About" : "Rreth",
     "Log out" : "Shkyçu"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

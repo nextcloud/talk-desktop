@@ -1,5 +1,7 @@
 { "translations": {
     "Talk Desktop" : "Приложение Talk Desktop",
+    "Unexpected error" : "Неочаквана грешка",
+    "About" : "Относно",
     "Search" : "Търсене",
     "Notifications" : "Известия",
     "View profile" : "Преглед на профил",
@@ -7,7 +9,6 @@
     "Force reload" : "Принудително повторно зареждане",
     "Report a bug" : "Докладване за грешка",
     "Open in Web-Browser" : "Отваряне в уеб браузър",
-    "About" : "Относно",
     "Log out" : "Изход"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

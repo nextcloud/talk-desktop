@@ -1,4 +1,6 @@
 { "translations": {
+    "Log in" : "لاگ ان",
+    "Close" : "بند ",
     "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

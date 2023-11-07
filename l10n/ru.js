@@ -1,11 +1,16 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Nextcloud server address" : "Адрес сервера Nextcloud",
+    "Log in" : "Войдите",
+    "About" : "О себе",
+    "License" : "Лицензия",
+    "Issues" : "Проблемы",
+    "Close" : "Закрыть",
     "Search" : "Поиск",
     "Notifications" : "Уведомления",
     "View profile" : "Открыть профиль",
     "Report a bug" : "Сообщить об ошибке",
-    "About" : "О себе",
     "Upgrade required" : "Требуется обновление",
     "The client version is too old and no longer supported by this server. Update is required." : "Версия клиента слишком старая и больше не поддерживается этим сервером. Требуется обновление."
 },

@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.14.0 - 2023-11-07
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v18.0.0-beta.1 Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
+
+## Fixes
+
+- Fix translations on Login, Help and Upgrade required windows [#363](https://github.com/nextcloud/talk-desktop/issues/363), [#3](https://github.com/nextcloud/talk-desktop/issues/3)
+
 ## v0.13.0 - 2023-10-27
 
 ### Build-in Talk update

@@ -1,4 +1,6 @@
 { "translations": {
+    "Log in" : "Iniziar sesión",
+    "Close" : "Zarrar",
     "Search" : "Buscar",
     "Notifications" : "Notificazions"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

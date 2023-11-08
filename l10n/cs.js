@@ -2,9 +2,12 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk pro desktop",
+    "Nextcloud server address" : "Adresa Nextcloud serveru",
     "Unexpected error" : "Neočekávaná chyba",
     "About" : "O aplikaci",
+    "License" : "Licence",
     "Issues" : "Problémy",
+    "Close" : "Zavřít",
     "Search" : "Hledat",
     "Notifications" : "Upozornění",
     "View profile" : "Zobrazit profil ",

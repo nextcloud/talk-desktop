@@ -1,4 +1,6 @@
 { "translations": {
+    "Log in" : "প্রবেশ",
+    "Close" : "বন্ধ",
     "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

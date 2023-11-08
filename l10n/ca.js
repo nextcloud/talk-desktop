@@ -2,8 +2,13 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Parla per l'escriptori",
+    "Nextcloud server address" : "Adreça del servidor Nextcloud",
+    "Log in" : "Inicia la sessió",
     "Invalid server address" : "Adreça del servidor invàlida",
     "About" : "Quant a",
+    "License" : "Llicència",
+    "Issues" : "Errors",
+    "Close" : "Tanca",
     "Search" : "Cercar",
     "Notifications" : "Notificacions",
     "View profile" : "Visualitza el perfil",

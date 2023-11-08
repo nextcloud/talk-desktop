@@ -1,8 +1,12 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Nextcloud server address" : "Nextcloud Serveradresse ",
+    "Log in" : "Log ind",
     "About" : "Om",
+    "License" : "Licens",
     "Issues" : "Problemer",
+    "Close" : "Luk",
     "Search" : "Søg",
     "Notifications" : "Påmindelser",
     "View profile" : "Vis profil",

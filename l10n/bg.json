@@ -1,7 +1,11 @@
 { "translations": {
     "Talk Desktop" : "Приложение Talk Desktop",
+    "Nextcloud server address" : "Адрес на сървъра Nextcloud",
     "Unexpected error" : "Неочаквана грешка",
     "About" : "Относно",
+    "License" : "Лиценз",
+    "Issues" : "Проблеми",
+    "Close" : "Затваряне",
     "Search" : "Търсене",
     "Notifications" : "Известия",
     "View profile" : "Преглед на профил",

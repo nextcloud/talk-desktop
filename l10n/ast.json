@@ -1,4 +1,6 @@
 { "translations": {
+    "Nextcloud server address" : "Direición de sirvidor de Nextcloud",
+    "License" : "Llicencia",
     "Search" : "Guetar",
     "Notifications" : "Avisos"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

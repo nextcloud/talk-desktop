@@ -1,6 +1,10 @@
 { "translations": {
+    "Nextcloud server address" : "Nextcloud Serveradresse ",
+    "Log in" : "Log ind",
     "About" : "Om",
+    "License" : "Licens",
     "Issues" : "Problemer",
+    "Close" : "Luk",
     "Search" : "Søg",
     "Notifications" : "Påmindelser",
     "View profile" : "Vis profil",

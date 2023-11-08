@@ -65,6 +65,7 @@ export function generateFilePath(app, type, file) {
 			'.jpg': () => require(`@talk/img/${filename}.jpg`),
 			'.jpeg': () => require(`@talk/img/${filename}.jpeg`),
 			'.webp': () => require(`@talk/img/${filename}.webp`),
+			'.gif': () => require(`@talk/img/${filename}.gif`),
 			// Note: spreed uses img for both images and sounds
 			'.ogg': () => require(`@talk/img/${filename}.ogg`),
 		}

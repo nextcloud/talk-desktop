@@ -21,6 +21,7 @@
 
 import { loadState } from '@nextcloud/initial-state'
 import { appData } from '../app/AppData.js'
+import { dialogs } from './OC/dialogs.js'
 
 export const OC = {
 	// Constant from: https://github.com/nextcloud/server/blob/master/core/src/OC/constants.js
@@ -53,17 +54,7 @@ export const OC = {
 		modRewriteWorking: false,
 	},
 
-	dialogs: {
-		confirm(text, title, callback) {
-			callback(confirm(text))
-		},
-		confirmDestructive(text, title, options, callback) {
-			callback(confirm(text))
-		},
-		filepicker() {
-			alert('Unfortunately, Share from Nextcloud is not supported by Nextcloud Talk Preview')
-		},
-	},
+	dialogs,
 
 	theme: {
 		get productName() {

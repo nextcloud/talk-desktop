@@ -6,6 +6,7 @@ OC.L10N.register(
     "License" : "Licença",
     "Issues" : "Problemas",
     "Close" : "Fechar",
+    "Ok" : "CONFIRMAR",
     "Search" : "Pesquisa sobre",
     "View profile" : "Visualizar perfil",
     "Online" : "On-line",

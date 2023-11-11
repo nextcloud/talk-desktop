@@ -7,6 +7,7 @@ OC.L10N.register(
     "License" : "Notkunarleyfi",
     "Issues" : "Vandamál",
     "Close" : "Loka",
+    "Ok" : "Í lagi",
     "Search" : "Search",
     "Online" : "Á netinu",
     "Report a bug" : "Tilkynna um villu"

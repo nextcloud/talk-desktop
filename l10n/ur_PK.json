@@ -1,6 +1,9 @@
 { "translations": {
     "Log in" : "لاگ ان",
     "Close" : "بند ",
+    "Ok" : "اوکے",
+    "No" : "نہیں",
+    "Yes" : "ہاں",
     "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -1,6 +1,9 @@
 { "translations": {
     "Log in" : "Log masuk",
     "Close" : "Tutup",
+    "Ok" : "Ok",
+    "No" : "Tidak",
+    "Yes" : "Ya",
     "Search" : "Search"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

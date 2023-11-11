@@ -7,6 +7,8 @@ OC.L10N.register(
     "License" : "Licéncia",
     "Issues" : "Avarias",
     "Close" : "Tampar",
+    "No" : "Non",
+    "Yes" : "Òc",
     "Search" : "Recercar",
     "Notifications" : "Notificacions",
     "View profile" : "Veire perfil",

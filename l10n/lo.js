@@ -5,6 +5,7 @@ OC.L10N.register(
     "About" : "ກ່ຽວກັບ",
     "License" : "ໃບອະນຸຍາດ",
     "Close" : "ປິດ",
+    "No" : "ບໍ່",
     "Search" : "ຄົ້ນຫາ",
     "Notifications" : "ການເເຈ້ງເຕືອນ",
     "Online" : "ອອນລາຍ",

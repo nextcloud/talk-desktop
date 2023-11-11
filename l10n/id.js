@@ -6,6 +6,7 @@ OC.L10N.register(
     "License" : "Lisensi",
     "Issues" : "Isu",
     "Close" : "Tutup",
+    "Ok" : "Oke",
     "Search" : "Cari",
     "Notifications" : "Notifikasi",
     "View profile" : "Tampilkan profil",

@@ -2,7 +2,10 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Iniciar sesión",
+    "License" : "Licencia",
     "Issues" : "Temas",
+    "Close" : "Cerrar",
+    "Yes" : "Sí",
     "Search" : "Buscar",
     "Online" : "En línea",
     "Report a bug" : "Reporte un tema",

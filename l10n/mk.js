@@ -4,6 +4,7 @@ OC.L10N.register(
     "About" : "За",
     "License" : "Лиценца",
     "Close" : "Затвори",
+    "Ok" : "Во ред",
     "Search" : "Барај",
     "View profile" : "Прегледај профил",
     "Online" : "Присутен",

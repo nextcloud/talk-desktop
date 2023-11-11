@@ -6,6 +6,8 @@ OC.L10N.register(
     "License" : "Ceadachas",
     "Issues" : "Bugaichean",
     "Close" : "Dùin",
+    "No" : "Chan eil",
+    "Yes" : "Tha",
     "Search" : "Lorg",
     "Notifications" : "Brathan",
     "Online" : "Air loidhne",

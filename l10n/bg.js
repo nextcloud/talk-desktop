@@ -8,6 +8,7 @@ OC.L10N.register(
     "License" : "Лиценз",
     "Issues" : "Проблеми",
     "Close" : "Затваряне",
+    "No" : "Не",
     "Search" : "Търсене",
     "Notifications" : "Известия",
     "View profile" : "Преглед на профил",

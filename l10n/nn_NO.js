@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Logg inn",
     "License" : "Lisens",
     "Close" : "Lat att",
+    "Ok" : "Greitt",
     "Search" : "Søk",
     "Notifications" : "Varsel",
     "Report a bug" : "Rapporter feil"

@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "About" : "About",
     "Close" : "Close",
+    "No" : "No",
+    "Yes" : "Yes",
     "Search" : "Search",
     "Notifications" : "Notifications",
     "View profile" : "View profile",

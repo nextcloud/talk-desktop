@@ -7,6 +7,7 @@ OC.L10N.register(
     "License" : "רישיון",
     "Issues" : "תקלות",
     "Close" : "סגירה",
+    "Ok" : "אישור",
     "Search" : "חיפוש",
     "Notifications" : "התראות",
     "Online" : "מקוון",

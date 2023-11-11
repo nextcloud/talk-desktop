@@ -6,6 +6,8 @@ OC.L10N.register(
     "License" : "Licență",
     "Issues" : "Probleme",
     "Close" : "Închide",
+    "Ok" : "Ok",
+    "Yes" : "Da",
     "Search" : "Căutare",
     "Notifications" : "Notificări",
     "View profile" : "Vezi profilul",

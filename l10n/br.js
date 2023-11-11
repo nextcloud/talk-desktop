@@ -4,6 +4,7 @@ OC.L10N.register(
     "Log in" : "Kennaskañ",
     "License" : "Aotre",
     "Close" : "Serriñ",
+    "No" : "Nann",
     "Search" : "Klask",
     "Notifications" : "Kemennadennoù",
     "Report a bug" : "Dugas ur gudenn"

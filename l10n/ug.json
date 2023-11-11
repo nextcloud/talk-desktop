@@ -1,5 +1,8 @@
 { "translations": {
     "Close" : "ياپ",
+    "Ok" : "جەزملە",
+    "No" : "ياق",
+    "Yes" : "ھەئە",
     "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

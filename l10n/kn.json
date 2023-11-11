@@ -1,5 +1,8 @@
 { "translations": {
     "Close" : "ಮುಚ್ಚು",
+    "Ok" : "﻿ಸರಿ",
+    "No" : "﻿ಇಲ್ಲ",
+    "Yes" : "﻿ಹೌದು",
     "Search" : "Search"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

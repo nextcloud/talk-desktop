@@ -9,6 +9,7 @@ OC.L10N.register(
     "License" : "مجوز",
     "Issues" : "مسائل",
     "Close" : "بسته",
+    "Ok" : "قبول",
     "Search" : "جستجو",
     "Notifications" : "هشدارها",
     "View profile" : "مشاهده پروفایل",

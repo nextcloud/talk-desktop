@@ -8,6 +8,8 @@ OC.L10N.register(
     "About" : "Acerca",
     "License" : "Licencia",
     "Issues" : "Temas",
+    "Close" : "Cerrar",
+    "Ok" : "Ok",
     "Search" : "Buscar",
     "View profile" : "Ver perfil",
     "Online" : "En línea",

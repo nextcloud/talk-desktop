@@ -6,6 +6,8 @@ OC.L10N.register(
     "License" : "Liçenca",
     "Issues" : "Çështjet",
     "Close" : "Mbylleni",
+    "Ok" : "Në rregull",
+    "Yes" : "Po",
     "Search" : "Kërko",
     "Notifications" : "Njoftime",
     "Report a bug" : "Njoftoni një të metë",

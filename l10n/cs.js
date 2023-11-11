@@ -20,6 +20,8 @@ OC.L10N.register(
     "Source Code" : "Zdrojové kódy",
     "System report" : "Hlášení o systém",
     "Close" : "Zavřít",
+    "No" : "Ne",
+    "Yes" : "Ano",
     "Search" : "Hledat",
     "Notifications" : "Upozornění",
     "View profile" : "Zobrazit profil ",

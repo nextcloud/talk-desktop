@@ -5,6 +5,8 @@ OC.L10N.register(
     "About" : "Γef",
     "License" : "Licence",
     "Close" : "Mdel",
+    "No" : "Uhu",
+    "Yes" : "Oui",
     "Search" : "Nadi",
     "Notifications" : "Ilɣa",
     "Log out" : "Senser"

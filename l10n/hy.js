@@ -6,6 +6,9 @@ OC.L10N.register(
     "License" : "լիցենզիա",
     "Issues" : "հայց",
     "Close" : "Փակել",
+    "Ok" : "Լավ",
+    "No" : "Ոչ",
+    "Yes" : "Այո",
     "Search" : "Search",
     "Notifications" : "Ծանուցում"
 },

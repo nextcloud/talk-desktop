@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Logi sisse",
     "License" : "Litsents",
     "Close" : "Sulge",
+    "Ok" : "Ok",
     "Search" : "Otsi",
     "Notifications" : "Märguanded",
     "View profile" : "Vaata profiili",

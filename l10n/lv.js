@@ -4,6 +4,7 @@ OC.L10N.register(
     "Log in" : "Pieteikties",
     "License" : "Licence",
     "Close" : "Aizvērt",
+    "Ok" : "Labi",
     "Search" : "Meklēt",
     "View profile" : "Skatīt profilu",
     "Report a bug" : "Ziņot par kļūdu",

@@ -7,6 +7,7 @@ OC.L10N.register(
     "License" : "Licencia",
     "Issues" : "Temas",
     "Close" : "Cerrar",
+    "Ok" : "Ok",
     "Search" : "Buscar",
     "Report a bug" : "Reporta un detalle",
     "Log out" : "Cerrar sesión"

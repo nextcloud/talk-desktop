@@ -1,6 +1,9 @@
 { "translations": {
     "Log in" : "ចូល",
     "Close" : "បិទ",
+    "Ok" : "ព្រម",
+    "No" : "ទេ",
+    "Yes" : "បាទ ឬចាស",
     "Search" : "ស្វែងរក"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

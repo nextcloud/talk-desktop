@@ -3,6 +3,9 @@ OC.L10N.register(
     {
     "Log in" : "Umellen",
     "Close" : "Zoumaachen",
+    "Ok" : "OK",
+    "No" : "Nee",
+    "Yes" : "Jo",
     "Search" : "Search",
     "Report a bug" : "E Feeler melden"
 },

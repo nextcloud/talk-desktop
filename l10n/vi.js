@@ -7,6 +7,8 @@ OC.L10N.register(
     "License" : "Giấy phép",
     "Issues" : "Vấn đề",
     "Close" : "Đóng",
+    "Ok" : "Đồng ý",
+    "Yes" : "Có",
     "Search" : "Tìm kiếm",
     "Notifications" : "Thông báo",
     "View profile" : "Xem hồ sơ",

@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Log in" : "Iniziar sesión",
     "Close" : "Zarrar",
+    "No" : "No",
+    "Yes" : "Si",
     "Search" : "Buscar",
     "Notifications" : "Notificazions"
 },

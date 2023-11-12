@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Ok" : "Добра",
     "Search" : "Search",
     "Notifications" : "Апавяшчэнні"
 },

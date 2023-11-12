@@ -3,6 +3,9 @@ OC.L10N.register(
     {
     "Log in" : "Giriş",
     "Close" : "Bağla",
+    "Ok" : "Oldu",
+    "No" : "Xeyir",
+    "Yes" : "Bəli",
     "Search" : "Axtarış",
     "Report a bug" : "Səhv haqqında bildir"
 },

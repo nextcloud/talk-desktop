@@ -6,7 +6,7 @@
 
 - Built-in Talk in binaries is updated to v18.0.0-beta.2 Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
 
-## Fixes
+### Fixes
 
 - Update confirm dialogs to use Nextcloud dialogs instead of native confirm [#12](https://github.com/nextcloud/talk-desktop/issues/12)
 - Add support for `.gif` images request for animated emojis in call reactions [#405](https://github.com/nextcloud/talk-desktop/issues/405)
@@ -17,7 +17,7 @@
 
 - Built-in Talk in binaries is updated to v18.0.0-beta.1 Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
 
-## Fixes
+### Fixes
 
 - Fix translations on Login, Help and Upgrade required windows [#363](https://github.com/nextcloud/talk-desktop/issues/363), [#3](https://github.com/nextcloud/talk-desktop/issues/3)
 

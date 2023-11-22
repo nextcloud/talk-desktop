@@ -7,6 +7,7 @@ OC.L10N.register(
     "Issues" : "Probleme",
     "Close" : "Închide",
     "Ok" : "Ok",
+    "No" : "Nu",
     "Yes" : "Da",
     "Search" : "Căutare",
     "Notifications" : "Notificări",

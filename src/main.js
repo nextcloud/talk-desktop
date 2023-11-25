@@ -34,6 +34,14 @@ const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
 
 /**
+ * Parse command line arguments
+ */
+const ARGUMENTS = {
+	// Open Talk window in the background, minimized to the system tray
+	openInBackground: process.argv.includes('--background'),
+}
+
+/**
  * Separate production and development instances, including application and user data
  */
 if (process.env.NODE_ENV === 'development') {
@@ -173,7 +181,11 @@ app.whenReady().then(async () => {
 		}
 
 		mainWindow.once('ready-to-show', () => {
-			mainWindow.show()
+			// Do not show the main window if it is the Talk Window opened in the background
+			const isTalkWindow = createMainWindow === createTalkWindow
+			if (!isTalkWindow || !ARGUMENTS.openInBackground) {
+				mainWindow.show()
+			}
 			welcomeWindow.close()
 		})
 	})

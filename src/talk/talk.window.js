@@ -60,10 +60,6 @@ function createTalkWindow() {
 		height: 600,
 	})
 
-	window.once('ready-to-show', () => {
-		window.show()
-	})
-
 	applyContextMenu(window)
 	applyDownloadNotification(window)
 	applyWheelZoom(window)

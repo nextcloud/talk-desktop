@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.17.0 - 2023-11-30
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v18.0.0-rc.2 Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
+
+### Features
+
+- Add `--background` argv support for opening app minimized to the system tray [#427](https://github.com/nextcloud/talk-desktop/issues/427)
+
 ## v0.16.0 - 2023-11-17
 
 ### Build-in Talk update

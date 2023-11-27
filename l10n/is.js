@@ -9,6 +9,7 @@ OC.L10N.register(
     "Close" : "Loka",
     "Ok" : "Í lagi",
     "Search" : "Search",
+    "View profile" : "Skoða notandasnið",
     "Online" : "Á netinu",
     "Report a bug" : "Tilkynna um villu"
 },

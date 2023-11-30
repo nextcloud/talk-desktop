@@ -2,6 +2,10 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk 桌面版",
+    "Log in to Nextcloud" : "登入 Nextcloud",
+    "Nextcloud server address" : "Nextcloud 伺服器位址",
+    "Log in" : "登入",
+    "Logging in..." : "正在登入 …",
     "Unexpected error" : "發生意外錯誤",
     "About" : "關於",
     "License" : "授權",

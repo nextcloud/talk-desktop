@@ -7,6 +7,7 @@ OC.L10N.register(
     "License" : "Licens",
     "Issues" : "Problemer",
     "Close" : "Luk",
+    "Ok" : "OK",
     "Search" : "Søg",
     "Notifications" : "Påmindelser",
     "View profile" : "Vis profil",

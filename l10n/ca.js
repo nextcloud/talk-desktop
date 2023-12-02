@@ -9,6 +9,7 @@ OC.L10N.register(
     "License" : "Llicència",
     "Issues" : "Errors",
     "Close" : "Tanca",
+    "Ok" : "D'acord",
     "Search" : "Cercar",
     "Notifications" : "Notificacions",
     "View profile" : "Visualitza el perfil",

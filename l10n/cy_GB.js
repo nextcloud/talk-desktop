@@ -6,6 +6,7 @@ OC.L10N.register(
     "License" : "Trwydded",
     "Issues" : "Materion",
     "Close" : "Cau",
+    "Ok" : "Iawn",
     "No" : "Na",
     "Yes" : "Ie",
     "Search" : "Chwilio"

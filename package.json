@@ -44,7 +44,7 @@
     "floating-vue": "^1.0.0-beta.19",
     "howler": "^2.2.4",
     "semver": "^7.5.4",
-    "undici": "^5.28.0",
+    "undici": "^5.28.2",
     "unzip-crx-3": "^0.2.0",
     "vue": "^2.7.15",
     "vue-material-design-icons": "^5.2.0"

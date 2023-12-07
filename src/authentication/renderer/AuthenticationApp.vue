@@ -56,7 +56,7 @@
 						<template #icon>
 							<NcLoadingIcon appearance="light" />
 						</template>
-						{{ t('talk_desktop', 'Logging in...') }}
+						{{ t('talk_desktop', 'Logging in…') }}
 					</NcButton>
 				</fieldset>
 			</form>
@@ -200,7 +200,7 @@ export default {
 			} catch (error) {
 				// A network connection was lost after successful requests or something unexpected went wrong
 				console.error(error)
-				return this.setError(t('talk_desktop', 'Login was successful but something went wrong...'))
+				return this.setError(t('talk_desktop', 'Login was successful but something went wrong…'))
 			}
 
 			// Yay!

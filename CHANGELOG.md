@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.18.0 - 2023-12-07
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v18.0.0-rc.3
+
+### Fixes
+
+- l10n: replace triple dots with ellipsis [#450](https://github.com/nextcloud/talk-desktop/pull/450)
+
 ## v0.17.0 - 2023-11-30
 
 ### Build-in Talk update

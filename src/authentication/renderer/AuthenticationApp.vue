@@ -56,7 +56,7 @@
 						<template #icon>
 							<NcLoadingIcon appearance="light" />
 						</template>
-						{{ t('talk_desktop', 'Logging in…') }}
+						{{ t('talk_desktop', 'Logging in …') }}
 					</NcButton>
 				</fieldset>
 			</form>

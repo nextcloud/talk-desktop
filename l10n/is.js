@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Vistfang Nextcloud-þjóns",
     "Log in" : "Skrá inn",
+    "Logging in …" : "Skrái inn …",
     "About" : "Um",
     "License" : "Notkunarleyfi",
     "Issues" : "Vandamál",

@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "ไอพีแอดเดรสเซิร์ฟเวอร์ Nextcloud",
     "Log in" : "เข้าสู่ระบบ",
+    "Logging in …" : "กำลังเข้าสู่ระบบ ...",
     "About" : "เกี่ยวกับ",
     "License" : "สัญญาอนุญาต",
     "Issues" : "ปัญหา",

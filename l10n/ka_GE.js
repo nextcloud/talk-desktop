@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Nextcloud-ის სერვერის მისამართი",
     "Log in" : "შესვლა",
+    "Logging in …" : "შესვლა ...",
     "About" : "ჩვენს შესახებ",
     "License" : "ლიცენზია",
     "Issues" : "პრობლემები",

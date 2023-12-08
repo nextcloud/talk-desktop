@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Logging in …" : "Најава ...",
     "About" : "За",
     "License" : "Лиценца",
     "Close" : "Затвори",

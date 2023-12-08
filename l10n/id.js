@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Masuk",
+    "Logging in …" : "Log masuk...",
     "About" : "Tentang",
     "License" : "Lisensi",
     "Issues" : "Isu",

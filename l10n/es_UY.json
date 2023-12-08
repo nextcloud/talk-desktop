@@ -1,6 +1,7 @@
 { "translations": {
     "Nextcloud server address" : "Dirección del servidor de Nextcloud",
     "Log in" : "Ingresar",
+    "Logging in …" : "Iniciando sesión ...",
     "About" : "Acerca de",
     "License" : "Licencia",
     "Issues" : "Temas",

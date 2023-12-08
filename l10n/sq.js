@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Hyni",
+    "Logging in …" : "Duke u loguar ...",
     "About" : "Rreth",
     "License" : "Liçenca",
     "Issues" : "Çështjet",

@@ -4,6 +4,7 @@ OC.L10N.register(
     "Talk Desktop" : "Talk Desktop",
     "Nextcloud server address" : "Endereço do servidor Nextcloud",
     "Log in" : "Login",
+    "Logging in …" : "Entrando...",
     "Unexpected error" : "Erro inesperado",
     "About" : "Sobre",
     "License" : "Licença",

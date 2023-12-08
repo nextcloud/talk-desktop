@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Naslov strežnika Nextcloud",
     "Log in" : "Vpiši se",
+    "Logging in …" : "Poteka prijavljanje ...",
     "Invalid server address" : "neveljaven naslov strežnika",
     "Unexpected error" : "Nepričakovana napaka",
     "About" : "O programu",

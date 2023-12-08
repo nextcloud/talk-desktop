@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Autentificare",
+    "Logging in …" : "Se autentifică...",
     "About" : "Despre",
     "License" : "Licență",
     "Issues" : "Probleme",

@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Διεύθυνση διακομιστή Nextcloud",
     "Log in" : "Είσοδος",
+    "Logging in …" : "Σύνδεση …",
     "About" : "Σχετικά με",
     "License" : "Άδεια χρήσης",
     "Issues" : "Ζητήματα",

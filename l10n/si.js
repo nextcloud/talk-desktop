@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "පිවිසෙන්න",
+    "Logging in …" : "පිවිසෙමින් …",
     "About" : "පිළිබඳ",
     "License" : "බලපත්‍රය",
     "Close" : "වසන්න",

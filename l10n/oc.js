@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Talk Desktop" : "Talk pel burèu",
     "Log in" : "Connexion",
+    "Logging in …" : "Identificacion…",
     "About" : "A prepaus",
     "License" : "Licéncia",
     "Issues" : "Avarias",

@@ -4,6 +4,7 @@ OC.L10N.register(
     "Talk Desktop" : "Talk Desktop",
     "Nextcloud server address" : "آدرس سرور Nextcloud",
     "Log in" : "ورود",
+    "Logging in …" : "ورود به سیستم ...",
     "Unexpected error" : "Unexpected error",
     "About" : "About",
     "License" : "مجوز",

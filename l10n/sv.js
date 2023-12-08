@@ -4,6 +4,7 @@ OC.L10N.register(
     "Talk Desktop" : "Talk Desktop",
     "Nextcloud server address" : "Nextcloud serveradress",
     "Log in" : "Logga in",
+    "Logging in …" : "Loggar in ...",
     "About" : "Om",
     "License" : "Licens",
     "Issues" : "Problem",

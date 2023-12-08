@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Адрес сервера Nextcloud",
     "Log in" : "Войдите",
+    "Logging in …" : "Вход в систему…",
     "About" : "О себе",
     "License" : "Лицензия",
     "Issues" : "Проблемы",

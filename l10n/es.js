@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Talk Desktop" : "Talk para escritorio",
     "Nextcloud server address" : "Dirección del servidor Nextcloud",
+    "Logging in …" : "Iniciando sesión ...",
     "Invalid server address" : "Dirección no válida",
     "Unexpected error" : "Error inesperado",
     "About" : "Acerca de",

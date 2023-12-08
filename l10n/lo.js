@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "ເຂົ້າລະບົບ",
+    "Logging in …" : "ກຳລັງໂຫຼດ",
     "About" : "ກ່ຽວກັບ",
     "License" : "ໃບອະນຸຍາດ",
     "Close" : "ປິດ",

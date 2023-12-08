@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Logging in …" : "Logging in …",
     "About" : "About",
     "Close" : "Close",
     "No" : "No",

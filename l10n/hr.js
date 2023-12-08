@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Adresa Nextcloudovog poslužitelja",
     "Log in" : "Prijavite se",
+    "Logging in …" : "Prijavljivanje...",
     "About" : "Informacije",
     "License" : "Licenca",
     "Issues" : "Poteškoće",

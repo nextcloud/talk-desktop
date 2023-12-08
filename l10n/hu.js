@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Talk Desktop" : "Beszélgetés asztali alkalmazás",
     "Nextcloud server address" : "Nextcloud kiszolgáló címe",
+    "Logging in …" : "Bejelentkezés…",
     "Invalid server address" : "Érvénytelen szervercím",
     "Unexpected error" : "Váratlan hiba",
     "About" : "Névjegy",

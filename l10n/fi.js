@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Nextcloud-palvelimen osoite",
     "Log in" : "Kirjaudu sisään",
+    "Logging in …" : "Kirjaudutaan sisään...",
     "About" : "Tietoja",
     "License" : "Lisenssi",
     "Issues" : "Ongelmat",

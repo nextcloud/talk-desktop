@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Nextcloud server address" : "Nextcloud サーバーアドレス",
+    "Logging in …" : "ログイン中...",
     "About" : "詳細",
     "License" : "利用許諾",
     "Issues" : "問題",

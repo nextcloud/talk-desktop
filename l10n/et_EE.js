@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Nextcloud serveri aadress",
     "Log in" : "Logi sisse",
+    "Logging in …" : "Sisselogimine ...",
     "License" : "Litsents",
     "Close" : "Sulge",
     "Ok" : "Ok",

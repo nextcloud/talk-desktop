@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "כתובת שרת ה־Nextcloud",
     "Log in" : "כניסה",
+    "Logging in …" : "מתבצעת כניסה…",
     "About" : "אודות",
     "License" : "רישיון",
     "Issues" : "תקלות",

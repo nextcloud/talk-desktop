@@ -1,6 +1,7 @@
 { "translations": {
     "Nextcloud server address" : "Nextcloud-ის სერვერის მისამართი",
     "Log in" : "შესვლა",
+    "Logging in …" : "შესვლა ...",
     "About" : "ჩვენს შესახებ",
     "License" : "ლიცენზია",
     "Issues" : "პრობლემები",

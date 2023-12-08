@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Pieteikties",
+    "Logging in …" : "Notiek pieteikšanās …",
     "License" : "Licence",
     "Close" : "Aizvērt",
     "Ok" : "Labi",

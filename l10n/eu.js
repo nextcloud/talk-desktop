@@ -4,6 +4,7 @@ OC.L10N.register(
     "Talk Desktop" : "Talk Mahaigaina",
     "Nextcloud server address" : "Nextcloud zerbitzariaren helbidea",
     "Log in" : "Izena eman",
+    "Logging in …" : "Saioa hasten...",
     "Unexpected error" : "Ustekabeko errorea",
     "About" : "Honi buruz",
     "License" : "Lizentzia",

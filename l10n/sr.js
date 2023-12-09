@@ -12,6 +12,7 @@ OC.L10N.register(
     "Nextcloud Talk is not installed in the server" : "На серверу није инсталирана апликација Nextcloud Talk",
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Потребна је {componentName} {minRequiredVersion} верзија или новија, али је инстаалирана верзија {foundVersion}",
     "Unexpected error" : "Неочекивана грешка",
+    "Login was successful but something went wrong." : "Пријава је успела, али нешто није у реду.",
     "About" : "О програму",
     "Privacy and Legal Policy" : "Приватност и правна политика",
     "License" : "Лиценца",

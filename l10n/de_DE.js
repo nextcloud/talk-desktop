@@ -5,7 +5,7 @@ OC.L10N.register(
     "Log in to Nextcloud" : "An der Nextcloud anmelden",
     "Nextcloud server address" : "Nextcloud Serveradresse",
     "Log in" : "Anmelden",
-    "Logging in …" : "Melde an…",
+    "Logging in …" : "Melde an …",
     "Logged in successfully" : "Erfolgreich angemeldet",
     "Invalid server address" : "Ungültige Serveradresse",
     "Nextcloud server not found" : "Nextcloud-Server nicht gefunden",

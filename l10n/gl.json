@@ -10,6 +10,7 @@
     "Nextcloud Talk is not installed in the server" : "Nextcloud Talk non está instalado no servidor.",
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Precísase de {componentName} {minRequiredVersion} ou superior, mais está instalado {foundVersion}",
     "Unexpected error" : "Produciuse un erro non agardado",
+    "Login was successful but something went wrong." : "O acceso realizouse correctamente, mais houbo un problema.",
     "About" : "Sobre",
     "Privacy and Legal Policy" : "Directiva legal e de privacidade",
     "License" : "Licenza",

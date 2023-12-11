@@ -12,6 +12,7 @@ OC.L10N.register(
     "Nextcloud Talk is not installed in the server" : "伺服器上未安裝 Nextcloud Talk",
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "需要 {componentName} {minRequiredVersion} 或更新版本，但安裝了 {foundVersion}",
     "Unexpected error" : "發生意外錯誤",
+    "Login was successful but something went wrong." : "登入成功，但出現問題。",
     "About" : "關於",
     "Privacy and Legal Policy" : "隱私及法律政策",
     "License" : "授權",

@@ -24,6 +24,41 @@ import { appData } from '../app/AppData.js'
 import { register } from '@nextcloud/l10n'
 
 /**
+ * @param {string} lang - language code, TS type: `${lang}_${countryCode}`|`${lang}`
+ * @param {Function} resolver - function to import the translation bundle by language code,
+ *                              for example, (lang) => import(`path/to/l10n/${lang}.json`)
+ * @return {Promise<null|object>} - translation bundle or null if not found
+ */
+async function tryLoadL10n(lang, resolver) {
+	try {
+		const { default: translationBundle } = await resolver(lang)
+		return translationBundle.translations
+	} catch (e) {
+		if (lang.includes('_')) {
+			// Try to load locale without country code
+			return tryLoadL10n(lang.split('_')[0], resolver)
+		}
+		return null
+	}
+}
+
+/**
+ * @param {string} app - application to register translation bundles for
+ * @param {string} lang - language code, TS type: `${lang}_${countryCode}`|`${lang}`
+ * @param {Function} resolver - function to import the translation bundle by language code,
+ *                              for example, (lang) => import(`path/to/l10n/${lang}.json`)
+ */
+async function loadAndRegisterL10n(app, lang, resolver) {
+	const mayBeTranslations = await tryLoadL10n(lang, resolver)
+	if (mayBeTranslations) {
+		register(app, mayBeTranslations)
+		console.log(`Language pack "${lang}" for "${app}" loaded...`)
+	} else {
+		console.log(`Language pack "${lang}" for "${app}" not found...`)
+	}
+}
+
+/**
  * Apply locale to the document attributes, used by @nextcloud/l10n,
  * and register translation bundles for Talk and Talk Desktop.
  *
@@ -38,19 +73,10 @@ async function applyL10n() {
 	console.log(`Using locale "${locale}" for language "${language}"`)
 
 	if (language !== 'en') {
-		try {
-			const { default: translationBundle } = await import(`@talk/l10n/${language}.json`)
-			register('spreed', translationBundle.translations)
-		} catch (e) {
-			console.log(`Language pack "${language}" for spreed not found...`)
-		}
-
-		try {
-			const { default: translationBundle } = await import(`../../l10n/${language}.json`)
-			register('talk_desktop', translationBundle.translations)
-		} catch (e) {
-			console.log(`Language pack "${language}" for talk_desktop not found...`)
-		}
+		await Promise.all([
+			loadAndRegisterL10n('spreed', language, (lang) => import(`@talk/l10n/${lang}.json`)),
+			loadAndRegisterL10n('talk_desktop', language, (lang) => import(`../../l10n/${lang}.json`)),
+		])
 	}
 }
 

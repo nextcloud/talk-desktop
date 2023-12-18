@@ -12,6 +12,7 @@ OC.L10N.register(
     "Nextcloud Talk is not installed in the server" : "Nextcloud Talk не встановлено на сервері",
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Має бути встановлено {componentName} {minRequiredVersion} або вище, зараз встановлено {foundVersion}",
     "Unexpected error" : "Неочікувана помилка",
+    "Login was successful but something went wrong." : "Успішно авторизовано, проте щось пішло не так.",
     "About" : "Про програму",
     "Privacy and Legal Policy" : "Політика конфіденційності та захист даних",
     "License" : "Ліцензія",

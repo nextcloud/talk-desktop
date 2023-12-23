@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Giriş",
+    "License" : "Lisenziya",
     "Close" : "Bağla",
     "Ok" : "Oldu",
     "No" : "Xeyir",

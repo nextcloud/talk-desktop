@@ -11,6 +11,8 @@ OC.L10N.register(
     "Issues" : "Errors",
     "Close" : "Tanca",
     "Ok" : "D'acord",
+    "No" : "No",
+    "Yes" : "Sí",
     "Search" : "Cercar",
     "Notifications" : "Notificacions",
     "View profile" : "Visualitza el perfil",

@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Kennaskañ",
+    "Logging in …" : "O kennsakañ...",
     "License" : "Aotre",
     "Close" : "Serriñ",
     "No" : "Nann",

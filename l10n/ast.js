@@ -8,6 +8,7 @@ OC.L10N.register(
     "No" : "Non",
     "Yes" : "Sí",
     "Search" : "Guetar",
-    "Notifications" : "Avisos"
+    "Notifications" : "Avisos",
+    "Log out" : "Zarrar la sesión"
 },
 "nplurals=2; plural=(n != 1);");

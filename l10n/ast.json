@@ -6,6 +6,7 @@
     "No" : "Non",
     "Yes" : "Sí",
     "Search" : "Guetar",
-    "Notifications" : "Avisos"
+    "Notifications" : "Avisos",
+    "Log out" : "Zarrar la sesión"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

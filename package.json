@@ -46,7 +46,7 @@
     "semver": "^7.5.4",
     "undici": "^6.2.1",
     "unzip-crx-3": "^0.2.0",
-    "vue": "^2.7.15",
+    "vue": "^2.7.16",
     "vue-material-design-icons": "^5.2.0"
   },
   "devDependencies": {

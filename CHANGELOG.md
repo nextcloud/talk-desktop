@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.20.0 - 2024-01-09
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v18.0.1
+
+### Fixes
+
+- Fix language detection for some languages [#458](https://github.com/nextcloud/talk-desktop/pull/458)
+
 ## v0.19.0 - 2023-12-12
 
 ### Build-in Talk update

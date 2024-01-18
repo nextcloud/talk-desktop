@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Logg inn",
     "Logging in …" : "Logger inn…",
     "Invalid server address" : "Ugyldig tjeneradresse",
+    "About" : "Om",
     "License" : "Lisens",
     "Issues" : "Problemer",
     "Close" : "Lukk",

@@ -12,6 +12,7 @@ OC.L10N.register(
     "Nextcloud Talk is not installed in the server" : "Na serveru není nainstalován Nextcloud Talk",
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "U {componentName} je vyžadována verze {minRequiredVersion} nebo novější, ale nainstalovaná je jen {foundVersion}",
     "Unexpected error" : "Neočekávaná chyba",
+    "Login was successful but something went wrong." : "Přihlášení bylo úspěšné ale něco se pokazilo.",
     "About" : "O aplikaci",
     "Privacy and Legal Policy" : "Zásady ochrany soukromí a právní náležitosti",
     "License" : "Licence",

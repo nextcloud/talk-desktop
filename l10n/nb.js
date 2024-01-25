@@ -10,6 +10,8 @@ OC.L10N.register(
     "Issues" : "Problemer",
     "Close" : "Lukk",
     "Ok" : "Ok",
+    "No" : "Nei",
+    "Yes" : "Ja",
     "Search" : "Søk",
     "Notifications" : "Varsel",
     "View profile" : "Vis profil",

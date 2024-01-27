@@ -65,7 +65,7 @@
     "babel-loader-exclude-node-modules-except": "^1.2.1",
     "babel-plugin-add-module-exports": "^1.0.4",
     "css-loader": "^6.9.1",
-    "dotenv": "^16.3.2",
+    "dotenv": "^16.4.1",
     "electron": "^28.1.4",
     "esbuild-loader": "^4.0.2",
     "eslint": "^8.56.0",

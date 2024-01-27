@@ -79,7 +79,7 @@
     "node-loader": "^2.0.0",
     "regenerator-runtime": "^0.14.1",
     "style-loader": "^3.3.4",
-    "vue-eslint-parser": "^9.4.0",
+    "vue-eslint-parser": "^9.4.2",
     "webpack": "^5.89.0",
     "webpack-merge": "^5.10.0",
     "worker-loader": "^3.0.8",

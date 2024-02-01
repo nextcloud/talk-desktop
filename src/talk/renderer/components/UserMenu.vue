@@ -22,8 +22,8 @@
 <template>
 	<div ref="userMenuContainer" class="user-menu">
 		<NcPopover v-if="userMenuContainer" :container="userMenuContainer" :popper-hide-triggers="triggers => [...triggers, 'click']">
-			<template #trigger>
-				<button class="user-menu__trigger unstyled-button">
+			<template #trigger="{ attrs }">
+				<button class="user-menu__trigger unstyled-button" v-bind="attrs">
 					<NcAvatar class="user-menu__avatar"
 						:user="user.id"
 						:display-name="user['display-name']"

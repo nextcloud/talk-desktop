@@ -43,7 +43,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "floating-vue": "^1.0.0-beta.19",
     "howler": "^2.2.4",
-    "semver": "^7.5.4",
+    "semver": "^7.6.0",
     "undici": "^6.6.0",
     "unzip-crx-3": "^0.2.0",
     "vue": "^2.7.16",

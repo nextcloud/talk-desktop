@@ -1,12 +1,22 @@
 { "translations": {
+    "Talk Desktop" : "Talk Desktop",
+    "Log in to Nextcloud" : "Logg inn på Nextcloud",
     "Nextcloud server address" : "Serveradresse for Nextcloud",
     "Log in" : "Logg inn",
     "Logging in …" : "Logger inn…",
+    "Logged in successfully" : "Logget på",
     "Invalid server address" : "Ugyldig tjeneradresse",
+    "Nextcloud server not found" : "Nextcloud-server ikke funnet",
+    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk er ikke installert på serveren",
+    "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "{componentName} {minRequiredVersion} eller høyrere kreves, men {foundVersion} er installert",
     "Unexpected error" : "Uventet feil",
+    "Login was successful but something went wrong." : "Påloggingen var vellykket, men noe gikk galt.",
     "About" : "Om",
+    "Privacy and Legal Policy" : "Personvern og juridiske retningslinjer",
     "License" : "Lisens",
     "Issues" : "Problemer",
+    "Source Code" : "Kildekode",
+    "System report" : "Systemrapport",
     "Close" : "Lukk",
     "Ok" : "Ok",
     "No" : "Nei",
@@ -15,6 +25,14 @@
     "Notifications" : "Varsel",
     "View profile" : "Vis profil",
     "Online" : "Pålogget",
-    "Report a bug" : "Rapporter en feil"
+    "Force reload" : "Tving lasting inn på nytt",
+    "Report a bug" : "Rapporter en feil",
+    "Open in Web-Browser" : "Åpne i nettlseser",
+    "Log out" : "Logg av",
+    "Upgrade required" : "Oppgradering kreves",
+    "The client version is too old and no longer supported by this server. Update is required." : "Klientversjonen er for gammel og støttes ikke lenger av denne serveren. Oppdatering er nødvendig.",
+    "Update Talk Desktop ↗" : "Oppdater Talk Desktop ↗",
+    "Continue in Web-Browser ↗" : "Fortsett i nettleser ↗",
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Kan ikke koble til serveren. Kontroller Internett-tilkoblingen din og prøv igjen senere."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

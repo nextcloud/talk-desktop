@@ -25,6 +25,7 @@ const { BASE_TITLE } = require('../constants.js')
 const { parseLoginRedirectUrl } = require('./login.service.js')
 const { getOsTitle } = require('../shared/os.utils.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  * Open a web-view modal window with Nextcloud Server login page
@@ -56,6 +57,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 				partition: 'non-persist:login-web-view',
 				nodeIntegration: false,
 			},
+			icon: getBrowserWindowIcon(),
 		})
 		window.removeMenu()
 

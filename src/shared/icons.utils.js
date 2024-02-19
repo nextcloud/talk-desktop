@@ -19,9 +19,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-const { nativeTheme } = require('electron')
+const { app, nativeTheme } = require('electron')
+const { isLinux } = require('./os.utils.js')
+const path = require('path')
 
 const icons = {
+	// Executable's icon is used by default
+	window: {
+		linux: require('../../img/icons/icon.png'),
+	},
+
 	tray: {
 		darwin: {
 			light: require('../../img/icons/icon-tray-mac-light.png'),
@@ -58,6 +65,21 @@ function getTrayIcon(platform, theme) {
 	}
 }
 
+/**
+ * Get BrowserWindow icon for the current platform
+ *
+ * @return {string|undefined} Path to the icon or undefined if not required on the current platform
+ */
+function getBrowserWindowIcon() {
+	if (isLinux()) {
+		// https://www.electronforge.io/guides/create-and-add-icons#linux
+		return path.join(app.getAppPath(), '.webpack/main', icons.window.linux)
+	}
+
+	return undefined
+}
+
 module.exports = {
 	getTrayIcon,
+	getBrowserWindowIcon,
 }

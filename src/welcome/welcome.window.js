@@ -20,6 +20,7 @@
  */
 
 const { BrowserWindow } = require('electron')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -38,6 +39,7 @@ function createWelcomeWindow() {
 		webPreferences: {
 			preload: WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
+		icon: getBrowserWindowIcon(),
 	})
 
 	window.loadURL(WELCOME_WINDOW_WEBPACK_ENTRY)

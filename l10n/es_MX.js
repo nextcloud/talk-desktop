@@ -9,6 +9,7 @@ OC.L10N.register(
     "Issues" : "Temas",
     "Close" : "Cerrar",
     "Search" : "Buscar",
+    "View profile" : "Ver perfil",
     "Report a bug" : "Reporta un detalle",
     "Log out" : "Cerrar sesión"
 },

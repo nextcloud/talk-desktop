@@ -25,6 +25,10 @@ import { getRootUrl, generateFilePath as _generateFilePath } from '@desktop-modu
 
 export { linkTo, getRootUrl, generateUrl } from '@desktop-modules--@nextcloud/router'
 
+// getBaseUrl added in v3.0.0
+// On Talk Desktop same as getRootUrl, because getRootUrl is absolute already
+export const getBaseUrl = getRootUrl
+
 /**
  * @param {string} s - String with "{token}" blocks
  * @param {{[token: string]: string}} [tokens] - Dict with replacements

@@ -84,14 +84,16 @@ function enableWebRequestInterceptor(serverUrl, {
 	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE, PROPFIND, MKCOL'] // Includes WebDAV
 	const ALLOWED_CREDENTIALS_TRUE = ['true']
 	const ALLOWED_HEADERS = [[
-		// Common headers
+		// Common
 		'Authorization',
-		'OCS-APIRequest',
 		'Content-Type',
 		'If-None-Match',
-		// DAV
+		// WebDAV
 		'Depth',
 		'requesttoken',
+		// Nextcloud
+		'OCS-APIRequest',
+		'X-OC-MTIME',
 	].join(', ')]
 	const EXPOSED_HEADERS = [[
 		// Common headers

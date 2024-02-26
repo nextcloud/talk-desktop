@@ -23,7 +23,7 @@ import { register } from '@nextcloud/l10n'
 
 import { applyBodyThemeAttrs } from './theme.utils.js'
 import { appData } from '../app/AppData.js'
-import { initGlobals } from '../patchers/globals.js'
+import { initGlobals } from './globals/globals.js'
 
 /**
  * @param {string} lang - language code, TS type: `${lang}_${countryCode}`|`${lang}`

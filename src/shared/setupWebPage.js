@@ -19,9 +19,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { register } from '@nextcloud/l10n'
+
 import { applyBodyThemeAttrs } from './theme.utils.js'
 import { appData } from '../app/AppData.js'
-import { register } from '@nextcloud/l10n'
+import { initGlobals } from '../patchers/globals.js'
 
 /**
  * @param {string} lang - language code, TS type: `${lang}_${countryCode}`|`${lang}`
@@ -89,6 +91,7 @@ async function applyL10n() {
  * - register translation bundles for Talk and Talk Desktop
  */
 export async function setupWebPage() {
+	initGlobals()
 	appData.restore()
 	window.OS = await window.TALK_DESKTOP.getOs()
 	applyBodyThemeAttrs()

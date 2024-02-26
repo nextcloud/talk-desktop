@@ -20,10 +20,12 @@
  */
 
 import { loadState } from '@nextcloud/initial-state'
+import { translate, translatePlural } from '@nextcloud/l10n'
+
 import { appData } from '../app/AppData.js'
 import { dialogs } from './OC/dialogs.js'
 
-export const OC = {
+const OC = {
 	// Constant from: https://github.com/nextcloud/server/blob/master/core/src/OC/constants.js
 	coreApps: ['', 'admin', 'log', 'core/search', 'core', '3rdparty'],
 
@@ -79,10 +81,30 @@ export const OC = {
 	},
 }
 
-export const OCA = {}
+const OCA = {}
 
-export const OCP = {
+const OCP = {
 	Accessibility: {
 		disableKeyboardShortcuts: () => {},
 	},
+}
+
+/**
+ * Init global variables similar to Server
+ */
+export function initGlobals() {
+	window.t = translate
+	window.n = translatePlural
+
+	window.OC = OC
+	window.OCA = OCA
+	window.OCP = OCP
+
+	Object.defineProperty(window, '_oc_webroot', {
+		get: () => OC.webroot,
+	})
+
+	Object.defineProperty(window, '_oc_appswebroots', {
+		get: () => OC.appswebroots,
+	})
 }

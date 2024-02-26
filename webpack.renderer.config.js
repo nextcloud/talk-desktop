@@ -118,17 +118,6 @@ let webpackRendererConfig = mergeWithRules({
 		// TODO: Figure out, why plugins (VueLoaderPlugin) cannot be reused in spreed/webpack.common.config.js
 		...nextcloudWebpackConfig.plugins,
 
-		new webpack.ProvidePlugin({
-			OC: [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OC'],
-			'window.OC': [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OC'],
-			OCA: [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OCA'],
-			'window.OCA': [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OCA'],
-			OCP: [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OCP'],
-			'window.OCP': [path.join(path.resolve(__dirname), './src/patchers/globals.js'), 'OCP'],
-			t: ['@nextcloud/l10n', 'translate'],
-			n: ['@nextcloud/l10n', 'translatePlural'],
-		}),
-
 		new webpack.DefinePlugin({
 			IS_DESKTOP: true,
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),

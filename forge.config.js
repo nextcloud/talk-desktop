@@ -93,6 +93,11 @@ module.exports = {
 				devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' data: blob: ${process.env.NEXTCLOUD_DEV_SERVER_HOSTS}; script-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob:`,
 				port: 3000, // The default for this plugin
 				loggerPort: 9005, // The default is 9000, but it conflicts with Talk API
+				devServer: {
+					client: {
+						overlay: false,
+					},
+				},
 				renderer: {
 					config: './webpack.renderer.config.js',
 					entryPoints: [

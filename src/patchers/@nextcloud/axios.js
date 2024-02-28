@@ -23,7 +23,6 @@ import axios from '@desktop-modules--@nextcloud/axios'
 
 axios.interceptors.request.use((config) => {
 	config.withCredentials = true
-	delete config.headers.requesttoken
 	config.headers['OCS-APIRequest'] = 'true'
 	return config
 }, (error) => Promise.reject(error))

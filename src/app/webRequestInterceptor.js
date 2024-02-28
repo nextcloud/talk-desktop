@@ -90,10 +90,11 @@ function enableWebRequestInterceptor(serverUrl, {
 		'If-None-Match',
 		// WebDAV
 		'Depth',
-		'requesttoken',
 		// Nextcloud
+		'requesttoken',
 		'OCS-APIRequest',
 		'X-OC-MTIME',
+		'X-Requested-With',
 	].join(', ')]
 	const EXPOSED_HEADERS = [[
 		// Common headers

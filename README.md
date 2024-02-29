@@ -15,7 +15,6 @@
 
 - Currently not supported:
   - Screen sharing ([#11](https://github.com/nextcloud/talk-desktop/issues/11))
-  - Share from Nextcloud (including files creation) ([#12](https://github.com/nextcloud/talk-desktop/issues/12))
   - Contacts menu on user avatars menus ([#34](https://github.com/nextcloud/talk-desktop/issues/34))
   - Setting User Status ([#26](https://github.com/nextcloud/talk-desktop/issues/26))
   - Search ([#30](https://github.com/nextcloud/talk-desktop/issues/30))

@@ -84,8 +84,8 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 // eslint-disable-next-line jsdoc/require-jsdoc
 export function loadState(app, key, fallback) {
 	const capabilities = getInitialStateFromCapabilities(appData.capabilities, appData.userMetadata)
-	const elem = capabilities[app][key]
-	if (elem === null) {
+	const elem = capabilities[app]?.[key]
+	if (elem === null || elem === undefined) {
 		if (fallback !== undefined) {
 			return fallback
 		}

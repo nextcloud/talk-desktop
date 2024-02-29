@@ -81,7 +81,7 @@ function enableWebRequestInterceptor(serverUrl, {
 	}
 
 	const ALLOWED_ORIGIN = [process.env.NODE_ENV === 'production' ? 'file://' : `${DEV_SERVER_ORIGIN}`]
-	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE, PROPFIND, MKCOL'] // Includes WebDAV
+	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE, PROPFIND, MKCOL, SEARCH, REPORT'] // Includes WebDAV
 	const ALLOWED_CREDENTIALS_TRUE = ['true']
 	const ALLOWED_HEADERS = [[
 		// Common
@@ -90,10 +90,11 @@ function enableWebRequestInterceptor(serverUrl, {
 		'If-None-Match',
 		// WebDAV
 		'Depth',
-		'requesttoken',
 		// Nextcloud
+		'requesttoken',
 		'OCS-APIRequest',
 		'X-OC-MTIME',
+		'X-Requested-With',
 	].join(', ')]
 	const EXPOSED_HEADERS = [[
 		// Common headers

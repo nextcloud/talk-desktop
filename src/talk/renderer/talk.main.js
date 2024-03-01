@@ -23,7 +23,7 @@ import '@talk/css/icons.css'
 import './assets/styles.css'
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import { init } from './init.js'
+import { init, initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
 await setupWebPage()
@@ -34,5 +34,7 @@ const { createDesktopApp } = await import('./desktop.app.js')
 createDesktopApp(router)
 
 await import('@talk/src/main.js')
+
+initTalkHashIntegration(OCA.Talk.instance.$pinia)
 
 await import('./notifications/notifications.store.js')

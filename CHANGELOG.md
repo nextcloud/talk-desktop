@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.22.0 - 2024-03-05
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v18.0.4
+
+### Fixes
+
+- Fix window icon on linux [#308](https://github.com/nextcloud/talk-desktop/pull/308)
+- Fix "Share from Nextcloud" support [#540](https://github.com/nextcloud/talk-desktop/pull/540)
+- Allow avatar menu on desktop [Talk#11675](https://github.com/nextcloud/spreed/pull/11675)
+
+### Other changes
+
+- Added Nextcloud Talk 19 support
+- Update dependencies
+- Update translations
+
 ## v0.21.0 - 2024-02-01
 
 ### Build-in Talk update

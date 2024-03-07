@@ -118,7 +118,7 @@ function createTalkHashPiniaAdapter(talkInstance) {
 function createTalkHashVuexAdapter(talkInstance) {
 	let store
 	try {
-		store = require('@talk/src/store/index.js')
+		store = require('@talk/src/store/index.js').default
 	} catch {
 		return null
 	}

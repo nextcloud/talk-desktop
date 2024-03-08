@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.23.0 - 2024-03-11
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v19.0.0-beta.1
+
+### Fixes
+
+- Fix Talk hash integration with Talk 18 and below [#550](https://github.com/nextcloud/talk-desktop/pull/550)
+
 ## v0.22.0 - 2024-03-05
 
 ### Build-in Talk update

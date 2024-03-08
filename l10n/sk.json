@@ -1,10 +1,22 @@
 { "translations": {
+    "Talk Desktop" : "Talk /Rozhovor/ pre PC",
+    "Log in to Nextcloud" : "Prihlásiť do Nextcloud",
     "Nextcloud server address" : "Adresa servera Nextcloud",
+    "Log in" : "Prihlásiť sa",
     "Logging in …" : "Prihlasujem ...",
+    "Logged in successfully" : "Úspešne ste sa prihlásili",
+    "Invalid server address" : "Neplatná adresa servera",
+    "Nextcloud server not found" : "Nextcloud server sa nenašiel",
+    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk /Rozhovor/ nie je nainštalovaný na serveri",
+    "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Vyžaduje sa {componentName} {minRequiredVersion} alebo vyššia, ale je nainštalovaná {foundVersion}",
     "Unexpected error" : "Neočakávaná chyba",
+    "Login was successful but something went wrong." : "Prihlásenie bolo úspešné, ale niečo sa pokazilo.",
     "About" : "O aplikácii",
+    "Privacy and Legal Policy" : "Ochrana osobných údajov a právne zásady",
     "License" : "Licencia",
     "Issues" : "Problémy",
+    "Source Code" : "Zdrojový kód",
+    "System report" : "Systémová správa",
     "Close" : "Zatvoriť",
     "Ok" : "Neutrálne",
     "No" : "Nie",
@@ -13,7 +25,14 @@
     "Notifications" : "Upozornenia",
     "View profile" : "Zobraziť profil",
     "Online" : "Pripojený",
+    "Force reload" : "Vynútiť opätovné načítanie",
     "Report a bug" : "Nahlásiť chybu",
-    "Open in Web-Browser" : "Otvoriť vo webovom prehliadači"
+    "Open in Web-Browser" : "Otvoriť vo webovom prehliadači",
+    "Log out" : "Odhlásiť sa",
+    "Upgrade required" : "Vyžaduje sa inovácia",
+    "The client version is too old and no longer supported by this server. Update is required." : "Verzia klienta je príliš stará a tento server ju už nepodporuje. Vyžaduje sa aktualizácia.",
+    "Update Talk Desktop ↗" : "Aktualizovať Talk /Rozhovor/ pre PC",
+    "Continue in Web-Browser ↗" : "Pokračovať vo webovom prehliadači ↗",
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Nedá sa pripojiť k serveru. Skontrolujte svoje internetové pripojenie a skúste to znova neskôr."
 },"pluralForm" :"nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);"
 }

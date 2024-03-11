@@ -1,0 +1,14 @@
+{
+	"extends": "@vue/tsconfig/tsconfig.json",
+	"include": ["*.ts"],
+	"exclude": ["node_modules", "vendor"],
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"allowImportingTsExtensions": true,
+		"lib": ["ESNext"],
+	},
+	"vueCompilerOptions": {
+		"target": 2.7,
+	}
+}

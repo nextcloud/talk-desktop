@@ -104,6 +104,9 @@ let webpackRendererConfig = mergeWithRules({
 	},
 
 	resolve: {
+		// FIXME: temporary solution to allow import TS modules without extension in Talk
+		extensions: ['.js', '.ts'],
+
 		alias: {
 			'@talk': TALK_PATH,
 			...createPatcherAliases('@nextcloud/initial-state'),

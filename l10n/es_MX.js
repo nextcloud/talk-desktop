@@ -10,6 +10,7 @@ OC.L10N.register(
     "Close" : "Cerrar",
     "Search" : "Buscar",
     "View profile" : "Ver perfil",
+    "Online" : "En línea",
     "Report a bug" : "Reporta un detalle",
     "Log out" : "Cerrar sesión"
 },

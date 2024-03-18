@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk Desktop",
+    "Log in to Nextcloud" : "ورود به سامانه",
     "Nextcloud server address" : "آدرس سرور Nextcloud",
     "Log in" : "ورود",
     "Logging in …" : "ورود به سیستم ...",

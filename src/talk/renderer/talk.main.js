@@ -25,6 +25,7 @@ import './assets/styles.css'
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { init, initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
+import { setupGlobalInAppTalkLinksHandler } from './setupGlobalInAppTalkLinksHandler.js'
 import { getDesktopMediaSource } from './getDesktopMediaSource.js'
 
 // Initially open the welcome page, if not specified
@@ -35,6 +36,8 @@ if (!window.location.hash) {
 await setupWebPage()
 
 const { router } = await init()
+
+setupGlobalInAppTalkLinksHandler(router)
 
 const { createDesktopApp } = await import('./desktop.app.js')
 createDesktopApp(router)

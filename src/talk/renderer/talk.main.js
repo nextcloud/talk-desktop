@@ -26,6 +26,11 @@ import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { init, initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
+// Initially open the welcome page, if not specified
+if (!window.location.hash) {
+	window.location.hash = '#/apps/spreed'
+}
+
 await setupWebPage()
 
 const { router } = await init()

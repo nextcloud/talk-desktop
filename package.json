@@ -2,7 +2,7 @@
   "private": true,
   "name": "talk-desktop",
   "productName": "Nextcloud Talk",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "description": "Official Desktop client for Nextcloud Talk",
   "bugs": "https://github.com/nextcloud/talk-desktop/issues",
   "license": "AGPL-3.0",

@@ -108,7 +108,7 @@ npm run make:all
 
 ## ✈️ Release
 
-1. Create `release/vX.X.X` branch.
+1. Create `release/vX.Y.Z` branch.
 2. Update `CHANGELOG.md`.  
    1. If a built-in Talk version is to be changed - add a note:
       ```md
@@ -134,7 +134,7 @@ npm run make:all
    git push releases v$(version)
    ```
 7. **Draft a new release** on GitHub in [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases)
-   1. Add **release title**: `v$(version) - Talk v$(talkVersion)`, e.g. `v0.10.0 - Talk 17.1.0-rc.1`
+   1. Add **release title**: `v$(version) - Talk v$(talkVersion)`, e.g. `v0.10.0 - Talk v17.1.0-rc.1`
    2. Choose a **tag**
    3. Add the respective `CHANGELOG.md` section
    4. Use the **Generate release notes** button and wrap put the result into
@@ -149,11 +149,11 @@ npm run make:all
    1. Copy everything from the previous step
    2. Add:
       ```md
-      > 📥 Download Binaries on https://github.com/nextcloud-releases/talk-desktop/releases/tag/$(version)
+      > 📥 Download Binaries on https://github.com/nextcloud-releases/talk-desktop/releases/tag/v$(version)
       ```
 9. Package release, specify version and platforms:
    ```sh
-   npm run release:package -- --version $(version) --windows --linux --mac
+   npm run release:package -- --version v$(talkVersion) --windows --linux --mac
    ```
 10. Upload packages to the GitHub Releases on [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases/lastest)
 11. Publish both releases on GitHub Releases

@@ -40,6 +40,6 @@ createDesktopApp(router)
 
 await import('@talk/src/main.js')
 
-initTalkHashIntegration(OCA.Talk.instance.$pinia)
+initTalkHashIntegration(OCA.Talk.instance)
 
 await import('./notifications/notifications.store.js')

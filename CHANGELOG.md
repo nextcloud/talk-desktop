@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.26.1 - 2024-03-26
+
+### Fixes
+
+- Downgrade undici dependency again [#583](https://github.com/nextcloud/talk-desktop/pull/583)
+
 ## v0.26.0 - 2024-03-26
 
 ### Build-in Talk update

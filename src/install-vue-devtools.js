@@ -24,10 +24,9 @@ const fs = require('node:fs/promises')
 const { app, session } = require('electron')
 const unzip = require('unzip-crx-3')
 
-const vueDevtoolsPath = resolve(__dirname, require('../resources/vue-devtools-chromium-extension_6_5_0_0.crx'))
+const { VUE_DEVTOOLS_EXTENSION_ID } = require('../scripts/vue-devtools-extension-id.mjs')
 
-const VUEJS_DEVTOOLS_ID = 'nkibbglddpflddbkopjaakaogfpjdaga'
-
+const vueDevtoolsPath = resolve(__dirname, require('../resources/vue-devtools.crx'))
 /**
  * Check if a directory exists
  *
@@ -52,7 +51,7 @@ async function isDirectoryExists(path) {
  * @return {Promise<void>}
  */
 async function installVueDevtools() {
-	if (session.defaultSession.getExtension(VUEJS_DEVTOOLS_ID)) {
+	if (session.defaultSession.getExtension(VUE_DEVTOOLS_EXTENSION_ID)) {
 		console.log('Vue Devtools extension has already been installed')
 		return
 	}

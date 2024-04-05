@@ -29,6 +29,7 @@
     "make:all": "npm run make:linux && npm run make:mac && npm run make:windows",
     "publish": "electron-forge publish",
     "generate-icons": "node ./scripts/generate-icons.js",
+    "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
     "lint": "eslint --ext .js,.vue src/ --fix",
     "release:package": "zx ./scripts/prepare-release-packages.mjs"
   },

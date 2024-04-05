@@ -68,11 +68,13 @@ function createPatcherAliases(packageName) {
 	}
 }
 
-let webpackRendererConfig = mergeWithRules({
+const webpackRendererConfig = mergeWithRules({
 	module: {
 		rules: {
 			test: 'match',
 			use: 'merge',
+			loader: 'replace',
+			options: 'replace',
 		},
 	},
 })(commonTalkWebpackConfig, {
@@ -82,6 +84,19 @@ let webpackRendererConfig = mergeWithRules({
 
 	module: {
 		rules: [
+			/**
+			 * With Electron we can use the most modern features,
+			 * But with web client - we cannot.
+			 * Replace target to support Top-level await
+			 */
+			{
+				test: /\.js$/,
+				loader: 'esbuild-loader',
+				options: {
+					loader: 'js',
+					target: 'es2022',
+				},
+			},
 			{
 				test: /\.worker\.js$/,
 				use: {
@@ -127,48 +142,5 @@ let webpackRendererConfig = mergeWithRules({
 		}),
 	],
 })
-
-// Check if there is esbuild-loader in the Talk repo, not in the Talk Desktop
-let hasEsbuildLoader = false
-try {
-	const esbuildLoaderPath = require.resolve('esbuild-loader', { paths: [TALK_PATH] })
-	// If there is esbuild-loader, it might be in its parents, not in Talk itself
-	// e.g. in server or in talk-desktop
-	// Check if it is inside Talk
-	if (esbuildLoaderPath.startsWith(TALK_PATH)) {
-		hasEsbuildLoader = true
-	}
-} catch {
-	// There is no esbuild-loader in Talk or its parents
-}
-
-if (hasEsbuildLoader) {
-	console.log('Using esbuild-loader')
-	// With Electron we can use the most modern features
-	// But with web client - we cannot
-	// Replace target to support Top-level await
-	webpackRendererConfig = mergeWithRules({
-		module: {
-			rules: {
-				test: 'match',
-				loader: 'replace',
-				options: 'replace',
-			},
-		},
-	})(webpackRendererConfig, {
-		module: {
-			rules: [
-				{
-					test: /\.js$/,
-					loader: 'esbuild-loader',
-					options: {
-						loader: 'js',
-						target: 'es2022',
-					},
-				},
-			],
-		},
-	})
-}
 
 module.exports = webpackRendererConfig

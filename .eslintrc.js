@@ -102,5 +102,11 @@ module.exports = {
 		'vue/prefer-separate-static-class': 'error',
 		'vue/prefer-true-attribute-shorthand': 'error',
 		'vue/require-name-property': 'error',
+		/**
+		 * Nextcloud
+		 */
+		// Talk Desktop doesn't use real Nextcloud server globals
+		'@nextcloud/no-deprecations': 'off',
+		'@nextcloud/no-removed-apis': 'off',
 	},
 }

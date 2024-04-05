@@ -20,7 +20,7 @@
  */
 
 const path = require('node:path')
-const { app, dialog, BrowserWindow, ipcMain, desktopCapturer, systemPreferences } = require('electron')
+const { app, dialog, BrowserWindow, ipcMain, desktopCapturer, systemPreferences, shell } = require('electron')
 const { setupMenu } = require('./app/app.menu.js')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -85,8 +85,11 @@ ipcMain.on('app:relaunch', () => {
 ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	// macOS 10.15 Catalina or higher requires consent for screen access
 	if (isMac() && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
-		// TODO: show user-friendly error in this case
-		return []
+		// Open System Preferences to allow screen recording
+		await shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture')
+		// We cannot detect that the user has granted access, so return no sources
+		// The user will have to try again after granting access
+		return null
 	}
 
 	const sources = await desktopCapturer.getSources({ types: ['window', 'screen'], fetchWindowIcons: true })

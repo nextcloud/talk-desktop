@@ -86,7 +86,7 @@ const TALK_DESKTOP = {
 	/**
 	 * Get available desktop capture sources: screens and windows
 	 *
-	 * @return {Promise<{ id: string, name: string, icon?: string }>}
+	 * @return {Promise<{ id: string, name: string, icon?: string }[]|null>}
 	 */
 	getDesktopCapturerSources: () => ipcRenderer.invoke('app:getDesktopCapturerSources'),
 	/**

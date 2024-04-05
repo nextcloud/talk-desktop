@@ -95,6 +95,11 @@ const getStreamForMediaSource = (mediaSourceId) => {
 const requestDesktopCapturerSources = async () => {
 	sources.value = await window.TALK_DESKTOP.getDesktopCapturerSources()
 
+	// There is no source. Probably the user hasn't granted the permission.
+	if (!sources.value) {
+		emit('cancel')
+	}
+
 	const hasMultipleScreens = sources.value.filter((source) => source.id.startsWith('screen:')).length > 1
 
 	// There is no sourceId for the entire desktop in Electron - create a custom one

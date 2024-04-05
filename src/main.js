@@ -5,7 +5,7 @@
 
 const path = require('node:path')
 const { spawn } = require('node:child_process')
-const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell } = require('electron')
+const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
 const { setupMenu } = require('./app/app.menu.js')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -80,6 +80,7 @@ ipcMain.on('app:relaunch', () => {
 })
 ipcMain.handle('app:config:get', (event, key) => getAppConfig(key))
 ipcMain.handle('app:config:set', (event, key, value) => setAppConfig(key, value))
+
 ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	// macOS 10.15 Catalina or higher requires consent for screen access
 	if (isMac && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
@@ -139,6 +140,35 @@ app.whenReady().then(async () => {
 		console.log('Hint: type "rs" to restart app without restarting the build')
 		console.log()
 	}
+
+	session.defaultSession.setDisplayMediaRequestHandler(async (request, callback) => {
+		if (isMac && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
+			// Open System Preferences to allow screen recording
+			await shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture')
+			// We cannot detect that the user has granted access, so return no sources
+			// The user will have to try again after granting access
+			return null
+		}
+
+		// We cannot show live previews on Wayland, so we show thumbnails
+		const thumbnailWidth = isWayland ? 320 : 0
+
+		const sources = await desktopCapturer.getSources({
+			types: ['screen', 'window'],
+			fetchWindowIcons: true,
+			thumbnailSize: {
+				width: thumbnailWidth,
+				height: thumbnailWidth * 9 / 16,
+			},
+		})
+
+		sources.map((source) => ({
+			id: source.id,
+			name: source.name,
+			icon: source.appIcon && !source.appIcon.isEmpty() ? source.appIcon.toDataURL() : null,
+			thumbnail: source.thumbnail && !source.thumbnail.isEmpty() ? source.thumbnail.toDataURL() : null,
+		}))
+	}, { useSystemPicker: true })
 
 	// TODO: add windows manager
 	/**

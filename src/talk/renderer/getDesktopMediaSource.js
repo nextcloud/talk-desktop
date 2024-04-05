@@ -13,12 +13,14 @@ let appGetDesktopMediaSourceInstance
 /**
  * Prompt user to select a desktop media source to share and return the selected sourceId or an empty string if canceled
  *
+ * @param sources
  * @return {Promise<{ sourceId: string }>} sourceId of the selected mediaSource or an empty string if canceled
  */
-export async function getDesktopMediaSource() {
+export async function getDesktopMediaSource(sources) {
 	if (!appGetDesktopMediaSourceInstance) {
 		const container = document.body.appendChild(document.createElement('div'))
-		appGetDesktopMediaSourceInstance = new Vue(AppGetDesktopMediaSource).$mount(container)
+		const AppGetDesktopMediaSourceCreator = Vue.extend(AppGetDesktopMediaSource)
+		appGetDesktopMediaSourceInstance = new AppGetDesktopMediaSourceCreator({ propsData: { sources } }).$mount(container)
 	}
 
 	return appGetDesktopMediaSourceInstance.promptDesktopMediaSource()

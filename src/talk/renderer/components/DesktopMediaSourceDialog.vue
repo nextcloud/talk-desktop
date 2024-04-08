@@ -132,6 +132,35 @@ const setVideoSources = async () => Promise.allSettled(sources.value.map(async (
 	videoElements[source.id].srcObject = await getStreamForMediaSource(source.id)
 }))
 
+const releaseVideoSource = (sourceId) => {
+	const stream = videoElements[sourceId].srcObject
+	for (const track of stream.getTracks()) {
+		track.stop()
+	}
+}
+
+const releaseVideoSources = () => {
+	for (const source of sources.value) {
+		releaseVideoSource(source.id)
+	}
+}
+
+const setVideoElement = (element, sourceId) => {
+	if (element) {
+		videoElements[sourceId] = element
+	} else {
+		delete videoElements[sourceId]
+	}
+}
+
+const handleVideoSuspend = (source) => {
+	releaseVideoSource(source.id)
+	sources.value.splice(sources.value.indexOf(source), 1)
+	if (selectedSourceId.value === source.id) {
+		selectedSourceId.value = null
+	}
+}
+
 const showLivePreviews = async () => {
 	// Wait for video elements to be mounted
 	await nextTick()
@@ -148,15 +177,9 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
-	if (!sources.value || previewType !== 'live') {
-		return
-	}
 	// Release all streams, otherwise they are still captured even if no video element is using them
-	for (const source of sources.value) {
-		const stream = videoElements[source.id].srcObject
-		for (const track of stream.getTracks()) {
-			track.stop()
-		}
+	if (sources.value && previewType === 'live') {
+		releaseVideoSources()
 	}
 })
 </script>
@@ -174,10 +197,11 @@ onBeforeUnmount(() => {
 					type="radio"
 					:value="source.id">
 				<video v-if="previewType === 'live'"
-					:ref="(element) => videoElements[source.id] = element"
+					:ref="(element) => setVideoElement(element, source.id)"
 					class="capture-source__preview"
 					muted
-					@loadedmetadata="$event.target.play()" />
+					@loadedmetadata="$event.target.play()"
+					@suspend="handleVideoSuspend(source)" />
 				<img v-else-if="previewType === 'thumbnail' && source.thumbnail"
 					alt=""
 					:src="source.thumbnail"

@@ -20,7 +20,7 @@
   -->
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import MdiCancel from '@mdi/svg/svg/cancel.svg?raw'
 import MdiMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
@@ -33,6 +33,13 @@ import { translate as t } from '@nextcloud/l10n'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
 
 const emit = defineEmits(['submit', 'cancel'])
+
+const RE_REQUEST_SOURCES_TIMEOUT = 1000
+
+// On Wayland getting each stream for the live preview requests user to select the source via system dialog again
+// Instead - show static images.
+// See: https://github.com/electron/electron/issues/27732
+const previewType = window.OS.isWayland ? 'thumbnail' : 'live'
 
 const selectedSourceId = ref(null)
 const sources = ref(null)
@@ -89,12 +96,31 @@ const handleVideoSuspend = (source) => {
 	}
 }
 
+let reRequestTimeout
+
+const scheduleRequestDesktopCaprutererSources = () => {
+	reRequestTimeout = setTimeout(async () => {
+		await requestDesktopCapturerSources()
+		scheduleRequestDesktopCaprutererSources()
+	}, RE_REQUEST_SOURCES_TIMEOUT)
+}
+
 onMounted(async () => {
 	await requestDesktopCapturerSources()
 
 	// Preselect the first media source if any
 	if (!selectedSourceId.value) {
 		selectedSourceId.value = sources.value[0]?.id
+	}
+
+	if (previewType === 'live') {
+		scheduleRequestDesktopCaprutererSources()
+	}
+})
+
+onBeforeUnmount(() => {
+	if (reRequestTimeout) {
+		clearTimeout(reRequestTimeout)
 	}
 })
 </script>

@@ -77,10 +77,20 @@ function isWindows() {
 }
 
 /**
+ * Is it Linux with Wayland window communication protocol?
+ * @return {boolean}
+ */
+function isWayland() {
+	// TODO: is it better than checking for XDG_SESSION_TYPE === 'wayland'?
+	return !!process.env.WAYLAND_DISPLAY
+}
+
+/**
  * @typedef OsVersion
  * @property {boolean} isLinux - Is Linux?
  * @property {boolean} isMac - Is Mac?
  * @property {boolean} isWindows - Is Windows?
+ * @property {boolean} isWayland - Is Linux with Wayland window communication protocol?
  * @property {string} version - Full string representation of OS version
  */
 
@@ -94,6 +104,7 @@ function getOs() {
 		isLinux: isLinux(),
 		isMac: isMac(),
 		isWindows: isWindows(),
+		isWayland: isWayland(),
 		version: getOsVersion(),
 	}
 }
@@ -104,5 +115,6 @@ module.exports = {
 	isLinux,
 	isMac,
 	isWindows,
+	isWayland,
 	getOs,
 }

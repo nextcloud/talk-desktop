@@ -28,7 +28,7 @@ const { createAuthenticationWindow } = require('./authentication/authentication.
 const { openLoginWebView } = require('./authentication/login.window.js')
 const { createHelpWindow } = require('./help/help.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.js')
-const { getOs, isLinux, isMac } = require('./shared/os.utils.js')
+const { getOs, isLinux, isMac, isWayland } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
@@ -92,11 +92,23 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 		return null
 	}
 
-	const sources = await desktopCapturer.getSources({ types: ['window', 'screen'], fetchWindowIcons: true })
+	// We cannot show live previews on Wayland, so we show thumbnails
+	const thumbnailWidth = isWayland() ? 320 : 0
+
+	const sources = await desktopCapturer.getSources({
+		types: ['screen', 'window'],
+		fetchWindowIcons: true,
+		thumbnailSize: {
+			width: thumbnailWidth,
+			height: thumbnailWidth * 9 / 16,
+		},
+	})
+
 	return sources.map((source) => ({
 		id: source.id,
 		name: source.name,
-		icon: source.appIcon?.toDataURL(),
+		icon: source.appIcon && !source.appIcon.isEmpty() ? source.appIcon.toDataURL() : null,
+		thumbnail: source.thumbnail && !source.thumbnail.isEmpty() ? source.thumbnail.toDataURL() : null,
 	}))
 })
 

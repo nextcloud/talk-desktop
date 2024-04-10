@@ -22,7 +22,7 @@
 const TALK_PATH = './out/.temp/spreed/'
 const talkDotGit = `${TALK_PATH}.git`
 
-import { $, echo, spinner, argv, fs, quotePowerShell, os, which } from 'zx'
+import { $, echo, spinner, argv, fs, os, usePowerShell } from 'zx'
 
 $.quiet = true
 
@@ -128,11 +128,8 @@ async function prepareRelease() {
 	echo`Done. See output in ./out/make/`
 }
 
-// Hotfix for Windows when WSL Bash is used instead of pwsh
 if (os.platform() === 'win32') {
-	$.shell = which.sync('pwsh.exe')
-	$.quote = quotePowerShell
-	$.prefix = ''
+	usePowerShell()
 }
 
 if (argv.help) {

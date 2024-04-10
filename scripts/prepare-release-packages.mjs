@@ -22,7 +22,9 @@
 const TALK_PATH = './out/.temp/spreed/'
 const talkDotGit = `${TALK_PATH}.git`
 
-import { $, echo, spinner, argv, fs, quotePowerShell, os, which } from 'zx'
+import { $, echo, spinner, argv, fs, os, usePowerShell } from 'zx'
+
+$.quiet = true
 
 function exit(message, code) {
 	echo(message)
@@ -68,7 +70,7 @@ async function prepareRelease() {
 
 	// Check Talk Desktop repository
 	echo`[1/5] Check for uncommitted changes in Talk Desktop`
-	if ((await $`git status -s`.quiet()).stdout) {
+	if ((await $`git status -s`).stdout) {
 		exit(`❌ You have uncommitted changes in the Talk Desktop repository`, 1)
 	}
 
@@ -77,7 +79,7 @@ async function prepareRelease() {
 	if (fs.existsSync(TALK_PATH)) {
 		echo`- Talk has been found in ${TALK_PATH}`
 		echo`[3.1/5] Check for uncommitted changes in Talk repository`
-		if ((await gitSpreed(['status', '-s']).quiet()).stdout) {
+		if ((await gitSpreed(['status', '-s'])).stdout) {
 			exit(`❌ You have uncommitted changes in the Talk repository`, 1)
 		}
 		echo`[3.2/5] Fetch Talk ${version} from origin`
@@ -126,11 +128,8 @@ async function prepareRelease() {
 	echo`Done. See output in ./out/make/`
 }
 
-// Hotfix for Windows when WSL Bash is used instead of pwsh
 if (os.platform() === 'win32') {
-	$.shell = which.sync('pwsh.exe')
-	$.quote = quotePowerShell
-	$.prefix = ''
+	usePowerShell()
 }
 
 if (argv.help) {

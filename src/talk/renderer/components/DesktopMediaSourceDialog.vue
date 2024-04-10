@@ -1,0 +1,156 @@
+<!--
+  - @copyright Copyright (c) 2024 Grigorii Shartsev <me@shgk.me>
+  -
+  - @author Grigorii Shartsev <me@shgk.me>
+  -
+  - @license AGPL-3.0-or-later
+  -
+  - This program is free software: you can redistribute it and/or modify
+  - it under the terms of the GNU Affero General Public License as
+  - published by the Free Software Foundation, either version 3 of the
+  - License, or (at your option) any later version.
+  -
+  - This program is distributed in the hope that it will be useful,
+  - but WITHOUT ANY WARRANTY; without even the implied warranty of
+  - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  - GNU Affero General Public License for more details.
+  -
+  - You should have received a copy of the GNU Affero General Public License
+  - along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<script setup>
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+
+import MdiCancel from '@mdi/svg/svg/cancel.svg?raw'
+import MdiMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
+
+import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
+import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
+import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+
+import { translate as t } from '@nextcloud/l10n'
+import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
+
+const emit = defineEmits(['submit', 'cancel'])
+
+const RE_REQUEST_SOURCES_TIMEOUT = 1000
+
+// On Wayland getting each stream for the live preview requests user to select the source via system dialog again
+// Instead - show static images.
+// See: https://github.com/electron/electron/issues/27732
+const previewType = window.OS.isWayland ? 'thumbnail' : 'live'
+
+const selectedSourceId = ref(null)
+const sources = ref(null)
+
+const handleSubmit = () => emit('submit', selectedSourceId.value)
+const handleCancel = () => emit('cancel')
+
+const dialogButtons = computed(() => [
+	{
+		label: t('talk_desktop', 'Cancel'),
+		icon: MdiCancel,
+		callback: handleCancel,
+	},
+	{
+		label: t('talk_desktop', 'Share screen'),
+		type: 'primary',
+		icon: MdiMonitorShare,
+		disabled: !selectedSourceId.value,
+		callback: handleSubmit,
+	},
+])
+
+const requestDesktopCapturerSources = async () => {
+	sources.value = await window.TALK_DESKTOP.getDesktopCapturerSources()
+
+	// There is no source. Probably the user hasn't granted the permission.
+	if (!sources.value) {
+		emit('cancel')
+	}
+
+	// On Wayland we don't manually provide the source stream. It is covered by Wayland and custom id is not supported
+	if (!window.OS.isWayland) {
+		// There is no sourceId for the entire desktop with all the screens and audio in Electron.
+		// But it is possible to capture it. "entire-desktop:0:0" is a custom sourceId for this specific case.
+		const hasMultipleScreens = sources.value.filter((source) => source.id.startsWith('screen:')).length > 1
+		sources.value.unshift({
+			id: 'entire-desktop:0:0',
+			name: hasMultipleScreens ? t('talk_desktop', 'All screens with audio') : t('talk_desktop', 'Entire screen with audio'),
+		})
+	}
+
+	// On Wayland there might be no name from the desktopCapturer
+	if (window.OS.isWayland) {
+		for (const source of sources.value) {
+			source.name ||= t('talk_desktop', 'Selected screen or window')
+		}
+	}
+}
+
+const handleVideoSuspend = (source) => {
+	sources.value.splice(sources.value.indexOf(source), 1)
+	if (selectedSourceId.value === source.id) {
+		selectedSourceId.value = null
+	}
+}
+
+let reRequestTimeout
+
+const scheduleRequestDesktopCaprutererSources = () => {
+	reRequestTimeout = setTimeout(async () => {
+		await requestDesktopCapturerSources()
+		scheduleRequestDesktopCaprutererSources()
+	}, RE_REQUEST_SOURCES_TIMEOUT)
+}
+
+onMounted(async () => {
+	await requestDesktopCapturerSources()
+
+	// Preselect the first media source if any
+	if (!selectedSourceId.value) {
+		selectedSourceId.value = sources.value[0]?.id
+	}
+
+	if (previewType === 'live') {
+		scheduleRequestDesktopCaprutererSources()
+	}
+})
+
+onBeforeUnmount(() => {
+	if (reRequestTimeout) {
+		clearTimeout(reRequestTimeout)
+	}
+})
+</script>
+
+<template>
+	<NcDialog :name="t('talk_desktop', 'Choose what to share')"
+		size="normal"
+		:buttons="dialogButtons"
+		@update:open="handleCancel">
+		<div v-if="sources" class="capture-source-grid">
+			<DesktopMediaSourcePreview v-for="source in sources"
+				:key="source.id"
+				:source="source"
+				:selected="selectedSourceId === source.id"
+				@select="selectedSourceId = source.id"
+				@suspend="handleVideoSuspend(source)" />
+		</div>
+		<NcEmptyContent v-else :name="t('talk_desktop', 'Loading …')">
+			<template #icon>
+				<NcLoadingIcon />
+			</template>
+		</NcEmptyContent>
+	</NcDialog>
+</template>
+
+<style scoped lang="scss">
+.capture-source-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-gap: calc(var(--default-grid-baseline) * 2);
+	width: 100%;
+}
+</style>

@@ -20,7 +20,7 @@
  */
 
 const path = require('node:path')
-const { app, dialog, BrowserWindow, ipcMain } = require('electron')
+const { app, dialog, BrowserWindow, ipcMain, desktopCapturer, systemPreferences, shell } = require('electron')
 const { setupMenu } = require('./app/app.menu.js')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -28,7 +28,7 @@ const { createAuthenticationWindow } = require('./authentication/authentication.
 const { openLoginWebView } = require('./authentication/login.window.js')
 const { createHelpWindow } = require('./help/help.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.js')
-const { getOs, isLinux } = require('./shared/os.utils.js')
+const { getOs, isLinux, isMac, isWayland } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
@@ -81,6 +81,35 @@ ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(co
 ipcMain.on('app:relaunch', () => {
 	app.relaunch()
 	app.exit(0)
+})
+ipcMain.handle('app:getDesktopCapturerSources', async () => {
+	// macOS 10.15 Catalina or higher requires consent for screen access
+	if (isMac() && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
+		// Open System Preferences to allow screen recording
+		await shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture')
+		// We cannot detect that the user has granted access, so return no sources
+		// The user will have to try again after granting access
+		return null
+	}
+
+	// We cannot show live previews on Wayland, so we show thumbnails
+	const thumbnailWidth = isWayland() ? 320 : 0
+
+	const sources = await desktopCapturer.getSources({
+		types: ['screen', 'window'],
+		fetchWindowIcons: true,
+		thumbnailSize: {
+			width: thumbnailWidth,
+			height: thumbnailWidth * 9 / 16,
+		},
+	})
+
+	return sources.map((source) => ({
+		id: source.id,
+		name: source.name,
+		icon: source.appIcon && !source.appIcon.isEmpty() ? source.appIcon.toDataURL() : null,
+		thumbnail: source.thumbnail && !source.thumbnail.isEmpty() ? source.thumbnail.toDataURL() : null,
+	}))
 })
 
 app.whenReady().then(async () => {

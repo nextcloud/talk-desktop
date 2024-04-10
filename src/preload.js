@@ -84,6 +84,12 @@ const TALK_DESKTOP = {
 	 */
 	setBadgeCount: (count) => ipcRenderer.invoke('app:setBadgeCount', count),
 	/**
+	 * Get available desktop capture sources: screens and windows
+	 *
+	 * @return {Promise<{ id: string, name: string, icon?: string }[]|null>}
+	 */
+	getDesktopCapturerSources: () => ipcRenderer.invoke('app:getDesktopCapturerSources'),
+	/**
 	 * Relaunch the application
 	 */
 	relaunch: () => ipcRenderer.send('app:relaunch'),

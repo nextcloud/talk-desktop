@@ -14,7 +14,6 @@
 ## 👾 Drawbacks
 
 - Currently not supported:
-  - Screen sharing ([#11](https://github.com/nextcloud/talk-desktop/issues/11))
   - Setting User Status ([#26](https://github.com/nextcloud/talk-desktop/issues/26))
   - Search ([#30](https://github.com/nextcloud/talk-desktop/issues/30))
   - Untrusted certificate on Linux ([#23](https://github.com/nextcloud/talk-desktop/issues/23))

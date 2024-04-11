@@ -11,6 +11,8 @@ OC.L10N.register(
     "Ok" : "OK",
     "Search" : "Søg",
     "Notifications" : "Påmindelser",
+    "Cancel" : "Annullér",
+    "Share screen" : "Del skærm",
     "View profile" : "Vis profil",
     "Online" : "Online",
     "Report a bug" : "Rapporter en fejl"

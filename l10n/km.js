@@ -6,6 +6,7 @@ OC.L10N.register(
     "Ok" : "ព្រម",
     "No" : "ទេ",
     "Yes" : "បាទ ឬចាស",
-    "Search" : "ស្វែងរក"
+    "Search" : "ស្វែងរក",
+    "Cancel" : "លើកលែង"
 },
 "nplurals=1; plural=0;");

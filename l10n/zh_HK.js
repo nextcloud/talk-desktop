@@ -25,6 +25,8 @@ OC.L10N.register(
     "Yes" : "是",
     "Search" : "搜尋",
     "Notifications" : "通知",
+    "Cancel" : "取消",
+    "Loading …" : "加載中 …",
     "View profile" : "查看個人資料",
     "Online" : "在線",
     "Force reload" : "強制重新加載",

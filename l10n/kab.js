@@ -10,6 +10,7 @@ OC.L10N.register(
     "Yes" : "Oui",
     "Search" : "Nadi",
     "Notifications" : "Ilɣa",
+    "Loading …" : "Asali ...",
     "Log out" : "Senser"
 },
 "nplurals=2; plural=(n != 1);");

@@ -11,6 +11,9 @@ OC.L10N.register(
     "Ok" : "אישור",
     "Search" : "חיפוש",
     "Notifications" : "התראות",
+    "Cancel" : "ביטול",
+    "Share screen" : "שיתוף המסך",
+    "Loading …" : "בטעינה…",
     "Online" : "מקוון",
     "Report a bug" : "דיווח על באג",
     "Log out" : "התנתק"

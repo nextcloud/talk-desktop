@@ -9,6 +9,7 @@ OC.L10N.register(
     "Ok" : "Ok",
     "Search" : "Otsi",
     "Notifications" : "Märguanded",
+    "Cancel" : "Tühista",
     "View profile" : "Vaata profiili",
     "Online" : "Online",
     "Report a bug" : "Teata veast"

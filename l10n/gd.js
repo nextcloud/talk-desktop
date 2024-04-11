@@ -10,6 +10,7 @@ OC.L10N.register(
     "Yes" : "Tha",
     "Search" : "Lorg",
     "Notifications" : "Brathan",
+    "Cancel" : "Sguir dheth",
     "Online" : "Air loidhne",
     "Log out" : "Clàraich a-mach"
 },

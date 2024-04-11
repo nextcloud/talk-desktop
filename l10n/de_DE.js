@@ -25,6 +25,8 @@ OC.L10N.register(
     "Yes" : "Ja",
     "Search" : "Suche",
     "Notifications" : "Benachrichtigungen",
+    "Cancel" : "Abbrechen",
+    "Loading …" : "Lade …",
     "View profile" : "Profil ansehen",
     "Online" : "Online",
     "Force reload" : "Anwendung neuladen",

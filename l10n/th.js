@@ -12,6 +12,7 @@ OC.L10N.register(
     "No" : "ไม่ตกลง",
     "Yes" : "ใช่",
     "Search" : "ค้นหา",
+    "Cancel" : "ยกเลิก",
     "Online" : "ออนไลน์",
     "Report a bug" : "รายงานข้อผิดพลาด"
 },

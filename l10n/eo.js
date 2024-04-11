@@ -10,6 +10,7 @@ OC.L10N.register(
     "Yes" : "Jes",
     "Search" : "Serĉi",
     "Notifications" : "Atentigoj",
+    "Loading …" : "Ŝargado...",
     "View profile" : "Vidi profilon",
     "Report a bug" : "Raporti problemon"
 },

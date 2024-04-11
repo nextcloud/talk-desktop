@@ -25,6 +25,7 @@ OC.L10N.register(
     "Yes" : "نعم",
     "Search" : "بحث",
     "Notifications" : "الإشعارات",
+    "Cancel" : "إلغاء",
     "View profile" : "عرض الملف الشخصي",
     "Online" : "متصل على الخط",
     "Force reload" : "إفرِض إعادة التحميل",

@@ -7,6 +7,7 @@ OC.L10N.register(
     "Close" : "Aizvērt",
     "Ok" : "Labi",
     "Search" : "Meklēt",
+    "Share screen" : "Koplietot ekrānu",
     "View profile" : "Skatīt profilu",
     "Report a bug" : "Ziņot par kļūdu",
     "Log out" : "Izrakstīties"

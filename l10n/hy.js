@@ -10,6 +10,7 @@ OC.L10N.register(
     "No" : "Ոչ",
     "Yes" : "Այո",
     "Search" : "Search",
-    "Notifications" : "Ծանուցում"
+    "Notifications" : "Ծանուցում",
+    "Cancel" : "չեղարկել"
 },
 "nplurals=2; plural=(n != 1);");

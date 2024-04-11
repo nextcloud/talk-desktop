@@ -10,6 +10,7 @@ OC.L10N.register(
     "Ok" : "Oke",
     "Search" : "Cari",
     "Notifications" : "Notifikasi",
+    "Cancel" : "Batal",
     "View profile" : "Tampilkan profil",
     "Report a bug" : "Laporkan kerusakan",
     "Log out" : "Keluar"

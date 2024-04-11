@@ -8,6 +8,7 @@ OC.L10N.register(
     "Close" : "වසන්න",
     "No" : "නැහැ",
     "Search" : "සොයන්න",
+    "Cancel" : "අවලංගු",
     "Log out" : "නික්මෙන්න"
 },
 "nplurals=2; plural=(n != 1);");

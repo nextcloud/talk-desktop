@@ -12,6 +12,7 @@ OC.L10N.register(
     "Yes" : "Da",
     "Search" : "Căutare",
     "Notifications" : "Notificări",
+    "Cancel" : "Anulare",
     "View profile" : "Vezi profilul",
     "Report a bug" : "Raportează un defect"
 },

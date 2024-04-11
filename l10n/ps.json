@@ -1,5 +1,6 @@
 { "translations": {
     "Logging in …" : "ننوتون...",
-    "Close" : "بندول"
+    "Close" : "بندول",
+    "Cancel" : "پرېښودل"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

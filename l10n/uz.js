@@ -8,6 +8,7 @@ OC.L10N.register(
     "Yes" : "Yes",
     "Search" : "Search",
     "Notifications" : "Notifications",
+    "Cancel" : "Cancel",
     "View profile" : "View profile",
     "Online" : "Online"
 },

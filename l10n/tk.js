@@ -9,6 +9,7 @@ OC.L10N.register(
     "Yes" : "Hawa",
     "Search" : "Gözlemek",
     "Notifications" : "Duýduryşlar",
+    "Cancel" : "ýatyrmak",
     "Online" : "Onlaýn",
     "Log out" : "Hasapdan çykmak"
 },

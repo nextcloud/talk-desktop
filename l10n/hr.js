@@ -13,6 +13,9 @@ OC.L10N.register(
     "Yes" : "Da",
     "Search" : "Traži",
     "Notifications" : "Obavijesti",
+    "Cancel" : "Odustani",
+    "Share screen" : "Dijeli zaslon",
+    "Loading …" : "Učitavanje…",
     "View profile" : "Prikaži profil",
     "Report a bug" : "Prijavi pogrešku",
     "Log out" : "Odjavite se"

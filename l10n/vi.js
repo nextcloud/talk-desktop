@@ -12,6 +12,9 @@ OC.L10N.register(
     "Yes" : "Có",
     "Search" : "Tìm kiếm",
     "Notifications" : "Thông báo",
+    "Cancel" : "Hủy",
+    "Share screen" : "Chia sẽ màn hình",
+    "Loading …" : "Đang tải …",
     "View profile" : "Xem hồ sơ",
     "Online" : "Trực tuyến",
     "Report a bug" : "Báo cáo lỗi"

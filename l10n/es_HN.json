@@ -8,6 +8,7 @@
     "Close" : "Cerrar",
     "Ok" : "Ok",
     "Search" : "Buscar",
+    "Share screen" : "Compartir la pantalla",
     "Report a bug" : "Reporta un detalle",
     "Log out" : "Salir"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"

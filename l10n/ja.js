@@ -12,6 +12,9 @@ OC.L10N.register(
     "Yes" : "はい",
     "Search" : "検索",
     "Notifications" : "通知",
+    "Cancel" : "キャンセル",
+    "Share screen" : "画面共有",
+    "Loading …" : "読み込み中…",
     "View profile" : "プロフィールを表示",
     "Report a bug" : "不具合を報告"
 },

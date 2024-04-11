@@ -14,6 +14,7 @@ OC.L10N.register(
     "Ok" : "قبول",
     "Search" : "جستجو",
     "Notifications" : "هشدارها",
+    "Cancel" : "منصرف شدن",
     "View profile" : "مشاهدهٔ نمایه",
     "Online" : "آنلاین",
     "Force reload" : "Force reload",

@@ -9,6 +9,7 @@ OC.L10N.register(
     "Close" : "Fechar",
     "Ok" : "CONFIRMAR",
     "Search" : "Pesquisa sobre",
+    "Cancel" : "Cancelar",
     "View profile" : "Visualizar perfil",
     "Online" : "On-line",
     "Report a bug" : "Reportar um erro",

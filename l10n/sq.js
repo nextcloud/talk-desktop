@@ -11,6 +11,8 @@ OC.L10N.register(
     "Yes" : "Po",
     "Search" : "Kërko",
     "Notifications" : "Njoftime",
+    "Cancel" : "Anuloje",
+    "Share screen" : "Ndaje ekranin",
     "Report a bug" : "Njoftoni një të metë",
     "Log out" : "Shkyçu"
 },

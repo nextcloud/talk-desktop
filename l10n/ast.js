@@ -15,6 +15,8 @@ OC.L10N.register(
     "Yes" : "Sí",
     "Search" : "Guetar",
     "Notifications" : "Avisos",
+    "Cancel" : "Encaboxar",
+    "Share screen" : "Compartir pantalla",
     "View profile" : "Ver el perfil",
     "Online" : "En llinia",
     "Report a bug" : "Informar d'un fallju",

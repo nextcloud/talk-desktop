@@ -6,6 +6,7 @@ OC.L10N.register(
     "No" : "No",
     "Yes" : "Si",
     "Search" : "Buscar",
-    "Notifications" : "Notificazions"
+    "Notifications" : "Notificazions",
+    "Cancel" : "Canzelar"
 },
 "nplurals=2; plural=(n != 1);");

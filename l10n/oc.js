@@ -12,6 +12,8 @@ OC.L10N.register(
     "Yes" : "Òc",
     "Search" : "Recercar",
     "Notifications" : "Notificacions",
+    "Cancel" : "Anullar",
+    "Loading …" : "Cargament…",
     "View profile" : "Veire perfil",
     "Online" : "En linha",
     "Force reload" : "Forçar lo recargament",

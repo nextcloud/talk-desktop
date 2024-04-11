@@ -7,6 +7,8 @@ OC.L10N.register(
     "Close" : "Затвори",
     "Ok" : "Во ред",
     "Search" : "Барај",
+    "Cancel" : "Откажи",
+    "Share screen" : "Сподели екран",
     "View profile" : "Прегледај профил",
     "Online" : "Присутен",
     "Report a bug" : "Пријави грешка"

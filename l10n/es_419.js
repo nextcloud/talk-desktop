@@ -10,6 +10,7 @@ OC.L10N.register(
     "Close" : "Cerrar",
     "Yes" : "Si",
     "Search" : "Buscar",
+    "Share screen" : "Compartir la pantalla",
     "Report a bug" : "Reporta un detalle",
     "Log out" : "Cerrar sesión"
 },

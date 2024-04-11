@@ -13,6 +13,8 @@ OC.L10N.register(
     "Yes" : "Si",
     "Search" : "Chirca",
     "Notifications" : "Notìficas",
+    "Cancel" : "Annulla",
+    "Loading …" : "Carrigamentu …",
     "Report a bug" : "Report a bug",
     "Log out" : "Essi·nche"
 },

@@ -19,7 +19,7 @@
   - Untrusted certificate on Linux ([#23](https://github.com/nextcloud/talk-desktop/issues/23))
   - Dark/light theme ([#17](https://github.com/nextcloud/talk-desktop/issues/17))
 - Works with limitations:
-  - File viewer - opened in the default web-browser
+  - File Viewer — only images and videos
 
 ## 🧑‍💻 Development Setup
 

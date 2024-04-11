@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.28.0 - 2024-04-12
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v19.0.0-rc.3
+
+### Features
+
+- Add screensharing support [#11](https://github.com/nextcloud/talk-desktop/issues/11)
+- Add image and video viewer support [#255](https://github.com/nextcloud/talk-desktop/issues/255)
+
+### Fixes
+
+- Open a conversation by link to other conversations in the app instead of a web-browser [#603](https://github.com/nextcloud/talk-desktop/pull/603)
+- Open and create a 1-to-1 conversation by "Talk to User" from the participant's menu in the app instead of a web-browser [Talk#11879](https://github.com/nextcloud/spreed/pull/11879)
+- Pretty "Copy conversation link" without "index.php" if supported by server for Nextcloud 29+ [#605](https://github.com/nextcloud/talk-desktop/issues/605)
+
+### Other changes
+
+- Drop support for building with Talk v17 [#598](https://github.com/nextcloud/talk-desktop/pull/598)
+
 ## v0.27.0 - 2024-03-28
 
 ### Build-in Talk update

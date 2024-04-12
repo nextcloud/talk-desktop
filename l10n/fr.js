@@ -26,7 +26,7 @@ OC.L10N.register(
     "Search" : "Rechercher",
     "Notifications" : "Notifications",
     "Cancel" : "Annuler",
-    "Share screen" : "Partager l'écran",
+    "Share screen" : "Partager l’écran",
     "Loading …" : "Chargement…",
     "View profile" : "Consulter le profil",
     "Online" : "En ligne",

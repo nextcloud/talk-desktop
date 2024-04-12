@@ -24,6 +24,25 @@ import { translate, translatePlural } from '@nextcloud/l10n'
 
 import { appData } from '../../app/AppData.js'
 import { dialogs } from './OC/dialogs.js'
+import { getDesktopMediaSource } from '../../talk/renderer/getDesktopMediaSource.js'
+
+let enabledAbsoluteWebroot = false
+
+/**
+ * Run a function with an absolute webroot enabled to not rely on window.location
+ *
+ * @param {Function} func - the function to run
+ * @param {...any} args - the arguments to pass to the function
+ * @return {any} the result of the function's run
+ */
+function runWithAbsoluteWebroot(func, ...args) {
+	enabledAbsoluteWebroot = true
+	const result = func.call(this, ...args)
+	enabledAbsoluteWebroot = false
+	return result
+}
+
+const getMaybeAbsoluteWebroot = () => enabledAbsoluteWebroot ? appData.serverUrl : new URL(appData.serverUrl).pathname
 
 const OC = {
 	// Constant from: https://github.com/nextcloud/server/blob/master/core/src/OC/constants.js
@@ -46,9 +65,7 @@ const OC = {
 	},
 
 	get webroot() {
-		// Original method returns only path, for example, /nextcloud-webroot
-		// Desktop needs to have full URL: https://nextcloud.host/nextcloud-webroot
-		return appData.serverUrl
+		return getMaybeAbsoluteWebroot()
 	},
 
 	config: {
@@ -81,7 +98,15 @@ const OC = {
 	},
 }
 
-const OCA = {}
+const OCA = {
+	Talk: {
+		Desktop: {
+			getDesktopMediaSource,
+			runWithAbsoluteWebroot,
+			enabledAbsoluteWebroot: false,
+		},
+	},
+}
 
 const OCP = {
 	Accessibility: {
@@ -101,10 +126,10 @@ export function initGlobals() {
 	window.OCP = OCP
 
 	Object.defineProperty(window, '_oc_webroot', {
-		get: () => OC.webroot,
+		get: () => getMaybeAbsoluteWebroot(),
 	})
 
 	Object.defineProperty(window, '_oc_appswebroots', {
-		get: () => OC.appswebroots,
+		get: () => window.OC.appswebroots,
 	})
 }

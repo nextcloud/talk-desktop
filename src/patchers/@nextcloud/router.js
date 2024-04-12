@@ -21,43 +21,37 @@
 
 /* eslint-disable jsdoc/require-jsdoc */
 
-import { getRootUrl, generateFilePath as _generateFilePath } from '@desktop-modules--@nextcloud/router'
+import {
+	getRootUrl as _getRootUrl,
+	getAppRootUrl as _getAppRootUrl,
+	generateUrl as _generateUrl,
+	linkTo as _linkTo,
+	generateRemoteUrl as _generateRemoteUrl,
+	generateOcsUrl as _generateOcsUrl,
+	generateFilePath as _generateFilePath,
+} from '@desktop-modules--@nextcloud/router'
 
-export { linkTo, getRootUrl, generateUrl } from '@desktop-modules--@nextcloud/router'
+// Original @nextcloud/router sometimes relies on window.location which is not correct on desktop
+// So, some function must be re-defined or patched
 
-// getBaseUrl added in v3.0.0
-// On Talk Desktop same as getRootUrl, because getRootUrl is absolute already
-export const getBaseUrl = getRootUrl
+// Works as expected originally, does not use location
+export const getRootUrl = _getRootUrl
 
-/**
- * @param {string} s - String with "{token}" blocks
- * @param {{[token: string]: string}} [tokens] - Dict with replacements
- * @return {string}
- */
-function formattedString(s, tokens = {}) {
-	return Object.entries(tokens).reduce((acc, [token, replacement]) => acc.replaceAll(`{${token}}`, replacement), s)
-}
+// Works fine originally with enabled absolute webroot
+export const getAppRootUrl = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_getAppRootUrl, ...args)
+export const generateUrl = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_generateUrl, ...args)
+export const linkTo = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_linkTo, ...args)
 
-export function generateOcsUrl(url, params = {}, options = {}) {
-	// Reason to patch: it uses window.location
-	const allOptions = { ...options, ocsVersion: 2 }
-	const version = (allOptions.ocsVersion === 1) ? 1 : 2
-	return `${getRootUrl()}/ocs/v${version}.php/${formattedString(url, params)}`
-}
+// Original getBaseUrl relies on window.location, create a new one as an absolute version of getRootUrl
+export const getBaseUrl = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_getRootUrl, ...args)
 
-const linkToRemoteBase = (service) => getRootUrl() + '/remote.php/' + service
+// Requires changing the default options.baseUrl from original relative getBaseUrl to new absolute getBaseUrl
+export const generateRemoteUrl = (service, options = {}) => _generateRemoteUrl(service, { baseURL: getBaseUrl(), ...options })
+export const generateOcsUrl = (url, params, options = {}) => _generateOcsUrl(url, params, { baseURL: getBaseUrl(), ...options })
 
-export function generateRemoteUrl(service) {
-	// Reason to patch: it uses window.location
-	return linkToRemoteBase(service)
-}
-
+// By default, Talk requests images and sounds as a file from server assets using generateFilePath
+// Desktop app should use path to the local file in the bundle
 export function generateFilePath(app, type, file) {
-	/**
-	 * By default, Talk requests images and sounds as a file from server assets using generateFilePath
-	 * Desktop app should use path to the local file in the build
-	 */
-
 	const filename = file.substring(0, file.lastIndexOf('.'))
 	const ext = file.substring(file.lastIndexOf('.'))
 
@@ -77,14 +71,14 @@ export function generateFilePath(app, type, file) {
 			return requiresByExt[ext]()
 		}
 	} else if (app === 'notifications' && ext === '.ogg') {
-		// For now notifications sounds are just a copy of the notifications app sounds
+		// For now, notifications' sounds are just a copy of the Notifications app sounds
 		return require(`../../../sounds/${filename}.ogg`)
 	}
 
-	return _generateFilePath(app, type, file)
+	return window.OCA.Talk.Desktop.runWithAbsoluteWebroot(() => _generateFilePath(app, type, file))
 }
 
-// Copy of original function, but using patched generateFilePath
+// Copy of original but using patched generateFilePath
 export function imagePath(app, file) {
 	if (file.indexOf('.') === -1) {
 		return generateFilePath(app, 'img', file + '.svg')

@@ -25,7 +25,6 @@ import './assets/styles.css'
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { init, initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
-import { getDesktopMediaSource } from './getDesktopMediaSource.js'
 import { createViewer } from './Viewer/Viewer.js'
 
 // Initially open the welcome page, if not specified
@@ -45,9 +44,5 @@ window.OCA.Viewer = createViewer()
 await import('@talk/src/main.js')
 
 initTalkHashIntegration(OCA.Talk.instance)
-
-window.OCA.Talk.Desktop = {
-	getDesktopMediaSource,
-}
 
 await import('./notifications/notifications.store.js')

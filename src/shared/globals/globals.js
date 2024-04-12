@@ -69,8 +69,11 @@ const OC = {
 	},
 
 	config: {
-		// TODO: It works in any case, but may make links with redundant index.php. Should get actual value of modRewriteWorking?
-		modRewriteWorking: false,
+		// The capability's been available since Nextcloud 29
+		// For older versions, consider it disabled and always add index.php to URLs
+		get modRewriteWorking() {
+			return appData.capabilities?.core?.['mod-rewrite-working'] ?? false
+		},
 	},
 
 	dialogs,

@@ -25,6 +25,7 @@ OC.L10N.register(
     "Yes" : "Ja",
     "Search" : "Suche",
     "Notifications" : "Benachrichtigungen",
+    "Open in a Web-Browser" : "Im Web-Browser öffnen",
     "Cancel" : "Abbrechen",
     "Share screen" : "Bildschirm teilen",
     "All screens with audio" : "Alle Bildschirme mit Ton",

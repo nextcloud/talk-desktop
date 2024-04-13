@@ -25,6 +25,7 @@ OC.L10N.register(
     "Yes" : "نعم",
     "Search" : "بحث",
     "Notifications" : "الإشعارات",
+    "Open in a Web-Browser" : "إفتح في مستعرض الوب",
     "Cancel" : "إلغاء",
     "Share screen" : "مشاركة الشاشة",
     "All screens with audio" : "كل الشاشات مع الصوت",

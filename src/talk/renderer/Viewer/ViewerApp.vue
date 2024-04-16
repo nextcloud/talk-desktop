@@ -24,6 +24,7 @@
 		id="viewer"
 		:show.sync="isOpen"
 		class="viewer-modal"
+		:class="{ 'viewer-modal--open': isOpen }"
 		:name="file.basename"
 		size="full"
 		:close-button-contained="false"
@@ -97,7 +98,21 @@ export default {
 }
 </script>
 
+<style>
+.header {
+	transition: background-color 250ms; /* Same as NcModal transition timing */
+}
+
+body:has(.viewer-modal--open) .header {
+	background: black;
+}
+</style>
+
 <style scoped>
+.viewer-modal {
+	top: 50px !important;
+}
+
 .viewer-modal :deep(.modal-container) {
 	background: none !important;
 }

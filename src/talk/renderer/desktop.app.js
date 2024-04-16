@@ -27,18 +27,8 @@ Vue.prototype.t = translate
 Vue.prototype.n = translatePlural
 
 /**
- * @param {import('VueRouter').Router} router - Vue Router instance
  * @return {import('vue').ComponentPublicInstance}
  */
-export function createDesktopApp(router) {
-	// eslint-disable-next-line vue/require-name-property
-	return new Vue({
-	  provide() {
-			return {
-				router,
-			}
-		},
-
-		render: (h) => h(DesktopHeader),
-	}).$mount('#desktop-header')
+export function createDesktopApp() {
+	return new Vue(DesktopHeader).$mount('#desktop-header')
 }

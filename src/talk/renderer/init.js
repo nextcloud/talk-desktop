@@ -24,11 +24,9 @@ import { appData } from '../../app/AppData.js'
 import { getCapabilities } from '../../shared/ocs.service.js'
 
 /**
- * Initialize Talk application: styles, localization etc.
- *
- * @return {Promise<object>}
+ * @return {Promise<void>}
  */
-export async function init() {
+export async function initServerStyles() {
 	// Load application styles from server
 	await Promise.all([
 		loadServerCss('/apps/theming/css/default.css'),
@@ -53,16 +51,14 @@ export async function init() {
 			window.TALK_DESKTOP.quit()
 		}
 	})
+}
 
+/**
+ * @return {Promise<void>}
+ */
+export async function initLocalStyles() {
 	// Load styles overrides
 	await import('./assets/overrides.css')
-
-	// Get Talk's modules
-	const { default: router } = await import('@talk/src/router/router.js')
-
-	return {
-		router,
-	}
 }
 
 /**

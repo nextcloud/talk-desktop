@@ -24,7 +24,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 import MdiMonitor from 'vue-material-design-icons/Monitor.vue'
 import MdiApplicationOutline from 'vue-material-design-icons/ApplicationOutline.vue'
-import MdiMonitorSpeaker from 'vue-material-design-icons/MonitorSpeaker.vue'
+import MdiVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
 
 // On Wayland getting each stream for the live preview requests user to select the source via system dialog again
 // Instead - show static images.
@@ -130,7 +130,7 @@ onBeforeUnmount(() => {
 				alt=""
 				:src="source.icon"
 				class="capture-source__caption-icon">
-			<MdiMonitorSpeaker v-else-if="source.id.startsWith('entire-desktop:')" :size="16" />
+			<MdiVolumeHigh v-else-if="source.id.startsWith('entire-desktop:')" :size="16" />
 			<MdiMonitor v-else-if="source.id.startsWith('screen:')" :size="16" />
 			<MdiApplicationOutline v-else-if="source.id.startsWith('window:')" :size="16" />
 			<span class="capture-source__caption-text">{{ source.name }}</span>

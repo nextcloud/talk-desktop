@@ -70,23 +70,26 @@ const requestDesktopCapturerSources = async () => {
 		emit('cancel')
 	}
 
-	// On Wayland we don't manually provide the source stream. It is covered by Wayland and custom id is not supported
-	if (!window.OS.isWayland) {
-		// There is no sourceId for the entire desktop with all the screens and audio in Electron.
-		// But it is possible to capture it. "entire-desktop:0:0" is a custom sourceId for this specific case.
-		const hasMultipleScreens = sources.value.filter((source) => source.id.startsWith('screen:')).length > 1
-		sources.value.unshift({
-			id: 'entire-desktop:0:0',
-			name: hasMultipleScreens ? t('talk_desktop', 'All screens with audio') : t('talk_desktop', 'Entire screen with audio'),
-		})
-	}
-
 	// On Wayland there might be no name from the desktopCapturer
 	if (window.OS.isWayland) {
 		for (const source of sources.value) {
 			source.name ||= t('talk_desktop', 'Selected screen or window')
 		}
 	}
+
+	// Separate sources to combine them then to [screens, desktop, windows]
+	const screens = sources.value.filter((source) => source.id.startsWith('screen:'))
+	const windows = sources.value.filter((source) => source.id.startsWith('window:'))
+
+	// There is no sourceId for the entire desktop with all the screens and audio in Electron.
+	// But it is possible to capture it. "entire-desktop:0:0" is a custom sourceId for this specific case.
+	const entireDesktop = {
+		id: 'entire-desktop:0:0',
+		name: screens.length > 1 ? t('talk_desktop', 'Audio + All screens') : t('talk_desktop', 'Audio + Screen'),
+	}
+
+	// On Wayland we don't manually provide the source stream. It is covered by Wayland and entire-desktop is not supported
+	sources.value = window.OS.isWayland ? [...screens, ...windows] : [...screens, entireDesktop, ...windows]
 }
 
 const handleVideoSuspend = (source) => {

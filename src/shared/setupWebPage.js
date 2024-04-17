@@ -84,6 +84,7 @@ async function applyL10n() {
 
 /**
  * Make all required initial setup for the web page:
+ * - set title according to app name
  * - restore app data
  * - get OS info
  * - apply theme to HTML data-attrs
@@ -91,6 +92,7 @@ async function applyL10n() {
  * - register translation bundles for Talk and Talk Desktop
  */
 export async function setupWebPage() {
+	document.title = await window.TALK_DESKTOP.getAppName()
 	initGlobals()
 	appData.restore()
 	window.OS = await window.TALK_DESKTOP.getOs()

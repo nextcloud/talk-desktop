@@ -28,8 +28,6 @@ OC.L10N.register(
     "Open in a Web-Browser" : "Web-Tarayıcı da aç",
     "Cancel" : "İptal",
     "Share screen" : "Ekranı Paylaş",
-    "All screens with audio" : "Tüm ekranlar, ses ile birlikte",
-    "Entire screen with audio" : "Tüm ekran, ses ile birlikte",
     "Selected screen or window" : "Seçilen ekran veya pencere",
     "Choose what to share" : "Ne paylaşılacağını seçin",
     "Loading …" : "Yükleniyor…",

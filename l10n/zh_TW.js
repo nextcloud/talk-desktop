@@ -28,8 +28,6 @@ OC.L10N.register(
     "Open in a Web-Browser" : "在網路瀏覽器中開啟",
     "Cancel" : "取消",
     "Share screen" : "分享螢幕",
-    "All screens with audio" : "所有螢幕，包含音訊",
-    "Entire screen with audio" : "整個螢幕，包含音訊",
     "Selected screen or window" : "選定的螢幕或視窗",
     "Choose what to share" : "選擇要分享什麼東西",
     "Loading …" : "正在載入……",

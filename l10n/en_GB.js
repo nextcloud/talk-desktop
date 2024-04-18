@@ -28,8 +28,6 @@ OC.L10N.register(
     "Open in a Web-Browser" : "Open in a Web-Browser",
     "Cancel" : "Cancel",
     "Share screen" : "Share screen",
-    "All screens with audio" : "All screens with audio",
-    "Entire screen with audio" : "Entire screen with audio",
     "Selected screen or window" : "Selected screen or window",
     "Choose what to share" : "Choose what to share",
     "Loading …" : "Loading …",

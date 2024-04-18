@@ -28,8 +28,6 @@ OC.L10N.register(
     "Open in a Web-Browser" : "Отвори у веб прегледачу",
     "Cancel" : "Откажи",
     "Share screen" : "Подели екран",
-    "All screens with audio" : "Сви екрани са звуком",
-    "Entire screen with audio" : "Цео екран са звуком",
     "Selected screen or window" : "Изабрани екран или прозор",
     "Choose what to share" : "Изаберите шта делите",
     "Loading …" : "Учитавање…",

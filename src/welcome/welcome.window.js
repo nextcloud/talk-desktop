@@ -21,6 +21,7 @@
 
 const { BrowserWindow } = require('electron')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+const { isMac } = require('../shared/os.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -41,6 +42,11 @@ function createWelcomeWindow() {
 		},
 		icon: getBrowserWindowIcon(),
 	})
+
+	if (isMac()) {
+		// Hide traffic light buttons on Mac
+		window.setWindowButtonVisibility(false)
+	}
 
 	window.loadURL(WELCOME_WINDOW_WEBPACK_ENTRY)
 

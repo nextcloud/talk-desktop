@@ -42,12 +42,12 @@ const ARGUMENTS = {
 }
 
 /**
- * Separate production and development instances, including application and user data
+ * On production use executable name as application name to allow several independent application instances.
+ * On development use "Nextcloud Talk (dev)" instead of the default "electron".
  */
-if (process.env.NODE_ENV === 'development') {
-	app.setName('Nextcloud Talk (dev)')
-	app.setPath('userData', path.join(app.getPath('appData'), 'Nextcloud Talk (dev)'))
-}
+const APP_NAME = process.env.NODE_ENV !== 'development' ? path.parse(app.getPath('exe')).name : 'Nextcloud Talk (dev)'
+app.setName(APP_NAME)
+app.setPath('userData', path.join(app.getPath('appData'), app.getName()))
 app.setAppUserModelId(app.getName())
 
 /**
@@ -71,6 +71,7 @@ if (process.env.NODE_ENV === 'production') {
 
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getOs', () => getOs())
+ipcMain.handle('app:getAppName', () => app.getName())
 ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_'),
 	language: app.getPreferredSystemLanguages()[0].replace('-', '_'),

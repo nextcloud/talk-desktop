@@ -40,12 +40,12 @@ function createTalkWindow() {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 		icon: getBrowserWindowIcon(),
-		titleBarStyle: 'hidden',
-		titleBarOverlay: {
-			color: '#00669E00', // Transparent
-			symbolColor: '#FFFFFF', // White
-			height: 50,
-		},
+		// titleBarStyle: 'hidden',
+		// titleBarOverlay: {
+		// 	color: '#00669E00', // Transparent
+		// 	symbolColor: '#FFFFFF', // White
+		// 	height: 50,
+		// },
 		// Position of the top left corner of the traffic light on Mac
 		trafficLightPosition: {
 			x: 12, // In line with SearchBox

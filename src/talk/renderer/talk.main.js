@@ -23,9 +23,10 @@ import '@talk/css/icons.css'
 import './assets/styles.css'
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import { init, initTalkHashIntegration } from './init.js'
+import { initLocalStyles, initServerStyles, initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 import { createViewer } from './Viewer/Viewer.js'
+import { createDesktopApp } from './desktop.app.js'
 
 // Initially open the welcome page, if not specified
 if (!window.location.hash) {
@@ -34,10 +35,10 @@ if (!window.location.hash) {
 
 await setupWebPage()
 
-const { router } = await init()
+await initServerStyles()
+await initLocalStyles()
 
-const { createDesktopApp } = await import('./desktop.app.js')
-createDesktopApp(router)
+createDesktopApp()
 
 window.OCA.Viewer = createViewer()
 

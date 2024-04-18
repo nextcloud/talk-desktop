@@ -219,6 +219,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	user-select: none;
+	app-region: drag;
 }
 
 .spacer {
@@ -246,6 +247,7 @@ export default {
 	border-radius: var(--border-radius-large);
 	box-shadow: 0 0 10px var(--color-box-shadow);
 	width: 300px;
+	app-region: no-drag;
 }
 
 .login-box__header {

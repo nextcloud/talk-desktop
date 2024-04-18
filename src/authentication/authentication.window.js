@@ -44,6 +44,17 @@ function createAuthenticationWindow() {
 			preload: AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 		icon: getBrowserWindowIcon(),
+		titleBarStyle: 'hidden',
+		titleBarOverlay: {
+			color: '#00669E00', // Transparent
+			symbolColor: '#FFFFFF', // White
+			height: 50,
+		},
+		// Position of the top left corner of the traffic light on Mac
+		trafficLightPosition: {
+			x: 12, // Same as on Talk Window
+			y: (50 - 16) / 2, // 16 is the default traffic light button diameter
+		},
 	})
 
 	// TODO: return this on release

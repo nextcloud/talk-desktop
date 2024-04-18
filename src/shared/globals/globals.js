@@ -24,6 +24,7 @@ import { translate, translatePlural } from '@nextcloud/l10n'
 
 import { appData } from '../../app/AppData.js'
 import { dialogs } from './OC/dialogs.js'
+import { MimeTypeList } from './OC/mimetype.js'
 import { getDesktopMediaSource } from '../../talk/renderer/getDesktopMediaSource.js'
 
 let enabledAbsoluteWebroot = false
@@ -53,10 +54,26 @@ const OC = {
 		spreed: '/apps/spreed',
 	},
 
-	// TODO: Add OC.MimeType
+	MimeTypeList,
 	MimeType: {
-		getIconUrl() {
-			return undefined
+		// TODO: better to move this function from global to @nextcloud/files or @nextcloud/router
+		getIconUrl(mimeType) {
+			if (!mimeType) {
+				return undefined
+			}
+
+			while (MimeTypeList.aliases[mimeType]) {
+				mimeType = MimeTypeList.aliases[mimeType]
+			}
+
+			let icon = mimeType.replaceAll('/', '-')
+			icon = MimeTypeList.files.includes(icon) ? icon : mimeType.split('/')[0]
+
+			try {
+				return require(`../assets/default/img/filetypes/${icon}.svg`)
+			} catch {
+				return undefined
+			}
 		},
 	},
 

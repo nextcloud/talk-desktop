@@ -189,9 +189,7 @@ app.whenReady().then(async () => {
 	})
 
 	const welcomeWindow = createWelcomeWindow()
-	welcomeWindow.once('ready-to-show', () => {
-		welcomeWindow.show()
-	})
+	welcomeWindow.once('ready-to-show', () => welcomeWindow.show())
 
 	ipcMain.once('appData:receive', async (event, appData) => {
 		if (appData.credentials) {
@@ -228,6 +226,7 @@ app.whenReady().then(async () => {
 		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
+		mainWindow.once('ready-to-show', () => mainWindow.show())
 	})
 
 	ipcMain.handle('authentication:logout', async (event) => {
@@ -235,9 +234,7 @@ app.whenReady().then(async () => {
 			await mainWindow.webContents.session.clearStorageData()
 			const authenticationWindow = createAuthenticationWindow()
 			createMainWindow = createAuthenticationWindow
-			authenticationWindow.once('ready-to-show', () => {
-				authenticationWindow.show()
-			})
+			authenticationWindow.once('ready-to-show', () => authenticationWindow.show())
 
 			mainWindow.destroy()
 			mainWindow = authenticationWindow

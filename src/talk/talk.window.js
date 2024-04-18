@@ -34,12 +34,23 @@ function createTalkWindow() {
 	const talkWindowOptions = {
 		minWidth: 600,
 		minHeight: 400,
-		backgroundColor: '#171717',
+		backgroundColor: '#00669E',
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 		icon: getBrowserWindowIcon(),
+		titleBarStyle: 'hidden',
+		titleBarOverlay: {
+			color: '#00669E00', // Transparent
+			symbolColor: '#FFFFFF', // White
+			height: 50,
+		},
+		// Position of the top left corner of the traffic light on Mac
+		trafficLightPosition: {
+			x: 12, // In line with SearchBox
+			y: (50 - 16) / 2, // 16 is the default traffic light button diameter
+		},
 	}
 
 	const window = new BrowserWindow({

@@ -28,5 +28,5 @@
 }
 
 #content-vue {
-	border-radius: var(--body-container-radius) var(--body-container-radius) 0 0 !important;
+	border-radius: 0 !important;
 }

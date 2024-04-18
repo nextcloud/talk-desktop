@@ -202,6 +202,7 @@ export default {
 .user-menu__trigger {
 	display: flex;
 	align-items: center;
+	margin: 0 !important; /* Re-define server default styles */
 }
 
 .user-menu__avatar {

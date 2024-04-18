@@ -20,74 +20,59 @@
   -->
 
 <template>
-	<header class="header">
-		<!-- Nextcloud Apps use #header selector to get its height -->
-		<!-- This is invisible stub with the same height -->
-		<div id="header" class="header-stub" />
+	<header id="header" class="header">
+		<div class="header__inner">
+			<div v-if="!OS.isMac"
+				class="header__title-wrapper"
+				role="button"
+				tabindex="0"
+				@click="pushToRoot">
+				<span class="header__title">Nextcloud Talk</span>
+				<span class="header__preview-badge">Preview</span>
+			</div>
 
-		<a class="header__root-link" @click.prevent="pushToRoot">
-			<img class="header__logo" src="~@talk/img/app.svg" alt="Talk Logo">
-		</a>
+			<div class="spacer" />
 
-		<div>
-			<span class="header__title">Nextcloud Talk</span>
-			<span class="header__preview-badge">Preview</span>
-		</div>
-
-		<div class="spacer" />
-
-		<div class="header__item">
-			<NcButton :aria-label="t('talk_desktop', 'Search')"
-				type="tertiary-no-background"
-				class="header__button"
-				@click="showNotSupportedAlert('Search')">
-				<template #icon>
-					<MdiMagnify />
-				</template>
-			</NcButton>
-		</div>
-
-		<div class="header__item">
-			<NcButton :aria-label="t('talk_desktop', 'Notifications')"
-				type="tertiary-no-background"
-				class="header__button"
-				@click="showNotSupportedAlert('Notifications')">
-				<template #icon>
-					<MdiBell />
-				</template>
-			</NcButton>
-		</div>
-
-		<div class="header__item">
-			<UserMenu :user="$options.userMetadata" @logout="logout" />
+			<div class="header__item">
+				<UserMenu :user="user" @logout="logout" />
+			</div>
 		</div>
 	</header>
 </template>
 
 <script>
-import MdiBell from 'vue-material-design-icons/Bell.vue'
-import MdiMagnify from 'vue-material-design-icons/Magnify.vue'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
 
 export default {
 	name: 'DesktopHeader',
 
-	userMetadata: appData.userMetadata,
-
 	components: {
-		MdiBell,
-		MdiMagnify,
-		NcButton,
 		UserMenu,
 	},
 
-	inject: ['router'],
+	setup() {
+		return {
+			user: appData.userMetadata,
+			OS: window.OS,
+		}
+	},
+
+	mounted() {
+		window.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && document.activeElement === document.body) {
+				this.pushToRoot()
+			}
+		}, { capture: true })
+	},
 
 	methods: {
+		getTalkRouter() {
+			return window.OCA.Talk.instance.$router
+		},
+
 		pushToRoot() {
-			this.router.push({ name: 'root' }).catch(() => {})
+			this.getTalkRouter().push({ name: 'root' }).catch(() => {})
 		},
 
 		logout() {
@@ -102,25 +87,22 @@ export default {
 </script>
 
 <style scoped>
-.header__root-link {
-	cursor: pointer;
-}
-
-.header-stub {
-	height: 100%;
-	position: absolute;
-	z-index: -1;
-}
-
 .header {
 	height: 50px;
 	box-sizing: border-box;
 	margin-bottom: -50px;
 	color: #FFF;
+	user-select: none;
+}
+
+.header__inner {
 	padding: 0 calc(var(--body-container-margin) + 4px) 0 var(--body-container-margin);
 	display: flex;
 	align-items: center;
-	user-select: none;
+	height: 100%;
+	/* Save space for native title bar buttons */
+	margin-inline-start: env(titlebar-area-x, 0);
+	width: env(titlebar-area-width, 100%);
 }
 
 .header__item {
@@ -129,35 +111,31 @@ export default {
 	justify-content: center;
 }
 
-.header__logo {
-	height: 32px;
-	margin: 0 14px 0 20px;
+.header__title-wrapper {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	margin-inline-start: calc(var(--default-grid-baseline) * 3);
+	position: relative;
+
+	&:focus-visible::after {
+		bottom: 0;
+	}
 }
 
 .header__title {
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: bold;
 }
 
 .header__preview-badge {
-	margin-left: var(--default-grid-baseline);
-}
-
-.header__button {
-	opacity: .85;
-	/* We have to use !important here because NcButton already has !important */
-	color: inherit !important;
-	transition: opacity ease var(--animation-quick) !important;
-}
-
-.header__button:hover,
-.header__button:active,
-.header__button:focus-visible {
-	color: inherit !important;
-	opacity: 1;
+	margin-inline-start: var(--default-grid-baseline);
 }
 
 .spacer {
 	flex: 1 0 auto;
+	height: 100%;
+	/* Allow to drag the window using header */
+	app-region: drag;
 }
 </style>

@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.29.0 - 2024-04-19
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v19.0.0-rc.5
+
+### Features
+
+- New title bar design and other minor design changes [#617](https://github.com/nextcloud/talk-desktop/pull/617)
+- Workaround for multi-account support with different executable names [#620](https://github.com/nextcloud/talk-desktop/pull/620)
+
+### Fixes
+
+- Better sort and name available screensharing sources [#618](https://github.com/nextcloud/talk-desktop/pull/618)
+- Show mime type icon for attachments in messages [#619](https://github.com/nextcloud/talk-desktop/pull/619)
+- Show main window after login [#623](https://github.com/nextcloud/talk-desktop/pull/623)
+
 ## v0.28.0 - 2024-04-12
 
 ### Build-in Talk update

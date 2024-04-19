@@ -11,8 +11,6 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "No",
     "Yes" : "Yes",
-    "Search" : "Search",
-    "Notifications" : "Notifications",
     "Cancel" : "Cancel",
     "Loading …" : "Loading …",
     "View profile" : "View profile",

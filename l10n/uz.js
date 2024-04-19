@@ -6,8 +6,6 @@ OC.L10N.register(
     "Close" : "Close",
     "No" : "No",
     "Yes" : "Yes",
-    "Search" : "Search",
-    "Notifications" : "Notifications",
     "Cancel" : "Cancel",
     "View profile" : "View profile",
     "Online" : "Online"

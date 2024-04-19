@@ -23,8 +23,6 @@ OC.L10N.register(
     "Ok" : "У реду",
     "No" : "Не",
     "Yes" : "Да",
-    "Search" : "Претрага",
-    "Notifications" : "Упозорења",
     "Open in a Web-Browser" : "Отвори у веб прегледачу",
     "Cancel" : "Откажи",
     "Share screen" : "Подели екран",

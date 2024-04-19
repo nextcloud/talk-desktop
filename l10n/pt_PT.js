@@ -8,7 +8,6 @@ OC.L10N.register(
     "Issues" : "Problemas",
     "Close" : "Fechar",
     "Ok" : "CONFIRMAR",
-    "Search" : "Pesquisa sobre",
     "Cancel" : "Cancelar",
     "View profile" : "Visualizar perfil",
     "Online" : "On-line",

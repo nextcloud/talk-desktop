@@ -6,7 +6,6 @@ OC.L10N.register(
     "License" : "Licence",
     "Close" : "Aizvērt",
     "Ok" : "Labi",
-    "Search" : "Meklēt",
     "Share screen" : "Koplietot ekrānu",
     "View profile" : "Skatīt profilu",
     "Report a bug" : "Ziņot par kļūdu",

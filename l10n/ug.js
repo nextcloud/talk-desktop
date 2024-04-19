@@ -4,7 +4,6 @@ OC.L10N.register(
     "Close" : "ياپ",
     "Ok" : "جەزملە",
     "No" : "ياق",
-    "Yes" : "ھەئە",
-    "Search" : "Search"
+    "Yes" : "ھەئە"
 },
 "nplurals=2; plural=(n != 1);");

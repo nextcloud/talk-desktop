@@ -23,8 +23,6 @@ OC.L10N.register(
     "Ok" : "Aceptar",
     "No" : "Non",
     "Yes" : "Si",
-    "Search" : "Buscar",
-    "Notifications" : "Notificacións",
     "Cancel" : "Cancelar",
     "Share screen" : "Compartir a pantalla",
     "Loading …" : "Cargando…",

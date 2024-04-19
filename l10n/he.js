@@ -9,8 +9,6 @@ OC.L10N.register(
     "Issues" : "תקלות",
     "Close" : "סגירה",
     "Ok" : "אישור",
-    "Search" : "חיפוש",
-    "Notifications" : "התראות",
     "Cancel" : "ביטול",
     "Share screen" : "שיתוף המסך",
     "Loading …" : "בטעינה…",

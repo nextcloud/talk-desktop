@@ -12,8 +12,6 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nee",
     "Yes" : "Ja",
-    "Search" : "Zoeken",
-    "Notifications" : "Meldingen",
     "Cancel" : "Annuleren",
     "Share screen" : "Scherm delen",
     "Loading …" : "Laden …",

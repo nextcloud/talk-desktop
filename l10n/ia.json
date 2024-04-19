@@ -1,7 +1,6 @@
 { "translations": {
     "Log in" : "Aperir session",
     "Close" : "Clauder",
-    "Search" : "Cercar",
     "Report a bug" : "Reportar un defecto"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

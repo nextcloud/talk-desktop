@@ -13,8 +13,6 @@ OC.L10N.register(
     "Ok" : "Sprejemljivo",
     "No" : "Ne",
     "Yes" : "Da",
-    "Search" : "Poišči",
-    "Notifications" : "Obvestila",
     "Cancel" : "Prekliči",
     "Share screen" : "Pokaži zaslon",
     "Loading …" : "Poteka nalaganje …",

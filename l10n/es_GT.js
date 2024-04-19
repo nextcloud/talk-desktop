@@ -8,7 +8,6 @@ OC.L10N.register(
     "License" : "Licencia",
     "Issues" : "Temas",
     "Ok" : "Ok",
-    "Search" : "Buscar",
     "Share screen" : "Compartir la pantalla",
     "Report a bug" : "Reporta un detalle",
     "Log out" : "Cerrar sesión"

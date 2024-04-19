@@ -23,8 +23,6 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nei",
     "Yes" : "Ja",
-    "Search" : "Søk",
-    "Notifications" : "Varsel",
     "Cancel" : "Avbryt",
     "Share screen" : "Del skjerm",
     "Loading …" : "Laster ...",

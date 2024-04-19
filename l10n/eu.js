@@ -16,8 +16,6 @@ OC.L10N.register(
     "Ok" : "Ados",
     "No" : "Ez",
     "Yes" : "Bai",
-    "Search" : "Bilatu",
-    "Notifications" : "Jakinarazpenak",
     "Cancel" : "Utzi",
     "Share screen" : "Partekatu pantaila",
     "Loading …" : "Kargatzen ...",

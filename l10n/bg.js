@@ -12,8 +12,6 @@ OC.L10N.register(
     "Ok" : "Добре",
     "No" : "Не",
     "Yes" : "Да",
-    "Search" : "Търсене",
-    "Notifications" : "Известия",
     "Cancel" : "Отказ",
     "Share screen" : "Споделяне на екран",
     "Loading …" : "Зареждане …",

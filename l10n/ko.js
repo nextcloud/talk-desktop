@@ -9,7 +9,6 @@ OC.L10N.register(
     "Ok" : "확인",
     "No" : "아니오",
     "Yes" : "예",
-    "Search" : "검색",
     "Cancel" : "취소",
     "Share screen" : "화면 공유",
     "Loading …" : "불러오는 중 ...",

@@ -10,8 +10,6 @@ OC.L10N.register(
     "Close" : "Đóng",
     "Ok" : "Đồng ý",
     "Yes" : "Có",
-    "Search" : "Tìm kiếm",
-    "Notifications" : "Thông báo",
     "Cancel" : "Hủy",
     "Share screen" : "Chia sẽ màn hình",
     "Loading …" : "Đang tải …",

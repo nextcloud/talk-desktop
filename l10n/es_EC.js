@@ -11,7 +11,6 @@ OC.L10N.register(
     "Issues" : "Temas",
     "Close" : "Cerrar",
     "Ok" : "Ok",
-    "Search" : "Buscar",
     "Cancel" : "Cancelar",
     "Share screen" : "Compartir la pantalla",
     "Loading …" : "Cargando...",

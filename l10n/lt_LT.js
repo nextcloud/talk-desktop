@@ -13,7 +13,6 @@ OC.L10N.register(
     "Ok" : "Gerai",
     "No" : "Ne",
     "Yes" : "Taip",
-    "Search" : "Ieškoti",
     "Cancel" : "Atsisakyti",
     "Share screen" : "Bendrinti ekraną",
     "Loading …" : "Įkeliama…",

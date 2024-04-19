@@ -7,7 +7,6 @@ OC.L10N.register(
     "Ok" : "Oldu",
     "No" : "Xeyir",
     "Yes" : "Bəli",
-    "Search" : "Axtarış",
     "Report a bug" : "Səhv haqqında bildir"
 },
 "nplurals=2; plural=(n != 1);");

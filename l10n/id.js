@@ -8,8 +8,6 @@ OC.L10N.register(
     "Issues" : "Isu",
     "Close" : "Tutup",
     "Ok" : "Oke",
-    "Search" : "Cari",
-    "Notifications" : "Notifikasi",
     "Cancel" : "Batal",
     "View profile" : "Tampilkan profil",
     "Report a bug" : "Laporkan kerusakan",

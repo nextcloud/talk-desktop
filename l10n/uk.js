@@ -23,8 +23,6 @@ OC.L10N.register(
     "Ok" : "Гаразд",
     "No" : "Ні",
     "Yes" : "Так",
-    "Search" : "Пошук",
-    "Notifications" : "Сповіщення",
     "Cancel" : "Скасувати",
     "Loading …" : "Завантаження …",
     "View profile" : "Перегляд профілю",

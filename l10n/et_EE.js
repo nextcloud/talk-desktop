@@ -7,8 +7,6 @@ OC.L10N.register(
     "License" : "Litsents",
     "Close" : "Sulge",
     "Ok" : "Ok",
-    "Search" : "Otsi",
-    "Notifications" : "Märguanded",
     "Cancel" : "Tühista",
     "View profile" : "Vaata profiili",
     "Online" : "Online",

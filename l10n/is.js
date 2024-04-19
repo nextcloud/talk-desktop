@@ -9,7 +9,6 @@ OC.L10N.register(
     "Issues" : "Vandamál",
     "Close" : "Loka",
     "Ok" : "Í lagi",
-    "Search" : "Search",
     "Cancel" : "Hætta við",
     "Share screen" : "Deila skjá",
     "Loading …" : "Hleð inn …",

@@ -9,8 +9,6 @@ OC.L10N.register(
     "Ok" : "Լավ",
     "No" : "Ոչ",
     "Yes" : "Այո",
-    "Search" : "Search",
-    "Notifications" : "Ծանուցում",
     "Cancel" : "չեղարկել"
 },
 "nplurals=2; plural=(n != 1);");

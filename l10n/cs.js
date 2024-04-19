@@ -23,8 +23,6 @@ OC.L10N.register(
     "Ok" : "OK",
     "No" : "Ne",
     "Yes" : "Ano",
-    "Search" : "Hledat",
-    "Notifications" : "Upozornění",
     "Cancel" : "Storno",
     "Share screen" : "Sdílet obrazovku",
     "Loading …" : "Načítání…",

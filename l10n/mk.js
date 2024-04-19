@@ -6,7 +6,6 @@ OC.L10N.register(
     "License" : "Лиценца",
     "Close" : "Затвори",
     "Ok" : "Во ред",
-    "Search" : "Барај",
     "Cancel" : "Откажи",
     "Share screen" : "Сподели екран",
     "View profile" : "Прегледај профил",

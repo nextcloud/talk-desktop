@@ -8,8 +8,6 @@ OC.L10N.register(
     "Ok" : "Bone",
     "No" : "Ne",
     "Yes" : "Jes",
-    "Search" : "Serĉi",
-    "Notifications" : "Atentigoj",
     "Loading …" : "Ŝargado...",
     "View profile" : "Vidi profilon",
     "Report a bug" : "Raporti problemon"

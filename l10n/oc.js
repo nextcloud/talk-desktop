@@ -10,8 +10,6 @@ OC.L10N.register(
     "Close" : "Tampar",
     "No" : "Non",
     "Yes" : "Òc",
-    "Search" : "Recercar",
-    "Notifications" : "Notificacions",
     "Cancel" : "Anullar",
     "Loading …" : "Cargament…",
     "View profile" : "Veire perfil",

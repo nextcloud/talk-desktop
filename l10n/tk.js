@@ -7,8 +7,6 @@ OC.L10N.register(
     "Close" : "Ýap",
     "No" : "Ýok",
     "Yes" : "Hawa",
-    "Search" : "Gözlemek",
-    "Notifications" : "Duýduryşlar",
     "Cancel" : "ýatyrmak",
     "Online" : "Onlaýn",
     "Log out" : "Hasapdan çykmak"

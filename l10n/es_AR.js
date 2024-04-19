@@ -7,7 +7,6 @@ OC.L10N.register(
     "Issues" : "Temas",
     "Close" : "Cerrar",
     "Yes" : "Sí",
-    "Search" : "Buscar",
     "Share screen" : "Compartir la pantalla",
     "Online" : "En línea",
     "Report a bug" : "Reporte un tema",

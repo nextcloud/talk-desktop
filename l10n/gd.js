@@ -8,8 +8,6 @@ OC.L10N.register(
     "Close" : "Dùin",
     "No" : "Chan eil",
     "Yes" : "Tha",
-    "Search" : "Lorg",
-    "Notifications" : "Brathan",
     "Cancel" : "Sguir dheth",
     "Online" : "Air loidhne",
     "Log out" : "Clàraich a-mach"

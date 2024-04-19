@@ -7,7 +7,6 @@ OC.L10N.register(
     "License" : "බලපත්‍රය",
     "Close" : "වසන්න",
     "No" : "නැහැ",
-    "Search" : "සොයන්න",
     "Cancel" : "අවලංගු",
     "Log out" : "නික්මෙන්න"
 },

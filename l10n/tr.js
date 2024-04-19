@@ -23,8 +23,6 @@ OC.L10N.register(
     "Ok" : "Tamam",
     "No" : "Hayır",
     "Yes" : "Evet",
-    "Search" : "Ara",
-    "Notifications" : "Bildirimler",
     "Open in a Web-Browser" : "Web-Tarayıcı da aç",
     "Cancel" : "İptal",
     "Share screen" : "Ekranı Paylaş",

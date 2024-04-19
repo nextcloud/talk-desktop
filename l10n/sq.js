@@ -9,8 +9,6 @@ OC.L10N.register(
     "Close" : "Mbylleni",
     "Ok" : "Në rregull",
     "Yes" : "Po",
-    "Search" : "Kërko",
-    "Notifications" : "Njoftime",
     "Cancel" : "Anuloje",
     "Share screen" : "Ndaje ekranin",
     "Report a bug" : "Njoftoni një të metë",

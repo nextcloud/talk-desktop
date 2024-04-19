@@ -23,8 +23,6 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nein",
     "Yes" : "Ja",
-    "Search" : "Suche",
-    "Notifications" : "Benachrichtigungen",
     "Cancel" : "Abbrechen",
     "Loading …" : "Lade …",
     "View profile" : "Profil ansehen",

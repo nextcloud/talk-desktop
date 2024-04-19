@@ -11,8 +11,6 @@ OC.L10N.register(
     "Ok" : "U redu",
     "No" : "Ne",
     "Yes" : "Da",
-    "Search" : "Traži",
-    "Notifications" : "Obavijesti",
     "Cancel" : "Odustani",
     "Share screen" : "Dijeli zaslon",
     "Loading …" : "Učitavanje…",

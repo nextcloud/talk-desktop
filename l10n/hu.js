@@ -15,8 +15,6 @@ OC.L10N.register(
     "Ok" : "Rendben",
     "No" : "Nem",
     "Yes" : "Igen",
-    "Search" : "Keresés",
-    "Notifications" : "Értesítések",
     "Cancel" : "Mégse",
     "Share screen" : "Képernyő megosztása",
     "Loading …" : "Betöltés…",

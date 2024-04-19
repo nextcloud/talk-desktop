@@ -7,8 +7,6 @@ OC.L10N.register(
     "License" : "ໃບອະນຸຍາດ",
     "Close" : "ປິດ",
     "No" : "ບໍ່",
-    "Search" : "ຄົ້ນຫາ",
-    "Notifications" : "ການເເຈ້ງເຕືອນ",
     "Cancel" : "ຍົກເລີກ",
     "Online" : "ອອນລາຍ",
     "Log out" : "ອອກຈາກລະບົບ"

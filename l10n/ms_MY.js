@@ -5,7 +5,6 @@ OC.L10N.register(
     "Close" : "Tutup",
     "Ok" : "Ok",
     "No" : "Tidak",
-    "Yes" : "Ya",
-    "Search" : "Search"
+    "Yes" : "Ya"
 },
 "nplurals=1; plural=0;");

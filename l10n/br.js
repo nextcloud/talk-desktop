@@ -6,8 +6,6 @@ OC.L10N.register(
     "License" : "Aotre",
     "Close" : "Serriñ",
     "No" : "Nann",
-    "Search" : "Klask",
-    "Notifications" : "Kemennadennoù",
     "Share screen" : "Rannañ ar skramm",
     "Report a bug" : "Dugas ur gudenn"
 },

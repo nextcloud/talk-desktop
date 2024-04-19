@@ -11,8 +11,6 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Ei",
     "Yes" : "Kyllä",
-    "Search" : "Etsi",
-    "Notifications" : "Ilmoitukset",
     "Cancel" : "Peruuta",
     "Share screen" : "Jaa näyttö",
     "Loading …" : "Ladataan…",

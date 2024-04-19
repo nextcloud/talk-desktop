@@ -12,8 +12,6 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nej",
     "Yes" : "Ja",
-    "Search" : "Sök",
-    "Notifications" : "Notifikationer",
     "Cancel" : "Avbryt",
     "Share screen" : "Dela skärm",
     "Loading …" : "Laddar ...",

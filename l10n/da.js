@@ -9,8 +9,6 @@ OC.L10N.register(
     "Issues" : "Problemer",
     "Close" : "Luk",
     "Ok" : "OK",
-    "Search" : "Søg",
-    "Notifications" : "Påmindelser",
     "Cancel" : "Annullér",
     "Share screen" : "Del skærm",
     "View profile" : "Vis profil",

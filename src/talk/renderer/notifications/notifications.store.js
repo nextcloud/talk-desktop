@@ -208,7 +208,10 @@ export function createNotificationStore() {
 				emit('notifications:action:execute', event)
 			}, false)
 		}
-		playSound(isNotificationFromPendingCall)
+
+		if (!await window.TALK_DESKTOP.getDoNotDisturb()) {
+			playSound(notification.objectType === 'call')
+		}
 	}
 
 	/**

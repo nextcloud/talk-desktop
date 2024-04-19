@@ -23,6 +23,7 @@ const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { createCallboxWindow } = require('./callbox/callbox.window.ts')
+const { getDoNotDisturb } = require('electron-notification-state')
 
 /**
  * Parse command line arguments
@@ -72,6 +73,7 @@ ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_'),
 	language: app.getPreferredSystemLanguages()[0].replace('-', '_'),
 }))
+ipcMain.handle('app:getDoNotDisturb', () => getDoNotDisturb())
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(count))

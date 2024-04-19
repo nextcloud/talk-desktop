@@ -55,6 +55,11 @@ const TALK_DESKTOP = {
 	 */
 	getSystemL10n: () => ipcRenderer.invoke('app:getSystemL10n'),
 	/**
+	 * Get Do Not Disturb status
+	 * @return {Promise<boolean>}
+	 */
+	getDoNotDisturb: () => ipcRenderer.invoke('app:getDoNotDisturb'),
+	/**
 	 * Enable web request intercepting
 	 *
 	 * @type {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor}

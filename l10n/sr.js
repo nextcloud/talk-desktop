@@ -27,6 +27,8 @@ OC.L10N.register(
     "Cancel" : "Откажи",
     "Share screen" : "Подели екран",
     "Selected screen or window" : "Изабрани екран или прозор",
+    "Audio + All screens" : "Звук + сви екрани",
+    "Audio + Screen" : "Звук + екран",
     "Choose what to share" : "Изаберите шта делите",
     "Loading …" : "Учитавање…",
     "View profile" : "Погледај профил",

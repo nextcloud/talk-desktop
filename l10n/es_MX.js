@@ -10,6 +10,7 @@ OC.L10N.register(
     "Close" : "Cerrar",
     "Cancel" : "Cancelar",
     "Share screen" : "Compartir la pantalla",
+    "Loading …" : "Cargando …",
     "View profile" : "Ver perfil",
     "Online" : "En línea",
     "Report a bug" : "Reporta un detalle",

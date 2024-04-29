@@ -330,7 +330,12 @@ export function createNotificationStore() {
 	// Initial call to the notification endpoint
 	_fetch()
 
-	const hasPush = listen('notify_notification', _fetchAfterNotifyPush, { credentials: appData.credentials })
+	const hasPush = listen('notify_notification', _fetchAfterNotifyPush, {
+		credentials: {
+			username: appData.credentials.user,
+			password: appData.credentials.password,
+		},
+	})
 
 	if (hasPush) {
 		console.debug('Has notify_push enabled, slowing polling to 15 minutes')

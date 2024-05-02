@@ -58,6 +58,7 @@
 import MdiWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcTextArea from '@nextcloud/vue/dist/Components/NcTextArea.js'
+import { translate as t } from '@nextcloud/l10n'
 
 import { appData } from '../../app/AppData.js'
 
@@ -105,6 +106,8 @@ export default {
 	},
 
 	methods: {
+		t,
+
 		handleEscape(event) {
 			if (event.key === 'Escape') {
 				this.close()

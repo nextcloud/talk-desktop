@@ -22,12 +22,9 @@ import '../../shared/assets/default/default.css'
 import '../../shared/assets/default/server.css'
 
 import Vue from 'vue'
-import { translate as t } from '@nextcloud/l10n'
 import HelpApp from './HelpApp.vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
 await setupWebPage()
-
-Vue.prototype.t = t
 
 new Vue(HelpApp).$mount('#app')

@@ -76,6 +76,8 @@ export default {
 	font-weight: normal;
 	width: 100%;
 	gap: var(--menu-item-gap);
+	/* Override default global button styles */
+	margin: 0 !important;
 }
 
 /*.menu-item__action:active,*/

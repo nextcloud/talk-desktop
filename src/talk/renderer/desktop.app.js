@@ -20,15 +20,16 @@
  */
 
 import Vue from 'vue'
+import { createPinia, PiniaVuePlugin } from 'pinia'
 import DesktopHeader from './DesktopHeader.vue'
-import { translate, translatePlural } from '@nextcloud/l10n'
-
-Vue.prototype.t = translate
-Vue.prototype.n = translatePlural
 
 /**
  * @return {import('vue').ComponentPublicInstance}
  */
 export function createDesktopApp() {
-	return new Vue(DesktopHeader).$mount('#desktop-header')
+	Vue.use(PiniaVuePlugin)
+
+	const DesktopHeaderApp = Vue.extend(DesktopHeader)
+
+	return new DesktopHeaderApp({ pinia: createPinia() }).$mount('#desktop-header')
 }

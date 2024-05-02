@@ -43,6 +43,8 @@
 <script>
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
+import { useUserStatusStore } from './UserStatus/userStatus.store.js'
+import { useUserStatusHeartbeat } from './UserStatus/useUserStatusHeartbeat.js'
 
 export default {
 	name: 'DesktopHeader',
@@ -52,7 +54,11 @@ export default {
 	},
 
 	setup() {
+		const userStatusStore = useUserStatusStore()
+		useUserStatusHeartbeat()
+
 		return {
+			userStatusStore,
 			user: appData.userMetadata,
 			OS: window.OS,
 		}
@@ -77,10 +83,6 @@ export default {
 
 		logout() {
 			window.TALK_DESKTOP.logout()
-		},
-
-		showNotSupportedAlert(feature) {
-			alert(`Unfortunately, ${feature} is not currently supported by Nextcloud Talk Desktop`)
 		},
 	},
 }

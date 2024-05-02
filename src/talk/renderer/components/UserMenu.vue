@@ -38,12 +38,12 @@
 						<div><strong>{{ user['display-name'] }}</strong></div>
 						<div>{{ t('talk_desktop', 'View profile') }}</div>
 					</UiMenuItem>
-					<UiMenuItem tag="button" @click.native="openUserStatusDialog">
+					<UiMenuItem v-if="userStatusStore.userStatus" tag="button" @click.native="isUserStatusDialogOpen = true">
 						<template #icon>
-							<UserStatusIcon status="online" />
+							<NcUserStatusIcon :status="userStatusStore.userStatus.status" />
 						</template>
 						<template #default>
-							{{ t('talk_desktop', 'Online') }}
+							{{ visibleUserStatus }}
 						</template>
 					</UiMenuItem>
 					<UiMenuItem tag="button" @click.native="reload">
@@ -85,6 +85,8 @@
 				</UiMenu>
 			</template>
 		</NcPopover>
+
+		<UserStatusDialog v-if="isUserStatusDialogOpen" @close="isUserStatusDialogOpen = false" />
 	</div>
 </template>
 
@@ -95,11 +97,15 @@ import MdiPower from 'vue-material-design-icons/Power.vue'
 import MdiReload from 'vue-material-design-icons/Reload.vue'
 import MdiWeb from 'vue-material-design-icons/Web.vue'
 import { generateUrl } from '@nextcloud/router'
+import { translate as t } from '@nextcloud/l10n'
 import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
 import NcPopover from '@nextcloud/vue/dist/Components/NcPopover.js'
-import UserStatusIcon from './UserStatusIcon.vue'
+import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
 import UiMenu from './UiMenu.vue'
 import UiMenuItem from './UiMenuItem.vue'
+import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
+import UserStatusDialog from '../UserStatus/UserStatusDialog.vue'
+import { getVisibleUserStatus } from '../UserStatus/userStatus.utils.js'
 
 export default {
 	name: 'UserMenu',
@@ -107,6 +113,7 @@ export default {
 	packageInfo: window.TALK_DESKTOP.packageInfo,
 
 	components: {
+		UserStatusDialog,
 		UiMenuItem,
 		UiMenu,
 		MdiBug,
@@ -116,7 +123,7 @@ export default {
 		MdiWeb,
 		NcAvatar,
 		NcPopover,
-		UserStatusIcon,
+		NcUserStatusIcon,
 	},
 
 	props: {
@@ -128,9 +135,17 @@ export default {
 
 	emits: ['logout'],
 
+	setup() {
+		const userStatusStore = useUserStatusStore()
+		return {
+			userStatusStore,
+		}
+	},
+
 	data() {
 		return {
 			userMenuContainer: null,
+			isUserStatusDialogOpen: false,
 		}
 	},
 
@@ -142,6 +157,10 @@ export default {
 		talkWebLink() {
 			return generateUrl('/apps/spreed')
 		},
+
+		visibleUserStatus() {
+			return getVisibleUserStatus(this.userStatusStore.userStatus)
+		},
 	},
 
 	mounted() {
@@ -149,12 +168,10 @@ export default {
 	},
 
 	methods: {
+		t,
+
 		showHelp() {
 			window.TALK_DESKTOP.showHelp()
-		},
-
-		openUserStatusDialog() {
-			alert('Unfortunately, changing the user status is not currently supported by Nextcloud Talk Desktop')
 		},
 
 		reload() {

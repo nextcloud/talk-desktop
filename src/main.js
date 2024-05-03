@@ -218,6 +218,24 @@ app.whenReady().then(async () => {
 		})
 	})
 
+	let macDockBounceId
+	ipcMain.on('talk:flashAppIcon', async (event, shouldFlash) => {
+		// MacOS has no "flashing" but "bouncing" of the dock icon
+		if (isMac()) {
+			// Stop previous bounce if any
+			if (macDockBounceId) {
+				app.dock.cancelBounce(macDockBounceId)
+				macDockBounceId = undefined
+			}
+			// (Re)start bouncing if needed
+			if (shouldFlash) {
+				macDockBounceId = app.dock.bounce()
+			}
+		} else {
+			mainWindow.flashFrame(shouldFlash)
+		}
+	})
+
 	ipcMain.handle('talk:focus', async (event) => focusMainWindow())
 
 	ipcMain.handle('authentication:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))

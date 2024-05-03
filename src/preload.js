@@ -90,6 +90,12 @@ const TALK_DESKTOP = {
 	 */
 	setBadgeCount: (count) => ipcRenderer.invoke('app:setBadgeCount', count),
 	/**
+	 * Start or stop flashing (on Windows) or bouncing (on Mac) of app icon
+	 *
+	 * @param {boolean} shouldFlash - True to enable, false to disable
+	 */
+	flashAppIcon: (shouldFlash) => ipcRenderer.send('talk:flashAppIcon', shouldFlash),
+	/**
 	 * Get available desktop capture sources: screens and windows
 	 *
 	 * @return {Promise<{ id: string, name: string, icon?: string }[]|null>}

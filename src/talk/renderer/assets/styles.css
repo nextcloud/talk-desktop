@@ -27,3 +27,7 @@
 	*/
 	box-sizing: border-box;
 }
+
+:focus-visible {
+	outline-color: var(--color-main-text);
+}

@@ -44,48 +44,41 @@
 						<div>{{ t('talk_desktop', 'View profile') }}</div>
 					</UiMenuItem>
 					<UiMenuSeparator />
-					<NcPopover v-if="userMenuElement && userStatusStore.userStatus"
-						placement="left-start"
-						:shown.sync="userStatusSubMenuOpen"
-						:container="userMenuElement.$el"
-						no-auto-focus>
-						<template #trigger="{ attrs }">
-							<UiMenuItem tag="button"
-								v-bind="attrs">
+					<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = !userStatusSubMenuOpen">
+						<template #icon>
+							<NcUserStatusIcon :status="userStatusStore.userStatus.status" />
+						</template>
+						<span style="display: flex">
+							<span>
+								{{ userStatusTranslations[userStatusStore.userStatus.status] }}
+							</span>
+							<span style="margin-left: auto">
+								<MdiChevronUp v-if="userStatusSubMenuOpen" :size="20" />
+								<MdiChevronDown v-else :size="20" />
+							</span>
+						</span>
+					</UiMenuItem>
+					<li v-if="userStatusSubMenuOpen">
+						<ul>
+							<UiMenuItem v-for="status in ['online', 'away', 'dnd', 'invisible']"
+								:key="status"
+								tag="button"
+								@click.native.stop="handleUserStatusChange(status)">
 								<template #icon>
-									<NcUserStatusIcon :status="userStatusStore.userStatus.status" />
+									<NcUserStatusIcon :status="status" />
 								</template>
 								<span style="display: flex">
 									<span>
-										{{ userStatusTranslations[userStatusStore.userStatus.status] }}
+										{{ userStatusTranslations[status] }}
 									</span>
-									<span style="margin-left: auto">
-										<MdiChevronRight :size="20" />
+									<span v-if="status === userStatusStore.userStatus.status" style="margin-left: auto">
+										<MdiCheck :size="20" />
 									</span>
 								</span>
 							</UiMenuItem>
-						</template>
-						<template #default>
-							<UiMenu aria-label="Online status">
-								<UiMenuItem v-for="status in ['online', 'away', 'dnd', 'invisible']"
-									:key="status"
-									tag="button"
-									@click.native.stop="handleUserStatusChange(status)">
-									<template #icon>
-										<NcUserStatusIcon :status="status" />
-									</template>
-									<span style="display: flex">
-										<span>
-											{{ userStatusTranslations[status] }}
-										</span>
-										<span v-if="status === userStatusStore.userStatus.status" style="margin-left: auto">
-											<MdiCheck :size="20" />
-										</span>
-									</span>
-								</UiMenuItem>
-							</UiMenu>
-						</template>
-					</NcPopover>
+						</ul>
+					</li>
+					<UiMenuSeparator />
 					<UiMenuItem key="custom-status" tag="button" @click.native="isUserStatusDialogOpen = true">
 						<template #icon>
 							<span v-if="userStatusStore.userStatus.icon" style="font-size: 20px">
@@ -163,6 +156,8 @@
 <script>
 import MdiBug from 'vue-material-design-icons/Bug.vue'
 import MdiCheck from 'vue-material-design-icons/Check.vue'
+import MdiChevronDown from 'vue-material-design-icons/ChevronDown.vue'
+import MdiChevronUp from 'vue-material-design-icons/ChevronUp.vue'
 import MdiChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import MdiEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 import MdiInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
@@ -195,6 +190,8 @@ export default {
 		UiMenu,
 		MdiBug,
 		MdiCheck,
+		MdiChevronDown,
+		MdiChevronUp,
 		MdiChevronRight,
 		MdiEmoticonOutline,
 		MdiInformationOutline,

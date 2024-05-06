@@ -73,6 +73,7 @@ export default {
 	border-radius: 6px; /* Same as NcActionButton */
 	min-height: var(--default-clickable-area);
 	padding: .5em var(--menu-item-gap);
+	text-align: left;
 	font-weight: normal;
 	width: 100%;
 	gap: var(--menu-item-gap);
@@ -91,5 +92,9 @@ export default {
 	align-items: center;
 	justify-content: center;
 	width: 20px
+}
+
+.menu-item__text {
+	flex: 1;
 }
 </style>

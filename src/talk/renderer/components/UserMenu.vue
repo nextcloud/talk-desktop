@@ -21,7 +21,10 @@
 
 <template>
 	<div ref="userMenuContainer" class="user-menu">
-		<NcPopover v-if="userMenuContainer" :container="userMenuContainer" :popper-hide-triggers="triggers => [...triggers, 'click']">
+		<NcPopover v-if="userMenuContainer"
+			:container="userMenuContainer"
+			:popper-hide-triggers="triggers => [...triggers, 'click']"
+			no-auto-focus>
 			<template #trigger="{ attrs }">
 				<button class="user-menu__trigger unstyled-button" v-bind="attrs">
 					<NcAvatar class="user-menu__avatar"
@@ -33,19 +36,85 @@
 			</template>
 
 			<template #default>
-				<UiMenu aria-label="Settings menu">
-					<UiMenuItem tag="a" :href="userProfileLink" target="_blank">
+				<UiMenu ref="userMenuElement" aria-label="Settings menu">
+					<UiMenuItem tag="a"
+						:href="userProfileLink"
+						target="_blank">
 						<div><strong>{{ user['display-name'] }}</strong></div>
 						<div>{{ t('talk_desktop', 'View profile') }}</div>
 					</UiMenuItem>
-					<UiMenuItem v-if="userStatusStore.userStatus" tag="button" @click.native="isUserStatusDialogOpen = true">
-						<template #icon>
-							<NcUserStatusIcon :status="userStatusStore.userStatus.status" />
+					<UiMenuSeparator />
+					<NcPopover v-if="userMenuElement && userStatusStore.userStatus"
+						placement="left-start"
+						:shown.sync="userStatusSubMenuOpen"
+						:container="userMenuElement.$el"
+						no-auto-focus>
+						<template #trigger="{ attrs }">
+							<UiMenuItem tag="button"
+								v-bind="attrs">
+								<template #icon>
+									<NcUserStatusIcon :status="userStatusStore.userStatus.status" />
+								</template>
+								<span style="display: flex">
+									<span>
+										{{ userStatusTranslations[userStatusStore.userStatus.status] }}
+									</span>
+									<span style="margin-left: auto">
+										<MdiChevronRight :size="20" />
+									</span>
+								</span>
+							</UiMenuItem>
 						</template>
 						<template #default>
-							{{ visibleUserStatus }}
+							<UiMenu aria-label="Online status">
+								<UiMenuItem v-for="status in ['online', 'away', 'dnd', 'invisible']"
+									:key="status"
+									tag="button"
+									@click.native.stop="handleUserStatusChange(status)">
+									<template #icon>
+										<NcUserStatusIcon :status="status" />
+									</template>
+									<span style="display: flex">
+										<span>
+											{{ userStatusTranslations[status] }}
+										</span>
+										<span v-if="status === userStatusStore.userStatus.status" style="margin-left: auto">
+											<MdiCheck :size="20" />
+										</span>
+									</span>
+								</UiMenuItem>
+							</UiMenu>
+						</template>
+					</NcPopover>
+					<UiMenuItem key="custom-status" tag="button" @click.native="isUserStatusDialogOpen = true">
+						<template #icon>
+							<span v-if="userStatusStore.userStatus.icon" style="font-size: 20px">
+								{{ userStatusStore.userStatus.icon }}
+							</span>
+							<MdiEmoticonOutline v-else :size="20" />
+						</template>
+						<template v-if="userStatusStore.userStatus.message">
+							<span style="display: flex">
+								<span>
+									{{ userStatusStore.userStatus.message }}
+								</span>
+								<span style="margin-left: auto">
+									<MdiPencil :size="20" />
+								</span>
+							</span>
+						</template>
+						<template v-else>
+							<span style="display: flex">
+								<span>
+									{{ t('talk_desktop', 'Set custom status') }}
+								</span>
+								<span style="margin-left: auto">
+									<MdiChevronRight :size="20" />
+								</span>
+							</span>
 						</template>
 					</UiMenuItem>
+					<UiMenuSeparator />
 					<UiMenuItem tag="button" @click.native="reload">
 						<template #icon>
 							<MdiReload />
@@ -58,6 +127,7 @@
 						</template>
 						{{ t('talk_desktop', 'Report a bug') }}
 					</UiMenuItem>
+					<UiMenuSeparator />
 					<UiMenuItem tag="a" :href="talkWebLink" target="_blank">
 						<template #icon>
 							<MdiWeb />
@@ -92,7 +162,11 @@
 
 <script>
 import MdiBug from 'vue-material-design-icons/Bug.vue'
+import MdiCheck from 'vue-material-design-icons/Check.vue'
+import MdiChevronRight from 'vue-material-design-icons/ChevronRight.vue'
+import MdiEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 import MdiInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
+import MdiPencil from 'vue-material-design-icons/Pencil.vue'
 import MdiPower from 'vue-material-design-icons/Power.vue'
 import MdiReload from 'vue-material-design-icons/Reload.vue'
 import MdiWeb from 'vue-material-design-icons/Web.vue'
@@ -105,7 +179,9 @@ import UiMenu from './UiMenu.vue'
 import UiMenuItem from './UiMenuItem.vue'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
 import UserStatusDialog from '../UserStatus/UserStatusDialog.vue'
-import { getVisibleUserStatus } from '../UserStatus/userStatus.utils.js'
+import { getVisibleUserStatus, userStatusTranslations } from '../UserStatus/userStatus.utils.js'
+import UiMenuSeparator from './UiMenuSeparator.vue'
+import { ref } from 'vue'
 
 export default {
 	name: 'UserMenu',
@@ -113,11 +189,16 @@ export default {
 	packageInfo: window.TALK_DESKTOP.packageInfo,
 
 	components: {
+		UiMenuSeparator,
 		UserStatusDialog,
 		UiMenuItem,
 		UiMenu,
 		MdiBug,
+		MdiCheck,
+		MdiChevronRight,
+		MdiEmoticonOutline,
 		MdiInformationOutline,
+		MdiPencil,
 		MdiPower,
 		MdiReload,
 		MdiWeb,
@@ -137,8 +218,11 @@ export default {
 
 	setup() {
 		const userStatusStore = useUserStatusStore()
+		const userMenuElement = ref(null)
 		return {
 			userStatusStore,
+			userStatusTranslations,
+			userMenuElement,
 		}
 	},
 
@@ -146,6 +230,7 @@ export default {
 		return {
 			userMenuContainer: null,
 			isUserStatusDialogOpen: false,
+			userStatusSubMenuOpen: false,
 		}
 	},
 
@@ -176,6 +261,11 @@ export default {
 
 		reload() {
 			window.location.reload()
+		},
+
+		handleUserStatusChange(status) {
+			this.userStatusStore.saveUserStatus({ ...this.userStatusStore.userStatus, status })
+			this.userStatusSubMenuOpen = false
 		},
 	},
 }

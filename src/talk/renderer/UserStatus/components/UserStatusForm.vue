@@ -28,7 +28,7 @@ import { translate as t } from '@nextcloud/l10n'
 import { useUserStatusStore } from '../userStatus.store.js'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'
 import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
-import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
+// import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import UserStatusFormPredefinedOption from './UserStatusFormPredefinedOption.vue'
 import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.js'
 
@@ -86,7 +86,7 @@ const revertStatus = async () => {
 
 <template>
 	<div class="user-status-form">
-		<UserStatusFormStatusType class="user-status-form__row" :status="userStatus.status" @update:status="patchStatus({ status: $event })" />
+		<!--		<UserStatusFormStatusType class="user-status-form__row" :status="userStatus.status" @update:status="patchStatus({ status: $event })" />-->
 
 		<NcNoteCard v-if="backupStatus" type="info" class="user-status-form__row">
 			{{ t('talk_desktop', 'Your status was set automatically') }}
@@ -131,8 +131,11 @@ const revertStatus = async () => {
 		</NcButton>
 
 		<div class="user-status-form__buttons">
-			<NcButton type="primary" :disabled="!isDirty" @click="save">
-				{{ t('talk_desktop', 'Set user status') }}
+			<NcButton type="primary"
+				wide
+				:disabled="!isDirty"
+				@click="save">
+				{{ t('talk_desktop', 'Set custom status') }}
 			</NcButton>
 		</div>
 	</div>

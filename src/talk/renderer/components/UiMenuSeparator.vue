@@ -1,7 +1,7 @@
 <!--
   - @copyright Copyright (c) 2024 Grigorii Shartsev <me@shgk.me>
   -
-  - @author Grigorii Shartsev <me@shgk.me>
+  - @author Grigorii K. Shartsev <me@shgk.me>
   -
   - @license AGPL-3.0-or-later
   -
@@ -19,19 +19,17 @@
   - along with this program. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<script setup>
-import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
-import { translate as t } from '@nextcloud/l10n'
-import { useUserStatusStore } from './userStatus.store.js'
-import UserStatusForm from './components/UserStatusForm.vue'
+<script setup lang="ts">
 
-const emit = defineEmits(['close'])
-
-const userStatusStore = useUserStatusStore()
 </script>
 
 <template>
-	<NcDialog :name="t('talk_desktop', 'Custom user status')" size="small" @closing="emit('close')">
-		<UserStatusForm v-if="userStatusStore.userStatus" @submit="emit('close')" />
-	</NcDialog>
+	<li class="menu-item-separator" />
 </template>
+
+<style scoped lang="scss">
+.menu-item-separator {
+	border-top: 1px solid var(--color-border-dark);
+	margin:  var(--default-grid-baseline) 0;
+}
+</style>

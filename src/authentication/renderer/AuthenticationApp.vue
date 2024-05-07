@@ -74,6 +74,7 @@ import MdiArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import { translate as t } from '@nextcloud/l10n'
 import { getCapabilities } from '../../shared/ocs.service.js'
 import { appData } from '../../app/AppData.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
@@ -114,6 +115,8 @@ export default {
 	},
 
 	methods: {
+		t,
+
 		setSuccess() {
 			this.state = 'success'
 			this.stateText = t('talk_desktop', 'Logged in successfully')

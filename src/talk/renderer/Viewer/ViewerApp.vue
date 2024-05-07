@@ -51,6 +51,7 @@ import NcActionLink from '@nextcloud/vue/dist/Components/NcActionLink.js'
 import MdiOpenInNew from 'vue-material-design-icons/OpenInNew.vue'
 
 import { generateUrl } from '@nextcloud/router'
+import { translate as t } from '@nextcloud/l10n'
 
 const noop = () => {}
 
@@ -82,6 +83,8 @@ export default {
 	},
 
 	methods: {
+		t,
+
 		open({ fileInfo, onClose = noop } = {}) {
 			this.onClose = onClose
 			this.file = fileInfo

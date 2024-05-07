@@ -45,6 +45,7 @@
 import MdiUpdate from 'vue-material-design-icons/Update.vue'
 import MdiWeb from 'vue-material-design-icons/Web.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import { translate as t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 
 export default {
@@ -62,6 +63,10 @@ export default {
 		browserLink() {
 			return generateUrl('apps/spreed')
 		},
+	},
+
+	methods: {
+		t,
 	},
 }
 </script>

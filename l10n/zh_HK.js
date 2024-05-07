@@ -5,7 +5,7 @@ OC.L10N.register(
     "Log in to Nextcloud" : "登入 Nextcloud",
     "Nextcloud server address" : "Nextcloud 伺服器位址",
     "Log in" : "登入",
-    "Logging in …" : "正在登入…",
+    "Logging in …" : "正在登入 …",
     "Logged in successfully" : "已成功登入",
     "Invalid server address" : "伺服器地址無效",
     "Nextcloud server not found" : "沒有找到Nextcloud伺服器",

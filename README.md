@@ -1,3 +1,8 @@
+<!--
+  - SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: CC0-1.0
+-->
+
 # 🖥️ Nextcloud Talk Desktop 💬
 
 > Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling ✨

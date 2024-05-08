@@ -7,9 +7,19 @@ OC.L10N.register(
     "Issues" : "Temas",
     "Close" : "Cerrar",
     "Yes" : "Sí",
+    "Don't clear" : "No vaciar",
+    "30 minutes" : "30 minutos",
+    "1 hour" : "1 hora",
+    "4 hours" : "4 horas",
+    "Today" : "Hoy",
+    "This week" : "Esta semana",
+    "Status message" : "Mensaje de estado",
     "Share screen" : "Compartir la pantalla",
-    "Online" : "En línea",
     "Report a bug" : "Reporte un tema",
-    "Log out" : "Cerrar sesión"
+    "Log out" : "Cerrar sesión",
+    "Online" : "En línea",
+    "Away" : "Lejos",
+    "Do not disturb" : "No molestar",
+    "Invisible" : "Invisible"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -10,14 +10,22 @@
     "Ok" : "Добре",
     "No" : "Не",
     "Yes" : "Да",
+    "User status" : "Потребителско състояние",
+    "Your status was set automatically" : "Състоянието ви беше зададено автоматично",
+    "Don't clear" : "Не изчиствай",
+    "30 minutes" : "30 минути",
+    "1 hour" : "1 час",
+    "Today" : "Днес",
+    "Status message" : "Съобщение за състоянито",
     "Cancel" : "Отказ",
     "Share screen" : "Споделяне на екран",
     "Loading …" : "Зареждане …",
     "View profile" : "Преглед на профил",
-    "Online" : "На линия /онлайн/",
     "Force reload" : "Принудително повторно зареждане",
     "Report a bug" : "Докладване за грешка",
     "Open in Web-Browser" : "Отваряне в уеб браузър",
-    "Log out" : "Изход"
+    "Log out" : "Изход",
+    "Online" : "На линия /онлайн/",
+    "Do not disturb" : "Не безпокой"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

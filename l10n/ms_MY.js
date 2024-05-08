@@ -5,6 +5,7 @@ OC.L10N.register(
     "Close" : "Tutup",
     "Ok" : "Ok",
     "No" : "Tidak",
-    "Yes" : "Ya"
+    "Yes" : "Ya",
+    "Today" : "Hari ini"
 },
 "nplurals=1; plural=0;");

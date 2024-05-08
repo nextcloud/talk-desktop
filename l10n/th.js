@@ -11,8 +11,19 @@ OC.L10N.register(
     "Ok" : "ตกลง",
     "No" : "ไม่ตกลง",
     "Yes" : "ใช่",
+    "User status" : "สถานะผู้ใช้",
+    "Don't clear" : "ไม่ต้องล้าง",
+    "30 minutes" : "30 นาที",
+    "1 hour" : "1 ชั่วโมง",
+    "4 hours" : "4 ชั่วโมง",
+    "Today" : "วันนี้",
+    "This week" : "สัปดาห์นี้",
+    "Status message" : "ข้อความสถานะ",
     "Cancel" : "ยกเลิก",
+    "Report a bug" : "รายงานข้อผิดพลาด",
     "Online" : "ออนไลน์",
-    "Report a bug" : "รายงานข้อผิดพลาด"
+    "Away" : "ไม่อยู่",
+    "Invisible" : "มองไม่เห็น",
+    "Offline" : "ออฟไลน์"
 },
 "nplurals=1; plural=0;");

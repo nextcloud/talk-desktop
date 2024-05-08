@@ -7,8 +7,18 @@ OC.L10N.register(
     "Close" : "Ýap",
     "No" : "Ýok",
     "Yes" : "Hawa",
+    "Don't clear" : "Arassalama",
+    "30 minutes" : "30 minut",
+    "1 hour" : "1 sagat",
+    "4 hours" : "4 sagat",
+    "Today" : "Şu gün",
+    "This week" : "Bu hepdede",
+    "Status message" : "Status habary",
     "Cancel" : "ýatyrmak",
+    "Log out" : "Hasapdan çykmak",
     "Online" : "Onlaýn",
-    "Log out" : "Hasapdan çykmak"
+    "Away" : "Uzakda",
+    "Do not disturb" : "Bimaza etmäň",
+    "Invisible" : "göze görünmeýän"
 },
 "nplurals=2; plural=(n != 1);");

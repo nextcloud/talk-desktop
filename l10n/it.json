@@ -10,12 +10,24 @@
     "Ok" : "Ok",
     "No" : "No",
     "Yes" : "Sì",
+    "User status" : "Stato utente",
+    "Your status was set automatically" : "Stato impostato automaticamente",
+    "Predefined statuses" : "Stati predefiniti",
+    "Clear custom status" : "Togli stato personalizzato",
+    "30 minutes" : "30 minuti",
+    "1 hour" : "1 ora",
+    "4 hours" : "4 ore",
+    "Today" : "Ogg",
+    "Emoji for your status message" : "Emoji per il tuo messaggio di stato",
     "Cancel" : "Annulla",
     "Share screen" : "Condividi schermo",
     "Loading …" : "Caricamento…",
     "View profile" : "Vedi profilo",
-    "Online" : "In linea",
     "Report a bug" : "Segnala un bug",
-    "Update Talk Desktop ↗" : "Aggiorna Talk Desktop ↗"
+    "Update Talk Desktop ↗" : "Aggiorna Talk Desktop ↗",
+    "Online" : "In linea",
+    "Away" : "Assente",
+    "Do not disturb" : "Non disturbare",
+    "Invisible" : "Invisibile"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

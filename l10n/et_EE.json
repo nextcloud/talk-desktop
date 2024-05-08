@@ -5,9 +5,23 @@
     "License" : "Litsents",
     "Close" : "Sulge",
     "Ok" : "Ok",
+    "User status" : "Kasutaja staatus",
+    "Predefined statuses" : "Eeldefineeritud staatused",
+    "Don't clear" : "Ära tühjenda",
+    "30 minutes" : "30 minutit",
+    "1 hour" : "1 tund",
+    "4 hours" : "4 tundi",
+    "Today" : "Täna",
+    "This week" : "Käesolev nädal",
+    "Emoji for your status message" : "Staatuse teate emoji",
+    "Status message" : "Staatuse teade",
     "Cancel" : "Tühista",
     "View profile" : "Vaata profiili",
+    "Report a bug" : "Teata veast",
     "Online" : "Online",
-    "Report a bug" : "Teata veast"
+    "Away" : "Eemal",
+    "Do not disturb" : "Mitte segada",
+    "Invisible" : "Nähtamatu",
+    "Offline" : "Offline"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

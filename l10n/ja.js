@@ -10,10 +10,21 @@ OC.L10N.register(
     "Ok" : "OK",
     "No" : "いいえ",
     "Yes" : "はい",
+    "User status" : "ユーザーステータス",
+    "Your status was set automatically" : "あなたのステータスは自動的に設定されました",
+    "Predefined statuses" : "事前定義されたステータス",
+    "30 minutes" : "30分",
+    "1 hour" : "1時間",
+    "4 hours" : "4時間",
+    "Today" : "今日",
+    "Emoji for your status message" : "あなたのステータスメッセージに絵文字を",
+    "Status message" : "状態メッセージ",
     "Cancel" : "キャンセル",
     "Share screen" : "画面共有",
     "Loading …" : "読み込み中…",
     "View profile" : "プロフィールを表示",
-    "Report a bug" : "不具合を報告"
+    "Report a bug" : "不具合を報告",
+    "Do not disturb" : "取り込み中",
+    "Invisible" : "ステータスを隠す"
 },
 "nplurals=1; plural=0;");

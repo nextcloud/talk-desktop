@@ -7,8 +7,18 @@ OC.L10N.register(
     "License" : "ໃບອະນຸຍາດ",
     "Close" : "ປິດ",
     "No" : "ບໍ່",
+    "Don't clear" : "ບໍ່ຈະແຈ້ງ",
+    "30 minutes" : "30 ນາທີ",
+    "1 hour" : "1 ຊົ່ວໂມງ",
+    "4 hours" : "4 ຊົ່ວໂມງ",
+    "Today" : "ມື້ນີ້",
+    "This week" : "ທິດນີ້",
+    "Status message" : "ສະຖານະຂໍ້ຄວາມ",
     "Cancel" : "ຍົກເລີກ",
+    "Log out" : "ອອກຈາກລະບົບ",
     "Online" : "ອອນລາຍ",
-    "Log out" : "ອອກຈາກລະບົບ"
+    "Away" : "ອອກໄປ",
+    "Do not disturb" : "ຫ້າມລົບກວນ",
+    "Invisible" : "ເບິ່ງບໍ່ເຫັນ"
 },
 "nplurals=1; plural=0;");

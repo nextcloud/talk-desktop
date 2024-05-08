@@ -6,6 +6,7 @@ OC.L10N.register(
     "Ok" : "ព្រម",
     "No" : "ទេ",
     "Yes" : "បាទ ឬចាស",
+    "Today" : "ថ្ងៃ​នេះ",
     "Cancel" : "លើកលែង"
 },
 "nplurals=1; plural=0;");

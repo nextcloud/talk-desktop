@@ -7,10 +7,17 @@
     "Ok" : "확인",
     "No" : "아니오",
     "Yes" : "예",
+    "User status" : "사용자 상태",
+    "30 minutes" : "30분",
+    "1 hour" : "1시간",
+    "Today" : "오늘",
     "Cancel" : "취소",
     "Share screen" : "화면 공유",
     "Loading …" : "불러오는 중 ...",
     "View profile" : "프로필 보기",
-    "Report a bug" : "버그 보고"
+    "Report a bug" : "버그 보고",
+    "Away" : "자리비움",
+    "Do not disturb" : "방해 없음",
+    "Invisible" : "숨겨짐"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

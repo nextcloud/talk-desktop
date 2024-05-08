@@ -5,6 +5,7 @@ OC.L10N.register(
     "Close" : "بند ",
     "Ok" : "اوکے",
     "No" : "نہیں",
-    "Yes" : "ہاں"
+    "Yes" : "ہاں",
+    "Today" : "آج"
 },
 "nplurals=2; plural=(n != 1);");

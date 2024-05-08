@@ -1,6 +1,9 @@
 { "translations": {
     "Log in" : "Aperir session",
     "Close" : "Clauder",
-    "Report a bug" : "Reportar un defecto"
+    "Today" : "Hodie",
+    "This week" : "Iste septimana",
+    "Report a bug" : "Reportar un defecto",
+    "Invisible" : "Invisibile"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -10,8 +10,18 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nu",
     "Yes" : "Da",
+    "User status" : "Statusul utilizatorului",
+    "Your status was set automatically" : "Statusul a fost setat automat",
+    "Predefined statuses" : "Stări predefinite",
+    "30 minutes" : "30 de minute",
+    "1 hour" : "1 oră",
+    "Today" : "Azi",
+    "This week" : "Săptămâna asta",
+    "Emoji for your status message" : "Emoji pentru mesajul de status",
     "Cancel" : "Anulare",
     "View profile" : "Vezi profilul",
-    "Report a bug" : "Raportează un defect"
+    "Report a bug" : "Raportează un defect",
+    "Away" : "Departe",
+    "Offline" : "Offline"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

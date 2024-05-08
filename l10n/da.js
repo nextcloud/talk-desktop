@@ -9,10 +9,18 @@ OC.L10N.register(
     "Issues" : "Problemer",
     "Close" : "Luk",
     "Ok" : "OK",
+    "User status" : "Bruger status",
+    "Don't clear" : "Ryd ikke",
+    "Today" : "I dag",
+    "This week" : "Denne uge",
+    "Status message" : "Statusbesked",
     "Cancel" : "Annullér",
     "Share screen" : "Del skærm",
     "View profile" : "Vis profil",
+    "Report a bug" : "Rapporter en fejl",
     "Online" : "Online",
-    "Report a bug" : "Rapporter en fejl"
+    "Away" : "Ikke tilstede",
+    "Do not disturb" : "Forstyr ikke",
+    "Invisible" : "Usynlig"
 },
 "nplurals=2; plural=(n != 1);");

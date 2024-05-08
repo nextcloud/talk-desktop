@@ -6,7 +6,15 @@
     "Close" : "Mdel",
     "No" : "Uhu",
     "Yes" : "Oui",
+    "Don't clear" : "Ur seffeḍ ara",
+    "30 minutes" : "30 n tesdatin",
+    "1 hour" : "1 n usrag",
+    "4 hours" : "4 yisragen",
+    "Today" : "Ass-a",
+    "This week" : "Dduṛt agi",
     "Loading …" : "Asali ...",
-    "Log out" : "Senser"
+    "Log out" : "Senser",
+    "Away" : "Akin",
+    "Invisible" : "Ur d-ittban ara"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

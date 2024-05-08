@@ -11,12 +11,25 @@
     "Ok" : "Sprejemljivo",
     "No" : "Ne",
     "Yes" : "Da",
+    "User status" : "Stanje uporabnika",
+    "Your status was set automatically" : "Stanje je določeno samodejno",
+    "Predefined statuses" : "Pripravljena stanja",
+    "30 minutes" : "30 minut",
+    "1 hour" : "po 1 uri",
+    "4 hours" : "4 urah",
+    "Today" : "enkrat danes",
+    "This week" : "še ta teden",
+    "Emoji for your status message" : "Izrazne ikone za stanje sporočila",
     "Cancel" : "Prekliči",
     "Share screen" : "Pokaži zaslon",
     "Loading …" : "Poteka nalaganje …",
     "View profile" : "Pokaži profil",
-    "Online" : "Trenutno na spletu",
     "Report a bug" : "Pošlji poročilo o hrošču",
-    "Log out" : "Odjava"
+    "Log out" : "Odjava",
+    "Online" : "Trenutno na spletu",
+    "Away" : "Ne spremljam",
+    "Do not disturb" : "Ne moti",
+    "Invisible" : "Drugim nevidno",
+    "Offline" : "Brez povezave"
 },"pluralForm" :"nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 }

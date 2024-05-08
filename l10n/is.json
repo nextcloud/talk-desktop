@@ -7,11 +7,26 @@
     "Issues" : "Vandamál",
     "Close" : "Loka",
     "Ok" : "Í lagi",
+    "User status" : "Staða notanda",
+    "Your status was set automatically" : "Staðan þín var stillt sjálfvirkt",
+    "Predefined statuses" : "Forákvarðaðar stöður",
+    "Don't clear" : "Ekki hreinsa",
+    "30 minutes" : "30 mínútur",
+    "1 hour" : "1 klukkustund",
+    "4 hours" : "4 klukkustundir",
+    "Today" : "Í dag",
+    "This week" : "Í þessari viku",
+    "Emoji for your status message" : "Tákn fyrir stöðufærsluna þína",
+    "Status message" : "Stöðuskilaboð",
     "Cancel" : "Hætta við",
     "Share screen" : "Deila skjá",
     "Loading …" : "Hleð inn …",
     "View profile" : "Skoða notandasnið",
+    "Report a bug" : "Tilkynna um villu",
     "Online" : "Á netinu",
-    "Report a bug" : "Tilkynna um villu"
+    "Away" : "Fjarverandi",
+    "Do not disturb" : "Ónáðið ekki",
+    "Invisible" : "Ósýnilegt",
+    "Offline" : "Ótengdur neti"
 },"pluralForm" :"nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);"
 }

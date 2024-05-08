@@ -11,14 +11,24 @@
     "Ok" : "D'acord",
     "No" : "No",
     "Yes" : "Sí",
+    "User status" : "Estat de l'usuari",
+    "Your status was set automatically" : "S'ha indicat l'estat automàticament",
+    "Predefined statuses" : "Estats predefinits",
+    "Clear custom status" : "Esborra l'estat personalitzat",
+    "Don't clear" : "No l'esborris",
+    "30 minutes" : "30 minuts",
+    "1 hour" : "1 hora",
+    "4 hours" : "4 hores",
+    "Today" : "Avui",
+    "Status message" : "Missatge d'estat",
     "Cancel" : "Cancel·la",
     "Share screen" : "Comparteix la pantalla",
     "Loading …" : "S'està carregant…",
     "View profile" : "Visualitza el perfil",
-    "Online" : "En línia",
     "Force reload" : "Força tornar a carregar",
     "Report a bug" : "Informa d'un error",
     "Open in Web-Browser" : "Obre al navegador web",
-    "Log out" : "Tanca la sessió"
+    "Log out" : "Tanca la sessió",
+    "Online" : "En línia"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

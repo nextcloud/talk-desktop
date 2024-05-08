@@ -11,6 +11,8 @@ OC.L10N.register(
     "Ok" : "U redu",
     "No" : "Ne",
     "Yes" : "Da",
+    "User status" : "Status korisnika",
+    "1 hour" : "1 sat",
     "Cancel" : "Odustani",
     "Share screen" : "Dijeli zaslon",
     "Loading …" : "Učitavanje…",

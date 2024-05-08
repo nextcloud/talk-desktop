@@ -11,12 +11,22 @@
     "Ok" : "Gerai",
     "No" : "Ne",
     "Yes" : "Taip",
+    "User status" : "Naudotojo būsena",
+    "Don't clear" : "Neišvalyti",
+    "30 minutes" : "30 minučių",
+    "1 hour" : "1 valanda",
+    "4 hours" : "4 valandos",
+    "Today" : "Šiandien",
+    "This week" : "Šią savaitę",
+    "Status message" : "Būsenos žinutė",
     "Cancel" : "Atsisakyti",
     "Share screen" : "Bendrinti ekraną",
     "Loading …" : "Įkeliama…",
     "View profile" : "Rodyti profilį",
     "Report a bug" : "Pranešti apie klaidą",
     "Open in Web-Browser" : "Atverti saityno naršyklėje",
-    "Log out" : "Atsijungti"
+    "Log out" : "Atsijungti",
+    "Away" : "Atsitraukęs",
+    "Invisible" : "Nematomas"
 },"pluralForm" :"nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);"
 }

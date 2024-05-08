@@ -6,6 +6,8 @@ OC.L10N.register(
     "Ok" : "OK",
     "No" : "Nee",
     "Yes" : "Jo",
-    "Report a bug" : "E Feeler melden"
+    "Today" : "Haut",
+    "Report a bug" : "E Feeler melden",
+    "Away" : "ewech"
 },
 "nplurals=2; plural=(n != 1);");

@@ -8,13 +8,25 @@
     "Close" : "Tampar",
     "No" : "Non",
     "Yes" : "Òc",
+    "User status" : "Estat utilizaire",
+    "Don't clear" : "Escafar pas",
+    "30 minutes" : "30  minutas",
+    "1 hour" : "1  ora",
+    "4 hours" : "4 oras",
+    "Today" : "Uèi",
+    "This week" : "Aquesta setmana",
+    "Status message" : "Messatge d’estat",
     "Cancel" : "Anullar",
     "Loading …" : "Cargament…",
     "View profile" : "Veire perfil",
-    "Online" : "En linha",
     "Force reload" : "Forçar lo recargament",
     "Report a bug" : "Raportar un bug",
     "Open in Web-Browser" : "Dobrir dins lo navegador",
-    "Log out" : "Se desconnectar"
+    "Log out" : "Se desconnectar",
+    "Online" : "En linha",
+    "Away" : "Absent",
+    "Do not disturb" : "Me desturbes pas",
+    "Invisible" : "Invisible",
+    "Offline" : "Fòra linha"
 },"pluralForm" :"nplurals=2; plural=(n > 1);"
 }

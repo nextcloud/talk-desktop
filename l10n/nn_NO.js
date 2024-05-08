@@ -6,6 +6,9 @@ OC.L10N.register(
     "License" : "Lisens",
     "Close" : "Lat att",
     "Ok" : "Greitt",
-    "Report a bug" : "Rapporter feil"
+    "Today" : "I dag",
+    "Report a bug" : "Rapporter feil",
+    "Away" : "Borte",
+    "Invisible" : "Usynleg"
 },
 "nplurals=2; plural=(n != 1);");

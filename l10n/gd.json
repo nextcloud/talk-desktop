@@ -6,8 +6,18 @@
     "Close" : "Dùin",
     "No" : "Chan eil",
     "Yes" : "Tha",
+    "Don't clear" : "Na falamhaich",
+    "30 minutes" : "Leth-uair a thìde",
+    "1 hour" : "Uair a thìde",
+    "4 hours" : "4 uairean a thìde",
+    "Today" : "An-diugh",
+    "This week" : "An t-seachdain seo",
+    "Status message" : "Teachdaireachd staide",
     "Cancel" : "Sguir dheth",
+    "Log out" : "Clàraich a-mach",
     "Online" : "Air loidhne",
-    "Log out" : "Clàraich a-mach"
+    "Away" : "Air falbh",
+    "Do not disturb" : "Na bris a-steach orm",
+    "Invisible" : "Do-fhaicsinneach"
 },"pluralForm" :"nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : (n > 2 && n < 20) ? 2 : 3;"
 }

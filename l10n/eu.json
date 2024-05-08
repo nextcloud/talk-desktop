@@ -14,14 +14,23 @@
     "Ok" : "Ados",
     "No" : "Ez",
     "Yes" : "Bai",
+    "User status" : "Erabiltzaile-egoera",
+    "Your status was set automatically" : "Zure egoera automatikoki ezarriko dira",
+    "Predefined statuses" : "Aurrez definitutako egoerak",
+    "Don't clear" : "Ez ezabatu",
+    "30 minutes" : "30 minutu",
+    "1 hour" : "Ordu 1",
+    "4 hours" : "4 ordu",
+    "Today" : "Gaur",
+    "Emoji for your status message" : "Zure egoera-mezurako emojia",
     "Cancel" : "Utzi",
     "Share screen" : "Partekatu pantaila",
     "Loading …" : "Kargatzen ...",
     "View profile" : "Ikusi profila",
-    "Online" : "Linean",
     "Force reload" : "Behartu birkargatzea",
     "Report a bug" : "Jakinarazi errore bat",
     "Open in Web-Browser" : "Ireki web nabigatzailean",
-    "Log out" : "Saioa itxi"
+    "Log out" : "Saioa itxi",
+    "Online" : "Linean"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

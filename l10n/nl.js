@@ -12,14 +12,18 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nee",
     "Yes" : "Ja",
+    "User status" : "Gebruikersstatus",
+    "Don't clear" : "Niet opruimen",
+    "Today" : "Vandaag",
     "Cancel" : "Annuleren",
     "Share screen" : "Scherm delen",
     "Loading …" : "Laden …",
     "View profile" : "Bekijk profiel",
-    "Online" : "Online",
     "Force reload" : "Herladen forceren",
     "Report a bug" : "Rapporteer een fout",
     "Open in Web-Browser" : "Openen in webbrowser",
-    "Log out" : "Afmelden"
+    "Log out" : "Afmelden",
+    "Online" : "Online",
+    "Invisible" : "Verborgen"
 },
 "nplurals=2; plural=(n != 1);");

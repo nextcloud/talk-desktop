@@ -13,12 +13,15 @@ OC.L10N.register(
     "Ok" : "Aceutar",
     "No" : "Non",
     "Yes" : "Sí",
+    "Your status was set automatically" : "L'estáu afitóse automáticamente",
+    "Don't clear" : "Nun borrar",
+    "4 hours" : "4 hores",
     "Cancel" : "Encaboxar",
     "Share screen" : "Compartir pantalla",
     "Loading …" : "Cargando…",
     "View profile" : "Ver el perfil",
-    "Online" : "En llinia",
     "Report a bug" : "Informar d'un fallju",
-    "Log out" : "Zarrar la sesión"
+    "Log out" : "Zarrar la sesión",
+    "Online" : "En llinia"
 },
 "nplurals=2; plural=(n != 1);");

@@ -6,10 +6,21 @@ OC.L10N.register(
     "License" : "Лиценца",
     "Close" : "Затвори",
     "Ok" : "Во ред",
+    "User status" : "Статус на корисникот",
+    "Clear custom status" : "Тргни го сопствениот статус",
+    "Don't clear" : "Не го тргај",
+    "30 minutes" : "30 минути",
+    "1 hour" : "1 час",
+    "4 hours" : "4 часа",
+    "Today" : "Денес",
+    "This week" : "Оваа недела",
+    "Status message" : "Статус порака",
     "Cancel" : "Откажи",
     "Share screen" : "Сподели екран",
     "View profile" : "Прегледај профил",
+    "Report a bug" : "Пријави грешка",
     "Online" : "Присутен",
-    "Report a bug" : "Пријави грешка"
+    "Away" : "Далеку",
+    "Invisible" : "Невидлив"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

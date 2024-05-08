@@ -6,9 +6,19 @@
     "Issues" : "Isu",
     "Close" : "Tutup",
     "Ok" : "Oke",
+    "Don't clear" : "Jangan dihapus",
+    "30 minutes" : "30 Menit",
+    "1 hour" : "1 jam",
+    "4 hours" : "4 jam",
+    "Today" : "Hari ini",
+    "This week" : "Pekan ini",
+    "Status message" : "Pesan status",
     "Cancel" : "Batal",
     "View profile" : "Tampilkan profil",
     "Report a bug" : "Laporkan kerusakan",
-    "Log out" : "Keluar"
+    "Log out" : "Keluar",
+    "Away" : "Jauh",
+    "Do not disturb" : "Jangan diganggu",
+    "Invisible" : "Tersembunyi"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

@@ -11,11 +11,21 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "No",
     "Yes" : "Yes",
+    "Don't clear" : "Don't clear",
+    "30 minutes" : "30 minutes",
+    "1 hour" : "1 hour",
+    "4 hours" : "4 hours",
+    "Today" : "დღეს",
+    "This week" : "This week",
+    "Status message" : "Status message",
     "Cancel" : "Cancel",
     "Loading …" : "Loading …",
     "View profile" : "View profile",
-    "Online" : "Online",
     "Report a bug" : "Report a bug",
-    "Log out" : "Log out"
+    "Log out" : "Log out",
+    "Online" : "Online",
+    "Away" : "Away",
+    "Do not disturb" : "Do not disturb",
+    "Invisible" : "Invisible"
 },
 "nplurals=2; plural=(n!=1);");

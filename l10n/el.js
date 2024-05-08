@@ -11,11 +11,15 @@ OC.L10N.register(
     "Ok" : "ΟΚ",
     "No" : "Όχι",
     "Yes" : "Ναι",
+    "User status" : "Κατάσταση χρήστη",
+    "1 hour" : "1 ώρα",
     "Cancel" : "Ακύρωση",
     "Share screen" : "Διαμοιρασμός οθόνης",
     "Loading …" : "Φόρτωση…",
     "View profile" : "Προβολή προφίλ",
     "Report a bug" : "Αναφορά σφάλματος",
-    "Log out" : "Έξοδος"
+    "Log out" : "Έξοδος",
+    "Away" : "Λείπω",
+    "Invisible" : "Αόρατο"
 },
 "nplurals=2; plural=(n != 1);");

@@ -3,6 +3,9 @@ OC.L10N.register(
     {
     "Log in" : "Aperir session",
     "Close" : "Clauder",
-    "Report a bug" : "Reportar un defecto"
+    "Today" : "Hodie",
+    "This week" : "Iste septimana",
+    "Report a bug" : "Reportar un defecto",
+    "Invisible" : "Invisibile"
 },
 "nplurals=2; plural=(n != 1);");

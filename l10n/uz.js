@@ -6,8 +6,20 @@ OC.L10N.register(
     "Close" : "Close",
     "No" : "No",
     "Yes" : "Yes",
+    "User status" : "User status",
+    "Don't clear" : "Don't clear",
+    "30 minutes" : "30 minutes",
+    "1 hour" : "1 hour",
+    "4 hours" : "4 hours",
+    "Today" : "Today",
+    "This week" : "This week",
+    "Status message" : "Status message",
     "Cancel" : "Cancel",
     "View profile" : "View profile",
-    "Online" : "Online"
+    "Online" : "Online",
+    "Away" : "Away",
+    "Do not disturb" : "Do not disturb",
+    "Invisible" : "Invisible",
+    "Offline" : "Offline"
 },
 "nplurals=1; plural=0;");

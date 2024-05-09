@@ -7,8 +7,10 @@ OC.L10N.register(
     "Close" : "Serriñ",
     "No" : "Nann",
     "Today" : "Hiziv",
+    "This week" : "Er sizhun-mañ",
     "Share screen" : "Rannañ ar skramm",
     "Report a bug" : "Dugas ur gudenn",
+    "Away" : "Pell",
     "Do not disturb" : "Na rannit ket",
     "Invisible" : "Diwelus"
 },

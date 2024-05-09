@@ -5,7 +5,10 @@ OC.L10N.register(
     "Logging in …" : "Meld tans aan …",
     "About" : "Aangaande",
     "License" : "Lisensie",
+    "User status" : "Gebruikerstatus",
     "Don't clear" : "Moenie wis nie",
-    "Log out" : "Teken af"
+    "This week" : "Vandeesweek",
+    "Log out" : "Teken af",
+    "Invisible" : "Onsigbaar"
 },
 "nplurals=2; plural=(n != 1);");

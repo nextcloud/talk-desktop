@@ -32,7 +32,7 @@
     "Today" : "Heute",
     "This week" : "Diese Woche",
     "Emoji for your status message" : "Emoji für Ihre Statusnachricht",
-    "Status message" : "Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet (de_DE).",
+    "Status message" : "Statusnachricht",
     "Cancel" : "Abbrechen",
     "Loading …" : "Lade …",
     "View profile" : "Profil ansehen",
@@ -45,9 +45,9 @@
     "Update Talk Desktop ↗" : "Talk Desktop aktualisieren ↗",
     "Continue in Web-Browser ↗" : "Im Web-Browser fortsetzen ↗",
     "Online" : "Online",
-    "Away" : "Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet (de_DE).",
-    "Do not disturb" : "Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet (de_DE).",
-    "Invisible" : "Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet (de_DE).",
+    "Away" : "Abwesend",
+    "Do not disturb" : "Bitte nicht stören",
+    "Invisible" : "Unsichtbar",
     "Offline" : "Offline",
     "Cannot connect to the server. Please check your internet connection and try again later." : "Kann nicht mit dem Server verbinden. Bitte überprüfe deine Internetverbindung und versuche es später erneut."
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

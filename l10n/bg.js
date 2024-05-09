@@ -28,6 +28,7 @@ OC.L10N.register(
     "Open in Web-Browser" : "Отваряне в уеб браузър",
     "Log out" : "Изход",
     "Online" : "На линия /онлайн/",
+    "Away" : "Винаги",
     "Do not disturb" : "Не безпокой"
 },
 "nplurals=2; plural=(n != 1);");

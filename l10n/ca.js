@@ -22,6 +22,8 @@ OC.L10N.register(
     "1 hour" : "1 hora",
     "4 hours" : "4 hores",
     "Today" : "Avui",
+    "This week" : "Aquesta setmana",
+    "Emoji for your status message" : "Emoji per al missatge d'estat",
     "Status message" : "Missatge d'estat",
     "Cancel" : "Cancel·la",
     "Share screen" : "Comparteix la pantalla",

@@ -7,6 +7,8 @@ OC.L10N.register(
     "Ok" : "Oldu",
     "No" : "Xeyir",
     "Yes" : "Bəli",
-    "Report a bug" : "Səhv haqqında bildir"
+    "Today" : "Bu gün",
+    "Report a bug" : "Səhv haqqında bildir",
+    "Invisible" : "Görünməz"
 },
 "nplurals=2; plural=(n != 1);");

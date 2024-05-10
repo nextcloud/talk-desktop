@@ -42,43 +42,12 @@
 						target="_blank">
 						<div><strong>{{ user['display-name'] }}</strong></div>
 						<div>{{ t('talk_desktop', 'View profile') }}</div>
-					</UiMenuItem><template v-if="userStatusStore.userStatus">
+					</UiMenuItem>
+					<template v-if="userStatusStore.userStatus">
 						<UiMenuSeparator />
-						<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = !userStatusSubMenuOpen">
-							<template #icon>
-								<NcUserStatusIcon :status="userStatusStore.userStatus.status" />
-							</template>
-							<span style="display: flex">
-								<span>
-									{{ userStatusTranslations[userStatusStore.userStatus.status] }}
-								</span>
-								<span style="margin-left: auto">
-									<MdiChevronUp v-if="userStatusSubMenuOpen" :size="20" />
-									<MdiChevronDown v-else :size="20" />
-								</span>
-							</span>
-						</UiMenuItem>
-						<li v-if="userStatusSubMenuOpen">
-							<ul>
-								<UiMenuItem v-for="status in ['online', 'away', 'dnd', 'invisible']"
-									:key="status"
-									tag="button"
-									@click.native.stop="handleUserStatusChange(status)">
-									<template #icon>
-										<NcUserStatusIcon :status="status" />
-									</template>
-									<span style="display: flex">
-										<span>
-											{{ userStatusTranslations[status] }}
-										</span>
-										<span v-if="status === userStatusStore.userStatus.status" style="margin-left: auto">
-											<MdiCheck :size="20" />
-										</span>
-									</span>
-								</UiMenuItem>
-							</ul>
+						<li>
+							<UserStatusFormStatusType :status="userStatusStore.userStatus.status" @update:status="handleUserStatusChange($event)" @click.native.stop />
 						</li>
-						<UiMenuSeparator />
 						<UiMenuItem key="custom-status" tag="button" @click.native="isUserStatusDialogOpen = true">
 							<template #icon>
 								<span v-if="userStatusStore.userStatus.icon" style="font-size: 20px">
@@ -178,6 +147,7 @@ import UserStatusDialog from '../UserStatus/UserStatusDialog.vue'
 import { getVisibleUserStatus, userStatusTranslations } from '../UserStatus/userStatus.utils.js'
 import UiMenuSeparator from './UiMenuSeparator.vue'
 import { ref } from 'vue'
+import UserStatusFormStatusType from '../UserStatus/components/UserStatusFormStatusType.vue'
 
 export default {
 	name: 'UserMenu',
@@ -185,6 +155,7 @@ export default {
 	packageInfo: window.TALK_DESKTOP.packageInfo,
 
 	components: {
+		UserStatusFormStatusType,
 		UiMenuSeparator,
 		UserStatusDialog,
 		UiMenuItem,

@@ -20,11 +20,13 @@
   -->
 
 <script setup>
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import { computed } from 'vue'
+import { translate as t } from '@nextcloud/l10n'
+import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
 import { userStatusTranslations } from '../userStatus.utils.js'
 
-defineProps({
+const props = defineProps({
 	status: {
 		type: String,
 		required: true,
@@ -32,29 +34,68 @@ defineProps({
 })
 
 const emit = defineEmits(['update:status'])
+
+const options = [
+	{
+		value: 'online',
+		label: userStatusTranslations.online,
+	},
+	{
+		value: 'away',
+		label: userStatusTranslations.away,
+	},
+	{
+		value: 'dnd',
+		label: userStatusTranslations.dnd,
+	},
+	{
+		value: 'offline',
+		label: userStatusTranslations.offline,
+	},
+]
+
+const selectedOption = computed(() => options.find((option) => option.value === props.status))
 </script>
 
 <template>
 	<div class="user-status-form-status">
-		<NcButton v-for="option in ['online', 'away', 'dnd', 'offline']"
-			:key="option"
-			type="tertiary"
-			alignment="start"
-			:pressed="option === status"
-			wide
-			@click="emit('update:status', option)">
-			<template #icon>
-				<NcUserStatusIcon :status="option" />
+		<NcSelect class="user-status__select"
+			:aria-label-compobox="t('talk_desktop', 'Online status')"
+			:append-to-body="false"
+			:clearable="false"
+			:searchable="false"
+			:options="options"
+			:value="selectedOption"
+			@input="emit('update:status', $event.value)">
+			<template #selected-option="option">
+				<div class="user-status-select__option">
+					<NcUserStatusIcon :status="option.value" :size="20" />
+					<span>{{ option.label }}</span>
+				</div>
 			</template>
-			{{ userStatusTranslations[option] }}
-		</NcButton>
+			<template #option="option">
+				<div class="user-status-select__option">
+					<NcUserStatusIcon :status="option.value" :size="20" />
+					<span>{{ option.label }}</span>
+				</div>
+			</template>
+		</NcSelect>
 	</div>
 </template>
 
 <style scoped lang="scss">
 .user-status-form-status {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: var(--default-grid-baseline);
+	height: var(--default-clickable-area);
+}
+
+.user-status__select {
+	width: 100%;
+	--vs-border-color: transparent;
+}
+
+.user-status-select__option {
+	display: flex;
+	gap: calc(2 * var(--default-grid-baseline));
+	align-items: center;
 }
 </style>

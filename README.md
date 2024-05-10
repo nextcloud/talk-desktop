@@ -5,6 +5,8 @@
 
 # 🖥️ Nextcloud Talk Desktop 💬
 
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/talk-desktop)](https://api.reuse.software/info/github.com/nextcloud/talk-desktop)
+
 > Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling ✨
 
 ## 📥 Download Binaries

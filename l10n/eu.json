@@ -17,12 +17,15 @@
     "User status" : "Erabiltzaile-egoera",
     "Your status was set automatically" : "Zure egoera automatikoki ezarriko dira",
     "Predefined statuses" : "Aurrez definitutako egoerak",
+    "Set user status" : "Ezarri erabiltzailearen egoera",
     "Don't clear" : "Ez ezabatu",
     "30 minutes" : "30 minutu",
     "1 hour" : "Ordu 1",
     "4 hours" : "4 ordu",
     "Today" : "Gaur",
+    "This week" : "Aste honetan",
     "Emoji for your status message" : "Zure egoera-mezurako emojia",
+    "Status message" : "Egoera-mezua",
     "Cancel" : "Utzi",
     "Share screen" : "Partekatu pantaila",
     "Loading …" : "Kargatzen ...",
@@ -31,6 +34,11 @@
     "Report a bug" : "Jakinarazi errore bat",
     "Open in Web-Browser" : "Ireki web nabigatzailean",
     "Log out" : "Saioa itxi",
-    "Online" : "Linean"
+    "Online" : "Linean",
+    "Away" : "Kanpoan",
+    "Do not disturb" : "Ez molestatu",
+    "Invisible" : "Ikusezina",
+    "Offline" : "Lineaz kanpo",
+    "Unknown status" : "Egoera ezezaguna"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

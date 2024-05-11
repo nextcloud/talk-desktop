@@ -28,7 +28,7 @@ OC.L10N.register(
     "Previously set status" : "Zuvor festgelegter Status",
     "Predefined statuses" : "Vordefinierte Status",
     "Clear custom status" : "Benutzerdefinierten Status löschen",
-    "Set user status" : "Benutzerstatus festlegen",
+    "Set user status" : "Benutzerstatus setzen",
     "Don't clear" : "Nicht löschen",
     "30 minutes" : "30 Minuten",
     "1 hour" : "1 Stunde",

@@ -46,6 +46,7 @@ OC.L10N.register(
     "Update Talk Desktop ↗" : "Actualizar Talk Desktop ↗",
     "Continue in Web-Browser ↗" : "Continuar en Navegador Web ↗",
     "Online" : "En línea",
+    "Unknown status" : "Estado desconocido",
     "Cannot connect to the server. Please check your internet connection and try again later." : "No es posible conectarse al servidor. Por favor, chequee su conexión a internet e intente de nuevo más tarde."
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

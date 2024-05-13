@@ -37,83 +37,119 @@
 
 			<template #default>
 				<UiMenu ref="userMenuElement" aria-label="Settings menu">
-					<UiMenuItem tag="a"
-						:href="userProfileLink"
-						target="_blank">
-						<div><strong>{{ user['display-name'] }}</strong></div>
-						<div>{{ t('talk_desktop', 'View profile') }}</div>
-					</UiMenuItem>
-					<template v-if="userStatusStore.userStatus">
-						<UiMenuSeparator />
-						<li>
-							<UserStatusFormStatusType :status="userStatusStore.userStatus.status" @update:status="handleUserStatusChange($event)" @click.native.stop />
-						</li>
-						<UiMenuItem key="custom-status" tag="button" @click.native="isUserStatusDialogOpen = true">
+					<template v-if="userStatusSubMenuOpen">
+						<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = false">
 							<template #icon>
-								<span v-if="userStatusStore.userStatus.icon" style="font-size: 20px">
-									{{ userStatusStore.userStatus.icon }}
-								</span>
-								<MdiEmoticonOutline v-else :size="20" />
+								<MdiChevronLeft :size="20" />
 							</template>
-							<template v-if="userStatusStore.userStatus.message">
+							{{ t('talk_desktop', 'Back') }}
+						</UiMenuItem>
+						<UiMenuItem v-for="status in ['online', 'away', 'dnd', 'invisible']"
+							:key="status"
+							tag="button"
+							@click.native.stop="handleUserStatusChange(status)">
+							<template #icon>
+								<NcUserStatusIcon :status="status" />
+							</template>
+							<span style="display: flex">
+								<span>
+									{{ userStatusTranslations[status] }}
+								</span>
+								<span v-if="status === userStatusStore.userStatus.status" style="margin-left: auto">
+									<MdiCheck :size="20" />
+								</span>
+							</span>
+						</UiMenuItem>
+					</template>
+					<template v-else>
+						<UiMenuItem tag="a"
+							:href="userProfileLink"
+							target="_blank">
+							<div><strong>{{ user['display-name'] }}</strong></div>
+							<div>{{ t('talk_desktop', 'View profile') }}</div>
+						</UiMenuItem>
+						<template v-if="userStatusStore.userStatus">
+							<UiMenuSeparator />
+							<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = true">
+								<template #icon>
+									<NcUserStatusIcon :status="userStatusStore.userStatus.status" />
+								</template>
 								<span style="display: flex">
 									<span>
-										{{ userStatusStore.userStatus.message }}
-									</span>
-									<span style="margin-left: auto">
-										<MdiPencil :size="20" />
-									</span>
-								</span>
-							</template>
-							<template v-else>
-								<span style="display: flex">
-									<span>
-										{{ t('talk_desktop', 'Set custom status') }}
+										{{ userStatusTranslations[userStatusStore.userStatus.status] }}
 									</span>
 									<span style="margin-left: auto">
 										<MdiChevronRight :size="20" />
 									</span>
 								</span>
-							</template>
-						</UiMenuItem>
-						<UiMenuSeparator />
-						<UiMenuItem tag="button" @click.native="reload">
-							<template #icon>
-								<MdiReload />
-							</template>
-							{{ t('talk_desktop', 'Force reload') }}
-						</UiMenuItem>
-						<UiMenuItem tag="a" :href="$options.packageInfo.bugs" target="_blank">
-							<template #icon>
-								<MdiBug />
-							</template>
-							{{ t('talk_desktop', 'Report a bug') }}
-						</UiMenuItem>
-						<UiMenuSeparator />
-						<UiMenuItem tag="a" :href="talkWebLink" target="_blank">
-							<template #icon>
-								<MdiWeb />
-							</template>
-							<template #default>
-								{{ t('talk_desktop', 'Open in Web-Browser') }}
-							</template>
-						</UiMenuItem>
-						<UiMenuItem tag="button" @click.native="showHelp">
-							<template #icon>
-								<MdiInformationOutline />
-							</template>
-							<template #default>
-								{{ t('talk_desktop', 'About') }}
-							</template>
-						</UiMenuItem>
-						<UiMenuItem tag="button" @click.native="$emit('logout')">
-							<template #icon>
-								<MdiPower />
-							</template>
-							<template #default>
-								{{ t('talk_desktop', 'Log out') }}
-							</template>
-						</UiMenuItem>
+							</UiMenuItem>
+							<UiMenuItem key="custom-status" tag="button" @click.native="isUserStatusDialogOpen = true">
+								<template #icon>
+									<span v-if="userStatusStore.userStatus.icon" style="font-size: 20px">
+										{{ userStatusStore.userStatus.icon }}
+									</span>
+									<MdiEmoticonOutline v-else :size="20" />
+								</template>
+								<template v-if="userStatusStore.userStatus.message">
+									<span style="display: flex">
+										<span>
+											{{ userStatusStore.userStatus.message }}
+										</span>
+										<span style="margin-left: auto">
+											<MdiPencil :size="20" />
+										</span>
+									</span>
+								</template>
+								<template v-else>
+									<span style="display: flex">
+										<span>
+											{{ t('talk_desktop', 'Set custom status') }}
+										</span>
+										<span style="margin-left: auto">
+											<MdiChevronRight :size="20" />
+										</span>
+									</span>
+								</template>
+							</UiMenuItem>
+							<UiMenuSeparator />
+							<UiMenuItem tag="button" @click.native="reload">
+								<template #icon>
+									<MdiReload />
+								</template>
+								{{ t('talk_desktop', 'Force reload') }}
+							</UiMenuItem>
+							<UiMenuItem tag="a" :href="$options.packageInfo.bugs" target="_blank">
+								<template #icon>
+									<MdiBug />
+								</template>
+								{{ t('talk_desktop', 'Report a bug') }}
+							</UiMenuItem>
+							<UiMenuSeparator />
+							<UiMenuItem tag="a" :href="talkWebLink" target="_blank">
+								<template #icon>
+									<MdiWeb />
+								</template>
+								<template #default>
+									{{ t('talk_desktop', 'Open in Web-Browser') }}
+								</template>
+							</UiMenuItem>
+							<UiMenuItem tag="button" @click.native="showHelp">
+								<template #icon>
+									<MdiInformationOutline />
+								</template>
+								<template #default>
+									{{ t('talk_desktop', 'About') }}
+								</template>
+							</UiMenuItem>
+							<UiMenuItem tag="button" @click.native="$emit('logout')">
+								<template #icon>
+									<MdiPower />
+								</template>
+								<template #default>
+									{{ t('talk_desktop', 'Log out') }}
+								</template>
+							</UiMenuItem>
+						</template>
 					</template>
 				</UiMenu>
 			</template>
@@ -129,6 +165,7 @@ import MdiCheck from 'vue-material-design-icons/Check.vue'
 import MdiChevronDown from 'vue-material-design-icons/ChevronDown.vue'
 import MdiChevronUp from 'vue-material-design-icons/ChevronUp.vue'
 import MdiChevronRight from 'vue-material-design-icons/ChevronRight.vue'
+import MdiChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
 import MdiEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 import MdiInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
 import MdiPencil from 'vue-material-design-icons/Pencil.vue'
@@ -147,7 +184,7 @@ import UserStatusDialog from '../UserStatus/UserStatusDialog.vue'
 import { getVisibleUserStatus, userStatusTranslations } from '../UserStatus/userStatus.utils.js'
 import UiMenuSeparator from './UiMenuSeparator.vue'
 import { ref } from 'vue'
-import UserStatusFormStatusType from '../UserStatus/components/UserStatusFormStatusType.vue'
+// import UserStatusFormStatusType from '../UserStatus/components/UserStatusFormStatusType.vue'
 
 export default {
 	name: 'UserMenu',
@@ -155,16 +192,17 @@ export default {
 	packageInfo: window.TALK_DESKTOP.packageInfo,
 
 	components: {
-		UserStatusFormStatusType,
+		// UserStatusFormStatusType,
 		UiMenuSeparator,
 		UserStatusDialog,
 		UiMenuItem,
 		UiMenu,
 		MdiBug,
 		MdiCheck,
-		MdiChevronDown,
-		MdiChevronUp,
+		// MdiChevronDown,
+		// MdiChevronUp,
 		MdiChevronRight,
+		MdiChevronLeft,
 		MdiEmoticonOutline,
 		MdiInformationOutline,
 		MdiPencil,

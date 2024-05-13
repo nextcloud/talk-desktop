@@ -1,4 +1,11 @@
+<!--
+  - SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
+  - SPDX-License-Identifier: CC0-1.0
+-->
+
 # 🖥️ Nextcloud Talk Desktop 💬
+
+[![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/talk-desktop)](https://api.reuse.software/info/github.com/nextcloud/talk-desktop)
 
 > Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling ✨
 

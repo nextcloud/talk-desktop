@@ -1,6 +1,9 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Invalid server address" : "Seoladh freastalaí neamhbhailí",
+    "No" : "Níl",
+    "Yes" : "Tá",
     "30 minutes" : "30 nóiméad",
     "1 hour" : "1 uair",
     "Today" : "Inniu",

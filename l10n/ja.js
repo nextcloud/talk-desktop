@@ -25,6 +25,7 @@ OC.L10N.register(
     "View profile" : "プロフィールを表示",
     "Report a bug" : "不具合を報告",
     "Do not disturb" : "取り込み中",
-    "Invisible" : "ステータスを隠す"
+    "Invisible" : "ステータスを隠す",
+    "Unknown status" : "不明なステータス"
 },
 "nplurals=1; plural=0;");

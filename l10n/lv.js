@@ -6,6 +6,7 @@ OC.L10N.register(
     "License" : "Licence",
     "Close" : "Aizvērt",
     "Ok" : "Labi",
+    "Set user status" : "Iestatiet lietotāja stāvokli",
     "30 minutes" : "30 minūtes",
     "1 hour" : "1 stunda",
     "Today" : "Šodien",

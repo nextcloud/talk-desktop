@@ -4,6 +4,7 @@
  */
 
 import { register } from '@nextcloud/l10n'
+import axios from '@nextcloud/axios'
 
 import { applyBodyThemeAttrs } from './theme.utils.js'
 import { appData } from '../app/AppData.js'
@@ -89,13 +90,36 @@ async function applyUserData() {
 }
 
 /**
- * Make all required initial setup for the web page:
- * - set title according to app name
- * - restore app data
- * - get OS info
- * - apply theme to HTML data-attrs
- * - apply locale to HTML lang and data-locale attrs
- * - register translation bundles for Talk and Talk Desktop
+ * Apply Talk Desktop specific Axios interceptors globally to use authentication for API and handle some responses on app level.
+ * @return {void}
+ */
+export function applyAxiosInterceptors() {
+	axios.interceptors.request.use((config) => {
+		// For CORS requests
+		config.withCredentials = true
+		// For OCS requests using Authentication headers
+		config.headers['OCS-APIRequest'] = 'true'
+		return config
+	}, (error) => Promise.reject(error))
+
+	// Handle 401 Unauthorized and 426 Upgrade Required responses
+	let upgradeInterceptorHasBeenTriggeredOnce = false
+	axios.interceptors.response.use((response) => response, (error) => {
+		if (error?.response?.status === 401) {
+			window.TALK_DESKTOP.logout()
+		}
+		if (error?.response?.status === 426) {
+			if (!upgradeInterceptorHasBeenTriggeredOnce) {
+				upgradeInterceptorHasBeenTriggeredOnce = true
+				window.TALK_DESKTOP.showUpgrade()
+			}
+		}
+		return Promise.reject(error)
+	})
+}
+
+/**
+ * Make all required initial setup for the web page for authorized user: server-rendered data, globals and ect.
  */
 export async function setupWebPage() {
 	document.title = await window.TALK_DESKTOP.getAppName()
@@ -104,5 +128,6 @@ export async function setupWebPage() {
 	window.OS = await window.TALK_DESKTOP.getOs()
 	applyUserData()
 	applyBodyThemeAttrs()
+	applyAxiosInterceptors()
 	await applyL10n()
 }

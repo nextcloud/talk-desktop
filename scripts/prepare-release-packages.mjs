@@ -6,7 +6,7 @@
 const TALK_PATH = './out/.temp/spreed/'
 const talkDotGit = `${TALK_PATH}.git`
 
-import { $, echo, spinner, argv, fs, os, usePowerShell } from 'zx'
+import { $, echo, spinner, argv, fs, os, usePwsh } from 'zx'
 
 $.quiet = true
 
@@ -113,7 +113,7 @@ async function prepareRelease() {
 }
 
 if (os.platform() === 'win32') {
-	usePowerShell()
+	usePwsh()
 }
 
 if (argv.help) {

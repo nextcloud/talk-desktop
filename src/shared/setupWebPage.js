@@ -67,6 +67,28 @@ async function applyL10n() {
 }
 
 /**
+ * Apply user data to the document attributes and global variables that can be then used by @nextcloud/auth
+ * @return {void}
+ */
+async function applyUserData() {
+	if (!appData.userMetadata) {
+		return
+	}
+
+	// getCurrentUser().uid
+	document.head.setAttribute('data-user', appData.userMetadata.id)
+
+	// getCurrentUser().displayName
+	// Current user metadata had different property name for display name than userMetadata
+	// Remove if Nextcloud 27 is not supported
+	// @see https://github.com/nextcloud/server/pull/36665
+	document.head.setAttribute('data-user-displayname', appData.userMetadata.displayname ?? appData.userMetadata['display-name'])
+
+	// getCurrentUser().isAdmin
+	window._oc_isadmin = appData.userMetadata.groups.includes('admin')
+}
+
+/**
  * Make all required initial setup for the web page:
  * - set title according to app name
  * - restore app data
@@ -80,6 +102,7 @@ export async function setupWebPage() {
 	initGlobals()
 	appData.restore()
 	window.OS = await window.TALK_DESKTOP.getOs()
+	applyUserData()
 	applyBodyThemeAttrs()
 	await applyL10n()
 }

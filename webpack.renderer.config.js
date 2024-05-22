@@ -109,7 +109,6 @@ const webpackRendererConfig = mergeWithRules({
 			...createPatcherAliases('@nextcloud/axios'),
 			...createPatcherAliases('@nextcloud/router'),
 			...createPatcherAliases('@nextcloud/auth'),
-			...createPatcherAliases('@nextcloud/notify_push'),
 		},
 	},
 

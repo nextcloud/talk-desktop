@@ -119,12 +119,127 @@ export function applyAxiosInterceptors() {
 }
 
 /**
+ * Generates Initial State-like object based on capabilities and user metadata
+ *
+ * @param {object} capabilities - Capabilities
+ * @param {object} userMetadata - User Metadata
+ * @return {object}
+ */
+function getInitialStateFromCapabilities(capabilities, userMetadata) {
+	return {
+		// Todo check all used loadState for spreed
+		spreed: {
+			call_enabled: capabilities?.spreed?.config?.call?.enabled,
+			signaling_mode: 'external', // TODO: Missed in Capabilities. Is it a problem?
+			sip_dialin_info: undefined, // TODO: Missed in Capabilities. Is it a problem?
+			grid_videos_limit: 19, // TODO: Missed in Capabilities. Is it a problem?
+			grid_videos_limit_enforced: false, // TODO: Missed in Capabilities. Is it a problem?
+			federation_enabled: false, // TODO: Missed in Capabilities. Is it a problem?
+			start_conversations: capabilities?.spreed?.config?.conversations?.['can-create'],
+			circles_enabled: false, // TODO: Missed in Capabilities. Is it a problem?
+			guests_accounts_enabled: true, // TODO: Missed in Capabilities. It is a problem
+			read_status_privacy: capabilities?.spreed?.config?.chat?.['read-privacy'],
+			play_sounds: true, // TODO: Missed in Capabilities. Is it a problem?
+			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
+			attachment_folder_free_space: userMetadata?.quota?.free ?? 0, // TODO: Is User's Quota free equal to attachment_folder_free_space
+			enable_matterbridge: false, // TODO: Missed in Capabilities. Is it a problem?
+			user_group_ids: userMetadata?.groups,
+		},
+		theming: {
+			background: capabilities?.theming?.background,
+			themingDefaultBackground: '',
+			data: {
+				name: capabilities?.theming?.name,
+				url: capabilities?.theming?.url,
+				slogan: capabilities?.theming?.slogan,
+				color: capabilities?.theming?.color,
+				defaultColor: '#0082C9', // TODO: Find in Capabilities
+				imprintUrl: '', // TODO: Find in Capabilities
+				privacyUrl: '', // TODO: Find in Capabilities
+				inverted: false, // TODO: Find in Capabilities
+				cacheBuster: undefined, // TODO: Find in Capabilities
+				enabledThemes: ['light'], // TODO: Find in Capabilities
+			},
+			shortcutsDisabled: false, // TODO: Find in Capabilities
+		},
+		core: {
+			capabilities: capabilities,
+			config: {
+				version: '25.0.2.3', // TODO: Find in Capabilities
+				versionstring: '25.0.2', // TODO: Find in Capabilities
+				modRewriteWorking: false, // Forced to false. Is it used?
+			},
+		},
+		notifications: {
+			throttled_push_notifications: false, // TODO
+			sound_talk: true, // TODO
+			sound_notification: true, // TODO
+		},
+	}
+
+}
+
+/**
+ * Apply initial state to the document by rendering <input type="hidden"> elements with initial state data.
+ * Used by @nextcloud/initial-state package.
+ */
+export function applyInitialState() {
+	const initialState = getInitialStateFromCapabilities(appData.capabilities, appData.userMetadata)
+
+	const findOrCreateInitialStateContainer = () => {
+		const container = document.getElementById('initial-state')
+		if (container) {
+			return container
+		}
+
+		const newContainer = document.createElement('template')
+		newContainer.id = 'initial-state'
+		document.body.prepend(newContainer)
+		return newContainer
+	}
+
+	const container = findOrCreateInitialStateContainer()
+
+	const createInitialStateItem = (app, key, data) => {
+		let input = document.querySelector(`#initial-state-${app}-${key}`)
+		if (!input) {
+			input = document.createElement('input')
+			input.id = `initial-state-${app}-${key}`
+			input.type = 'hidden'
+			container.appendChild(input)
+		}
+		const escapeUnicode = (str) => str.split('').map(char => {
+			const codePoint = char.codePointAt(0)
+			if (codePoint <= 0x7F) {
+				return char
+			} else if (codePoint <= 0xFFFF) {
+				return '\\u' + codePoint.toString(16).padStart(4, '0')
+			} else {
+				return '\\u{' + codePoint.toString(16) + '}'
+			}
+		}).join('')
+
+		console.log({ app, key, data, json: JSON.stringify(data) })
+		input.value = btoa(escapeUnicode(JSON.stringify(data)))
+	}
+
+	for (const [app, appInitialState] of Object.entries(initialState)) {
+		for (const [key, data] of Object.entries(appInitialState)) {
+			if (data !== undefined) {
+				createInitialStateItem(app, key, data)
+			}
+		}
+	}
+}
+
+/**
  * Make all required initial setup for the web page for authorized user: server-rendered data, globals and ect.
  */
 export async function setupWebPage() {
 	document.title = await window.TALK_DESKTOP.getAppName()
-	initGlobals()
 	appData.restore()
+	applyInitialState()
+	initGlobals()
 	window.OS = await window.TALK_DESKTOP.getOs()
 	applyUserData()
 	applyBodyThemeAttrs()

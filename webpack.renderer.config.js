@@ -108,7 +108,6 @@ const webpackRendererConfig = mergeWithRules({
 			// To reuse modules between Talk Desktop and Talk, otherwise Talk has its own from its node_modules
 			'@nextcloud/axios': path.resolve(__dirname, 'node_modules', '@nextcloud/axios/dist/index.mjs'),
 			// Patched packages
-			...createPatcherAliases('@nextcloud/initial-state'),
 			...createPatcherAliases('@nextcloud/router'),
 		},
 	},

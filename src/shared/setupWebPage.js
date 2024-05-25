@@ -9,6 +9,7 @@ import axios from '@nextcloud/axios'
 import { applyBodyThemeAttrs } from './theme.utils.js'
 import { appData } from '../app/AppData.js'
 import { initGlobals } from './globals/globals.js'
+import { setupInitialState } from './initialState.service.js'
 
 /**
  * @param {string} lang - language code, TS type: `${lang}_${countryCode}`|`${lang}`
@@ -176,7 +177,6 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			sound_notification: true, // TODO
 		},
 	}
-
 }
 
 /**
@@ -185,51 +185,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
  */
 export function applyInitialState() {
 	const initialState = getInitialStateFromCapabilities(appData.capabilities, appData.userMetadata)
-
-	const findOrCreateInitialStateContainer = () => {
-		const container = document.getElementById('initial-state')
-		if (container) {
-			return container
-		}
-
-		const newContainer = document.createElement('template')
-		newContainer.id = 'initial-state'
-		document.body.prepend(newContainer)
-		return newContainer
-	}
-
-	const container = findOrCreateInitialStateContainer()
-
-	const createInitialStateItem = (app, key, data) => {
-		let input = document.querySelector(`#initial-state-${app}-${key}`)
-		if (!input) {
-			input = document.createElement('input')
-			input.id = `initial-state-${app}-${key}`
-			input.type = 'hidden'
-			container.appendChild(input)
-		}
-		const escapeUnicode = (str) => str.split('').map(char => {
-			const codePoint = char.codePointAt(0)
-			if (codePoint <= 0x7F) {
-				return char
-			} else if (codePoint <= 0xFFFF) {
-				return '\\u' + codePoint.toString(16).padStart(4, '0')
-			} else {
-				return '\\u{' + codePoint.toString(16) + '}'
-			}
-		}).join('')
-
-		console.log({ app, key, data, json: JSON.stringify(data) })
-		input.value = btoa(escapeUnicode(JSON.stringify(data)))
-	}
-
-	for (const [app, appInitialState] of Object.entries(initialState)) {
-		for (const [key, data] of Object.entries(appInitialState)) {
-			if (data !== undefined) {
-				createInitialStateItem(app, key, data)
-			}
-		}
-	}
+	setupInitialState(initialState)
 }
 
 /**

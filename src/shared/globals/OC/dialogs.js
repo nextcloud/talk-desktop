@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import Vue from 'vue'
+import { createApp } from 'vue'
 
 let ocDialogsAdapter = null
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	const container = document.body.appendChild(document.createElement('oc-dialog-wrapper'))
 
-	ocDialogsAdapter = new Vue(OcDialogsAdapter).$mount(container)
+	ocDialogsAdapter = createApp(OcDialogsAdapter).mount(container)
 })
 
 export const dialogs = {

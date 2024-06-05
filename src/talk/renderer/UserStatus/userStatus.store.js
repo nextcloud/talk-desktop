@@ -22,15 +22,13 @@ const restorePredefinedStatuses = () => JSON.parse(localStorage.getItem('TalkDes
 
 export const useUserStatusStore = defineStore('userStatus', () => {
 	/** @type {import('vue').Ref<import('./userStatus.types.ts').UserStatus|null>} */
-	const userStatus = ref(restoreUserStatus())
+	const userStatus = ref(null)
 
 	/** @type {import('vue').Ref<import('./userStatus.types.ts').PredefinedUserStatus[]|null>} */
 	const predefinedStatuses = ref(restorePredefinedStatuses())
 
 	/** @type {import('vue').Ref<null|object>} */
 	const backupStatus = ref(null)
-
-	watch(userStatus, (newUserStatus) => cacheUserStatus(newUserStatus), { deep: true })
 
 	const emitUserStatusUpdated = () => emit('user_status:status.updated', {
 		status: userStatus.value.status,
@@ -92,6 +90,13 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 			backupStatus.value = await fetchBackupStatus(getCurrentUser().uid).catch(() => null)
 		}
 	}
+
+	const cachedStatus = restoreUserStatus()
+	if (cachedStatus) {
+		setUserStatus(cachedStatus, true)
+	}
+
+	watch(userStatus, (newUserStatus) => cacheUserStatus(newUserStatus), { deep: true })
 
 	const initPromise = (async () => {
 		await updateUserStatusWithHeartbeat(false, true)

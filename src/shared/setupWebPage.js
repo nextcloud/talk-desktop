@@ -140,7 +140,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			circles_enabled: false, // TODO: Missed in Capabilities. Is it a problem?
 			guests_accounts_enabled: true, // TODO: Missed in Capabilities. It is a problem
 			read_status_privacy: capabilities?.spreed?.config?.chat?.['read-privacy'],
-			play_sounds: true, // TODO: Missed in Capabilities. Is it a problem?
+			play_sounds: true, // Consider playing sound enabled by default on desktop until we have settings
 			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
 			attachment_folder_free_space: userMetadata?.quota?.free ?? 0, // TODO: Is User's Quota free equal to attachment_folder_free_space
 			enable_matterbridge: false, // TODO: Missed in Capabilities. Is it a problem?

@@ -21,7 +21,6 @@
 ## 👾 Drawbacks
 
 - Currently not supported:
-  - Setting User Status ([#26](https://github.com/nextcloud/talk-desktop/issues/26))
   - Search ([#30](https://github.com/nextcloud/talk-desktop/issues/30))
   - Untrusted certificate on Linux ([#23](https://github.com/nextcloud/talk-desktop/issues/23))
   - Dark/light theme ([#17](https://github.com/nextcloud/talk-desktop/issues/17))

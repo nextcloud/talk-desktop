@@ -163,6 +163,8 @@ export function createNotificationStore() {
 			body: notification.message,
 			icon: notification.icon,
 			tag: notification.notificationId,
+			// We have a custom sound
+			silent: true,
 		})
 		n.addEventListener('click', () => {
 			const event = {

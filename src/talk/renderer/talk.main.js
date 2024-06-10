@@ -7,7 +7,12 @@ import '@talk/css/icons.css'
 import './assets/styles.css'
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import { initLocalStyles, initServerStyles, initTalkHashIntegration } from './init.js'
+import {
+	initLocalStyles,
+	initPlaySoundManagementOnUserStatus,
+	initServerStyles,
+	initTalkHashIntegration,
+} from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 import { createViewer } from './Viewer/Viewer.js'
 import { createDesktopApp } from './desktop.app.js'
@@ -21,6 +26,7 @@ await setupWebPage()
 
 await initServerStyles()
 await initLocalStyles()
+initPlaySoundManagementOnUserStatus()
 
 createDesktopApp()
 

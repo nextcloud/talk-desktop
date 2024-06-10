@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow } = require('electron')
+const { BrowserWindow, screen } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadNotification } = require('../app/applyDownloadNotification.js')
@@ -15,6 +15,9 @@ const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
  * @return {import('electron').BrowserWindow}
  */
 function createTalkWindow() {
+	const primaryDisplay = screen.getPrimaryDisplay()
+	const { width: screenWidth, height: screenHeight } = primaryDisplay.workAreaSize
+
 	const talkWindowOptions = {
 		minWidth: 600,
 		minHeight: 400,
@@ -39,8 +42,8 @@ function createTalkWindow() {
 
 	const window = new BrowserWindow({
 		...talkWindowOptions,
-		width: 1280,
-		height: 800,
+		width: Math.min(1680, screenWidth),
+		height: Math.min(1050, screenHeight),
 		show: false,
 	})
 
@@ -53,8 +56,8 @@ function createTalkWindow() {
 
 	applyExternalLinkHandler(window, {
 		...talkWindowOptions,
-		width: 800,
-		height: 600,
+		width: Math.min(800, screenWidth),
+		height: Math.min(600, screenHeight),
 	})
 
 	applyContextMenu(window)

@@ -3,9 +3,70 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
+<script setup>
+import { computed, ref } from 'vue'
+import { storeToRefs } from 'pinia'
+
+import { translate as t } from '@nextcloud/l10n'
+import { generateUrl } from '@nextcloud/router'
+
+import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
+import NcPopover from '@nextcloud/vue/dist/Components/NcPopover.js'
+import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
+
+import MdiCheck from 'vue-material-design-icons/Check.vue'
+import MdiChevronRight from 'vue-material-design-icons/ChevronRight.vue'
+import MdiChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
+import MdiEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
+import MdiPencil from 'vue-material-design-icons/Pencil.vue'
+import MdiLogout from 'vue-material-design-icons/Logout.vue'
+
+import ThemeLogo from './ThemeLogo.vue'
+import UiMenu from './UiMenu.vue'
+import UiMenuItem from './UiMenuItem.vue'
+import UiMenuSeparator from './UiMenuSeparator.vue'
+import UserStatusDialog from '../UserStatus/UserStatusDialog.vue'
+import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
+import { userStatusTranslations } from '../UserStatus/userStatus.utils.js'
+import { appData } from '../../../app/AppData.js'
+
+const props = defineProps({
+	user: {
+		type: Object,
+		required: true,
+	},
+})
+
+const emit = defineEmits(['logout'])
+
+const userStatusStore = useUserStatusStore()
+const { userStatus } = storeToRefs(userStatusStore)
+const serverUrl = appData.serverUrl
+const serverUrlShort = serverUrl.replace(/^https?:\/\//, '')
+const theming = appData.capabilities.theming
+
+const userMenuContainer = ref(null)
+const isUserStatusDialogOpen = ref(false)
+const userStatusSubMenuOpen = ref(false)
+
+const userProfileLink = computed(() => generateUrl('/u/{userid}', { userid: props.user.id }))
+
+/**
+ * Handle user status type change
+ * @param {string} status - new user status
+ */
+function handleUserStatusChange(status) {
+	userStatusStore.saveUserStatus({ ...userStatus.value, status })
+	userStatusSubMenuOpen.value = false
+}
+</script>
+
 <template>
 	<div ref="userMenuContainer" class="user-menu">
-		<NcPopover v-if="userMenuContainer" :container="userMenuContainer" :popper-hide-triggers="triggers => [...triggers, 'click']">
+		<NcPopover v-if="userMenuContainer"
+			:container="userMenuContainer"
+			:popper-hide-triggers="triggers => [...triggers, 'click']"
+			no-auto-focus>
 			<template #trigger="{ attrs }">
 				<button class="user-menu__trigger unstyled-button" v-bind="attrs">
 					<NcAvatar class="user-menu__avatar"
@@ -18,54 +79,84 @@
 
 			<template #default>
 				<UiMenu aria-label="Settings menu">
-					<UiMenuItem tag="a" :href="userProfileLink" target="_blank">
-						<div><strong>{{ user['display-name'] }}</strong></div>
-						<div>{{ t('talk_desktop', 'View profile') }}</div>
-					</UiMenuItem>
-					<UiMenuItem v-if="userStatusStore.userStatus" tag="button" @click.native="isUserStatusDialogOpen = true">
-						<template #icon>
-							<NcUserStatusIcon :status="userStatusStore.userStatus.status" />
+					<template v-if="userStatusSubMenuOpen">
+						<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = false">
+							<template #icon>
+								<MdiChevronLeft :size="20" />
+							</template>
+							{{ t('talk_desktop', 'Back') }}
+						</UiMenuItem>
+						<UiMenuItem v-for="status in ['online', 'away', 'dnd', 'invisible']"
+							:key="status"
+							tag="button"
+							@click.native.stop="handleUserStatusChange(status)">
+							<template #icon>
+								<NcUserStatusIcon :status="status" />
+							</template>
+							{{ userStatusTranslations[status] }}
+							<template v-if="status === userStatus.status" #action-icon>
+								<MdiCheck :size="20" />
+							</template>
+						</UiMenuItem>
+					</template>
+
+					<template v-else>
+						<UiMenuItem tag="a"
+							:href="userProfileLink"
+							target="_blank">
+							<strong>{{ user['display-name'] }}</strong>
+							<div>
+								{{ t('talk_desktop', 'View profile') }}
+							</div>
+						</UiMenuItem>
+
+						<UiMenuSeparator />
+
+						<UiMenuItem tag="a" :href="serverUrl" target="_blank">
+							<template #icon>
+								<ThemeLogo :size="24" />
+							</template>
+							<span class="user-menu__server">
+								<span>{{ theming.name }}</span>
+								<em>{{ serverUrlShort }}</em>
+							</span>
+						</UiMenuItem>
+
+						<UiMenuSeparator />
+
+						<template v-if="userStatus">
+							<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = true">
+								<template #icon>
+									<NcUserStatusIcon :status="userStatus.status" />
+								</template>
+								{{ userStatusTranslations[userStatus.status] }}
+								<template #action-icon>
+									<MdiChevronRight :size="20" />
+								</template>
+							</UiMenuItem>
+							<UiMenuItem key="custom-status" tag="button" @click.native="isUserStatusDialogOpen = true">
+								<template #icon>
+									<span v-if="userStatus.icon" style="font-size: 20px">
+										{{ userStatus.icon }}
+									</span>
+									<MdiEmoticonOutline v-else :size="20" />
+								</template>
+								{{ userStatus.message || t('talk_desktop', 'Set custom status') }}
+								<template v-if="userStatus.message" #action-icon>
+									<MdiPencil :size="20" />
+								</template>
+							</UiMenuItem>
+
+							<UiMenuSeparator />
 						</template>
-						<template #default>
-							{{ visibleUserStatus }}
-						</template>
-					</UiMenuItem>
-					<UiMenuItem tag="button" @click.native="reload">
-						<template #icon>
-							<MdiReload />
-						</template>
-						{{ t('talk_desktop', 'Force reload') }}
-					</UiMenuItem>
-					<UiMenuItem tag="a" :href="$options.packageInfo.bugs" target="_blank">
-						<template #icon>
-							<MdiBug />
-						</template>
-						{{ t('talk_desktop', 'Report a bug') }}
-					</UiMenuItem>
-					<UiMenuItem tag="a" :href="talkWebLink" target="_blank">
-						<template #icon>
-							<MdiWeb />
-						</template>
-						<template #default>
-							{{ t('talk_desktop', 'Open in Web-Browser') }}
-						</template>
-					</UiMenuItem>
-					<UiMenuItem tag="button" @click.native="showHelp">
-						<template #icon>
-							<MdiInformationOutline />
-						</template>
-						<template #default>
-							{{ t('talk_desktop', 'About') }}
-						</template>
-					</UiMenuItem>
-					<UiMenuItem tag="button" @click.native="$emit('logout')">
-						<template #icon>
-							<MdiPower />
-						</template>
-						<template #default>
+
+						<UiMenuItem tag="button" @click.native="emit('logout')">
+							<template #icon>
+								<MdiLogout :size="20" />
+							</template>
 							{{ t('talk_desktop', 'Log out') }}
-						</template>
-					</UiMenuItem>
+						</UiMenuItem>
+					</template>
 				</UiMenu>
 			</template>
 		</NcPopover>
@@ -73,97 +164,6 @@
 		<UserStatusDialog v-if="isUserStatusDialogOpen" @close="isUserStatusDialogOpen = false" />
 	</div>
 </template>
-
-<script>
-import MdiBug from 'vue-material-design-icons/Bug.vue'
-import MdiInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
-import MdiPower from 'vue-material-design-icons/Power.vue'
-import MdiReload from 'vue-material-design-icons/Reload.vue'
-import MdiWeb from 'vue-material-design-icons/Web.vue'
-import { generateUrl } from '@nextcloud/router'
-import { translate as t } from '@nextcloud/l10n'
-import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
-import NcPopover from '@nextcloud/vue/dist/Components/NcPopover.js'
-import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
-import UiMenu from './UiMenu.vue'
-import UiMenuItem from './UiMenuItem.vue'
-import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
-import UserStatusDialog from '../UserStatus/UserStatusDialog.vue'
-import { getVisibleUserStatus } from '../UserStatus/userStatus.utils.js'
-
-export default {
-	name: 'UserMenu',
-
-	packageInfo: window.TALK_DESKTOP.packageInfo,
-
-	components: {
-		UserStatusDialog,
-		UiMenuItem,
-		UiMenu,
-		MdiBug,
-		MdiInformationOutline,
-		MdiPower,
-		MdiReload,
-		MdiWeb,
-		NcAvatar,
-		NcPopover,
-		NcUserStatusIcon,
-	},
-
-	props: {
-		user: {
-			type: Object,
-			required: true,
-		},
-	},
-
-	emits: ['logout'],
-
-	setup() {
-		const userStatusStore = useUserStatusStore()
-		return {
-			userStatusStore,
-		}
-	},
-
-	data() {
-		return {
-			userMenuContainer: null,
-			isUserStatusDialogOpen: false,
-		}
-	},
-
-	computed: {
-		userProfileLink() {
-			return generateUrl('/u/{userid}', { userid: this.user.id })
-		},
-
-		talkWebLink() {
-			return generateUrl('/apps/spreed')
-		},
-
-		visibleUserStatus() {
-			return getVisibleUserStatus(this.userStatusStore.userStatus)
-		},
-	},
-
-	mounted() {
-		this.userMenuContainer = this.$refs.userMenuContainer
-	},
-
-	methods: {
-		t,
-
-		showHelp() {
-			window.TALK_DESKTOP.showHelp()
-		},
-
-		reload() {
-			window.location.reload()
-		},
-	},
-}
-</script>
 
 <style scoped>
 .unstyled-button {
@@ -208,6 +208,11 @@ export default {
 
 .user-menu__avatar {
 	box-sizing: content-box;
+}
+
+.user-menu__server {
+	display: flex;
+	flex-direction: column;
 }
 
 .user-menu__trigger:hover .user-menu__avatar,

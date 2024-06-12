@@ -7,8 +7,8 @@
   "bugs": "https://github.com/nextcloud/talk-desktop/issues",
   "license": "AGPL-3.0",
   "author": {
-    "name": "Grigorii Shartsev",
-    "email": "grigorii.shartsev@nextcloud.com"
+    "name": "Grigorii K. Shartsev",
+    "email": "me@shgk.me"
   },
   "main": "./.webpack/main",
   "repository": {

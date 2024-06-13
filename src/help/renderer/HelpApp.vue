@@ -22,7 +22,7 @@
 			</li>
 		</ul>
 		<NcTextArea :aria-label="t('talk_desktop', 'System report')"
-			:value="report"
+			:model-value="report"
 			rows="11"
 			readonly
 			class="about__report"

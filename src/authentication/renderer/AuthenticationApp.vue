@@ -16,7 +16,7 @@
 					</h2>
 					<NcTextField :label="t('talk_desktop', 'Nextcloud server address')"
 						label-visible
-						:value.sync="rawServerUrl"
+						v-model="rawServerUrl"
 						placeholder="https://try.nextcloud.com"
 						inputmode="url"
 						:success="state === 'success'"

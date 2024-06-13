@@ -7,10 +7,10 @@
 import '../../shared/assets/default/default.css'
 import '../../shared/assets/default/server.css'
 
-import Vue from 'vue'
+import { createApp } from 'vue'
 import AuthenticationApp from './AuthenticationApp.vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
 await setupWebPage()
 
-new Vue(AuthenticationApp).$mount('#app')
+createApp(AuthenticationApp).mount('#app')

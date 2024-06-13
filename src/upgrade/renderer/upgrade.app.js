@@ -6,10 +6,10 @@
 import '../../shared/assets/default/default.css'
 import '../../shared/assets/default/server.css'
 
-import Vue from 'vue'
+import { createApp } from 'vue'
 import UpgradeApp from './UpgradeApp.vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
 await setupWebPage()
 
-new Vue(UpgradeApp).$mount('#app')
+createApp(UpgradeApp).mount('#app')

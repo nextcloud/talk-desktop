@@ -5,10 +5,10 @@
   "version": "0.29.0",
   "description": "Official Desktop client for Nextcloud Talk",
   "bugs": "https://github.com/nextcloud/talk-desktop/issues",
-  "license": "AGPL-3.0",
+  "license": "AGPL-3.0-or-later",
   "author": {
-    "name": "Grigorii Shartsev",
-    "email": "grigorii.shartsev@nextcloud.com"
+    "name": "Grigorii K. Shartsev",
+    "email": "me@shgk.me"
   },
   "main": "./.webpack/main",
   "repository": {

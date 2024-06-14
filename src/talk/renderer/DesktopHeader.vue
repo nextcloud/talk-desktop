@@ -17,6 +17,10 @@
 
 			<div class="spacer" />
 
+			<div class="header__item" data-theme-dark>
+				<MainMenu />
+			</div>
+
 			<div class="header__item">
 				<UserMenu :user="user" @logout="logout" />
 			</div>
@@ -25,6 +29,7 @@
 </template>
 
 <script>
+import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
 import { useUserStatusStore } from './UserStatus/userStatus.store.js'
@@ -34,6 +39,7 @@ export default {
 	name: 'DesktopHeader',
 
 	components: {
+		MainMenu,
 		UserMenu,
 	},
 

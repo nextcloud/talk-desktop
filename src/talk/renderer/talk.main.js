@@ -34,6 +34,8 @@ window.OCA.Viewer = createViewer()
 
 await import('@talk/src/main.js')
 
-initTalkHashIntegration(OCA.Talk.instance)
+initTalkHashIntegration(window.OCA.Talk.instance)
+
+window.OCA.Talk.Desktop.talkRouter.value = window.OCA.Talk.instance.$router
 
 await import('./notifications/notifications.store.js')

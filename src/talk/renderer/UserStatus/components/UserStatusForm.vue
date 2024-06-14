@@ -115,7 +115,10 @@ const revertStatus = async () => {
 		</NcButton>
 
 		<div class="user-status-form__buttons">
-			<NcButton type="primary" :disabled="!isDirty" @click="save">
+			<NcButton type="primary"
+				wide
+				:disabled="!isDirty"
+				@click="save">
 				{{ t('talk_desktop', 'Set user status') }}
 			</NcButton>
 		</div>

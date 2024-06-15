@@ -13,8 +13,9 @@ OC.L10N.register(
     "This week" : "Šonedēļ",
     "Status message" : "Statusa ziņojums",
     "Share screen" : "Koplietot ekrānu",
-    "View profile" : "Skatīt profilu",
+    "Menu" : "Izvēlne",
     "Report a bug" : "Ziņot par kļūdu",
+    "View profile" : "Skatīt profilu",
     "Log out" : "Izrakstīties",
     "Invisible" : "Neredzama"
 },

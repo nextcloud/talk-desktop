@@ -7,6 +7,7 @@ OC.L10N.register(
     "No" : "Nee",
     "Yes" : "Jo",
     "Today" : "Haut",
+    "Menu" : "Menü",
     "Report a bug" : "E Feeler melden",
     "Away" : "ewech"
 },

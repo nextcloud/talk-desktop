@@ -12,6 +12,7 @@ OC.L10N.register(
     "Today" : "අද",
     "This week" : "මෙම සතිය",
     "Cancel" : "අවලංගු",
+    "Back" : "ආපසු",
     "Log out" : "නික්මෙන්න"
 },
 "nplurals=2; plural=(n != 1);");

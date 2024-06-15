@@ -16,8 +16,10 @@ OC.L10N.register(
     "Cancel" : "Ακύρωση",
     "Share screen" : "Διαμοιρασμός οθόνης",
     "Loading …" : "Φόρτωση…",
-    "View profile" : "Προβολή προφίλ",
+    "Menu" : "Μενού",
     "Report a bug" : "Αναφορά σφάλματος",
+    "Back" : "Επιστροφή",
+    "View profile" : "Προβολή προφίλ",
     "Log out" : "Έξοδος",
     "Away" : "Λείπω",
     "Invisible" : "Αόρατο"

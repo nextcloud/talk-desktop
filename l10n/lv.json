@@ -11,8 +11,9 @@
     "This week" : "Šonedēļ",
     "Status message" : "Statusa ziņojums",
     "Share screen" : "Koplietot ekrānu",
-    "View profile" : "Skatīt profilu",
+    "Menu" : "Izvēlne",
     "Report a bug" : "Ziņot par kļūdu",
+    "View profile" : "Skatīt profilu",
     "Log out" : "Izrakstīties",
     "Invisible" : "Neredzama"
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"

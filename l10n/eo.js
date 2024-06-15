@@ -15,8 +15,8 @@ OC.L10N.register(
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
     "Loading …" : "Ŝargado...",
-    "View profile" : "Vidi profilon",
     "Report a bug" : "Raporti problemon",
+    "View profile" : "Vidi profilon",
     "Invisible" : "Nevidebla"
 },
 "nplurals=2; plural=(n != 1);");

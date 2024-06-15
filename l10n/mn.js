@@ -10,6 +10,7 @@ OC.L10N.register(
     "Today" : "өнөөдөр",
     "This week" : "7 хоног",
     "Cancel" : "Цуцлах",
+    "Back" : "Буцах",
     "Invisible" : "Үл харагдах"
 },
 "nplurals=2; plural=(n != 1);");

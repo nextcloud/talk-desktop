@@ -9,6 +9,7 @@ OC.L10N.register(
     "Today" : "Hiziv",
     "This week" : "Er sizhun-mañ",
     "Share screen" : "Rannañ ar skramm",
+    "Menu" : "Roll",
     "Report a bug" : "Dugas ur gudenn",
     "Away" : "Pell",
     "Do not disturb" : "Na rannit ket",

@@ -17,6 +17,7 @@ OC.L10N.register(
     "This week" : "ამ კვირაში",
     "Cancel" : "გაუქმება",
     "Share screen" : "ეკრანის გაზიარება",
+    "Menu" : "მენიუ",
     "Report a bug" : "განაცხადეთ შეცდომის შესახებ",
     "Log out" : "გამოსვლა",
     "Invisible" : "უჩინარი"

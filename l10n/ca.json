@@ -26,10 +26,13 @@
     "Cancel" : "Cancel·la",
     "Share screen" : "Comparteix la pantalla",
     "Loading …" : "S'està carregant…",
-    "View profile" : "Visualitza el perfil",
+    "Menu" : "Menú",
+    "Open in Web-Browser" : "Obre al navegador web",
     "Force reload" : "Força tornar a carregar",
     "Report a bug" : "Informa d'un error",
-    "Open in Web-Browser" : "Obre al navegador web",
+    "Back" : "Torna",
+    "View profile" : "Visualitza el perfil",
+    "Set custom status" : "Definir l'estat personalitzat",
     "Log out" : "Tanca la sessió",
     "Online" : "En línia"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

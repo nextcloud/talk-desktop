@@ -17,8 +17,10 @@ OC.L10N.register(
     "Status message" : "Статус порака",
     "Cancel" : "Откажи",
     "Share screen" : "Сподели екран",
-    "View profile" : "Прегледај профил",
     "Report a bug" : "Пријави грешка",
+    "Back" : "Назад",
+    "View profile" : "Прегледај профил",
+    "Set custom status" : "Постави сопствен статус",
     "Online" : "Присутен",
     "Away" : "Далеку",
     "Invisible" : "Невидлив"

@@ -18,10 +18,11 @@ OC.L10N.register(
     "Cancel" : "Annuleren",
     "Share screen" : "Scherm delen",
     "Loading …" : "Laden …",
-    "View profile" : "Bekijk profiel",
+    "Menu" : "Menu",
+    "Open in Web-Browser" : "Openen in webbrowser",
     "Force reload" : "Herladen forceren",
     "Report a bug" : "Rapporteer een fout",
-    "Open in Web-Browser" : "Openen in webbrowser",
+    "View profile" : "Bekijk profiel",
     "Log out" : "Afmelden",
     "Online" : "Online",
     "Invisible" : "Verborgen"

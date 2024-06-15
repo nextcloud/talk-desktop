@@ -5,6 +5,7 @@ OC.L10N.register(
     "Close" : "Clauder",
     "Today" : "Hodie",
     "This week" : "Iste septimana",
+    "Menu" : "Menu",
     "Report a bug" : "Reportar un defecto",
     "Invisible" : "Invisibile"
 },

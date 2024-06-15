@@ -16,6 +16,7 @@ OC.L10N.register(
     "This week" : "An t-seachdain seo",
     "Status message" : "Teachdaireachd staide",
     "Cancel" : "Sguir dheth",
+    "Back" : "Air ais",
     "Log out" : "Clàraich a-mach",
     "Online" : "Air loidhne",
     "Away" : "Air falbh",

@@ -20,6 +20,7 @@ OC.L10N.register(
     "This week" : "สัปดาห์นี้",
     "Status message" : "ข้อความสถานะ",
     "Cancel" : "ยกเลิก",
+    "Menu" : "เมนู",
     "Report a bug" : "รายงานข้อผิดพลาด",
     "Online" : "ออนไลน์",
     "Away" : "ไม่อยู่",

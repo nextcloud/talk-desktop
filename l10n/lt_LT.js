@@ -24,9 +24,11 @@ OC.L10N.register(
     "Cancel" : "Atsisakyti",
     "Share screen" : "Bendrinti ekraną",
     "Loading …" : "Įkeliama…",
-    "View profile" : "Rodyti profilį",
-    "Report a bug" : "Pranešti apie klaidą",
+    "Menu" : "Meniu",
     "Open in Web-Browser" : "Atverti saityno naršyklėje",
+    "Report a bug" : "Pranešti apie klaidą",
+    "Back" : "Atgal",
+    "View profile" : "Rodyti profilį",
     "Log out" : "Atsijungti",
     "Away" : "Atsitraukęs",
     "Invisible" : "Nematomas"

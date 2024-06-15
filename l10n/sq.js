@@ -16,7 +16,9 @@ OC.L10N.register(
     "This week" : "Këtë javë",
     "Cancel" : "Anuloje",
     "Share screen" : "Ndaje ekranin",
+    "Menu" : "Menu",
     "Report a bug" : "Njoftoni një të metë",
+    "Back" : "Mbrapsht",
     "Log out" : "Shkyçu",
     "Invisible" : "I padukshëm"
 },

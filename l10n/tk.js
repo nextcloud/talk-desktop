@@ -15,6 +15,7 @@ OC.L10N.register(
     "This week" : "Bu hepdede",
     "Status message" : "Status habary",
     "Cancel" : "ýatyrmak",
+    "Back" : "Yzyna",
     "Log out" : "Hasapdan çykmak",
     "Online" : "Onlaýn",
     "Away" : "Uzakda",

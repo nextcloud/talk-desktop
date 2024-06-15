@@ -19,8 +19,10 @@ OC.L10N.register(
     "This week" : "Săptămâna asta",
     "Emoji for your status message" : "Emoji pentru mesajul de status",
     "Cancel" : "Anulare",
-    "View profile" : "Vezi profilul",
+    "Menu" : "Meniu",
     "Report a bug" : "Raportează un defect",
+    "Back" : "Înapoi",
+    "View profile" : "Vezi profilul",
     "Away" : "Departe",
     "Offline" : "Offline"
 },

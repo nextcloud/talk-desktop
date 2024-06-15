@@ -22,8 +22,9 @@ OC.L10N.register(
     "Cancel" : "キャンセル",
     "Share screen" : "画面共有",
     "Loading …" : "読み込み中…",
-    "View profile" : "プロフィールを表示",
+    "Menu" : "メニュー",
     "Report a bug" : "不具合を報告",
+    "View profile" : "プロフィールを表示",
     "Do not disturb" : "取り込み中",
     "Invisible" : "ステータスを隠す",
     "Unknown status" : "不明なステータス"

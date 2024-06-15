@@ -15,6 +15,7 @@ OC.L10N.register(
     "This week" : "Esta semana",
     "Status message" : "Mensaje de estado",
     "Share screen" : "Compartir la pantalla",
+    "Menu" : "Menú",
     "Report a bug" : "Reporta un detalle",
     "Log out" : "Cerrar sesión",
     "Away" : "Lejos",

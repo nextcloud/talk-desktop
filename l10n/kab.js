@@ -15,6 +15,7 @@ OC.L10N.register(
     "Today" : "Ass-a",
     "This week" : "Dduṛt agi",
     "Loading …" : "Asali ...",
+    "Back" : "Retour",
     "Log out" : "Senser",
     "Away" : "Akin",
     "Invisible" : "Ur d-ittban ara"

@@ -52,6 +52,7 @@ OC.L10N.register(
     "Report a bug" : "舉報錯誤",
     "Back" : "上星期",
     "View profile" : "查看個人資料",
+    "Set custom status" : "設置自訂狀態",
     "Log out" : "登出",
     "Upgrade required" : "需要升級",
     "The client version is too old and no longer supported by this server. Update is required." : "客戶端版本太舊了，此伺服器不再支援。需要更新。",

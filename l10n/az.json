@@ -6,7 +6,9 @@
     "No" : "Xeyir",
     "Yes" : "Bəli",
     "Today" : "Bu gün",
+    "Menu" : "Menyu",
     "Report a bug" : "Səhv haqqında bildir",
+    "Back" : "Geri",
     "Invisible" : "Görünməz"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

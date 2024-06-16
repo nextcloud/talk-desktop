@@ -8,6 +8,7 @@ OC.L10N.register(
     "User status" : "Gebruikerstatus",
     "Don't clear" : "Moenie wis nie",
     "This week" : "Vandeesweek",
+    "Menu" : "Kieslys",
     "Log out" : "Teken af",
     "Invisible" : "Onsigbaar"
 },

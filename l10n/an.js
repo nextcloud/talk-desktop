@@ -6,6 +6,7 @@ OC.L10N.register(
     "No" : "No",
     "Yes" : "Si",
     "Today" : "Hue",
-    "Cancel" : "Canzelar"
+    "Cancel" : "Canzelar",
+    "Back" : "Ta zaga"
 },
 "nplurals=2; plural=(n != 1);");

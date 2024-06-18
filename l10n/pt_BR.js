@@ -52,6 +52,7 @@ OC.L10N.register(
     "Report a bug" : "Reportar um erro",
     "Back" : "Voltar",
     "View profile" : "Visualizar perfil",
+    "Set custom status" : "Definir status personalizado",
     "Log out" : "Sair",
     "Upgrade required" : "Atualização requerida",
     "The client version is too old and no longer supported by this server. Update is required." : "Esta versão do cliente é muito antiga e não é mais suportada por este servidor. Atualização requerida.",

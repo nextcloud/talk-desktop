@@ -11,6 +11,7 @@ OC.L10N.register(
     "Set user status" : "Iestatiet lietotāja stāvokli",
     "30 minutes" : "30 minūtes",
     "1 hour" : "1 stunda",
+    "4 hours" : "4 stundas",
     "Today" : "Šodien",
     "This week" : "Šonedēļ",
     "Status message" : "Statusa ziņojums",

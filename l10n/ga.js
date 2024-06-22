@@ -52,6 +52,7 @@ OC.L10N.register(
     "Report a bug" : "Tuairiscigh fabht",
     "Back" : "Ar ais",
     "View profile" : "Féach ar phróifíl",
+    "Set custom status" : "Socraigh stádas saincheaptha",
     "Log out" : "Logáil Amach",
     "Upgrade required" : "Uasghrádú ag teastáil",
     "The client version is too old and no longer supported by this server. Update is required." : "Tá leagan an chliaint ró-shean agus ní thacaíonn an freastalaí seo leis a thuilleadh. Tá nuashonrú ag teastáil.",

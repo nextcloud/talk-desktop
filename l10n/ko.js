@@ -22,6 +22,7 @@ OC.L10N.register(
     "View profile" : "프로필 보기",
     "Away" : "자리비움",
     "Do not disturb" : "방해 없음",
-    "Invisible" : "숨겨짐"
+    "Invisible" : "숨겨짐",
+    "Unknown status" : "알 수 없는 상태"
 },
 "nplurals=1; plural=0;");

@@ -216,6 +216,7 @@ app.whenReady().then(async () => {
 				macDockBounceId = app.dock.bounce()
 			}
 		} else {
+			// TODO: check if flashFrame also works on Mac since Electron 31
 			mainWindow.flashFrame(shouldFlash)
 		}
 	})

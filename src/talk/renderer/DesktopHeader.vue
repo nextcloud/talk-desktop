@@ -6,14 +6,14 @@
 <template>
 	<header id="header" class="header">
 		<div class="header__inner">
-			<div v-if="!OS.isMac"
-				class="header__title-wrapper"
-				role="button"
-				tabindex="0"
-				@click="pushToRoot">
-				<span class="header__title">Nextcloud Talk</span>
-				<span class="header__preview-badge">Preview</span>
-			</div>
+			<!--			<div v-if="!OS.isMac"-->
+			<!--				class="header__title-wrapper"-->
+			<!--				role="button"-->
+			<!--				tabindex="0"-->
+			<!--				@click="pushToRoot">-->
+			<!--				<span class="header__title">Nextcloud Talk</span>-->
+			<!--				<span class="header__preview-badge">Preview</span>-->
+			<!--			</div>-->
 
 			<div class="spacer" />
 
@@ -78,13 +78,34 @@ export default {
 }
 </script>
 
+<style>
+:root {
+	--talk-desktop-menu: 54px;
+}
+
+.top-bar {
+	padding-right: var(--talk-desktop-menu) !important;
+}
+
+.app-sidebar-header__desc {
+	padding-right: calc(50px + var(--talk-desktop-menu)) !important;
+}
+
+.app-sidebar__close {
+	right: calc(6px + var(--talk-desktop-menu)) !important;
+}
+</style>
+
 <style scoped>
 .header {
-	height: 50px;
+	height: 60px;
 	box-sizing: border-box;
-	margin-bottom: -50px;
+	/*margin-bottom: -50px;*/
 	color: #FFF;
-	user-select: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1000;
 }
 
 .header__inner {

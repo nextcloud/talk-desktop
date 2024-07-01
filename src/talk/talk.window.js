@@ -31,7 +31,7 @@ function createTalkWindow() {
 		titleBarOverlay: {
 			color: '#00669E00', // Transparent
 			symbolColor: '#FFFFFF', // White
-			height: 50,
+			height: 60,
 		},
 		// Position of the top left corner of the traffic light on Mac
 		trafficLightPosition: {

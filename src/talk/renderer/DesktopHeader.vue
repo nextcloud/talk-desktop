@@ -83,7 +83,7 @@ export default {
 	height: 50px;
 	box-sizing: border-box;
 	margin-bottom: -50px;
-	color: #FFF;
+	color: var(--color-header-contrast);
 	user-select: none;
 }
 

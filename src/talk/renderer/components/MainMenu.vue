@@ -32,7 +32,7 @@ const reload = () => window.location.reload()
 		type="tertiary-no-background"
 		container="body">
 		<template #icon>
-			<MdiMenu :size="20" />
+			<MdiMenu :size="20" fill-color="var(--color-header-contrast)" />
 		</template>
 
 		<NcActionLink :href="talkWebLink" target="_blank">

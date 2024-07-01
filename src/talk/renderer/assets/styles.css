@@ -15,3 +15,12 @@
 :focus-visible {
 	outline-color: var(--color-main-text);
 }
+
+#header {
+	/*
+		Adjusting of text and icons appearing on Nextcloud header to contrast with.
+		Nextcloud (28-29) server has a workaround with '--background-image-color-text' variable.
+		Starting from Nextcloud 30 server has '--color-background-plain-text' variable.
+	*/
+	--color-header-contrast: var(--color-background-plain-text, var(--background-image-color-text, #ffffff))
+}

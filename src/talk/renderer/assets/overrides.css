@@ -9,8 +9,13 @@
 :root {
 	/* It is IMPORTANT to set "px" here, not just "0" */
 	--body-container-margin: 0px;
+	--body-height: 100%;
 }
 
 #content-vue {
 	border-radius: 0 !important;
+}
+
+.content {
+	margin-top: 0 !important;
 }

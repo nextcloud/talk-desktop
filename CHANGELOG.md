@@ -5,6 +5,22 @@
 
 # Changelog
 
+## v0.32.0 - 2024-07-11
+
+### Fixes
+
+* fix(DesktopHeader): make text and icons contrast by @Antreesy in https://github.com/nextcloud/talk-desktop/pull/703
+
+### Dependencies
+
+* build(deps-dev): Bump zx from 8.1.3 to 8.1.4 by @dependabot in https://github.com/nextcloud/talk-desktop/pull/705
+* build(deps-dev): Bump eslint-plugin-promise from 6.2.0 to 6.4.0 by @dependabot in https://github.com/nextcloud/talk-desktop/pull/708
+* build(deps-dev): Bump eslint-plugin-vue from 9.26.0 to 9.27.0 by @dependabot in https://github.com/nextcloud/talk-desktop/pull/707
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v19.0.5 Talk changelog: https://github.com/nextcloud/spreed/blob/v19.0.5/CHANGELOG.md
+
 ## v0.31.0 - 2024-06-30
 
 ### Build-in Talk update

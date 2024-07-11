@@ -31,7 +31,7 @@
 
 Full multi-account currently [is not currently supported](https://github.com/nextcloud/talk-desktop/issues/7).
 
-However, using portable `zip` distribution, you can have several Nextcloud Talk instances run simultaneously. Just rename the executable from default  `Nextcloud Talk` to a custom name. For example: 
+However, using portable `zip` distribution, you can have several Nextcloud Talk instances run simultaneously. Just rename the executable from default  `Nextcloud Talk` to a custom name. For example:
 
 ```
 /path/to/apps/
@@ -133,54 +133,62 @@ npm run make:all
 ## ✈️ Release
 
 1. Create `release/vX.Y.Z` branch.
-2. Update `CHANGELOG.md`.  
-   1. If a built-in Talk version is to be changed - add a note:
+2. Go to https://github.com/nextcloud/talk-desktop/releases/new and draft a new release
+   1. Choose a tag: Type the new version tag `v$(version)`
+   2. Previous tag: Select the last release
+   3. Generate release notes and copy the input
+3. Update `CHANGELOG.md` with:
+   1. The output of the previous step
+   2. If a built-in Talk version is to be changed - add a note:
       ```md
       ### Build-in Talk update
 
-      Built-in Talk in binaries is updated to $(VERSION) Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
-      ``` 
-3. Update `package.json`:  
-   - For minor update:
-     ```sh
-     npm version minor
-     ```
-   - For patch update:
-     ```sh
-     npm version patch
-     ```
-4. Create **a release PR**.
-5. Merge **the release PR**.
-6. Create and push **a tag**:
-   ```sh
-   git tag -a v$(version) -m "Tagging the $(version) release."
-   git push origin v$(version)
-   git push releases v$(version)
-   ```
-7. **Draft a new release** on GitHub in [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases)
+      Built-in Talk in binaries is updated to $(talkVersion) Talk changelog: https://github.com/nextcloud/spreed/blob/$(talkVersion)/CHANGELOG.md
+      ```
+   3. Commit `CHANGELOG.md`
+4. Update version in `package.json` and `package-locked.json` using npm:
+   1. For minor update:
+      ```sh
+      npm version minor --no-git-tag
+      ```
+   2. For patch update:
+      ```sh
+      npm version patch --no-git-tag
+      ```
+   3. Commit `package.json` and `package-locked.json`
+5. Push your branch and create a PR.
+   1. Get approvals and merge the release PR.
+6. Pull the branch you merged into
+7. Create and push **a tag**:
+    ```sh
+    git tag -a v$(version) -m "Tagging the $(version) release."
+    git push origin v$(version)
+    git push releases v$(version)
+    ```
+8. **Draft a new release** on GitHub in [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases)
    1. Add **release title**: `v$(version) - Talk v$(talkVersion)`, e.g. `v0.10.0 - Talk v17.1.0-rc.1`
-   2. Choose a **tag**
+   2. Choose a tag: `v$(version)`
    3. Add the respective `CHANGELOG.md` section
    4. Use the **Generate release notes** button and wrap put the result into
-      ```md
-      ## What's Changed
+       ```md
+       ## What's Changed
 
-      <details>
-        <!-- Generated content -->
-      </details>
-      ``` 
-8. **Draft a new release** on GitHub in [nextcloud/talk-desktop](https://github.com/nextcloud/talk-desktop/releases)
+       <details>
+          <!-- Generated content -->
+       </details>
+       ``` 
+9. **Draft a new release** on GitHub in [nextcloud/talk-desktop](https://github.com/nextcloud/talk-desktop/releases)
    1. Copy everything from the previous step
    2. Add:
-      ```md
-      > 📥 Download Binaries on https://github.com/nextcloud-releases/talk-desktop/releases/tag/v$(version)
-      ```
-9. Package release, specify version and platforms:
-   ```sh
-   npm run release:package -- --version v$(talkVersion) --windows --linux --mac
-   ```
-10. Upload packages to the GitHub Releases on [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases/lastest)
-11. Publish both releases on GitHub Releases
+       ```md
+       > 📥 Download Binaries on https://github.com/nextcloud-releases/talk-desktop/releases/tag/v$(version)
+       ```
+10. Package release, specify version and platforms:
+    ```sh
+    npm run release:package -- --version v$(talkVersion) --windows --linux --mac
+    ```
+11. Upload packages to the GitHub Releases on [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases/lastest)
+12. Publish both releases on GitHub Releases
 
 ## 👥 Contribution Guidelines
 

@@ -2,7 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Nextcloud server address" : "Naslov strežnika Nextcloud",
-    "Log in" : "Vpiši se",
+    "Log in" : "Prijava",
     "Logging in …" : "Poteka prijavljanje ...",
     "Invalid server address" : "neveljaven naslov strežnika",
     "Unexpected error" : "Nepričakovana napaka",

@@ -7,6 +7,8 @@
 	<li class="menu-item-separator" />
 </template>
 
+<script setup></script>
+
 <style scoped lang="scss">
 .menu-item-separator {
 	border-top: 1px solid var(--color-border-dark);

@@ -22,26 +22,18 @@
 </template>
 
 <script>
-import MdiWeb from 'vue-material-design-icons/Web.vue'
-import MdiInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
-
 export default {
-	name: 'UiMenuItem',
-
-	components: {
-		MdiInformationOutline,
-		MdiWeb,
-	},
-
 	inheritAttrs: false,
-
-	props: {
-		tag: {
-			type: [String, Object, Function],
-			default: 'button',
-		},
-	},
 }
+</script>
+
+<script setup>
+defineProps({
+	tag: {
+		type: [String, Object, Function],
+		default: 'button',
+	},
+})
 </script>
 
 <style scoped>

@@ -11,10 +11,7 @@
 	</nav>
 </template>
 
-<script>
-export default {
-	name: 'UiMenu',
-}
+<script setup>
 </script>
 
 <style scoped>

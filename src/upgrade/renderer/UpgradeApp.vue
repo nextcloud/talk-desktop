@@ -9,7 +9,7 @@
 		<p>{{ t('talk_desktop', 'The client version is too old and no longer supported by this server. Update is required.') }}</p>
 		<NcButton type="primary"
 			wide
-			:href="$options.packageInfo.repository"
+			:href="packageInfo.repository"
 			target="_blank">
 			<template #icon>
 				<MdiUpdate />
@@ -27,34 +27,16 @@
 	</div>
 </template>
 
-<script>
+<script setup>
 import MdiUpdate from 'vue-material-design-icons/Update.vue'
 import MdiWeb from 'vue-material-design-icons/Web.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import { translate as t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 
-export default {
-	name: 'UpgradeApp',
+const packageInfo = window.TALK_DESKTOP.packageInfo
 
-	components: {
-		MdiUpdate,
-		MdiWeb,
-		NcButton,
-	},
-
-	packageInfo: window.TALK_DESKTOP.packageInfo,
-
-	computed: {
-		browserLink() {
-			return generateUrl('apps/spreed')
-		},
-	},
-
-	methods: {
-		t,
-	},
-}
+const browserLink = generateUrl('apps/spreed')
 </script>
 
 <style scoped>

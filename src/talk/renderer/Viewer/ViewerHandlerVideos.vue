@@ -9,30 +9,25 @@
 	</div>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue'
 import { generateRemoteUrl } from '@nextcloud/router'
 import { getCurrentUser } from '@nextcloud/auth'
 
-export default {
-	name: 'ViewerHandlerVideos',
-
-	props: {
-		file: {
-			type: Object,
-			required: true,
-		},
+const props = defineProps({
+	file: {
+		type: Object,
+		required: true,
 	},
+})
 
-	computed: {
-		src() {
-			if (!this.file) {
-				return null
-			}
+const src = computed(() => {
+	if (!props.file) {
+		return null
+	}
 
-			return generateRemoteUrl(`dav/files/${getCurrentUser().uid}/${this.file.filename}`)
-		},
-	},
-}
+	return generateRemoteUrl(`dav/files/${getCurrentUser().uid}/${props.file.filename}`)
+})
 </script>
 
 <style scoped>

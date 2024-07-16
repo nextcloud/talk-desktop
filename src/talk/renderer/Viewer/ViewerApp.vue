@@ -29,60 +29,49 @@
 	</NcModal>
 </template>
 
-<script>
+<script setup>
+import { computed, ref } from 'vue'
 import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
 import NcActionLink from '@nextcloud/vue/dist/Components/NcActionLink.js'
 import MdiOpenInNew from 'vue-material-design-icons/OpenInNew.vue'
-
 import { generateUrl } from '@nextcloud/router'
 import { translate as t } from '@nextcloud/l10n'
 
 const noop = () => {}
 
-export default {
-	name: 'ViewerApp',
+const isOpen = ref(false)
+const onClose = ref(noop)
+const file = ref(null)
 
-	components: {
-		MdiOpenInNew,
-		NcModal,
-		NcActionLink,
-	},
+const viewComponent = computed(() => file.value && OCA.Viewer.availableHandlers.find((handler) => handler.mimes.includes(file.value.mime))?.component)
 
-	data() {
-		return {
-			isOpen: false,
-			onClose: noop,
-			file: null,
-		}
-	},
+const link = computed(() => file.value && generateUrl(`/f/${file.value.fileid}`))
 
-	computed: {
-		viewComponent() {
-			return this.file && OCA.Viewer.availableHandlers.find((handler) => handler.mimes.includes(this.file.mime))?.component
-		},
-
-		link() {
-			return this.file && generateUrl(`/f/${this.file.fileid}`)
-		},
-	},
-
-	methods: {
-		t,
-
-		open({ fileInfo, onClose = noop } = {}) {
-			this.onClose = onClose
-			this.file = fileInfo
-			this.isOpen = true
-		},
-
-		close() {
-			this.file = null
-
-			this.onClose()
-			this.onClose = noop
-		},
-	},
+/**
+ * Open the viewer modal
+ * @param {object} options - Options
+ * @param {object} options.fileInfo - File info
+ * @param {Function} options.onClose - Callback called then the modal is closed
+ */
+function open({ fileInfo, onClose = noop } = {}) {
+	onClose.value = onClose
+	file.value = fileInfo
+	isOpen.value = true
 }
+
+/**
+ * Close the viewer modal
+ */
+function close() {
+	file.value = null
+	onClose.value()
+	onClose.value = noop
+}
+
+defineExpose({
+	open,
+	close,
+})
 </script>
 
 <style>

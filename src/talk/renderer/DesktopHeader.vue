@@ -28,54 +28,51 @@
 	</header>
 </template>
 
-<script>
+<script setup>
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
 import { useUserStatusStore } from './UserStatus/userStatus.store.js'
 import { useUserStatusHeartbeat } from './UserStatus/useUserStatusHeartbeat.js'
+import { onMounted, onUnmounted } from 'vue'
 
-export default {
-	name: 'DesktopHeader',
+useUserStatusStore()
+useUserStatusHeartbeat()
 
-	components: {
-		MainMenu,
-		UserMenu,
-	},
+const user = appData.userMetadata
+const OS = window.OS
 
-	setup() {
-		const userStatusStore = useUserStatusStore()
-		useUserStatusHeartbeat()
-
-		return {
-			userStatusStore,
-			user: appData.userMetadata,
-			OS: window.OS,
-		}
-	},
-
-	mounted() {
-		window.addEventListener('keydown', (event) => {
-			if (event.key === 'Escape' && document.activeElement === document.body) {
-				this.pushToRoot()
-			}
-		}, { capture: true })
-	},
-
-	methods: {
-		getTalkRouter() {
-			return window.OCA.Talk.instance.$router
-		},
-
-		pushToRoot() {
-			this.getTalkRouter().push({ name: 'root' }).catch(() => {})
-		},
-
-		logout() {
-			window.TALK_DESKTOP.logout()
-		},
-	},
+/**
+ * Push to root in Talk app to unselect any chat
+ */
+function pushToRoot() {
+	window.OCA.Talk.instance?.$router?.push({ name: 'root' }).catch(() => {})
 }
+
+/**
+ * Logout in Talk Desktop
+ */
+function logout() {
+	window.TALK_DESKTOP.logout()
+}
+
+/**
+ * Handle the global escape key to unselect any chat
+ * @param {KeyboardEvent} event - Keyboard event
+ */
+function handleGlobalEscape(event) {
+	if (event.key === 'Escape' && document.activeElement === document.body) {
+		pushToRoot()
+	}
+}
+
+onMounted(() => {
+	window.addEventListener('keydown', handleGlobalEscape, { capture: true })
+})
+
+onUnmounted(() => {
+	window.removeEventListener('keydown', handleGlobalEscape, { capture: true })
+})
 </script>
 
 <style scoped>

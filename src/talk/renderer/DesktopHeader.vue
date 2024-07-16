@@ -3,6 +3,53 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
+<script setup>
+import MainMenu from './components/MainMenu.vue'
+import UserMenu from './components/UserMenu.vue'
+import { appData } from '../../app/AppData.js'
+import { useUserStatusStore } from './UserStatus/userStatus.store.js'
+import { useUserStatusHeartbeat } from './UserStatus/useUserStatusHeartbeat.js'
+import { onMounted, onUnmounted } from 'vue'
+
+useUserStatusStore()
+useUserStatusHeartbeat()
+
+const user = appData.userMetadata
+const OS = window.OS
+
+/**
+ * Push to root in Talk app to unselect any chat
+ */
+function pushToRoot() {
+	window.OCA.Talk.instance?.$router?.push({ name: 'root' }).catch(() => {})
+}
+
+/**
+ * Logout in Talk Desktop
+ */
+function logout() {
+	window.TALK_DESKTOP.logout()
+}
+
+/**
+ * Handle the global escape key to unselect any chat
+ * @param {KeyboardEvent} event - Keyboard event
+ */
+function handleGlobalEscape(event) {
+	if (event.key === 'Escape' && document.activeElement === document.body) {
+		pushToRoot()
+	}
+}
+
+onMounted(() => {
+	window.addEventListener('keydown', handleGlobalEscape, { capture: true })
+})
+
+onUnmounted(() => {
+	window.removeEventListener('keydown', handleGlobalEscape, { capture: true })
+})
+</script>
+
 <template>
 	<header id="header" class="header">
 		<div class="header__inner">
@@ -27,56 +74,6 @@
 		</div>
 	</header>
 </template>
-
-<script>
-import MainMenu from './components/MainMenu.vue'
-import UserMenu from './components/UserMenu.vue'
-import { appData } from '../../app/AppData.js'
-import { useUserStatusStore } from './UserStatus/userStatus.store.js'
-import { useUserStatusHeartbeat } from './UserStatus/useUserStatusHeartbeat.js'
-
-export default {
-	name: 'DesktopHeader',
-
-	components: {
-		MainMenu,
-		UserMenu,
-	},
-
-	setup() {
-		const userStatusStore = useUserStatusStore()
-		useUserStatusHeartbeat()
-
-		return {
-			userStatusStore,
-			user: appData.userMetadata,
-			OS: window.OS,
-		}
-	},
-
-	mounted() {
-		window.addEventListener('keydown', (event) => {
-			if (event.key === 'Escape' && document.activeElement === document.body) {
-				this.pushToRoot()
-			}
-		}, { capture: true })
-	},
-
-	methods: {
-		getTalkRouter() {
-			return window.OCA.Talk.instance.$router
-		},
-
-		pushToRoot() {
-			this.getTalkRouter().push({ name: 'root' }).catch(() => {})
-		},
-
-		logout() {
-			window.TALK_DESKTOP.logout()
-		},
-	},
-}
-</script>
 
 <style scoped>
 .header {

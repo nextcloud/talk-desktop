@@ -29,7 +29,7 @@ export async function fetchCurrentUserStatus() {
 /**
  * Fetches the current user-status
  *
- * @param {string} userId
+ * @param {string} userId - User id
  * @return {Promise<import('./userStatus.types.ts').UserStatus>}
  */
 export async function fetchBackupStatus(userId) {

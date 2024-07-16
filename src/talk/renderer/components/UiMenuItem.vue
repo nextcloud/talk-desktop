@@ -3,6 +3,21 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
+<script>
+export default {
+	inheritAttrs: false,
+}
+</script>
+
+<script setup>
+defineProps({
+	tag: {
+		type: [String, Object, Function],
+		default: 'button',
+	},
+})
+</script>
+
 <template>
 	<li class="menu-item">
 		<component :is="tag" class="menu-item__action unstyled-action" v-bind="$attrs">
@@ -20,29 +35,6 @@
 		</component>
 	</li>
 </template>
-
-<script>
-import MdiWeb from 'vue-material-design-icons/Web.vue'
-import MdiInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
-
-export default {
-	name: 'UiMenuItem',
-
-	components: {
-		MdiInformationOutline,
-		MdiWeb,
-	},
-
-	inheritAttrs: false,
-
-	props: {
-		tag: {
-			type: [String, Object, Function],
-			default: 'button',
-		},
-	},
-}
-</script>
 
 <style scoped>
 .unstyled-action {

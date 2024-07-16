@@ -164,7 +164,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			shortcutsDisabled: false, // TODO: Find in Capabilities
 		},
 		core: {
-			capabilities: capabilities,
+			capabilities,
 			config: {
 				version: '25.0.2.3', // TODO: Find in Capabilities
 				versionstring: '25.0.2', // TODO: Find in Capabilities

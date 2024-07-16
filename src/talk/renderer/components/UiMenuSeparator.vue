@@ -3,6 +3,8 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
+<script setup></script>
+
 <template>
 	<li class="menu-item-separator" />
 </template>

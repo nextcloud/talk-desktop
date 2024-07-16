@@ -3,17 +3,6 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<template>
-	<div>
-		<NcDialog v-for="dialog in dialogs"
-			:key="dialog.id"
-			:name="dialog.name"
-			:message="dialog.message"
-			:buttons="dialog.buttons"
-			@update:open="deleteDialog(dialog.id)" />
-	</div>
-</template>
-
 <script setup>
 import { del, ref, set } from 'vue'
 import { translate as t } from '@nextcloud/l10n'
@@ -182,3 +171,14 @@ defineExpose({
 	prompt,
 })
 </script>
+
+<template>
+	<div>
+		<NcDialog v-for="dialog in dialogs"
+			:key="dialog.id"
+			:name="dialog.name"
+			:message="dialog.message"
+			:buttons="dialog.buttons"
+			@update:open="deleteDialog(dialog.id)" />
+	</div>
+</template>

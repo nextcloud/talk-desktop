@@ -3,12 +3,6 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<template>
-	<div class="media-wrapper">
-		<video :src="src" controls />
-	</div>
-</template>
-
 <script setup>
 import { computed } from 'vue'
 import { generateRemoteUrl } from '@nextcloud/router'
@@ -29,6 +23,12 @@ const src = computed(() => {
 	return generateRemoteUrl(`dav/files/${getCurrentUser().uid}/${props.file.filename}`)
 })
 </script>
+
+<template>
+	<div class="media-wrapper">
+		<video :src="src" controls />
+	</div>
+</template>
 
 <style scoped>
 .media-wrapper {

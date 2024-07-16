@@ -3,32 +3,6 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<template>
-	<NcModal v-if="file"
-		id="viewer"
-		:show.sync="isOpen"
-		class="viewer-modal"
-		:class="{ 'viewer-modal--open': isOpen }"
-		:name="file.basename"
-		size="full"
-		:close-button-contained="false"
-		dark
-		@close="close">
-		<component :is="viewComponent"
-			v-if="viewComponent"
-			:file="file" />
-
-		<template #actions>
-			<NcActionLink :href="link">
-				<template #icon>
-					<MdiOpenInNew />
-				</template>
-				{{ t('talk_desktop', 'Open in a Web-Browser') }}
-			</NcActionLink>
-		</template>
-	</NcModal>
-</template>
-
 <script setup>
 import { computed, ref } from 'vue'
 import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
@@ -73,6 +47,32 @@ defineExpose({
 	close,
 })
 </script>
+
+<template>
+	<NcModal v-if="file"
+		id="viewer"
+		:show.sync="isOpen"
+		class="viewer-modal"
+		:class="{ 'viewer-modal--open': isOpen }"
+		:name="file.basename"
+		size="full"
+		:close-button-contained="false"
+		dark
+		@close="close">
+		<component :is="viewComponent"
+			v-if="viewComponent"
+			:file="file" />
+
+		<template #actions>
+			<NcActionLink :href="link">
+				<template #icon>
+					<MdiOpenInNew />
+				</template>
+				{{ t('talk_desktop', 'Open in a Web-Browser') }}
+			</NcActionLink>
+		</template>
+	</NcModal>
+</template>
 
 <style>
 .header {

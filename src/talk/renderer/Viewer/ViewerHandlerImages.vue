@@ -3,12 +3,6 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<template>
-	<div class="media-wrapper">
-		<img :src="src" :alt="file.basename">
-	</div>
-</template>
-
 <script setup>
 import { computed } from 'vue'
 import { generateUrl } from '@nextcloud/router'
@@ -36,6 +30,12 @@ const src = computed(() => {
 	return generateUrl(`/core/preview?${searchParams}`)
 })
 </script>
+
+<template>
+	<div class="media-wrapper">
+		<img :src="src" :alt="file.basename">
+	</div>
+</template>
 
 <style scoped>
 .media-wrapper {

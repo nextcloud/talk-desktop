@@ -3,31 +3,6 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<template>
-	<header id="header" class="header">
-		<div class="header__inner">
-			<div v-if="!OS.isMac"
-				class="header__title-wrapper"
-				role="button"
-				tabindex="0"
-				@click="pushToRoot">
-				<span class="header__title">Nextcloud Talk</span>
-				<span class="header__preview-badge">Preview</span>
-			</div>
-
-			<div class="spacer" />
-
-			<div class="header__item" data-theme-dark>
-				<MainMenu />
-			</div>
-
-			<div class="header__item">
-				<UserMenu :user="user" @logout="logout" />
-			</div>
-		</div>
-	</header>
-</template>
-
 <script setup>
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
@@ -74,6 +49,31 @@ onUnmounted(() => {
 	window.removeEventListener('keydown', handleGlobalEscape, { capture: true })
 })
 </script>
+
+<template>
+	<header id="header" class="header">
+		<div class="header__inner">
+			<div v-if="!OS.isMac"
+				class="header__title-wrapper"
+				role="button"
+				tabindex="0"
+				@click="pushToRoot">
+				<span class="header__title">Nextcloud Talk</span>
+				<span class="header__preview-badge">Preview</span>
+			</div>
+
+			<div class="spacer" />
+
+			<div class="header__item" data-theme-dark>
+				<MainMenu />
+			</div>
+
+			<div class="header__item">
+				<UserMenu :user="user" @logout="logout" />
+			</div>
+		</div>
+	</header>
+</template>
 
 <style scoped>
 .header {

@@ -3,56 +3,6 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<template>
-	<div class="wrapper">
-		<div class="spacer">
-			<div class="logo" />
-		</div>
-		<div class="login-box">
-			<form @submit.prevent="login">
-				<fieldset :disabled="state === 'loading'">
-					<h2 class="login-box__header">
-						{{ t('talk_desktop', 'Log in to Nextcloud') }}
-					</h2>
-					<NcTextField :label="t('talk_desktop', 'Nextcloud server address')"
-						label-visible
-						:value.sync="rawServerUrl"
-						placeholder="https://try.nextcloud.com"
-						inputmode="url"
-						:success="state === 'success'"
-						:error="state === 'error'"
-						:helper-text="stateText" />
-					<NcButton v-if="state !== 'loading'"
-						class="submit-button"
-						type="primary"
-						native-type="submit"
-						wide>
-						<template #icon>
-							<MdiArrowRight :size="20" />
-						</template>
-						{{ t('talk_desktop', 'Log in') }}
-					</NcButton>
-					<NcButton v-else-if="state ==='loading'"
-						class="submit-button"
-						type="primary"
-						native-type="submit"
-						wide>
-						<template #icon>
-							<NcLoadingIcon appearance="light" />
-						</template>
-						{{ t('talk_desktop', 'Logging in …') }}
-					</NcButton>
-				</fieldset>
-			</form>
-		</div>
-		<div class="spacer">
-			<footer class="footer">
-				Nextcloud Talk Desktop {{ version }}
-			</footer>
-		</div>
-	</div>
-</template>
-
 <script setup>
 import { computed, ref } from 'vue'
 import MdiArrowRight from 'vue-material-design-icons/ArrowRight.vue'
@@ -187,6 +137,56 @@ async function login() {
 	await window.TALK_DESKTOP.login()
 }
 </script>
+
+<template>
+	<div class="wrapper">
+		<div class="spacer">
+			<div class="logo" />
+		</div>
+		<div class="login-box">
+			<form @submit.prevent="login">
+				<fieldset :disabled="state === 'loading'">
+					<h2 class="login-box__header">
+						{{ t('talk_desktop', 'Log in to Nextcloud') }}
+					</h2>
+					<NcTextField :label="t('talk_desktop', 'Nextcloud server address')"
+						label-visible
+						:value.sync="rawServerUrl"
+						placeholder="https://try.nextcloud.com"
+						inputmode="url"
+						:success="state === 'success'"
+						:error="state === 'error'"
+						:helper-text="stateText" />
+					<NcButton v-if="state !== 'loading'"
+						class="submit-button"
+						type="primary"
+						native-type="submit"
+						wide>
+						<template #icon>
+							<MdiArrowRight :size="20" />
+						</template>
+						{{ t('talk_desktop', 'Log in') }}
+					</NcButton>
+					<NcButton v-else-if="state ==='loading'"
+						class="submit-button"
+						type="primary"
+						native-type="submit"
+						wide>
+						<template #icon>
+							<NcLoadingIcon appearance="light" />
+						</template>
+						{{ t('talk_desktop', 'Logging in …') }}
+					</NcButton>
+				</fieldset>
+			</form>
+		</div>
+		<div class="spacer">
+			<footer class="footer">
+				Nextcloud Talk Desktop {{ version }}
+			</footer>
+		</div>
+	</div>
+</template>
 
 <style scoped>
 .wrapper {

@@ -3,41 +3,6 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<template>
-	<div class="about">
-		<h2>{{ t('talk_desktop', 'About') }}</h2>
-		<p>{{ packageInfo.productName }} - {{ packageInfo.description }}</p>
-		<ul class="about__list">
-			<li>
-				{{ t('talk_desktop', 'Privacy and Legal Policy') }}: <a class="link" href="https://nextcloud.com/privacy/" target="_blank">https://nextcloud.com/privacy/</a>
-			</li>
-			<li>
-				{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
-			</li>
-			<li>
-				{{ t('talk_desktop', 'Issues') }}: <a :href="packageInfo.bugs" class="link" target="_blank">{{ packageInfo.bugs }}</a>
-			</li>
-			<li>
-				{{ t('talk_desktop', 'Source Code') }}: <a :href="packageInfo.repository" class="link" target="_blank">{{ packageInfo.repository }}</a>
-			</li>
-		</ul>
-		<NcTextArea :aria-label="t('talk_desktop', 'System report')"
-			:value="report"
-			rows="11"
-			readonly
-			class="about__report"
-			@focus="$event.target.setSelectionRange(0, -1)" />
-		<p>
-			<NcButton type="secondary" wide @click="close">
-				<template #icon>
-					<MdiWindowClose />
-				</template>
-				{{ t('talk_desktop', 'Close') }}
-			</NcButton>
-		</p>
-	</div>
-</template>
-
 <script setup>
 import { onBeforeUnmount, onMounted } from 'vue'
 
@@ -93,6 +58,41 @@ onBeforeUnmount(() => {
 	window.removeEventListener('keyup', handleEscape)
 })
 </script>
+
+<template>
+	<div class="about">
+		<h2>{{ t('talk_desktop', 'About') }}</h2>
+		<p>{{ packageInfo.productName }} - {{ packageInfo.description }}</p>
+		<ul class="about__list">
+			<li>
+				{{ t('talk_desktop', 'Privacy and Legal Policy') }}: <a class="link" href="https://nextcloud.com/privacy/" target="_blank">https://nextcloud.com/privacy/</a>
+			</li>
+			<li>
+				{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
+			</li>
+			<li>
+				{{ t('talk_desktop', 'Issues') }}: <a :href="packageInfo.bugs" class="link" target="_blank">{{ packageInfo.bugs }}</a>
+			</li>
+			<li>
+				{{ t('talk_desktop', 'Source Code') }}: <a :href="packageInfo.repository" class="link" target="_blank">{{ packageInfo.repository }}</a>
+			</li>
+		</ul>
+		<NcTextArea :aria-label="t('talk_desktop', 'System report')"
+			:value="report"
+			rows="11"
+			readonly
+			class="about__report"
+			@focus="$event.target.setSelectionRange(0, -1)" />
+		<p>
+			<NcButton type="secondary" wide @click="close">
+				<template #icon>
+					<MdiWindowClose />
+				</template>
+				{{ t('talk_desktop', 'Close') }}
+			</NcButton>
+		</p>
+	</div>
+</template>
 
 <style scoped>
 .about {

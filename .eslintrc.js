@@ -92,6 +92,7 @@ module.exports = {
 		// All Rules enabled
 		/** Vue / Uncategorized */
 		'vue/attribute-hyphenation': 'error',
+		'vue/component-api-style': ['error', ['script-setup']], // Follow new Vue standards
 		'vue/component-name-in-template-casing': 'error',
 		'vue/component-options-name-casing': 'error',
 		// 'vue/custom-event-name-casing': 'error',

@@ -11,6 +11,8 @@ const { getOsTitle } = require('../shared/os.utils.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
+const genId = () => Math.random().toString(36).slice(2, 9)
+
 /**
  * Open a web-view modal window with Nextcloud Server login page
  *
@@ -38,7 +40,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 			modal: true,
 			autoHideMenuBar: true,
 			webPreferences: {
-				partition: 'non-persist:login-web-view',
+				partition: `non-persist:login-web-view-${genId()}`,
 				nodeIntegration: false,
 			},
 			icon: getBrowserWindowIcon(),

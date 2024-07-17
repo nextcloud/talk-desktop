@@ -1,9 +1,9 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Invalid server address" : "Địa chỉ máy chủ không hợp lệ",
     "Log in" : "Đăng nhập",
     "Logging in …" : "Đang đăng nhập",
-    "Invalid server address" : "Địa chỉ máy chủ không hợp lệ",
     "About" : "Giới thiệu",
     "License" : "Giấy phép",
     "Issues" : "Vấn đề",

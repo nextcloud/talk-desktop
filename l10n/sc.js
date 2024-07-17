@@ -1,9 +1,9 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Invalid server address" : "Indiritzu serbidore non bàlidu",
     "Log in" : "Intra",
     "Logging in …" : "Intrende ...",
-    "Invalid server address" : "Indiritzu serbidore non bàlidu",
     "About" : "In contu de",
     "License" : "Lissèntzia",
     "Issues" : "Problemas",

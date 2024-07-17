@@ -2,11 +2,11 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk Desktop",
+    "Unexpected error" : "Unexpected error",
     "Log in to Nextcloud" : "ورود به سامانه",
     "Nextcloud server address" : "آدرس سرور Nextcloud",
     "Log in" : "ورود",
     "Logging in …" : "ورود به سیستم ...",
-    "Unexpected error" : "Unexpected error",
     "About" : "About",
     "License" : "مجوز",
     "Issues" : "مسائل",

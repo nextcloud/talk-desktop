@@ -1,10 +1,6 @@
 OC.L10N.register(
     "talk_desktop",
     {
-    "Log in to Nextcloud" : "Войдите в Nextcloud",
-    "Nextcloud server address" : "Адрес сервера Nextcloud",
-    "Log in" : "Войти",
-    "Logging in …" : "Вход в систему…",
     "Logged in successfully" : "Вы успешно вошли в систему",
     "Invalid server address" : "Неверный адрес сервера",
     "Nextcloud server not found" : "Сервер Nextcloud не найден",
@@ -12,6 +8,10 @@ OC.L10N.register(
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "{componentName} требуется версия {minRequiredVersion} или выше, а установлена версия {foundVersion}",
     "Unexpected error" : "Неожиданная ошибка",
     "Login was successful but something went wrong." : "Вход прошел успешно, но что-то пошло не так.",
+    "Log in to Nextcloud" : "Войдите в Nextcloud",
+    "Nextcloud server address" : "Адрес сервера Nextcloud",
+    "Log in" : "Войти",
+    "Logging in …" : "Вход в систему…",
     "About" : "О себе",
     "Privacy and Legal Policy" : "Политика конфиденциальности",
     "License" : "Лицензия",

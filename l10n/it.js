@@ -2,9 +2,9 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk Desktop",
+    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk non è installato nel server",
     "Nextcloud server address" : "Indirizzo server Nextcloud",
     "Logging in …" : "Accesso in corso...",
-    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk non è installato nel server",
     "About" : "Informazioni",
     "License" : "Licenza",
     "Issues" : "Problemi",

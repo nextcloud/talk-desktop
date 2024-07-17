@@ -2,9 +2,9 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Приложение Talk Desktop",
+    "Unexpected error" : "Неочаквана грешка",
     "Nextcloud server address" : "Адрес на сървъра Nextcloud",
     "Logging in …" : "Вписване ...",
-    "Unexpected error" : "Неочаквана грешка",
     "About" : "Относно",
     "License" : "Лиценз",
     "Issues" : "Проблеми",

@@ -1,11 +1,11 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Invalid server address" : "Neteisingas serverio adresa",
+    "Unexpected error" : "Netikėta klaida",
     "Nextcloud server address" : "Nextcloud serverio adresas",
     "Log in" : "Prisijungti",
     "Logging in …" : "Prisijungiama …",
-    "Invalid server address" : "Neteisingas serverio adresa",
-    "Unexpected error" : "Netikėta klaida",
     "About" : "Apie",
     "License" : "Licencija",
     "Issues" : "Problemos",

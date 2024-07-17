@@ -24,6 +24,7 @@ OC.L10N.register(
     "Loading …" : "読み込み中…",
     "Menu" : "メニュー",
     "Report a bug" : "不具合を報告",
+    "Back" : "戻る",
     "View profile" : "プロフィールを表示",
     "Do not disturb" : "取り込み中",
     "Invisible" : "ステータスを隠す",

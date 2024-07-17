@@ -1,9 +1,9 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Invalid server address" : "Invalid server address",
     "Log in" : "Log in",
     "Logging in …" : "Logging in …",
-    "Invalid server address" : "Invalid server address",
     "About" : "About",
     "License" : "License",
     "Issues" : "Issues",

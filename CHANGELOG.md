@@ -5,6 +5,16 @@
 
 # Changelog
 
+## v0.33.0 - 2024-07-18
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v19.0.7
+
+### Fixes
+
+- User is kept logged in on the Login Flow Web-View [#683](https://github.com/nextcloud/talk-desktop/pull/717)
+
 ## v0.32.0 - 2024-07-11
 
 ### Fixes

@@ -50,7 +50,7 @@
     "floating-vue": "^1.0.0-beta.19",
     "howler": "^2.2.4",
     "pinia": "^2.1.7",
-    "semver": "^7.6.2",
+    "semver": "^7.6.3",
     "undici": "6.6.2",
     "unzip-crx-3": "^0.2.0",
     "vue": "^2.7.16",

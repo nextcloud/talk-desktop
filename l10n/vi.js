@@ -9,6 +9,7 @@ OC.L10N.register(
     "Issues" : "Vấn đề",
     "Close" : "Đóng",
     "Ok" : "Đồng ý",
+    "No" : "Không",
     "Yes" : "Có",
     "User status" : "Trạng thái người dùng",
     "Your status was set automatically" : "Trạng thái của bạn đã được đặt tự động",

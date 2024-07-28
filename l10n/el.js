@@ -13,6 +13,7 @@ OC.L10N.register(
     "Yes" : "Ναι",
     "User status" : "Κατάσταση χρήστη",
     "1 hour" : "1 ώρα",
+    "Today" : "Σήμερα",
     "Cancel" : "Ακύρωση",
     "Share screen" : "Διαμοιρασμός οθόνης",
     "Loading …" : "Φόρτωση…",

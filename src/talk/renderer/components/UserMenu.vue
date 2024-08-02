@@ -45,6 +45,7 @@ const serverUrl = appData.serverUrl
 const serverUrlShort = serverUrl.replace(/^https?:\/\//, '')
 const theming = appData.capabilities.theming
 
+const isOpen = ref(false)
 const userMenuContainer = ref(null)
 const isUserStatusDialogOpen = ref(false)
 const userStatusSubMenuOpen = ref(false)
@@ -64,18 +65,26 @@ function handleUserStatusChange(status) {
 <template>
 	<div ref="userMenuContainer" class="user-menu">
 		<NcPopover v-if="userMenuContainer"
+			:shown.sync="isOpen"
 			:container="userMenuContainer"
 			:popper-hide-triggers="triggers => [...triggers, 'click']"
+			:triggers="[]"
 			no-auto-focus>
 			<template #trigger="{ attrs }">
-				<button class="user-menu__trigger unstyled-button" v-bind="attrs">
+				<div class="user-menu__trigger">
+					<!-- Floating-Vue doesn't support open on span[role=button] - opening manually -->
 					<NcAvatar class="user-menu__avatar"
 						:user="user.id"
 						:display-name="user['display-name']"
 						:size="32"
 						disable-tooltip
-						tabindex="0" />
-				</button>
+						v-bind="attrs"
+						tabindex="0"
+						role="button"
+						@click.native="isOpen = !isOpen"
+						@keydown.space.native="isOpen = !isOpen"
+						@keydown.enter.native="isOpen = !isOpen" />
+				</div>
 			</template>
 
 			<template #default>
@@ -167,35 +176,6 @@ function handleUserStatusChange(status) {
 </template>
 
 <style scoped>
-.unstyled-button {
-	cursor: pointer;
-}
-
-.unstyled-button,
-.unstyled-button:active,
-.unstyled-button:hover,
-.unstyled-button:focus {
-	background: unset;
-	border: none;
-	padding: 0;
-	margin: 0;
-}
-
-/*
-	NcPopover is a wrapper around Dropdown from floating-vue.
-  But any NcPopover component added to the web-pages globally changes default floating-vue styles.
-
-  - It is impossible to changes styles of inner block with NcPopover component (no props for that)
-  - It is impossible to use default Dropdown from floating-vue (styles are overrided globally)
-
-  So, let's re-override these styles...
-  Better options:
-  - Fix NcPopover
-  - Create a new Dropdown using renderless components from floating-vue
-*/
-.user-menu :deep(.v-popper--theme-dropdown.v-popper__popper) {
-	margin: -2px 5px 0 0;
-}
 
 .user-menu :deep(.v-popper--theme-dropdown.v-popper__popper .v-popper__inner) {
 	border-radius: var(--border-radius-large);
@@ -204,29 +184,24 @@ function handleUserStatusChange(status) {
 .user-menu__trigger {
 	display: flex;
 	align-items: center;
-	margin: 0 !important; /* Re-define server default styles */
 }
 
 .user-menu__avatar {
 	box-sizing: content-box;
 }
 
+.user-menu__trigger:hover,
+.user-menu__trigger:active,
+.user-menu__trigger:focus,
+.user-menu__trigger:focus-visible {
+	.user-menu__avatar {
+		outline: 2px solid var(--color-main-text);
+		box-shadow: 0 0 0 4px var(--color-main-background);
+	}
+}
+
 .user-menu__server {
 	display: flex;
 	flex-direction: column;
-}
-
-.user-menu__trigger:hover .user-menu__avatar,
-.user-menu__trigger:active .user-menu__avatar,
-.user-menu__trigger:focus .user-menu__avatar {
-	border: 2px solid var(--color-primary-text)
-}
-
-.user-menu__wrapper {
-	/*margin: 0 4px;*/
-	padding: 8px;
-	/*background-color: var(--color-main-background);*/
-	/*border-radius: var(--border-radius-large);*/
-	/*box-shadow: 0 1px 5px var(--color-box-shadow);*/
 }
 </style>

@@ -95,7 +95,7 @@ function handleUserStatusChange(status) {
 			</template>
 
 			<template #default>
-				<UiMenu aria-label="Settings menu">
+				<UiMenu aria-label="Settings menu" class="user-menu__menu">
 					<template v-if="userStatusSubMenuOpen">
 						<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = false">
 							<template #icon>
@@ -205,6 +205,10 @@ function handleUserStatusChange(status) {
 		outline: 2px solid var(--color-main-text);
 		box-shadow: 0 0 0 4px var(--color-main-background);
 	}
+}
+
+.user-menu__menu {
+	max-width: 300px;
 }
 
 .user-menu__server {

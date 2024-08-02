@@ -81,5 +81,6 @@ defineProps({
 
 .menu-item__text {
 	flex: 1;
+	word-break: break-word;
 }
 </style>

@@ -4,7 +4,7 @@
 -->
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import { translate as t } from '@nextcloud/l10n'
@@ -49,6 +49,13 @@ const isOpen = ref(false)
 const userMenuContainer = ref(null)
 const isUserStatusDialogOpen = ref(false)
 const userStatusSubMenuOpen = ref(false)
+
+// Close the submenu before opening the menu
+watch(isOpen, () => {
+	if (isOpen.value) {
+		userStatusSubMenuOpen.value = false
+	}
+})
 
 const userProfileLink = computed(() => generateUrl('/u/{userid}', { userid: props.user.id }))
 

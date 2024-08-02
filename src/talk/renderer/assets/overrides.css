@@ -6,9 +6,11 @@
 /*
  * Overrides default Nextcloud styles
  */
-:root {
+
+:root,
+body {
 	/* It is IMPORTANT to set "px" here, not just "0" */
-	--body-container-margin: 0px;
+	--body-container-margin: 0px !important;
 }
 
 #content-vue {

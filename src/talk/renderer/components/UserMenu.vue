@@ -72,6 +72,7 @@ function handleUserStatusChange(status) {
 					<NcAvatar class="user-menu__avatar"
 						:user="user.id"
 						:display-name="user['display-name']"
+						:size="32"
 						disable-tooltip
 						tabindex="0" />
 				</button>

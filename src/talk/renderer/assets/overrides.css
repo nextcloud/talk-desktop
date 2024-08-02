@@ -13,6 +13,8 @@ body {
 	--body-container-margin: 0px !important;
 }
 
-#content-vue {
+.content {
+	/* TODO: upstream using --header-height on NcContent margin-top */
+	margin-top: var(--header-height) !important;
 	border-radius: 0 !important;
 }

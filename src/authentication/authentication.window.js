@@ -4,7 +4,7 @@
  */
 
 const { BrowserWindow } = require('electron')
-const { BASE_TITLE } = require('../constants.js')
+const { BASE_TITLE, TITLE_BAR_HEIGHT } = require('../constants.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { isLinux } = require('../shared/os.utils.js')
@@ -33,12 +33,12 @@ function createAuthenticationWindow() {
 		titleBarOverlay: {
 			color: '#00669E00', // Transparent
 			symbolColor: '#FFFFFF', // White
-			height: 50,
+			height: TITLE_BAR_HEIGHT,
 		},
 		// Position of the top left corner of the traffic light on Mac
 		trafficLightPosition: {
 			x: 12, // Same as on Talk Window
-			y: (50 - 16) / 2, // 16 is the default traffic light button diameter
+			y: (TITLE_BAR_HEIGHT - 16) / 2, // 16 is the default traffic light button diameter
 		},
 	})
 

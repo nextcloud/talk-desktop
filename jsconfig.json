@@ -1,0 +1,8 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@global-styles/*": ["resources/server-global-styles/master/*"]
+		}
+	}
+}

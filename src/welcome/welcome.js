@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import '../shared/assets/default/icons.css'
+import '@global-styles/dist/icons.css'
 
 import { appData } from '../app/AppData.js'
 import { refetchAppDataIfDirty } from '../app/appData.service.js'

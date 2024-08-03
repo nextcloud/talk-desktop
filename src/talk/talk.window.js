@@ -23,7 +23,7 @@ function createTalkWindow() {
 	const talkWindowOptions = {
 		minWidth: 600,
 		minHeight: 400,
-		backgroundColor: '#00669E',
+		backgroundColor: '#00679E',
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
@@ -31,7 +31,7 @@ function createTalkWindow() {
 		icon: getBrowserWindowIcon(),
 		titleBarStyle: isLinux() ? 'default' : 'hidden',
 		titleBarOverlay: {
-			color: '#00669E00', // Transparent
+			color: '#00679E00', // Transparent
 			symbolColor: '#FFFFFF', // White
 			height: TITLE_BAR_HEIGHT,
 		},

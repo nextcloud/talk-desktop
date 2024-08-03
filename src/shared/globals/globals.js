@@ -56,7 +56,7 @@ const OC = {
 			icon = MimeTypeList.files.includes(icon) ? icon : mimeType.split('/')[0]
 
 			try {
-				return require(`../assets/default/img/filetypes/${icon}.svg`)
+				return require(`@global-styles/core/img/filetypes/${icon}.svg`)
 			} catch {
 				return undefined
 			}

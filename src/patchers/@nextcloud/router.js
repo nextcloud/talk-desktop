@@ -30,8 +30,8 @@ export const linkTo = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroo
 export const getBaseUrl = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_getRootUrl, ...args)
 
 // Requires changing the default options.baseUrl from original relative getBaseUrl to new absolute getBaseUrl
-export const generateRemoteUrl = (service, options = {}) => _generateRemoteUrl(service, { baseURL: getBaseUrl(), ...options })
-export const generateOcsUrl = (url, params, options = {}) => _generateOcsUrl(url, params, { baseURL: getBaseUrl(), ...options })
+export const generateRemoteUrl = (service, options = {}) => _generateRemoteUrl(service, { ...options, baseURL: options.baseURL || getBaseUrl() })
+export const generateOcsUrl = (url, params, options = {}) => _generateOcsUrl(url, params, { ...options, baseURL: options.baseURL || getBaseUrl() })
 
 // By default, Talk requests images and sounds as a file from server assets using generateFilePath
 // Desktop app should use path to the local file in the bundle

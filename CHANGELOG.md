@@ -5,6 +5,24 @@
 
 # Changelog
 
+## v0.34.0 - 2024-08-05
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v20.0.0-beta.3
+
+### Features
+
+- Use built-in global styles instead of server's, increasing stability and performance but losing custom theming support [#741](https://github.com/nextcloud/talk-desktop/pull/741)
+
+### Fixes
+
+- Fix the connection issue with losing base URL when built with Nextcloud Talk v20 [#742](https://github.com/nextcloud/talk-desktop/pull/742)
+- Fix several minor UI bugs with the user menu [#737](https://github.com/nextcloud/talk-desktop/pull/737)
+- Fix styles compatibility with Nextcloud 30 [#736](https://github.com/nextcloud/talk-desktop/pull/736)
+- Adjust the title bar to new Nextcloud design [#738](https://github.com/nextcloud/talk-desktop/pull/738)
+- Disable custom title bar on Linux due to several; minor issue [#735](https://github.com/nextcloud/talk-desktop/pull/735)
+
 ## v0.33.0 - 2024-07-18
 
 ### Build-in Talk update

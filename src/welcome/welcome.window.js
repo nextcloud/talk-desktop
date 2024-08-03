@@ -5,7 +5,10 @@
 
 const { BrowserWindow } = require('electron')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { isMac } = require('../shared/os.utils.js')
+const {
+	isMac,
+	isLinux,
+} = require('../shared/os.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -18,7 +21,7 @@ function createWelcomeWindow() {
 		autoHideMenuBar: true,
 		center: true,
 		fullscreenable: false,
-		titleBarStyle: 'hidden',
+		titleBarStyle: isLinux() ? 'default' : 'hidden',
 		show: false,
 		useContentSize: true,
 		webPreferences: {

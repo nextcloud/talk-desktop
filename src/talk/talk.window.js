@@ -10,6 +10,7 @@ const { applyDownloadNotification } = require('../app/applyDownloadNotification.
 const { applyWheelZoom } = require('../app/applyWheelZoom.js')
 const { setupTray } = require('../app/app.tray.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+const { isLinux } = require('../shared/os.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -27,7 +28,7 @@ function createTalkWindow() {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 		icon: getBrowserWindowIcon(),
-		titleBarStyle: 'hidden',
+		titleBarStyle: isLinux() ? 'default' : 'hidden',
 		titleBarOverlay: {
 			color: '#00669E00', // Transparent
 			symbolColor: '#FFFFFF', // White

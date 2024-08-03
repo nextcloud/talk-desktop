@@ -76,7 +76,7 @@ defineProps({
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 20px
+	width: 24px;
 }
 
 .menu-item__text {

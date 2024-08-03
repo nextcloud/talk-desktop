@@ -4,12 +4,12 @@
 -->
 
 <script setup>
+import { onMounted, onUnmounted } from 'vue'
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
 import { useUserStatusStore } from './UserStatus/userStatus.store.js'
 import { useUserStatusHeartbeat } from './UserStatus/useUserStatusHeartbeat.js'
-import { onMounted, onUnmounted } from 'vue'
 
 useUserStatusStore()
 useUserStatusHeartbeat()
@@ -77,9 +77,9 @@ onUnmounted(() => {
 
 <style scoped>
 .header {
-	height: 50px;
+	height: var(--header-height);
+	margin-bottom: calc(-1 * var(--header-height));
 	box-sizing: border-box;
-	margin-bottom: -50px;
 	color: var(--color-header-contrast);
 	user-select: none;
 }
@@ -95,7 +95,7 @@ onUnmounted(() => {
 }
 
 .header__item {
-	width: 50px;
+	width: var(--header-height); /* Make it square */
 	display: flex;
 	justify-content: center;
 }

@@ -182,6 +182,15 @@ npm run make:all
 10. Upload packages to the GitHub Releases on [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases/lastest)
 11. Publish both releases on GitHub Releases
 
+## 🎨 Updating global styles
+
+Talk frontend depends on the global Nextcloud server styles. To manually get them run:
+
+```sh
+# node ./scripts/fetch-server-styles.mjs <VERSION>, for example
+node ./scripts/fetch-server-styles.mjs stable29
+```
+
 ## 👥 Contribution Guidelines
 
 See: https://github.com/nextcloud/spreed#contribution-guidelines

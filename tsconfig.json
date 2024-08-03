@@ -7,6 +7,10 @@
 		"checkJs": true,
 		"allowImportingTsExtensions": true,
 		"lib": ["ESNext"],
+		"baseUrl": ".",
+		"paths": {
+			"@global-styles/*": ["resources/server-global-styles/master/*"],
+		},
 	},
 	"vueCompilerOptions": {
 		"target": 2.7,

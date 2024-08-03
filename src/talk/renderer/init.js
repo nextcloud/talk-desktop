@@ -12,6 +12,8 @@ import { getCurrentUser } from '@nextcloud/auth'
 import { TITLE_BAR_HEIGHT } from '../../constants.js'
 
 /**
+ * Fetch and load server styles.
+ * Currently unused, until this feature is available
  * @return {Promise<void>}
  */
 export async function initServerStyles() {

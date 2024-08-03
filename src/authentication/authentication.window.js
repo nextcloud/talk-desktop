@@ -31,7 +31,7 @@ function createAuthenticationWindow() {
 		icon: getBrowserWindowIcon(),
 		titleBarStyle: isLinux() ? 'default' : 'hidden',
 		titleBarOverlay: {
-			color: '#00669E00', // Transparent
+			color: '#00679E00', // Transparent
 			symbolColor: '#FFFFFF', // White
 			height: TITLE_BAR_HEIGHT,
 		},

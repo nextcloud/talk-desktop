@@ -22,12 +22,16 @@ process.env.npm_package_version = talkPackage.version
 
 const nextcloudWebpackConfig = require('@nextcloud/webpack-vue-config')
 const commonTalkWebpackConfig = require(`${TALK_PATH}/webpack.common.config`)
+const { getAppInfo } = require('./scripts/utils/appinfo.utils.cjs')
+
+const MAX_NEXTCLOUD_VERSION = getAppInfo(TALK_PATH).maxVersion
+const NEXTCLOUD_MASTER_VERSION = 30
 
 /**
  * Create webpack aliases config to patch a package
  *
  * @param {string} packageName - name of the package to patch, for example, @nextcloud/axios
- * @return {Object<string, string>} webpack.resolve.alice config object with at most 3 aliases:
+ * @return {Record<string, string>} webpack.resolve.alice config object with at most 3 aliases:
  *                                  - Alias from package to the patcher (e.g. @nextcloud/axios)
  *                                  - Alias to the original module in spreed (e.g. @talk-modules--@nextcloud/axios)
  *                                  - Alias to the original module in talk-desktop (e.g. @desktop-modules--@nextcloud/axios)
@@ -105,6 +109,7 @@ const webpackRendererConfig = mergeWithRules({
 	resolve: {
 		alias: {
 			'@talk': TALK_PATH,
+			'@global-styles': path.resolve(__dirname, 'resources/server-global-styles', MAX_NEXTCLOUD_VERSION === NEXTCLOUD_MASTER_VERSION ? 'master' : `stable${MAX_NEXTCLOUD_VERSION}`),
 			// To reuse modules between Talk Desktop and Talk, otherwise Talk has its own from its node_modules
 			'@nextcloud/axios': path.resolve(__dirname, 'node_modules', '@nextcloud/axios/dist/index.mjs'),
 			// Patched packages

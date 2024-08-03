@@ -204,7 +204,7 @@ async function login() {
 }
 
 .logo {
-	background: no-repeat center url('../../shared/assets/default/img/logo/logo.svg');
+	background: no-repeat center url('~@global-styles/core/img/logo/logo.svg');
 	background-size: contain;
 	width: 175px;
 	height: 130px;
@@ -214,6 +214,7 @@ async function login() {
 .footer {
 	margin-top: auto;
 	margin-bottom: 2rem;
+	color: var(--color-background-plain-text);
 }
 
 .login-box {
@@ -228,6 +229,8 @@ async function login() {
 
 .login-box__header {
 	text-align: center;
+	margin-top: 0;
+	font-size: 1.5em;
 }
 
 .submit-button {

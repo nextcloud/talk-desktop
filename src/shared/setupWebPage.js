@@ -154,7 +154,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 				url: capabilities?.theming?.url,
 				slogan: capabilities?.theming?.slogan,
 				color: capabilities?.theming?.color,
-				defaultColor: '#0082C9', // TODO: Find in Capabilities
+				defaultColor: '#00679E', // TODO: Find in Capabilities
 				imprintUrl: '', // TODO: Find in Capabilities
 				privacyUrl: '', // TODO: Find in Capabilities
 				inverted: false, // TODO: Find in Capabilities

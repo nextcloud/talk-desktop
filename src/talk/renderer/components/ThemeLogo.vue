@@ -9,7 +9,7 @@ import { appData } from '../../../app/AppData.js'
 
 const props = defineProps({
 	size: {
-		type: Number,
+		type: [Number, String],
 		default: 20,
 	},
 })
@@ -40,7 +40,7 @@ const cssVars = computed(() => ({
 	width: var(--ThemeLogo-size);
 	height: var(--ThemeLogo-size);
 	background-color: var(--ThemeLogo-background-color);
-	padding: 15%;
+	padding: 10%;
 }
 
 .theme-logo__img {

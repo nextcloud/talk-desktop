@@ -18,3 +18,13 @@ body {
 	margin-top: var(--header-height) !important;
 	border-radius: 0 !important;
 }
+
+/* Remove Nextcloud header specific focus-visible style */
+#header {
+	.button-vue,
+	[role=button] {
+		&:focus-visible::after {
+			content: none !important;
+		}
+	}
+}

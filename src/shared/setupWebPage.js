@@ -135,7 +135,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			sip_dialin_info: undefined, // TODO: Missed in Capabilities. Is it a problem?
 			grid_videos_limit: 19, // TODO: Missed in Capabilities. Is it a problem?
 			grid_videos_limit_enforced: false, // TODO: Missed in Capabilities. Is it a problem?
-			federation_enabled: false, // TODO: Missed in Capabilities. Is it a problem?
+			federation_enabled: capabilities?.spreed?.config?.federation?.enabled,
 			start_conversations: capabilities?.spreed?.config?.conversations?.['can-create'],
 			circles_enabled: false, // TODO: Missed in Capabilities. Is it a problem?
 			guests_accounts_enabled: true, // TODO: Missed in Capabilities. It is a problem

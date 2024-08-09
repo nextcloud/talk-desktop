@@ -49,6 +49,9 @@ function createTalkWindow() {
 		show: false,
 	})
 
+	// Maximize window initially
+	window.maximize()
+
 	// TODO: return it on release
 	/*
 	if (process.env.NODE_ENV === 'production') {

@@ -52,7 +52,7 @@ OC.L10N.register(
     "Report a bug" : "Hata bildirin",
     "Back" : "Geri",
     "View profile" : "Profili görüntüle",
-    "Set custom status" : "Özel durum ayarlar",
+    "Set custom status" : "Özel durumu ayarla",
     "Log out" : "Oturumu kapat",
     "Upgrade required" : "Yükseltme gerekiyor",
     "The client version is too old and no longer supported by this server. Update is required." : "İstemci sürümü çok eski ve artık bu sunucu tarafından desteklenmiyor. Güncellenmesi gerekli.",

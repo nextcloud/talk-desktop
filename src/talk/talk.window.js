@@ -44,8 +44,8 @@ function createTalkWindow() {
 
 	const window = new BrowserWindow({
 		...talkWindowOptions,
-		width: Math.min(1680, screenWidth),
-		height: Math.min(1050, screenHeight),
+		width: Math.min(1400, screenWidth),
+		height: Math.min(900, screenHeight),
 		show: false,
 	})
 

@@ -114,7 +114,7 @@ await spinner('[3/4] Copying styles...', async () => {
 		await writeFile(join(OUTPUT, '/apps/theming/theme/dark.css'), fixThemePaths(darkCSS))
 
 		const dep5 = await readFile(join(OUTPUT, '/.reuse/dep5'), 'utf-8')
-		await writeFile(join(OUTPUT, '/.reuse/dep5_2'), filterDep5(dep5), 'utf-8')
+		await writeFile(join(OUTPUT, '/.reuse/dep5'), filterDep5(dep5), 'utf-8')
 	} catch (e) {
 		await echo('Something went wrong:', e.stderr ?? e)
 		await cleanUpDir()

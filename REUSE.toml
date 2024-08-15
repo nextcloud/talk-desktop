@@ -1,0 +1,42 @@
+# SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+version = 1
+SPDX-PackageName = "talk-desktop"
+SPDX-PackageSupplier = "Nextcloud <info@nextcloud.com>"
+SPDX-PackageDownloadLocation = "https://github.com/nextcloud/talk-desktop/"
+
+[[annotations]]
+path = ["l10n/**.js", "l10n/**.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = [".github/ISSUE_TEMPLATE/bug_report.md", ".github/ISSUE_TEMPLATE/feature_request.md", ".github/dependabot.yml", ".github/pull_request_template.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "none"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["package.json", "package-lock.json", "**/package.json", "**/package-lock.json", ".tx/config", "tsconfig.json", "jsconfig.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "none"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "resources/vue-devtools.crx"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Evan You <https://github.com/vuejs/devtools/blob/main/LICENSE>"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = ["sounds/notification.ogg", "sounds/talk.ogg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2017 Feandesign https://soundcloud.com/feandesign"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["img/talk-icon-**.svg", "img/icons/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Nextcloud GmbH <https://nextcloud.com/trademarks/>"
+SPDX-License-Identifier = "LicenseRef-NextcloudTrademarks"

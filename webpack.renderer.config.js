@@ -25,7 +25,7 @@ const commonTalkWebpackConfig = require(`${TALK_PATH}/webpack.common.config`)
 const { getAppInfo } = require('./scripts/utils/appinfo.utils.cjs')
 
 const MAX_NEXTCLOUD_VERSION = getAppInfo(TALK_PATH).maxVersion
-const NEXTCLOUD_MASTER_VERSION = 30
+const NEXTCLOUD_MASTER_VERSION = 31
 
 /**
  * Create webpack aliases config to patch a package

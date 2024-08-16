@@ -5,6 +5,24 @@
 
 # Changelog
 
+## v0.35.0 - 2024-08-16
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v20.0.0-rc.2
+
+### Fixes
+
+- Adjust About window size and paddings [#754](https://github.com/nextcloud/talk-desktop/pull/754)
+- Fix federated invitations support [#747](https://github.com/nextcloud/talk-desktop/pull/747)
+- Make Talk window default size smaller with new compact design [#746](https://github.com/nextcloud/talk-desktop/pull/746)
+- Fix the connection issue with losing base URL when built with Nextcloud Talk v20 [#742](https://github.com/nextcloud/talk-desktop/pull/742)
+
+### Other changes
+
+- Fix REUSE-compliance and check it on CI [#752](https://github.com/nextcloud/talk-desktop/pull/752)
+- Support building with Talk 21 (Nextcloud 31) [#751](https://github.com/nextcloud/talk-desktop/pull/751)
+
 ## v0.34.0 - 2024-08-05
 
 ### Build-in Talk update

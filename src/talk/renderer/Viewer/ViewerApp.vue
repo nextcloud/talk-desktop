@@ -17,7 +17,7 @@ const isOpen = ref(false)
 const onClose = ref(noop)
 const file = ref(null)
 
-const viewComponent = computed(() => file.value && OCA.Viewer.availableHandlers.find((handler) => handler.mimes.includes(file.value.mime))?.component)
+const viewComponent = computed(() => file.value && window.OCA.Viewer.availableHandlers.find((handler) => handler.mimes.includes(file.value.mime))?.component)
 
 const link = computed(() => file.value && generateUrl(`/f/${file.value.fileid}`))
 

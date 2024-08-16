@@ -63,7 +63,7 @@ function deleteDialog(id) {
  * @param {Function} callback which will be triggered when user presses OK
  * @param {boolean} [modal] make the dialog modal
  */
-function info(text, title, callback, modal) {
+function info(text, title, callback, modal) { // eslint-disable-line @typescript-eslint/no-unused-vars
 	// TODO: currently not used in Talk, but should be implemented
 	// this.message(text, title, 'info', Dialogs.OK_BUTTON, callback, modal)
 	console.warn('OC.dialogs.info is not implemented in Talk Desktop')
@@ -158,7 +158,7 @@ function confirmDestructive(text, title, buttons, callback, modal) {
  * @param {boolean} password whether the input should be a password input
  * @return {void}
  */
-function prompt(text, title, callback, modal, name, password) {
+function prompt(text, title, callback, modal, name, password) { // eslint-disable-line @typescript-eslint/no-unused-vars
 	// TODO: currently not used in Talk, but should be implemented
 	console.warn('OC.dialogs.prompt is not implemented in Talk Desktop')
 }

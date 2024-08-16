@@ -10,27 +10,11 @@ import MdiWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 
 import { translate as t } from '@nextcloud/l10n'
-import { appData } from '../../app/AppData.js'
+import { generateSystemReportMD } from './systemReport.service.ts'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
 
-const report = [
-	'----------------------------System report----------------------------',
-	`Nextcloud Talk Desktop version ${window.TALK_DESKTOP.packageInfo.version}`,
-	`- Built with Nextcloud Talk version ${window.TALK_DESKTOP.packageInfo.talkVersion}`,
-	'',
-	...(appData.credentials
-		? [
-			'Connected to:',
-			`- Server address: ${appData.serverUrl}`,
-			`- Nextcloud Server version ${appData.version.nextcloud.string}`,
-			`- Nextcloud Talk version ${appData.version.talk}`,
-		]
-		: ['Not connected to any server']),
-	'',
-	`OS: ${window.OS.version}`,
-	'----------------------------System report----------------------------',
-].join('\n')
+const report = generateSystemReportMD()
 
 /**
  * Handle the escape key to close the window

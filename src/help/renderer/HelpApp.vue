@@ -8,7 +8,6 @@ import { onBeforeUnmount, onMounted } from 'vue'
 
 import MdiWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcTextArea from '@nextcloud/vue/dist/Components/NcTextArea.js'
 
 import { translate as t } from '@nextcloud/l10n'
 import { appData } from '../../app/AppData.js'
@@ -61,8 +60,12 @@ onBeforeUnmount(() => {
 
 <template>
 	<div class="about">
-		<h2>{{ t('talk_desktop', 'About') }}</h2>
+		<h2 class="about__heading">
+			{{ t('talk_desktop', 'About') }}
+		</h2>
+
 		<p>{{ packageInfo.productName }} - {{ packageInfo.description }}</p>
+
 		<ul class="about__list">
 			<li>
 				{{ t('talk_desktop', 'Privacy and Legal Policy') }}: <a class="link" href="https://nextcloud.com/privacy/" target="_blank">https://nextcloud.com/privacy/</a>
@@ -77,20 +80,19 @@ onBeforeUnmount(() => {
 				{{ t('talk_desktop', 'Source Code') }}: <a :href="packageInfo.repository" class="link" target="_blank">{{ packageInfo.repository }}</a>
 			</li>
 		</ul>
-		<NcTextArea :aria-label="t('talk_desktop', 'System report')"
+
+		<textarea :aria-label="t('talk_desktop', 'System report')"
 			:value="report"
-			rows="11"
 			readonly
 			class="about__report"
 			@focus="$event.target.setSelectionRange(0, -1)" />
-		<p>
-			<NcButton type="secondary" wide @click="close">
-				<template #icon>
-					<MdiWindowClose />
-				</template>
-				{{ t('talk_desktop', 'Close') }}
-			</NcButton>
-		</p>
+
+		<NcButton type="secondary" wide @click="close">
+			<template #icon>
+				<MdiWindowClose />
+			</template>
+			{{ t('talk_desktop', 'Close') }}
+		</NcButton>
 	</div>
 </template>
 
@@ -98,7 +100,19 @@ onBeforeUnmount(() => {
 .about {
 	height: 100%;
 	background: var(--color-main-background);
-	padding: 15px;
+	padding: calc(2 * var(--default-grid-baseline));
+	display: flex;
+	flex-direction: column;
+	gap: calc(2 * var(--default-grid-baseline));
+
+	&,
+	& * {
+		box-sizing: border-box;
+	}
+}
+
+.about__heading {
+	margin-top: 0;
 }
 
 .about__list {
@@ -106,8 +120,10 @@ onBeforeUnmount(() => {
 }
 
 .about__report {
+	flex: 1 1 auto;
 	width: 100%;
 	resize: none;
+	margin: 0; /* Override server styles */
 }
 
 .about .link {

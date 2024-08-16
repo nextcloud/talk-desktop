@@ -12,6 +12,8 @@ OC.L10N.register(
     "Issues" : "مسائل",
     "Close" : "بسته",
     "Ok" : "قبول",
+    "No" : "خیر",
+    "Yes" : "بله",
     "User status" : "وضعبت کاربر",
     "Your status was set automatically" : "Your status was set automatically",
     "Predefined statuses" : "Predefined statuses",

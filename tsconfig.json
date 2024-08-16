@@ -1,18 +1,18 @@
 {
 	"extends": "@vue/tsconfig/tsconfig.json",
-	"include": ["*.ts"],
-	"exclude": ["node_modules", "vendor"],
+	"include": ["src/**/*.ts", "src/**/*.vue"],
 	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true,
 		"allowImportingTsExtensions": true,
-		"lib": ["ESNext"],
+		"allowJs": true,
+		"checkJs": false,
 		"baseUrl": ".",
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"strictNullChecks": true,
 		"paths": {
 			"@global-styles/*": ["resources/server-global-styles/master/*"],
 		},
 	},
 	"vueCompilerOptions": {
 		"target": 2.7,
-	}
+	},
 }

@@ -9,7 +9,6 @@ import { getCapabilities } from '../../shared/ocs.service.js'
 import { setInitialState } from '../../shared/initialState.service.js'
 import { subscribe } from '@nextcloud/event-bus'
 import { getCurrentUser } from '@nextcloud/auth'
-import { TITLE_BAR_HEIGHT } from '../../constants.js'
 
 /**
  * Fetch and load server styles.
@@ -49,9 +48,6 @@ export async function initServerStyles() {
 export async function initLocalStyles() {
 	// Load styles overrides
 	await import('./assets/overrides.css')
-
-	document.body.style.setProperty('--header-height', `${TITLE_BAR_HEIGHT}px`, 'important')
-	document.documentElement.style.setProperty('--header-height', `${TITLE_BAR_HEIGHT}px`, 'important')
 }
 
 /**

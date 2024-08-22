@@ -27,9 +27,10 @@ function findOrCreateInitialStateContainer() {
 	let container = document.getElementById('initial-state')
 
 	if (!container) {
-		// <template id="initial-state"></template>
-		container = document.createElement('template')
+		// <div id="initial-state" style="display: none;"></div>
+		container = document.createElement('div')
 		container.id = 'initial-state'
+		container.style.setProperty('display', 'none')
 		document.body.prepend(container)
 	}
 

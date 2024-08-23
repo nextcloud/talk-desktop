@@ -110,6 +110,7 @@ export function createReuseToml(reuse) {
 	return convertReusePrologToReuseToml(reuse.prolog)
 		+ '\n\n'
 		+ reuse.annotations.map(convertReuseAnnotationToReuseToml).join('\n\n')
+		+ '\n'
 }
 
 /**

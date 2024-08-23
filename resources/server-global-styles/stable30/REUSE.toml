@@ -234,7 +234,7 @@ SPDX-FileCopyrightText = "2021 Zoltán Vörös <https://flickr.com/photos/v923z/
 SPDX-License-Identifier = "CC-BY-2.0"
 
 [[annotations]]
-path = ["apps/theming/theme/light.css","apps/theming/theme/dark.css"]
+path = ["apps/theming/theme/light.css","apps/theming/theme/dark.css","apps/theming/theme/light.plain.css","apps/theming/theme/dark.plain.css"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"

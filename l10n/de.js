@@ -36,7 +36,7 @@ OC.L10N.register(
     "Today" : "Heute",
     "This week" : "Diese Woche",
     "Clear after" : "Löschen nach",
-    "Emoji for your status message" : "Emoji für Ihre Statusnachricht",
+    "Emoji for your status message" : "Emoji für deine Statusnachricht",
     "Status message" : "Statusnachricht",
     "Open in a Web-Browser" : "Im Web-Browser öffnen",
     "Cancel" : "Abbrechen",

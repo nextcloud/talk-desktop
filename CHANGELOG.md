@@ -5,6 +5,17 @@
 
 # Changelog
 
+## v0.36.0 - 2024-08-27
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v20.0.0-rc.3
+
+### Fixes
+
+- Fix error when connecting to old Nextcloud Talk servers [#760](https://github.com/nextcloud/talk-desktop/issues/760)
+- UI fixes [#761](https://github.com/nextcloud/talk-desktop/pull/761), [#773](https://github.com/nextcloud/talk-desktop/pull/773)
+
 ## v0.35.0 - 2024-08-16
 
 ### Build-in Talk update

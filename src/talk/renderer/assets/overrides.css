@@ -14,8 +14,6 @@ body {
 }
 
 .content {
-	/* TODO: upstream using --header-height on NcContent margin-top */
-	margin-top: var(--header-height) !important;
 	border-radius: 0 !important;
 }
 

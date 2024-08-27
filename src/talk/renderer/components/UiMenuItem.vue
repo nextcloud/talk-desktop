@@ -58,6 +58,7 @@ defineProps({
 	width: 100%;
 	/* Override default global button styles */
 	margin: 0 !important;
+	color: var(--color-main-text);
 }
 
 /*.menu-item__action:active,*/

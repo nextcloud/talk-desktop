@@ -6,6 +6,7 @@
 <script setup>
 import { computed } from 'vue'
 import { generateFilePreviewUrl } from './viewer.utils.ts'
+import ViewerHandlerMedia from './ViewerHandlerMedia.vue'
 
 const props = defineProps({
 	file: {
@@ -18,22 +19,13 @@ const src = computed(() => generateFilePreviewUrl(props.file.fileid, props.file.
 </script>
 
 <template>
-	<div class="media-wrapper">
-		<img :src="src" :alt="file.basename">
-	</div>
+	<ViewerHandlerMedia v-slot="{ mediaClass, handleLoadEnd }">
+		<img :key="src"
+			class="viewer-image"
+			:class="mediaClass"
+			:src="src"
+			:alt="file.basename"
+			@load="handleLoadEnd(false)"
+			@error="handleLoadEnd(true)">
+	</ViewerHandlerMedia>
 </template>
-
-<style scoped>
-.media-wrapper {
-	display: flex;
-	height: 100%;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-
-	> * {
-		max-width: 100%;
-		max-height: 100%;
-	}
-}
-</style>

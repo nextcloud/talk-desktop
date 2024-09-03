@@ -57,7 +57,6 @@ defineExpose({
 		:name="file.basename"
 		size="full"
 		:close-button-contained="false"
-		dark
 		@close="close">
 		<component :is="viewComponent"
 			v-if="viewComponent"

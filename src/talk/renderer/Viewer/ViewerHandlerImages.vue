@@ -5,7 +5,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { generateUrl } from '@nextcloud/router'
+import { generateFilePreviewUrl } from './viewer.utils.ts'
 
 const props = defineProps({
 	file: {
@@ -14,21 +14,7 @@ const props = defineProps({
 	},
 })
 
-const src = computed(() => {
-	if (!props.file) {
-		return null
-	}
-
-	const searchParams = new URLSearchParams(Object.entries({
-		fileId: props.file.fileid,
-		x: Math.floor(screen.width * devicePixelRatio),
-		y: Math.floor(screen.height * devicePixelRatio),
-		a: 'true',
-		etag: props.file.etag,
-	})).toString()
-
-	return generateUrl(`/core/preview?${searchParams}`)
-})
+const src = computed(() => generateFilePreviewUrl(props.file.fileid, props.file.etag))
 </script>
 
 <template>

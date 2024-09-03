@@ -5,8 +5,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { generateRemoteUrl } from '@nextcloud/router'
-import { getCurrentUser } from '@nextcloud/auth'
+import { generateUserFileDavUrl } from './viewer.utils.ts'
 
 const props = defineProps({
 	file: {
@@ -15,13 +14,7 @@ const props = defineProps({
 	},
 })
 
-const src = computed(() => {
-	if (!props.file) {
-		return null
-	}
-
-	return generateRemoteUrl(`dav/files/${getCurrentUser().uid}/${props.file.filename}`)
-})
+const src = computed(() => generateUserFileDavUrl(props.file.filename))
 </script>
 
 <template>

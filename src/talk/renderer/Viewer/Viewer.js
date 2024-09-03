@@ -4,15 +4,16 @@
  */
 
 import Vue from 'vue'
-import ViewerApp from './ViewerApp.vue'
-import ViewerHandlerImages from './ViewerHandlerImages.vue'
-import ViewerHandlerVideos from './ViewerHandlerVideos.vue'
 
 /**
  * Create and mount Viewer instance with similar to original OCA.Viewer interface
  * @return {object}
  */
-export function createViewer() {
+export async function createViewer() {
+	const { default: ViewerApp } = await import('./ViewerApp.vue')
+	const { default: ViewerHandlerImages } = await import('./ViewerHandlerImages.vue')
+	const { default: ViewerHandlerVideos } = await import('./ViewerHandlerVideos.vue')
+
 	const Viewer = {
 		availableHandlers: [{
 			id: 'images',

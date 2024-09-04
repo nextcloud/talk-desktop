@@ -13,6 +13,7 @@ export async function createViewer() {
 	const { default: ViewerApp } = await import('./ViewerApp.vue')
 	const { default: ViewerHandlerImages } = await import('./ViewerHandlerImages.vue')
 	const { default: ViewerHandlerVideos } = await import('./ViewerHandlerVideos.vue')
+	const { default: ViewerHandlerPdf } = await import('./ViewerHandlerPdf.vue')
 
 	const Viewer = {
 		availableHandlers: [{
@@ -44,6 +45,11 @@ export async function createViewer() {
 				'video/x-matroska',
 			],
 			component: ViewerHandlerVideos,
+		}, {
+			id: 'pdf',
+			group: 'document',
+			mimes: ['application/pdf'],
+			component: ViewerHandlerPdf,
 		}],
 
 		open(...args) {

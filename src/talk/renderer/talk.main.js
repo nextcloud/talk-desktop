@@ -28,7 +28,7 @@ initPlaySoundManagementOnUserStatus()
 
 createDesktopApp()
 
-window.OCA.Viewer = createViewer()
+window.OCA.Viewer = await createViewer()
 
 await import('@talk/src/main.js')
 

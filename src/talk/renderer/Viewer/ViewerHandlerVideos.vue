@@ -5,8 +5,8 @@
 
 <script setup>
 import { computed } from 'vue'
-import { generateRemoteUrl } from '@nextcloud/router'
-import { getCurrentUser } from '@nextcloud/auth'
+import { generateUserFileDavUrl } from './viewer.utils.ts'
+import ViewerHandlerMedia from './ViewerHandlerMedia.vue'
 
 const props = defineProps({
 	file: {
@@ -15,32 +15,16 @@ const props = defineProps({
 	},
 })
 
-const src = computed(() => {
-	if (!props.file) {
-		return null
-	}
-
-	return generateRemoteUrl(`dav/files/${getCurrentUser().uid}/${props.file.filename}`)
-})
+const src = computed(() => generateUserFileDavUrl(props.file.filename))
 </script>
 
 <template>
-	<div class="media-wrapper">
-		<video :src="src" controls />
-	</div>
+	<ViewerHandlerMedia v-slot="{ mediaClass, handleLoadEnd }">
+		<video class="viewer-video"
+			:class="mediaClass"
+			:src="src"
+			controls
+			@canplay="handleLoadEnd(false)"
+			@error="handleLoadEnd(true)" />
+	</ViewerHandlerMedia>
 </template>
-
-<style scoped>
-.media-wrapper {
-	display: flex;
-	height: 100%;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
-
-	> * {
-		max-width: 100%;
-		max-height: 100%;
-	}
-}
-</style>

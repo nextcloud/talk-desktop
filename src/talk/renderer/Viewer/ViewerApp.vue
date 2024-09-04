@@ -57,7 +57,6 @@ defineExpose({
 		:name="file.basename"
 		size="full"
 		:close-button-contained="false"
-		dark
 		@close="close">
 		<component :is="viewComponent"
 			v-if="viewComponent"
@@ -66,7 +65,7 @@ defineExpose({
 		<template #actions>
 			<NcActionLink :href="link">
 				<template #icon>
-					<MdiOpenInNew />
+					<MdiOpenInNew :size="20" />
 				</template>
 				{{ t('talk_desktop', 'Open in a Web-Browser') }}
 			</NcActionLink>
@@ -85,11 +84,17 @@ body:has(.viewer-modal--open) .header {
 </style>
 
 <style scoped>
+/* By default modal container overlaps an entire page. Move it down to not overlap the title */
 .viewer-modal {
-	top: 50px !important;
+	top: var(--header-height) !important;
 }
 
 .viewer-modal :deep(.modal-container) {
 	background: none !important;
+	height: calc(100% - var(--header-height) * 2) !important;
+}
+
+.viewer-modal :deep(.modal-container__content) {
+	overflow: hidden !important;
 }
 </style>

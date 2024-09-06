@@ -5,6 +5,21 @@
 
 # Changelog
 
+## v0.37.0 - 2024-09-06
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v20.0.0-rc.4
+
+### Features
+
+- Add PDF Viewer [#784](https://github.com/nextcloud/talk-desktop/pull/784)
+- Add Text, Markdown, and Source Code Viewer (read-only) [#785](https://github.com/nextcloud/talk-desktop/pull/785)
+
+### Fixes
+
+- Improve Viewer styling and loading/error handling [#783](https://github.com/nextcloud/talk-desktop/pull/783)
+
 ## v0.36.0 - 2024-08-27
 
 ### Build-in Talk update

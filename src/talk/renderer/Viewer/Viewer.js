@@ -14,6 +14,7 @@ export async function createViewer() {
 	const { default: ViewerHandlerImages } = await import('./ViewerHandlerImages.vue')
 	const { default: ViewerHandlerVideos } = await import('./ViewerHandlerVideos.vue')
 	const { default: ViewerHandlerPdf } = await import('./ViewerHandlerPdf.vue')
+	const { default: ViewerHandlerText } = await import('./ViewerHandlerText.vue')
 
 	const Viewer = {
 		availableHandlers: [{
@@ -50,6 +51,38 @@ export async function createViewer() {
 			group: 'document',
 			mimes: ['application/pdf'],
 			component: ViewerHandlerPdf,
+		}, {
+			id: 'text',
+			group: 'document',
+			mimes: [
+				'text/markdown',
+				'text/plain',
+			],
+			component: ViewerHandlerText,
+		}, {
+			id: 'text',
+			group: 'code',
+			mimes: [
+				'application/javascript', // .js .mjs .cjs
+				'application/json', // .json
+				'application/x-msdos-program', // .bat .cmd
+				'application/x-perl', // .pl
+				'application/x-php', // .php
+				'application/xml', // .xml
+				'application/yaml', // .yaml .yml
+				'text/css', // .css
+				'text/csv', // .csv
+				'text/html', // .html
+				'text/x-c', // .c
+				'text/x-c++src', // .cpp
+				'text/x-h', // .h
+				'text/x-java-source', // .java
+				'text/x-ldif', // .ldif
+				'text/x-python', // .py
+				'text/x-rst', // .rst
+				'text/x-shellscript', // .sh
+			],
+			component: ViewerHandlerText,
 		}],
 
 		open(...args) {

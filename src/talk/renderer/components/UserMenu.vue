@@ -14,12 +14,12 @@ import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
 import NcPopover from '@nextcloud/vue/dist/Components/NcPopover.js'
 import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
 
-import MdiCheck from 'vue-material-design-icons/Check.vue'
-import MdiChevronRight from 'vue-material-design-icons/ChevronRight.vue'
-import MdiChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
-import MdiEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
-import MdiPencil from 'vue-material-design-icons/Pencil.vue'
-import MdiLogout from 'vue-material-design-icons/Logout.vue'
+import IconCheck from 'vue-material-design-icons/Check.vue'
+import IconChevronRight from 'vue-material-design-icons/ChevronRight.vue'
+import IconChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
+import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
+import IconPencil from 'vue-material-design-icons/Pencil.vue'
+import IconLogout from 'vue-material-design-icons/Logout.vue'
 
 import ThemeLogo from './ThemeLogo.vue'
 import UiMenu from './UiMenu.vue'
@@ -99,7 +99,7 @@ function handleUserStatusChange(status) {
 					<template v-if="userStatusSubMenuOpen">
 						<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = false">
 							<template #icon>
-								<MdiChevronLeft :size="20" />
+								<IconChevronLeft :size="20" />
 							</template>
 							{{ t('talk_desktop', 'Back') }}
 						</UiMenuItem>
@@ -112,7 +112,7 @@ function handleUserStatusChange(status) {
 							</template>
 							{{ userStatusTranslations[status] }}
 							<template v-if="status === userStatus.status" #action-icon>
-								<MdiCheck :size="20" />
+								<IconCheck :size="20" />
 							</template>
 						</UiMenuItem>
 					</template>
@@ -148,7 +148,7 @@ function handleUserStatusChange(status) {
 								</template>
 								{{ userStatusTranslations[userStatus.status] }}
 								<template #action-icon>
-									<MdiChevronRight :size="20" />
+									<IconChevronRight :size="20" />
 								</template>
 							</UiMenuItem>
 							<UiMenuItem key="custom-status" tag="button" @click.native="isUserStatusDialogOpen = true">
@@ -156,11 +156,11 @@ function handleUserStatusChange(status) {
 									<span v-if="userStatus.icon" style="font-size: 20px">
 										{{ userStatus.icon }}
 									</span>
-									<MdiEmoticonOutline v-else :size="20" />
+									<IconEmoticonOutline v-else :size="20" />
 								</template>
 								{{ userStatus.message || t('talk_desktop', 'Set custom status') }}
 								<template v-if="userStatus.message" #action-icon>
-									<MdiPencil :size="20" />
+									<IconPencil :size="20" />
 								</template>
 							</UiMenuItem>
 
@@ -169,7 +169,7 @@ function handleUserStatusChange(status) {
 
 						<UiMenuItem tag="button" @click.native="emit('logout')">
 							<template #icon>
-								<MdiLogout :size="20" />
+								<IconLogout :size="20" />
 							</template>
 							{{ t('talk_desktop', 'Log out') }}
 						</UiMenuItem>

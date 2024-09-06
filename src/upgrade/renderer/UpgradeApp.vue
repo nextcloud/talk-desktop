@@ -4,8 +4,8 @@
 -->
 
 <script setup>
-import MdiUpdate from 'vue-material-design-icons/Update.vue'
-import MdiWeb from 'vue-material-design-icons/Web.vue'
+import IconUpdate from 'vue-material-design-icons/Update.vue'
+import IconWeb from 'vue-material-design-icons/Web.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import { translate as t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
@@ -24,7 +24,7 @@ const browserLink = generateUrl('apps/spreed')
 			:href="packageInfo.repository"
 			target="_blank">
 			<template #icon>
-				<MdiUpdate />
+				<IconUpdate />
 			</template>
 			{{ t('talk_desktop', 'Update Talk Desktop ↗') }}
 		</NcButton>
@@ -32,7 +32,7 @@ const browserLink = generateUrl('apps/spreed')
 			wide
 			:href="browserLink">
 			<template #icon>
-				<MdiWeb />
+				<IconWeb />
 			</template>
 			{{ t('talk_desktop', 'Continue in Web-Browser ↗') }}
 		</NcButton>

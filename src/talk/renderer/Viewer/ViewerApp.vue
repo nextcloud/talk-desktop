@@ -7,7 +7,7 @@
 import { computed, ref } from 'vue'
 import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
 import NcActionLink from '@nextcloud/vue/dist/Components/NcActionLink.js'
-import MdiOpenInNew from 'vue-material-design-icons/OpenInNew.vue'
+import IconOpenInNew from 'vue-material-design-icons/OpenInNew.vue'
 import { generateUrl } from '@nextcloud/router'
 import { translate as t } from '@nextcloud/l10n'
 
@@ -65,7 +65,7 @@ defineExpose({
 		<template #actions>
 			<NcActionLink :href="link">
 				<template #icon>
-					<MdiOpenInNew :size="20" />
+					<IconOpenInNew :size="20" />
 				</template>
 				{{ t('talk_desktop', 'Open in a Web-Browser') }}
 			</NcActionLink>

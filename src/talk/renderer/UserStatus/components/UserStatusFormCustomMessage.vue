@@ -8,7 +8,7 @@ import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcEmojiPicker from '@nextcloud/vue/dist/Components/NcEmojiPicker.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import { translate as t } from '@nextcloud/l10n'
-import MdiEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
+import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 
 defineProps({
 	icon: {
@@ -43,7 +43,7 @@ const handleUserStatusMessageChange = (message) => {
 					<template v-if="icon">
 						{{ icon }}
 					</template>
-					<MdiEmoticonOutline v-else :size="20" />
+					<IconEmoticonOutline v-else :size="20" />
 				</template>
 			</NcButton>
 		</NcEmojiPicker>

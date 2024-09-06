@@ -6,11 +6,11 @@
 <script setup>
 import { computed } from 'vue'
 
-import MdiReload from 'vue-material-design-icons/Reload.vue'
-import MdiWeb from 'vue-material-design-icons/Web.vue'
-import MdiBug from 'vue-material-design-icons/Bug.vue'
-import MdiInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
-import MdiMenu from 'vue-material-design-icons/Menu.vue'
+import IconReload from 'vue-material-design-icons/Reload.vue'
+import IconWeb from 'vue-material-design-icons/Web.vue'
+import IconBug from 'vue-material-design-icons/Bug.vue'
+import IconInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
+import IconMenu from 'vue-material-design-icons/Menu.vue'
 
 import NcActions from '@nextcloud/vue/dist/Components/NcActions.js'
 import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
@@ -32,12 +32,12 @@ const reload = () => window.location.reload()
 		type="tertiary-no-background"
 		container="body">
 		<template #icon>
-			<MdiMenu :size="20" fill-color="var(--color-header-contrast)" />
+			<IconMenu :size="20" fill-color="var(--color-header-contrast)" />
 		</template>
 
 		<NcActionLink :href="talkWebLink" target="_blank">
 			<template #icon>
-				<MdiWeb :size="20" />
+				<IconWeb :size="20" />
 			</template>
 			{{ t('talk_desktop', 'Open in Web-Browser') }}
 		</NcActionLink>
@@ -46,13 +46,13 @@ const reload = () => window.location.reload()
 
 		<NcActionButton @click="reload">
 			<template #icon>
-				<MdiReload :size="20" />
+				<IconReload :size="20" />
 			</template>
 			{{ t('talk_desktop', 'Force reload') }}
 		</NcActionButton>
 		<NcActionLink :href="packageInfo.bugs" target="_blank">
 			<template #icon>
-				<MdiBug />
+				<IconBug />
 			</template>
 			{{ t('talk_desktop', 'Report a bug') }}
 		</NcActionLink>
@@ -61,7 +61,7 @@ const reload = () => window.location.reload()
 
 		<NcActionButton @click="showHelp">
 			<template #icon>
-				<MdiInformationOutline :size="20" />
+				<IconInformationOutline :size="20" />
 			</template>
 			{{ t('talk_desktop', 'About') }}
 		</NcActionButton>

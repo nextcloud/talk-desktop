@@ -5,7 +5,7 @@
 
 <script setup>
 import { computed, ref } from 'vue'
-import MdiArrowRight from 'vue-material-design-icons/ArrowRight.vue'
+import IconArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
@@ -163,7 +163,7 @@ async function login() {
 						native-type="submit"
 						wide>
 						<template #icon>
-							<MdiArrowRight :size="20" />
+							<IconArrowRight :size="20" />
 						</template>
 						{{ t('talk_desktop', 'Log in') }}
 					</NcButton>

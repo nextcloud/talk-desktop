@@ -6,8 +6,8 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
-import MdiCancel from '@mdi/svg/svg/cancel.svg?raw'
-import MdiMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
+import IconCancel from '@mdi/svg/svg/cancel.svg?raw'
+import IconMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
 
 import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
@@ -34,13 +34,13 @@ const handleCancel = () => emit('cancel')
 const dialogButtons = computed(() => [
 	{
 		label: t('talk_desktop', 'Cancel'),
-		icon: MdiCancel,
+		icon: IconCancel,
 		callback: handleCancel,
 	},
 	{
 		label: t('talk_desktop', 'Share screen'),
 		type: 'primary',
-		icon: MdiMonitorShare,
+		icon: IconMonitorShare,
 		disabled: !selectedSourceId.value,
 		callback: handleSubmit,
 	},

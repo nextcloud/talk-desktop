@@ -40,6 +40,7 @@ OC.L10N.register(
     "Status message" : "狀態訊息",
     "Open in a Web-Browser" : "在網路瀏覽器中開啟",
     "Loading …" : "正在載入……",
+    "Could not load the file" : "無法載入檔案",
     "Cancel" : "取消",
     "Share screen" : "分享螢幕",
     "Selected screen or window" : "選定的螢幕或視窗",

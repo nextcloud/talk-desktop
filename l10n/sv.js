@@ -40,6 +40,7 @@ OC.L10N.register(
     "Status message" : "Statusmeddelande",
     "Open in a Web-Browser" : "Öppna i en webbläsare",
     "Loading …" : "Laddar ...",
+    "Could not load the file" : "Kunde inte ladda filen",
     "Cancel" : "Avbryt",
     "Share screen" : "Dela skärm",
     "Selected screen or window" : "Vald skärm eller fönster",

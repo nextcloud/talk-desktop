@@ -40,6 +40,7 @@ OC.L10N.register(
     "Status message" : "Statusnachricht",
     "Open in a Web-Browser" : "Im Web-Browser öffnen",
     "Loading …" : "Lade …",
+    "Could not load the file" : "Datei konnte nicht geladen werden",
     "Cancel" : "Abbrechen",
     "Share screen" : "Bildschirm teilen",
     "Selected screen or window" : "Ausgewählter Bildschirm oder Fenster",

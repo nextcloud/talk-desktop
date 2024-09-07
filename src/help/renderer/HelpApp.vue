@@ -6,7 +6,7 @@
 <script setup>
 import { onBeforeUnmount, onMounted } from 'vue'
 
-import MdiWindowClose from 'vue-material-design-icons/WindowClose.vue'
+import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 
 import { translate as t } from '@nextcloud/l10n'
@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
 
 		<NcButton type="secondary" wide @click="close">
 			<template #icon>
-				<MdiWindowClose />
+				<IconWindowClose />
 			</template>
 			{{ t('talk_desktop', 'Close') }}
 		</NcButton>

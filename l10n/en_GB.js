@@ -41,6 +41,7 @@ OC.L10N.register(
     "Open in a Web-Browser" : "Open in a Web-Browser",
     "Loading …" : "Loading …",
     "Could not load the file" : "Could not load the file",
+    "Layout" : "Layout",
     "Cancel" : "Cancel",
     "Share screen" : "Share screen",
     "Selected screen or window" : "Selected screen or window",

@@ -40,6 +40,7 @@ OC.L10N.register(
     "Status message" : "Statusmelding",
     "Open in a Web-Browser" : "Åpne i en nettleser",
     "Loading …" : "Laster ...",
+    "Layout" : "Utforming",
     "Cancel" : "Avbryt",
     "Share screen" : "Del skjerm",
     "Selected screen or window" : "Valgt skjerm eller vindu",

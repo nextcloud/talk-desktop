@@ -40,6 +40,7 @@ OC.L10N.register(
     "Status message" : "Порука стања",
     "Open in a Web-Browser" : "Отвори у веб прегледачу",
     "Loading …" : "Учитавање…",
+    "Layout" : "Распоред",
     "Cancel" : "Откажи",
     "Share screen" : "Подели екран",
     "Selected screen or window" : "Изабрани екран или прозор",

@@ -41,6 +41,7 @@ OC.L10N.register(
     "Open in a Web-Browser" : "إفتح في مستعرض الوب",
     "Loading …" : "التحميل جارٍ …",
     "Could not load the file" : "تعذّر رفع الملف",
+    "Layout" : "تنسيق",
     "Cancel" : "إلغاء",
     "Share screen" : "مشاركة الشاشة",
     "Selected screen or window" : "شاشة أو نافذة محددة",

@@ -40,6 +40,7 @@ OC.L10N.register(
     "Status message" : "Komunikat statusu",
     "Open in a Web-Browser" : "Otwórz w przeglądarce internetowej",
     "Loading …" : "Wczytywanie…",
+    "Layout" : "Wygląd",
     "Cancel" : "Anuluj",
     "Share screen" : "Współdziel ekran",
     "Selected screen or window" : "Wybrany ekran lub okno",

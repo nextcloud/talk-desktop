@@ -20,6 +20,7 @@ OC.L10N.register(
     "Emoji for your status message" : "あなたのステータスメッセージに絵文字を",
     "Status message" : "状態メッセージ",
     "Loading …" : "読み込み中…",
+    "Layout" : "レーアウト",
     "Cancel" : "キャンセル",
     "Share screen" : "画面共有",
     "Menu" : "メニュー",

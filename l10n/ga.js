@@ -41,6 +41,7 @@ OC.L10N.register(
     "Open in a Web-Browser" : "Oscail i Brabhsálaí Gréasáin",
     "Loading …" : "Á lódáil…",
     "Could not load the file" : "Níorbh fhéidir an comhad a lódáil",
+    "Layout" : "Leagan Amach",
     "Cancel" : "Cealaigh",
     "Share screen" : "Comhroinn scáileán",
     "Selected screen or window" : "Scáileán nó fuinneog roghnaithe",

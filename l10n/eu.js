@@ -29,6 +29,7 @@ OC.L10N.register(
     "Emoji for your status message" : "Zure egoera-mezurako emojia",
     "Status message" : "Egoera-mezua",
     "Loading …" : "Kargatzen ...",
+    "Layout" : "Diseinua",
     "Cancel" : "Utzi",
     "Share screen" : "Partekatu pantaila",
     "Menu" : "Menua",

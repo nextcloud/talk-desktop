@@ -40,6 +40,7 @@ OC.L10N.register(
     "Status message" : "Mensagem de status",
     "Open in a Web-Browser" : "Abrir em um navegador da Web",
     "Loading …" : "Carregando...",
+    "Layout" : "Layout",
     "Cancel" : "Cancelar",
     "Share screen" : "Compartilhar tela",
     "Selected screen or window" : "Tela ou janela selecionada",

@@ -41,6 +41,7 @@ OC.L10N.register(
     "Open in a Web-Browser" : "Abrir nun navegador web",
     "Loading …" : "Cargando…",
     "Could not load the file" : "Non foi posíbel cargar o ficheiro",
+    "Layout" : "Deseño",
     "Cancel" : "Cancelar",
     "Share screen" : "Compartir a pantalla",
     "Selected screen or window" : "Pantalla ou xanela seleccionada",

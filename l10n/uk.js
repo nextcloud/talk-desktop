@@ -35,6 +35,7 @@ OC.L10N.register(
     "Emoji for your status message" : "Емоційки для повідомлення вашого статусу",
     "Status message" : "Повідомлення про статус",
     "Loading …" : "Завантаження …",
+    "Layout" : "Подання",
     "Cancel" : "Скасувати",
     "Menu" : "Меню",
     "Open in Web-Browser" : "Відкрити у бравзері",

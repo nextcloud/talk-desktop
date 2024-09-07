@@ -35,6 +35,7 @@ OC.L10N.register(
     "Emoji for your status message" : "Emoji pre vašu statusovú správu",
     "Status message" : "Správa o stave",
     "Loading …" : "Načítavam …",
+    "Layout" : "Usporiadanie",
     "Cancel" : "Zrušiť",
     "Share screen" : "Sprístupniť obrazovku",
     "Menu" : "Menu",

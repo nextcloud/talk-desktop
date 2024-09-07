@@ -40,6 +40,8 @@ OC.L10N.register(
     "Status message" : "Durum iletisi",
     "Open in a Web-Browser" : "Tarayıcıda aç",
     "Loading …" : "Yükleniyor…",
+    "Could not load the file" : "Dosya yüklenemedi",
+    "Layout" : "Yerleşim",
     "Cancel" : "İptal",
     "Share screen" : "Ekranı paylaş",
     "Selected screen or window" : "Seçilmiş ekran ya da pencere",

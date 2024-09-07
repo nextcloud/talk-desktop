@@ -33,6 +33,7 @@ OC.L10N.register(
     "Emoji for your status message" : "表示状态信息的表情符号",
     "Status message" : "状态信息",
     "Loading …" : "正在加载 …",
+    "Layout" : "布局",
     "Cancel" : "取消",
     "Share screen" : "共享屏幕",
     "Menu" : "菜单",

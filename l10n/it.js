@@ -22,6 +22,7 @@ OC.L10N.register(
     "Today" : "Ogg",
     "Emoji for your status message" : "Emoji per il tuo messaggio di stato",
     "Loading …" : "Caricamento…",
+    "Layout" : "Disposizione",
     "Cancel" : "Annulla",
     "Share screen" : "Condividi schermo",
     "Menu" : "Menu",

@@ -22,6 +22,7 @@ OC.L10N.register(
     "This week" : "Šią savaitę",
     "Status message" : "Būsenos žinutė",
     "Loading …" : "Įkeliama…",
+    "Layout" : "Išdėstymas",
     "Cancel" : "Atsisakyti",
     "Share screen" : "Bendrinti ekraną",
     "Menu" : "Meniu",

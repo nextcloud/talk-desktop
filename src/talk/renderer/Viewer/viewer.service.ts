@@ -16,17 +16,15 @@ export async function fetchFileContent(filename: string, format: 'binary'): Prom
 export async function fetchFileContent(filename: string, format: 'text' | 'binary'): Promise<string | Blob> {
 	const webDavClient = davGetClient(davRemoteURL + davRootPath)
 
-	// Get the MIME type of the file for the binary file to generate a correct Blob later
-	let mimeType: string
-	if (format === 'binary') {
-		const stat = await webDavClient.stat(filename) as FileStat
-		mimeType = stat.mime
+	if (format === 'text') {
+		// Get the text file content
+		return await webDavClient.getFileContents(filename, { format }) as string
 	}
 
-	// Fetch file content
-	type FileContent = typeof format extends 'binary' ? ArrayBuffer : string
-	const content = await webDavClient.getFileContents(filename, { format }) as FileContent
-
-	// Return the content in the requested format
-	return format === 'binary' ? new Blob([content], { type: mimeType }) : content
+	// Get the MIME type of the file for the binary file to generate a correct Blob later
+	const stat = await webDavClient.stat(filename) as FileStat
+	const mimeType = stat.mime
+	// Get the file content as ArrayBuffer and convert it to Blob
+	const content = await webDavClient.getFileContents(filename, { format }) as ArrayBuffer
+	return new Blob([content], { type: mimeType })
 }

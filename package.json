@@ -31,6 +31,7 @@
     "generate-icons": "node ./scripts/generate-icons.js",
     "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
     "lint": "eslint --ext .js,.vue src/ --fix",
+    "typecheck": "vue-tsc --noEmit",
     "release:package": "zx ./scripts/prepare-release-packages.mjs"
   },
   "dependencies": {
@@ -85,7 +86,9 @@
     "node-loader": "^2.0.0",
     "regenerator-runtime": "^0.14.1",
     "style-loader": "^3.3.4",
+    "typescript": "^5.5.4",
     "vue-eslint-parser": "^9.4.3",
+    "vue-tsc": "^2.0.29",
     "webpack": "^5.94.0",
     "webpack-merge": "^6.0.1",
     "worker-loader": "^3.0.8",

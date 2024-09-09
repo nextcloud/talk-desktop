@@ -2,10 +2,54 @@
  * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
-
-import { translate, translatePlural } from '@nextcloud/l10n'
-
 // TODO: Separate main and renderer globals
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/**
+ * Frontend
+ */
+declare module '*.css'
+
+declare module '*.svg' {
+	const url: string
+	export default url
+}
+
+declare module 'vue-material-design-icons/*.vue' {
+	import type { Component } from 'vue'
+	const component: Component<Record<string, never>, Record<string, never>, Record<string, never>, { size: number }, Record<string, never>>
+	export default component
+}
+
+// @nextcloud/vue has declarations only since 9.0.0
+declare module '@nextcloud/vue/dist/Components/*.js' {
+	import type { Component } from 'vue'
+	const component: Component
+	export default component
+}
+
+declare const IS_DESKTOP: true
+
+declare interface Window {
+	// Nextcloud Globals
+	t: typeof import('@nextcloud/l10n').t
+	n: typeof import('@nextcloud/l10n').n
+	OC: any
+	OCP: any
+	OCA: {
+		Talk: {
+			TalkDesktop: any
+		} & any
+	} & any
+	// Talk Desktop IPC
+	TALK_DESKTOP: any
+	OS: any
+}
+
+/**
+ * Electron Backend
+ */
 
 declare global {
 	// Electron Forge built constants
@@ -27,18 +71,4 @@ declare global {
 			NEXTCLOUD_DEV_SERVER_HOSTS: string
 		}
 	}
-
-	// Nextcloud Globals
-	const OC: object
-	const OCA: object
-	const OCP: object
-	const t: typeof translate
-	const n: typeof translatePlural
-	// @nextcloud/webpack-vue-config
-	const appName: string
-	const appVersion: string
-	// Talk Desktop
-	const IS_DESKTOP: true
 }
-
-export {}

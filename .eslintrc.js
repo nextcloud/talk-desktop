@@ -5,8 +5,7 @@
 
 module.exports = {
 	extends: [
-		// https://github.com/nextcloud/eslint-config/
-		'@nextcloud',
+		'@nextcloud/eslint-config/typescript',
 		'plugin:vue/recommended',
 	],
 
@@ -33,7 +32,12 @@ module.exports = {
 	settings: {
 		'import/extensions': [
 			'.js',
+			'.ts',
 			'.vue',
+		],
+		'import/ignore': [
+			// eslint-plugin-import doesn't support setting TS parser as options for vue parser
+			'\\.vue$',
 		],
 	},
 

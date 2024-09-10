@@ -32,6 +32,7 @@ OC.L10N.register(
     "Emoji for your status message" : "Эмодзи для вашего сообщения о состоянии",
     "Status message" : "Сообщение о состоянии",
     "Loading …" : "Загрузка…",
+    "Layout" : "Расположение",
     "Cancel" : "Отмена",
     "Share screen" : "Поделиться экраном",
     "Menu" : "Меню",

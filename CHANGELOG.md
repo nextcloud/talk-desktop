@@ -5,6 +5,16 @@
 
 # Changelog
 
+## v0.38.0 - 2024-09-19
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v20.0.0
+
+### Fixes
+
+- Fix typing-status sharing being always disabled [#799](https://github.com/nextcloud/talk-desktop/pull/799)
+
 ## v0.37.0 - 2024-09-06
 
 ### Build-in Talk update

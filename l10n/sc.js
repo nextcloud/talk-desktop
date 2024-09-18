@@ -23,6 +23,7 @@ OC.L10N.register(
     "Menu" : "Menu",
     "Report a bug" : "Report a bug",
     "Back" : "In segus",
+    "View profile" : "Ammustra su profilu",
     "Log out" : "Essi·nche",
     "Away" : "Ausente",
     "Do not disturb" : "No istorbes",

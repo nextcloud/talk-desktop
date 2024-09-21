@@ -73,7 +73,7 @@
     "@vue/tsconfig": "^0.5.1",
     "css-loader": "^6.10.0",
     "dotenv": "^16.4.5",
-    "electron": "^32.1.0",
+    "electron": "^32.1.2",
     "esbuild-loader": "^4.2.2",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",

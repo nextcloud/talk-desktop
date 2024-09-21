@@ -60,7 +60,7 @@
     "vue-material-design-icons": "^5.3.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^7.4.0",
+    "@electron-forge/cli": "^7.5.0",
     "@electron-forge/maker-deb": "^7.4.0",
     "@electron-forge/maker-rpm": "^7.4.0",
     "@electron-forge/maker-squirrel": "^7.5.0",

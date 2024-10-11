@@ -5,6 +5,12 @@
 
 # Changelog
 
+## v0.39.0 - 2024-10-11
+
+### Build-in Talk update
+
+- Built-in Talk in binaries is updated to v20.0.1
+
 ## v0.38.0 - 2024-09-19
 
 ### Build-in Talk update

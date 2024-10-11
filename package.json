@@ -50,7 +50,6 @@
     "@vueuse/core": "^11.1.0",
     "core-js": "^3.38.1",
     "electron-squirrel-startup": "^1.0.1",
-    "floating-vue": "^1.0.0-beta.19",
     "howler": "^2.2.4",
     "pinia": "^2.2.4",
     "semver": "^7.6.3",

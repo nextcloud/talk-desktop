@@ -2,7 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "تطبيق المحادثة المكتبي \"talk\" ",
-    "Logged in successfully" : "تمّ الدخول بنجاحٍ",
+    "Logged in successfully" : "تمّ الدخول بنجاح",
     "Invalid server address" : "عنوان الخادوم غير صالح",
     "Nextcloud server not found" : "تعذّر العثور على خادوم نكست كلاود",
     "Nextcloud Talk is not installed in the server" : "تطبيق \"المحادثة\" talk غير مثبت على خادوم نكست كلاود ",
@@ -55,7 +55,7 @@ OC.L10N.register(
     "Selected screen or window" : "شاشة أو نافذة محددة",
     "Audio + All screens" : "الصوت + كل الشاشات",
     "Audio + Screen" : "الصوت + الشاشة",
-    "Choose what to share" : "حدِّد ما تريد مشاركته",
+    "Choose what to share" : "قم بتحديد ما تريد مشاركته",
     "Menu" : "القائمة ",
     "Open in Web-Browser" : "إفتَح في مستعرض الوب",
     "Force reload" : "إفرِض إعادة التحميل",

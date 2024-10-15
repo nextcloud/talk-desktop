@@ -26,7 +26,7 @@ OC.L10N.register(
     "User status" : "حالة العضو",
     "Your status was set automatically" : "تمّ تعيين حالتك تلقائيّاً",
     "Previously set status" : "حالة تمّ تعيينها سابقاً",
-    "Predefined statuses" : "حالات مُعرّفة مُسبقاً",
+    "Predefined statuses" : "حالات معرفة مُسبقاً",
     "Clear custom status" : "محو حالة مخصصة",
     "Set user status" : "تعيين حالة المستخدم",
     "Don't clear" : "لا تمحُ",

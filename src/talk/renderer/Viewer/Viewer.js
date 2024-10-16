@@ -85,6 +85,10 @@ export async function createViewer() {
 			component: ViewerHandlerText,
 		}],
 
+		get mimetypes() {
+			return this.availableHandlers.flatMap(handler => handler.mimes)
+		},
+
 		open(...args) {
 			Viewer.instance.open(...args)
 		},

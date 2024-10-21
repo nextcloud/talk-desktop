@@ -86,9 +86,13 @@ const TALK_DESKTOP = {
 	 */
 	getDesktopCapturerSources: () => ipcRenderer.invoke('app:getDesktopCapturerSources'),
 	/**
-	 * Relaunch the application
+	 * Relaunch an entire application
 	 */
 	relaunch: () => ipcRenderer.send('app:relaunch'),
+	/**
+	 * Relaunch the main window without relaunching an entire application
+	 */
+	relaunchWindow: () => ipcRenderer.send('app:relaunchWindow'),
 	/**
 	 * Get an application config value by key
 	 * @param {string} [key] - Config key

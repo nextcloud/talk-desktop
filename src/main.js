@@ -100,6 +100,12 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	}))
 })
 
+/**
+ * Whether the window is being relaunched.
+ * At this moment there are no active windows, but the application should not quit yet.
+ */
+let isInWindowRelaunch = false
+
 app.whenReady().then(async () => {
 	await loadAppConfig()
 
@@ -261,9 +267,17 @@ app.whenReady().then(async () => {
 		mainWindow = upgradeWindow
 	})
 
+	ipcMain.on('app:relaunchWindow', () => {
+		isInWindowRelaunch = true
+		mainWindow.destroy()
+		mainWindow = createMainWindow()
+		mainWindow.once('ready-to-show', () => mainWindow.show())
+		isInWindowRelaunch = false
+	})
+
 	// On OS X it's common to re-create a window in the app when the
 	// dock icon is clicked and there are no other windows open.
-	app.on('activate', function() {
+	app.on('activate', () => {
 		if (BrowserWindow.getAllWindows().length === 0) {
 			mainWindow = createMainWindow()
 		}
@@ -274,7 +288,7 @@ app.whenReady().then(async () => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
-	if (process.platform !== 'darwin') {
+	if (process.platform !== 'darwin' && !isInWindowRelaunch) {
 		app.quit()
 	}
 })

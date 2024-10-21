@@ -17,6 +17,13 @@ module.exports = merge(baseConfig, {
 	module: {
 		rules: [
 			{
+				test: /\.ts$/,
+				loader: 'esbuild-loader',
+				options: {
+					target: 'es2022',
+				},
+			},
+			{
 				test: /\.(png|ico|icns)$/,
 				include: path.resolve(__dirname, './img/icons'),
 				type: 'asset/resource',

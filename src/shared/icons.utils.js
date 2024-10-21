@@ -4,8 +4,9 @@
  */
 
 const { app, nativeTheme } = require('electron')
-const { isLinux } = require('./os.utils.js')
+const { isLinux, getPlatform } = require('./os.utils.js')
 const path = require('path')
+const { getAppConfig } = require('../app/AppConfig.ts')
 
 const icons = {
 	// Executable's icon is used by default
@@ -15,38 +16,40 @@ const icons = {
 
 	tray: {
 		darwin: {
+			default: require('../../img/icons/icon-tray-mac.png'),
 			light: require('../../img/icons/icon-tray-mac-light.png'),
 			dark: require('../../img/icons/icon-tray-mac-dark.png'),
+			// These properties are not used, but the import is required to add the icon to the bundle
+			// It will be used by electron internally
+			default2x: require('../../img/icons/icon-tray-mac@2x.png'),
+			light2x: require('../../img/icons/icon-tray-mac-light@2x.png'),
+			dark2x: require('../../img/icons/icon-tray-mac-dark@2x.png'),
 		},
 
-		// This property is not used, but import is required to add the icon to the bundle.
-		// It will be used by electron internally
-		darwin_x2: {
+		win32: {
+			default: require('../../img/icons/icon.ico'),
+			light: require('../../img/icons/icon-tray-win32-light.ico'),
+			dark: require('../../img/icons/icon-tray-win32-dark.ico'),
+		},
+
+		linux: {
+			default: require('../../img/icons/icon-tray-linux.png'),
 			light: require('../../img/icons/icon-tray-mac-light@2x.png'),
 			dark: require('../../img/icons/icon-tray-mac-dark@2x.png'),
 		},
-
-		win32: require('../../img/icons/icon.ico'),
-
-		linux: require('../../img/icons/icon-tray-linux.png'),
 	},
 }
 
 /**
- * Get tray icon for the given platform
- *
- * @param {'darwin'|'win32'|'cygwin'|string} [platform] platform otherwise current process.platform is used
- * @param {'light'|'dark'} [theme] theme for the darwin platform
+ * Get tray icon
  */
-function getTrayIcon(platform, theme) {
-	switch (platform ?? process.platform) {
-	case 'darwin':
-		return nativeTheme.shouldUseDarkColors || theme === 'dark' ? icons.tray.darwin.dark : icons.tray.darwin.light
-	case 'win32':
-		return icons.tray.win32
-	default:
-		return icons.tray.linux
-	}
+function getTrayIcon() {
+	const platform = getPlatform()
+	const monochrome = getAppConfig('monochromeTrayIcon')
+	const theme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light'
+	const kind = monochrome ? theme : 'default'
+
+	return icons.tray[platform][kind]
 }
 
 /**

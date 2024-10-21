@@ -27,6 +27,7 @@ const themeOptions = [
 const themeOption = useNcSelectModel(theme, themeOptions)
 
 const systemTitleBar = useAppConfigValue('systemTitleBar')
+const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
 
 /**
  * Restart the app
@@ -57,6 +58,10 @@ function relaunch() {
 				</template>
 				{{ t('talk_desktop', 'Theme') }}
 			</SettingsSelect>
+
+			<NcCheckboxRadioSwitch :checked.sync="monochromeTrayIcon" type="switch">
+				{{ t('talk_desktop', 'Use monochrome tray icon') }}
+			</NcCheckboxRadioSwitch>
 
 			<NcCheckboxRadioSwitch :checked.sync="systemTitleBar" type="switch">
 				{{ t('talk_desktop', 'Use system title bar') }}

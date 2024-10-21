@@ -7,7 +7,7 @@ const { BrowserWindow } = require('electron')
 const { BASE_TITLE, TITLE_BAR_HEIGHT } = require('../constants.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { isLinux } = require('../shared/os.utils.js')
+const { getAppConfig } = require('../app/AppConfig.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -29,7 +29,7 @@ function createAuthenticationWindow() {
 			preload: AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 		icon: getBrowserWindowIcon(),
-		titleBarStyle: isLinux() ? 'default' : 'hidden',
+		titleBarStyle: getAppConfig('systemTitleBar') ? 'default' : 'hidden',
 		titleBarOverlay: {
 			color: '#00679E00', // Transparent
 			symbolColor: '#FFFFFF', // White

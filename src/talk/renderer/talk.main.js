@@ -16,6 +16,7 @@ import {
 import { setupWebPage } from '../../shared/setupWebPage.js'
 import { createViewer } from './Viewer/Viewer.js'
 import { createDesktopApp } from './desktop.app.js'
+import { registerTalkDesktopSettingsSection } from './Settings/index.ts'
 
 // Initially open the welcome page, if not specified
 if (!window.location.hash) {
@@ -35,5 +36,7 @@ await import('@talk/src/main.js')
 initTalkHashIntegration(window.OCA.Talk.instance)
 
 window.OCA.Talk.Desktop.talkRouter.value = window.OCA.Talk.instance.$router
+
+registerTalkDesktopSettingsSection()
 
 await import('./notifications/notifications.store.js')

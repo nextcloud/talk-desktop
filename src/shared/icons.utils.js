@@ -36,12 +36,11 @@ const icons = {
  * Get tray icon for the given platform
  *
  * @param {'darwin'|'win32'|'cygwin'|string} [platform] platform otherwise current process.platform is used
- * @param {'light'|'dark'} [theme] theme for the darwin platform
  */
-function getTrayIcon(platform, theme) {
+function getTrayIcon(platform) {
 	switch (platform ?? process.platform) {
 	case 'darwin':
-		return nativeTheme.shouldUseDarkColors || theme === 'dark' ? icons.tray.darwin.dark : icons.tray.darwin.light
+		return nativeTheme.shouldUseDarkColors ? icons.tray.darwin.dark : icons.tray.darwin.light
 	case 'win32':
 		return icons.tray.win32
 	default:

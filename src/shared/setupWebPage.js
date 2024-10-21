@@ -10,6 +10,7 @@ import { applyBodyThemeAttrs } from './theme.utils.js'
 import { appData } from '../app/AppData.js'
 import { initGlobals } from './globals/globals.js'
 import { setupInitialState } from './initialState.service.js'
+import { initAppConfig } from './appConfig.service.ts'
 import { TITLE_BAR_HEIGHT } from '../constants.js'
 
 /**
@@ -204,6 +205,7 @@ function applyHeaderHeight() {
 export async function setupWebPage() {
 	document.title = await window.TALK_DESKTOP.getAppName()
 	appData.restore()
+	await initAppConfig()
 	applyInitialState()
 	initGlobals()
 	window.OS = await window.TALK_DESKTOP.getOs()

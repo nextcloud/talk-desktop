@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow, screen } = require('electron')
+const { BrowserWindow, screen, nativeTheme } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadNotification } = require('../app/applyDownloadNotification.js')
 const { applyWheelZoom } = require('../app/applyWheelZoom.js')
 const { setupTray } = require('../app/app.tray.js')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+const { getBrowserWindowIcon, getTrayIcon } = require('../shared/icons.utils.js')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
 
@@ -65,7 +65,11 @@ function createTalkWindow() {
 	applyContextMenu(window)
 	applyDownloadNotification(window)
 	applyWheelZoom(window)
-	setupTray(window)
+
+	const tray = setupTray(window)
+	nativeTheme.on('updated', () => {
+		tray.setImage(getTrayIcon())
+	})
 
 	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)
 

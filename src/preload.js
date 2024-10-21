@@ -90,6 +90,19 @@ const TALK_DESKTOP = {
 	 */
 	relaunch: () => ipcRenderer.send('app:relaunch'),
 	/**
+	 * Get an application config value by key
+	 * @param {string} [key] - Config key
+	 * @return {Promise<Record<string, unknown> | unknown>}
+	 */
+	getAppConfig: (key) => ipcRenderer.invoke('app:config:get', key),
+	/**
+	 * Set an application config value by key
+	 * @param {string} key - Config key
+	 * @param {any} [value] - Config value
+	 * @return {Promise<void>}
+	 */
+	setAppConfig: (key, value) => ipcRenderer.invoke('app:config:set', key, value),
+	/**
 	 * Send appData to main process on restore
 	 *
 	 * @param {object} appDataDto appData as plain object

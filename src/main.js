@@ -16,6 +16,7 @@ const { getOs, isLinux, isMac, isWayland } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
+const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
 
 /**
  * Parse command line arguments
@@ -67,6 +68,8 @@ ipcMain.on('app:relaunch', () => {
 	app.relaunch()
 	app.exit(0)
 })
+ipcMain.handle('app:config:get', (event, key) => getAppConfig(key))
+ipcMain.handle('app:config:set', (event, key, value) => setAppConfig(key, value))
 ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	// macOS 10.15 Catalina or higher requires consent for screen access
 	if (isMac() && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
@@ -98,6 +101,8 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 })
 
 app.whenReady().then(async () => {
+	await loadAppConfig()
+
 	try {
 		await installVueDevtools()
 	} catch (error) {

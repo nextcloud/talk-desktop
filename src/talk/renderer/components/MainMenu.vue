@@ -6,6 +6,7 @@
 <script setup>
 import { computed } from 'vue'
 
+import IconCog from 'vue-material-design-icons/Cog.vue'
 import IconReload from 'vue-material-design-icons/Reload.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
 import IconBug from 'vue-material-design-icons/Bug.vue'
@@ -25,6 +26,7 @@ const talkRouter = window.OCA.Talk.Desktop.talkRouter
 const talkWebLink = computed(() => generateUrl(talkRouter.value?.currentRoute?.fullPath ?? ''))
 const showHelp = () => window.TALK_DESKTOP.showHelp()
 const reload = () => window.location.reload()
+const openSettings = () => window.OCA.Talk.Settings.open()
 </script>
 
 <template>
@@ -59,6 +61,12 @@ const reload = () => window.location.reload()
 
 		<NcActionSeparator />
 
+		<NcActionButton close-after-click @click="openSettings">
+			<template #icon>
+				<IconCog :size="20" />
+			</template>
+			{{ t('talk_desktop', 'Settings') }}
+		</NcActionButton>
 		<NcActionButton @click="showHelp">
 			<template #icon>
 				<IconInformationOutline :size="20" />

@@ -124,4 +124,13 @@ module.exports = {
 		'@nextcloud/no-deprecations': 'off',
 		'@nextcloud/no-removed-apis': 'off',
 	},
+
+	overrides: [
+		{
+			files: '*.ts',
+			rules: {
+				'jsdoc/require-returns-type': 'off', // TODO upstream
+			},
+		},
+	],
 }

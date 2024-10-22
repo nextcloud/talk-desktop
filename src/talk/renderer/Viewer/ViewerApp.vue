@@ -27,9 +27,9 @@ const link = computed(() => file.value && generateUrl(`/f/${file.value.fileid}`)
  * @param {object} options.fileInfo - File info
  * @param {Function} options.onClose - Callback called then the modal is closed
  */
-function open({ fileInfo, onClose = noop } = {}) {
-	onClose.value = onClose
-	file.value = fileInfo
+function open(options = {}) {
+	onClose.value = options.onClose ?? noop
+	file.value = options.fileInfo ?? null
 	isOpen.value = true
 }
 

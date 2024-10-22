@@ -5,7 +5,7 @@
 
 import { join } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
-import { app, webContents } from 'electron'
+import { app } from 'electron'
 import { isLinux, isMac } from '../shared/os.utils.js'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
@@ -24,72 +24,58 @@ export type AppConfig = {
 	// General settings
 	// ----------------
 
-	// Nothing yet...
+	/** Whether the app should run on startup. Not implemented */
+	runOnStartup: boolean
 
 	// -------------------
 	// Appearance settings
 	// -------------------
 
-	/**
-	 * Application theme.
-	 * Default: 'default' to follow the system theme.
-	 */
-	theme: 'default' | 'dark' | 'light'
-	/**
-	 * Whether to use a custom title bar or the system default.
-	 * Default: true on Linux, false otherwise.
-	 */
-	systemTitleBar: boolean
-	/**
-	 * Whether to use a monochrome tray icon.
-	 * Default: true on macOS, false otherwise.
-	 */
+	/** Whether to use a monochrome tray icon. By default, true only on Mac. Not implemented */
 	monochromeTrayIcon: boolean
-	/**
-	 * Zoom factor of the application.
-	 * Default: 1.
-	 */
-	zoomFactor: number
-	/**
-	 * List of languages to use for spell checking in addition to the system language.
-	 * Default: [], use system preferences
-	 */
+	/** The scale factor for the app. By default, 1. Not implemented */
+	scale: number
+	/** List of languages to use for spell checking in addition to the system language. By default, none. Not implemented */
 	spellCheckLanguages: string[]
 
 	// ----------------
 	// Privacy settings
 	// ----------------
 
-	// Nothing yet...
+	/** Whether to show message previews in notifications. By default, true. Not implemented */
+	showMessagePreviewInNotifications: boolean
 
 	// ----------------------
 	// Notifications settings
 	// ----------------------
-
-	// Nothing yet...
+	/**
+	 * Whether to play a sound when a notification is received
+	 * - always: always play sound
+	 * - respect-dnd: play sound only if user status isn't Do-Not-Disturb [default]
+	 * - never: disable notification sound
+	 * Not implemented
+	 */
+	playSound: 'always' | 'respect-dnd' | 'never'
 }
-
-export type AppConfigKey = keyof AppConfig
 
 /**
  * Get the default config
  */
 const defaultAppConfig: AppConfig = {
+	runOnStartup: false,
 	theme: 'default',
 	systemTitleBar: isLinux(),
 	monochromeTrayIcon: isMac(),
-	zoomFactor: 1,
+	scale: 1,
 	spellCheckLanguages: [],
+	showMessagePreviewInNotifications: true,
+	playSound: 'respect-dnd',
 }
 
 /** Local cache of the config file mixed with the default values */
 const appConfig: Partial<AppConfig> = {}
 /** Whether the application config has been read from the config file and ready to use */
 let initialized = false
-/**
- * Listeners for application config changes
- */
-const appConfigChangeListeners: { [K in AppConfigKey]?: Set<(value: AppConfig[K]) => void> } = {}
 
 /**
  * Read the application config from the file
@@ -132,13 +118,13 @@ export async function loadAppConfig() {
 }
 
 export function getAppConfig(): AppConfig
-export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig[T]
+export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig[T]
 /**
  * Get an application config value
  * @param key - The config key to get
  * @return - If key is provided, the value of the key. Otherwise, the full config
  */
-export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppConfig[T] {
+export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig | AppConfig[T] {
 	if (!initialized) {
 		throw new Error('The application config is not initialized yet')
 	}
@@ -158,38 +144,11 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
  * @param value - Value to set or undefined to reset to the default value
  * @return Promise<AppConfig> - The full settings after the change
  */
-export function setAppConfig<K extends AppConfigKey>(key: K, value?: AppConfig[K]) {
-	// Ignore if no change
-	if (appConfig[key] === value) {
-		return
-	}
-
+export async function setAppConfig<K extends keyof AppConfig>(key: K, value?: AppConfig[K]) {
 	if (value !== undefined) {
 		appConfig[key] = value
 	} else {
 		delete appConfig[key]
-		value = defaultAppConfig[key]
 	}
-
-	for (const contents of webContents.getAllWebContents()) {
-		contents.send('app:config:change', { key, value, appConfig })
-	}
-
-	for (const listener of appConfigChangeListeners[key] ?? []) {
-		listener(value)
-	}
-
-	writeAppConfigFile(appConfig)
-}
-
-/**
- * Listen to application config changes
- * @param key - The config key to listen to
- * @param callback - The callback to call when the config changes
- */
-export function onAppConfigChange<K extends AppConfigKey>(key: K, callback: (value: AppConfig[K]) => void) {
-	if (!appConfigChangeListeners[key]) {
-		appConfigChangeListeners[key] = new Set([])
-	}
-	appConfigChangeListeners[key].add(callback)
+	await writeAppConfigFile(appConfig)
 }

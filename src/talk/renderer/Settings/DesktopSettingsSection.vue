@@ -23,6 +23,7 @@ import { useAppConfigValue } from './useAppConfigValue.ts'
 import { useNcSelectModel } from '../composables/useNcSelectModel.ts'
 import { useAppConfig } from './appConfig.store.ts'
 import { ZOOM_MIN, ZOOM_MAX } from '../../../constants.js'
+import locales from '../../../../resources/locales.json'
 
 const { isRelaunchRequired } = storeToRefs(useAppConfig())
 
@@ -36,6 +37,8 @@ const themeOption = useNcSelectModel(theme, themeOptions)
 
 const systemTitleBar = useAppConfigValue('systemTitleBar')
 const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
+const spellCheckLanguages = useAppConfigValue('spellCheckLanguages')
+const availableSpellCheckLanguages = ref<Set<string>>(new Set())
 
 const zoomFactorConfig = useAppConfigValue('zoomFactor')
 const zoomFactor = computed({
@@ -56,6 +59,29 @@ const zoomHint = t('talk_desktop', 'Zoom can be also changed by {key} or mouse w
 	key: `<kbd>${ctrl} + ±</kbd>`,
 	resetKey: `<kbd>${ctrl} + 0</kbd>`,
 }, undefined, { escape: false })
+
+window.TALK_DESKTOP.getAvailableSpellCheckerLanguages().then((languages: string[]) => {
+	availableSpellCheckLanguages.value = new Set(languages.map((code) => code.replaceAll('_', '-')))
+	console.log('availableSpellCheckLanguages', languages)
+})
+
+const langToSelectOption = (code: string) => ({ label: locales.find(locale => locale), value: code }))
+}
+
+const spellCheckLanguagesOptions = computed(() => [
+		{ label: t('talk_desktop', 'System default'), value: 'default' },
+		...locales
+			.filter(({ code }) => availableSpellCheckLanguages.value.has(code))
+			.map(({ code, name }) => ({ label: name, value: code })),
+])
+const selectedSpellCheckLanguagesOption = computed(() => {
+	get() {
+		return
+	},
+	set(value) {
+
+	}
+})
 
 /**
  * Restart the app
@@ -129,6 +155,10 @@ function relaunch() {
 					</NcButton>
 				</template>
 			</SettingsFormGroup>
+
+			<SettingsSelect v-model="spellCheckLanguagesOption" :options="spellCheckLanguagesOptions" searchable tags>
+				{{ t('talk_desktop', 'Spell check languages') }}
+			</SettingsSelect>
 		</SettingsSubsection>
 	</div>
 </template>

@@ -65,7 +65,7 @@ OC.L10N.register(
     "Set custom status" : "تعيين حالة مخصصة",
     "Log out" : "خروج",
     "Upgrade required" : "يلزم الترقية لإصدارٍ أحدث",
-    "The client version is too old and no longer supported by this server. Update is required." : "إصدار العميل قديم جداً و لم يعد مدعوماً من الخادوم. يلزم الترقية لإصدارٍ أحدث.",
+    "The client version is too old and no longer supported by this server. Update is required." : "إصدار العميل قديم جداً و لم يعد مدعوماً من الخادم. يلزم الترقية لإصدارٍ أحدث.",
     "Update Talk Desktop ↗" : "حدِّث تطبيق \"المحادثة\" المكتبي Talk ↗",
     "Continue in Web-Browser ↗" : "إستَمر على المُتصفِّح ↗",
     "Online" : "متصل على الخط",
@@ -74,6 +74,6 @@ OC.L10N.register(
     "Invisible" : "غير مرئي",
     "Offline" : "بدون اتصالٍ",
     "Unknown status" : "الحالة غير معروفة",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "تعذّر الاتصال بالخادوم. رجاءً، تحقَّق من اتصالك بالانترنت و حاول مرة أخرى."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "تعذّر الاتصال بالخادم. رجاءً، تحقَّق من اتصالك بالانترنت و حاول مرة أخرى."
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

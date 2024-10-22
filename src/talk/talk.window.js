@@ -31,6 +31,7 @@ function createTalkWindow() {
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: TALK_DESKTOP__WINDOW_TALK_PRELOAD_WEBPACK_ENTRY,
+			spellcheck: getAppConfig('enableSpellCheck'),
 			zoomFactor,
 		},
 		icon: getBrowserWindowIcon(),

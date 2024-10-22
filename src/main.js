@@ -73,6 +73,7 @@ ipcMain.handle('app:getSystemL10n', () => ({
 	// Note: Linux may have C (POSIX) locale, which results in an empty preferred languages list
 	language: app.getPreferredSystemLanguages()[0]?.replace('-', '_') ?? 'en_US',
 }))
+ipcMain.handle('app:getAvailableSpellCheckerLanguages', () => session.defaultSession.availableSpellCheckerLanguages)
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(count))

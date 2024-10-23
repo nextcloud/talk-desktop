@@ -5,10 +5,12 @@
 
 import type { Ref } from 'vue'
 import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
-import { readonly, ref, set, watch } from 'vue'
+import { readonly, ref, set, watch, watchEffect } from 'vue'
 import { defineStore } from 'pinia'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
 import { applyBodyThemeAttrs } from '../../../shared/theme.utils.js'
+import { setInitialState } from '../../../shared/initialState.service.js'
+import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
 
 export const useAppConfigStore = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
@@ -28,6 +30,18 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 	)
 
 	watch(() => appConfig.value.theme, (newTheme) => applyBodyThemeAttrs(newTheme))
+
+	const userStatusStore = useUserStatusStore()
+	watchEffect(() => {
+		const playSoundChat = appConfig.value.playSoundChat === 'respect-dnd'
+			? userStatusStore.userStatus?.status !== 'dnd'
+			: appConfig.value.playSoundChat === 'always'
+		const playSoundCall = appConfig.value.playSoundCall === 'respect-dnd'
+			? userStatusStore.userStatus?.status !== 'dnd'
+			: appConfig.value.playSoundCall === 'always'
+		setInitialState('notifications', 'sound_notification', playSoundChat)
+		setInitialState('notifications', 'sound_talk', playSoundCall)
+	})
 
 	/**
 	 * Get an application config value

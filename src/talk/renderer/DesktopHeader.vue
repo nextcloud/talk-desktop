@@ -9,10 +9,12 @@ import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../app/AppData.js'
 import { useUserStatusStore } from './UserStatus/userStatus.store.js'
+import { useAppConfigStore } from './Settings/appConfig.store.ts'
 import { useUserStatusHeartbeat } from './UserStatus/useUserStatusHeartbeat.js'
 
 useUserStatusStore()
 useUserStatusHeartbeat()
+useAppConfigStore()
 
 const user = appData.userMetadata
 const OS = window.OS

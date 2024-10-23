@@ -12,6 +12,7 @@ OC.L10N.register(
     "Ok" : "Добре",
     "No" : "Не",
     "Yes" : "Да",
+    "Restart" : "Рестартиране",
     "User status" : "Потребителско състояние",
     "Your status was set automatically" : "Състоянието ви беше зададено автоматично",
     "Don't clear" : "Не изчиствай",

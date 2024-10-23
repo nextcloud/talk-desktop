@@ -23,6 +23,7 @@ OC.L10N.register(
     "Ok" : "OK",
     "No" : "Ne",
     "Yes" : "Ano",
+    "Restart" : "Restartovat",
     "User status" : "Stav uživatele",
     "Your status was set automatically" : "Váš stav byl nastaven automaticky",
     "Previously set status" : "Dříve nastavený stav",

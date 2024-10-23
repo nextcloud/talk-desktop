@@ -9,6 +9,8 @@ OC.L10N.register(
     "Close" : "Mbylleni",
     "Ok" : "Në rregull",
     "Yes" : "Po",
+    "Light" : "E çelët",
+    "Theme" : "Shabllon",
     "30 minutes" : "30 minuta",
     "1 hour" : "1 Orë",
     "4 hours" : "4 orë",
@@ -18,6 +20,7 @@ OC.L10N.register(
     "Share screen" : "Ndaje ekranin",
     "Menu" : "Menu",
     "Report a bug" : "Njoftoni një të metë",
+    "Settings" : "Rregullimet",
     "Back" : "Mbrapsht",
     "Log out" : "Shkyçu",
     "Invisible" : "I padukshëm"

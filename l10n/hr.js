@@ -11,6 +11,10 @@ OC.L10N.register(
     "Ok" : "U redu",
     "No" : "Ne",
     "Yes" : "Da",
+    "Light" : "Svijetlo",
+    "Dark" : "Tamno",
+    "Appearance" : "Izgled",
+    "Theme" : "Tema",
     "User status" : "Status korisnika",
     "1 hour" : "1 sat",
     "Loading …" : "Učitavanje…",
@@ -18,6 +22,7 @@ OC.L10N.register(
     "Share screen" : "Dijeli zaslon",
     "Menu" : "Izbornik",
     "Report a bug" : "Prijavi pogrešku",
+    "Settings" : "Postavke",
     "View profile" : "Prikaži profil",
     "Log out" : "Odjavite se"
 },

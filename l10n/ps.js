@@ -4,6 +4,7 @@ OC.L10N.register(
     "Logging in …" : "ننوتون...",
     "Close" : "بندول",
     "Today" : "نن",
-    "Cancel" : "پرېښودل"
+    "Cancel" : "پرېښودل",
+    "Settings" : "سمونې"
 },
 "nplurals=2; plural=(n != 1);");

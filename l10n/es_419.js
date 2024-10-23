@@ -9,6 +9,7 @@ OC.L10N.register(
     "Issues" : "Temas",
     "Close" : "Cerrar",
     "Yes" : "Si",
+    "Dark" : "Oscuro",
     "30 minutes" : "30 minutos",
     "1 hour" : "1 hora",
     "Today" : "Hoy",

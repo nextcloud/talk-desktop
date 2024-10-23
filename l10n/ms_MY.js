@@ -6,6 +6,7 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Tidak",
     "Yes" : "Ya",
-    "Today" : "Hari ini"
+    "Today" : "Hari ini",
+    "Settings" : "Tetapan"
 },
 "nplurals=1; plural=0;");

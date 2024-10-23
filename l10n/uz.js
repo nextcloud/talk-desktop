@@ -15,6 +15,7 @@ OC.L10N.register(
     "This week" : "This week",
     "Status message" : "Status message",
     "Cancel" : "Cancel",
+    "Settings" : "Sozlamalar",
     "View profile" : "View profile",
     "Online" : "Online",
     "Away" : "Away",

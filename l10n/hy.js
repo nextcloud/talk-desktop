@@ -11,6 +11,7 @@ OC.L10N.register(
     "Yes" : "Այո",
     "Today" : "Այսօր",
     "This week" : "այս շաբաթ",
-    "Cancel" : "չեղարկել"
+    "Cancel" : "չեղարկել",
+    "Settings" : "Կարգավորումներ"
 },
 "nplurals=2; plural=(n != 1);");

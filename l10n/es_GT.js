@@ -8,6 +8,7 @@ OC.L10N.register(
     "License" : "Licencia",
     "Issues" : "Temas",
     "Ok" : "Ok",
+    "Dark" : "Oscuro",
     "30 minutes" : "30 minutos",
     "1 hour" : "1 hora",
     "Today" : "Hoy",
@@ -16,6 +17,7 @@ OC.L10N.register(
     "Share screen" : "Compartir la pantalla",
     "Menu" : "Menú",
     "Report a bug" : "Reporta un detalle",
+    "Settings" : "Configuraciones ",
     "Log out" : "Cerrar sesión",
     "Invisible" : "Invisible"
 },

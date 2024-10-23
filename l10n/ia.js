@@ -7,6 +7,7 @@ OC.L10N.register(
     "This week" : "Iste septimana",
     "Menu" : "Menu",
     "Report a bug" : "Reportar un defecto",
+    "Settings" : "Configurationes",
     "Invisible" : "Invisibile"
 },
 "nplurals=2; plural=(n != 1);");

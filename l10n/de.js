@@ -23,6 +23,7 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nein",
     "Yes" : "Ja",
+    "Restart" : "Neustart",
     "User status" : "Benutzerstatus",
     "Your status was set automatically" : "Dein Status wurde automatisch gesetzt",
     "Previously set status" : "Zuvor festgelegter Status",

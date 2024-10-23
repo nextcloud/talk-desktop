@@ -5,11 +5,14 @@
     "License" : "බලපත්‍රය",
     "Close" : "වසන්න",
     "No" : "නැහැ",
+    "Dark" : "අඳුරු",
+    "Theme" : "තේමාව",
     "30 minutes" : "විනාඩි 30 යි",
     "1 hour" : "හෝරා 1 යි",
     "Today" : "අද",
     "This week" : "මෙම සතිය",
     "Cancel" : "අවලංගු",
+    "Settings" : "සැකසුම්",
     "Back" : "ආපසු",
     "Log out" : "නික්මෙන්න"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

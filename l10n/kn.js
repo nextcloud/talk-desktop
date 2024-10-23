@@ -5,6 +5,7 @@ OC.L10N.register(
     "Ok" : "﻿ಸರಿ",
     "No" : "﻿ಇಲ್ಲ",
     "Yes" : "﻿ಹೌದು",
-    "Today" : "Today"
+    "Today" : "Today",
+    "Settings" : "ಆಯ್ಕೆ"
 },
 "nplurals=2; plural=(n > 1);");

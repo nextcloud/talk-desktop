@@ -11,6 +11,8 @@ OC.L10N.register(
     "Ok" : "ΟΚ",
     "No" : "Όχι",
     "Yes" : "Ναι",
+    "Dark" : "Σκούρο",
+    "Appearance" : "Εμφάνιση",
     "User status" : "Κατάσταση χρήστη",
     "1 hour" : "1 ώρα",
     "Today" : "Σήμερα",

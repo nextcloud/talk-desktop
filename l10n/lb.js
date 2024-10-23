@@ -9,6 +9,7 @@ OC.L10N.register(
     "Today" : "Haut",
     "Menu" : "Menü",
     "Report a bug" : "E Feeler melden",
+    "Settings" : "Astellungen",
     "Away" : "ewech"
 },
 "nplurals=2; plural=(n != 1);");

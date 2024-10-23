@@ -8,6 +8,7 @@ OC.L10N.register(
     "Ok" : "Bone",
     "No" : "Ne",
     "Yes" : "Jes",
+    "Dark" : "Malluma",
     "30 minutes" : "30 minutoj",
     "1 hour" : "1 horo",
     "4 hours" : "4 horoj",

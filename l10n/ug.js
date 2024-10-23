@@ -5,6 +5,7 @@ OC.L10N.register(
     "Ok" : "جەزملە",
     "No" : "ياق",
     "Yes" : "ھەئە",
-    "Today" : "بۈگۈن"
+    "Today" : "بۈگۈن",
+    "Settings" : "تەڭشەكلەر"
 },
 "nplurals=2; plural=(n != 1);");

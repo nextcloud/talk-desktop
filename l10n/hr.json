@@ -9,6 +9,10 @@
     "Ok" : "U redu",
     "No" : "Ne",
     "Yes" : "Da",
+    "Light" : "Svijetlo",
+    "Dark" : "Tamno",
+    "Appearance" : "Izgled",
+    "Theme" : "Tema",
     "User status" : "Status korisnika",
     "1 hour" : "1 sat",
     "Loading …" : "Učitavanje…",
@@ -16,6 +20,7 @@
     "Share screen" : "Dijeli zaslon",
     "Menu" : "Izbornik",
     "Report a bug" : "Prijavi pogrešku",
+    "Settings" : "Postavke",
     "View profile" : "Prikaži profil",
     "Log out" : "Odjavite se"
 },"pluralForm" :"nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"

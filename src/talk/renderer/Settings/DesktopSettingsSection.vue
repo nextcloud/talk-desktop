@@ -22,9 +22,10 @@ import SettingsFormGroup from './components/SettingsFormGroup.vue'
 import { useAppConfigValue } from './useAppConfigValue.ts'
 import { useNcSelectModel } from '../composables/useNcSelectModel.ts'
 import { useAppConfig } from './appConfig.store.ts'
+import { useAppConfigStore } from './appConfig.store.ts'
 import { ZOOM_MIN, ZOOM_MAX } from '../../../constants.js'
 
-const { isRelaunchRequired } = storeToRefs(useAppConfig())
+const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
 const theme = useAppConfigValue('theme')
 const themeOptions = [

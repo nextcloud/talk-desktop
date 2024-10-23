@@ -5,7 +5,7 @@
 
 import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
 import { computed } from 'vue'
-import { useAppConfig } from './appConfig.store.ts'
+import { useAppConfigStore } from './appConfig.store.ts'
 
 /**
  * Get an application config value

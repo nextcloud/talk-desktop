@@ -10,7 +10,7 @@ import { defineStore } from 'pinia'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
 import { applyBodyThemeAttrs } from '../../../shared/theme.utils.js'
 
-export const useAppConfig = defineStore('appConfig', () => {
+export const useAppConfigStore = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
 	const isRelaunchRequired = ref(false)
 	const relaunchRequiredConfigs = ['systemTitleBar', 'monochromeTrayIcon'] as const

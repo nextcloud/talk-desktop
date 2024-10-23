@@ -17,6 +17,7 @@ const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
+const { triggerDownloadUrl } = require('./app/downloads.ts')
 
 /**
  * Parse command line arguments
@@ -274,6 +275,8 @@ app.whenReady().then(async () => {
 		mainWindow.once('ready-to-show', () => mainWindow.show())
 		isInWindowRelaunch = false
 	})
+
+	ipcMain.on('app:downloadURL', (event, url, filename) => triggerDownloadUrl(mainWindow, url, filename))
 
 	// On OS X it's common to re-create a window in the app when the
 	// dock icon is clicked and there are no other windows open.

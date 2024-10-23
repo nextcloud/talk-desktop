@@ -55,8 +55,14 @@ export type AppConfig = {
 	// ----------------------
 	// Notifications settings
 	// ----------------------
-
-	// Nothing yet...
+	/**
+	 * Whether to play a sound when a notification is received
+	 * - always: always play sound
+	 * - respect-dnd: play sound only if user status is not Do-Not-Disturb [default]
+	 * - never: disable notification sound
+	 * Not implemented
+	 */
+	playSound: 'always' | 'respect-dnd' | 'never'
 }
 
 /**
@@ -66,6 +72,7 @@ const defaultAppConfig: AppConfig = {
 	theme: 'default',
 	systemTitleBar: isLinux(),
 	monochromeTrayIcon: isMac(),
+	playSound: 'respect-dnd',
 }
 
 /** Local cache of the config file mixed with the default values */

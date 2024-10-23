@@ -5,10 +5,12 @@
 
 import type { Ref } from 'vue'
 import type { AppConfig } from '../../../app/AppConfig.ts'
-import { readonly, ref, watch } from 'vue'
+import { readonly, ref, watch, watchEffect } from 'vue'
 import { defineStore } from 'pinia'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
 import { applyBodyThemeAttrs } from '../../../shared/theme.utils.js'
+import { setInitialState } from '../../../shared/initialState.service.js'
+import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
 
 export const useAppConfig = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
@@ -24,6 +26,15 @@ export const useAppConfig = defineStore('appConfig', () => {
 	)
 
 	watch(() => appConfig.value.theme, (newTheme) => applyBodyThemeAttrs(newTheme))
+
+	const userStatusStore = useUserStatusStore()
+	watchEffect(() => {
+		const playSound = appConfig.value.playSound === 'respect-dnd'
+			? userStatusStore.userStatus?.status !== 'dnd'
+			: appConfig.value.playSound === 'always'
+		setInitialState('notifications', 'sound_notification', playSound)
+		setInitialState('notifications', 'sound_talk', playSound)
+	})
 
 	/**
 	 * Get an application config value

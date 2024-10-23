@@ -161,21 +161,3 @@ export function initTalkHashIntegration(talkInstance) {
 		},
 	})
 }
-
-/**
- * Enable or disable the sound for notifications and calls on DND user status change
- */
-export function initPlaySoundManagementOnUserStatus() {
-	subscribe('user_status:status.updated', (userStatus) => {
-		if (userStatus.userId !== getCurrentUser().uid) {
-			return
-		}
-		// TODO: add setting to define the default value for playSound
-		const playSoundDefault = true
-		// Disable if DND
-		const playSound = userStatus.status === 'dnd' ? false : playSoundDefault
-		// Notification's sound in the Notifications app is controlled via initial state only
-		setInitialState('notifications', 'sound_notification', playSound)
-		setInitialState('notifications', 'sound_talk', playSound)
-	})
-}

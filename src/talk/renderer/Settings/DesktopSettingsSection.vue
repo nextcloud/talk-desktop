@@ -8,6 +8,7 @@ import { t } from '@nextcloud/l10n'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
 import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
+import IconBellOutline from 'vue-material-design-icons/BellOutline.vue'
 import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
 import SettingsSubsection from './components/SettingsSubsection.vue'
 import SettingsSelect from './components/SettingsSelect.vue'
@@ -28,6 +29,14 @@ const themeOption = useNcSelectModel(theme, themeOptions)
 
 const systemTitleBar = useAppConfigValue('systemTitleBar')
 const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
+
+const playSound = useAppConfigValue('playSound')
+const playSoundOptions = [
+	{ label: t('talk_desktop', 'Always'), value: 'always' } as const,
+	{ label: t('talk_desktop', 'When not in Do-Not-Disturb'), value: 'respect-dnd' } as const,
+	{ label: t('talk_desktop', 'Never'), value: 'never' } as const,
+]
+const playSoundOption = useNcSelectModel(playSound, playSoundOptions)
 
 /**
  * Restart the app
@@ -66,6 +75,15 @@ function relaunch() {
 			<NcCheckboxRadioSwitch :checked.sync="systemTitleBar" type="switch">
 				{{ t('talk_desktop', 'Use system title bar') }}
 			</NcCheckboxRadioSwitch>
+		</SettingsSubsection>
+
+		<SettingsSubsection :name="t('talk_desktop', 'Notifications')">
+			<SettingsSelect v-model="playSoundOption" :options="playSoundOptions">
+				<template #icon>
+					<IconBellOutline :size="20" />
+				</template>
+				{{ t('talk_desktop', 'Play notification sound') }}
+			</SettingsSelect>
 		</SettingsSubsection>
 	</div>
 </template>

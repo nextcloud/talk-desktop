@@ -5,7 +5,7 @@
 
 import type { AppConfig } from '../../../app/AppConfig.ts'
 import { computed } from 'vue'
-import { useAppConfig } from './appConfig.store.ts'
+import { useAppConfigStore } from './appConfig.store.ts'
 
 /**
  * Get an application config value
@@ -13,7 +13,7 @@ import { useAppConfig } from './appConfig.store.ts'
  * @return - A settable config value
  */
 export function useAppConfigValue<K extends keyof AppConfig>(key: K) {
-	const { getAppConfigValue, setAppConfigValue } = useAppConfig()
+	const { getAppConfigValue, setAppConfigValue } = useAppConfigStore()
 
 	return computed({
 		get() {

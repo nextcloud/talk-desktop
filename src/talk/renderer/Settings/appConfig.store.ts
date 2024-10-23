@@ -12,7 +12,7 @@ import { applyBodyThemeAttrs } from '../../../shared/theme.utils.js'
 import { setInitialState } from '../../../shared/initialState.service.js'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
 
-export const useAppConfig = defineStore('appConfig', () => {
+export const useAppConfigStore = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
 	const isRelaunchRequired = ref(false)
 	const relaunchRequiredConfigs = ['systemTitleBar', 'monochromeTrayIcon'] as const

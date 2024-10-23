@@ -26,14 +26,14 @@ export function applyDownloadNotification(browserWindow) {
 				notification.on('click', () => {
 					shell.showItemInFolder(pathToFile)
 				})
-			} else {
+			} else if (state === 'interrupted') {
 				notification = new Notification({
 					title: 'Download Failed',
 					body: `Something went wrong with the download of '${base}'.`,
 				})
 			}
 
-			notification.show()
+			notification?.show()
 		})
 	})
 }

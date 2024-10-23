@@ -36,7 +36,7 @@ SPDX-FileCopyrightText = "2017 Feandesign https://soundcloud.com/feandesign"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = ["img/talk-icon-**.svg", "img/icons/**"]
+path = ["img/talk-icon-**.svg", "img/icons/**", "img/squirrel-install-loading.gif"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "Nextcloud GmbH <https://nextcloud.com/trademarks/>"
 SPDX-License-Identifier = "LicenseRef-NextcloudTrademarks"

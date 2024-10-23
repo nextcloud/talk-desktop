@@ -25,10 +25,10 @@ async function generateIcons() {
 			name: 'icon',
 			sizes: [16, 24, 32, 48, 256],
 		},
-		// Linux (PNG)
+		// Linux + Mac (PNG)
 		favicon: {
 			name: 'icon',
-			pngSizes: [32, 512],
+			pngSizes: [16, 32, 512],
 			icoSizes: [],
 		},
 	})
@@ -55,13 +55,32 @@ async function generateIcons() {
 		},
 	})
 
+	// Tray icon - Windows monochrome
+	await icongen(originalMacTrayLightPath, outputPath, {
+		ico: {
+			name: 'icon-tray-win32-light',
+			sizes: [16, 24, 32, 48, 256],
+		},
+	})
+	await icongen(originalMacTrayDarkPath, outputPath, {
+		ico: {
+			name: 'icon-tray-win32-dark',
+			sizes: [16, 24, 32, 48, 256],
+		},
+	})
+
 	// Rename icon512.png -> icon.png
 	await fs.rename(path.join(outputPath, 'icon512.png'), path.join(outputPath, 'icon.png'))
-	// Rename icon32.png -> icon-tray-linux.png
-	await fs.rename(path.join(outputPath, 'icon32.png'), path.join(outputPath, 'icon-tray-linux.png'))
+	// Rename icon16.png -> icon-tray-mac.png
+	// Rename icon32.png -> icon-tray-linux.png + icon-tray-mac@2x.png
+	await fs.cp(path.join(outputPath, 'icon32.png'), path.join(outputPath, 'icon-tray-linux.png'))
+	await fs.cp(path.join(outputPath, 'icon16.png'), path.join(outputPath, 'icon-tray-mac.png'))
+	await fs.cp(path.join(outputPath, 'icon32.png'), path.join(outputPath, 'icon-tray-mac@2x.png'))
 
 	// Remove unused favicon
 	await fs.unlink(path.join(outputPath, 'favicon.ico'))
+	await fs.unlink(path.join(outputPath, 'icon16.png'))
+	await fs.unlink(path.join(outputPath, 'icon32.png'))
 
 	// Rename icon-tray-mac-(light|dark)16.png -> icon-tray-mac-(light|dark).png, icon-tray-mac-(light|dark)32.png -> icon-tray-mac-(light|dark)@2x.png
 	await fs.rename(path.join(outputPath, 'icon-tray-mac-light16.png'), path.join(outputPath, 'icon-tray-mac-light.png'))

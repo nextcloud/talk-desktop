@@ -6,6 +6,16 @@
 const os = require('os')
 
 /**
+ * Get "process.platform", but with simplified to 'win32'|'darwin'|'linux'
+ * @return {'win32'|'darwin'|'linux'} platform
+ */
+function getPlatform() {
+	return (process.platform === 'win32' && 'win32')
+		|| (process.platform === 'darwin' && 'darwin')
+		|| 'linux'
+}
+
+/**
  * Returns a string representing OS version
  *
  * @return {string} os version
@@ -76,6 +86,7 @@ function isWayland() {
  * @property {boolean} isWindows - Is Windows?
  * @property {boolean} isWayland - Is Linux with Wayland window communication protocol?
  * @property {string} version - Full string representation of OS version
+ * @property {string} platform - Simplified platform name
  */
 
 /**
@@ -90,10 +101,12 @@ function getOs() {
 		isWindows: isWindows(),
 		isWayland: isWayland(),
 		version: getOsVersion(),
+		platform: getPlatform(),
 	}
 }
 
 module.exports = {
+	getPlatform,
 	getOsVersion,
 	getOsTitle,
 	isLinux,

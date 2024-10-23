@@ -13,7 +13,7 @@ import { applyBodyThemeAttrs } from '../../../shared/theme.utils.js'
 export const useAppConfig = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
 	const isRelaunchRequired = ref(false)
-	const relaunchRequiredConfigs = ['systemTitleBar'] as const
+	const relaunchRequiredConfigs = ['systemTitleBar', 'monochromeTrayIcon'] as const
 
 	const unwatchRelaunch = watch(
 		() => relaunchRequiredConfigs.map((key) => appConfig.value[key]),

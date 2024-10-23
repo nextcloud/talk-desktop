@@ -6,7 +6,7 @@
 import { join } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
 import { app } from 'electron'
-import { isLinux } from '../shared/os.utils.js'
+import { isLinux, isMac } from '../shared/os.utils.js'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
 
@@ -40,6 +40,11 @@ export type AppConfig = {
 	 * Default: true on Linux, false otherwise.
 	 */
 	systemTitleBar: boolean
+	/**
+	 * Whether to use a monochrome tray icon.
+	 * Default: true on macOS, false otherwise.
+	 */
+	monochromeTrayIcon: boolean
 
 	// ----------------
 	// Privacy settings
@@ -60,6 +65,7 @@ export type AppConfig = {
 const defaultAppConfig: AppConfig = {
 	theme: 'default',
 	systemTitleBar: isLinux(),
+	monochromeTrayIcon: isMac(),
 }
 
 /** Local cache of the config file mixed with the default values */

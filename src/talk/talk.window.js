@@ -6,7 +6,7 @@
 const { BrowserWindow, screen, nativeTheme } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { applyDownloadNotification } = require('../app/applyDownloadNotification.js')
+const { applyDownloadHandler } = require('../app/downloads.ts')
 const { applyWheelZoom } = require('../app/applyWheelZoom.js')
 const { setupTray } = require('../app/app.tray.js')
 const { getBrowserWindowIcon, getTrayIcon } = require('../shared/icons.utils.js')
@@ -63,7 +63,7 @@ function createTalkWindow() {
 	})
 
 	applyContextMenu(window)
-	applyDownloadNotification(window)
+	applyDownloadHandler(window)
 	applyWheelZoom(window)
 
 	const tray = setupTray(window)

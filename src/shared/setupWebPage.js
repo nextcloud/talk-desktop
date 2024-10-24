@@ -200,6 +200,19 @@ function applyHeaderHeight() {
 }
 
 /**
+ * Handle download links
+ */
+function applyDownloadLinkHandler() {
+	document.addEventListener('click', (event) => {
+		const link = event.target.closest('a')
+		if (link && link.hasAttribute('download')) {
+			event.preventDefault()
+			window.TALK_DESKTOP.downloadURL(link.href, link.download)
+		}
+	})
+}
+
+/**
  * Make all required initial setup for the web page for authorized user: server-rendered data, globals and ect.
  */
 export async function setupWebPage() {
@@ -214,4 +227,5 @@ export async function setupWebPage() {
 	applyHeaderHeight()
 	applyAxiosInterceptors()
 	await applyL10n()
+	applyDownloadLinkHandler()
 }

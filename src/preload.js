@@ -107,6 +107,12 @@ const TALK_DESKTOP = {
 	 */
 	setAppConfig: (key, value) => ipcRenderer.invoke('app:config:set', key, value),
 	/**
+	 * Trigger download of a URL
+	 * @param {string} url - URL to download
+	 * @param {string} [filename] - Filename suggestion for the download
+	 */
+	downloadURL: (url, filename) => ipcRenderer.send('app:downloadURL', url, filename),
+	/**
 	 * Send appData to main process on restore
 	 *
 	 * @param {object} appDataDto appData as plain object

@@ -34,7 +34,6 @@ function isExternalLink(url) {
  * @return {{action: 'deny'} | {action: 'allow', outlivesOpener?: boolean, overrideBrowserWindowOptions?: import('electron').BrowserWindowConstructorOptions}}
  */
 function windowOpenExternalLinkHandler(details, browserWindowOptions = {}) {
-	// TODO: Should handle different types of details.disposition? I.e. save-to-disk?
 	if (isExternalLink(details.url)) {
 		shell.openExternal(details.url)
 		return { action: 'deny' }

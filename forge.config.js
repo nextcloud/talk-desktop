@@ -6,18 +6,30 @@
 const path = require('node:path')
 const fs = require('node:fs')
 const semver = require('semver')
+const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
 
 require('dotenv').config()
+
+const CONFIG = {
+	// General
+	applicationName: packageJSON.productName,
+	applicationNameSanitized: packageJSON.productName.replaceAll(' ', '-'),
+	companyName: 'Nextcloud GmbH',
+	description: packageJSON.description,
+
+	// macOS
+	macAppId: 'com.nextcloud.NextcloudTalk',
+	// Windows
+	winAppId: 'NextcloudTalk',
+}
+
+const YEAR = new Date().getFullYear()
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 let talkPackageJson
 
 module.exports = {
-	packagerConfig: {
-		icon: './img/icons/icon',
-	},
-
 	hooks: {
 		generateAssets() {
 			if (!fs.existsSync(process.env.TALK_PATH)) {
@@ -50,23 +62,78 @@ module.exports = {
 
 	rebuildConfig: {},
 
+	// https://electron.github.io/packager/main/interfaces/Options.html
+	packagerConfig: {
+		// Common
+		name: CONFIG.applicationName,
+		icon: path.join(__dirname, './img/icons/icon'),
+		appCopyright: `Copyright © ${YEAR} ${CONFIG.companyName}`,
+		asar: true,
+
+		// Windows
+		win32metadata: {
+			CompanyName: CONFIG.companyName,
+		},
+
+		// macOS
+		appBundleId: CONFIG.macAppId,
+		darwinDarkModeSupport: true,
+		appCategoryType: 'public.app-category.social-networking', // LSApplicationCategoryType | https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html
+	},
+
 	makers: [
-		// {
-		// 	name: '@electron-forge/maker-squirrel',
-		// 	config: {},
-		// },
+		{
+			name: '@electron-forge/maker-squirrel',
+			platforms: ['win32'],
+			// https://github.com/electron/windows-installer/tree/main?tab=readme-ov-file#usage
+			config: {
+				// App/Filenames
+				name: CONFIG.winAppId,
+				setupExe: `${CONFIG.applicationNameSanitized}-v${packageJSON.version}-win-x64.exe`,
+				exe: `${CONFIG.applicationName}.exe`,
+
+				// Meta
+				title: CONFIG.applicationName,
+				authors: CONFIG.companyName,
+				owners: CONFIG.companyName,
+				description: CONFIG.description,
+
+				// Icons
+				setupIcon: path.join(__dirname, './img/icons/icon.ico'),
+				iconUrl: 'https://raw.githubusercontent.com/nextcloud/talk-desktop/refs/heads/main/img/icons/icon.ico',
+
+				// Install/Update Loading
+				loadingGif: path.join(__dirname, './img/squirrel-install-loading.gif'),
+
+				// TODO: Check if this is as useful as WIX
+				// noMsi: false,
+				// setupMsi: `${CONFIG.applicationNameSanitized}-v${packageJSON.version}-win-x64.msi`,
+
+				// TODO: Sign
+				// certificateFile:
+				// certificatePassword:
+			},
+		},
+
+		// macOS
+		{
+			name: '@electron-forge/maker-dmg',
+			platforms: ['darwin'],
+			// https://js.electronforge.io/interfaces/_electron_forge_maker_dmg.MakerDMGConfig.html
+			config: {
+				icon: path.join(__dirname, 'img/icons/icon.icns'),
+				background: path.join(__dirname, 'img/dmg-background.png'),
+				additionalDMGOptions: {
+					// Background does not work when the title has spaces or special characters
+					title: 'NextcloudTalk',
+				},
+			},
+		},
+
+		// Portable, all platforms
 		{
 			name: '@electron-forge/maker-zip',
-			// platforms: ['darwin'],
 		},
-		// {
-		// 	name: '@electron-forge/maker-deb',
-		// 	config: {},
-		// },
-		// {
-		// 	name: '@electron-forge/maker-rpm',
-		// 	config: {},
-		// },
 	],
 
 	plugins: [

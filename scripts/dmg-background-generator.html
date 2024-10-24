@@ -1,0 +1,129 @@
+<!--
+  ~ SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
+  ~ SPDX-License-Identifier: AGPL-3.0-or-later
+  -->
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DMG Background Generator</title>
+	<style>
+		:root {
+			/* Coordinates of the icons' centers */
+			--x-app: 192px;
+			--y-app: 344px;
+			--x-dest: 448px;
+			--y-dest: 344px;
+			--icon-size: 80px;
+			--icon-box-size: calc(var(--icon-size) + 16px * 2 + 1em);
+			--arrow-size: 100px;
+
+			--border-radius: 8px; /* --border-radius-element */
+			--background-transparent: rgba(255, 255, 255, 0.6); /* --color-main-background-rgb */
+			--color-border: rgba(125, 125, 125, 0.8); /* --color-border */
+		}
+
+		body {
+			font-family: "Open Sans";
+			font-size: 10pt;
+			line-height: 2;
+		}
+
+		.background {
+			width: 658px;
+			height: 498px;
+			background: url("../resources/server-global-styles/master/apps/theming/img/background/jenna-kim-the-globe.webp") no-repeat center center;
+			background-size: cover;
+			position: absolute;
+		}
+
+		.wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			--wrapper-left: calc(var(--x-app) - var(--icon-box-size) / 2);
+			--wrapper-right: calc(var(--x-dest) + var(--icon-box-size) / 2);
+			--wrapper-top: calc(var(--y-app) - var(--icon-box-size) / 2 + 1em);
+			left: var(--wrapper-left);
+			width: calc(var(--wrapper-right) - var(--wrapper-left));
+			top: var(--wrapper-top);
+		}
+
+		.box {
+			width: var(--icon-box-size);
+			height: var(--icon-box-size);
+			background: var(--background-transparent);
+			backdrop-filter: blur(2px);
+			border-radius: var(--border-radius);
+		}
+
+		.arrow {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex: 1 0 auto;
+
+			svg {
+				width: var(--arrow-size);
+			}
+		}
+
+		.icon-placeholder {
+			visibility: hidden;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: absolute;
+			width: var(--icon-size);
+			height: var(--icon-size);
+			/*padding: 16px;*/
+
+			img,
+			svg {
+				display: block;
+			}
+
+			.text {
+				position: absolute;
+				bottom: -2em;
+				width: 200%;
+				text-align: center;
+			}
+
+			&.talk {
+				left: calc(var(--x-app) - var(--icon-size) / 2);
+				top: calc(var(--y-app) - var(--icon-size) / 2);
+			}
+
+			&.apps {
+				left: calc(var(--x-dest) - var(--icon-size) / 2);
+				top: calc(var(--y-dest) - var(--icon-size) / 2);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="background">
+		<div class="wrapper">
+			<div class="box"></div>
+			<div class="arrow" style="fill: var(--background-transparent)">
+				<svg xmlns="http://www.w3.org/2000/svg" id="mdi-chevron-right" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+			</div>
+			<div class="box"></div>
+		</div>
+
+		<div class="icon-placeholder talk">
+			<img src="../img/talk-icon-mac-shadow.svg" alt=""/>
+			<span class="text">Nextcloud Talk</span>
+		</div>
+
+		<div class="icon-placeholder apps">
+			<svg style="fill: #4997D0" xmlns="http://www.w3.org/2000/svg" id="mdi-folder" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" /></svg>
+			<span class="text">Applications</span>
+		</div>
+	</div>
+</body>
+</html>

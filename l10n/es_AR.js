@@ -18,6 +18,7 @@ OC.L10N.register(
     "Share screen" : "Compartir la pantalla",
     "Menu" : "Menú",
     "Report a bug" : "Reporte un tema",
+    "Settings" : "Ajustes",
     "Back" : "Volver",
     "Log out" : "Cerrar sesión",
     "Online" : "En línea",

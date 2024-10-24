@@ -9,6 +9,7 @@ OC.L10N.register(
     "Don't clear" : "Moenie wis nie",
     "This week" : "Vandeesweek",
     "Menu" : "Kieslys",
+    "Settings" : "Instellings",
     "Log out" : "Teken af",
     "Invisible" : "Onsigbaar"
 },

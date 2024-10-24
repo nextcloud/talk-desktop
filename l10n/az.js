@@ -7,9 +7,12 @@ OC.L10N.register(
     "Ok" : "Oldu",
     "No" : "Xeyir",
     "Yes" : "Bəli",
+    "Light" : "İşıqlı",
+    "Dark" : "Qaranlıq",
     "Today" : "Bu gün",
     "Menu" : "Menyu",
     "Report a bug" : "Səhv haqqında bildir",
+    "Settings" : "Quraşdırmalar",
     "Back" : "Geri",
     "Invisible" : "Görünməz"
 },

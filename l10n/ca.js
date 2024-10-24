@@ -13,6 +13,10 @@ OC.L10N.register(
     "Ok" : "D'acord",
     "No" : "No",
     "Yes" : "Sí",
+    "Light" : "Clar",
+    "Dark" : "Fosc",
+    "Appearance" : "Aparença",
+    "Theme" : "Tema",
     "User status" : "Estat de l'usuari",
     "Your status was set automatically" : "S'ha indicat l'estat automàticament",
     "Predefined statuses" : "Estats predefinits",
@@ -32,10 +36,12 @@ OC.L10N.register(
     "Open in Web-Browser" : "Obre al navegador web",
     "Force reload" : "Força tornar a carregar",
     "Report a bug" : "Informa d'un error",
+    "Settings" : "Paràmetres",
     "Back" : "Torna",
     "View profile" : "Visualitza el perfil",
     "Set custom status" : "Definir l'estat personalitzat",
     "Log out" : "Tanca la sessió",
+    "Application" : "Aplicació",
     "Online" : "En línia"
 },
 "nplurals=2; plural=(n != 1);");

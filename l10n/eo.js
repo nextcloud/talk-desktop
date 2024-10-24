@@ -8,7 +8,9 @@ OC.L10N.register(
     "Ok" : "Bone",
     "No" : "Ne",
     "Yes" : "Jes",
+    "Light" : "Luma",
     "Dark" : "Malluma",
+    "Theme" : "Etoso",
     "30 minutes" : "30 minutoj",
     "1 hour" : "1 horo",
     "4 hours" : "4 horoj",
@@ -17,6 +19,7 @@ OC.L10N.register(
     "Status message" : "Stato-mesaĝo",
     "Loading …" : "Ŝargado...",
     "Report a bug" : "Raporti problemon",
+    "Settings" : "Agordoj",
     "View profile" : "Vidi profilon",
     "Invisible" : "Nevidebla"
 },

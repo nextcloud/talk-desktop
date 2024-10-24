@@ -62,6 +62,7 @@ module.exports = {
 
 	rebuildConfig: {},
 
+	// https://electron.github.io/packager/main/interfaces/Options.html
 	packagerConfig: {
 		// Common
 		name: CONFIG.applicationName,
@@ -84,6 +85,7 @@ module.exports = {
 		{
 			name: '@electron-forge/maker-squirrel',
 			platforms: ['win32'],
+			// https://github.com/electron/windows-installer/tree/main?tab=readme-ov-file#usage
 			config: {
 				// App/Filenames
 				name: CONFIG.winAppId,
@@ -110,6 +112,21 @@ module.exports = {
 				// TODO: Sign
 				// certificateFile:
 				// certificatePassword:
+			},
+		},
+
+		// macOS
+		{
+			name: '@electron-forge/maker-dmg',
+			platforms: ['darwin'],
+			// https://js.electronforge.io/interfaces/_electron_forge_maker_dmg.MakerDMGConfig.html
+			config: {
+				icon: path.join(__dirname, 'img/icons/icon.icns'),
+				background: path.join(__dirname, 'img/dmg-background.png'),
+				additionalDMGOptions: {
+					// Background does not work when the title has spaces or special characters
+					title: 'NextcloudTalk',
+				},
 			},
 		},
 

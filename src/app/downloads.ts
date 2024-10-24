@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const path = require('node:path')
-const { Notification, shell } = require('electron')
+import path from 'node:path'
+import { Notification, shell } from 'electron'
+import type { BrowserWindow } from 'electron'
 
 /**
- * Enable native OS notifications for downloaded files
- *
- * @param {import('electron').BrowserWindow} browserWindow - Browser window
+ * Handle downloads from a browser window to show notifications
+ * @param browserWindow - Browser window
  */
-export function applyDownloadNotification(browserWindow) {
-	browserWindow.webContents.session.on('will-download', (event, item, webContents) => {
+export function applyDownloadHandler(browserWindow: BrowserWindow) {
+	browserWindow.webContents.session.on('will-download', (event, item) => {
 		item.once('done', (event, state) => {
 			const pathToFile = item.getSavePath()
 			const { base, dir } = path.parse(pathToFile)

@@ -24,6 +24,13 @@ SPDX-FileCopyrightText = "none"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
+path = ["img/dmg-background.png", "img/dmg-background@2x.png"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 Nextcloud GmbH"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+SPDX-FileAttributionText = "Modified jenna-kim-the-globe.webp with app icon placeholders and an arrow on top to use as a background image for the macOS DMG installer"
+
+[[annotations]]
 path = "resources/vue-devtools.crx"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "Evan You <https://github.com/vuejs/devtools/blob/main/LICENSE>"

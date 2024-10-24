@@ -7,6 +7,7 @@ const path = require('node:path')
 const fs = require('node:fs')
 const semver = require('semver')
 const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
+const { MakerDMG } = require('@electron-forge/maker-dmg')
 const { MakerZIP } = require('@electron-forge/maker-zip')
 const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
@@ -21,7 +22,7 @@ const CONFIG = {
 	description: packageJSON.description,
 
 	// macOS
-	macAppId: 'com.nextcloud.NextcloudTalk',
+	appleAppBundleId: 'com.nextcloud.talk.mac',
 	// Windows
 	winAppId: 'NextcloudTalk',
 }
@@ -80,9 +81,10 @@ module.exports = {
 		},
 
 		// macOS
-		appBundleId: CONFIG.macAppId,
+		appBundleId: CONFIG.appleAppBundleId,
 		darwinDarkModeSupport: true,
-		appCategoryType: 'public.app-category.social-networking', // LSApplicationCategoryType | https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html
+		// https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW8
+		appCategoryType: 'public.app-category.business',
 	},
 
 	makers: [
@@ -106,6 +108,17 @@ module.exports = {
 
 			// Install/Update Loading
 			loadingGif: path.join(__dirname, './img/squirrel-install-loading.gif'),
+		}),
+
+		// https://js.electronforge.io/interfaces/_electron_forge_maker_dmg.MakerDMGConfig.html
+		new MakerDMG({
+			icon: path.join(__dirname, 'img/icons/icon.icns'),
+			background: path.join(__dirname, 'img/dmg-background.png'),
+			// https://github.com/LinusU/node-appdmg?tab=readme-ov-file#specification
+			additionalDMGOptions: {
+				// Background does not work when the title has spaces or special characters
+				title: 'NextcloudTalk',
+			},
 		}),
 
 		// Portable, all platforms

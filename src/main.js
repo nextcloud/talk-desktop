@@ -235,7 +235,13 @@ app.whenReady().then(async () => {
 
 	mainWindow = createWelcomeWindow()
 	createMainWindow = createWelcomeWindow
-	mainWindow.once('ready-to-show', () => mainWindow.show())
+	mainWindow.once('ready-to-show', () => {
+		setTimeout(() => {
+			if (!mainWindow.isDestroyed()) {
+				mainWindow.show()
+			}
+		}, 2000)
+	})
 
 	ipcMain.once('appData:receive', async (event, appData) => {
 		const welcomeWindow = mainWindow
@@ -262,7 +268,7 @@ app.whenReady().then(async () => {
 			if (!isTalkWindow || !ARGUMENTS.openInBackground) {
 				mainWindow.show()
 			}
-			welcomeWindow.close()
+			welcomeWindow.destroy()
 		})
 	})
 

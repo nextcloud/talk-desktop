@@ -7,136 +7,33 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<style>
-	* {
-		box-sizing: border-box;
-	}
-
-	html,
-	body {
-		padding: 0;
-		margin: 0;
-		height: 100vh;
-		background-color: #00679E;
-		color: white;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell, Ubuntu, 'Helvetica Neue', Arial, sans-serif, 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-		user-select: none;
-		-webkit-app-region: drag;
-	}
-
-	.hidden {
-		display: none;
-	}
-
-	.quit {
-		-webkit-app-region: no-drag;
-		position: fixed;
-		inset-block-start: 4px;
-		inset-inline-end: 4px;
-		width: 44px;
-		height: 44px;
-		border: none;
-		background: transparent var(--original-icon-close-white) no-repeat center;
-		background-size: 20px;
-		cursor: pointer;
-	}
-
-	.quit_mac {
-		inset-inline-start: 4px;
-		inset-inline-end: auto;
-	}
-
-	.wrapper {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 100vh
-	}
-
-	.spacer {
-		flex: 1 0;
-	}
-
-	.logo {
-		background: no-repeat center url("<%= require('@talk/img/app.svg') %>");
-		background-size: contain;
-		width: 175px;
-		height: 130px;
-	}
-
-	@keyframes animateCloud {
-		0% {
-			margin-left: -100%;
-		}
-		100% {
-			margin-left: 100%;
-		}
-	}
-
-	.footer {
-		margin: 16px;
-	}
-
-	.clouds {
-		position: relative;
-		overflow: hidden;
-		height: 150px;
-		width: 100%;
-	}
-
-	.cloud {
-		--height: 30px;
-		--width: calc(var(--height) * 3);
-		background: #fff;
-		border-radius: calc(var(--height) * 0.75);
-		height: var(--height);
-		position: absolute;
-		width: var(--width);
-		top: var(--height);
-		transform: scale(1);
-		animation: animateCloud 5s linear infinite;
-	}
-
-	.cloud:after {
-		border-radius: 100%;
-		height: 80%;
-		aspect-ratio: 1/1;
-		left: 15%;
-		top: -45%;
-	}
-
-	.cloud:after, .cloud:before {
-		background: #fff;
-		content: '';
-		position: absolute;
-		z-index: -1;
-	}
-
-	.cloud:before {
-		border-radius: 100%;
-		aspect-ratio: 1/1;
-		height: 150%;
-		right: 15%;
-		top: -80%;
-	}
-	</style>
 	<title>Nextcloud Talk</title>
 </head>
-<body>
-	<button class="quit hidden" aria-label="Quit" type="button"></button>
-	<div class="wrapper">
+<body class="welcome">
+	<div class="content">
 		<div class="spacer"></div>
 		<div class="logo"></div>
 		<h1 class="header">Nextcloud Talk</h1>
-		<div class="clouds">
-			<div class="cloud" style="--height: 20px; animation: animateCloud 2s linear infinite;"></div>
-			<div class="cloud" style="--height: 16px; animation: animateCloud 1.5s linear infinite; top: 80px; left: 50px"></div>
-			<div class="cloud" style="--height: 28px; animation: animateCloud 3s linear infinite; top: 50px; left: 20px"></div>
-			<div class="cloud" style="--height: 30px; animation: animateCloud 5s linear infinite; top: 75px;"></div>
-			<div class="cloud" style="--height: 40px; animation: animateCloud 10s linear infinite; top: 100px; left: 150px"></div>
-		</div>
 		<div class="spacer"></div>
-		<div class="footer">Preview</div>
+		<div class="spacer"></div>
+		<div class="footer">Installing<span class="ellipsis"></span></div>
 	</div>
+
+	<div class="clouds">
+		<div class="cloud" style="--top:  5%; --scale: 0.6; --bright: 1.00; --duration:  5s; --below: 0;"></div>
+		<div class="cloud" style="--top: 10%; --scale: 0.5; --bright: 0.91; --duration:  6s; --below: 0;"></div>
+		<div class="cloud" style="--top: 11%; --scale: 0.9; --bright: 0.96; --duration: 10s; --below: 0;"></div>
+		<div class="cloud" style="--top: 12%; --scale: 0.8; --bright: 0.98; --duration:  7s; --below: 0;"></div>
+		<div class="cloud" style="--top: 20%; --scale: 1.2; --bright: 0.90; --duration: 12s; --below: 0;"></div>
+		<div class="cloud" style="--top: 35%; --scale: 0.4; --bright: 0.94; --duration: 10s; --below: 0;"></div>
+		<div class="cloud" style="--top: 40%; --scale: 0.6; --bright: 0.96; --duration:  8s; --below: 1;"></div>
+		<div class="cloud" style="--top: 43%; --scale: 1.0; --bright: 0.97; --duration: 12s; --below: 1;"></div>
+		<div class="cloud" style="--top: 70%; --scale: 1.7; --bright: 0.98; --duration: 20s; --below: 0;"></div>
+		<div class="cloud" style="--top: 75%; --scale: 1.2; --bright: 0.92; --duration: 16s; --below: 1;"></div>
+		<div class="cloud" style="--top: 80%; --scale: 1.0; --bright: 0.95; --duration: 10s; --below: 0;"></div>
+		<div class="cloud" style="--top: 90%; --scale: 0.5; --bright: 0.95; --duration:  7s; --below: 0;"></div>
+	</div>
+
+	<button class="quit hidden" aria-label="Quit" type="button"></button>
 </body>
 </html>

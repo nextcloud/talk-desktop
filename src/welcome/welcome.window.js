@@ -14,8 +14,8 @@ const { getScaledWindowSize } = require('../app/utils.ts')
 function createWelcomeWindow() {
 	const window = new BrowserWindow({
 		...getScaledWindowSize({
-			width: 300,
-			height: 500,
+			width: 310,
+			height: 512,
 		}, false),
 		resizable: false,
 		autoHideMenuBar: true,

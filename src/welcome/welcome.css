@@ -1,0 +1,202 @@
+/*
+ * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+:root {
+	--default-grid-baseline: 4px;
+	--default-clickable-area: 34px;
+	--spacing-1x: calc(var(--default-grid-baseline) * 1);
+	--spacing-2x: calc(var(--default-grid-baseline) * 2);
+	--spacing-3x: calc(var(--default-grid-baseline) * 3);
+	--spacing-4x: calc(var(--default-grid-baseline) * 4);
+	--logo: url("~@talk/img/app.svg");
+	--content-z-index: 200;
+	--cloud-z-index: 300;
+	--quit-z-index: 400;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+	background-color: #00679E;
+	color: white;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell, Ubuntu, 'Helvetica Neue', Arial, sans-serif, 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	user-select: none;
+	-webkit-app-region: drag;
+}
+
+button:focus-visible {
+	outline-color: white;
+	outline-width: 2px;
+	outline-offset: -2px;
+}
+
+.hidden {
+	display: none;
+}
+
+.quit {
+	-webkit-app-region: no-drag;
+	position: fixed;
+	z-index: var(--quit-z-index);
+	inset-block-start: var(--spacing-1x);
+	inset-inline-end: var(--spacing-1x);
+	width: var(--default-clickable-area);
+	height: var(--default-clickable-area);
+	border: none;
+	background: transparent;
+	cursor: pointer;
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: transparent url("~@mdi/svg/svg/close.svg") no-repeat center;
+		background-size: 22px;
+		filter: invert(1);
+	}
+}
+
+.quit--mac {
+	inset-inline-start:var(--spacing-1x);
+	inset-inline-end: auto;
+}
+
+.content {
+	position: relative;
+	z-index: var(--content-z-index);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: var(--spacing-4x);
+	padding-top: var(--spacing-4x);
+	padding-bottom: var(--spacing-4x);
+	height: 100vh;
+}
+
+.spacer {
+	flex: 1 0;
+}
+
+.logo {
+	background: no-repeat center var(--logo);
+	background-size: contain;
+	aspect-ratio: 1 / 1;
+	height: 128px;
+}
+
+.header {
+	font-weight: 400;
+	margin: 0;
+}
+
+.clouds {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	flex: 1 0 auto;
+}
+
+.cloud {
+	--height: 30px;
+	--width: calc(var(--height) * 3);
+	--color: #FFF;
+	--scale: 1.0;
+	background: var(--color);
+	border-radius: calc(var(--height) * 0.75);
+	height: var(--height);
+	width: var(--width);
+	position: absolute;
+	top: var(--top);
+	transform: scale(var(--scale));
+	filter: drop-shadow(calc(var(--height) / 5) calc(var(--height) / 5 / 1.5) 0 #dbdbdb) brightness(var(--bright, 1));
+	animation: cloud calc(var(--duration) * 1.5) linear infinite;
+	animation-fill-mode: both;
+	z-index: calc(var(--cloud-z-index) - var(--below, 0) * (var(--cloud-z-index) - var(--content-z-index) + 1));
+
+	&::after,
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		background: var(--color);
+		border-radius: 100%;
+		aspect-ratio: 1 / 1;
+	}
+
+	&::after {
+		height: 80%;
+		left: 15%;
+		top: -45%;
+	}
+
+	&::before {
+		height: 150%;
+		right: 15%;
+		top: -80%;
+	}
+}
+
+@keyframes cloud {
+	0% {
+		margin-left: -120%;
+	}
+	100% {
+		margin-left: 120%;
+	}
+}
+
+.footer:has(.ellipsis) {
+	margin-left: 3ch;
+}
+
+.ellipsis {
+	display: inline-block;
+	width: 3ch;
+
+	&::after {
+		content: '';
+		display: inline-block;
+		animation: ellipsis 3s infinite;
+	}
+}
+
+@keyframes ellipsis {
+	0% {
+		content: '';
+	}
+	25% {
+		content: '.';
+	}
+	50% {
+		content: '..';
+	}
+	75% {
+		content: '...';
+	}
+}
+
+.welcome {
+	.logo {
+		filter: drop-shadow(4px 3px 0px #DBDBDB);
+	}
+
+	.footer {
+		display: none;
+	}
+}
+
+.installing {
+	.quit,
+	.clouds {
+		display: none;
+	}
+}

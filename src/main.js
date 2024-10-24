@@ -12,7 +12,7 @@ const { createAuthenticationWindow } = require('./authentication/authentication.
 const { openLoginWebView } = require('./authentication/login.window.js')
 const { createHelpWindow } = require('./help/help.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.js')
-const { getOs, isLinux, isMac, isWayland } = require('./shared/os.utils.js')
+const { getOs, isLinux, isMac, isWayland, isWindows } = require('./shared/os.utils.js')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
@@ -34,7 +34,17 @@ const ARGUMENTS = {
 const APP_NAME = process.env.NODE_ENV !== 'development' ? path.parse(app.getPath('exe')).name : 'Nextcloud Talk (dev)'
 app.setName(APP_NAME)
 app.setPath('userData', path.join(app.getPath('appData'), app.getName()))
-app.setAppUserModelId(app.getName())
+if (isWindows()) {
+	// TODO: get actual name from the build
+	app.setAppUserModelId('com.squirrel.NextcloudTalk.NextcloudTalk')
+}
+
+/**
+ * Handle creating/removing shortcuts on Windows when installing/uninstalling
+ */
+if (require('electron-squirrel-startup')) {
+	app.quit()
+}
 
 /**
  * Only one instance is allowed at time
@@ -49,11 +59,6 @@ if (!app.requestSingleInstanceLock()) {
 if (process.env.NODE_ENV === 'production') {
 	setupReleaseNotificationScheduler(2 * 60)
 }
-
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-// if (require('electron-squirrel-startup')) {
-//   app.quit();
-// }
 
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getOs', () => getOs())

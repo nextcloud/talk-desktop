@@ -6,6 +6,7 @@
 require('dotenv').config()
 
 const path = require('node:path')
+const os = require('node:os')
 const webpack = require('webpack')
 const { mergeWithRules } = require('webpack-merge')
 
@@ -123,6 +124,10 @@ const webpackRendererConfig = mergeWithRules({
 
 		new webpack.DefinePlugin({
 			IS_DESKTOP: true,
+			__IS_WINDOWS__: os.type() === 'Windows_NT',
+			__IS_MAC__: os.type() === 'Darwin',
+			__IS_LINUX__: os.type() === 'Linux',
+			__IS_WAYLAND__: !!process.env.WAYLAND_DISPLAY, // TODO: is it better than checking for XDG_SESSION_TYPE === 'wayland'?
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),
 		}),
 	],

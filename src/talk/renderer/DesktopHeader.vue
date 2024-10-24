@@ -15,7 +15,7 @@ useUserStatusStore()
 useUserStatusHeartbeat()
 
 const user = appData.userMetadata
-const OS = window.OS
+const IS_MAC = __IS_MAC__
 
 /**
  * Push to root in Talk app to unselect any chat
@@ -53,7 +53,7 @@ onUnmounted(() => {
 <template>
 	<header id="header" class="header">
 		<div class="header__inner">
-			<div v-if="!OS.isMac"
+			<div v-if="!IS_MAC"
 				class="header__title-wrapper"
 				role="button"
 				tabindex="0"

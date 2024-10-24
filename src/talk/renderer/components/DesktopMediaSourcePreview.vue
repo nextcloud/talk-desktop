@@ -13,7 +13,7 @@ import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
 // On Wayland getting each stream for the live preview requests user to select the source via system dialog again
 // Instead - show static images.
 // See: https://github.com/electron/electron/issues/27732
-const previewType = window.OS.isWayland ? 'thumbnail' : 'live'
+const previewType = __IS_WAYLAND__ ? 'thumbnail' : 'live'
 
 const videoElement = ref(null)
 

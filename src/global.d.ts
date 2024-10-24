@@ -30,6 +30,11 @@ declare module '@nextcloud/vue/dist/Components/*.js' {
 }
 
 declare const IS_DESKTOP: true
+declare const __IS_WINDOWS__: boolean
+declare const __IS_MAC__: boolean
+declare const __IS_LINUX__: boolean
+declare const __IS_WAYLAND__: boolean
+
 
 declare interface Window {
 	// Nextcloud Globals

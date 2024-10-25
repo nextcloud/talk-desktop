@@ -104,9 +104,9 @@ async function prepareRelease() {
 	// Package with Talk from TALK_PATH
 	echo`[5/5] Package with Talk from ${TALK_PATH}`
 	$.env.TALK_PATH = TALK_PATH
-	argv.windows && await spinner('Package Windows', () => $`npm run package:windows && npm run make:windows`)
-	argv.linux && await spinner('Package Linux', () => $`npm run package:linux && npm run make:linux`)
-	argv.mac && await spinner('Package MacOS', () => $`npm run package:mac && npm run make:mac`)
+	argv.windows && await spinner('Package Windows', () => $`npm run build:windows && npm run package:windows`)
+	argv.linux && await spinner('Package Linux', () => $`npm run build:linux && npm run package:linux`)
+	argv.mac && await spinner('Package MacOS', () => $`npm run build:mac && npm run package:mac`)
 
 	// Done
 	echo`Done. See output in ./out/make/`

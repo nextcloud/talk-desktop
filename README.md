@@ -47,7 +47,7 @@ However, using portable `zip` distribution, you can have several Nextcloud Talk 
         └── ...
 ```
 
-## 🧑‍💻 Development Setup
+## 🛠️ Development Setup
 
 ### Initial setup
 
@@ -86,20 +86,60 @@ Set `TALK_PATH` ENV variable or edit `.env` file:
 TALK_PATH=/path/to/nextcloud-dev/apps/spreed/
  ```
 
-### Development
+## 🧑‍💻 Development
+
+### Start development server in Electron
 
 ```bash
-# Start development server
-npm start
+npm run dev
 ```
 
-## 📦 Packaging
+### Build binaries for production
 
 ```bash
-#########################
-# Package to executable #
-#########################
+# 🖥️ Current platform
+npm run build
 
+# 🐧 Linux 
+npm run build:linux
+
+# 🍏 Mac (Darwin)
+npm run build:mac
+
+# 🪟 Windows (win32)
+npm run build:windows
+
+# All
+npm run build:all
+```
+
+Notes:
+- Building Windows binaries on Linux/Mac requires Wine
+- Building Mac binaries on Windows is not supported
+- Building Linux binaries on Windows is not supported for some Linux distributions
+
+### Maintenance
+
+#### Generating icons
+
+After changing source icons, to generate icons in different sizes and formats, run:
+
+```bash
+npm run generate-icons
+```
+
+#### Updating global (server) styles
+
+Talk frontend depends on the global Nextcloud server styles. To manually get them run:
+
+```bah
+# node ./scripts/fetch-server-styles.mjs <VERSION>, for example
+node ./scripts/fetch-server-styles.mjs stable29
+```
+
+## 📦 Packaging distributions
+
+```bash
 # 🐧 Linux
 npm run package:linux
 
@@ -111,23 +151,6 @@ npm run package:windows
 
 #  All
 npm run package:all
-
-#########################
-# Make ZIP distribution #
-#########################
-
-# 🐧 Linux
-npm run make:linux
-
-# 🍏 Mac (Darwin)
-# Note: doesn't work on Windows, use WSL
-npm run make:mac
-
-# 🪟 Windows (win32)
-npm run make:windows
-
-#  All
-npm run make:all
 ```
 
 ## ✈️ Release
@@ -181,15 +204,6 @@ npm run make:all
    ```
 10. Upload packages to the GitHub Releases on [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases/lastest)
 11. Publish both releases on GitHub Releases
-
-## 🎨 Updating global styles
-
-Talk frontend depends on the global Nextcloud server styles. To manually get them run:
-
-```sh
-# node ./scripts/fetch-server-styles.mjs <VERSION>, for example
-node ./scripts/fetch-server-styles.mjs stable29
-```
 
 ## 👥 Contribution Guidelines
 

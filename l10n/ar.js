@@ -30,6 +30,7 @@ OC.L10N.register(
     "Restart" : "إعادة التشغيل",
     "Appearance" : "المظهر",
     "Theme" : "السمة",
+    "Use monochrome tray icon" : "استعمل أيقونة الدرج أحادية اللون",
     "Use system title bar" : "استعمل شريط عنوان النظام",
     "User status" : "حالة العضو",
     "Your status was set automatically" : "تمّ تعيين حالتك تلقائيّاً",

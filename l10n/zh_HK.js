@@ -30,6 +30,7 @@ OC.L10N.register(
     "Restart" : "重新啟動",
     "Appearance" : "外觀",
     "Theme" : "主題",
+    "Use monochrome tray icon" : "使用單色系統匣圖示",
     "Use system title bar" : "使用系統標題列",
     "User status" : "用戶狀態",
     "Your status was set automatically" : "您的狀態是自動設置的",

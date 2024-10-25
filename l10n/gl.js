@@ -30,6 +30,7 @@ OC.L10N.register(
     "Restart" : "Reiniciar",
     "Appearance" : "Aparencia",
     "Theme" : "Tema",
+    "Use monochrome tray icon" : "Usar iconas monocromáticas na área de notificación",
     "Use system title bar" : "Usar a barra de título do sistema",
     "User status" : "Estado do usuario",
     "Your status was set automatically" : "O seu estado foi estabelecido automaticamente",

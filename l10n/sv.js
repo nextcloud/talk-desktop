@@ -30,6 +30,7 @@ OC.L10N.register(
     "Restart" : "Omstart",
     "Appearance" : "Utseende",
     "Theme" : "Tema",
+    "Use monochrome tray icon" : "Använd monokrom ikon",
     "Use system title bar" : "Använd systemets titelrad",
     "User status" : "Användarstatus",
     "Your status was set automatically" : "Din status ställdes in automatiskt",

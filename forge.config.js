@@ -37,6 +37,10 @@ module.exports = {
 			if (semver.lte(talkPackageJson.version, MIN_REQUIRED_BUILT_IN_TALK_VERSION)) {
 				throw new Error(`The minimum supported version of built-in Nextcloud Talk is ${MIN_REQUIRED_BUILT_IN_TALK_VERSION}, but ${talkPackageJson.version} has been found in TALK_PATH=${TALK_PATH}`)
 			}
+
+			if (!fs.existsSync(path.join(TALK_PATH, 'node_modules'))) {
+				throw new Error(`No Nextcloud Talk (spreed repository) dependencies are installed.\nTry to execute \`cd ${TALK_PATH} && npm ci\``)
+			}
 		},
 
 		postStart() {

@@ -8,6 +8,7 @@ const fs = require('node:fs')
 const semver = require('semver')
 const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerDMG } = require('@electron-forge/maker-dmg')
+const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
 const { MakerZIP } = require('@electron-forge/maker-zip')
 const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
@@ -25,6 +26,8 @@ const CONFIG = {
 	appleAppBundleId: 'com.nextcloud.talk.mac',
 	// Windows
 	winAppId: 'NextcloudTalk',
+	// Linux
+	linuxAppId: 'com.nextcloud.talk',
 }
 
 const YEAR = new Date().getFullYear()
@@ -118,6 +121,63 @@ module.exports = {
 			additionalDMGOptions: {
 				// Background does not work when the title has spaces or special characters
 				title: 'NextcloudTalk',
+			},
+		}),
+
+		// Linux
+		new MakerFlatpak({
+			// https://js.electronforge.io/classes/_electron_forge_maker_flatpak.MakerFlatpak-1.html#config
+			options: {
+				id: CONFIG.linuxAppId,
+				// The default binary name in flatpak builder is packageJSON.name while the actual binary name from packager is applicationName
+				// Requires to be set explicitly
+				bin: CONFIG.applicationName,
+				productName: CONFIG.applicationName,
+				description: CONFIG.description,
+				genericName: 'Video and Chat Communication',
+				branch: 'stable',
+				// https://specifications.freedesktop.org/icon-theme-spec/latest/
+				icon: {
+					scalable: path.resolve(__dirname, 'img/talk-icon-rounded.svg'),
+				},
+				// https://specifications.freedesktop.org/menu-spec/latest/category-registry.html
+				categories: [
+					// Main Category
+					'Network',
+					// Additional Categories
+					'InstantMessaging',
+					'Chat',
+					'VideoConference',
+				],
+				finishArgs: [
+					/**
+					 * Default Electron args
+					 * https://github.com/malept/electron-installer-flatpak/blob/main/src/installer.js
+					 */
+
+					// X Rendering
+					'--socket=x11',
+					'--share=ipc',
+					// OpenGL
+					'--device=dri',
+					// Audio output
+					'--socket=pulseaudio',
+					// Read/write home directory access
+					'--filesystem=home',
+					// Chromium uses a socket in tmp for its singleton check
+					'--env=TMPDIR=/var/tmp',
+					// Allow communication with network
+					'--share=network',
+					// System notifications with libnotify
+					'--talk-name=org.freedesktop.Notifications',
+
+					/**
+					 * Additional args
+					 */
+
+					// Enable webcam access
+					'--device=all',
+				],
 			},
 		}),
 

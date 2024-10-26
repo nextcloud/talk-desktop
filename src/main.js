@@ -283,6 +283,7 @@ app.whenReady().then(async () => {
 	app.on('activate', () => {
 		if (BrowserWindow.getAllWindows().length === 0) {
 			mainWindow = createMainWindow()
+			mainWindow.once('ready-to-show', () => mainWindow.show())
 		}
 	})
 })

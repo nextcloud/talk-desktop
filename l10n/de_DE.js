@@ -26,7 +26,7 @@ OC.L10N.register(
     "System default" : "Systemstandard",
     "Light" : "Hell",
     "Dark" : "Dunkel",
-    "Some changes require a relaunch to take effect" : "Einige Änderungen erfordern einen Relaunch, um wirksam zu werden",
+    "Some changes require a relaunch to take effect" : "Einige Änderungen erfordern einen Neustart, um wirksam zu werden",
     "Restart" : "Neustart",
     "Appearance" : "Aussehen",
     "Theme" : "Design",

@@ -49,12 +49,15 @@ OC.L10N.register(
     "View profile" : "Открыть профиль",
     "Log out" : "Выйти",
     "Upgrade required" : "Требуется обновление",
-    "The client version is too old and no longer supported by this server. Update is required." : "Версия клиента слишком старая и больше не поддерживается этим сервером. Требуется обновление.",
+    "The client version is too old and no longer supported by this server. Update is required." : "Версия клиента слишком старая и больше не поддерживается этим сервером. Пожалуйста обновите его.",
     "Update Talk Desktop ↗" : "Обновить Talk Desktop",
     "Continue in Web-Browser ↗" : "Продолжить в веб-браузере",
     "Application" : "Приложение",
     "Online" : "В сети",
+    "Away" : "Отошёл",
+    "Do not disturb" : "Не беспокоить",
     "Invisible" : "Невидимка",
+    "Offline" : "Не в сети",
     "Cannot connect to the server. Please check your internet connection and try again later." : "Невозможно подключиться к серверу. Пожалуйста, проверьте подключение к Интернету и повторите попытку позже."
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

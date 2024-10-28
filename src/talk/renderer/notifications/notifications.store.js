@@ -161,7 +161,6 @@ export function createNotificationStore() {
 			title: notification.subject,
 			lang: appData.userMetadata.locale,
 			body: notification.message,
-			icon: notification.icon,
 			tag: notification.notificationId,
 			// We have a custom sound
 			silent: true,

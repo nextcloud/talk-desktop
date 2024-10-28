@@ -7,7 +7,7 @@ const { app, shell, Menu } = require('electron')
 const { isMac } = require('../shared/os.utils.js')
 const packageJson = require('../../package.json')
 const { createHelpWindow } = require('../help/help.window.js')
-const { increaseZoom, decreaseZoom, setZoom } = require('./applyWheelZoom.js')
+const { increaseZoom, decreaseZoom, setZoom } = require('./zoom.service.ts')
 
 /**
  * Setup application menu

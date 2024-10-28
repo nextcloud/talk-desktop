@@ -10,6 +10,8 @@ const { parseLoginRedirectUrl } = require('./login.service.js')
 const { getOsTitle } = require('../shared/os.utils.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+const { getScaledWindowMinSize, getScaledWindowSize } = require('../app/utils.ts')
+const { getAppConfig } = require('../app/AppConfig.ts')
 
 const genId = () => Math.random().toString(36).slice(2, 9)
 
@@ -26,12 +28,18 @@ function openLoginWebView(parentWindow, serverUrl) {
 		const HEIGHT = 750
 		const TITLE = `Login - ${BASE_TITLE}`
 
+		const zoomFactor = getAppConfig('zoomFactor')
+
 		const window = new BrowserWindow({
 			title: TITLE,
-			width: WIDTH,
-			height: HEIGHT,
-			minWidth: WIDTH,
-			minHeight: HEIGHT,
+			...getScaledWindowSize({
+				width: WIDTH,
+				height: HEIGHT,
+			}),
+			...getScaledWindowMinSize({
+				width: WIDTH,
+				height: HEIGHT,
+			}),
 			useContentSize: true,
 			resizable: true,
 			center: true,
@@ -42,6 +50,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 			webPreferences: {
 				partition: `non-persist:login-web-view-${genId()}`,
 				nodeIntegration: false,
+				zoomFactor,
 			},
 			icon: getBrowserWindowIcon(),
 		})

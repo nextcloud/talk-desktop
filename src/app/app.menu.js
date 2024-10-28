@@ -3,14 +3,11 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const {
-	app,
-	shell,
-	Menu,
-} = require('electron')
+const { app, shell, Menu } = require('electron')
 const { isMac } = require('../shared/os.utils.js')
 const packageJson = require('../../package.json')
 const { createHelpWindow } = require('../help/help.window.js')
+const { increaseZoom, decreaseZoom, setZoom } = require('./applyWheelZoom.js')
 
 /**
  * Setup application menu
@@ -75,16 +72,9 @@ function setupMenu() {
 			{ role: 'forceReload' },
 			{ role: 'toggleDevTools' },
 			{ type: 'separator' },
-			{ role: 'resetZoom' },
-			{ role: 'zoomIn' },
-			// By default zoomIn works by "CommandOrControl + +" ("CommandOrControl + SHIFT + =")
-			// Hidden menu item adds zoomIn without SHIFT
-			{
-				role: 'zoomIn',
-				accelerator: 'CommandOrControl+=',
-				visible: false,
-			},
-			{ role: 'zoomOut' },
+			{ label: 'Reset Zoom', accelerator: 'CommandOrControl+0', click: (event, browserWindow) => setZoom(browserWindow, 1) },
+			{ label: 'Zoom In', accelerator: 'CommandOrControl+=', click: (event, browserWindow) => increaseZoom(browserWindow) },
+			{ label: 'Zoom Out', accelerator: 'CommandOrControl+-', click: (event, browserWindow) => decreaseZoom(browserWindow) },
 			{ type: 'separator' },
 			{ role: 'togglefullscreen' },
 		],

@@ -5,7 +5,7 @@
 
 import { join } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
-import { app } from 'electron'
+import { app, webContents } from 'electron'
 import { isLinux, isMac } from '../shared/os.utils.js'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
@@ -45,6 +45,11 @@ export type AppConfig = {
 	 * Default: true on macOS, false otherwise.
 	 */
 	monochromeTrayIcon: boolean
+	/**
+	 * Zoom factor of the application.
+	 * Default: 1.
+	 */
+	zoomFactor: number
 
 	// ----------------
 	// Privacy settings
@@ -59,6 +64,8 @@ export type AppConfig = {
 	// Nothing yet...
 }
 
+export type AppConfigKey = keyof AppConfig
+
 /**
  * Get the default config
  */
@@ -66,12 +73,17 @@ const defaultAppConfig: AppConfig = {
 	theme: 'default',
 	systemTitleBar: isLinux(),
 	monochromeTrayIcon: isMac(),
+	zoomFactor: 1,
 }
 
 /** Local cache of the config file mixed with the default values */
 const appConfig: Partial<AppConfig> = {}
 /** Whether the application config has been read from the config file and ready to use */
 let initialized = false
+/**
+ * Listeners for application config changes
+ */
+const appConfigChangeListeners = new Map<AppConfigKey, Set<(value?: AppConfig[AppConfigKey]) => void>>()
 
 /**
  * Read the application config from the file
@@ -140,11 +152,34 @@ export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig | Ap
  * @param value - Value to set or undefined to reset to the default value
  * @return Promise<AppConfig> - The full settings after the change
  */
-export async function setAppConfig<K extends keyof AppConfig>(key: K, value?: AppConfig[K]) {
+export function setAppConfig<K extends keyof AppConfig>(key: K, value?: AppConfig[K]) {
+	// Ignore if no change
+	if (appConfig[key] === value) {
+		return
+	}
+
 	if (value !== undefined) {
 		appConfig[key] = value
 	} else {
 		delete appConfig[key]
 	}
-	await writeAppConfigFile(appConfig)
+
+	for (const contents of webContents.getAllWebContents()) {
+		contents.send('app:config:change', { key, value, appConfig })
+	}
+
+	for (const listener of appConfigChangeListeners.get(key) ?? []) {
+		listener(value)
+	}
+
+	writeAppConfigFile(appConfig)
+}
+
+/**
+ * Listen to application config changes
+ * @param key - The config key to listen to
+ * @param callback - The callback to call when the config changes
+ */
+export function onAppConfigChange(key: keyof AppConfig, callback: (value: unknown) => void) {
+	appConfigChangeListeners.set(key, (appConfigChangeListeners.get(key) ?? new Set()).add(callback))
 }

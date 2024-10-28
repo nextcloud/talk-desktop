@@ -5,7 +5,7 @@
 
 import type { Ref } from 'vue'
 import type { AppConfig } from '../../../app/AppConfig.ts'
-import { readonly, ref, watch } from 'vue'
+import { readonly, ref, set, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
 import { applyBodyThemeAttrs } from '../../../shared/theme.utils.js'
@@ -14,6 +14,10 @@ export const useAppConfig = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
 	const isRelaunchRequired = ref(false)
 	const relaunchRequiredConfigs = ['systemTitleBar', 'monochromeTrayIcon'] as const
+
+	window.TALK_DESKTOP.onAppConfigChange((event: unknown, { key, value }: { key: keyof AppConfig, value: unknown }) => {
+		set(appConfig.value, key, value)
+	})
 
 	const unwatchRelaunch = watch(
 		() => relaunchRequiredConfigs.map((key) => appConfig.value[key]),
@@ -40,7 +44,7 @@ export const useAppConfig = defineStore('appConfig', () => {
 	 * @param value - The value to set
 	 */
 	function setAppConfigValue<K extends keyof AppConfig>(key: K, value: AppConfig[K]) {
-		appConfig.value[key] = value
+		set(appConfig.value, key, value)
 		window.TALK_DESKTOP.setAppConfig(key, value)
 	}
 

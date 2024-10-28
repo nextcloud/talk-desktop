@@ -9,22 +9,20 @@ import { ZOOM_MAX, ZOOM_MIN, TITLE_BAR_HEIGHT } from '../constants.js'
 
 /**
  * Electron zoom level factor. scale factor is 1.2 ** level
- * @type {number}
  */
 const ELECTRON_ZOOM_LEVEL_FACTOR = 1.2
 
 /**
  * Default Electron zoom level change on hotkey - 0.5 level
- * @type {number}
  */
 const ZOOM_STEP_FACTOR = Math.pow(ELECTRON_ZOOM_LEVEL_FACTOR, 0.5)
 
 /**
  * Set zoom factor for a browser window
- * @param {import('electron').BrowserWindow} browserWindow - Browser window
- * @param {number} zoom - Zoom factor
+ * @param browserWindow - Browser window
+ * @param zoom - Zoom factor
  */
-export function setZoom(browserWindow, zoom) {
+export function setZoom(browserWindow: BrowserWindow, zoom: number) {
 	if (browserWindow.webContents.getZoomFactor() === zoom) {
 		return
 	}
@@ -50,26 +48,25 @@ export function setZoom(browserWindow, zoom) {
 
 /**
  * Increase zoom level
- * @param {import('electron').BrowserWindow} browserWindow - Browser window
+ * @param browserWindow - Browser window
  */
-export function increaseZoom(browserWindow) {
+export function increaseZoom(browserWindow: BrowserWindow) {
 	setZoom(browserWindow, browserWindow.webContents.getZoomFactor() * ZOOM_STEP_FACTOR)
 }
 
 /**
  * Decrease zoom level
- * @param {import('electron').BrowserWindow} browserWindow - Browser window
+ * @param browserWindow - Browser window
  */
-export function decreaseZoom(browserWindow) {
+export function decreaseZoom(browserWindow: BrowserWindow) {
 	setZoom(browserWindow, browserWindow.webContents.getZoomFactor() / ZOOM_STEP_FACTOR)
 }
 
 /**
  * Enable zooming a window by mouse wheel
- *
- * @param {import('electron').BrowserWindow} browserWindow - Browser window
+ * @param browserWindow - Browser window
  */
-export function applyWheelZoom(browserWindow) {
+export function applyWheelZoom(browserWindow: BrowserWindow) {
 	browserWindow.webContents.on('zoom-changed', (event, zoomDirection) => {
 		if (zoomDirection === 'in') {
 			increaseZoom(browserWindow)

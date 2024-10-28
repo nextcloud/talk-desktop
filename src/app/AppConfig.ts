@@ -83,7 +83,7 @@ let initialized = false
 /**
  * Listeners for application config changes
  */
-const appConfigChangeListeners = new Map<AppConfigKey, Set<(value?: AppConfig[AppConfigKey]) => void>>()
+const appConfigChangeListeners: { [K in AppConfigKey]?: Set<(value: AppConfig[K]) => void> } = {}
 
 /**
  * Read the application config from the file
@@ -162,13 +162,14 @@ export function setAppConfig<K extends keyof AppConfig>(key: K, value?: AppConfi
 		appConfig[key] = value
 	} else {
 		delete appConfig[key]
+		value = defaultAppConfig[key]
 	}
 
 	for (const contents of webContents.getAllWebContents()) {
 		contents.send('app:config:change', { key, value, appConfig })
 	}
 
-	for (const listener of appConfigChangeListeners.get(key) ?? []) {
+	for (const listener of appConfigChangeListeners[key] ?? []) {
 		listener(value)
 	}
 
@@ -180,6 +181,9 @@ export function setAppConfig<K extends keyof AppConfig>(key: K, value?: AppConfi
  * @param key - The config key to listen to
  * @param callback - The callback to call when the config changes
  */
-export function onAppConfigChange(key: keyof AppConfig, callback: (value: unknown) => void) {
-	appConfigChangeListeners.set(key, (appConfigChangeListeners.get(key) ?? new Set()).add(callback))
+export function onAppConfigChange<K extends AppConfigKey>(key: K, callback: (value: AppConfig[K]) => void) {
+	if (!appConfigChangeListeners[key]) {
+		appConfigChangeListeners[key] = new Set([])
+	}
+	appConfigChangeListeners[key].add(callback)
 }

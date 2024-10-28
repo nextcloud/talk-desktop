@@ -80,11 +80,10 @@ function relaunch() {
 		</NcNoteCard>
 
 		<SettingsSubsection :name="t('talk_desktop', 'Appearance')">
-			<SettingsSelect v-model="themeOption" :options="themeOptions">
-				<template #icon>
-					<IconThemeLightDark :size="20" />
+			<SettingsSelect v-model="themeOption" :options="themeOptions" :label="t('talk_desktop', 'Theme')">
+				<template #icon="{ size }">
+					<IconThemeLightDark :size="size" />
 				</template>
-				{{ t('talk_desktop', 'Theme') }}
 			</SettingsSelect>
 
 			<NcCheckboxRadioSwitch :checked.sync="monochromeTrayIcon" type="switch">

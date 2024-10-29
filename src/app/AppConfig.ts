@@ -126,13 +126,13 @@ export async function loadAppConfig() {
 }
 
 export function getAppConfig(): AppConfig
-export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig[T]
+export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig[T]
 /**
  * Get an application config value
  * @param key - The config key to get
  * @return - If key is provided, the value of the key. Otherwise, the full config
  */
-export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig | AppConfig[T] {
+export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppConfig[T] {
 	if (!initialized) {
 		throw new Error('The application config is not initialized yet')
 	}
@@ -152,7 +152,7 @@ export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig | Ap
  * @param value - Value to set or undefined to reset to the default value
  * @return Promise<AppConfig> - The full settings after the change
  */
-export function setAppConfig<K extends keyof AppConfig>(key: K, value?: AppConfig[K]) {
+export function setAppConfig<K extends AppConfigKey>(key: K, value?: AppConfig[K]) {
 	// Ignore if no change
 	if (appConfig[key] === value) {
 		return

@@ -34,6 +34,9 @@
     "lint": "eslint --ext .js,.vue src/ --fix",
     "typecheck": "vue-tsc --noEmit"
   },
+  "talk": {
+    "stable": "v20.0.1"
+  },
   "dependencies": {
     "@mdi/svg": "^7.4.47",
     "@nextcloud/axios": "^2.5.1",

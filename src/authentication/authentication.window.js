@@ -8,18 +8,20 @@ const { BASE_TITLE, TITLE_BAR_HEIGHT } = require('../constants.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
+const { getScaledWindowSize } = require('../app/utils.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
  */
 function createAuthenticationWindow() {
-	const WIDTH = 450
-	const HEIGHT = 500
+	const zoomFactor = getAppConfig('zoomFactor')
 	const TITLE = `Authentication - ${BASE_TITLE}`
 	const window = new BrowserWindow({
 		title: TITLE,
-		width: WIDTH,
-		height: HEIGHT,
+		...getScaledWindowSize({
+			width: 450,
+			height: 500,
+		}),
 		show: false,
 		maximizable: false,
 		resizable: false,
@@ -33,12 +35,12 @@ function createAuthenticationWindow() {
 		titleBarOverlay: {
 			color: '#00679E00', // Transparent
 			symbolColor: '#FFFFFF', // White
-			height: TITLE_BAR_HEIGHT,
+			height: Math.round(TITLE_BAR_HEIGHT * zoomFactor),
 		},
 		// Position of the top left corner of the traffic light on Mac
 		trafficLightPosition: {
 			x: 12, // Same as on Talk Window
-			y: (TITLE_BAR_HEIGHT - 16) / 2, // 16 is the default traffic light button diameter
+			y: Math.round((TITLE_BAR_HEIGHT * zoomFactor - 16) / 2), // 16 is the default traffic light button diameter
 		},
 	})
 

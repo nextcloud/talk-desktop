@@ -107,6 +107,11 @@ const TALK_DESKTOP = {
 	 */
 	setAppConfig: (key, value) => ipcRenderer.invoke('app:config:set', key, value),
 	/**
+	 * Listen for changes in the application config
+	 * @param {(event: import('electron').IpcRedererEvent, payload: { key: string, value: unknown, appConfig: import('./app/AppConfig.ts').AppConfig}) => void} callback - Callback
+	 */
+	onAppConfigChange: (callback) => ipcRenderer.on('app:config:change', callback),
+	/**
 	 * Trigger download of a URL
 	 * @param {string} url - URL to download
 	 * @param {string} [filename] - Filename suggestion for the download

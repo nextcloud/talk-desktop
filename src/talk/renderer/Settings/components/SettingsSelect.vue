@@ -6,9 +6,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
+import SettingsFormGroup from './SettingsFormGroup.vue'
 import type { NcSelectOption } from '../../composables/useNcSelectModel.ts'
 
 const props = defineProps<{
+	label: string
 	options: NcSelectOption<unknown>[]
 	modelValue: NcSelectOption<unknown>
 }>()
@@ -33,44 +35,25 @@ export default {
 </script>
 
 <template>
-	<label class="settings-select">
-		<span class="settings-select__label">
-			<span v-if="$slots.icon" class="settings-select__label-icon">
-				<slot name="icon" />
-			</span>
-			<span>
-				<slot />
-			</span>
-		</span>
-		<NcSelect v-model="model"
-			class="settings-select__select"
-			:options="options"
-			:clearable="false"
-			:searchable="false"
-			label-outside />
-	</label>
+	<SettingsFormGroup :label="label">
+		<template #icon="{ size }">
+			<slot name="icon" :size="size" />
+		</template>
+
+		<template #default="{ inputId }">
+			<NcSelect v-model="model"
+				class="settings-select"
+				:options="options"
+				:clearable="false"
+				:searchable="false"
+				:input-id="inputId"
+				label-outside />
+		</template>
+	</SettingsFormGroup>
 </template>
 
 <style scoped>
 .settings-select {
-	--icon-height: 16px;
-	--icon-width: 36px;
-	display: flex;
-	gap: calc(var(--default-grid-baseline) * 2);
-	padding: 0 var(--default-grid-baseline) 0 calc((var(--default-clickable-area) - var(--icon-height)) / 2);
-}
-
-.settings-select__label {
-	display: flex;
-	align-items: center;
-	gap: var(--default-grid-baseline);
-}
-
-.settings-select__label-icon {
-	width: var(--icon-width);
-}
-
-.settings-select__select {
 	/* TODO: fix in upstream? */
 	margin: 0 !important;
 }

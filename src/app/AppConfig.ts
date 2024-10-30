@@ -5,7 +5,7 @@
 
 import { join } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
-import { app } from 'electron'
+import { app, webContents } from 'electron'
 import { isLinux, isMac } from '../shared/os.utils.js'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
@@ -45,6 +45,11 @@ export type AppConfig = {
 	 * Default: true on macOS, false otherwise.
 	 */
 	monochromeTrayIcon: boolean
+	/**
+	 * Zoom factor of the application.
+	 * Default: 1.
+	 */
+	zoomFactor: number
 
 	// ----------------
 	// Privacy settings
@@ -59,6 +64,8 @@ export type AppConfig = {
 	// Nothing yet...
 }
 
+export type AppConfigKey = keyof AppConfig
+
 /**
  * Get the default config
  */
@@ -66,12 +73,17 @@ const defaultAppConfig: AppConfig = {
 	theme: 'default',
 	systemTitleBar: isLinux(),
 	monochromeTrayIcon: isMac(),
+	zoomFactor: 1,
 }
 
 /** Local cache of the config file mixed with the default values */
 const appConfig: Partial<AppConfig> = {}
 /** Whether the application config has been read from the config file and ready to use */
 let initialized = false
+/**
+ * Listeners for application config changes
+ */
+const appConfigChangeListeners: { [K in AppConfigKey]?: Set<(value: AppConfig[K]) => void> } = {}
 
 /**
  * Read the application config from the file
@@ -114,13 +126,13 @@ export async function loadAppConfig() {
 }
 
 export function getAppConfig(): AppConfig
-export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig[T]
+export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig[T]
 /**
  * Get an application config value
  * @param key - The config key to get
  * @return - If key is provided, the value of the key. Otherwise, the full config
  */
-export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig | AppConfig[T] {
+export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppConfig[T] {
 	if (!initialized) {
 		throw new Error('The application config is not initialized yet')
 	}
@@ -140,11 +152,38 @@ export function getAppConfig<T extends keyof AppConfig>(key?: T): AppConfig | Ap
  * @param value - Value to set or undefined to reset to the default value
  * @return Promise<AppConfig> - The full settings after the change
  */
-export async function setAppConfig<K extends keyof AppConfig>(key: K, value?: AppConfig[K]) {
+export function setAppConfig<K extends AppConfigKey>(key: K, value?: AppConfig[K]) {
+	// Ignore if no change
+	if (appConfig[key] === value) {
+		return
+	}
+
 	if (value !== undefined) {
 		appConfig[key] = value
 	} else {
 		delete appConfig[key]
+		value = defaultAppConfig[key]
 	}
-	await writeAppConfigFile(appConfig)
+
+	for (const contents of webContents.getAllWebContents()) {
+		contents.send('app:config:change', { key, value, appConfig })
+	}
+
+	for (const listener of appConfigChangeListeners[key] ?? []) {
+		listener(value)
+	}
+
+	writeAppConfigFile(appConfig)
+}
+
+/**
+ * Listen to application config changes
+ * @param key - The config key to listen to
+ * @param callback - The callback to call when the config changes
+ */
+export function onAppConfigChange<K extends AppConfigKey>(key: K, callback: (value: AppConfig[K]) => void) {
+	if (!appConfigChangeListeners[key]) {
+		appConfigChangeListeners[key] = new Set([])
+	}
+	appConfigChangeListeners[key].add(callback)
 }

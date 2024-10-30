@@ -7,19 +7,20 @@ const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+const { getScaledWindowSize } = require('../app/utils.ts')
 
 /**
  *
  * @return {import('electron').BrowserWindow}
  */
 function createUpgradeWindow() {
-	const WIDTH = 350
-	const HEIGHT = 300
 	const TITLE = `Upgrade required - ${BASE_TITLE}`
 	const window = new BrowserWindow({
 		title: TITLE,
-		width: WIDTH,
-		height: HEIGHT,
+		...getScaledWindowSize({
+			width: 350,
+			height: 300,
+		}),
 		show: false,
 		maximizable: false,
 		resizable: false,

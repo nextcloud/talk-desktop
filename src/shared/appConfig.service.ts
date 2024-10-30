@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import type { AppConfig } from '../app/AppConfig.ts'
+import type { AppConfig, AppConfigKey } from '../app/AppConfig.ts'
 
 let appConfig: AppConfig | null = null
 
@@ -35,7 +35,7 @@ export function getAppConfig() {
  * @param key - The key of the config value
  * @return - The config value
  */
-export function getAppConfigValue<K extends keyof AppConfig>(key: K) {
+export function getAppConfigValue<K extends AppConfigKey>(key: K) {
 	if (!appConfig) {
 		throw new Error('AppConfig is not initialized')
 	}

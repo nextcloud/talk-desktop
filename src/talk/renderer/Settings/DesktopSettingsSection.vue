@@ -4,17 +4,25 @@
   -->
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import { t } from '@nextcloud/l10n'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
+import IconMagnify from 'vue-material-design-icons/Magnify.vue'
+import IconMinus from 'vue-material-design-icons/Minus.vue'
+import IconPlus from 'vue-material-design-icons/Plus.vue'
 import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import IconRestore from 'vue-material-design-icons/Restore.vue'
 import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
 import SettingsSubsection from './components/SettingsSubsection.vue'
 import SettingsSelect from './components/SettingsSelect.vue'
+import SettingsFormGroup from './components/SettingsFormGroup.vue'
 import { useAppConfigValue } from './useAppConfigValue.ts'
 import { useNcSelectModel } from '../composables/useNcSelectModel.ts'
 import { useAppConfig } from './appConfig.store.ts'
-import { storeToRefs } from 'pinia'
+import { ZOOM_MIN, ZOOM_MAX } from '../../../constants.js'
 
 const { isRelaunchRequired } = storeToRefs(useAppConfig())
 
@@ -28,6 +36,26 @@ const themeOption = useNcSelectModel(theme, themeOptions)
 
 const systemTitleBar = useAppConfigValue('systemTitleBar')
 const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
+
+const zoomFactorConfig = useAppConfigValue('zoomFactor')
+const zoomFactor = computed({
+	get: () => zoomFactorConfig.value,
+	set: (value: number) => {
+		zoomFactorConfig.value = isFinite(value) ? Math.min(Math.max(value, ZOOM_MIN), ZOOM_MAX) : 1
+	},
+})
+const zoomFactorPercentage = computed({
+	get: () => Math.round(zoomFactor.value * 100).toString(),
+	set: (value: string) => {
+		zoomFactor.value = parseFloat(value) / 100
+	},
+})
+const ZOOM_STEP = Math.sqrt(1.2)
+const ctrl = window.OS.isMac ? 'Ctrl/Cmd' : 'Ctrl'
+const zoomHint = t('talk_desktop', 'Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}', {
+	key: `<kbd>${ctrl} + ±</kbd>`,
+	resetKey: `<kbd>${ctrl} + 0</kbd>`,
+}, undefined, { escape: false })
 
 /**
  * Restart the app
@@ -52,11 +80,10 @@ function relaunch() {
 		</NcNoteCard>
 
 		<SettingsSubsection :name="t('talk_desktop', 'Appearance')">
-			<SettingsSelect v-model="themeOption" :options="themeOptions">
-				<template #icon>
-					<IconThemeLightDark :size="20" />
+			<SettingsSelect v-model="themeOption" :options="themeOptions" :label="t('talk_desktop', 'Theme')">
+				<template #icon="{ size }">
+					<IconThemeLightDark :size="size" />
 				</template>
-				{{ t('talk_desktop', 'Theme') }}
 			</SettingsSelect>
 
 			<NcCheckboxRadioSwitch :checked.sync="monochromeTrayIcon" type="switch">
@@ -66,6 +93,42 @@ function relaunch() {
 			<NcCheckboxRadioSwitch :checked.sync="systemTitleBar" type="switch">
 				{{ t('talk_desktop', 'Use system title bar') }}
 			</NcCheckboxRadioSwitch>
+
+			<SettingsFormGroup :label="t('talk_desktop', 'Zoom')">
+				<template #icon="{ size }">
+					<IconMagnify :size="size" />
+				</template>
+				<template #description>
+					<!-- eslint-disable-next-line vue/no-v-html -->
+					<span v-html="zoomHint" />
+				</template>
+				<template #default="{ inputId, descriptionId }">
+					<NcButton :aria-label="t('talk_desktop', 'Zoom out')" type="tertiary" @click="zoomFactor /= ZOOM_STEP">
+						<template #icon>
+							<IconMinus :size="20" />
+						</template>
+					</NcButton>
+					<NcTextField :id="inputId"
+						class="zoom-input"
+						:aria-describedby="descriptionId"
+						label-outside
+						inputmode="number"
+						:value="zoomFactorPercentage"
+						@change="zoomFactorPercentage = $event.target.value"
+						@blur="$event.target.value = zoomFactorPercentage" />
+					<NcButton :aria-label="t('talk_desktop', 'Zoom in')" type="tertiary" @click="zoomFactor *= ZOOM_STEP">
+						<template #icon>
+							<IconPlus :size="20" />
+						</template>
+					</NcButton>
+					<NcButton @click="zoomFactor = 1">
+						<template #icon>
+							<IconRestore :size="20" />
+						</template>
+						{{ t('talk_desktop', 'Reset') }}
+					</NcButton>
+				</template>
+			</SettingsFormGroup>
 		</SettingsSubsection>
 	</div>
 </template>
@@ -88,5 +151,9 @@ function relaunch() {
 .relaunch-require-note-card__button {
 	margin-inline-start: auto;
 	flex: 0 0 auto;
+}
+
+.zoom-input {
+	width: 50px !important;
 }
 </style>

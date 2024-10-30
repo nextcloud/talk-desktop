@@ -7,6 +7,7 @@ const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+const { getScaledWindowSize } = require('../app/utils.ts')
 
 /**
  *
@@ -14,13 +15,13 @@ const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
  * @return {import('electron').BrowserWindow}
  */
 function createHelpWindow(parentWindow) {
-	const WIDTH = 720
-	const HEIGHT = 525
 	const TITLE = `About - ${BASE_TITLE}`
 	const window = new BrowserWindow({
 		title: TITLE,
-		width: WIDTH,
-		height: HEIGHT,
+		...getScaledWindowSize({
+			width: 720,
+			height: 525,
+		}),
 		show: false,
 		maximizable: false,
 		resizable: false,

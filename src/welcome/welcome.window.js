@@ -6,14 +6,17 @@
 const { BrowserWindow } = require('electron')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { isMac } = require('../shared/os.utils.js')
+const { getScaledWindowSize } = require('../app/utils.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
  */
 function createWelcomeWindow() {
 	const window = new BrowserWindow({
-		width: 300,
-		height: 500,
+		...getScaledWindowSize({
+			width: 300,
+			height: 500,
+		}, false),
 		resizable: false,
 		autoHideMenuBar: true,
 		center: true,

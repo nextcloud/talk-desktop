@@ -6,18 +6,32 @@
 const path = require('node:path')
 const fs = require('node:fs')
 const semver = require('semver')
+const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
+const { MakerZIP } = require('@electron-forge/maker-zip')
+const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
 
 require('dotenv').config()
+
+const CONFIG = {
+	// General
+	applicationName: packageJSON.productName,
+	applicationNameSanitized: packageJSON.productName.replaceAll(' ', '-'),
+	companyName: 'Nextcloud GmbH',
+	description: packageJSON.description,
+
+	// macOS
+	macAppId: 'com.nextcloud.NextcloudTalk',
+	// Windows
+	winAppId: 'NextcloudTalk',
+}
+
+const YEAR = new Date().getFullYear()
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 let talkPackageJson
 
 module.exports = {
-	packagerConfig: {
-		icon: './img/icons/icon',
-	},
-
 	hooks: {
 		generateAssets() {
 			if (!fs.existsSync(process.env.TALK_PATH)) {
@@ -52,25 +66,50 @@ module.exports = {
 		},
 	},
 
-	rebuildConfig: {},
+	// https://electron.github.io/packager/main/interfaces/Options.html
+	packagerConfig: {
+		// Common
+		name: CONFIG.applicationName,
+		icon: path.join(__dirname, './img/icons/icon'),
+		appCopyright: `Copyright © ${YEAR} ${CONFIG.companyName}`,
+		asar: true,
+
+		// Windows
+		win32metadata: {
+			CompanyName: CONFIG.companyName,
+		},
+
+		// macOS
+		appBundleId: CONFIG.macAppId,
+		darwinDarkModeSupport: true,
+		appCategoryType: 'public.app-category.social-networking', // LSApplicationCategoryType | https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html
+	},
 
 	makers: [
-		// {
-		// 	name: '@electron-forge/maker-squirrel',
-		// 	config: {},
-		// },
-		{
-			name: '@electron-forge/maker-zip',
-			// platforms: ['darwin'],
-		},
-		// {
-		// 	name: '@electron-forge/maker-deb',
-		// 	config: {},
-		// },
-		// {
-		// 	name: '@electron-forge/maker-rpm',
-		// 	config: {},
-		// },
+		// https://github.com/squirrel/squirrel.windows
+		// https://js.electronforge.io/interfaces/_electron_forge_maker_squirrel.InternalOptions.SquirrelWindowsOptions.html#setupExe
+		new MakerSquirrel({
+			// App/Filenames
+			name: CONFIG.winAppId,
+			setupExe: `${CONFIG.applicationNameSanitized}-v${packageJSON.version}-win-x64.exe`,
+			exe: `${CONFIG.applicationName}.exe`,
+
+			// Meta
+			title: CONFIG.applicationName,
+			authors: CONFIG.companyName,
+			owners: CONFIG.companyName,
+			description: CONFIG.description,
+
+			// Icons
+			setupIcon: path.join(__dirname, './img/icons/icon.ico'),
+			iconUrl: 'https://raw.githubusercontent.com/nextcloud/talk-desktop/refs/heads/main/img/icons/icon.ico',
+
+			// Install/Update Loading
+			loadingGif: path.join(__dirname, './img/squirrel-install-loading.gif'),
+		}),
+
+		// Portable, all platforms
+		new MakerZIP(),
 	],
 
 	plugins: [

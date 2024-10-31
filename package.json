@@ -33,7 +33,7 @@
     "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
     "lint": "eslint --ext .js,.vue src/ --fix",
     "typecheck": "vue-tsc --noEmit"
-	},
+  },
   "dependencies": {
     "@mdi/svg": "^7.4.47",
     "@nextcloud/axios": "^2.5.1",
@@ -60,8 +60,6 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.5.0",
-    "@electron-forge/maker-deb": "^7.5.0",
-    "@electron-forge/maker-rpm": "^7.5.0",
     "@electron-forge/maker-squirrel": "^7.5.0",
     "@electron-forge/maker-zip": "^7.5.0",
     "@electron-forge/plugin-webpack": "^7.5.0",

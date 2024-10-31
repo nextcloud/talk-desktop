@@ -15,6 +15,7 @@ OC.L10N.register(
     "Dark" : "มืด",
     "Appearance" : "ลักษณะที่ปรากฏ",
     "Theme" : "ธีม",
+    "Reset" : "รีเซ็ต",
     "User status" : "สถานะผู้ใช้",
     "Don't clear" : "ไม่ต้องล้าง",
     "30 minutes" : "30 นาที",

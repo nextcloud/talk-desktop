@@ -6,6 +6,7 @@ OC.L10N.register(
     "Ok" : "اوکے",
     "No" : "نہیں",
     "Yes" : "ہاں",
+    "Reset" : "ری سیٹ",
     "Today" : "آج",
     "Settings" : "سیٹینگز"
 },

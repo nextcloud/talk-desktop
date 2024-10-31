@@ -13,6 +13,7 @@ OC.L10N.register(
     "Light" : "Clar",
     "Dark" : "Escur",
     "Theme" : "Tèma",
+    "Reset" : "Reïnicializar",
     "User status" : "Estat utilizaire",
     "Don't clear" : "Escafar pas",
     "30 minutes" : "30  minutas",

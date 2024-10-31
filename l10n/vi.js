@@ -15,6 +15,7 @@ OC.L10N.register(
     "Dark" : "Tối",
     "Appearance" : "Ngoại hình",
     "Theme" : "Chủ đề",
+    "Reset" : "Đặt lại",
     "User status" : "Trạng thái người dùng",
     "Your status was set automatically" : "Trạng thái của bạn đã được đặt tự động",
     "Predefined statuses" : "Trạng thái được xác định trước",

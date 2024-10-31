@@ -11,6 +11,7 @@ OC.L10N.register(
     "Yes" : "Po",
     "Light" : "E çelët",
     "Theme" : "Shabllon",
+    "Reset" : "Rivendos",
     "30 minutes" : "30 minuta",
     "1 hour" : "1 Orë",
     "4 hours" : "4 orë",

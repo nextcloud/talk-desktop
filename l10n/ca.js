@@ -17,6 +17,8 @@ OC.L10N.register(
     "Dark" : "Fosc",
     "Appearance" : "Aparença",
     "Theme" : "Tema",
+    "Zoom out" : "Allunya",
+    "Zoom in" : "Amplia",
     "User status" : "Estat de l'usuari",
     "Your status was set automatically" : "S'ha indicat l'estat automàticament",
     "Predefined statuses" : "Estats predefinits",

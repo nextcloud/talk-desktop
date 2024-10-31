@@ -5,6 +5,7 @@ OC.L10N.register(
     "Ok" : "﻿ಸರಿ",
     "No" : "﻿ಇಲ್ಲ",
     "Yes" : "﻿ಹೌದು",
+    "Reset" : "ಮರುಹೊಂದಿಸಿ",
     "Today" : "Today",
     "Settings" : "ಆಯ್ಕೆ"
 },

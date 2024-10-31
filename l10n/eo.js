@@ -11,6 +11,7 @@ OC.L10N.register(
     "Light" : "Luma",
     "Dark" : "Malluma",
     "Theme" : "Etoso",
+    "Reset" : "Restarigi",
     "30 minutes" : "30 minutoj",
     "1 hour" : "1 horo",
     "4 hours" : "4 horoj",

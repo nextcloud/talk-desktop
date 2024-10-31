@@ -10,6 +10,7 @@ OC.L10N.register(
     "Light" : "Tume",
     "Dark" : "Hele",
     "Theme" : "Teema",
+    "Reset" : "Lähtesta",
     "User status" : "Kasutaja staatus",
     "Predefined statuses" : "Eeldefineeritud staatused",
     "Don't clear" : "Ära tühjenda",

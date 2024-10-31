@@ -12,6 +12,7 @@ OC.L10N.register(
     "Dark" : "Gelap",
     "Appearance" : "Tampilan",
     "Theme" : "Tema",
+    "Reset" : "Setel ulang",
     "Don't clear" : "Jangan dihapus",
     "30 minutes" : "30 Menit",
     "1 hour" : "1 jam",

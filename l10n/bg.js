@@ -17,6 +17,8 @@ OC.L10N.register(
     "Restart" : "Рестартиране",
     "Appearance" : "Изглед",
     "Theme" : "Тема",
+    "Zoom out" : "Намаляване на мащаба",
+    "Zoom in" : "Увеличаване на мащаба",
     "User status" : "Потребителско състояние",
     "Your status was set automatically" : "Състоянието ви беше зададено автоматично",
     "Don't clear" : "Не изчиствай",

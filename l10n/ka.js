@@ -14,6 +14,8 @@ OC.L10N.register(
     "Light" : "Light",
     "Dark" : "Dark",
     "Theme" : "Theme",
+    "Zoom" : "Zoom",
+    "Reset" : "Reset",
     "Don't clear" : "Don't clear",
     "30 minutes" : "30 minutes",
     "1 hour" : "1 hour",

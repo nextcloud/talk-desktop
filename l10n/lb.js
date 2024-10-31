@@ -6,6 +6,7 @@ OC.L10N.register(
     "Ok" : "OK",
     "No" : "Nee",
     "Yes" : "Jo",
+    "Reset" : "Zeréck setzen",
     "Today" : "Haut",
     "Menu" : "Menü",
     "Report a bug" : "E Feeler melden",

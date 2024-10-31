@@ -10,6 +10,7 @@ OC.L10N.register(
     "Yes" : "Jā",
     "Appearance" : "Izskats",
     "Theme" : "Motīvs",
+    "Reset" : "Atiestatīt",
     "Your status was set automatically" : "Stāvoklis tika automātiski iestatīts",
     "Previously set status" : "Iepriekš iestatīts stāvoklis",
     "Clear custom status" : "Notīrīt pielāgotu stāvokli",

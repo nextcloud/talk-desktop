@@ -26,6 +26,7 @@ OC.L10N.register(
     "System default" : "System default",
     "Light" : "Light",
     "Dark" : "Dark",
+    "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}",
     "Some changes require a relaunch to take effect" : "Some changes require a relaunch to take effect",
     "Restart" : "Restart",
     "Appearance" : "Appearance",

@@ -9,6 +9,7 @@ OC.L10N.register(
     "Yes" : "Bəli",
     "Light" : "İşıqlı",
     "Dark" : "Qaranlıq",
+    "Reset" : "Sıfırla",
     "Today" : "Bu gün",
     "Menu" : "Menyu",
     "Report a bug" : "Səhv haqqında bildir",

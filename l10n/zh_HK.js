@@ -26,6 +26,7 @@ OC.L10N.register(
     "System default" : "系統默認",
     "Light" : "淺色",
     "Dark" : "深色",
+    "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "縮放也可以通過 {key} 或滑鼠滾輪來更改。重設請使用 {resetKey}。",
     "Some changes require a relaunch to take effect" : "部份變更需要重新啟動才能生效",
     "Restart" : "重新啟動",
     "Appearance" : "外觀",

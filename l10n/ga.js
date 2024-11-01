@@ -26,6 +26,7 @@ OC.L10N.register(
     "System default" : "Réamhshocrú córais",
     "Light" : "Solas",
     "Dark" : "Dorcha",
+    "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Is féidir Zoom a athrú freisin le {key}nó roth luiche. Athshocraigh le {resetKey}",
     "Some changes require a relaunch to take effect" : "Teastaíonn athsheoladh ó roinnt athruithe le go dtiocfaidh siad i bhfeidhm",
     "Restart" : "Atosaigh",
     "Appearance" : "Dealramh",

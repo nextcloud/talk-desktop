@@ -5,6 +5,7 @@ OC.L10N.register(
     "Logging in …" : "Meld tans aan …",
     "About" : "Aangaande",
     "License" : "Lisensie",
+    "Reset" : "Herstel",
     "User status" : "Gebruikerstatus",
     "Don't clear" : "Moenie wis nie",
     "This week" : "Vandeesweek",

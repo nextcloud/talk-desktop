@@ -88,7 +88,7 @@ const webpackRendererConfig = mergeWithRules({
 	module: {
 		rules: {
 			test: 'match',
-			use: 'merge',
+			use: 'replace',
 			loader: 'replace',
 			options: 'replace',
 		},
@@ -111,6 +111,17 @@ const webpackRendererConfig = mergeWithRules({
 				options: {
 					loader: 'js',
 					target: 'es2022',
+				},
+			},
+			{
+				test: /\.tsx?$/,
+				use: {
+					loader: 'esbuild-loader',
+					options: {
+						// Implicitly set as TS loader so only <script lang="ts"> Vue SFCs will be transpiled
+						loader: 'ts',
+						target: 'es2022',
+					},
 				},
 			},
 			{

@@ -113,6 +113,7 @@ function setupMenu() {
 		submenu: [
 			{
 				label: 'About',
+				accelerator: 'F1',
 				click: (event, focusedWindow) => {
 					createHelpWindow(focusedWindow)
 				},

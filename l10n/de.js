@@ -36,7 +36,7 @@ OC.L10N.register(
     "Zoom" : "Vergrößern",
     "Zoom out" : "Hinauszoomen",
     "Zoom in" : "Hineinzoomen",
-    "Reset" : "Benötigt keine Übersetzung. Hier wird nur die formelle Übersetzung verwendet (de_DE).",
+    "Reset" : "Zurücksetzen",
     "User status" : "Benutzerstatus",
     "Your status was set automatically" : "Dein Status wurde automatisch gesetzt",
     "Previously set status" : "Zuvor festgelegter Status",

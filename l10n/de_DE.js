@@ -34,7 +34,7 @@ OC.L10N.register(
     "Use monochrome tray icon" : "Monochromes Tray-Symbol verwenden",
     "Use system title bar" : "Systemtitelleiste verwenden",
     "Zoom" : "Zoom",
-    "Zoom out" : "Hinauszoomen",
+    "Zoom out" : "Herauszoomen",
     "Zoom in" : "Hineinzoomen",
     "Reset" : "Zurücksetzen",
     "User status" : "Benutzerstatus",

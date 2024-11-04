@@ -344,6 +344,14 @@ module.exports = {
 								js: './src/preload.js',
 							},
 						},
+						{
+							name: 'callbox_window',
+							html: './src/callbox/renderer/callbox.html',
+							js: './src/callbox/renderer/callbox.main.ts',
+							preload: {
+								js: './src/preload.js',
+							},
+						},
 					],
 				},
 			},

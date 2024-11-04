@@ -20,6 +20,7 @@ const { installVueDevtools } = require('./install-vue-devtools.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { applyTheme } = require('./app/theme.config.ts')
+const { createCallboxWindow } = require('./callbox/callbox.window.ts')
 
 /**
  * Parse command line arguments
@@ -315,6 +316,10 @@ app.whenReady().then(async () => {
 			mainWindow.destroy()
 			mainWindow = authenticationWindow
 		}
+	})
+
+	ipcMain.on('callbox:show', (event, callboxParams) => {
+		createCallboxWindow(callboxParams)
 	})
 
 	ipcMain.handle('help:show', () => {

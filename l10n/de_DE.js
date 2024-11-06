@@ -17,7 +17,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Datenschutz und Geschäftsbedingungen",
     "License" : "Lizenz",
     "Issues" : "Probleme",
-    "Source Code" : "Quellcode",
+    "Source Code" : "Quelltext",
     "System report" : "Systembericht",
     "Close" : "Schließen",
     "Ok" : "Ok",

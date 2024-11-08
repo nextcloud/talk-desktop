@@ -4,6 +4,7 @@
  */
 
 const path = require('node:path')
+const { spawn } = require('node:child_process')
 const { app, dialog, BrowserWindow, ipcMain, desktopCapturer, systemPreferences, shell } = require('electron')
 const { setupMenu } = require('./app/app.menu.js')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
@@ -47,7 +48,7 @@ if (require('electron-squirrel-startup')) {
 }
 
 /**
- * Only one instance is allowed at time
+ * Only one instance is allowed at the same time
  */
 if (!app.requestSingleInstanceLock()) {
 	app.quit()
@@ -135,14 +136,38 @@ app.whenReady().then(async () => {
 		if (mainWindow.isMinimized()) {
 			mainWindow.restore()
 		}
-		// Show window if it's hidden in the system tray and focus it
+		// Show the window in case it is hidden in the system tray and focus it
 		mainWindow.show()
 	}
 
 	/**
 	 * Instead of creating a new app instance - focus existence one
 	 */
-	app.on('second-instance', () => focusMainWindow())
+	app.on('second-instance', (event, argv, cwd) => {
+		// Instead of creating a new application instance - focus the current window
+		if (process.execPath === argv[0]) {
+			focusMainWindow()
+			return
+		}
+
+		// The second instance is another installation
+		// Open the new instance and close the current one
+		app.releaseSingleInstanceLock()
+		try {
+			const newInstance = spawn(path.resolve(argv[0]), argv.slice(1), {
+				cwd,
+				detached: true,
+				stdio: 'ignore',
+			}).on('spawn', () => {
+				newInstance.unref()
+				app.quit()
+			}).on('error', (error) => {
+				console.error('Failed to switch to the second instance', error)
+			})
+		} catch (error) {
+			console.error('Failed to switch to the second instance', error)
+		}
+	})
 
 	app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
 		event.preventDefault()

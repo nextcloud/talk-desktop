@@ -162,8 +162,8 @@ npm run package:all
       ### Build-in Talk update
 
       Built-in Talk in binaries is updated to $(VERSION) Talk changelog: https://github.com/nextcloud/spreed/blob/master/CHANGELOG.md
-      ``` 
-3. Update `package.json`:  
+      ```
+3. Update `package.json`:
    - For minor update:
      ```sh
      npm version minor
@@ -198,9 +198,9 @@ npm run package:all
       ```md
       > 📥 Download Binaries on https://github.com/nextcloud-releases/talk-desktop/releases/tag/v$(version)
       ```
-9. Package release, specify version and platforms:
+9. Package release for specified platforms:
    ```sh
-   npm run release:package -- --version v$(talkVersion) --windows --linux --mac
+   npm run release:package -- --windows --linux --mac
    ```
 10. Upload packages to the GitHub Releases on [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases/lastest)
 11. Publish both releases on GitHub Releases

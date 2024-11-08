@@ -3,10 +3,11 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import { $, echo, spinner, argv, fs, os, usePwsh } from 'zx'
+const packageJson = require('../package.json')
+
 const TALK_PATH = './out/.temp/spreed/'
 const talkDotGit = `${TALK_PATH}.git`
-
-import { $, echo, spinner, argv, fs, os, usePwsh } from 'zx'
 
 $.quiet = true
 
@@ -21,11 +22,11 @@ function exit(message, code) {
 function help() {
 	echo`Prepare release packages for Talk Desktop with Talk in ${TALK_PATH}
 
-	Usage: npm run release:package -- --version=v17.0.0 --linux --mac --windows
+	Usage: npm run release:package -- --linux --mac --windows --version=v20.0.0
 
 	Args:
 	--help - show help
-	--version - Talk version to be build-in in the release, for example, v17.0.0-rc.1 or master
+	--version - Optionally a specific Talk version/branch to build with, for example, v20.0.0-rc.1 or main. Default to stable in package.json.
 	--windows - build Windows package
 	--linux - build Linux package
 	--mac - build macOS package
@@ -40,14 +41,14 @@ function help() {
  * @return {Promise<void>}
  */
 async function prepareRelease() {
+	const version = argv.version ?? packageJson.talk.stable
+
 	// Validate arguments
-	const version = argv.version
-	if (!version) {
-		exit(`❌ You must specify --version`, 1)
-	}
 	if (!argv.windows && !argv.linux && !argv.mac) {
 		exit('❌ You must specify at least one of --windows, --linux or --mac', 1)
 	}
+
+	echo`Packaging Nextcloud Talk v${packageJson.version} with Talk ${version}...`
 
 	// Git wrapper for Talk repository
 	const gitSpreed = (command) => $`git --git-dir=${talkDotGit} --work-tree=${TALK_PATH} ${command}`

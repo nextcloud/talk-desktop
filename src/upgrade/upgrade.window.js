@@ -7,7 +7,7 @@ const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowSize } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom } = require('../app/utils.ts')
 
 /**
  *
@@ -37,6 +37,7 @@ function createUpgradeWindow() {
 	window.loadURL(UPGRADE_WINDOW_WEBPACK_ENTRY)
 
 	applyExternalLinkHandler(window)
+	applyZoom(window)
 
 	window.on('ready-to-show', () => {
 		window.show()

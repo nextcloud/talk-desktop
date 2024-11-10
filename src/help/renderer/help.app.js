@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import '../../shared/assets/global.styles.css'
+import '@shgk/nextcloud-styles'
 
 import Vue from 'vue'
 import HelpApp from './HelpApp.vue'

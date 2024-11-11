@@ -52,7 +52,7 @@ OC.L10N.register(
     "Clear after" : "إمحُ بعدَ",
     "Emoji for your status message" : "رسم تعبيري \"إيموجي\" لرسالة الحالة الخاصة بك",
     "Status message" : "رسالة الحالة",
-    "Open in a Web-Browser" : "إفتح في مستعرض الويب",
+    "Open in a Web-Browser" : "فتح في مستعرض الويب",
     "Loading …" : "التحميل جارٍ …",
     "Could not load the file" : "تعذّر رفع الملف",
     "Wrap content in code blocks" : "لف المحتوى في كتل التعليمات البرمجية",

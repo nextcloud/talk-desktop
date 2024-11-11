@@ -5,6 +5,36 @@
 
 # Changelog
 
+## v1.0.0-rc.1 - 2024-11-11
+
+### Features
+
+- Add application settings [#835](https://github.com/nextcloud/talk-desktop/pull/835)
+- Add monochrome tray icon setting [#836](https://github.com/nextcloud/talk-desktop/pull/836)
+- Add download links handling with a new [#840](https://github.com/nextcloud/talk-desktop/pull/840)
+- Add zoom setting and fix a number of zoom-related issues [#853](https://github.com/nextcloud/talk-desktop/pull/853)
+
+### Fixes
+
+- Fix error on launching app twice quickly before it initializes [#856](https://github.com/nextcloud/talk-desktop/pull/876)
+- Fix focusing a window on macOS when there is no window [#856](https://github.com/nextcloud/talk-desktop/pull/876)
+- Fix window Show the window on activate on macOS [#852](https://github.com/nextcloud/talk-desktop/pull/852)
+- Fix Viewer close not handled during a call [#835](https://github.com/nextcloud/talk-desktop/pull/835)
+- Fix preview not shown for a supported mime-type [#831](https://github.com/nextcloud/talk-desktop/pull/831)
+
+### Changes 
+
+- Built-in Talk in binaries is updated to v20.0.2 [#858](https://github.com/nextcloud/talk-desktop/pull/858)
+- Built-in Talk version in now specified in `package.json` [#858](https://github.com/nextcloud/talk-desktop/pull/858)
+- Add Windows Squirrel distribution [#841](https://github.com/nextcloud/talk-desktop/pull/841)
+- Add macOS Dist Image (.dmg) distribution [#844](https://github.com/nextcloud/talk-desktop/pull/844)
+- Add Linux Flatpak file distribution [#869](https://github.com/nextcloud/talk-desktop/pull/869)
+- Handle opening a new installation as replacement of a running one [#859](https://github.com/nextcloud/talk-desktop/pull/859)
+- Check whether spreed repository dependencies are installed on build [#847](https://github.com/nextcloud/talk-desktop/pull/847)
+- Rename scripts `package` to `build`, `make` to `package` following Nextcloud apps and libs style [#846](https://github.com/nextcloud/talk-desktop/pull/846)
+- Update translations
+- Update dependencies
+
 ## v0.39.0 - 2024-10-11
 
 ### Build-in Talk update

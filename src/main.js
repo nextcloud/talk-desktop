@@ -132,10 +132,27 @@ app.whenReady().then(async () => {
 
 	setupMenu()
 
-	const focusMainWindow = () => {
+	/**
+	 * Focus the main window. Restore/re-create it if needed.
+	 */
+	function focusMainWindow() {
+		// There is no main window at all, the app is not initialized yet - ignore
+		if (!createMainWindow) {
+			return
+		}
+
+		// There is no window (possible on macOS) - create
+		if (!mainWindow || mainWindow.isDestroyed()) {
+			mainWindow = createMainWindow()
+			mainWindow.once('ready-to-show', () => mainWindow.show())
+			return
+		}
+
+		// The window is minimized - restore
 		if (mainWindow.isMinimized()) {
 			mainWindow.restore()
 		}
+
 		// Show the window in case it is hidden in the system tray and focus it
 		mainWindow.show()
 	}
@@ -214,10 +231,13 @@ app.whenReady().then(async () => {
  		*/
 	})
 
-	const welcomeWindow = createWelcomeWindow()
-	welcomeWindow.once('ready-to-show', () => welcomeWindow.show())
+	mainWindow = createWelcomeWindow()
+	createMainWindow = createWelcomeWindow
+	mainWindow.once('ready-to-show', () => mainWindow.show())
 
 	ipcMain.once('appData:receive', async (event, appData) => {
+		const welcomeWindow = mainWindow
+
 		if (appData.credentials) {
 			// User is authenticated - setup and start main window
 			enableWebRequestInterceptor(appData.serverUrl, {

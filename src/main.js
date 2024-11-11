@@ -214,10 +214,13 @@ app.whenReady().then(async () => {
  		*/
 	})
 
-	const welcomeWindow = createWelcomeWindow()
-	welcomeWindow.once('ready-to-show', () => welcomeWindow.show())
+	mainWindow = createWelcomeWindow()
+	createMainWindow = createWelcomeWindow
+	mainWindow.once('ready-to-show', () => mainWindow.show())
 
 	ipcMain.once('appData:receive', async (event, appData) => {
+		const welcomeWindow = mainWindow
+
 		if (appData.credentials) {
 			// User is authenticated - setup and start main window
 			enableWebRequestInterceptor(appData.serverUrl, {

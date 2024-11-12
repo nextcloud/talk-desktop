@@ -177,6 +177,8 @@ module.exports = {
 
 					// Enable webcam access
 					'--device=all',
+					// Enable screensharing access in Wayland
+					'--socket=wayland',
 				],
 			},
 		}),

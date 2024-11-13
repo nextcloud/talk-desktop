@@ -10,10 +10,21 @@ import { isLinux, isMac } from '../shared/os.utils.js'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
 
-// Windows: C:\Users\<username>\AppData\Roaming\Nextcloud Talk\config.json
-// Linux: ~/.config/Nextcloud Talk/config.json (or $XDG_CONFIG_HOME)
-// macOS: ~/Library/Application Support/Nextcloud Talk/config.json
-const APP_CONFIG_FILE_PATH = join(app.getPath('userData'), APP_CONFIG_FILE_NAME)
+// Memoize the path to the application config file
+let APP_CONFIG_FILE_PATH: string | null = null
+
+/**
+ * Get the path to the application config file
+ * - Windows: C:\Users\<username>\AppData\Roaming\Nextcloud Talk\config.json
+ * - Linux: ~/.config/Nextcloud Talk/config.json (or $XDG_CONFIG_HOME)
+ * - macOS: ~/Library/Application Support/Nextcloud Talk/config.json
+ */
+function getAppConfigFilePath() {
+	if (!APP_CONFIG_FILE_PATH) {
+		APP_CONFIG_FILE_PATH = join(app.getPath('userData'), APP_CONFIG_FILE_NAME)
+	}
+	return APP_CONFIG_FILE_PATH
+}
 
 /**
  * Application level config. Applied to all accounts and persist on re-login.
@@ -90,7 +101,7 @@ const appConfigChangeListeners: { [K in AppConfigKey]?: Set<(value: AppConfig[K]
  */
 async function readAppConfigFile(): Promise<Partial<AppConfig>> {
 	try {
-		const content = await readFile(APP_CONFIG_FILE_PATH, 'utf-8')
+		const content = await readFile(getAppConfigFilePath(), 'utf-8')
 		return JSON.parse(content)
 	} catch (error) {
 		if (error instanceof Error && 'code' in error && error.code !== 'ENOENT') {
@@ -109,7 +120,7 @@ async function writeAppConfigFile(config: Partial<AppConfig>) {
 	try {
 		// Format for readability
 		const content = JSON.stringify(config, null, 2)
-		await writeFile(APP_CONFIG_FILE_PATH, content)
+		await writeFile(getAppConfigFilePath(), content)
 	} catch (error) {
 		console.error('Failed to write the application config file', error)
 		throw error

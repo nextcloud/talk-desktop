@@ -49,19 +49,26 @@ export function applyContextMenu(browserWindow) {
 		}
 
 		// Add context actions for handling links
-		const menuLinkItems = [
-			{
-				label: 'Copy link address',
-				click: () => clipboard.writeText(params.linkURL),
-			},
-			{
-				label: 'Copy link text',
-				click: () => clipboard.writeText(params.linkText.trim() || params.linkURL),
-			},
-			{ type: 'separator' },
-		]
 		if (params.linkURL && isExternalLink(params.linkURL)) {
-			menuItems.push(...menuLinkItems)
+			const url = params.linkURL
+			const text = params.linkText.trim()
+			menuItems.push({
+				label: 'Copy link address',
+				click: () => clipboard.writeText(url),
+			})
+			if (text) {
+				menuItems.push({
+					label: 'Copy link text',
+					click: () => clipboard.writeText(text),
+				})
+			}
+			if (url.startsWith('mailto:')) {
+				menuItems.push({
+					label: 'Copy email address',
+					click: () => clipboard.writeText(url.slice('mailto:'.length)),
+				})
+			}
+			menuItems.push({ type: 'separator' })
 		}
 
 		// Add context actions for clipboard events and text editing

@@ -149,6 +149,20 @@ module.exports = {
 					'Chat',
 					'VideoConference',
 				],
+				// Available versions: https://freedesktop-sdk.gitlab.io/documentation/updating-sdk/release-notes/
+				runtimeVersion: '24.08',
+				// Available versions: https://github.com/flathub/org.electronjs.Electron2.BaseApp/
+				baseVersion: '24.08',
+				// Based on https://github.com/malept/electron-installer-flatpak/blob/main/src/installer.js
+				// Available versions: https://github.com/refi64/zypak/releases
+				modules: [{
+					name: 'zypak',
+					sources: [{
+						type: 'git',
+						url: 'https://github.com/refi64/zypak',
+						tag: 'v2024.01.17',
+					}],
+				}],
 				finishArgs: [
 					/**
 					 * Default Electron args

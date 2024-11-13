@@ -17,26 +17,26 @@ const icons = {
 	tray: {
 		darwin: {
 			// "*Template" icon in the system tray on macOS automatically changes its color by system
-			default: require('../../img/icons/icon-tray-mac.png'),
+			default: require('../../img/icons/IconTrayMac.png'),
 			light: require('../../img/icons/IconTrayMacTemplate.png'),
 			dark: require('../../img/icons/IconTrayMacTemplate.png'),
 			// These properties are not used, but the import is required to add the icon to the bundle
 			// It will be used by electron internally
-			default2x: require('../../img/icons/icon-tray-mac@2x.png'),
+			default2x: require('../../img/icons/IconTrayMac@2x.png'),
 			light2x: require('../../img/icons/IconTrayMacTemplate@2x.png'),
 			dark2x: require('../../img/icons/IconTrayMacTemplate@2x.png'),
 		},
 
 		win32: {
 			default: require('../../img/icons/icon.ico'),
-			light: require('../../img/icons/icon-tray-win32-light.ico'),
-			dark: require('../../img/icons/icon-tray-win32-dark.ico'),
+			light: require('../../img/icons/IconTrayWin32Light.ico'),
+			dark: require('../../img/icons/IconTrayWin32Dark.ico'),
 		},
 
 		linux: {
-			default: require('../../img/icons/icon-tray-linux.png'),
-			light: require('../../img/icons/icon-tray-linux-light@2x.png'),
-			dark: require('../../img/icons/icon-tray-linux-dark@2x.png'),
+			default: require('../../img/icons/IconTrayLinux.png'),
+			light: require('../../img/icons/IconTrayLinuxLight@2x.png'),
+			dark: require('../../img/icons/IconTrayLinuxDark@2x.png'),
 		},
 	},
 }

@@ -15,8 +15,8 @@ const icongen = require('icon-gen')
 async function generateIcons() {
 	const originalPath = path.join(__dirname, '../img/talk-icon-rounded.svg')
 	const originalMacPath = path.join(__dirname, '../img/talk-icon-mac-shadow.svg')
-	const originalMacTrayLightPath = path.join(__dirname, '../img/talk-icon-plain-light.svg')
-	const originalMacTrayDarkPath = path.join(__dirname, '../img/talk-icon-plain-dark.svg')
+	const originalPlainLightPath = path.join(__dirname, '../img/talk-icon-plain-light.svg')
+	const originalPlainDarkPath = path.join(__dirname, '../img/talk-icon-plain-dark.svg')
 	const outputPath = path.join(__dirname, '../img/icons')
 
 	await icongen(originalPath, outputPath, {
@@ -42,51 +42,63 @@ async function generateIcons() {
 	})
 
 	// Tray icon - Mac
-	await icongen(originalMacTrayLightPath, outputPath, {
+	await icongen(originalPlainLightPath, outputPath, {
 		favicon: {
-			name: 'icon-tray-mac-light',
+			name: 'IconTrayMacTemplate',
 			pngSizes: [16, 32],
 		},
 	})
-	await icongen(originalMacTrayDarkPath, outputPath, {
+
+	// Tray icon - Linux
+	await icongen(originalPlainLightPath, outputPath, {
 		favicon: {
-			name: 'icon-tray-mac-dark',
+			name: 'IconTrayLinuxLight',
+			pngSizes: [16, 32],
+		},
+	})
+	await icongen(originalPlainDarkPath, outputPath, {
+		favicon: {
+			name: 'IconTrayLinuxDark',
 			pngSizes: [16, 32],
 		},
 	})
 
 	// Tray icon - Windows monochrome
-	await icongen(originalMacTrayLightPath, outputPath, {
+	await icongen(originalPlainLightPath, outputPath, {
 		ico: {
-			name: 'icon-tray-win32-light',
+			name: 'IconTrayWin32Light',
 			sizes: [16, 24, 32, 48, 256],
 		},
 	})
-	await icongen(originalMacTrayDarkPath, outputPath, {
+	await icongen(originalPlainDarkPath, outputPath, {
 		ico: {
-			name: 'icon-tray-win32-dark',
+			name: 'IconTrayWin32Dark',
 			sizes: [16, 24, 32, 48, 256],
 		},
 	})
 
 	// Rename icon512.png -> icon.png
 	await fs.rename(path.join(outputPath, 'icon512.png'), path.join(outputPath, 'icon.png'))
-	// Rename icon16.png -> icon-tray-mac.png
-	// Rename icon32.png -> icon-tray-linux.png + icon-tray-mac@2x.png
-	await fs.cp(path.join(outputPath, 'icon32.png'), path.join(outputPath, 'icon-tray-linux.png'))
-	await fs.cp(path.join(outputPath, 'icon16.png'), path.join(outputPath, 'icon-tray-mac.png'))
-	await fs.cp(path.join(outputPath, 'icon32.png'), path.join(outputPath, 'icon-tray-mac@2x.png'))
+	// Rename icon16.png -> IconTrayMac.png
+	// Rename icon32.png -> IconTrayLinux.png + IconTrayMac@2x.png
+	await fs.cp(path.join(outputPath, 'icon32.png'), path.join(outputPath, 'IconTrayLinux.png'))
+	await fs.cp(path.join(outputPath, 'icon16.png'), path.join(outputPath, 'IconTrayMac.png'))
+	await fs.cp(path.join(outputPath, 'icon32.png'), path.join(outputPath, 'IconTrayMac@2x.png'))
 
 	// Remove unused favicon
 	await fs.unlink(path.join(outputPath, 'favicon.ico'))
 	await fs.unlink(path.join(outputPath, 'icon16.png'))
 	await fs.unlink(path.join(outputPath, 'icon32.png'))
 
-	// Rename icon-tray-mac-(light|dark)16.png -> icon-tray-mac-(light|dark).png, icon-tray-mac-(light|dark)32.png -> icon-tray-mac-(light|dark)@2x.png
-	await fs.rename(path.join(outputPath, 'icon-tray-mac-light16.png'), path.join(outputPath, 'icon-tray-mac-light.png'))
-	await fs.rename(path.join(outputPath, 'icon-tray-mac-light32.png'), path.join(outputPath, 'icon-tray-mac-light@2x.png'))
-	await fs.rename(path.join(outputPath, 'icon-tray-mac-dark16.png'), path.join(outputPath, 'icon-tray-mac-dark.png'))
-	await fs.rename(path.join(outputPath, 'icon-tray-mac-dark32.png'), path.join(outputPath, 'icon-tray-mac-dark@2x.png'))
+	// Rename IconTrayMacTemplate16.png -> IconTrayMacTemplate.png, IconTrayMacTemplate32.png -> IconTrayMacTemplate@2x.png
+	await fs.rename(path.join(outputPath, 'IconTrayMacTemplate16.png'), path.join(outputPath, 'IconTrayMacTemplate.png'))
+	await fs.rename(path.join(outputPath, 'IconTrayMacTemplate32.png'), path.join(outputPath, 'IconTrayMacTemplate@2x.png'))
+
+	// Rename IconTrayLinux(Light|Dark)16.png -> IconTrayLinux(Light|Dark).png, IconTrayLinux(Light|Dark)32.png -> IconTrayLinux(Light|Dark)@2x.png
+	await fs.rename(path.join(outputPath, 'IconTrayLinuxLight16.png'), path.join(outputPath, 'IconTrayLinuxLight.png'))
+	await fs.rename(path.join(outputPath, 'IconTrayLinuxLight32.png'), path.join(outputPath, 'IconTrayLinuxLight@2x.png'))
+	await fs.rename(path.join(outputPath, 'IconTrayLinuxDark16.png'), path.join(outputPath, 'IconTrayLinuxDark.png'))
+	await fs.rename(path.join(outputPath, 'IconTrayLinuxDark32.png'), path.join(outputPath, 'IconTrayLinuxDark@2x.png'))
 }
 
 generateIcons()

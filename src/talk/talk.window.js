@@ -10,6 +10,7 @@ const { applyDownloadHandler } = require('../app/downloads.ts')
 const { applyWheelZoom } = require('../app/zoom.service.ts')
 const { setupTray } = require('../app/app.tray.js')
 const { getBrowserWindowIcon, getTrayIcon } = require('../shared/icons.utils.js')
+const { isMac } = require('../shared/os.utils.js')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
 const { getScaledWindowMinSize, getScaledWindowSize } = require('../app/utils.ts')
@@ -74,9 +75,13 @@ function createTalkWindow() {
 	applyWheelZoom(window)
 
 	const tray = setupTray(window)
-	nativeTheme.on('updated', () => {
-		tray.setImage(getTrayIcon())
-	})
+
+	// macOS automatically adjust the tray using a template icon
+	if (!isMac()) {
+		nativeTheme.on('updated', () => {
+			tray.setImage(getTrayIcon())
+		})
+	}
 
 	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)
 

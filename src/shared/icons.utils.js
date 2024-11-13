@@ -16,14 +16,15 @@ const icons = {
 
 	tray: {
 		darwin: {
+			// "*Template" icon in the system tray on macOS automatically changes its color by system
 			default: require('../../img/icons/icon-tray-mac.png'),
-			light: require('../../img/icons/icon-tray-mac-light.png'),
-			dark: require('../../img/icons/icon-tray-mac-dark.png'),
+			light: require('../../img/icons/IconTrayMacTemplate.png'),
+			dark: require('../../img/icons/IconTrayMacTemplate.png'),
 			// These properties are not used, but the import is required to add the icon to the bundle
 			// It will be used by electron internally
 			default2x: require('../../img/icons/icon-tray-mac@2x.png'),
-			light2x: require('../../img/icons/icon-tray-mac-light@2x.png'),
-			dark2x: require('../../img/icons/icon-tray-mac-dark@2x.png'),
+			light2x: require('../../img/icons/IconTrayMacTemplate@2x.png'),
+			dark2x: require('../../img/icons/IconTrayMacTemplate@2x.png'),
 		},
 
 		win32: {

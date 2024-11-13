@@ -55,6 +55,12 @@ const TALK_DESKTOP = {
 	 */
 	getSystemL10n: () => ipcRenderer.invoke('app:getSystemL10n'),
 	/**
+	 * Get available spell checker languages
+	 *
+	 * @return {Promise<string[]>}
+	 */
+	getAvailableSpellCheckerLanguages: () => ipcRenderer.invoke('app:getAvailableSpellCheckerLanguages'),
+	/**
 	 * Enable web request intercepting
 	 *
 	 * @type {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor}

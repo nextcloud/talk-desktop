@@ -27,6 +27,8 @@ const model = computed({
 
 <script lang="ts">
 export default {
+	inheritAttrs: false,
+
 	model: {
 		prop: 'modelValue',
 		event: 'update:modelValue',

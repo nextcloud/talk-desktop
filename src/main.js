@@ -5,7 +5,7 @@
 
 const path = require('node:path')
 const { spawn } = require('node:child_process')
-const { app, dialog, BrowserWindow, ipcMain, desktopCapturer, systemPreferences, shell } = require('electron')
+const { app, dialog, BrowserWindow, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
 const { setupMenu } = require('./app/app.menu.js')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -68,6 +68,7 @@ ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_'),
 	language: app.getPreferredSystemLanguages()[0].replace('-', '_'),
 }))
+ipcMain.handle('app:getAvailableSpellCheckerLanguages', () => session.defaultSession.availableSpellCheckerLanguages)
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
 ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(count))

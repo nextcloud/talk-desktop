@@ -4,6 +4,7 @@
  */
 
 import { $, echo, spinner, argv, fs, os, usePwsh } from 'zx'
+// eslint-disable-next-line no-undef
 const packageJson = require('../package.json')
 
 const TALK_PATH = './out/.temp/spreed/'
@@ -11,8 +12,14 @@ const talkDotGit = `${TALK_PATH}.git`
 
 $.quiet = true
 
+/**
+ * Exit with message and code
+ * @param {string} message - The error message
+ * @param {number} code - The exit code
+ */
 function exit(message, code) {
 	echo(message)
+	// eslint-disable-next-line n/no-process-exit
 	process.exit(code)
 }
 
@@ -56,7 +63,7 @@ async function prepareRelease() {
 	// Check Talk Desktop repository
 	echo`[1/5] Check for uncommitted changes in Talk Desktop`
 	if ((await $`git status -s`).stdout) {
-		exit(`❌ You have uncommitted changes in the Talk Desktop repository`, 1)
+		exit('❌ You have uncommitted changes in the Talk Desktop repository', 1)
 	}
 
 	// Check and prepare Talk repository
@@ -65,24 +72,24 @@ async function prepareRelease() {
 		echo`- Talk has been found in ${TALK_PATH}`
 		echo`[3.1/5] Check for uncommitted changes in Talk repository`
 		if ((await gitSpreed(['status', '-s'])).stdout) {
-			exit(`❌ You have uncommitted changes in the Talk repository`, 1)
+			exit('❌ You have uncommitted changes in the Talk repository', 1)
 		}
 		echo`[3.2/5] Fetch Talk ${version} from origin`
 		await spinner(
 			`Fetch Talk ${version} from origin`,
-			() => gitSpreed(['fetch', '--no-tags', '--depth=1', 'origin', 'tag', version])
+			() => gitSpreed(['fetch', '--no-tags', '--depth=1', 'origin', 'tag', version]),
 		)
 		echo`[3.3/5] Checkout Talk ${version}`
 		await spinner(
 			`Checkout Talk ${version}`,
-			() => gitSpreed(['checkout', version])
+			() => gitSpreed(['checkout', version]),
 		)
 	} else {
 		echo`- No Talk has been found in ${TALK_PATH}`
 		echo`[3/5] Clone Talk@${version} to ${TALK_PATH}`
 		await spinner(
 			`Cloning Talk@${version} to ${TALK_PATH}`,
-			() => $`git clone --branch=${version} --depth=1 -- https://github.com/nextcloud/spreed ${TALK_PATH}`
+			() => $`git clone --branch=${version} --depth=1 -- https://github.com/nextcloud/spreed ${TALK_PATH}`,
 		)
 	}
 
@@ -91,12 +98,12 @@ async function prepareRelease() {
 		echo`[4/5] Install dependencies`
 		await spinner(
 			'Installing dependencies in Talk Desktop',
-			() => $`npm ci`
+			() => $`npm ci`,
 		)
 
 		await spinner(
 			'Installing dependencies in Talk',
-			() => $`npm ci --prefix ${TALK_PATH}`
+			() => $`npm ci --prefix ${TALK_PATH}`,
 		)
 	} else {
 		echo`SKIPPED [5/5] Install dependencies`

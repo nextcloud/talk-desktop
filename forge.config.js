@@ -85,6 +85,7 @@ function fixArtifactName(artifactPath, platform, arch) {
 }
 
 const hasMacosSign = !!(process.env.APPLE_ID && process.env.APPLE_ID_PASSWORD && process.env.APPLE_TEAM_ID)
+const hasWindowsSign = !!process.env.WINDOWS_SIGN_PARAMS
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 let talkPackageJson
@@ -188,6 +189,9 @@ module.exports = {
 
 			// Install/Update Loading
 			loadingGif: path.join(__dirname, './img/squirrel-install-loading.gif'),
+
+			// Signing
+			signWithParams: hasWindowsSign && process.env.WINDOWS_SIGN_PARAMS,
 		}),
 
 		// https://js.electronforge.io/interfaces/_electron_forge_maker_dmg.MakerDMGConfig.html

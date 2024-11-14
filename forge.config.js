@@ -84,6 +84,8 @@ function fixArtifactName(artifactPath, platform, arch) {
 	return output
 }
 
+const hasMacosSign = !!(process.env.APPLE_ID && process.env.APPLE_ID_PASSWORD && process.env.APPLE_TEAM_ID)
+
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 let talkPackageJson
 
@@ -156,6 +158,13 @@ module.exports = {
 		darwinDarkModeSupport: true,
 		// https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW8
 		appCategoryType: 'public.app-category.business',
+		extendInfo: path.join(__dirname, './resources/macos/entitlements.plist'),
+		osxSign: hasMacosSign && {},
+		osxNotarize: hasMacosSign && {
+			appleId: process.env.APPLE_ID,
+			appleIdPassword: process.env.APPLE_ID_PASSWORD,
+			teamId: process.env.APPLE_TEAM_ID,
+		},
 	},
 
 	makers: [

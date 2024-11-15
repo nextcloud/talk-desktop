@@ -9,10 +9,7 @@ import './assets/styles.css'
 import './assets/overrides.css'
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import {
-	initPlaySoundManagementOnUserStatus,
-	initTalkHashIntegration,
-} from './init.js'
+import { initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 import { createViewer } from './Viewer/Viewer.js'
 import { createDesktopApp } from './desktop.app.js'
@@ -24,8 +21,6 @@ if (!window.location.hash) {
 }
 
 await setupWebPage()
-
-initPlaySoundManagementOnUserStatus()
 
 createDesktopApp()
 

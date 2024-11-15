@@ -72,7 +72,22 @@ export type AppConfig = {
 	// Notifications settings
 	// ----------------------
 
-	// Nothing yet...
+	/**
+	 * Whether to play a sound when a chat notification is received.
+	 * Same as notifications.sound_notification initial state.
+	 * - 'always': always play sound
+	 * - 'respect-dnd': play sound only if user status is not Do-Not-Disturb [default]
+	 * - 'never': disable notification sound
+	 */
+	playSoundChat: 'always' | 'respect-dnd' | 'never'
+	/**
+	 * Whether to play a sound when a call notification is received.
+	 * Same as notifications.sound_talk initial state.
+	 * - 'always': always play sound
+	 * - 'respect-dnd': play sound only if user status is not Do-Not-Disturb [default]
+	 * - 'never': disable notification sound
+	 */
+	playSoundCall: 'always' | 'respect-dnd' | 'never'
 }
 
 export type AppConfigKey = keyof AppConfig
@@ -85,6 +100,8 @@ const defaultAppConfig: AppConfig = {
 	systemTitleBar: isLinux(),
 	monochromeTrayIcon: isMac(),
 	zoomFactor: 1,
+	playSoundChat: 'respect-dnd',
+	playSoundCall: 'respect-dnd',
 }
 
 /** Local cache of the config file mixed with the default values */

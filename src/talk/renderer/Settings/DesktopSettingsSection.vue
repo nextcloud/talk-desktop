@@ -14,17 +14,19 @@ import IconMinus from 'vue-material-design-icons/Minus.vue'
 import IconPlus from 'vue-material-design-icons/Plus.vue'
 import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import IconPhoneRingOutline from 'vue-material-design-icons/PhoneRingOutline.vue'
+import IconBellRingOutline from 'vue-material-design-icons/BellRingOutline.vue'
 import IconRestore from 'vue-material-design-icons/Restore.vue'
 import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
 import SettingsSubsection from './components/SettingsSubsection.vue'
 import SettingsSelect from './components/SettingsSelect.vue'
 import SettingsFormGroup from './components/SettingsFormGroup.vue'
+import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
 import { useNcSelectModel } from '../composables/useNcSelectModel.ts'
-import { useAppConfig } from './appConfig.store.ts'
 import { ZOOM_MIN, ZOOM_MAX } from '../../../constants.js'
 
-const { isRelaunchRequired } = storeToRefs(useAppConfig())
+const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
 const theme = useAppConfigValue('theme')
 const themeOptions = [
@@ -56,6 +58,16 @@ const zoomHint = t('talk_desktop', 'Zoom can be also changed by {key} or mouse w
 	key: `<kbd>${ctrl} + ±</kbd>`,
 	resetKey: `<kbd>${ctrl} + 0</kbd>`,
 }, undefined, { escape: false })
+
+const playSoundChat = useAppConfigValue('playSoundChat')
+const playSoundCall = useAppConfigValue('playSoundCall')
+const playSoundOptions = [
+	{ label: t('talk_desktop', 'Always'), value: 'always' } as const,
+	{ label: t('talk_desktop', 'When not in "Do not disturb"'), value: 'respect-dnd' } as const,
+	{ label: t('talk_desktop', 'Never'), value: 'never' } as const,
+]
+const playSoundChatOption = useNcSelectModel(playSoundChat, playSoundOptions)
+const playSoundCallOption = useNcSelectModel(playSoundCall, playSoundOptions)
 
 /**
  * Restart the app
@@ -129,6 +141,20 @@ function relaunch() {
 					</NcButton>
 				</template>
 			</SettingsFormGroup>
+		</SettingsSubsection>
+
+		<SettingsSubsection :name="t('talk_desktop', 'Notifications and sounds')">
+			<SettingsSelect v-model="playSoundChatOption" :options="playSoundOptions" :label="t('talk_desktop', 'Play chat notification sound')">
+				<template #icon="{ size }">
+					<IconBellRingOutline :size="size" />
+				</template>
+			</SettingsSelect>
+
+			<SettingsSelect v-model="playSoundCallOption" :options="playSoundOptions" :label="t('talk_desktop', 'Play call notification sound')">
+				<template #icon="{ size }">
+					<IconPhoneRingOutline :size="size" />
+				</template>
+			</SettingsSelect>
 		</SettingsSubsection>
 	</div>
 </template>

@@ -30,6 +30,8 @@ function help() {
 	echo`Prepare release packages for Talk Desktop with Talk in ${TALK_PATH}
 
 	Usage: npm run release:package -- --linux --mac --windows --version=v20.0.0
+	If no platform is specified, the current platform will be used.
+	If no version is specified, the stable version from package.json will be used.
 
 	Args:
 	--help - show help
@@ -50,9 +52,10 @@ function help() {
 async function prepareRelease() {
 	const version = argv.version ?? packageJson.talk.stable
 
-	// Validate arguments
+	// Default to the current platform
 	if (!argv.windows && !argv.linux && !argv.mac) {
-		exit('❌ You must specify at least one of --windows, --linux or --mac', 1)
+		const platform = process.platform === 'darwin' ? 'mac' : process.platform === 'win32' ? 'windows' : 'linux'
+		argv[platform] = true
 	}
 
 	echo`Packaging Nextcloud Talk v${packageJson.version} with Talk ${version}...`

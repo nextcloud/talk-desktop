@@ -193,9 +193,9 @@ npm run package:windows
       ```md
       > 📥 Download Binaries on https://github.com/nextcloud-releases/talk-desktop/releases/tag/v$(version)
       ```
-9. Package release for specified platforms:
+9. Package release on each platform separately:
    ```sh
-   npm run release:package -- --windows --linux --mac
+   npm run release:package
    ```
 10. Upload packages to the GitHub Releases on [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases/lastest)
 11. Publish both releases on GitHub Releases

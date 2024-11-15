@@ -97,23 +97,24 @@ npm run dev
 ### Build binaries for production
 
 ```bash
-# 🖥️ Current platform
+# 🖥️ Current platform and architecture
 npm run build
 
-# 🐧 Linux 
+# 🐧 Linux (x64)
 npm run build:linux
 
-# 🍏 Mac (Darwin)
+# 🍏 macOS (universal)
 npm run build:mac
+# 🍏 macOS (separate x64 and arm64)
+npm run build:mac:x64
+npm run build:mac:arm64
 
-# 🪟 Windows (win32)
+# 🪟 Windows (win32-x64)
 npm run build:windows
-
-# All
-npm run build:all
 ```
 
 Notes:
+- **General recommendation is to always build binaries on the same platform**
 - Building Windows binaries on Linux/Mac requires Wine
 - Building Mac binaries on Windows is not supported
 - Building Linux binaries on Windows is not supported for some Linux distributions
@@ -140,17 +141,17 @@ node ./scripts/fetch-server-styles.mjs stable29
 ## 📦 Packaging distributions
 
 ```bash
-# 🐧 Linux
+# 🐧 Linux (x64)
 npm run package:linux
 
-# 🍏 Mac (Darwin)
+# 🍏 macOS (universal)
 npm run package:mac
+# 🍏 macOS (separate x64 and arm64)
+npm run package:mac:arm64
+npm run package:mac:x64
 
-# 🪟 Windows (win32)
+# 🪟 Windows (win32-x64)
 npm run package:windows
-
-#  All
-npm run package:all
 ```
 
 ## ✈️ Release
@@ -198,9 +199,9 @@ npm run package:all
       ```md
       > 📥 Download Binaries on https://github.com/nextcloud-releases/talk-desktop/releases/tag/v$(version)
       ```
-9. Package release for specified platforms:
+9. Package release on each platform separately:
    ```sh
-   npm run release:package -- --windows --linux --mac
+   npm run release:package
    ```
 10. Upload packages to the GitHub Releases on [nextcloud-releases/talk-desktop](https://github.com/nextcloud-releases/talk-desktop/releases/lastest)
 11. Publish both releases on GitHub Releases

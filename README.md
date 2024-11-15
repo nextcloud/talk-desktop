@@ -108,12 +108,10 @@ npm run build:mac
 
 # 🪟 Windows (win32)
 npm run build:windows
-
-# All
-npm run build:all
 ```
 
 Notes:
+- **General recommendation is to always build binaries on the same platform**
 - Building Windows binaries on Linux/Mac requires Wine
 - Building Mac binaries on Windows is not supported
 - Building Linux binaries on Windows is not supported for some Linux distributions
@@ -148,9 +146,6 @@ npm run package:mac
 
 # 🪟 Windows (win32)
 npm run package:windows
-
-#  All
-npm run package:all
 ```
 
 ## ✈️ Release

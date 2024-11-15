@@ -97,16 +97,19 @@ npm run dev
 ### Build binaries for production
 
 ```bash
-# 🖥️ Current platform
+# 🖥️ Current platform and architecture
 npm run build
 
-# 🐧 Linux 
+# 🐧 Linux (x64)
 npm run build:linux
 
-# 🍏 Mac (Darwin)
+# 🍏 macOS (universal)
 npm run build:mac
+# 🍏 macOS (separate x64 and arm64)
+npm run build:mac:x64
+npm run build:mac:arm64
 
-# 🪟 Windows (win32)
+# 🪟 Windows (win32-x64)
 npm run build:windows
 ```
 
@@ -138,13 +141,16 @@ node ./scripts/fetch-server-styles.mjs stable29
 ## 📦 Packaging distributions
 
 ```bash
-# 🐧 Linux
+# 🐧 Linux (x64)
 npm run package:linux
 
-# 🍏 Mac (Darwin)
+# 🍏 macOS (universal)
 npm run package:mac
+# 🍏 macOS (separate x64 and arm64)
+npm run package:mac:arm64
+npm run package:mac:x64
 
-# 🪟 Windows (win32)
+# 🪟 Windows (win32-x64)
 npm run package:windows
 ```
 

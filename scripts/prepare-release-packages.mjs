@@ -38,7 +38,9 @@ function help() {
 	--version - Optionally a specific Talk version/branch to build with, for example, v20.0.0-rc.1 or main. Default to stable in package.json.
 	--windows - build Windows package
 	--linux - build Linux package
-	--mac - build macOS package
+	--mac - build macOS package using universal architecture (recommended)
+	--mac-x64 - build macOS package using x64 architecture
+	--mac-arm64 - build macOS package using arm64 architecture
 	--skip-install - skip npm ci in both repositories
 `
 	exit('', 0)
@@ -53,7 +55,7 @@ async function prepareRelease() {
 	const version = argv.version ?? packageJson.talk.stable
 
 	// Default to the current platform
-	if (!argv.windows && !argv.linux && !argv.mac) {
+	if (!argv.windows && !argv.linux && !argv.mac && !argv['mac-x64'] && !argv['mac-arm64']) {
 		const platform = process.platform === 'darwin' ? 'mac' : process.platform === 'win32' ? 'windows' : 'linux'
 		argv[platform] = true
 	}
@@ -118,6 +120,8 @@ async function prepareRelease() {
 	argv.windows && await spinner('Package Windows', () => $`npm run build:windows && npm run package:windows`)
 	argv.linux && await spinner('Package Linux', () => $`npm run build:linux && npm run package:linux`)
 	argv.mac && await spinner('Package MacOS', () => $`npm run build:mac && npm run package:mac`)
+	argv['mac-x64'] && await spinner('Package MacOS x64', () => $`npm run build:mac-x64 && npm run package:mac-x64`)
+	argv['mac-arm64'] && await spinner('Package MacOS arm64', () => $`npm run build:mac-arm64 && npm run package:mac-arm64`)
 
 	// Done
 	echo`Done. See output in ./out/make/`

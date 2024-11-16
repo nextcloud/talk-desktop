@@ -129,15 +129,6 @@ After changing source icons, to generate icons in different sizes and formats, r
 npm run generate-icons
 ```
 
-#### Updating global (server) styles
-
-Talk frontend depends on the global Nextcloud server styles. To manually get them run:
-
-```bah
-# node ./scripts/fetch-server-styles.mjs <VERSION>, for example
-node ./scripts/fetch-server-styles.mjs stable29
-```
-
 ## 📦 Packaging distributions
 
 ```bash

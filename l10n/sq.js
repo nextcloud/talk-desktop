@@ -10,6 +10,8 @@ OC.L10N.register(
     "Ok" : "Në rregull",
     "Yes" : "Po",
     "Light" : "E çelët",
+    "Always" : "Përherë",
+    "Never" : "Kurrë",
     "Theme" : "Shabllon",
     "Reset" : "Rivendos",
     "30 minutes" : "30 minuta",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Close" : "Close",
     "No" : "No",
     "Yes" : "Yes",
+    "Always" : "Always",
     "User status" : "User status",
     "Don't clear" : "Don't clear",
     "30 minutes" : "30 minutes",

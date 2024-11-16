@@ -27,6 +27,7 @@ OC.L10N.register(
     "Light" : "светла",
     "Dark" : "тамна",
     "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Зумирање такође може да се подеси са {key} или точкићем миша. Ресетује се са {resetKey}",
+    "Never" : "Никад",
     "Some changes require a relaunch to take effect" : "Да би неке измене имале ефекта, потребно је поновно покретање",
     "Restart" : "Поново покрени",
     "Appearance" : "Изглед",

@@ -25,6 +25,8 @@ OC.L10N.register(
     "Yes" : "Da",
     "Light" : "Svetla",
     "Dark" : "Tamna",
+    "Always" : "Uvek",
+    "Never" : "Nikad",
     "Appearance" : "Izgled",
     "Theme" : "Tema",
     "User status" : "Status korisnika",

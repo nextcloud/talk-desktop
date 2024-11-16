@@ -13,6 +13,7 @@ OC.L10N.register(
     "Ok" : "Ok",
     "Light" : "Claro",
     "Dark" : "Oscuro",
+    "Never" : "Nunca",
     "Restart" : "Reiniciar",
     "Appearance" : "Apariencia",
     "Theme" : "Tema",

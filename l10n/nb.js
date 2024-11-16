@@ -25,6 +25,7 @@ OC.L10N.register(
     "Yes" : "Ja",
     "Light" : "Lys",
     "Dark" : "Mørk",
+    "Never" : "Aldri",
     "Restart" : "Omstart",
     "Appearance" : "Utseende",
     "Theme" : "Tema",

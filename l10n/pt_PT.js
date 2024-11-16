@@ -10,6 +10,8 @@ OC.L10N.register(
     "Ok" : "CONFIRMAR",
     "Light" : "Claro",
     "Dark" : "Escuro",
+    "Always" : "Sempre",
+    "Never" : "Nunca",
     "Theme" : "Tema",
     "Zoom" : "Zoom",
     "Reset" : "Reiniciar",

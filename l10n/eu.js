@@ -18,6 +18,8 @@ OC.L10N.register(
     "Yes" : "Bai",
     "Light" : "Argia",
     "Dark" : "Iluna",
+    "Always" : "Beti",
+    "Never" : "Inoiz ez",
     "Restart" : "Berrabiarazi",
     "Appearance" : "Itxura",
     "Theme" : "Gaia",

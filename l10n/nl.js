@@ -14,6 +14,8 @@ OC.L10N.register(
     "Yes" : "Ja",
     "Light" : "Licht",
     "Dark" : "Donker",
+    "Always" : "Altijd",
+    "Never" : "Nooit",
     "Appearance" : "Uiterlijk",
     "Theme" : "Thema",
     "Zoom" : "Zoom",

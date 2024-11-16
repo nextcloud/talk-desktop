@@ -17,6 +17,8 @@ OC.L10N.register(
     "Yes" : "Da",
     "Light" : "Svetla",
     "Dark" : "Temna",
+    "Always" : "Vedno",
+    "Never" : "nikoli",
     "Appearance" : "Videz",
     "Theme" : "Tema",
     "Zoom" : "Približaj",

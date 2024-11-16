@@ -25,6 +25,8 @@ OC.L10N.register(
     "Yes" : "Ano",
     "Light" : "Světlý",
     "Dark" : "Tmavý",
+    "Always" : "Vždy",
+    "Never" : "Nikdy",
     "Restart" : "Restartovat",
     "Appearance" : "Vzhled",
     "Theme" : "Vzhled",

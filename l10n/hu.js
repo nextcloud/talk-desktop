@@ -17,6 +17,8 @@ OC.L10N.register(
     "Yes" : "Igen",
     "Light" : "Világos",
     "Dark" : "Sötét",
+    "Always" : "Mindig",
+    "Never" : "Soha",
     "Restart" : "Újraindítás",
     "Appearance" : "Megjelenés",
     "Theme" : "Téma",

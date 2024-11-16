@@ -11,6 +11,8 @@ OC.L10N.register(
     "Yes" : "예",
     "Light" : "밝게",
     "Dark" : "어둡게",
+    "Always" : "항상",
+    "Never" : "하지 않음",
     "Appearance" : "외형",
     "Theme" : "테마",
     "Zoom" : "확대",

@@ -8,6 +8,8 @@ OC.L10N.register(
     "Ok" : "Во ред",
     "Light" : "Светла",
     "Dark" : "Темна",
+    "Always" : "Секогаш",
+    "Never" : "Никогаш",
     "Appearance" : "Изглед",
     "Theme" : "Тема",
     "Zoom" : "Зум",

@@ -12,6 +12,8 @@ OC.L10N.register(
     "Yes" : "Da",
     "Light" : "Deschis",
     "Dark" : "Întunecat",
+    "Always" : "Întotdeauna",
+    "Never" : "Niciodată",
     "Appearance" : "Aspect",
     "Theme" : "Temă",
     "Zoom out" : "Micșorează",

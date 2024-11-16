@@ -16,6 +16,8 @@ OC.L10N.register(
     "Yes" : "بله",
     "Light" : "روشن",
     "Dark" : "تاریک",
+    "Always" : "همواره",
+    "Never" : "هرگز",
     "Restart" : "Restart",
     "Appearance" : "ظاهر",
     "Theme" : "پوسته",

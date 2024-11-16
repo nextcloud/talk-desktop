@@ -27,6 +27,8 @@ OC.L10N.register(
     "Light" : "Hell",
     "Dark" : "Dunkel",
     "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Der Zoom kann auch mit {key} oder mit dem Mausrad geändert werden. Zurücksetzen mit {resetKey}",
+    "Always" : "Immer",
+    "Never" : "Niemals",
     "Some changes require a relaunch to take effect" : "Einige Änderungen erfordern einen Neustart, um wirksam zu werden",
     "Restart" : "Neustart",
     "Appearance" : "Aussehen",

@@ -9,6 +9,7 @@ OC.L10N.register(
     "Ok" : "Ok",
     "Light" : "Tume",
     "Dark" : "Hele",
+    "Never" : "Mitte kunagi",
     "Theme" : "Teema",
     "Reset" : "Lähtesta",
     "User status" : "Kasutaja staatus",

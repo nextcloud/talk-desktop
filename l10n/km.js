@@ -8,6 +8,7 @@ OC.L10N.register(
     "Yes" : "បាទ ឬចាស",
     "Light" : "ភ្លឺt",
     "Dark" : "ងងឹត",
+    "Always" : "រាល់ពេល",
     "Today" : "ថ្ងៃ​នេះ",
     "Cancel" : "លើកលែង",
     "Settings" : "ការកំណត់"

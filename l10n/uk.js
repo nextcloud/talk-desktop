@@ -25,6 +25,8 @@ OC.L10N.register(
     "Yes" : "Так",
     "Light" : "Світла",
     "Dark" : "Темна",
+    "Always" : "Завжди",
+    "Never" : "Ніколи",
     "Restart" : "Перезавантажити",
     "Appearance" : "Вигляд",
     "Theme" : "Тема",

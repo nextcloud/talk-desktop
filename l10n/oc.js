@@ -12,6 +12,8 @@ OC.L10N.register(
     "Yes" : "Òc",
     "Light" : "Clar",
     "Dark" : "Escur",
+    "Always" : "Totjorn",
+    "Never" : "Jamai",
     "Theme" : "Tèma",
     "Reset" : "Reïnicializar",
     "User status" : "Estat utilizaire",

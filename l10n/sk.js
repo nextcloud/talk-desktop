@@ -25,6 +25,8 @@ OC.L10N.register(
     "Yes" : "Áno",
     "Light" : "Svetlé",
     "Dark" : "Tmavé",
+    "Always" : "Vždy",
+    "Never" : "Nikdy",
     "Appearance" : "Vzhľad",
     "Theme" : "Vzhľad",
     "Zoom" : "Priblížiť",

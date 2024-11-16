@@ -12,6 +12,8 @@ OC.L10N.register(
     "Yes" : "はい",
     "Light" : "明るい",
     "Dark" : "暗い",
+    "Always" : "常に",
+    "Never" : "なし",
     "Appearance" : "表示",
     "Theme" : "テーマ",
     "Zoom" : "ズーム",

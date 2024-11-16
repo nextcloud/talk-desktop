@@ -9,6 +9,7 @@ OC.L10N.register(
     "Ok" : "Լավ",
     "No" : "Ոչ",
     "Yes" : "Այո",
+    "Never" : "Երբեք",
     "Today" : "Այսօր",
     "This week" : "այս շաբաթ",
     "Cancel" : "չեղարկել",

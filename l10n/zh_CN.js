@@ -24,6 +24,8 @@ OC.L10N.register(
     "Yes" : "是",
     "Light" : "浅色",
     "Dark" : "深色",
+    "Always" : "始终",
+    "Never" : "永不",
     "Appearance" : "外观",
     "Theme" : "主题",
     "Zoom" : "放大",

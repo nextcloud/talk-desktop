@@ -27,6 +27,8 @@ OC.L10N.register(
     "Light" : "Açık",
     "Dark" : "Koyu",
     "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Yakınlaştırma {key} tuşu ya da fare tekerleği ile değiştirilebilir. {resetKey} ile sıfırlanır",
+    "Always" : "Her zaman",
+    "Never" : "Yok",
     "Some changes require a relaunch to take effect" : "Bazı değişikliklerin etkili olması için uygulama yeniden başlatılmalıdır",
     "Restart" : "Yeniden başlat",
     "Appearance" : "Görünüm",

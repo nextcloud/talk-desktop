@@ -25,6 +25,8 @@
     "Light" : "Chiaro",
     "Dark" : "Scuro",
     "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Lo zoom può essere modificato anche con {key} o la rotellina del mouse. Reimposta con {resetKey}",
+    "Always" : "Sempre",
+    "Never" : "Mai",
     "Some changes require a relaunch to take effect" : "Alcune modifiche richiedono un riavvio per avere effetto",
     "Restart" : "Ricomincia",
     "Appearance" : "Aspetto",

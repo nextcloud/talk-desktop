@@ -10,6 +10,8 @@ OC.L10N.register(
     "Yes" : "Jes",
     "Light" : "Luma",
     "Dark" : "Malluma",
+    "Always" : "Ĉiam",
+    "Never" : "Neniam",
     "Theme" : "Etoso",
     "Reset" : "Restarigi",
     "30 minutes" : "30 minutoj",

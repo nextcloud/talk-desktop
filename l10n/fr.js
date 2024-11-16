@@ -27,6 +27,8 @@ OC.L10N.register(
     "Light" : "Clair",
     "Dark" : "Sombre",
     "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Le zoom peut également être modifié avec la {key} ou la molette de la souris. Réinitialisé avec {resetKey}",
+    "Always" : "Toujours",
+    "Never" : "Jamais",
     "Some changes require a relaunch to take effect" : "Certains changements nécessitent d'être relancé pour prendre effet",
     "Restart" : "Redémarrer",
     "Appearance" : "Apparence",

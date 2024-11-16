@@ -13,6 +13,8 @@ OC.L10N.register(
     "Yes" : "Kyllä",
     "Light" : "Vaalea",
     "Dark" : "Tumma",
+    "Always" : "Aina",
+    "Never" : "Ei koskaan",
     "Restart" : "Käynnistä uudelleen",
     "Appearance" : "Ulkoasu",
     "Theme" : "Teema",

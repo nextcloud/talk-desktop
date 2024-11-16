@@ -9,6 +9,7 @@ OC.L10N.register(
     "Issues" : "Temas",
     "Ok" : "Ok",
     "Dark" : "Oscuro",
+    "Never" : "Nunca",
     "Theme" : "Tema",
     "Reset" : "Restablecer",
     "30 minutes" : "30 minutos",

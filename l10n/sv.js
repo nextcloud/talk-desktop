@@ -27,6 +27,7 @@ OC.L10N.register(
     "Light" : "Ljust",
     "Dark" : "Mörkt",
     "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Zoom kan också ändras med {key} eller mushjul. Återställ genom {resetKey}",
+    "Never" : "Aldrig",
     "Some changes require a relaunch to take effect" : "Vissa ändringar kräver en omstart för att träda i kraft",
     "Restart" : "Omstart",
     "Appearance" : "Utseende",

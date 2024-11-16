@@ -13,6 +13,7 @@ OC.L10N.register(
     "Yes" : "Yes",
     "Light" : "Light",
     "Dark" : "Dark",
+    "Never" : "Never",
     "Theme" : "Theme",
     "Zoom" : "Zoom",
     "Reset" : "Reset",

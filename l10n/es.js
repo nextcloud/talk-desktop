@@ -25,6 +25,8 @@ OC.L10N.register(
     "Yes" : "Sí",
     "Light" : "Claro",
     "Dark" : "Oscuro",
+    "Always" : "Siempre",
+    "Never" : "Nunca",
     "Restart" : "Reiniciar",
     "Appearance" : "Apariencia",
     "Theme" : "Tema",

@@ -20,6 +20,7 @@ OC.L10N.register(
     "System default" : "Sistemos numatytasis",
     "Light" : "Šviesus",
     "Dark" : "Tamsus",
+    "Never" : "Niekada",
     "Restart" : "Paleisti iš naujo",
     "Appearance" : "Išvaizda",
     "Theme" : "Apipavidalinimas",

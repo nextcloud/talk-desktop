@@ -24,6 +24,8 @@ OC.L10N.register(
     "Yes" : "Да",
     "Light" : "Светлое",
     "Dark" : "Тёмное",
+    "Always" : "Всегда",
+    "Never" : "Никогда",
     "Restart" : "Перезапуск",
     "Appearance" : "Внешний вид",
     "Theme" : "Оформление",

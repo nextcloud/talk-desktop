@@ -25,6 +25,8 @@ OC.L10N.register(
     "Yes" : "Tak",
     "Light" : "Jasny",
     "Dark" : "Ciemny",
+    "Always" : "Zawsze",
+    "Never" : "Nigdy",
     "Restart" : "Restart",
     "Appearance" : "Wygląd",
     "Theme" : "Motyw",

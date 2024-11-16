@@ -13,6 +13,8 @@ OC.L10N.register(
     "Yes" : "Có",
     "Light" : "Sáng",
     "Dark" : "Tối",
+    "Always" : "Luôn luôn",
+    "Never" : "Không bao giờ",
     "Appearance" : "Ngoại hình",
     "Theme" : "Chủ đề",
     "Reset" : "Đặt lại",

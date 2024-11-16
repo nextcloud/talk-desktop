@@ -8,6 +8,7 @@ OC.L10N.register(
     "Close" : "Cerrar",
     "Yes" : "Sí",
     "Dark" : "Oscuro",
+    "Never" : "Nunca",
     "Reset" : "Restablecer",
     "Don't clear" : "No vaciar",
     "30 minutes" : "30 minutos",

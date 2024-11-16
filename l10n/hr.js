@@ -13,6 +13,8 @@ OC.L10N.register(
     "Yes" : "Da",
     "Light" : "Svijetlo",
     "Dark" : "Tamno",
+    "Always" : "Uvijek",
+    "Never" : "Nikad",
     "Appearance" : "Izgled",
     "Theme" : "Tema",
     "Zoom" : "Uvećaj",

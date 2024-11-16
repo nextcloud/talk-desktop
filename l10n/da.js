@@ -11,6 +11,7 @@ OC.L10N.register(
     "Ok" : "OK",
     "Light" : "Lys",
     "Dark" : "Mørk",
+    "Never" : "Aldrig",
     "Appearance" : "Udseende",
     "Theme" : "Tema",
     "Zoom" : "Zoom",

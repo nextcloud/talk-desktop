@@ -13,6 +13,8 @@ OC.L10N.register(
     "Yes" : "Si",
     "Light" : "Craru",
     "Dark" : "Iscuru",
+    "Always" : "Semper",
+    "Never" : "Mai",
     "Appearance" : "Aspetu",
     "Theme" : "Tema",
     "Zoom" : "Ismanniamentu",

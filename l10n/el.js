@@ -12,6 +12,7 @@ OC.L10N.register(
     "No" : "Όχι",
     "Yes" : "Ναι",
     "Dark" : "Σκούρο",
+    "Never" : "Ποτέ",
     "Appearance" : "Εμφάνιση",
     "Theme" : "Θέμα",
     "Zoom" : "Εστίαση",

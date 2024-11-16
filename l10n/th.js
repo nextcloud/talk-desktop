@@ -13,6 +13,8 @@ OC.L10N.register(
     "Yes" : "ใช่",
     "Light" : "สว่าง",
     "Dark" : "มืด",
+    "Always" : "เสมอ",
+    "Never" : "ไม่เคย",
     "Appearance" : "ลักษณะที่ปรากฏ",
     "Theme" : "ธีม",
     "Reset" : "รีเซ็ต",

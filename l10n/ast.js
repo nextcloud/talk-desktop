@@ -15,6 +15,8 @@ OC.L10N.register(
     "Yes" : "Sí",
     "Light" : "Claridá",
     "Dark" : "Escuridá",
+    "Always" : "Siempres",
+    "Never" : "Enxamás",
     "Appearance" : "Aspeutu",
     "Theme" : "Estilu",
     "Zoom" : "Zoom",

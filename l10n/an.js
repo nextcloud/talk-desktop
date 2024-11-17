@@ -5,6 +5,7 @@ OC.L10N.register(
     "Close" : "Zarrar",
     "No" : "No",
     "Yes" : "Si",
+    "Never" : "Nunca",
     "Today" : "Hue",
     "Cancel" : "Canzelar",
     "Settings" : "Configurazión",

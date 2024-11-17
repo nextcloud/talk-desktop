@@ -22,6 +22,7 @@ OC.L10N.register(
     "This week" : "Šonedēļ",
     "Status message" : "Statusa ziņojums",
     "Loading …" : "Ielādē…",
+    "Cancel" : "Atcelt",
     "Share screen" : "Koplietot ekrānu",
     "Menu" : "Izvēlne",
     "Report a bug" : "Ziņot par kļūdu",

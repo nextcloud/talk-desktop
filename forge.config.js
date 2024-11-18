@@ -197,8 +197,7 @@ module.exports = {
 			},
 		}),
 
-		// Portable, all platforms
-		new MakerZIP(),
+		new MakerZIP({}, ['linux']),
 	],
 
 	plugins: [

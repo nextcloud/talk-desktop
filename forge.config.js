@@ -38,7 +38,7 @@ let talkPackageJson
 module.exports = {
 	hooks: {
 		generateAssets() {
-			if (!fs.existsSync(process.env.TALK_PATH)) {
+			if (!fs.existsSync(TALK_PATH)) {
 				throw new Error(`Path does not exist TALK_PATH=${TALK_PATH}`)
 			}
 

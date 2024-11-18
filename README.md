@@ -9,9 +9,21 @@
 
 > Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling ✨
 
-## 📥 Download Binaries
+## 📥 Install
 
-### https://github.com/nextcloud-releases/talk-desktop/releases
+All binaries are available on [Nextcloud Releases](https://github.com/nextcloud-releases/talk-desktop/releases).
+
+| Platform (architecture)              | Distribution type                                                                                                                                     | Download link                                                                                                                                        |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **🐧 Linux** (x64)                   | [Flatpak](https://flatpak.org) single file (recommended)                                                                                              | [Nextcloud.Talk-linux-x64.flatpak](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.flatpak)     |
+| **🐧 Linux** (x64)                   | ZIP archive                                                                                                                                           | [Nextcloud.Talk-linux-x64.zip](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.zip)             |
+| **🍎 macOS** (Intel + Apple Silicon) | Disc Image                                                                                                                                            | [Nextcloud.Talk-macos-universal.dmg](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-macos-universal.dmg) |
+| **🪟 Windows** (x64)                 | Non-admin single-user one-click installer (recommended)                                                                                               | [Nextcloud.Talk-windows-x64.exe](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.exe)         |
+| **🪟 Windows** (x64)                 | [MSI Deployment Tool](https://github.com/Squirrel/Squirrel.Windows/blob/develop/docs/using/machine-wide-installs.md) (for administrated environments) | [Nextcloud.Talk-windows-x64.msi](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.msi)         |
+
+### Via Package Manager
+
+_Coming soon..._
 
 ## 🏗️ Prerequisites
 
@@ -23,7 +35,6 @@
 - Currently not supported:
   - Search ([#30](https://github.com/nextcloud/talk-desktop/issues/30))
   - Untrusted certificate on Linux ([#23](https://github.com/nextcloud/talk-desktop/issues/23))
-  - Dark/light theme ([#17](https://github.com/nextcloud/talk-desktop/issues/17))
 - Works with limitations:
   - File Viewer — only images and videos
 

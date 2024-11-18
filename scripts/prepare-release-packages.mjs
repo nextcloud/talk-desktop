@@ -42,6 +42,7 @@ function help() {
 	--mac-x64 - build macOS package using x64 architecture
 	--mac-arm64 - build macOS package using arm64 architecture
 	--skip-install - skip npm ci in both repositories
+	--skip-check - skip checking for uncommitted changes in talk-desktop (use for debug only)
 `
 	exit('', 0)
 }
@@ -67,7 +68,7 @@ async function prepareRelease() {
 
 	// Check Talk Desktop repository
 	echo`[1/5] Check for uncommitted changes in Talk Desktop`
-	if ((await $`git status -s`).stdout) {
+	if (!argv['skip-check'] && (await $`git status -s`).stdout) {
 		exit('❌ You have uncommitted changes in the Talk Desktop repository', 1)
 	}
 

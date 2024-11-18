@@ -4,6 +4,7 @@
  */
 
 const path = require('node:path')
+const fs = require('node:fs')
 const { spawn } = require('node:child_process')
 const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow } = require('electron')
 const { setupMenu } = require('./app/app.menu.js')
@@ -40,9 +41,17 @@ const ARGUMENTS = {
 const APP_NAME = process.env.NODE_ENV !== 'development' ? path.parse(app.getPath('exe')).name : 'Nextcloud Talk (dev)'
 app.setName(APP_NAME)
 app.setPath('userData', path.join(app.getPath('appData'), app.getName()))
-if (isWindows) {
-	// TODO: get actual name from the build
-	app.setAppUserModelId('com.squirrel.NextcloudTalk.NextcloudTalk')
+if (isWindows && process.env.NODE_ENV === 'production') {
+	// Hacky way to detect whether the app is installed via Squirrel.Windows or MSI installer
+	const updateExePath = path.join(path.dirname(app.getPath('exe')), '../Update.exe')
+	const isSquirrel = fs.existsSync(updateExePath)
+	if (isSquirrel) {
+		// Squirrel.Windows sets the AppUserModelId in the following way
+		app.setAppUserModelId('com.squirrel.NextcloudTalk.NextcloudTalk')
+	} else {
+		// MSI installer - normal AppID
+		app.setAppUserModelId('com.nextcloud.talk')
+	}
 }
 
 /**

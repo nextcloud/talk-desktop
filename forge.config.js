@@ -10,6 +10,7 @@ const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerDMG } = require('@electron-forge/maker-dmg')
 const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
 const { MakerZIP } = require('@electron-forge/maker-zip')
+const { MakerWix } = require('@electron-forge/maker-wix')
 const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
 
@@ -25,7 +26,8 @@ const CONFIG = {
 	// macOS
 	appleAppBundleId: 'com.nextcloud.talk.mac',
 	// Windows
-	winAppId: 'NextcloudTalk',
+	winSquirrelAppId: 'NextcloudTalk', // Squirrel.Windows will transform it to com.squirrel.{AppId}.{AppId}
+	winAppId: 'com.nextcloud.talk',
 	// Linux
 	linuxAppId: 'com.nextcloud.talk',
 }
@@ -73,8 +75,8 @@ function fixArtifactName(artifactPath, platform, arch) {
 	const artifactName = path.basename(artifactPath)
 	const ext = path.extname(artifactName)
 
-	// For Windows names are configurable in Squirrel distribution
-	if (platform === 'win32') {
+	// For Squirrel.Windows names are configurable in the maker
+	if (platform === 'win32' && ext === '.exe') {
 		return artifactPath
 	}
 
@@ -85,6 +87,59 @@ function fixArtifactName(artifactPath, platform, arch) {
 		fs.renameSync(artifactPath, output)
 	}
 	return output
+}
+
+/**
+ * Convert signWithParams string to @electron/windows-sign options
+ * to fix issues of @electron/windows-sign
+ * @param {string} signWithParams - @electron/windows-sign's signWithParams string
+ * @return {object} - @electron/windows-sign options
+ */
+function signWithParamsToWindowsSignOptions(signWithParams) {
+	// @electron/windows-sign options
+	const windowsSign = {}
+
+	// Split args values without quotes wrap
+	// Otherwise @electron/windows-sign will treat double quotes as part of the value
+	// See: https://github.com/electron/windows-sign/issues/45
+	const parsed = [...signWithParams.matchAll(/(?:([^\s"]+)|"([^"]*)")+/g)].map((matched) => matched[1] || matched[2])
+
+	// @electron/windows-sign has some default options that define signtool params.
+	// Duplicating any param leads to an error in the signtool.
+	// So avoid this, any param that can be defined in options must be set as an option
+	// and removed from params string.
+	// See: https://github.com/electron/windows-sign/issues/46
+	// Note: multiple hashes is not supported
+
+	const extractOption = (param, option) => {
+		const index = parsed.indexOf(param)
+		if (index !== -1) {
+			const withValue = parsed[index + 1] && !parsed[index + 1].startsWith('/')
+			windowsSign[option] = withValue ? parsed[index + 1] : true
+			parsed.splice(index, withValue ? 2 : 1)
+		}
+	}
+
+	extractOption('/a', 'automaticallySelectCertificate')
+	extractOption('/as', 'appendSignature')
+	extractOption('/tr', 'timestampServer')
+	extractOption('/td', 'hashes')
+	extractOption('/t', 'timestampServer')
+	extractOption('/f', 'certificateFile')
+	extractOption('/p', 'certificatePassword')
+	extractOption('/fd', 'hashes')
+	extractOption('/d', 'description')
+	extractOption('/du', 'website')
+	extractOption('/debug', 'debug')
+	if (windowsSign.hashes) {
+		// @electron/window-sign only supports lower case hash
+		windowsSign.hashes = windowsSign.hashes.toLowerCase()
+	}
+
+	// Set parsed to an array to avoid quoting issues
+	windowsSign.signWithParams = parsed
+
+	return windowsSign
 }
 
 const hasMacosSign = !!(process.env.APPLE_ID && process.env.APPLE_ID_PASSWORD && process.env.APPLE_TEAM_ID)
@@ -149,7 +204,7 @@ module.exports = {
 		// Common
 		name: CONFIG.applicationName,
 		icon: path.join(__dirname, './img/icons/icon'),
-		appCopyright: `Copyright © ${YEAR} ${CONFIG.companyName}`,
+		appCopyright: `Copyright (c) ${YEAR} ${CONFIG.companyName}`,
 		asar: true,
 
 		// Windows
@@ -172,17 +227,45 @@ module.exports = {
 	},
 
 	makers: [
+		// https://github.com/electron-userland/electron-wix-msi/
+		// https://js.electronforge.io/interfaces/_electron_forge_maker_wix.MakerWixConfig.html
+		// https://github.com/bitdisaster/Squirrel.Msi/
+		// Prerequisites:
+		// 1. winget install WiXToolset.WiXToolset
+		// 2. Add C:\Program Files (x86)\WiX Toolset v3.14\bin\ to PATH
+		new MakerWix({
+			appUserModelId: CONFIG.winAppId,
+			description: CONFIG.description,
+			exe: `${CONFIG.applicationName}.exe`,
+			name: CONFIG.applicationName,
+			icon: path.join(__dirname, 'img/icons/icon.ico'),
+			manufacturer: CONFIG.companyName,
+			shortName: CONFIG.applicationNameSanitized,
+			arch: 'x64', // electron-wix-msi defaults to x86
+			// Pass the version explicitly
+			// otherwise MakerWix makes versions with prerelease tags invalid semantic version
+			// which breaks app launch via stub executable
+			// See: https://github.com/electron/forge/issues/3805
+			version: packageJSON.version,
+			ui: {
+				images: {
+					background: path.join(__dirname, 'img/wix-background.bmp'),
+					banner: path.join(__dirname, 'img/wix-banner.bmp'),
+				},
+			},
+			windowsSign: hasWindowsSign && signWithParamsToWindowsSignOptions(process.env.WINDOWS_SIGN_PARAMS),
+		}),
+
 		// https://github.com/squirrel/squirrel.windows
 		// https://js.electronforge.io/interfaces/_electron_forge_maker_squirrel.InternalOptions.SquirrelWindowsOptions.html#setupExe
 		new MakerSquirrel({
 			// App/Filenames
-			name: CONFIG.winAppId,
+			name: CONFIG.winSquirrelAppId,
 			setupExe: generateDistName('win32', 'x64', '.exe'),
 			setupMsi: generateDistName('win32', 'x64', '.msi'),
 			exe: `${CONFIG.applicationName}.exe`,
-
-			// Add MSI for administrated environments
-			noMsi: false,
+			// Covered by WiX
+			noMsi: true,
 
 			// Meta
 			title: CONFIG.applicationName,

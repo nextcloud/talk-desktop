@@ -18,7 +18,7 @@ require('dotenv').config()
 const CONFIG = {
 	// General
 	applicationName: packageJSON.productName,
-	applicationNameSanitized: packageJSON.productName.replaceAll(' ', '-'),
+	applicationNameSanitized: packageJSON.productName.replaceAll(' ', '.'),
 	companyName: 'Nextcloud GmbH',
 	description: packageJSON.description,
 
@@ -31,6 +31,58 @@ const CONFIG = {
 }
 
 const YEAR = new Date().getFullYear()
+
+/**
+ * Generate the distribution name
+ * @param {'darwin'|'linux'|'win32'} platform - Distribution target platform
+ * @param {'arm64'|'universal'|'x64'} arch - Distribution target architecture
+ * @param {string} ext - File extension
+ * @param {boolean} includeVersion - Include the version in the name
+ * @return {string} The distribution name, e.g., Nextcloud.Talk-v1.0.0-macos-x64.dmg
+ * @example Nextcloud.Talk-macos-universal.dmg
+ * @example Nextcloud.Talk-linux-x64.flatpak
+ * @example Nextcloud.Talk-windows-x64.exe
+ */
+function generateDistName(platform, arch, ext, includeVersion = false) {
+	// Map technical platform name to user-friendly
+	const platformTitles = {
+		darwin: 'macos',
+		linux: 'linux',
+		win32: 'windows',
+	}
+	const archTitles = {
+		x64: 'x64',
+		arm64: 'arm',
+	}
+	const version = packageJSON.version
+	return includeVersion
+		? `${CONFIG.applicationNameSanitized}-v${version}-${platformTitles[platform]}-${archTitles[arch]}${ext}`
+		: `${CONFIG.applicationNameSanitized}-${platformTitles[platform]}-${archTitles[arch]}${ext}`
+}
+
+/**
+ * Move the artifact to the correct location
+ * @param {string} artifactPath - The path to the distribution
+ * @param {string} platform - platform
+ * @param {string} arch - architecture
+ * @return {string} - The new path to the distribution
+ */
+function fixArtifactName(artifactPath, platform, arch) {
+	const artifactName = path.basename(artifactPath)
+	const ext = path.extname(artifactName)
+
+	if (platform === 'win32' && ext !== '.exe') {
+		return artifactPath
+	}
+
+	const name = generateDistName(platform, arch, ext)
+	const output = path.join(path.dirname(artifactPath), name)
+	if (name !== artifactName) {
+		console.log(`Renaming ${artifactName} to ${name}`)
+		fs.renameSync(artifactPath, output)
+	}
+	return output
+}
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 let talkPackageJson
@@ -68,6 +120,22 @@ module.exports = {
 		postPackage() {
 			console.log(`Packaged with built-in Nextcloud Talk v${talkPackageJson.version} on path: ${TALK_PATH}`)
 		},
+
+		postMake(config, makeResults) {
+			// All makers have different output paths, incl. folder structure, and filenames.
+			// In most of them, there is no option to specify or override it.
+			// Hotfix: manually move files to the correct location.
+			// Alternatives
+			// - create own makers
+			// - fork electron/forge makers, add features and upstream
+			// - do not use electron-forge makers
+			return makeResults.map((makeResult) => ({
+				...makeResult,
+				artifacts: makeResult.artifacts.map((artifact) =>
+					fixArtifactName(artifact, makeResult.platform, makeResult.arch),
+				),
+			}))
+		},
 	},
 
 	// https://electron.github.io/packager/main/interfaces/Options.html
@@ -96,7 +164,7 @@ module.exports = {
 		new MakerSquirrel({
 			// App/Filenames
 			name: CONFIG.winAppId,
-			setupExe: `${CONFIG.applicationNameSanitized}-v${packageJSON.version}-win-x64.exe`,
+			setupExe: generateDistName('win32', 'x64', '.exe'),
 			exe: `${CONFIG.applicationName}.exe`,
 
 			// Meta

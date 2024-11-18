@@ -5,6 +5,31 @@
 
 # Changelog
 
+## v1.0.0-rc.2 - 2024-11-22
+
+### Features
+
+- Add new About window with an improved diagnosis report [#917](https://github.com/nextcloud/talk-desktop/pull/917)
+- Add "Copy email address" to `mailto:` links context menu [#890](https://github.com/nextcloud/talk-desktop/pull/890)
+
+### Fixes
+
+- Fix light/dark theme is not applied to native parts of the app [#916](https://github.com/nextcloud/talk-desktop/pull/916)
+- Fix parallel installations sharing common settings [#891](https://github.com/nextcloud/talk-desktop/pull/891)
+- Fix macOS tray icon not following system style [#887](https://github.com/nextcloud/talk-desktop/pull/887)
+- Fix screensharing on Flatpak distribution in Wayland [#877](https://github.com/nextcloud/talk-desktop/pull/877)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v20.1.0-rc.2 [#920](https://github.com/nextcloud/talk-desktop/pull/920)
+- Distributions for macOS and Windows are now signed with a certificate [#908](https://github.com/nextcloud/talk-desktop/pull/908)
+- New MSI distribution is now provided for Windows in administrated environments with GPO deployment [#922](https://github.com/nextcloud/talk-desktop/pull/922)
+- ZIP distribution is now provided only for Linux [#904](https://github.com/nextcloud/talk-desktop/pull/904)
+- Distribution for macOS is now universal (support both Apple Silicon and Intel Macs) [#896](https://github.com/nextcloud/talk-desktop/pull/896)
+- Flatpak distribution runtime and platform have been updated [#892](https://github.com/nextcloud/talk-desktop/pull/892)
+- Update translations
+- Update dependencies
+
 ## v1.0.0-rc.1 - 2024-11-11
 
 ### Features

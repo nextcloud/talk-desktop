@@ -11,14 +11,13 @@
 
 - Add application settings [#835](https://github.com/nextcloud/talk-desktop/pull/835)
 - Add monochrome tray icon setting [#836](https://github.com/nextcloud/talk-desktop/pull/836)
-- Add download links handling with a new [#840](https://github.com/nextcloud/talk-desktop/pull/840)
+- Add download links handling with a new message menu item [#840](https://github.com/nextcloud/talk-desktop/pull/840)
 - Add zoom setting and fix a number of zoom-related issues [#853](https://github.com/nextcloud/talk-desktop/pull/853)
 
 ### Fixes
 
 - Fix error on launching app twice quickly before it initializes [#856](https://github.com/nextcloud/talk-desktop/pull/876)
-- Fix focusing a window on macOS when there is no window [#856](https://github.com/nextcloud/talk-desktop/pull/876)
-- Fix window Show the window on activate on macOS [#852](https://github.com/nextcloud/talk-desktop/pull/852)
+- Fix login window cannot be reopened after close on macOS [#852](https://github.com/nextcloud/talk-desktop/pull/852)
 - Fix Viewer close not handled during a call [#835](https://github.com/nextcloud/talk-desktop/pull/835)
 - Fix preview not shown for a supported mime-type [#831](https://github.com/nextcloud/talk-desktop/pull/831)
 

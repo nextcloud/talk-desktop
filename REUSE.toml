@@ -18,7 +18,7 @@ SPDX-FileCopyrightText = "none"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
-path = ["package.json", "package-lock.json", "**/package.json", "**/package-lock.json", ".tx/config", "tsconfig.json", "jsconfig.json"]
+path = ["package.json", "package-lock.json", "**/package.json", "**/package-lock.json", ".tx/config", "tsconfig.json", "jsconfig.json", "resources/macos/entitlements.plist"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "none"
 SPDX-License-Identifier = "CC0-1.0"

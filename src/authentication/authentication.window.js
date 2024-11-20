@@ -8,7 +8,7 @@ const { BASE_TITLE, TITLE_BAR_HEIGHT } = require('../constants.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
-const { getScaledWindowSize } = require('../app/utils.ts')
+const { getScaledWindowSize, showWhenWindowMarkedReady } = require('../app/utils.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -52,6 +52,8 @@ function createAuthenticationWindow() {
 	applyContextMenu(window)
 
 	window.loadURL(AUTHENTICATION_WINDOW_WEBPACK_ENTRY)
+
+	showWhenWindowMarkedReady(window)
 
 	return window
 }

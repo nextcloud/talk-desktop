@@ -8,7 +8,10 @@ import '../../shared/assets/global.styles.css'
 import Vue from 'vue'
 import AuthenticationApp from './AuthenticationApp.vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
+import { markWindowReady } from '../../shared/markWindowReady.ts'
 
 await setupWebPage()
 
 new Vue(AuthenticationApp).$mount('#app')
+
+markWindowReady()

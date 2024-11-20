@@ -11,6 +11,7 @@ import './assets/overrides.css'
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
+import { markWindowReady } from '../../shared/markWindowReady.ts'
 import { createViewer } from './Viewer/Viewer.js'
 import { createDesktopApp } from './desktop.app.js'
 import { registerTalkDesktopSettingsSection } from './Settings/index.ts'
@@ -35,3 +36,5 @@ window.OCA.Talk.Desktop.talkRouter.value = window.OCA.Talk.instance.$router
 registerTalkDesktopSettingsSection()
 
 await import('./notifications/notifications.store.js')
+
+markWindowReady()

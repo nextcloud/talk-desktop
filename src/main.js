@@ -20,6 +20,7 @@ const { installVueDevtools } = require('./install-vue-devtools.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { applyTheme } = require('./app/theme.config.ts')
+const { showWhenWindowMarkedReady, waitWindowMarkedReady } = require('./app/utils.ts')
 
 /**
  * Parse command line arguments
@@ -146,7 +147,7 @@ app.whenReady().then(async () => {
 		// There is no window (possible on macOS) - create
 		if (!mainWindow || mainWindow.isDestroyed()) {
 			mainWindow = createMainWindow()
-			mainWindow.once('ready-to-show', () => mainWindow.show())
+			showWhenWindowMarkedReady(mainWindow)
 			return
 		}
 
@@ -235,7 +236,6 @@ app.whenReady().then(async () => {
 
 	mainWindow = createWelcomeWindow()
 	createMainWindow = createWelcomeWindow
-	mainWindow.once('ready-to-show', () => mainWindow.show())
 
 	ipcMain.once('appData:receive', async (event, appData) => {
 		const welcomeWindow = mainWindow
@@ -256,14 +256,15 @@ app.whenReady().then(async () => {
 			createMainWindow = createAuthenticationWindow
 		}
 
-		mainWindow.once('ready-to-show', () => {
-			// Do not show the main window if it is the Talk Window opened in the background
-			const isTalkWindow = createMainWindow === createTalkWindow
-			if (!isTalkWindow || !ARGUMENTS.openInBackground) {
-				mainWindow.show()
-			}
-			welcomeWindow.close()
-		})
+		await waitWindowMarkedReady(mainWindow)
+
+		welcomeWindow.close()
+
+		// Do not show the main window if it is the Talk Window opened in the background
+		const isTalkWindow = createMainWindow === createTalkWindow
+		if (!isTalkWindow || !ARGUMENTS.openInBackground) {
+			mainWindow.show()
+		}
 	})
 
 	let macDockBounceId
@@ -289,19 +290,18 @@ app.whenReady().then(async () => {
 
 	ipcMain.handle('authentication:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
 
-	ipcMain.handle('authentication:login', async () => {
+	ipcMain.handle('authentication:login', () => {
 		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
-		mainWindow.once('ready-to-show', () => mainWindow.show())
+		showWhenWindowMarkedReady(mainWindow)
 	})
 
-	ipcMain.handle('authentication:logout', async (event) => {
+	ipcMain.handle('authentication:logout', async () => {
 		if (createMainWindow === createTalkWindow) {
 			await mainWindow.webContents.session.clearStorageData()
 			const authenticationWindow = createAuthenticationWindow()
 			createMainWindow = createAuthenticationWindow
-			authenticationWindow.once('ready-to-show', () => authenticationWindow.show())
 
 			mainWindow.destroy()
 			mainWindow = authenticationWindow
@@ -324,7 +324,7 @@ app.whenReady().then(async () => {
 		isInWindowRelaunch = true
 		mainWindow.destroy()
 		mainWindow = createMainWindow()
-		mainWindow.once('ready-to-show', () => mainWindow.show())
+		showWhenWindowMarkedReady(mainWindow)
 		isInWindowRelaunch = false
 	})
 
@@ -340,7 +340,7 @@ app.whenReady().then(async () => {
 			// dock icon is clicked and there are no other windows open.
 			// See window-all-closed event handler.
 			mainWindow = createMainWindow()
-			mainWindow.once('ready-to-show', () => mainWindow.show())
+			showWhenWindowMarkedReady(mainWindow)
 		}
 	})
 })

@@ -6,6 +6,7 @@
 require('dotenv').config()
 
 const path = require('node:path')
+const { spawnSync } = require('node:child_process')
 const webpack = require('webpack')
 const { mergeWithRules } = require('webpack-merge')
 
@@ -54,6 +55,22 @@ function createPatcherAliases(packageName) {
 		[`@talk-modules--${packageName}$`]: talkModulePath,
 		[`@desktop-modules--${packageName}$`]: desktopModulePath,
 	}
+}
+
+/**
+ * Get the version tag via "git describe".
+ * @example "v1.0.1" on a directly tagged commit
+ * @example "v1.0.1-80-g481b5e1 (heads/fix/help-system-report)" on an untagged commit
+ * @param {string} cwd - The path to the git repository
+ * @return {string} - The described version
+ */
+function getDescribedVersion(cwd = __dirname) {
+	const gitTag = spawnSync('git', ['describe', '--tags'], { cwd }).stdout.toString().trim()
+	const gitBranch = spawnSync('git', ['describe', '--all'], { cwd }).stdout.toString().trim()
+	if (!gitBranch.startsWith('tags/')) {
+		return `${gitTag} (${gitBranch})`
+	}
+	return gitTag
 }
 
 const webpackRendererConfig = mergeWithRules({
@@ -123,6 +140,8 @@ const webpackRendererConfig = mergeWithRules({
 
 		new webpack.DefinePlugin({
 			IS_DESKTOP: true,
+			__VERSION_TAG__: JSON.stringify(getDescribedVersion()),
+			__TALK_VERSION_TAG__: JSON.stringify(getDescribedVersion(TALK_PATH)),
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),
 		}),
 	],

@@ -29,7 +29,10 @@ declare module '@nextcloud/vue/dist/Components/*.js' {
 	export default component
 }
 
+// Built-time constants
 declare const IS_DESKTOP: true
+declare const __VERSION_TAG__: string
+declare const __TALK_VERSION_TAG__: string
 
 declare interface Window {
 	// Nextcloud Globals

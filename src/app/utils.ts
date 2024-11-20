@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { screen } from 'electron'
+import type { IpcMainEvent } from 'electron'
+import { BrowserWindow, ipcMain, screen } from 'electron'
 import { getAppConfig } from './AppConfig.ts'
 
 /**
@@ -46,4 +47,49 @@ export function getScaledWindowMinSize({ minWidth, minHeight }: { minWidth: numb
 		minWidth: width,
 		minHeight: height,
 	}
+}
+
+/**
+ * Memoized promises of waitWindowMarkedReady.
+ * Using WeakMap so that the promises are garbage collected when the window is destroyed.
+ */
+const windowMarkedReadyPromises = new WeakMap<BrowserWindow, Promise<void>>()
+
+/**
+ * Wait for the window to be marked as ready to show by its renderer process
+ * @param window - BrowserWindow
+ */
+export function waitWindowMarkedReady(window: BrowserWindow): Promise<void> {
+	// As a window is marked ready only once.
+	// Awaiting promise is memoized to allow multiple calls and calls on a ready window.
+
+	if (windowMarkedReadyPromises.has(window)) {
+		return windowMarkedReadyPromises.get(window)!
+	}
+
+	const promise: Promise<void> = new Promise((resolve) => {
+		const handleMarkWindowReady = (event: IpcMainEvent) => {
+			if (event.sender === window.webContents) {
+				ipcMain.removeListener('app:markWindowReady', handleMarkWindowReady)
+				resolve()
+			}
+		}
+		ipcMain.on('app:markWindowReady', handleMarkWindowReady)
+	})
+
+	windowMarkedReadyPromises.set(window, promise)
+
+	return promise
+}
+
+/**
+ * Show the window when it is marked as ready to show its renderer process
+ * @param window - The BrowserWindow
+ */
+export async function showWhenWindowMarkedReady(window: BrowserWindow): Promise<void> {
+	if (window.isVisible()) {
+		return
+	}
+	await waitWindowMarkedReady(window)
+	window.show()
 }

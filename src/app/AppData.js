@@ -5,12 +5,28 @@
 
 // TODO: use safeStorage for credentials
 
+/**
+ * @typedef {object} NextcloudVersion
+ * @property {string} edition - edition
+ * @property {boolean} extendedSupport - has extended support
+ * @property {number} major - major version
+ * @property {number} minor - minor version
+ * @property {number} micro - patch version
+ * @property {string} string - version string, e.g. "31.0.1 rc-1"
+ */
+
 export class AppData {
 
 	serverUrl = null
 	userMetadata = null
+	/**
+	 * @type {any|null}
+	 */
 	capabilities = null
 	version = {
+		/**
+		 * @type {NextcloudVersion|null}
+		 */
 		nextcloud: null,
 		talk: null,
 		desktop: null,

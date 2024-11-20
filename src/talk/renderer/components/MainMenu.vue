@@ -52,7 +52,7 @@ const openSettings = () => window.OCA.Talk.Settings.open()
 			</template>
 			{{ t('talk_desktop', 'Force reload') }}
 		</NcActionButton>
-		<NcActionLink :href="packageInfo.bugs" target="_blank">
+		<NcActionLink :href="packageInfo.bugs.create || packageInfo.bugs.url" target="_blank">
 			<template #icon>
 				<IconBug />
 			</template>

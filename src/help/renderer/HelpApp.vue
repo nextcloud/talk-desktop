@@ -3,44 +3,29 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
-import { onBeforeUnmount, onMounted } from 'vue'
-
+<script setup lang="ts">
 import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-
+import NcRichText from '@nextcloud/vue/dist/Components/NcRichText.js'
 import { translate as t } from '@nextcloud/l10n'
-import { appData } from '../../app/AppData.js'
+import { useEventListener } from '@vueuse/core'
+import { generateDiagnosisReportMD } from './diagnosis.service.ts'
+import ButtonCopy from './ButtonCopy.vue'
+import TalkLogo from '../../../img/talk-icon-rounded.svg'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
+const isMac = window.systemInfo.isMac
 
-const report = [
-	'----------------------------System report----------------------------',
-	`Nextcloud Talk Desktop version ${window.TALK_DESKTOP.packageInfo.version}`,
-	`- Built with Nextcloud Talk version ${window.TALK_DESKTOP.packageInfo.talkVersion}`,
-	'',
-	...(appData.credentials
-		? [
-			'Connected to:',
-			`- Server address: ${appData.serverUrl}`,
-			`- Nextcloud Server version ${appData.version.nextcloud.string}`,
-			`- Nextcloud Talk version ${appData.version.talk}`,
-		]
-		: ['Not connected to any server']),
-	'',
-	`OS: ${window.systemInfo.osVersion}`,
-	'----------------------------System report----------------------------',
-].join('\n')
+const report = generateDiagnosisReportMD()
 
 /**
  * Handle the escape key to close the window
- * @param {KeyboardEvent} event - Keyboard event
  */
-function handleEscape(event) {
+useEventListener(window, 'keyup', (event: KeyboardEvent) => {
 	if (event.key === 'Escape') {
 		close()
 	}
-}
+})
 
 /**
  * Close the window
@@ -48,85 +33,152 @@ function handleEscape(event) {
 function close() {
 	window.close()
 }
-
-onMounted(() => {
-	window.addEventListener('keyup', handleEscape)
-})
-
-onBeforeUnmount(() => {
-	window.removeEventListener('keyup', handleEscape)
-})
 </script>
 
 <template>
-	<div class="about">
-		<h2 class="about__heading">
-			{{ t('talk_desktop', 'About') }}
-		</h2>
+	<div class="help">
+		<div class="help__title-bar" :class="{ 'help__title-bar--mac': isMac }">
+			<NcButton :aria-label="t('talk_desktop', 'Close')"
+				type="tertiary"
+				wide
+				@click="close">
+				<template #icon>
+					<IconWindowClose />
+				</template>
+			</NcButton>
+		</div>
 
-		<p>{{ packageInfo.productName }} - {{ packageInfo.description }}</p>
+		<div class="help__content">
+			<div class="help__info no-drag">
+				<img :src="TalkLogo"
+					width="72"
+					alt=""
+					draggable="false">
+				<p><strong>{{ packageInfo.productName }}</strong></p>
+				<p>{{ packageInfo.description }}</p>
+				<p>
+					<a class="link" href="https://nextcloud.com/privacy/" target="_blank">{{ t('talk_desktop', 'Privacy and Legal Policy') }}</a><br>
+					{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
+				</p>
+				<p>
+					<a :href="packageInfo.bugs.url" class="link" target="_blank">{{ t('talk_desktop', 'Issues') }}</a> | <a :href="packageInfo.repository" class="link" target="_blank">{{ t('talk_desktop', 'Source Code') }}</a>
+				</p>
+			</div>
+			<div class="help__report-wrapper">
+				<NcRichText class="help__report no-drag"
+					:text="report"
+					use-extended-markdown
+					:markdown-css-classes="{ h3: 'help__report-h3', h4: 'help__report-h4' }" />
 
-		<ul class="about__list">
-			<li>
-				{{ t('talk_desktop', 'Privacy and Legal Policy') }}: <a class="link" href="https://nextcloud.com/privacy/" target="_blank">https://nextcloud.com/privacy/</a>
-			</li>
-			<li>
-				{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
-			</li>
-			<li>
-				{{ t('talk_desktop', 'Issues') }}: <a :href="packageInfo.bugs" class="link" target="_blank">{{ packageInfo.bugs }}</a>
-			</li>
-			<li>
-				{{ t('talk_desktop', 'Source Code') }}: <a :href="packageInfo.repository" class="link" target="_blank">{{ packageInfo.repository }}</a>
-			</li>
-		</ul>
-
-		<textarea :aria-label="t('talk_desktop', 'System report')"
-			:value="report"
-			readonly
-			class="about__report"
-			@focus="$event.target.setSelectionRange(0, -1)" />
-
-		<NcButton type="secondary" wide @click="close">
-			<template #icon>
-				<IconWindowClose />
-			</template>
-			{{ t('talk_desktop', 'Close') }}
-		</NcButton>
+				<div class="help__report-actions">
+					<ButtonCopy type="tertiary" :content="report">
+						{{ t('talk_desktop', 'Copy report') }}
+					</ButtonCopy>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
+<style>
+* {
+	box-sizing: border-box;
+}
+</style>
+
 <style scoped>
-.about {
+.no-drag {
+	app-region: no-drag;
+}
+
+.help {
+	--spacing-4: calc(4 * var(--default-grid-baseline));
+	app-region: drag;
 	height: 100%;
-	background: var(--color-main-background);
-	padding: calc(2 * var(--default-grid-baseline));
+	padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) 0;
 	display: flex;
 	flex-direction: column;
-	gap: calc(2 * var(--default-grid-baseline));
+	gap: var(--spacing-4);
+	position: relative;
+}
 
-	&,
-	& * {
-		box-sizing: border-box;
+.help button {
+	app-region: no-drag;
+}
+
+.help__title-bar {
+	display: flex;
+	justify-content: flex-end;
+	&.help__title-bar--mac {
+		justify-content: flex-start;
 	}
 }
 
-.about__heading {
-	margin-top: 0;
+.help__content {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	height: 0;
+	flex: 1 0;
 }
 
-.about__list {
-	list-style: '-' inside;
+.help__info {
+	flex: 1 0 auto;
+	padding: 0 calc(16 * var(--default-grid-baseline));
+	text-align: center;
 }
 
-.about__report {
+.help__info p {
+	margin: 0.5em 0;
+}
+
+.help__report-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: calc(2 * var(--default-grid-baseline));
+	flex: 0 1 auto;
+}
+
+.help__report {
+	background-color: var(--color-main-background);
+	border-radius: var(--border-radius-small);
+	padding: calc(var(--default-grid-baseline) * 2);
 	flex: 1 1 auto;
-	width: 100%;
-	resize: none;
-	margin: 0; /* Override server styles */
+	overflow: auto;
+	font-size: 13px;
 }
 
-.about .link {
+.help__report :deep(h3),
+.help__report :deep(h4) {
+	font-size: 1.4em;
+	font-weight: 500;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+.help__report :deep(strong) {
+	font-weight: 500;
+}
+
+.help__report :deep(table) {
+	border: 1px solid var(--color-border) !important;
+	white-space: normal;
+}
+
+.help__report :deep(th),
+.help__report :deep(td) {
+	border-color: var(--color-border) !important;
+}
+
+.help__report-actions {
+	display: flex;
+	justify-content: space-around;
+}
+
+.help .link {
 	text-decoration: underline;
 }
 </style>

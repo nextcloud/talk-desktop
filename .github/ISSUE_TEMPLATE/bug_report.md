@@ -14,7 +14,6 @@ labels: 0. Needs triage, bug
 
 ---
 
-
 ## Steps to reproduce
 1.
 2.
@@ -26,41 +25,24 @@ Tell us what should happen
 ### Actual behaviour
 Tell us what happens instead (🖼️ screenshots often help)
 
-## Desktop client
-
-**Talk Desktop client version:** v1.0.0
-
-**Operating system:** Windows / MacOS / Ubuntu
-
-**Operating system version:** Windows 11 / (In case of Linux, provide the distribution.)
-
-**Microphone available:** yes/no
-
-**Camera available:** yes/no
-
-## Server
-
-**Nextcloud version:** (see status page: `/status.php`)
-
-**Talk app version:** (see apps admin page: `/index.php/settings/apps`)
-
-**Custom Signaling server configured:** yes/no and version (see additional admin settings: `/index.php/index.php/settings/admin/talk#signaling_server`)
-
-**Custom TURN server configured:** yes/no (see additional admin settings: `/index.php/settings/admin/talk#turn_server`)
-
-**Custom STUN server configured:** yes/no (see additional admin settings: `/index.php/settings/admin/talk#stun_server`)
-
-## Logs
-
-### Client log
+## Diagnosis and logs
 
 <details>
+<summary>Diagnosis report</summary>
+
+Insert a diagnosis report here.
+
+It can be found in the About window (open from the menu or via <kbd>F1</kbd> and click on "Copy report" button).
+
+</details>
+
+<details>
+<summary>Client logs</summary>
+
+Press <kbd>Ctrl+Shift+I</kbd> (<kbd>Cmd+Option+C</kbd> on macOS) or use the context menu to open the developer tools, then go to the Console tab.
 
 ```
-Insert your browser log here, this could for example include:
-a) The javascript console log
-b) The network log
-c) ...
+Insert error logs here.
 ```
 
 </details>

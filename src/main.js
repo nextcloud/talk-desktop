@@ -5,7 +5,7 @@
 
 const path = require('node:path')
 const { spawn } = require('node:child_process')
-const { app, dialog, BrowserWindow, ipcMain, desktopCapturer, systemPreferences, shell } = require('electron')
+const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell } = require('electron')
 const { setupMenu } = require('./app/app.menu.js')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -328,21 +328,33 @@ app.whenReady().then(async () => {
 
 	ipcMain.on('app:downloadURL', (event, url, filename) => triggerDownloadUrl(mainWindow, url, filename))
 
-	// On OS X it's common to re-create a window in the app when the
-	// dock icon is clicked and there are no other windows open.
+	// Click on the dock icon on macOS
 	app.on('activate', () => {
-		if (BrowserWindow.getAllWindows().length === 0) {
+		if (mainWindow && !mainWindow.isDestroyed()) {
+			// Show the main window if it exists but hidden (not closed), e.g., minimized to the system tray
+			mainWindow.show()
+		} else {
+			// On macOS, it is common to re-create a window in the app when the
+			// dock icon is clicked and there are no other windows open.
+			// See window-all-closed event handler.
 			mainWindow = createMainWindow()
 			mainWindow.once('ready-to-show', () => mainWindow.show())
 		}
 	})
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
-	if (process.platform !== 'darwin' && !isInWindowRelaunch) {
-		app.quit()
+	// Recreating a window - keep app running
+	if (isInWindowRelaunch) {
+		return
 	}
+
+	// On macOS, it is common for applications and their menu bar to stay active even without windows
+	// until the user quits explicitly with Cmd + Q or Quit from the menu.
+	if (isMac()) {
+		return
+	}
+
+	// All the windows are closed - quit the app
+	app.quit()
 })

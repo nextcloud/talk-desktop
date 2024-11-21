@@ -23,7 +23,7 @@ const RE_REQUEST_SOURCES_TIMEOUT = 1000
 // On Wayland getting each stream for the live preview requests user to select the source via system dialog again
 // Instead - show static images.
 // See: https://github.com/electron/electron/issues/27732
-const previewType = window.OS.isWayland ? 'thumbnail' : 'live'
+const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
 
 const selectedSourceId = ref(null)
 const sources = ref(null)
@@ -55,7 +55,7 @@ const requestDesktopCapturerSources = async () => {
 	}
 
 	// On Wayland there might be no name from the desktopCapturer
-	if (window.OS.isWayland) {
+	if (window.systemInfo.isWayland) {
 		for (const source of sources.value) {
 			source.name ||= t('talk_desktop', 'Selected screen or window')
 		}
@@ -73,7 +73,7 @@ const requestDesktopCapturerSources = async () => {
 	}
 
 	// On Wayland we don't manually provide the source stream. It is covered by Wayland and entire-desktop is not supported
-	sources.value = window.OS.isWayland ? [...screens, ...windows] : [...screens, entireDesktop, ...windows]
+	sources.value = window.systemInfo.isWayland ? [...screens, ...windows] : [...screens, entireDesktop, ...windows]
 }
 
 const handleVideoSuspend = (source) => {

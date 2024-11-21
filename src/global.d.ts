@@ -47,7 +47,7 @@ declare interface Window {
 	} & any
 	// Talk Desktop IPC
 	TALK_DESKTOP: any
-	OS: any
+	systemInfo: typeof import('./app/system.utils.ts').systemInfo
 }
 
 /**

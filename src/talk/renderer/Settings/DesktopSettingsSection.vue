@@ -53,7 +53,7 @@ const zoomFactorPercentage = computed({
 	},
 })
 const ZOOM_STEP = Math.sqrt(1.2)
-const ctrl = window.OS.isMac ? 'Ctrl/Cmd' : 'Ctrl'
+const ctrl = window.systemInfo.isMac ? 'Ctrl/Cmd' : 'Ctrl'
 const zoomHint = t('talk_desktop', 'Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}', {
 	key: `<kbd>${ctrl} + ±</kbd>`,
 	resetKey: `<kbd>${ctrl} + 0</kbd>`,

@@ -7,7 +7,7 @@ const os = require('node:os')
 const { BrowserWindow, app } = require('electron')
 const { BASE_TITLE } = require('../constants.js')
 const { parseLoginRedirectUrl } = require('./login.service.js')
-const { getOsTitle } = require('../shared/os.utils.js')
+const { osTitle } = require('../app/system.utils.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { getScaledWindowMinSize, getScaledWindowSize } = require('../app/utils.ts')
@@ -59,7 +59,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 		window.loadURL(`${serverUrl}/index.php/login/flow`, {
 			// This header value is used as an application name on the Login page
 			// Use BASE_TITLE instead of the USER_AGENT as User-Agent header
-			userAgent: `${os.hostname()} (Talk Desktop Client - ${getOsTitle()})`,
+			userAgent: `${os.hostname()} (Talk Desktop Client - ${osTitle})`,
 			extraHeaders: [
 				'OCS-APIRequest: true',
 				`Accept-Language: ${app.getPreferredSystemLanguages().join(',')}`,

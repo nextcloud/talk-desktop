@@ -43,11 +43,11 @@ const TALK_DESKTOP = {
 	 */
 	quit: () => ipcRenderer.send('app:quit'),
 	/**
-	 * Get OS version and versions as flags
+	 * Get system information such as OS version or installation properties
 	 *
-	 * @return {Promise<import('./shared/os.utils.js').OsVersion>}
+	 * @return {Promise<import('./app/system.utils.ts').OsVersion>}
 	 */
-	getOs: () => ipcRenderer.invoke('app:getOs'),
+	getSystemInfo: () => ipcRenderer.invoke('app:getSystemInfo'),
 	/**
 	 * Get system locale and preferred language
 	 *

@@ -28,7 +28,7 @@ const report = [
 		]
 		: ['Not connected to any server']),
 	'',
-	`OS: ${window.OS.version}`,
+	`OS: ${window.systemInfo.osVersion}`,
 	'----------------------------System report----------------------------',
 ].join('\n')
 

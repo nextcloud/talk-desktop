@@ -4,7 +4,7 @@
  */
 
 const { app, nativeTheme } = require('electron')
-const { isLinux, getPlatform } = require('./os.utils.js')
+const { isLinux, platform } = require('../app/system.utils.ts')
 const path = require('path')
 const { getAppConfig } = require('../app/AppConfig.ts')
 
@@ -45,7 +45,6 @@ const icons = {
  * Get tray icon
  */
 function getTrayIcon() {
-	const platform = getPlatform()
 	const monochrome = getAppConfig('monochromeTrayIcon')
 	const theme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light'
 	const kind = monochrome ? theme : 'default'
@@ -59,7 +58,7 @@ function getTrayIcon() {
  * @return {string|undefined} Path to the icon or undefined if not required on the current platform
  */
 function getBrowserWindowIcon() {
-	if (isLinux()) {
+	if (isLinux) {
 		// https://www.electronforge.io/guides/create-and-add-icons#linux
 		return path.join(app.getAppPath(), '.webpack/main', icons.window.linux)
 	}

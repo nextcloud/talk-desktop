@@ -4,7 +4,7 @@
  */
 
 const { app, shell, Menu } = require('electron')
-const { isMac } = require('../shared/os.utils.js')
+const { isMac } = require('./system.utils.ts')
 const packageJson = require('../../package.json')
 const { createHelpWindow } = require('../help/help.window.js')
 const { increaseZoom, decreaseZoom, setZoom } = require('./zoom.service.ts')
@@ -62,7 +62,7 @@ function setupMenu() {
 
 	const editMenu = {
 		label: 'Edit',
-		submenu: isMac() ? editMenuItemsMac : editMenuItems,
+		submenu: isMac ? editMenuItemsMac : editMenuItems,
 	}
 
 	const viewMenu = {
@@ -98,7 +98,7 @@ function setupMenu() {
 
 	const windowMenu = {
 		label: 'Window',
-		submenu: isMac() ? windowMenuItemsMac : windowMenuItems,
+		submenu: isMac ? windowMenuItemsMac : windowMenuItems,
 	}
 
 	const createLinkMenuItem = (label, link) => ({
@@ -127,11 +127,11 @@ function setupMenu() {
 
 	const template = [
 		// { role: 'appMenu' }
-		...(isMac() ? [macAppMenu] : []),
+		...(isMac ? [macAppMenu] : []),
 		// { role: 'fileMenu' }
 		{
 			label: 'File',
-			submenu: [isMac() ? { role: 'close' } : { role: 'quit' }],
+			submenu: [isMac ? { role: 'close' } : { role: 'quit' }],
 		},
 		// { role: 'editMenu' }
 		editMenu,

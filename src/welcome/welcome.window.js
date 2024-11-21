@@ -5,7 +5,7 @@
 
 const { BrowserWindow } = require('electron')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { isMac } = require('../shared/os.utils.js')
+const { isMac } = require('../app/system.utils.ts')
 const { getScaledWindowSize } = require('../app/utils.ts')
 
 /**
@@ -30,7 +30,7 @@ function createWelcomeWindow() {
 		icon: getBrowserWindowIcon(),
 	})
 
-	if (isMac()) {
+	if (isMac) {
 		// Hide traffic light buttons on Mac
 		window.setWindowButtonVisibility(false)
 	}

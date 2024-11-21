@@ -221,7 +221,7 @@ export async function setupWebPage() {
 	await initAppConfig()
 	applyInitialState()
 	initGlobals()
-	window.OS = await window.TALK_DESKTOP.getOs()
+	window.systemInfo = await window.TALK_DESKTOP.getSystemInfo()
 	applyUserData()
 	applyBodyThemeAttrs(getAppConfigValue('theme'))
 	applyHeaderHeight()

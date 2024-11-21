@@ -19,6 +19,7 @@ const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
+const { applyTheme } = require('./app/theme.config.ts')
 
 /**
  * Parse command line arguments
@@ -115,6 +116,7 @@ let isInWindowRelaunch = false
 
 app.whenReady().then(async () => {
 	await loadAppConfig()
+	applyTheme()
 
 	try {
 		await installVueDevtools()

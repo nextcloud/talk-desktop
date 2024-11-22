@@ -175,7 +175,11 @@ module.exports = {
 			// App/Filenames
 			name: CONFIG.winAppId,
 			setupExe: generateDistName('win32', 'x64', '.exe'),
+			setupMsi: generateDistName('win32', 'x64', '.msi'),
 			exe: `${CONFIG.applicationName}.exe`,
+
+			// Add MSI for administrated environments
+			noMsi: false,
 
 			// Meta
 			title: CONFIG.applicationName,

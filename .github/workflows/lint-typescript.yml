@@ -75,4 +75,4 @@ jobs:
 
     steps:
       - name: Summary status
-        run: if ${{ needs.typecheck.result != 'success' }}; then exit 1; fi
+        run: if ${{ needs.changes.outputs.src != 'false' && needs.typecheck.result != 'success' }}; then exit 1; fi

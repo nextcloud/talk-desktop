@@ -6,7 +6,7 @@
 import { join } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
 import { app, webContents } from 'electron'
-import { isLinux, isMac } from '../shared/os.utils.js'
+import { isLinux, isMac } from './system.utils.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
 
@@ -97,8 +97,8 @@ export type AppConfigKey = keyof AppConfig
  */
 const defaultAppConfig: AppConfig = {
 	theme: 'default',
-	systemTitleBar: isLinux(),
-	monochromeTrayIcon: isMac(),
+	systemTitleBar: isLinux,
+	monochromeTrayIcon: isMac,
 	zoomFactor: 1,
 	playSoundChat: 'respect-dnd',
 	playSoundCall: 'respect-dnd',

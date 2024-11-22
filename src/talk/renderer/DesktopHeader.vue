@@ -17,7 +17,7 @@ useUserStatusHeartbeat()
 useAppConfigStore()
 
 const user = appData.userMetadata
-const OS = window.OS
+const OS = window.systemInfo
 
 /**
  * Push to root in Talk app to unselect any chat

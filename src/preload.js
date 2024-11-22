@@ -9,12 +9,11 @@ const {
 } = require('electron')
 
 const packageJson = require('../package.json')
-const talkPackageJson = require('@talk/package.json')
 
 const packageInfo = {
 	productName: packageJson.productName,
-	version: packageJson.version,
-	talkVersion: talkPackageJson.version,
+	version: __VERSION_TAG__,
+	talkVersion: __TALK_VERSION_TAG__,
 	description: packageJson.description,
 	bugs: packageJson.bugs,
 	license: packageJson.license,
@@ -26,6 +25,7 @@ const packageInfo = {
  * @global
  */
 const TALK_DESKTOP = {
+	process,
 	/**
 	 * Subset of package.json meta-data
 	 *
@@ -43,11 +43,11 @@ const TALK_DESKTOP = {
 	 */
 	quit: () => ipcRenderer.send('app:quit'),
 	/**
-	 * Get OS version and versions as flags
+	 * Get system information such as OS version or installation properties
 	 *
-	 * @return {Promise<import('./shared/os.utils.js').OsVersion>}
+	 * @return {Promise<import('./app/system.utils.ts').OsVersion>}
 	 */
-	getOs: () => ipcRenderer.invoke('app:getOs'),
+	getSystemInfo: () => ipcRenderer.invoke('app:getSystemInfo'),
 	/**
 	 * Get system locale and preferred language
 	 *

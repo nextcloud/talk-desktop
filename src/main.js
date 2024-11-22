@@ -13,7 +13,7 @@ const { createAuthenticationWindow } = require('./authentication/authentication.
 const { openLoginWebView } = require('./authentication/login.window.js')
 const { createHelpWindow } = require('./help/help.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.js')
-const { getOs, isLinux, isMac, isWayland, isWindows } = require('./shared/os.utils.js')
+const { systemInfo, isLinux, isMac, isWayland, isWindows } = require('./app/system.utils.ts')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
@@ -35,7 +35,7 @@ const ARGUMENTS = {
 const APP_NAME = process.env.NODE_ENV !== 'development' ? path.parse(app.getPath('exe')).name : 'Nextcloud Talk (dev)'
 app.setName(APP_NAME)
 app.setPath('userData', path.join(app.getPath('appData'), app.getName()))
-if (isWindows()) {
+if (isWindows) {
 	// TODO: get actual name from the build
 	app.setAppUserModelId('com.squirrel.NextcloudTalk.NextcloudTalk')
 }
@@ -62,7 +62,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 ipcMain.on('app:quit', () => app.quit())
-ipcMain.handle('app:getOs', () => getOs())
+ipcMain.handle('app:getSystemInfo', () => systemInfo)
 ipcMain.handle('app:getAppName', () => app.getName())
 ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_'),
@@ -79,7 +79,7 @@ ipcMain.handle('app:config:get', (event, key) => getAppConfig(key))
 ipcMain.handle('app:config:set', (event, key, value) => setAppConfig(key, value))
 ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	// macOS 10.15 Catalina or higher requires consent for screen access
-	if (isMac() && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
+	if (isMac && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
 		// Open System Preferences to allow screen recording
 		await shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture')
 		// We cannot detect that the user has granted access, so return no sources
@@ -88,7 +88,7 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	}
 
 	// We cannot show live previews on Wayland, so we show thumbnails
-	const thumbnailWidth = isWayland() ? 320 : 0
+	const thumbnailWidth = isWayland ? 320 : 0
 
 	const sources = await desktopCapturer.getSources({
 		types: ['screen', 'window'],
@@ -189,7 +189,7 @@ app.whenReady().then(async () => {
 	app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
 		event.preventDefault()
 
-		if (isLinux()) {
+		if (isLinux) {
 			return callback(process.env.NODE_ENV !== 'production')
 		}
 
@@ -267,7 +267,7 @@ app.whenReady().then(async () => {
 	let macDockBounceId
 	ipcMain.on('talk:flashAppIcon', async (event, shouldFlash) => {
 		// MacOS has no "flashing" but "bouncing" of the dock icon
-		if (isMac()) {
+		if (isMac) {
 			// Stop previous bounce if any
 			if (macDockBounceId) {
 				app.dock.cancelBounce(macDockBounceId)
@@ -351,7 +351,7 @@ app.on('window-all-closed', () => {
 
 	// On macOS, it is common for applications and their menu bar to stay active even without windows
 	// until the user quits explicitly with Cmd + Q or Quit from the menu.
-	if (isMac()) {
+	if (isMac) {
 		return
 	}
 

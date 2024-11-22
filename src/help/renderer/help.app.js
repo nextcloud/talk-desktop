@@ -4,11 +4,15 @@
  */
 
 import '../../shared/assets/global.styles.css'
+import './help.styles.css'
 
-import Vue from 'vue'
-import HelpApp from './HelpApp.vue'
+import Vue, { defineAsyncComponent } from 'vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
 await setupWebPage()
 
-new Vue(HelpApp).$mount('#app')
+const HelpApp = defineAsyncComponent(() => import('./HelpApp.vue'))
+new Vue({
+	name: 'HelpAppRoot',
+	render: h => h(HelpApp),
+}).$mount('#app')

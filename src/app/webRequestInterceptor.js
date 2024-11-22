@@ -4,7 +4,11 @@
  */
 
 const { session } = require('electron')
-const { USER_AGENT, DEV_SERVER_ORIGIN } = require('../constants.js')
+const { DEV_SERVER_ORIGIN } = require('../constants.js')
+const { osTitle } = require('./system.utils.ts')
+const packageJson = require('../../package.json')
+
+const USER_AGENT = `Mozilla/5.0 (${osTitle}) Nextcloud-Talk v${packageJson.version}`
 
 /**
  * Patch requests on the default session to a specific Nextcloud server for Cookies or CORS.

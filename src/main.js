@@ -341,20 +341,20 @@ app.whenReady().then(async () => {
 			mainWindow.once('ready-to-show', () => mainWindow.show())
 		}
 	})
-})
 
-app.on('window-all-closed', () => {
-	// Recreating a window - keep app running
-	if (isInWindowRelaunch) {
-		return
-	}
+	app.on('window-all-closed', () => {
+		// Recreating a window - keep app running
+		if (isInWindowRelaunch) {
+			return
+		}
+		// On macOS, it is common for applications and their menu bar to stay active even without windows
+		// until the user quits explicitly with Cmd + Q or Quit from the menu.
+		// However, it makes sense only for the Talk window and not for Authentication or Welcome windows.
+		if (isMac() && createMainWindow === createTalkWindow) {
+			return
+		}
+		// All the windows are closed - quit the app
+		app.quit()
+	})
 
-	// On macOS, it is common for applications and their menu bar to stay active even without windows
-	// until the user quits explicitly with Cmd + Q or Quit from the menu.
-	if (isMac()) {
-		return
-	}
-
-	// All the windows are closed - quit the app
-	app.quit()
 })

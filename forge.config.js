@@ -71,7 +71,8 @@ function fixArtifactName(artifactPath, platform, arch) {
 	const artifactName = path.basename(artifactPath)
 	const ext = path.extname(artifactName)
 
-	if (platform === 'win32' && ext !== '.exe') {
+	// For Windows names are configurable in Squirrel distribution
+	if (platform === 'win32') {
 		return artifactPath
 	}
 

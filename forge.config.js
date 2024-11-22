@@ -71,7 +71,8 @@ function fixArtifactName(artifactPath, platform, arch) {
 	const artifactName = path.basename(artifactPath)
 	const ext = path.extname(artifactName)
 
-	if (platform === 'win32' && ext !== '.exe') {
+	// For Windows names are configurable in Squirrel distribution
+	if (platform === 'win32') {
 		return artifactPath
 	}
 
@@ -175,7 +176,11 @@ module.exports = {
 			// App/Filenames
 			name: CONFIG.winAppId,
 			setupExe: generateDistName('win32', 'x64', '.exe'),
+			setupMsi: generateDistName('win32', 'x64', '.msi'),
 			exe: `${CONFIG.applicationName}.exe`,
+
+			// Add MSI for administrated environments
+			noMsi: false,
 
 			// Meta
 			title: CONFIG.applicationName,

@@ -3,10 +3,10 @@ OC.L10N.register(
     {
     "Log in" : "Hyni",
     "Logging in …" : "Duke u loguar ...",
-    "About" : "Rreth",
+    "Copy" : "Kopjoni",
+    "Close" : "Mbylleni",
     "License" : "Liçenca",
     "Issues" : "Çështjet",
-    "Close" : "Mbylleni",
     "Ok" : "Në rregull",
     "Yes" : "Po",
     "Light" : "E çelët",
@@ -24,6 +24,7 @@ OC.L10N.register(
     "Menu" : "Menu",
     "Report a bug" : "Njoftoni një të metë",
     "Settings" : "Rregullimet",
+    "About" : "Rreth",
     "Back" : "Mbrapsht",
     "Log out" : "Shkyçu",
     "Invisible" : "I padukshëm"

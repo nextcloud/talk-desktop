@@ -8,6 +8,7 @@ OC.L10N.register(
     "Yes" : "হ্যাঁ",
     "Light" : "হাল্কা",
     "Dark" : "গাঢ়",
+    "Always" : "সর্বদা",
     "Reset" : "পূণঃনির্ধানণ",
     "Today" : "আজ",
     "Cancel" : "বাতিল করুন",

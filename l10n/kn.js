@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Copy" : "ನಕಲಿಸಿ",
     "Close" : "ಮುಚ್ಚು",
     "Ok" : "﻿ಸರಿ",
     "No" : "﻿ಇಲ್ಲ",

@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "புகுபதிகை",
+    "Copied" : "நகலெடுக்கப்பட்டது",
     "Close" : "மூடுக",
     "Ok" : "Ok",
     "No" : "இல்லை",

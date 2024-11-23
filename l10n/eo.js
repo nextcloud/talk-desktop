@@ -3,8 +3,8 @@ OC.L10N.register(
     {
     "Log in" : "Ensaluti",
     "Logging in …" : "Ensaluti...",
-    "License" : "Permesilo",
     "Close" : "Malfermi",
+    "License" : "Permesilo",
     "Ok" : "Bone",
     "No" : "Ne",
     "Yes" : "Jes",

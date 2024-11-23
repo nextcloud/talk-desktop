@@ -1,8 +1,7 @@
 { "translations": {
     "Logging in …" : "Најава ...",
-    "About" : "За",
-    "License" : "Лиценца",
     "Close" : "Затвори",
+    "License" : "Лиценца",
     "Ok" : "Во ред",
     "Light" : "Светла",
     "Dark" : "Темна",
@@ -27,6 +26,7 @@
     "Share screen" : "Сподели екран",
     "Report a bug" : "Пријави грешка",
     "Settings" : "Параметри",
+    "About" : "За",
     "Back" : "Назад",
     "View profile" : "Прегледај профил",
     "Set custom status" : "Постави сопствен статус",

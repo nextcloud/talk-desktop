@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Logging in …" : "Logging in …",
-    "About" : "About",
     "Close" : "Close",
     "No" : "No",
     "Yes" : "Yes",
@@ -17,6 +16,7 @@ OC.L10N.register(
     "Status message" : "Status message",
     "Cancel" : "Cancel",
     "Settings" : "Sozlamalar",
+    "About" : "About",
     "View profile" : "View profile",
     "Online" : "Online",
     "Away" : "Away",

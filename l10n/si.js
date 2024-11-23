@@ -3,9 +3,8 @@ OC.L10N.register(
     {
     "Log in" : "පිවිසෙන්න",
     "Logging in …" : "පිවිසෙමින් …",
-    "About" : "පිළිබඳ",
-    "License" : "බලපත්‍රය",
     "Close" : "වසන්න",
+    "License" : "බලපත්‍රය",
     "No" : "නැහැ",
     "Dark" : "අඳුරු",
     "Theme" : "තේමාව",
@@ -15,6 +14,7 @@ OC.L10N.register(
     "This week" : "මෙම සතිය",
     "Cancel" : "අවලංගු",
     "Settings" : "සැකසුම්",
+    "About" : "පිළිබඳ",
     "Back" : "ආපසු",
     "Log out" : "නික්මෙන්න"
 },

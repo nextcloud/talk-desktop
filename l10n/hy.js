@@ -2,10 +2,10 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Մուտք գործել",
-    "About" : "Մասին",
+    "Copy" : "Պատճենել",
+    "Close" : "Փակել",
     "License" : "լիցենզիա",
     "Issues" : "հայց",
-    "Close" : "Փակել",
     "Ok" : "Լավ",
     "No" : "Ոչ",
     "Yes" : "Այո",
@@ -13,6 +13,7 @@ OC.L10N.register(
     "Today" : "Այսօր",
     "This week" : "այս շաբաթ",
     "Cancel" : "չեղարկել",
-    "Settings" : "Կարգավորումներ"
+    "Settings" : "Կարգավորումներ",
+    "About" : "Մասին"
 },
 "nplurals=2; plural=(n != 1);");

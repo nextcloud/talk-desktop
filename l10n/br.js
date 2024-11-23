@@ -3,11 +3,12 @@ OC.L10N.register(
     {
     "Log in" : "Kennaskañ",
     "Logging in …" : "O kennsakañ...",
-    "License" : "Aotre",
     "Close" : "Serriñ",
+    "License" : "Aotre",
     "No" : "Nann",
     "Light" : "Lugernus",
     "Dark" : "Teñval",
+    "Never" : "James",
     "Theme" : "Tem",
     "Don't clear" : "Arabat diverkañ",
     "Today" : "Hiziv",

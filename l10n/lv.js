@@ -3,8 +3,9 @@ OC.L10N.register(
     {
     "Log in" : "Pieteikties",
     "Logging in …" : "Notiek pieteikšanās …",
-    "License" : "Licence",
+    "Copy" : "Kopēt",
     "Close" : "Aizvērt",
+    "License" : "Licence",
     "Ok" : "Labi",
     "No" : "Nē",
     "Yes" : "Jā",

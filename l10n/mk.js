@@ -2,9 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Logging in …" : "Најава ...",
-    "About" : "За",
-    "License" : "Лиценца",
     "Close" : "Затвори",
+    "License" : "Лиценца",
     "Ok" : "Во ред",
     "Light" : "Светла",
     "Dark" : "Темна",
@@ -29,6 +28,7 @@ OC.L10N.register(
     "Share screen" : "Сподели екран",
     "Report a bug" : "Пријави грешка",
     "Settings" : "Параметри",
+    "About" : "За",
     "Back" : "Назад",
     "View profile" : "Прегледај профил",
     "Set custom status" : "Постави сопствен статус",

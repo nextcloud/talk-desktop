@@ -19,6 +19,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Datenschutz und Geschäftsbedingungen",
     "License" : "Lizenz",
     "Issues" : "Probleme",
+    "Copy report" : "Bericht kopieren",
     "Ok" : "Ok",
     "No" : "Nein",
     "Yes" : "Ja",

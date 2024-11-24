@@ -19,6 +19,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "隱私及法律政策",
     "License" : "授權",
     "Issues" : "問題",
+    "Copy report" : "複製報告",
     "Ok" : "Ok",
     "No" : "否",
     "Yes" : "是",

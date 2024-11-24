@@ -19,6 +19,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Polasaí Príobháideachta agus Dlí",
     "License" : "Ceadúnas",
     "Issues" : "Saincheisteanna",
+    "Copy report" : "Cóipeáil tuairisc",
     "Ok" : "Ceart go leor",
     "No" : "Níl",
     "Yes" : "Tá",

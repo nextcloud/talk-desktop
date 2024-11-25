@@ -13,17 +13,19 @@
 
 All binaries are available on [Nextcloud Releases](https://github.com/nextcloud-releases/talk-desktop/releases).
 
-| Platform (architecture)              | Distribution type                                                                                                                                     | Download link                                                                                                                                        |
-|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **🐧 Linux** (x64)                   | [Flatpak](https://flatpak.org) single file (recommended)                                                                                              | [Nextcloud.Talk-linux-x64.flatpak](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.flatpak)     |
-| **🐧 Linux** (x64)                   | ZIP archive                                                                                                                                           | [Nextcloud.Talk-linux-x64.zip](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.zip)             |
-| **🍎 macOS** (Intel + Apple Silicon) | Disc Image                                                                                                                                            | [Nextcloud.Talk-macos-universal.dmg](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-macos-universal.dmg) |
-| **🪟 Windows** (x64)                 | Non-admin single-user one-click installer (recommended)                                                                                               | [Nextcloud.Talk-windows-x64.exe](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.exe)         |
-| **🪟 Windows** (x64)                 | [MSI Deployment Tool](https://github.com/Squirrel/Squirrel.Windows/blob/develop/docs/using/machine-wide-installs.md) (for administrated environments) | [Nextcloud.Talk-windows-x64.msi](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.msi)         |
+| Platform (arch)          | Distribution type                                                                                                                                                   | Download link                                                                                                                                        |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **🐧 Linux** (x64)       | [Flatpak](https://flatpak.org) single file (recommended)                                                                                                            | [Nextcloud.Talk-linux-x64.flatpak](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.flatpak)     |
+| **🐧 Linux** (x64)       | ZIP archive                                                                                                                                                         | [Nextcloud.Talk-linux-x64.zip](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.zip)             |
+| **🍎 macOS** (Universal) | Disc Image                                                                                                                                                          | [Nextcloud.Talk-macos-universal.dmg](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-macos-universal.dmg) |
+| **🪟 Windows** (x64)     | Non-admin single-user one-click installer (recommended)                                                                                                             | [Nextcloud.Talk-windows-x64.exe](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.exe)         |
+| **🪟 Windows** (x64)     | [MSI Deployment Tool](https://github.com/Squirrel/Squirrel.Windows/blob/develop/docs/using/machine-wide-installs.md) (for administrated environments, experimental) | [Nextcloud.Talk-windows-x64.msi](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.msi)         |
 
-### Via Package Manager
+### via Package manager
 
-_Coming soon..._
+| Platform       | Package manager                                                                       | Command                         |
+|----------------|---------------------------------------------------------------------------------------|---------------------------------|
+| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk` |
 
 ## 🏗️ Prerequisites
 

@@ -113,7 +113,7 @@ module.exports = {
 			}
 
 			if (!fs.existsSync(path.join(TALK_PATH, 'node_modules'))) {
-				throw new Error(`No Nextcloud Talk (spreed repository) dependencies are installed.\nTry to execute \`cd ${TALK_PATH} && npm ci\``)
+				throw new Error(`No Nextcloud Talk (spreed repository) dependencies are installed.\nTry to execute \`npm ci --prefix="${TALK_PATH}"\``)
 			}
 		},
 
@@ -291,7 +291,7 @@ module.exports = {
 			name: '@electron-forge/plugin-webpack',
 			config: {
 				mainConfig: './webpack.main.config.js',
-				devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' data: blob: ${process.env.NEXTCLOUD_DEV_SERVER_HOSTS}; script-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob:`,
+				devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' data: blob: ${process.env.NEXTCLOUD_DEV_SERVER_HOSTS || '*'}; script-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob:`,
 				port: 3000, // The default for this plugin
 				loggerPort: 9005, // The default is 9000, but it conflicts with Talk API
 				devServer: {

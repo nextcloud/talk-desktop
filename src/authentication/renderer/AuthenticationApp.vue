@@ -16,7 +16,7 @@ import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../..
 import { refetchAppData } from '../../app/appData.service.js'
 
 const version = window.TALK_DESKTOP.packageInfo.version
-const rawServerUrl = ref(process.env.NODE_ENV !== 'production' ? process.env.NEXTCLOUD_DEV_SERVER_HOSTS?.split?.(' ')?.[0] : '')
+const rawServerUrl = ref('')
 
 const serverUrl = computed(() => {
 	const addHTTPS = (url) => url.startsWith('http') ? url : `https://${url}`

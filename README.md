@@ -60,42 +60,28 @@ However, using portable `zip` distribution, you can have several Nextcloud Talk 
 
 ## 🛠️ Development Setup
 
-### Initial setup
-
-```bash
-# Install dependencies
-npm ci
-
-# Make .env file
-cp .env.example .env
-
-# Don't forget to configure ENV variables! 
-```
-
-Nextcloud Talk Desktop requires [Nextcloud Talk source code](https://github.com/nextcloud/spreed).
-
-#### No `nextcloud/spreed` is cloned?
-
-Clone `nextcloud/spreed` and install dependencies:
-
-```bash
-# Clone in the repository root
-git clone https://github.com/nextcloud/spreed
-
-# Install dependencies
-cd ./spreed/
-npm ci
-
-# Don't forget to return back
-cd ../
-```
-
-#### `nextcloud/spreed` is already cloned?
-
-Set `TALK_PATH` ENV variable or edit `.env` file:
- ```dotenv
-TALK_PATH=/path/to/nextcloud-dev/apps/spreed/
- ```
+1. Install dependencies
+	 ```bash
+	 npm ci 
+	 ```
+2. Nextcloud Talk Desktop requires [Nextcloud Talk source code](https://github.com/nextcloud/spreed).
+   - **No `nextcloud/spreed` is cloned?**\
+     Clone it and install dependencies:
+	   ```sh
+	   # Clone Talk to the repository root
+	   git clone https://github.com/nextcloud/spreed
+     
+	   # Install dependencies
+	   npm ci --prefix=spreed
+	   ```
+   - **You want to reuse existing `nextcloud/spreed`, for instance, in a server setup?**\
+     Set `TALK_PATH` ENV variable or edit `.env` file:
+     ```sh
+     cp .env.example .env
+     # Edit .env and set TALK_PATH
+     TALK_PATH=/path/to/nextcloud/server/apps-extra/spreed/
+     ```
+3. Check `.env.example` for any additional configuration if needed.
 
 ## 🧑‍💻 Development
 

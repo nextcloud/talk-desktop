@@ -21,9 +21,11 @@ All binaries are available on [Nextcloud Releases](https://github.com/nextcloud-
 | **🪟 Windows** (x64)     | Non-admin single-user one-click installer (recommended)                                                                                               | [Nextcloud.Talk-windows-x64.exe](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.exe)         |
 | **🪟 Windows** (x64)     | [MSI Deployment Tool](https://github.com/Squirrel/Squirrel.Windows/blob/develop/docs/using/machine-wide-installs.md) (for administrated environments) | [Nextcloud.Talk-windows-x64.msi](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.msi)         |
 
-### Via Package Manager
+### via Package manager
 
-_Coming soon..._
+| Platform       | Package manager                                                                       | Command                         |
+|----------------|---------------------------------------------------------------------------------------|---------------------------------|
+| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk` |
 
 ## 🏗️ Prerequisites
 

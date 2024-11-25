@@ -54,10 +54,12 @@ function generateDistName(platform, arch, ext, includeVersion = false) {
 		x64: 'x64',
 		arm64: 'arm',
 	}
+	const platformTitle = platformTitles[platform] ?? platform
+	const archTitle = archTitles[arch] ?? arch
 	const version = packageJSON.version
 	return includeVersion
-		? `${CONFIG.applicationNameSanitized}-v${version}-${platformTitles[platform]}-${archTitles[arch]}${ext}`
-		: `${CONFIG.applicationNameSanitized}-${platformTitles[platform]}-${archTitles[arch]}${ext}`
+		? `${CONFIG.applicationNameSanitized}-v${version}-${platformTitle}-${archTitle}${ext}`
+		: `${CONFIG.applicationNameSanitized}-${platformTitle}-${archTitle}${ext}`
 }
 
 /**

@@ -19,6 +19,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "السياسة القانونية و الخصوصية",
     "License" : "الرخصة",
     "Issues" : "مشاكل",
+    "Copy report" : "نسخ التقرير",
     "Ok" : "موافق",
     "No" : "لا",
     "Yes" : "نعم",

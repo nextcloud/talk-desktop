@@ -14,6 +14,7 @@ import IconMinus from 'vue-material-design-icons/Minus.vue'
 import IconPlus from 'vue-material-design-icons/Plus.vue'
 import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import IconCardAccountPhoneOutline from 'vue-material-design-icons/CardAccountPhoneOutline.vue'
 import IconPhoneRingOutline from 'vue-material-design-icons/PhoneRingOutline.vue'
 import IconBellRingOutline from 'vue-material-design-icons/BellRingOutline.vue'
 import IconRestore from 'vue-material-design-icons/Restore.vue'
@@ -59,15 +60,20 @@ const zoomHint = t('talk_desktop', 'Zoom can be also changed by {key} or mouse w
 	resetKey: `<kbd>${ctrl} + 0</kbd>`,
 }, undefined, { escape: false })
 
-const playSoundChat = useAppConfigValue('playSoundChat')
-const playSoundCall = useAppConfigValue('playSoundCall')
-const playSoundOptions = [
+const generalNotificationOptions = [
 	{ label: t('talk_desktop', 'Always'), value: 'always' } as const,
 	{ label: t('talk_desktop', 'When not in "Do not disturb"'), value: 'respect-dnd' } as const,
 	{ label: t('talk_desktop', 'Never'), value: 'never' } as const,
 ]
-const playSoundChatOption = useNcSelectModel(playSoundChat, playSoundOptions)
-const playSoundCallOption = useNcSelectModel(playSoundCall, playSoundOptions)
+
+const playSoundChat = useAppConfigValue('playSoundChat')
+const playSoundChatOption = useNcSelectModel(playSoundChat, generalNotificationOptions)
+
+const playSoundCall = useAppConfigValue('playSoundCall')
+const playSoundCallOption = useNcSelectModel(playSoundCall, generalNotificationOptions)
+
+const enableCallbox = useAppConfigValue('enableCallbox')
+const enableCallboxOption = useNcSelectModel(enableCallbox, generalNotificationOptions)
 
 /**
  * Restart the app
@@ -144,15 +150,21 @@ function relaunch() {
 		</SettingsSubsection>
 
 		<SettingsSubsection :name="t('talk_desktop', 'Notifications and sounds')">
-			<SettingsSelect v-model="playSoundChatOption" :options="playSoundOptions" :label="t('talk_desktop', 'Play chat notification sound')">
+			<SettingsSelect v-model="playSoundChatOption" :options="generalNotificationOptions" :label="t('talk_desktop', 'Play chat notification sound')">
 				<template #icon="{ size }">
 					<IconBellRingOutline :size="size" />
 				</template>
 			</SettingsSelect>
 
-			<SettingsSelect v-model="playSoundCallOption" :options="playSoundOptions" :label="t('talk_desktop', 'Play call notification sound')">
+			<SettingsSelect v-model="playSoundCallOption" :options="generalNotificationOptions" :label="t('talk_desktop', 'Play call notification sound')">
 				<template #icon="{ size }">
 					<IconPhoneRingOutline :size="size" />
+				</template>
+			</SettingsSelect>
+
+			<SettingsSelect v-model="enableCallboxOption" :options="generalNotificationOptions" :label="t('talk_desktop', 'Show call notification popup')">
+				<template #icon="{ size }">
+					<IconCardAccountPhoneOutline :size="size" />
 				</template>
 			</SettingsSelect>
 		</SettingsSubsection>

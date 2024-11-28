@@ -10,6 +10,7 @@
 		"strictNullChecks": true,
 		"paths": {
 			"@global-styles/*": ["resources/server-global-styles/master/*"],
+			"@talk/*": ["spreed/*"],
 		},
 	},
 	"vueCompilerOptions": {

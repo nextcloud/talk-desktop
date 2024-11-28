@@ -25,6 +25,7 @@ OC.L10N.register(
     "Emoji for your status message" : "Emoji para su mensaje de estado",
     "Status message" : "Mensaje de estado",
     "Loading …" : "Cargando …",
+    "Layout" : "Disposición",
     "Cancel" : "Cancelar",
     "Share screen" : "Compartir la pantalla",
     "Menu" : "Menú",

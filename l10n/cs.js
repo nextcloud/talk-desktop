@@ -19,6 +19,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Zásady ochrany soukromí a právní náležitosti",
     "License" : "Licence",
     "Issues" : "Problémy",
+    "Copy report" : "Zkopírovat výkaz",
     "Ok" : "OK",
     "No" : "Ne",
     "Yes" : "Ano",

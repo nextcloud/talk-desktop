@@ -58,19 +58,30 @@ function createPatcherAliases(packageName) {
 }
 
 /**
- * Get the version tag via "git describe".
- * @example "v1.0.1" on a directly tagged commit
- * @example "v1.0.1-80-g481b5e1 (heads/fix/help-system-report)" on an untagged commit
+ * Get the full version, including commit hash and branch name if not tagged
+ * @example "v1.0.0-rc.2" on a directly tagged (released) commit
+ * @example "v1.0.0-rc.2-481b5e1 (fix/diagnosis-report-versions)" on an untagged commit
  * @param {string} cwd - The path to the git repository
  * @return {string} - The described version
  */
-function getDescribedVersion(cwd = __dirname) {
-	const gitTag = spawnSync('git', ['describe', '--tags'], { cwd }).stdout.toString().trim()
-	const gitBranch = spawnSync('git', ['describe', '--all'], { cwd }).stdout.toString().trim()
-	if (!gitBranch.startsWith('tags/')) {
-		return `${gitTag} (${gitBranch})`
+function getFullVersion(cwd = __dirname) {
+	// Current commit tag if any or an empty string, e.g. "v21.0.0-dev.0"
+	const gitVersion = spawnSync('git', ['tag', '--points-at', 'HEAD'], { cwd }).stdout.toString().trim()
+
+	// The repository is directly on the released commit
+	// It supposed to be equal to the package version
+	if (gitVersion) {
+		return gitVersion
 	}
-	return gitTag
+
+	// Currently specified version from the package.json, e.g. "21.0.0-dev.0"
+	const packageVersion = require(`${cwd}/package.json`).version
+	// Commit hash, e.g. "85d5a6722"
+	const hash = spawnSync('git', ['rev-parse', '--short', 'HEAD'], { cwd }).stdout.toString().trim()
+	// Branch name, e.g. "fix/diagnosis-report-versions" or "HEAD" if detached
+	const branch = spawnSync('git', ['rev-parse', '--abbrev-ref', 'HEAD'], { cwd }).stdout.toString().trim()
+
+	return `v${packageVersion}-${hash} (${branch})`
 }
 
 const webpackRendererConfig = mergeWithRules({
@@ -140,8 +151,8 @@ const webpackRendererConfig = mergeWithRules({
 
 		new webpack.DefinePlugin({
 			IS_DESKTOP: true,
-			__VERSION_TAG__: JSON.stringify(getDescribedVersion()),
-			__TALK_VERSION_TAG__: JSON.stringify(getDescribedVersion(TALK_PATH)),
+			__VERSION_TAG__: JSON.stringify(getFullVersion()),
+			__TALK_VERSION_TAG__: JSON.stringify(getFullVersion(TALK_PATH)),
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),
 		}),
 	],

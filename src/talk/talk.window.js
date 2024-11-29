@@ -3,14 +3,13 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow, nativeTheme } = require('electron')
+const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadHandler } = require('../app/downloads.ts')
 const { applyWheelZoom } = require('../app/zoom.service.ts')
 const { setupTray } = require('../app/app.tray.js')
-const { getBrowserWindowIcon, getTrayIcon } = require('../shared/icons.utils.js')
-const { isMac } = require('../app/system.utils.ts')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
 const { getScaledWindowMinSize, getScaledWindowSize } = require('../app/utils.ts')
@@ -74,14 +73,7 @@ function createTalkWindow() {
 	applyDownloadHandler(window)
 	applyWheelZoom(window)
 
-	const tray = setupTray(window)
-
-	// macOS automatically adjust the tray using a template icon
-	if (!isMac) {
-		nativeTheme.on('updated', () => {
-			tray.setImage(getTrayIcon())
-		})
-	}
+	setupTray(window)
 
 	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)
 

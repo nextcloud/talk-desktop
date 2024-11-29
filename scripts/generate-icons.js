@@ -70,9 +70,11 @@ async function generateIcons() {
 	 */
 
 	const IconMain = path.join(__dirname, '../img/talk-icon-rounded.svg')
+	const IconMainSpaced = path.join(__dirname, '../img/talk-icon-rounded-spaced.svg')
 	const IconMac = path.join(__dirname, '../img/talk-icon-mac-shadow.svg')
 	const IconPlainLight = path.join(__dirname, '../img/talk-icon-plain-light.svg')
-	const IconPlainDark = path.join(__dirname, '../img/talk-icon-plain-dark.svg')
+	const IconPlainSpacedLight = path.join(__dirname, '../img/talk-icon-plain-spaced-light.svg')
+	const IconPlainSpacedDark = path.join(__dirname, '../img/talk-icon-plain-spaced-dark.svg')
 
 	/**
 	 * Size recommendations:
@@ -104,15 +106,15 @@ async function generateIcons() {
 
 	// Linux
 	await generate(IconMain, 'IconTrayLinux.png', LINUX_TRAY_ICON_SIZE, output)
-	await generate(IconPlainLight, 'IconTrayLinuxLight.png', LINUX_TRAY_ICON_SIZE, output)
-	await generate(IconPlainDark, 'IconTrayLinuxDark.png', LINUX_TRAY_ICON_SIZE, output)
+	await generate(IconPlainSpacedLight, 'IconTrayLinuxLight.png', LINUX_TRAY_ICON_SIZE, output)
+	await generate(IconPlainSpacedDark, 'IconTrayLinuxDark.png', LINUX_TRAY_ICON_SIZE, output)
 	// macOS
 	await generate(IconMain, 'IconTrayMac.png', MACOS_TRAY_ICON_SIZES, output)
 	await generate(IconPlainLight, 'IconTrayMacTemplate.png', MACOS_TRAY_ICON_SIZES, output)
 	// Windows
 	await generate(IconMain, 'IconTrayWin32.ico', WINDOWS_TRAY_ICON_SIZES, output)
-	await generate(IconPlainLight, 'IconTrayWin32Light.ico', WINDOWS_ICON_SIZES, output)
-	await generate(IconPlainDark, 'IconTrayWin32Dark.ico', WINDOWS_ICON_SIZES, output)
+	await generate(IconPlainSpacedLight, 'IconTrayWin32Light.ico', WINDOWS_ICON_SIZES, output)
+	await generate(IconPlainSpacedDark, 'IconTrayWin32Dark.ico', WINDOWS_ICON_SIZES, output)
 }
 
 generateIcons()

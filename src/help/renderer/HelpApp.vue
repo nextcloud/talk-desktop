@@ -137,6 +137,7 @@ function close() {
 	flex-direction: column;
 	gap: calc(2 * var(--default-grid-baseline));
 	flex: 0 1 auto;
+	height: 100%;
 }
 
 .help__report {
@@ -171,6 +172,10 @@ function close() {
 .help__report :deep(th),
 .help__report :deep(td) {
 	border-color: var(--color-border) !important;
+}
+
+.help__report :deep(pre) {
+	background-color: var(--color-main-background) !important;
 }
 
 .help__report-actions {

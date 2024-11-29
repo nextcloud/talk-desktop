@@ -137,6 +137,7 @@ function close() {
 	flex-direction: column;
 	gap: calc(2 * var(--default-grid-baseline));
 	flex: 0 1 auto;
+	height: 100%;
 }
 
 .help__report {

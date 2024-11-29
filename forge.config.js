@@ -11,6 +11,8 @@ const { MakerDMG } = require('@electron-forge/maker-dmg')
 const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
 const { MakerZIP } = require('@electron-forge/maker-zip')
 const packageJSON = require('./package.json')
+const { FusesPlugin } = require('@electron-forge/plugin-fuses')
+const { FuseVersion, FuseV1Options } = require('@electron/fuses')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
 
 require('dotenv').config()
@@ -348,5 +350,10 @@ module.exports = {
 				},
 			},
 		},
+
+		new FusesPlugin({
+			version: FuseVersion.V1,
+			[FuseV1Options.EnableCookieEncryption]: true,
+		}),
 	],
 }

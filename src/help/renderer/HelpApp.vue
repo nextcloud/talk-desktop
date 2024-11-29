@@ -174,6 +174,10 @@ function close() {
 	border-color: var(--color-border) !important;
 }
 
+.help__report :deep(pre) {
+	background-color: var(--color-main-background) !important;
+}
+
 .help__report-actions {
 	display: flex;
 	justify-content: space-around;

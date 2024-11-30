@@ -35,8 +35,8 @@ const icons = {
 
 		linux: {
 			default: require('../../img/icons/IconTrayLinux.png'),
-			light: require('../../img/icons/IconTrayLinuxLight@2x.png'),
-			dark: require('../../img/icons/IconTrayLinuxDark@2x.png'),
+			light: require('../../img/icons/IconTrayLinuxLight.png'),
+			dark: require('../../img/icons/IconTrayLinuxDark.png'),
 		},
 	},
 }

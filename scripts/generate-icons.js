@@ -81,7 +81,7 @@ async function generateIcons() {
 	const LINUX_ICON_SIZE = 512
 	const MACOS_ICON_SIZES = [16, 32, 64, 128, 256, 512, 1024]
 	const WINDOWS_ICON_SIZES = [16, 24, 32, 48, 256]
-	const LINUX_TRAY_ICON_SIZE = [16, 32]
+	const LINUX_TRAY_ICON_SIZE = [32]
 	const MACOS_TRAY_ICON_SIZES = [16, 32]
 
 	/**

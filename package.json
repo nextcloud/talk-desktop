@@ -72,7 +72,7 @@
     "@electron-forge/maker-flatpak": "^7.5.0",
     "@electron-forge/maker-squirrel": "^7.6.0",
     "@electron-forge/maker-zip": "^7.5.0",
-    "@electron-forge/plugin-webpack": "^7.5.0",
+    "@electron-forge/plugin-webpack": "^7.6.0",
     "@nextcloud/eslint-config": "^8.4.1",
     "@nextcloud/eslint-plugin": "^2.2.1",
     "@nextcloud/webpack-vue-config": "^6.2.0",

@@ -94,7 +94,7 @@ async function generateIcons() {
 	 */
 
 	// Linux
-	await generate(IconMain, 'icon.png', [LINUX_ICON_SIZE], output)
+	await generate(IconMainSpaced, 'icon.png', [LINUX_ICON_SIZE], output)
 	// macOS
 	await generate(IconMac, 'icon.icns', MACOS_ICON_SIZES, output)
 	// Windows
@@ -105,7 +105,7 @@ async function generateIcons() {
 	 */
 
 	// Linux
-	await generate(IconMain, 'IconTrayLinux.png', LINUX_TRAY_ICON_SIZE, output)
+	await generate(IconMainSpaced, 'IconTrayLinux.png', LINUX_TRAY_ICON_SIZE, output)
 	await generate(IconPlainSpacedLight, 'IconTrayLinuxLight.png', LINUX_TRAY_ICON_SIZE, output)
 	await generate(IconPlainSpacedDark, 'IconTrayLinuxDark.png', LINUX_TRAY_ICON_SIZE, output)
 	// macOS

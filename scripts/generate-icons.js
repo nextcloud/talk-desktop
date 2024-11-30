@@ -75,14 +75,17 @@ async function generateIcons() {
 	const IconPlainDark = path.join(__dirname, '../img/talk-icon-plain-dark.svg')
 
 	/**
-	 * Sizes
+	 * Size recommendations:
+	 * - macOS: https://developer.apple.com/design/human-interface-guidelines/app-icons#macOS-app-icon-sizes
+	 * - Windows: https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction#icon-scaling
 	 */
 
 	const LINUX_ICON_SIZE = 512
 	const MACOS_ICON_SIZES = [16, 32, 64, 128, 256, 512, 1024]
-	const WINDOWS_ICON_SIZES = [16, 24, 32, 48, 256]
+	const WINDOWS_ICON_SIZES = [16, 20, 24, 30, 32, 36, 40, 48, 60, 64, 72, 80, 96, 256]
 	const LINUX_TRAY_ICON_SIZE = [32]
 	const MACOS_TRAY_ICON_SIZES = [16, 32]
+	const WINDOWS_TRAY_ICON_SIZES = [16, 20, 24, 32, 40, 48, 64]
 
 	/**
 	 * App icons
@@ -107,6 +110,7 @@ async function generateIcons() {
 	await generate(IconMain, 'IconTrayMac.png', MACOS_TRAY_ICON_SIZES, output)
 	await generate(IconPlainLight, 'IconTrayMacTemplate.png', MACOS_TRAY_ICON_SIZES, output)
 	// Windows
+	await generate(IconMain, 'IconTrayWin32.ico', WINDOWS_TRAY_ICON_SIZES, output)
 	await generate(IconPlainLight, 'IconTrayWin32Light.ico', WINDOWS_ICON_SIZES, output)
 	await generate(IconPlainDark, 'IconTrayWin32Dark.ico', WINDOWS_ICON_SIZES, output)
 }

@@ -28,7 +28,7 @@ const icons = {
 		},
 
 		win32: {
-			default: require('../../img/icons/icon.ico'),
+			default: require('../../img/icons/IconTrayWin32.ico'),
 			light: require('../../img/icons/IconTrayWin32Light.ico'),
 			dark: require('../../img/icons/IconTrayWin32Dark.ico'),
 		},

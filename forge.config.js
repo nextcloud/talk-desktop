@@ -226,7 +226,7 @@ module.exports = {
 				branch: 'stable',
 				// https://specifications.freedesktop.org/icon-theme-spec/latest/
 				icon: {
-					scalable: path.resolve(__dirname, 'img/talk-icon-rounded.svg'),
+					scalable: path.resolve(__dirname, 'img/talk-icon-rounded-spaced.svg'),
 				},
 				// https://specifications.freedesktop.org/menu-spec/latest/category-registry.html
 				categories: [

@@ -28,15 +28,15 @@ const icons = {
 		},
 
 		win32: {
-			default: require('../../img/icons/icon.ico'),
+			default: require('../../img/icons/IconTrayWin32.ico'),
 			light: require('../../img/icons/IconTrayWin32Light.ico'),
 			dark: require('../../img/icons/IconTrayWin32Dark.ico'),
 		},
 
 		linux: {
 			default: require('../../img/icons/IconTrayLinux.png'),
-			light: require('../../img/icons/IconTrayLinuxLight@2x.png'),
-			dark: require('../../img/icons/IconTrayLinuxDark@2x.png'),
+			light: require('../../img/icons/IconTrayLinuxLight.png'),
+			dark: require('../../img/icons/IconTrayLinuxDark.png'),
 		},
 	},
 }

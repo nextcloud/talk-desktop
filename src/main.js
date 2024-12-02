@@ -119,10 +119,19 @@ app.whenReady().then(async () => {
 	applyTheme()
 
 	try {
+		// Note: legacy Vue devtools warns with "ExtensionLoadWarning: Manifest version 2 is deprecated, and support will be removed in 2024."
+		// This is fine and works. New Vue devtools does not support Vue 2.
 		await installVueDevtools()
 	} catch (error) {
 		console.log('Unable to install Vue Devtools')
 		console.error(error)
+	}
+
+	if (process.env.NODE_ENV === 'development') {
+		console.log()
+		console.log('Nextcloud Talk is running via development server')
+		console.log('Hint: type "rs" to restart app without restarting the build')
+		console.log()
 	}
 
 	// TODO: add windows manager

@@ -3,19 +3,39 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import type { operations } from '@talk/src/types/openapi/openapi.ts'
 import axios from '@nextcloud/axios'
 import { getCurrentUser } from '@nextcloud/auth'
 import { generateOcsUrl } from '@nextcloud/router'
 
-type CallGetParticipantsForCall = operations['call-get-peers-for-call']['responses'][200]['content']['application/json']
+// @talk/src/types/openapi/openapi.ts/operations['call-get-peers-for-call']['responses'][200]['content']['application/json']
+// TODO: find a way to import from @talk without type errors on CI
+type CallGetParticipantsForCallResponse = {
+	ocs: {
+		meta: {
+			status: string
+			statuscode: number
+			message?: string
+			totalitems?: string
+			itemsperpage?: string
+		}
+		data: {
+			actorId: string;
+			actorType: string;
+			displayName: string;
+			/** Format: int64 */
+			lastPing: number;
+			sessionId: string;
+			token: string;
+		}[]
+	}
+}
 
 /**
  * Get participants of a call in a conversation
  * @param token - Conversation token
  */
 async function getCallParticipants(token: string) {
-	const response = await axios.get<CallGetParticipantsForCall>(generateOcsUrl('apps/spreed/api/v4/call/{token}', { token }))
+	const response = await axios.get<CallGetParticipantsForCallResponse>(generateOcsUrl('apps/spreed/api/v4/call/{token}', { token }))
 	return response.data.ocs.data
 }
 

@@ -16,6 +16,8 @@ useUserStatusStore()
 useUserStatusHeartbeat()
 useAppConfigStore()
 
+const isPreview = false
+
 const user = appData.userMetadata
 const OS = window.systemInfo
 
@@ -61,7 +63,7 @@ onUnmounted(() => {
 				tabindex="0"
 				@click="pushToRoot">
 				<span class="header__title">Nextcloud Talk</span>
-				<span class="header__preview-badge">Preview</span>
+				<span v-if="isPreview" class="header__preview-badge">Preview</span>
 			</div>
 
 			<div class="spacer" />

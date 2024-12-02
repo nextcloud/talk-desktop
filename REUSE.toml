@@ -24,6 +24,12 @@ SPDX-FileCopyrightText = "none"
 SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
+path = [".env.example"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
 path = ["img/dmg-background.png", "img/dmg-background@2x.png"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2024 Nextcloud GmbH"

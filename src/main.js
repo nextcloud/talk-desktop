@@ -59,7 +59,7 @@ if (!app.requestSingleInstanceLock()) {
  * Schedule check for a new version available to download from GitHub
  */
 if (process.env.NODE_ENV === 'production') {
-	setupReleaseNotificationScheduler(2 * 60)
+	setupReleaseNotificationScheduler(24 * 60)
 }
 
 ipcMain.on('app:quit', () => app.quit())

@@ -5,6 +5,27 @@
 
 # Changelog
 
+## v1.0.0 - 2024-12-03
+
+### Features
+
+- Add call notification popup [#868](https://github.com/nextcloud/talk-desktop/pull/868)
+
+### Fixes 
+
+- Adjust icon on Linux and Windows [#948](https://github.com/nextcloud/talk-desktop/pull/948)
+- Fix an occasional error alert [#936](https://github.com/nextcloud/talk-desktop/pull/936)
+- Fix minor issues in the About window [#934](https://github.com/nextcloud/talk-desktop/pull/934), [#935](https://github.com/nextcloud/talk-desktop/pull/935)
+- Fix zoom issues in edge cases [#893](https://github.com/nextcloud/talk-desktop/pull/893)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v20.1.0 [#949](https://github.com/nextcloud/talk-desktop/pull/949)
+- New release notify interval is decreased from 2 hours to 1 day [#952](https://github.com/nextcloud/talk-desktop/pull/952)
+- `.env` file is now optional for development [#929](https://github.com/nextcloud/talk-desktop/pull/929) 
+- Update translations
+- Update dependencies
+
 ## v1.0.0-rc.2 - 2024-11-22
 
 ### Features

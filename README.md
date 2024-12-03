@@ -9,6 +9,9 @@
 
 > Official Nextcloud Talk Desktop client
 
+![Nextcloud Talk](./Nextcloud-Talk-light.png#gh-light-mode-only)
+![Nextcloud Talk](./Nextcloud-Talk-dark.png#gh-dark-mode-only)
+
 ## 📥 Install
 
 All binaries are available on [Nextcloud Releases](https://github.com/nextcloud-releases/talk-desktop/releases).

@@ -9,6 +9,7 @@ import { appData } from '../app/AppData.js'
 import { refetchAppDataIfDirty } from '../app/appData.service.js'
 import { initGlobals } from '../shared/globals/globals.js'
 import { applyAxiosInterceptors } from '../shared/setupWebPage.js'
+import { markWindowReady } from '../shared/markWindowReady.ts'
 
 const quitButton = document.querySelector('.quit')
 quitButton.addEventListener('click', () => window.TALK_DESKTOP.quit())
@@ -19,6 +20,8 @@ window.TALK_DESKTOP.getSystemInfo().then(os => {
 		quitButton.classList.add('quit_mac')
 	}
 })
+
+markWindowReady()
 
 appData.restore()
 

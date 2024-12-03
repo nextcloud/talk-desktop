@@ -33,6 +33,10 @@ const TALK_DESKTOP = {
 	 */
 	packageInfo,
 	/**
+	 * Mark the window as ready to show
+	 */
+	markWindowReady: () => ipcRenderer.send('app:markWindowReady'),
+	/**
 	 * Get app name
 	 *
 	 * @return {Promise<string>}

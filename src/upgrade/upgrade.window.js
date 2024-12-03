@@ -7,7 +7,7 @@ const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowSize } = require('../app/utils.ts')
+const { getScaledWindowSize, showWhenWindowMarkedReady } = require('../app/utils.ts')
 
 /**
  *
@@ -38,9 +38,7 @@ function createUpgradeWindow() {
 
 	applyExternalLinkHandler(window)
 
-	window.on('ready-to-show', () => {
-		window.show()
-	})
+	showWhenWindowMarkedReady(window)
 
 	return window
 }

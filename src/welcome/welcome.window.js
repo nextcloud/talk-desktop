@@ -6,7 +6,7 @@
 const { BrowserWindow } = require('electron')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { isMac } = require('../app/system.utils.ts')
-const { getScaledWindowSize } = require('../app/utils.ts')
+const { getScaledWindowSize, showWhenWindowMarkedReady } = require('../app/utils.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -36,6 +36,8 @@ function createWelcomeWindow() {
 	}
 
 	window.loadURL(WELCOME_WINDOW_WEBPACK_ENTRY)
+
+	showWhenWindowMarkedReady(window)
 
 	return window
 }

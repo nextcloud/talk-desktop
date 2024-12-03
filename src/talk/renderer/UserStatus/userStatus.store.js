@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 import { defineStore } from 'pinia'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { emit, subscribe } from '@nextcloud/event-bus'
 import { getCurrentUser } from '@nextcloud/auth'
 import {
@@ -29,6 +29,8 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 
 	/** @type {import('vue').Ref<null|object>} */
 	const backupStatus = ref(null)
+
+	const isDnd = computed(() => userStatus.value?.status === 'dnd')
 
 	const emitUserStatusUpdated = () => emit('user_status:status.updated', {
 		status: userStatus.value.status,
@@ -108,6 +110,7 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 	return {
 		initPromise,
 		userStatus,
+		isDnd,
 		predefinedStatuses,
 		backupStatus,
 		saveUserStatus,

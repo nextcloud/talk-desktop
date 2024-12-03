@@ -16,8 +16,15 @@ import { listen } from '@nextcloud/notify_push'
 import { loadState } from '@nextcloud/initial-state'
 import { emit } from '@nextcloud/event-bus'
 import { generateFilePath } from '@nextcloud/router'
+import { t } from '@nextcloud/l10n'
 import { getNotificationsData } from './notifications.service.js'
 import { appData } from '../../../app/AppData.js'
+import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
+import { getAppConfigValue } from '../../../shared/appConfig.service.ts'
+import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
+import { openConversation } from '../utils/talk.service.ts'
+
+const userStatusStore = useUserStatusStore()
 
 /**
  *
@@ -157,27 +164,43 @@ export function createNotificationStore() {
 		if (notification.app !== 'spreed') {
 			return
 		}
-		const n = new Notification(notification.subject, {
-			title: notification.subject,
-			lang: appData.userMetadata.locale,
-			body: notification.message,
-			tag: notification.notificationId,
-			// We have a custom sound
-			silent: true,
-		})
-		n.addEventListener('click', () => {
-			const event = {
-				cancelAction: false,
-				notification,
-				action: {
-					url: notification.link,
-					type: 'WEB',
-				},
+		if (notification.shouldNotify === false) {
+			return
+		}
+
+		const enableCallboxConfig = getAppConfigValue('enableCallbox')
+		const shouldShowCallPopup = notification.objectType === 'call' && (enableCallboxConfig === 'always' || (enableCallboxConfig === 'respect-dnd' && !userStatusStore.isDnd))
+		if (shouldShowCallPopup) {
+			const params = {
+				token: notification.objectId,
+				name: notification.subjectRichParameters.call.name,
+				type: notification.subjectRichParameters.call['call-type'],
+				avatar: notification.subjectRichParameters.call['icon-url'],
 			}
-			window.TALK_DESKTOP.focusTalk()
-			// Talk will open the call from notification if necessary
-			emit('notifications:action:execute', event)
-		}, false)
+			window.TALK_DESKTOP.showCallbox(params)
+		} else {
+			const n = new Notification(notification.subject, {
+				title: notification.subject,
+				lang: appData.userMetadata.locale,
+				body: notification.message,
+				tag: notification.notificationId,
+				// We have a custom sound
+				silent: true,
+			})
+			n.addEventListener('click', () => {
+				const event = {
+					cancelAction: false,
+					notification,
+					action: {
+						url: notification.link,
+						type: 'WEB',
+					},
+				}
+				window.TALK_DESKTOP.focusTalk()
+				// Talk will open the call from notification if necessary
+				emit('notifications:action:execute', event)
+			}, false)
+		}
 		playSound(notification.objectType === 'call')
 	}
 
@@ -355,3 +378,16 @@ export function createNotificationStore() {
 }
 
 export const notificationsStore = createNotificationStore()
+
+subscribeBroadcast('notifications:missedCall', ({ token, name, type, avatar }) => {
+	const title = type === 'one2one'
+		? t('talk_desktop', 'You missed a call from {user}', { user: name })
+		: t('talk_desktop', 'You missed a group call in {call}', { call: name })
+	const notification = new Notification(title, {
+		icon: avatar,
+		lang: appData.userMetadata.locale,
+		tag: Math.random().toString(36).slice(2, 6),
+		silent: true,
+	})
+	notification.addEventListener('click', () => openConversation(token))
+})

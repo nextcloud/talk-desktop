@@ -17,6 +17,8 @@ module.exports = {
 		// Electron Forge build vars
 		AUTHENTICATION_WINDOW_WEBPACK_ENTRY: 'readonly',
 		AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
+		CALLBOX_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
+		CALLBOX_WINDOW_WEBPACK_ENTRY: 'readonly',
 		TALK_WINDOW_WEBPACK_ENTRY: 'readonly',
 		TALK_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
 		HELP_WINDOW_WEBPACK_ENTRY: 'readonly',
@@ -48,6 +50,8 @@ module.exports = {
 		// It works fine on server because by default in @nextcloud/eslint-config .vue files are not inspected via eslint-plugin-import thus import/extensions doesn't include .vue
 		// See: https://github.com/import-js/eslint-plugin-import/blob/main/README.md#importextensions
 		'import/default': 'off',
+		// import/namespace is not compatible with TS/JS mix
+		'import/namespace': 'off',
 		/**
 		 * ESLint
 		 */

@@ -88,6 +88,13 @@ export type AppConfig = {
 	 * - 'never': disable notification sound
 	 */
 	playSoundCall: 'always' | 'respect-dnd' | 'never'
+	/**
+	 * Whether to show a popup when a call notification is received.
+	 * - 'always': always show the popup
+	 * - 'respect-dnd': show the popup only if user status is not Do-Not-Disturb [default]
+	 * - 'never': disable the call popup
+	 */
+	enableCallbox: 'always' | 'respect-dnd' | 'never'
 }
 
 export type AppConfigKey = keyof AppConfig
@@ -102,6 +109,7 @@ const defaultAppConfig: AppConfig = {
 	zoomFactor: 1,
 	playSoundChat: 'respect-dnd',
 	playSoundCall: 'respect-dnd',
+	enableCallbox: 'respect-dnd',
 }
 
 /** Local cache of the config file mixed with the default values */

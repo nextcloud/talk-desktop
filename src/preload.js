@@ -149,6 +149,11 @@ const TALK_DESKTOP = {
 	 */
 	focusTalk: () => ipcRenderer.invoke('talk:focus'),
 	/**
+	 * Show the callbox window
+	 * @param {object} params - Callbox parameters
+	 */
+	showCallbox: (params) => ipcRenderer.send('callbox:show', params),
+	/**
 	 * Show the help window (aka About)
 	 *
 	 * @return {Promise<void>}

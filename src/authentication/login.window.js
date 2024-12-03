@@ -10,7 +10,7 @@ const { parseLoginRedirectUrl } = require('./login.service.js')
 const { osTitle } = require('../app/system.utils.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowMinSize, getScaledWindowSize } = require('../app/utils.ts')
+const { getScaledWindowMinSize, getScaledWindowSize, applyZoom } = require('../app/utils.ts')
 const { getAppConfig } = require('../app/AppConfig.ts')
 
 const genId = () => Math.random().toString(36).slice(2, 9)
@@ -93,6 +93,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 		})
 
 		applyContextMenu(window)
+		applyZoom(window)
 
 		window.on('close', () => {
 			resolve(new Error('Login window was closed'))

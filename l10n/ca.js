@@ -6,8 +6,9 @@ OC.L10N.register(
     "Nextcloud server address" : "Adreça del servidor Nextcloud",
     "Log in" : "Inicia la sessió",
     "Logging in …" : "S'està iniciant la sessió…",
-    "Copied" : "Copiat",
     "Close" : "Tanca",
+    "Copy" : "Còpia",
+    "Copied" : "Copiat",
     "License" : "Llicència",
     "Issues" : "Errors",
     "Ok" : "D'acord",
@@ -48,6 +49,7 @@ OC.L10N.register(
     "Set custom status" : "Definir l'estat personalitzat",
     "Log out" : "Tanca la sessió",
     "Application" : "Aplicació",
-    "Online" : "En línia"
+    "Online" : "En línia",
+    "You missed a group call in {call}" : "Teniu una trucada de grup perduda a {call}"
 },
 "nplurals=2; plural=(n != 1);");

@@ -13,9 +13,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud مۇلازىمېتىر ئادرېسى",
     "Log in" : "كىرىڭ",
     "Logging in …" : "تىزىمغا كىرىش…",
+    "Close" : "ياپ",
+    "Dismiss" : "خىزمەتتىن ھەيدەش",
+    "Join call" : "چاقىرىشقا قوشۇلۇڭ",
     "Copy" : "كۆچۈرۈڭ",
     "Copied" : "كۆچۈرۈلگەن",
-    "Close" : "ياپ",
     "Privacy and Legal Policy" : "مەخپىيەتلىك ۋە قانۇن سىياسىتى",
     "License" : "ئىجازەتنامە",
     "Issues" : "مەسىلىلەر",
@@ -92,6 +94,8 @@ OC.L10N.register(
     "Invisible" : "كۆرۈنمەيدۇ",
     "Offline" : "تورسىز",
     "Unknown status" : "نامەلۇم ھالەت",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "مۇلازىمېتىرغا ئۇلىنالمايدۇ. تور ئۇلىنىشىڭىزنى تەكشۈرۈپ ئاندىن قايتا سىناڭ."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "مۇلازىمېتىرغا ئۇلىنالمايدۇ. تور ئۇلىنىشىڭىزنى تەكشۈرۈپ ئاندىن قايتا سىناڭ.",
+    "You missed a call from {user}" : "{ئىشلەتكۈچى} نىڭ تېلېفونىنى قولدىن بېرىپ قويدىڭىز",
+    "You missed a group call in {call}" : "{Call in دىكى گۇرۇپپا چاقىرىشنى قولدىن بېرىپ قويدىڭىز"
 },
 "nplurals=2; plural=(n != 1);");

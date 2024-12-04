@@ -4,6 +4,7 @@ OC.L10N.register(
     "Log in" : "Ensaluti",
     "Logging in …" : "Ensaluti...",
     "Close" : "Malfermi",
+    "Dismiss" : "Preterpasi",
     "License" : "Permesilo",
     "Ok" : "Bone",
     "No" : "Ne",

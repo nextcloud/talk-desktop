@@ -3,8 +3,9 @@ OC.L10N.register(
     {
     "Log in" : "Hyni",
     "Logging in …" : "Duke u loguar ...",
-    "Copy" : "Kopjoni",
     "Close" : "Mbylleni",
+    "Dismiss" : "Hiq",
+    "Copy" : "Kopjoni",
     "License" : "Liçenca",
     "Issues" : "Çështjet",
     "Ok" : "Në rregull",

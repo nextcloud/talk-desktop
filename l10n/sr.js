@@ -13,9 +13,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Адреса Некстклауд сервера",
     "Log in" : "Пријава",
     "Logging in …" : "Пријављивање …",
+    "Close" : "Затвори",
+    "Dismiss" : "Уклони",
+    "Join call" : "Придружи се разговору",
     "Copy" : "Копирај",
     "Copied" : "Копирано",
-    "Close" : "Затвори",
     "Privacy and Legal Policy" : "Приватност и правна политика",
     "License" : "Лиценца",
     "Issues" : "Проблеми",
@@ -91,6 +93,7 @@ OC.L10N.register(
     "Invisible" : "Невидљива",
     "Offline" : "Ван мреже",
     "Unknown status" : "Статус се не зна",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Не може да се успостави веза са сервером. Молимо вас да проверите везу са интернетом и покушате касније."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Не може да се успостави веза са сервером. Молимо вас да проверите везу са интернетом и покушате касније.",
+    "You missed a group call in {call}" : "Пропустили сте групни позив у разговору {call}"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

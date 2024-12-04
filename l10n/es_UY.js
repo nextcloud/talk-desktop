@@ -4,6 +4,8 @@ OC.L10N.register(
     "Nextcloud server address" : "Dirección del servidor de Nextcloud",
     "Log in" : "Ingresar",
     "Logging in …" : "Iniciando sesión ...",
+    "Dismiss" : "Descartar",
+    "Join call" : "Unirse a la llamada",
     "License" : "Licencia",
     "Issues" : "Temas",
     "Ok" : "Ok",

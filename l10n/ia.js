@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Log in" : "Aperir session",
     "Close" : "Clauder",
+    "Dismiss" : "Dimitter",
     "Never" : "Nunquam",
     "Reset" : "Re-fixar",
     "Today" : "Hodie",

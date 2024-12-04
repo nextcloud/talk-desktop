@@ -11,9 +11,11 @@
     "Nextcloud server address" : "Nextcloud 伺服器位址",
     "Log in" : "登入",
     "Logging in …" : "正在登入……",
+    "Close" : "關閉",
+    "Dismiss" : "忽略",
+    "Join call" : "加入通話",
     "Copy" : "複製",
     "Copied" : "已複製",
-    "Close" : "關閉",
     "Privacy and Legal Policy" : "隱私及法律政策",
     "License" : "授權條款",
     "Issues" : "問題",
@@ -95,6 +97,8 @@
     "Invisible" : "隱藏",
     "Offline" : "離線",
     "Unknown status" : "未知狀態",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "無法連線到伺服器。請檢查您的網際網路連線並再試一次。"
+    "Cannot connect to the server. Please check your internet connection and try again later." : "無法連線到伺服器。請檢查您的網際網路連線並再試一次。",
+    "You missed a call from {user}" : "您錯過了 {user} 的來電",
+    "You missed a group call in {call}" : "您錯過了 {call} 中的群組通話"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

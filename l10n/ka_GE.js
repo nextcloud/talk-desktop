@@ -5,6 +5,8 @@ OC.L10N.register(
     "Log in" : "შესვლა",
     "Logging in …" : "შესვლა ...",
     "Close" : "დახურვა",
+    "Dismiss" : "დათხოვნა",
+    "Join call" : "შეუერთდით ზარს",
     "License" : "ლიცენზია",
     "Issues" : "პრობლემები",
     "Ok" : "კარგი",

@@ -13,9 +13,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud 伺服器位址",
     "Log in" : "登入",
     "Logging in …" : "正在登入 …",
+    "Close" : "關閉",
+    "Dismiss" : "清除",
+    "Join call" : "加入通話",
     "Copy" : "複製",
     "Copied" : "已複製",
-    "Close" : "關閉",
     "Privacy and Legal Policy" : "隱私及法律政策",
     "License" : "授權",
     "Issues" : "問題",
@@ -97,6 +99,8 @@ OC.L10N.register(
     "Invisible" : "隱藏",
     "Offline" : "離線",
     "Unknown status" : "狀態不詳",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "無法連接到伺服器。請檢查您的互聯網連接並再試一次。"
+    "Cannot connect to the server. Please check your internet connection and try again later." : "無法連接到伺服器。請檢查您的互聯網連接並再試一次。",
+    "You missed a call from {user}" : "您錯過了 {user} 的來電",
+    "You missed a group call in {call}" : "您錯過了 {call} 中的群組通話"
 },
 "nplurals=1; plural=0;");

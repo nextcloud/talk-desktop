@@ -3,8 +3,9 @@ OC.L10N.register(
     {
     "Log in" : "Iniciar sesión",
     "Logging in …" : "Ingresando ...",
-    "Copy" : "Copiar",
     "Close" : "Cerrar",
+    "Dismiss" : "Despedir",
+    "Copy" : "Copiar",
     "License" : "Licencia",
     "Issues" : "Temas",
     "Yes" : "Sí",

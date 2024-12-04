@@ -3,8 +3,9 @@ OC.L10N.register(
     {
     "Log in" : "ເຂົ້າລະບົບ",
     "Logging in …" : "ກຳລັງໂຫຼດ",
-    "Copy" : "ສຳເນົາ",
     "Close" : "ປິດ",
+    "Dismiss" : "ຍົກເລີກ",
+    "Copy" : "ສຳເນົາ",
     "License" : "ໃບອະນຸຍາດ",
     "No" : "ບໍ່",
     "Light" : "ແຈ້ງ",

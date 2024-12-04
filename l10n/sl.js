@@ -6,9 +6,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Naslov strežnika Nextcloud",
     "Log in" : "Prijava",
     "Logging in …" : "Poteka prijavljanje ...",
+    "Close" : "Zapri",
+    "Dismiss" : "Prekliči",
+    "Join call" : "Pridruži se klicu",
     "Copy" : "Kopiraj",
     "Copied" : "Kopirano",
-    "Close" : "Zapri",
     "License" : "Dovoljenje",
     "Issues" : "Odzivi",
     "Ok" : "Sprejemljivo",
@@ -52,6 +54,7 @@ OC.L10N.register(
     "Away" : "Ne spremljam",
     "Do not disturb" : "Ne moti",
     "Invisible" : "Drugim nevidno",
-    "Offline" : "Brez povezave"
+    "Offline" : "Brez povezave",
+    "You missed a group call in {call}" : "Zamudili ste skupinski klic {call}"
 },
 "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);");

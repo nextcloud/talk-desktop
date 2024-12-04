@@ -8,9 +8,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud zerbitzariaren helbidea",
     "Log in" : "Izena eman",
     "Logging in …" : "Saioa hasten...",
+    "Close" : "Itxi",
+    "Dismiss" : "Ezikusi",
+    "Join call" : "Batu deira",
     "Copy" : "Kopiatu",
     "Copied" : "Kopiatuta",
-    "Close" : "Itxi",
     "Privacy and Legal Policy" : "Pribatutasuna eta legedi politika",
     "License" : "Lizentzia",
     "Issues" : "Arazoak",
@@ -56,12 +58,14 @@ OC.L10N.register(
     "Back" : "Itzuli",
     "View profile" : "Ikusi profila",
     "Log out" : "Saioa itxi",
+    "Upgrade required" : "Bertsio-berritzea beharrezkoa",
     "Application" : "Aplikazioa",
     "Online" : "Linean",
     "Away" : "Kanpoan",
     "Do not disturb" : "Ez molestatu",
     "Invisible" : "Ikusezina",
     "Offline" : "Lineaz kanpo",
-    "Unknown status" : "Egoera ezezaguna"
+    "Unknown status" : "Egoera ezezaguna",
+    "You missed a group call in {call}" : "Talde dei bat huts egin duzu {call} elkarrizketan"
 },
 "nplurals=2; plural=(n != 1);");

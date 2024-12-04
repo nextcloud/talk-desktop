@@ -13,8 +13,9 @@ OC.L10N.register(
     "Nextcloud server address" : "Indirizzo server Nextcloud",
     "Log in" : "Login",
     "Logging in …" : "Accesso in corso...",
-    "Copy" : "Copia",
     "Close" : "Chiudi",
+    "Join call" : "Unisciti alla chiamata",
+    "Copy" : "Copia",
     "Privacy and Legal Policy" : "Privacy e politica legale",
     "License" : "Licenza",
     "Issues" : "Problemi",
@@ -91,6 +92,7 @@ OC.L10N.register(
     "Invisible" : "Invisibile",
     "Offline" : "Offline",
     "Unknown status" : "Status sconosciuto",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Impossibile connettersi al server. Controlla la tua connessione Internet e riprova più tardi."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Impossibile connettersi al server. Controlla la tua connessione Internet e riprova più tardi.",
+    "You missed a group call in {call}" : "Hai perso una chiamata di gruppo in {call}"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

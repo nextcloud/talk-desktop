@@ -5,8 +5,10 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud server adres",
     "Log in" : "Aanmelden",
     "Logging in …" : "Inloggen...",
-    "Copy" : "Kopiëren",
     "Close" : "Sluit",
+    "Dismiss" : "Wissen",
+    "Join call" : "Deelnemen aan oproep",
+    "Copy" : "Kopiëren",
     "License" : "Licentie",
     "Issues" : "Problemen",
     "Ok" : "Ok",
@@ -37,6 +39,7 @@ OC.L10N.register(
     "View profile" : "Bekijk profiel",
     "Log out" : "Afmelden",
     "Online" : "Online",
-    "Invisible" : "Verborgen"
+    "Invisible" : "Verborgen",
+    "You missed a group call in {call}" : "Je hebt een groepsgesprek gemist in {call}"
 },
 "nplurals=2; plural=(n != 1);");

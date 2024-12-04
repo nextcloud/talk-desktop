@@ -1,7 +1,8 @@
 { "translations": {
     "Log in" : "Umellen",
-    "Copy" : "Kopieren",
     "Close" : "Zoumaachen",
+    "Dismiss" : "Ofbriechen",
+    "Copy" : "Kopieren",
     "Ok" : "OK",
     "No" : "Nee",
     "Yes" : "Jo",

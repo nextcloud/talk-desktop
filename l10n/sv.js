@@ -13,9 +13,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud serveradress",
     "Log in" : "Logga in",
     "Logging in …" : "Loggar in ...",
+    "Close" : "Stäng",
+    "Dismiss" : "Avfärda",
+    "Join call" : "Gå med i samtal",
     "Copy" : "Kopiera",
     "Copied" : "Kopierad",
-    "Close" : "Stäng",
     "Privacy and Legal Policy" : "Integritets- och juridisk policy",
     "License" : "Licens",
     "Issues" : "Problem",
@@ -97,6 +99,7 @@ OC.L10N.register(
     "Invisible" : "Osynlig",
     "Offline" : "Frånkopplad",
     "Unknown status" : "Okänd status",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Kan inte ansluta till servern. Kontrollera din internetanslutning och försök igen senare."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Kan inte ansluta till servern. Kontrollera din internetanslutning och försök igen senare.",
+    "You missed a group call in {call}" : "Du missade ett gruppsamtal i {call}"
 },
 "nplurals=2; plural=(n != 1);");

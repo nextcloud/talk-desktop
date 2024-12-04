@@ -4,8 +4,10 @@ OC.L10N.register(
     "Invalid server address" : "Địa chỉ máy chủ không hợp lệ",
     "Log in" : "Đăng nhập",
     "Logging in …" : "Đang đăng nhập",
-    "Copied" : "Đã sao chép",
     "Close" : "Đóng",
+    "Dismiss" : "Bỏ qua",
+    "Join call" : "Tham gia cuộc gọi",
+    "Copied" : "Đã sao chép",
     "License" : "Giấy phép",
     "Issues" : "Vấn đề",
     "Ok" : "Đồng ý",
@@ -41,6 +43,8 @@ OC.L10N.register(
     "Away" : "Tạm vắng",
     "Do not disturb" : "Đừng làm phiền",
     "Invisible" : "Vô hình",
-    "Offline" : "Ngoại tuyến"
+    "Offline" : "Ngoại tuyến",
+    "You missed a call from {user}" : "Bạn đã lỡ cuộc gọi từ {user}",
+    "You missed a group call in {call}" : "Bạn đã lỡ cuộc gọi nhóm trong {call}"
 },
 "nplurals=1; plural=0;");

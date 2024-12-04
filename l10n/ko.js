@@ -3,8 +3,10 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Nextcloud 서버 주소",
     "Logging in …" : "로그인 중 …",
-    "Copy" : "복사",
     "Close" : "닫기",
+    "Dismiss" : "끄기",
+    "Join call" : "통화 참가하기",
+    "Copy" : "복사",
     "License" : "라이선스",
     "Issues" : "문제점",
     "Ok" : "확인",
@@ -36,6 +38,7 @@ OC.L10N.register(
     "Away" : "자리비움",
     "Do not disturb" : "방해 없음",
     "Invisible" : "숨겨짐",
-    "Unknown status" : "알 수 없는 상태"
+    "Unknown status" : "알 수 없는 상태",
+    "You missed a group call in {call}" : "{call}의 그룹 통화를 놓쳤습니다."
 },
 "nplurals=1; plural=0;");

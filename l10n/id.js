@@ -3,9 +3,10 @@ OC.L10N.register(
     {
     "Log in" : "Masuk",
     "Logging in …" : "Log masuk...",
+    "Close" : "Tutup",
+    "Dismiss" : "Batal",
     "Copy" : "Salin",
     "Copied" : "Tersalin",
-    "Close" : "Tutup",
     "License" : "Lisensi",
     "Issues" : "Isu",
     "Ok" : "Oke",

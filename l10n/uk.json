@@ -11,9 +11,11 @@
     "Nextcloud server address" : "Адреса серверу Nextcloud",
     "Log in" : "Увійти",
     "Logging in …" : "Вхід ...",
+    "Close" : "Закрити",
+    "Dismiss" : "Припинити",
+    "Join call" : "Приєднатися",
     "Copy" : "Копіювати",
     "Copied" : "Скопійовано",
-    "Close" : "Закрити",
     "Privacy and Legal Policy" : "Політика конфіденційності та захист даних",
     "License" : "Ліцензія",
     "Issues" : "Проблеми",
@@ -64,6 +66,8 @@
     "Do not disturb" : "Не турбувати",
     "Invisible" : "Приховано",
     "Offline" : "Офлайн",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Неможливо з'єднатися із сервером. Перевірте доступ до мережі та спробуйте повторно."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Неможливо з'єднатися із сервером. Перевірте доступ до мережі та спробуйте повторно.",
+    "You missed a call from {user}" : "Ви пропустили виклик від {user}",
+    "You missed a group call in {call}" : "Ви пропустили груповий виклик у {call}"
 },"pluralForm" :"nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);"
 }

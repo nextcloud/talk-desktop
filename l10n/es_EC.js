@@ -6,9 +6,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Dirección del servidor de Nextcloud",
     "Log in" : "Ingresar",
     "Logging in …" : "Iniciando sesión ...",
+    "Close" : "Cerrar",
+    "Dismiss" : "Descartar",
+    "Join call" : "Unirse a la llamada",
     "Copy" : "Copiar",
     "Copied" : "Copiado",
-    "Close" : "Cerrar",
     "License" : "Licencia",
     "Issues" : "Temas",
     "Ok" : "Ok",
@@ -48,6 +50,7 @@ OC.L10N.register(
     "Online" : "En línea",
     "Away" : "Ausente",
     "Do not disturb" : "No molestar",
-    "Invisible" : "Invisible"
+    "Invisible" : "Invisible",
+    "You missed a group call in {call}" : "Te perdiste una llamada de grupo en {call}"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -7,9 +7,11 @@ OC.L10N.register(
     "Nextcloud server address" : "آدرس سرور Nextcloud",
     "Log in" : "ورود",
     "Logging in …" : "ورود به سیستم ...",
+    "Close" : "بسته",
+    "Dismiss" : "پنهان کن",
+    "Join call" : "Join call",
     "Copy" : "رونوشت",
     "Copied" : "کپی شد",
-    "Close" : "بسته",
     "License" : "مجوز",
     "Issues" : "مسائل",
     "Ok" : "قبول",
@@ -55,6 +57,7 @@ OC.L10N.register(
     "Online" : "آنلاین",
     "Away" : "بیرون",
     "Do not disturb" : "مزاحم نشوید",
-    "Invisible" : "غیر قابل مشاهده"
+    "Invisible" : "غیر قابل مشاهده",
+    "You missed a group call in {call}" : "You missed a group call in {call}"
 },
 "nplurals=2; plural=(n > 1);");

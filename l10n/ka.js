@@ -4,9 +4,11 @@ OC.L10N.register(
     "Invalid server address" : "Invalid server address",
     "Log in" : "Log in",
     "Logging in …" : "Logging in …",
+    "Close" : "Close",
+    "Dismiss" : "Dismiss",
+    "Join call" : "Join call",
     "Copy" : "Copy",
     "Copied" : "Copied",
-    "Close" : "Close",
     "License" : "License",
     "Issues" : "Issues",
     "Ok" : "Ok",
@@ -38,6 +40,7 @@ OC.L10N.register(
     "Online" : "Online",
     "Away" : "Away",
     "Do not disturb" : "Do not disturb",
-    "Invisible" : "Invisible"
+    "Invisible" : "Invisible",
+    "You missed a group call in {call}" : "You missed a group call in {call}"
 },
 "nplurals=2; plural=(n!=1);");

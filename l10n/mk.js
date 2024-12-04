@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Logging in …" : "Најава ...",
     "Close" : "Затвори",
+    "Join call" : "Приклучи се кон повикот",
     "License" : "Лиценца",
     "Ok" : "Во ред",
     "Light" : "Светла",
@@ -34,6 +35,7 @@ OC.L10N.register(
     "Set custom status" : "Постави сопствен статус",
     "Online" : "Присутен",
     "Away" : "Далеку",
-    "Invisible" : "Невидлив"
+    "Invisible" : "Невидлив",
+    "You missed a group call in {call}" : "Имате пропуштен групен повик во {call}"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

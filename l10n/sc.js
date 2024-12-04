@@ -4,9 +4,11 @@ OC.L10N.register(
     "Invalid server address" : "Indiritzu serbidore non bàlidu",
     "Log in" : "Intra",
     "Logging in …" : "Intrende ...",
+    "Close" : "Serra",
+    "Dismiss" : "Iscarta",
+    "Join call" : "Intra in sa mutida",
     "Copy" : "Còpia",
     "Copied" : "Copiadu",
-    "Close" : "Serra",
     "License" : "Lissèntzia",
     "Issues" : "Problemas",
     "Ok" : "AB",
@@ -40,6 +42,7 @@ OC.L10N.register(
     "Log out" : "Essi·nche",
     "Away" : "Ausente",
     "Do not disturb" : "No istorbes",
-    "Invisible" : "Invisìbile"
+    "Invisible" : "Invisìbile",
+    "You missed a group call in {call}" : "As pèrdidu una mutida de grupu in {call}"
 },
 "nplurals=2; plural=(n != 1);");

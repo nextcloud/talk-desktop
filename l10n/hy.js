@@ -2,8 +2,8 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Մուտք գործել",
-    "Copy" : "Պատճենել",
     "Close" : "Փակել",
+    "Copy" : "Պատճենել",
     "License" : "լիցենզիա",
     "Issues" : "հայց",
     "Ok" : "Լավ",

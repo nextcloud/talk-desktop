@@ -3,9 +3,11 @@ OC.L10N.register(
     {
     "Log in" : "Autentificare",
     "Logging in …" : "Se autentifică...",
+    "Close" : "Închide",
+    "Dismiss" : "Elimină",
+    "Join call" : "Participați la videoconferință",
     "Copy" : "Copiază",
     "Copied" : "Copiat",
-    "Close" : "Închide",
     "License" : "Licență",
     "Issues" : "Probleme",
     "Ok" : "Ok",
@@ -36,6 +38,7 @@ OC.L10N.register(
     "Back" : "Înapoi",
     "View profile" : "Vezi profilul",
     "Away" : "Departe",
-    "Offline" : "Offline"
+    "Offline" : "Offline",
+    "You missed a group call in {call}" : "Ați pierdut un apel de grup în {call}"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

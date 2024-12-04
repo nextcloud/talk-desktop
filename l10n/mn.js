@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Log in" : "Нэвтрэх",
     "Logging in …" : "Нэвтэрч байна",
+    "Dismiss" : "Арилгах",
     "Copy" : "хуулах",
     "License" : "Тусгай зөвшөөрөл",
     "Ok" : "За",

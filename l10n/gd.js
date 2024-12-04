@@ -2,8 +2,9 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Clàraich a-steach",
-    "Copy" : "Dèan lethbhreac",
     "Close" : "Dùin",
+    "Dismiss" : "Leig seachad",
+    "Copy" : "Dèan lethbhreac",
     "License" : "Ceadachas",
     "Issues" : "Bugaichean",
     "No" : "Chan eil",

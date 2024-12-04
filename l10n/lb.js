@@ -2,8 +2,9 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Umellen",
-    "Copy" : "Kopieren",
     "Close" : "Zoumaachen",
+    "Dismiss" : "Ofbriechen",
+    "Copy" : "Kopieren",
     "Ok" : "OK",
     "No" : "Nee",
     "Yes" : "Jo",

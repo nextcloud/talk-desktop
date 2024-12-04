@@ -13,8 +13,10 @@ OC.L10N.register(
     "Nextcloud server address" : "Adresa servera Nextcloud",
     "Log in" : "Prihlásiť sa",
     "Logging in …" : "Prihlasujem ...",
-    "Copy" : "Kopírovať",
     "Close" : "Zatvoriť",
+    "Dismiss" : "Zatvoriť",
+    "Join call" : "Pripojiť sa k hovoru",
+    "Copy" : "Kopírovať",
     "Privacy and Legal Policy" : "Ochrana osobných údajov a právne zásady",
     "License" : "Licencia",
     "Issues" : "Problémy",
@@ -64,6 +66,7 @@ OC.L10N.register(
     "Away" : "Preč",
     "Do not disturb" : "Nerušiť",
     "Invisible" : "Neviditeľnosť",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Nedá sa pripojiť k serveru. Skontrolujte svoje internetové pripojenie a skúste to znova neskôr."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Nedá sa pripojiť k serveru. Skontrolujte svoje internetové pripojenie a skúste to znova neskôr.",
+    "You missed a group call in {call}" : "Zmeškali ste skupinový hovor v {call}"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");

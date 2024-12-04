@@ -2,8 +2,9 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Giriň",
-    "Copy" : "Göçüriň",
     "Close" : "Ýap",
+    "Dismiss" : "Ýapmak.",
+    "Copy" : "Göçüriň",
     "License" : "ygtyýarnamasy",
     "No" : "Ýok",
     "Yes" : "Hawa",

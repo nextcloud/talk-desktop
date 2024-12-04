@@ -4,8 +4,10 @@ OC.L10N.register(
     "Talk Desktop" : "Talk pel burèu",
     "Log in" : "Connexion",
     "Logging in …" : "Identificacion…",
-    "Copied" : "Copiat",
     "Close" : "Tampar",
+    "Dismiss" : "Regetar",
+    "Join call" : "Rejónher la sonada",
+    "Copied" : "Copiat",
     "License" : "Licéncia",
     "Issues" : "Avarias",
     "No" : "Non",
@@ -38,6 +40,7 @@ OC.L10N.register(
     "Away" : "Absent",
     "Do not disturb" : "Me desturbes pas",
     "Invisible" : "Invisible",
-    "Offline" : "Fòra linha"
+    "Offline" : "Fòra linha",
+    "You missed a group call in {call}" : "Avètz mancat una sonada de grop dins {call}"
 },
 "nplurals=2; plural=(n > 1);");

@@ -13,9 +13,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Seoladh freastalaí Nextcloud",
     "Log in" : "Logáil isteach",
     "Logging in …" : "Ag logáil isteach…",
+    "Close" : "Dún",
+    "Dismiss" : "Díbhe",
+    "Join call" : "Glac páirt sa ghlao",
     "Copy" : "Cóipeáil",
     "Copied" : "Cóipeáladh",
-    "Close" : "Dún",
     "Privacy and Legal Policy" : "Polasaí Príobháideachta agus Dlí",
     "License" : "Ceadúnas",
     "Issues" : "Saincheisteanna",
@@ -97,6 +99,7 @@ OC.L10N.register(
     "Invisible" : "Dofheicthe",
     "Offline" : "As líne",
     "Unknown status" : "Stádas anaithnid",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Ní féidir ceangal leis an bhfreastalaí. Seiceáil do cheangal idirlín agus bain triail eile as ar ball le do thoil."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Ní féidir ceangal leis an bhfreastalaí. Seiceáil do cheangal idirlín agus bain triail eile as ar ball le do thoil.",
+    "You missed a group call in {call}" : "Chaill tú glao grúpa i {call}"
 },
 "nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);");

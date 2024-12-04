@@ -3,8 +3,9 @@ OC.L10N.register(
     {
     "Log in" : "Qqen",
     "Logging in …" : "Tuqqna...",
-    "Copy" : "Nɣel",
     "Close" : "Mdel",
+    "Dismiss" : "Agi",
+    "Copy" : "Nɣel",
     "License" : "Licence",
     "No" : "Uhu",
     "Yes" : "Oui",

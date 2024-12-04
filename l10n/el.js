@@ -4,9 +4,11 @@ OC.L10N.register(
     "Nextcloud server address" : "Διεύθυνση διακομιστή Nextcloud",
     "Log in" : "Είσοδος",
     "Logging in …" : "Σύνδεση …",
+    "Close" : "Κλείσιμο",
+    "Dismiss" : "Αποδέσμευση",
+    "Join call" : "Συμμετοχή σε κλήση",
     "Copy" : "Αντιγραφή",
     "Copied" : "Αντιγράφηκε",
-    "Close" : "Κλείσιμο",
     "License" : "Άδεια χρήσης",
     "Issues" : "Ζητήματα",
     "Ok" : "ΟΚ",
@@ -34,6 +36,7 @@ OC.L10N.register(
     "View profile" : "Προβολή προφίλ",
     "Log out" : "Έξοδος",
     "Away" : "Λείπω",
-    "Invisible" : "Αόρατο"
+    "Invisible" : "Αόρατο",
+    "You missed a group call in {call}" : "Αναπάντητη από ομαδική κλήση {call}"
 },
 "nplurals=2; plural=(n != 1);");

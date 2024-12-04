@@ -3,9 +3,10 @@ OC.L10N.register(
     {
     "Nextcloud server address" : "Nextcloud サーバーアドレス",
     "Logging in …" : "ログイン中...",
+    "Close" : "閉じる",
+    "Join call" : "通話開始",
     "Copy" : "コピー",
     "Copied" : "コピー",
-    "Close" : "閉じる",
     "License" : "利用許諾",
     "Issues" : "問題",
     "Ok" : "OK",
@@ -43,6 +44,7 @@ OC.L10N.register(
     "Application" : "アプリケーション",
     "Do not disturb" : "取り込み中",
     "Invisible" : "ステータスを隠す",
-    "Unknown status" : "不明なステータス"
+    "Unknown status" : "不明なステータス",
+    "You missed a group call in {call}" : "{user}からのグループ着信に応答できませんでした。"
 },
 "nplurals=1; plural=0;");

@@ -6,8 +6,10 @@ OC.L10N.register(
     "Unexpected error" : "Váratlan hiba",
     "Nextcloud server address" : "Nextcloud kiszolgáló címe",
     "Logging in …" : "Bejelentkezés…",
-    "Copy" : "Másolás",
     "Close" : "Bezárás",
+    "Dismiss" : "Eltüntetés",
+    "Join call" : "Csatlakozás a híváshoz",
+    "Copy" : "Másolás",
     "License" : "Licenc",
     "Issues" : "Hibajegyek",
     "Ok" : "Rendben",
@@ -56,6 +58,7 @@ OC.L10N.register(
     "Do not disturb" : "Ne zavarjanak",
     "Invisible" : "Láthatatlan",
     "Offline" : "Nincs kapcsolat",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Nem sikerült a kiszolgálóhoz csatlakozni. Ellenőrizze az internetkapcsolatot és próbálja meg újra."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "Nem sikerült a kiszolgálóhoz csatlakozni. Ellenőrizze az internetkapcsolatot és próbálja meg újra.",
+    "You missed a group call in {call}" : "Nem fogadott csoportos hívás itt: {call}"
 },
 "nplurals=2; plural=(n != 1);");

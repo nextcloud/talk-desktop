@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Logi sisse",
     "Logging in …" : "Sisselogimine ...",
     "Close" : "Sulge",
+    "Dismiss" : "Jäta vahele",
     "License" : "Litsents",
     "Ok" : "Ok",
     "Light" : "Tume",

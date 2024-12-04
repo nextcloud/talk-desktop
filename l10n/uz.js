@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Logging in …" : "Logging in …",
     "Close" : "Close",
+    "Dismiss" : "Dismiss",
     "No" : "No",
     "Yes" : "Yes",
     "Always" : "Always",

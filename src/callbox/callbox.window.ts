@@ -67,6 +67,7 @@ export function createCallboxWindow(params: CallboxParams) {
 	window.loadURL(CALLBOX_WINDOW_WEBPACK_ENTRY + '?' + new URLSearchParams(params))
 
 	window.once('ready-to-show', () => window.showInactive())
-
+	// FIXME remove: this shows devtools with network requests made from callbox
+	window.webContents.openDevTools()
 	return window
 }

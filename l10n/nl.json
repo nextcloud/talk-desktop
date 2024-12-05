@@ -38,6 +38,7 @@
     "Log out" : "Afmelden",
     "Online" : "Online",
     "Invisible" : "Verborgen",
+    "You missed a call from {user}" : "Je hebt een gesprek gemist van {user}",
     "You missed a group call in {call}" : "Je hebt een groepsgesprek gemist in {call}"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

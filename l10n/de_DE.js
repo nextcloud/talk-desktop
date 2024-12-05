@@ -13,7 +13,9 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud Serveradresse",
     "Log in" : "Anmelden",
     "Logging in …" : "Melde an …",
+    "Incoming call" : "Eingehender Anruf",
     "Close" : "Schließen",
+    "Dismiss" : "Ablehnen",
     "Join call" : "Anruf beitreten",
     "Copy" : "Kopieren",
     "Copied" : "Kopiert",
@@ -44,6 +46,7 @@ OC.L10N.register(
     "Notifications and sounds" : "Benachrichtigungen und Töne",
     "Play chat notification sound" : "Ton für Chat-Benachrichtigungen abspielen",
     "Play call notification sound" : "Ton für Anrufbenachrichtigung wiedergeben",
+    "Show call notification popup" : "Popup für Anrufbenachrichtigungen anzeigen",
     "User status" : "Benutzerstatus",
     "Your status was set automatically" : "Ihr Status wurde automatisch gesetzt",
     "Previously set status" : "Zuvor festgelegter Status",
@@ -99,6 +102,7 @@ OC.L10N.register(
     "Offline" : "Offline",
     "Unknown status" : "Unbekannter Status",
     "Cannot connect to the server. Please check your internet connection and try again later." : "Kann nicht mit dem Server verbinden. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es später erneut.",
+    "You missed a call from {user}" : "Sie haben einen Anruf von {user} verpasst",
     "You missed a group call in {call}" : "Sie haben einen Gruppenanruf in {call} verpasst"
 },
 "nplurals=2; plural=(n != 1);");

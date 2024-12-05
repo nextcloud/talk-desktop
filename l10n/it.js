@@ -93,6 +93,7 @@ OC.L10N.register(
     "Offline" : "Offline",
     "Unknown status" : "Status sconosciuto",
     "Cannot connect to the server. Please check your internet connection and try again later." : "Impossibile connettersi al server. Controlla la tua connessione Internet e riprova più tardi.",
+    "You missed a call from {user}" : "Hai perso una chiamata da {user}",
     "You missed a group call in {call}" : "Hai perso una chiamata di gruppo in {call}"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

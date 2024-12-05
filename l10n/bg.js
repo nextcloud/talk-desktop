@@ -6,6 +6,8 @@ OC.L10N.register(
     "Nextcloud server address" : "Адрес на сървъра Nextcloud",
     "Logging in …" : "Вписване ...",
     "Close" : "Затваряне",
+    "Dismiss" : "Затвори",
+    "Join call" : "Присъединяване към обаждането",
     "Copy" : "Копие",
     "License" : "Лиценз",
     "Issues" : "Проблеми",
@@ -45,6 +47,7 @@ OC.L10N.register(
     "Online" : "На линия /онлайн/",
     "Away" : "Винаги",
     "Do not disturb" : "Не безпокой",
+    "You missed a call from {user}" : "Пропуснахте обаждане от {user}",
     "You missed a group call in {call}" : "Пропуснахте групово обаждане в {call}"
 },
 "nplurals=2; plural=(n != 1);");

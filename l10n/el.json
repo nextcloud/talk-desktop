@@ -35,6 +35,7 @@
     "Log out" : "Έξοδος",
     "Away" : "Λείπω",
     "Invisible" : "Αόρατο",
+    "You missed a call from {user}" : "Αναπάντητη κλήση από τον {user}",
     "You missed a group call in {call}" : "Αναπάντητη από ομαδική κλήση {call}"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

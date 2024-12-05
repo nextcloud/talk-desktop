@@ -51,6 +51,7 @@ OC.L10N.register(
     "Away" : "Ausente",
     "Do not disturb" : "No molestar",
     "Invisible" : "Invisible",
+    "You missed a call from {user}" : "Perdiste una llamada de {user}",
     "You missed a group call in {call}" : "Te perdiste una llamada de grupo en {call}"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

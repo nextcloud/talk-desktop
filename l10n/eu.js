@@ -66,6 +66,7 @@ OC.L10N.register(
     "Invisible" : "Ikusezina",
     "Offline" : "Lineaz kanpo",
     "Unknown status" : "Egoera ezezaguna",
+    "You missed a call from {user}" : "{user} erabiltzailearen dei bat galdu duzu",
     "You missed a group call in {call}" : "Talde dei bat huts egin duzu {call} elkarrizketan"
 },
 "nplurals=2; plural=(n != 1);");

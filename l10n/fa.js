@@ -58,6 +58,7 @@ OC.L10N.register(
     "Away" : "بیرون",
     "Do not disturb" : "مزاحم نشوید",
     "Invisible" : "غیر قابل مشاهده",
+    "You missed a call from {user}" : "You missed a call from {user}",
     "You missed a group call in {call}" : "You missed a group call in {call}"
 },
 "nplurals=2; plural=(n > 1);");

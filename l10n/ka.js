@@ -41,6 +41,7 @@ OC.L10N.register(
     "Away" : "Away",
     "Do not disturb" : "Do not disturb",
     "Invisible" : "Invisible",
+    "You missed a call from {user}" : "You missed a call from {user}",
     "You missed a group call in {call}" : "You missed a group call in {call}"
 },
 "nplurals=2; plural=(n!=1);");

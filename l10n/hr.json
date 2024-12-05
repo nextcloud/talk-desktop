@@ -31,6 +31,7 @@
     "About" : "Informacije",
     "View profile" : "Prikaži profil",
     "Log out" : "Odjavite se",
+    "You missed a call from {user}" : "Propustili ste poziv od {user}",
     "You missed a group call in {call}" : "Propustili ste grupni poziv u {call}"
 },"pluralForm" :"nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;"
 }

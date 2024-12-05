@@ -39,6 +39,7 @@ OC.L10N.register(
     "Online" : "מקוון",
     "Away" : "לא פה",
     "Invisible" : "נסתרת",
-    "Offline" : "בלתי מקוון"
+    "Offline" : "בלתי מקוון",
+    "You missed a call from {user}" : "החמצת שיחה עם {user}"
 },
 "nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;");

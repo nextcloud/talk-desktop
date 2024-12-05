@@ -41,6 +41,7 @@ OC.L10N.register(
     "Do not disturb" : "Me desturbes pas",
     "Invisible" : "Invisible",
     "Offline" : "Fòra linha",
+    "You missed a call from {user}" : "Avètz mancat una sonada de {user}",
     "You missed a group call in {call}" : "Avètz mancat una sonada de grop dins {call}"
 },
 "nplurals=2; plural=(n > 1);");

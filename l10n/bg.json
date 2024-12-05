@@ -4,6 +4,8 @@
     "Nextcloud server address" : "Адрес на сървъра Nextcloud",
     "Logging in …" : "Вписване ...",
     "Close" : "Затваряне",
+    "Dismiss" : "Затвори",
+    "Join call" : "Присъединяване към обаждането",
     "Copy" : "Копие",
     "License" : "Лиценз",
     "Issues" : "Проблеми",
@@ -43,6 +45,7 @@
     "Online" : "На линия /онлайн/",
     "Away" : "Винаги",
     "Do not disturb" : "Не безпокой",
+    "You missed a call from {user}" : "Пропуснахте обаждане от {user}",
     "You missed a group call in {call}" : "Пропуснахте групово обаждане в {call}"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

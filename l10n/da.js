@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Log ind",
     "Logging in …" : "Logger ind …",
     "Close" : "Luk",
+    "Dismiss" : "Afvis",
     "Join call" : "Deltag i opkaldet",
     "Copy" : "Kopiér",
     "Copied" : "Kopieret",
@@ -38,6 +39,7 @@ OC.L10N.register(
     "Away" : "Ikke tilstede",
     "Do not disturb" : "Forstyr ikke",
     "Invisible" : "Usynlig",
+    "You missed a call from {user}" : "Du missede et opkald fra {user}",
     "You missed a group call in {call}" : "Du missede en gruppesamtale i {call}"
 },
 "nplurals=2; plural=(n != 1);");

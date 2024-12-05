@@ -7,6 +7,8 @@ OC.L10N.register(
     "Log in" : "Inicia la sessió",
     "Logging in …" : "S'està iniciant la sessió…",
     "Close" : "Tanca",
+    "Dismiss" : "Descarta",
+    "Join call" : "Uneix-te a la trucada",
     "Copy" : "Còpia",
     "Copied" : "Copiat",
     "License" : "Llicència",
@@ -50,6 +52,7 @@ OC.L10N.register(
     "Log out" : "Tanca la sessió",
     "Application" : "Aplicació",
     "Online" : "En línia",
+    "You missed a call from {user}" : "Teniu una trucada perduda de {user}",
     "You missed a group call in {call}" : "Teniu una trucada de grup perduda a {call}"
 },
 "nplurals=2; plural=(n != 1);");

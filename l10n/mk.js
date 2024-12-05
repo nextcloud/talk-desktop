@@ -36,6 +36,7 @@ OC.L10N.register(
     "Online" : "Присутен",
     "Away" : "Далеку",
     "Invisible" : "Невидлив",
+    "You missed a call from {user}" : "Имате пропуштен повик од {user}",
     "You missed a group call in {call}" : "Имате пропуштен групен повик во {call}"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

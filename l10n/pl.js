@@ -81,6 +81,7 @@ OC.L10N.register(
     "Offline" : "Niedostępny",
     "Unknown status" : "Nieznany stan",
     "Cannot connect to the server. Please check your internet connection and try again later." : "Nie można połączyć się z serwerem. Sprawdź swoje połączenie internetowe i spróbuj ponownie później.",
+    "You missed a call from {user}" : "Przeoczyłeś połączenie od {user}",
     "You missed a group call in {call}" : "Przeoczyłeś połączenie grupowe w {call}"
 },
 "nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);");

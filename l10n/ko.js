@@ -39,6 +39,7 @@ OC.L10N.register(
     "Do not disturb" : "방해 없음",
     "Invisible" : "숨겨짐",
     "Unknown status" : "알 수 없는 상태",
+    "You missed a call from {user}" : "당신이 {user}님의 통화를 놓쳤습니다.",
     "You missed a group call in {call}" : "{call}의 그룹 통화를 놓쳤습니다."
 },
 "nplurals=1; plural=0;");

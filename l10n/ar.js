@@ -13,7 +13,10 @@ OC.L10N.register(
     "Nextcloud server address" : "عنوان خادم نكست كلاود",
     "Log in" : "تسجيل الدخول",
     "Logging in …" : "تسجيل الدخول …",
+    "Incoming call" : "مكالمة واردة",
     "Close" : "إغلاق",
+    "Dismiss" : "الغاء",
+    "Join call" : "انضمام لمكالمة",
     "Copy" : "إنسَخ",
     "Copied" : "نُسخت ",
     "Privacy and Legal Policy" : "السياسة القانونية و الخصوصية",
@@ -43,6 +46,7 @@ OC.L10N.register(
     "Notifications and sounds" : "الإشعارات و الأصوات",
     "Play chat notification sound" : "قم بتشغيل صوت الإشعار بالدردشة",
     "Play call notification sound" : "قم بتشغيل صوت الإشعار بالمكالمة",
+    "Show call notification popup" : "إظهار نافذة منبثقة للإشعار بالمكالمة",
     "User status" : "حالة العضو",
     "Your status was set automatically" : "تمّ تعيين حالتك تلقائيّاً",
     "Previously set status" : "حالة تمّ تعيينها سابقاً",
@@ -97,6 +101,8 @@ OC.L10N.register(
     "Invisible" : "غير مرئي",
     "Offline" : "بدون اتصالٍ",
     "Unknown status" : "الحالة غير معروفة",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "تعذّر الاتصال بالخادم. رجاءً، تحقَّق من اتصالك بالانترنت و حاول مرة أخرى."
+    "Cannot connect to the server. Please check your internet connection and try again later." : "تعذّر الاتصال بالخادم. رجاءً، تحقَّق من اتصالك بالانترنت و حاول مرة أخرى.",
+    "You missed a call from {user}" : "مكالمة لم ترد عليها من {user}",
+    "You missed a group call in {call}" : "اتصال جماعي لم ترد عليه في {call}"
 },
 "nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;");

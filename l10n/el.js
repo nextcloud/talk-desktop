@@ -37,6 +37,7 @@ OC.L10N.register(
     "Log out" : "Έξοδος",
     "Away" : "Λείπω",
     "Invisible" : "Αόρατο",
+    "You missed a call from {user}" : "Αναπάντητη κλήση από τον {user}",
     "You missed a group call in {call}" : "Αναπάντητη από ομαδική κλήση {call}"
 },
 "nplurals=2; plural=(n != 1);");

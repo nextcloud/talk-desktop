@@ -45,6 +45,7 @@ OC.L10N.register(
     "Log out" : "Kirjaudu ulos",
     "Application" : "Sovellus",
     "Online" : "Online",
-    "Offline" : "Poissa"
+    "Offline" : "Poissa",
+    "You missed a call from {user}" : "Sinulta jäi vastaamatta puhelu käyttäjältä {user}"
 },
 "nplurals=2; plural=(n != 1);");

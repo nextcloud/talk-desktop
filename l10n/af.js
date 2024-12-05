@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Log in" : "Teken Aan",
     "Logging in …" : "Meld tans aan …",
+    "Dismiss" : "Ontslaan",
     "License" : "Lisensie",
     "Reset" : "Herstel",
     "User status" : "Gebruikerstatus",

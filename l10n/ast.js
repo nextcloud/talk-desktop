@@ -7,6 +7,8 @@ OC.L10N.register(
     "Log in" : "Aniciar la sesión",
     "Logging in …" : "Aniciando la sesión…",
     "Close" : "Zarrar",
+    "Dismiss" : "Escartar",
+    "Join call" : " Xunise a la llamada",
     "Copy" : "Copiar",
     "Copied" : "Copióse",
     "License" : "Llicencia",
@@ -50,6 +52,7 @@ OC.L10N.register(
     "Away" : "Ausente",
     "Do not disturb" : "Nun molestar",
     "Invisible" : "Invisible",
-    "Offline" : "Desconectáu"
+    "Offline" : "Desconectáu",
+    "You missed a call from {user}" : "Perdiesti una llamada de: {user}"
 },
 "nplurals=2; plural=(n != 1);");

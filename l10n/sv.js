@@ -13,6 +13,7 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud serveradress",
     "Log in" : "Logga in",
     "Logging in …" : "Loggar in ...",
+    "Incoming call" : "Inkommande samtal",
     "Close" : "Stäng",
     "Dismiss" : "Avfärda",
     "Join call" : "Gå med i samtal",
@@ -45,6 +46,7 @@ OC.L10N.register(
     "Notifications and sounds" : "Aviseringar och ljud",
     "Play chat notification sound" : "Spela ljud för chattaviseringar",
     "Play call notification sound" : "Spela ljud för samtalsaviseringar",
+    "Show call notification popup" : "Visa popup för samtalsaviseringar",
     "User status" : "Användarstatus",
     "Your status was set automatically" : "Din status ställdes in automatiskt",
     "Previously set status" : "Tidigare inställd status",
@@ -100,6 +102,7 @@ OC.L10N.register(
     "Offline" : "Frånkopplad",
     "Unknown status" : "Okänd status",
     "Cannot connect to the server. Please check your internet connection and try again later." : "Kan inte ansluta till servern. Kontrollera din internetanslutning och försök igen senare.",
+    "You missed a call from {user}" : "Du missade ett samtal från {user}",
     "You missed a group call in {call}" : "Du missade ett gruppsamtal i {call}"
 },
 "nplurals=2; plural=(n != 1);");

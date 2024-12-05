@@ -43,6 +43,7 @@ OC.L10N.register(
     "Away" : "Ausente",
     "Do not disturb" : "No istorbes",
     "Invisible" : "Invisìbile",
+    "You missed a call from {user}" : "As pèrdidu una mutida dae {user}",
     "You missed a group call in {call}" : "As pèrdidu una mutida de grupu in {call}"
 },
 "nplurals=2; plural=(n != 1);");

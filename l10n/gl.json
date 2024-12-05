@@ -11,6 +11,7 @@
     "Nextcloud server address" : "Enderezo do servidor do Nextcloud",
     "Log in" : "Acceder",
     "Logging in …" : "Acceder…",
+    "Incoming call" : "Chamada entrante",
     "Close" : "Pechar",
     "Dismiss" : "Desbotar",
     "Join call" : "Unirse á chamada",
@@ -43,6 +44,7 @@
     "Notifications and sounds" : "Notificacións e sons",
     "Play chat notification sound" : "Reproducir o son de notificación de parola",
     "Play call notification sound" : "Reproducir o son de notificación de chamada",
+    "Show call notification popup" : "Amosar a xanela emerxente de notificación de chamada",
     "User status" : "Estado do usuario",
     "Your status was set automatically" : "O seu estado foi estabelecido automaticamente",
     "Previously set status" : "Estado definido previamente",
@@ -98,6 +100,7 @@
     "Offline" : "Sen conexión",
     "Unknown status" : "Estado descoñecido",
     "Cannot connect to the server. Please check your internet connection and try again later." : "Non é posíbel conectar ac servidor. Comproe a súa conexión a Internet e ténteo de novo máis tarde.",
+    "You missed a call from {user}" : "Perdeu unha chamada de {user}",
     "You missed a group call in {call}" : "Perdeu unha chamada de grupo en {call}"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Log in" : "Giriş",
     "Close" : "Bağla",
+    "Dismiss" : "Rədd et",
     "Copy" : "Kopyala",
     "License" : "Lisenziya",
     "Ok" : "Oldu",

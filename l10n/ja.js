@@ -45,6 +45,7 @@ OC.L10N.register(
     "Do not disturb" : "取り込み中",
     "Invisible" : "ステータスを隠す",
     "Unknown status" : "不明なステータス",
+    "You missed a call from {user}" : "{user}からの着信に応答できませんでした。",
     "You missed a group call in {call}" : "{user}からのグループ着信に応答できませんでした。"
 },
 "nplurals=1; plural=0;");

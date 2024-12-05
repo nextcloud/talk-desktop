@@ -57,6 +57,24 @@ async function hasCurrentUserJoinedCall(token: string) {
 }
 
 /**
+ * Check if callbox should be rendered
+ * @param token - Conversation token
+ * @return Promise<boolean> - Resolved with boolean - true if the user should see the callbox, false otherwise
+ */
+export async function checkCurrentUserHasPendingCall(token: string): Promise<boolean> {
+	try {
+		const response = await hasCurrentUserJoinedCall(token)
+		if (response === null) {
+			return false
+		}
+		return !response
+	} catch (e) {
+		console.warn('Error while checking if the user has pending call', e)
+		return false
+	}
+}
+
+/**
  * Wait until the current user has joined the call
  * @param token - Conversation token
  * @param limit - The time limit in milliseconds to wait for the user to join the call, set to falsy to wait indefinitely

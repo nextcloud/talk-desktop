@@ -42,6 +42,7 @@ async function getCallParticipants(token: string) {
 /**
  * Check if the current user has joined the call
  * @param token - Conversation token
+ * @return Promise<boolean|null> - whether participant is in the call (`null` if there is no current call)
  */
 async function hasCurrentUserJoinedCall(token: string) {
 	const user = getCurrentUser()
@@ -49,7 +50,28 @@ async function hasCurrentUserJoinedCall(token: string) {
 		throw new Error('Cannot check whether current join the call - no current user found')
 	}
 	const participants = await getCallParticipants(token)
+	if (!participants.length) {
+		return null
+	}
 	return participants.some((participant) => user.uid === participant.actorId)
+}
+
+/**
+ * Check if callbox should be rendered
+ * @param token - Conversation token
+ * @return Promise<boolean> - Resolved with boolean - true if the user should see the callbox, false otherwise
+ */
+export async function checkCurrentUserHasPendingCall(token: string): Promise<boolean> {
+	try {
+		const response = await hasCurrentUserJoinedCall(token)
+		if (response === null) {
+			return false
+		}
+		return !response
+	} catch (e) {
+		console.warn('Error while checking if the user has pending call', e)
+		return false
+	}
 }
 
 /**
@@ -72,7 +94,10 @@ export function waitCurrentUserHasJoinedCall(token: string, limit?: number): Pro
 
 			try {
 				// Check if the user has joined the call
-				if (await hasCurrentUserJoinedCall(token)) {
+				const result = await hasCurrentUserJoinedCall(token)
+				if (result === null) {
+					return resolve(false)
+				} else if (result === true) {
 					return resolve(true)
 				}
 			} catch (e) {

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Dismiss" : "Descartar",
     "Join call" : "Unirse a la llamada",
     "Copy" : "Copiar",
+    "Copied" : "Copiado",
     "License" : "Licencia",
     "Issues" : "Temas",
     "Dark" : "Oscuro",

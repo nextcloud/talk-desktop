@@ -46,6 +46,7 @@ OC.L10N.register(
     "Status message" : "Správa o stave",
     "Loading …" : "Načítavam …",
     "Layout" : "Usporiadanie",
+    "Compact" : "Kompaktný",
     "Cancel" : "Zrušiť",
     "Share screen" : "Sprístupniť obrazovku",
     "Menu" : "Menu",

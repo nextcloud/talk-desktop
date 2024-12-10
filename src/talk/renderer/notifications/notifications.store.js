@@ -43,6 +43,7 @@ export function createNotificationStore() {
 		notifications: [],
 		lastETag: null,
 		lastTabId: null,
+		notificationThresholdId: 0,
 		userStatus: null,
 		tabId: null,
 		/** @type {number} */
@@ -224,8 +225,11 @@ export function createNotificationStore() {
 			state.lastETag = response.headers.etag
 			state.lastTabId = response.tabId
 			state.notifications = response.data.filter((notification) => notification.app === 'spreed')
-			const newNotifications = state.notifications.filter((notification) => !notificationsSet.has(notification.notificationId))
+			const newNotifications = state.notifications.filter((notification) => {
+				return !notificationsSet.has(notification.notificationId) && notification.notificationId > state.notificationThresholdId
+			})
 			notificationsSet = new Set(state.notifications.map((notification) => notification.notificationId))
+			state.notificationThresholdId = response.notificationThresholdId
 			if (state.backgroundFetching) {
 				for (const notification of newNotifications) {
 					await showNativeNotification(notification)

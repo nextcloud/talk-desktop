@@ -56,7 +56,16 @@ const refreshData = async (lastETag) => {
 		BrowserStorage.setItem('status', '' + response.status)
 		if (response.status !== 204) {
 			BrowserStorage.setItem('headers', JSON.stringify(response.headers))
-			BrowserStorage.setItem('data', JSON.stringify(response.data.ocs.data.map(remapAttributes)))
+			const data = response.data.ocs.data.map(remapAttributes)
+			BrowserStorage.setItem('data', JSON.stringify(data))
+			const notificationThresholdId = parseInt(BrowserStorage.getItem('notificationThresholdId') ?? 0, 10)
+			if (data.length && data[0].notificationId > notificationThresholdId) {
+				/**
+				 * Notifications older than this ID will not create a native notification.
+				 * see https://github.com/nextcloud/notifications/commit/6a543679b4de8af65cc82baa233ae17ffbbbc1af
+				 */
+				BrowserStorage.setItem('notificationThresholdId', data[0].notificationId)
+			}
 		}
 	} catch (error) {
 		if (error?.response?.status) {
@@ -104,5 +113,6 @@ export async function getNotificationsData(tabId, lastETag, forceRefresh, hasNot
 		data: JSON.parse(BrowserStorage.getItem('data') || '[]'),
 		tabId: BrowserStorage.getItem('tabId'),
 		lastUpdated: parseInt(BrowserStorage.getItem('lastUpdated'), 10),
+		notificationThresholdId: parseInt(BrowserStorage.getItem('notificationThresholdId') ?? 0, 10),
 	}
 }

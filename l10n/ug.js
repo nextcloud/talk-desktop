@@ -27,7 +27,7 @@ OC.L10N.register(
     "System default" : "سىستېما سۈكۈتتىكى",
     "Light" : "نۇر",
     "Dark" : "قاراڭغۇ",
-    "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "چوڭايتىشنى {ئاچقۇچ} ياكى چاشقىنەك چاقى ئارقىلىقمۇ ئۆزگەرتكىلى بولىدۇ. {ResetKey by ئارقىلىق ئەسلىگە كەلتۈرۈش",
+    "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "چوڭايتىشنى {key} ياكى چاشقىنەك چاقى ئارقىلىقمۇ ئۆزگەرتكىلى بولىدۇ. {resetKey} by ئارقىلىق ئەسلىگە كەلتۈرۈش",
     "Always" : "ھەمىشە",
     "Never" : "Never",
     "Some changes require a relaunch to take effect" : "بەزى ئۆزگەرتىشلەر كۈچكە ئىگە بولۇش ئۈچۈن قايتا قوزغىتىشنى تەلەپ قىلىدۇ",

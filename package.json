@@ -33,7 +33,7 @@
     "package:mac:x64": "electron-forge make --skip-package --platform=darwin --arch=x64",
     "package:mac:arm64": "electron-forge make --skip-package --platform=darwin --arch=arm64",
     "package:windows": "electron-forge make --skip-package --platform=win32",
-    "release:package": "zx ./scripts/prepare-release-packages.mjs",
+    "release:package": "npx -y zx ./scripts/prepare-release-packages.mjs",
     "generate-icons": "node ./scripts/generate-icons.js",
     "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
     "lint": "eslint --ext .js,.vue src/ --fix",

@@ -174,7 +174,8 @@ app.whenReady().then(async () => {
 	 */
 	app.on('second-instance', (event, argv, cwd) => {
 		// Instead of creating a new application instance - focus the current window
-		if (process.execPath === argv[0]) {
+		const secondInstanceExecPath = path.isAbsolute(argv[0]) ? argv[0] : path.resolve(cwd, argv[0])
+		if (process.execPath === secondInstanceExecPath) {
 			focusMainWindow()
 			return
 		}

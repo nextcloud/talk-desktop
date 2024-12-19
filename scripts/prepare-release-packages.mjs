@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { $, echo, spinner, argv, fs, os, usePwsh } from 'zx'
-// eslint-disable-next-line no-undef
+/// <reference types="zx" />
+/* eslint-disable no-undef */
+
 const packageJson = require('../package.json')
 
 const TALK_PATH = './out/.temp/spreed/'

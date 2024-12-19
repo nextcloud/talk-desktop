@@ -40,7 +40,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "talk": {
-    "stable": "v20.1.0"
+    "stable": "v20.1.1"
   },
   "dependencies": {
     "@mdi/svg": "^7.4.47",

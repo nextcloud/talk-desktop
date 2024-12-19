@@ -5,6 +5,22 @@
 
 # Changelog
 
+## v1.0.1 - 2024-12-19
+
+### Fixes
+
+- Fix crash on the second instance run on Linux [#993](https://github.com/nextcloud/talk-desktop/pull/993)
+- Fix native elements have incorrect theme [#974](https://github.com/nextcloud/talk-desktop/pull/974)
+- Fix notifications are shown for too old entries [#967](https://github.com/nextcloud/talk-desktop/pull/967)
+- Improve call state check in the call notification popup with new call state api [#965](https://github.com/nextcloud/talk-desktop/pull/965)
+- Fix call notification popup is shown when the call has already ended [#964](https://github.com/nextcloud/talk-desktop/pull/964)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v20.1.1 [#995](https://github.com/nextcloud/talk-desktop/pull/995)
+- Update translations
+- Update dependencies
+
 ## v1.0.0 - 2024-12-03
 
 ### Features

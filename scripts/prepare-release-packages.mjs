@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { $, echo, spinner, argv, fs, os, usePwsh } from 'zx'
-// eslint-disable-next-line no-undef
+/// <reference types="zx" />
+/* eslint-disable no-undef */
+
 const packageJson = require('../package.json')
 
 const TALK_PATH = './out/.temp/spreed/'
@@ -35,13 +36,14 @@ function help() {
 
 	Args:
 	--help - show help
-	--version - Optionally a specific Talk version/branch to build with, for example, v20.0.0-rc.1 or main. Default to stable in package.json.
+	--version - Optionally a specific Talk version/branch to build with, for example, v20.0.0-rc.1 or main. Default is package.json/talk.stable.
 	--windows - build Windows package
 	--linux - build Linux package
 	--mac - build macOS package using universal architecture (recommended)
 	--mac-x64 - build macOS package using x64 architecture
 	--mac-arm64 - build macOS package using arm64 architecture
-	--skip-install - skip npm ci in both repositories
+	--skip-install - skip installing dependencies in both repositories (use for debug only)
+	--skip-check - skip checking for uncommitted changes in talk-desktop (use for debug only)
 `
 	exit('', 0)
 }
@@ -66,22 +68,22 @@ async function prepareRelease() {
 	const gitSpreed = (command) => $`git --git-dir=${talkDotGit} --work-tree=${TALK_PATH} ${command}`
 
 	// Check Talk Desktop repository
-	echo`[1/5] Check for uncommitted changes in Talk Desktop`
-	if ((await $`git status -s`).stdout) {
+	echo`[1/5] Checking for uncommitted changes in Talk Desktop${argv['skip-check'] ? ' (SKIPPED)' : '...'}`
+	if (!argv['skip-check'] && (await $`git status -s`).stdout) {
 		exit('❌ You have uncommitted changes in the Talk Desktop repository', 1)
 	}
 
 	// Check and prepare Talk repository
-	echo`[2/5] Check for Talk repository in ${TALK_PATH}`
+	echo`[2/5] Checking for Talk repository in ${TALK_PATH}`
 	if (fs.existsSync(TALK_PATH)) {
 		echo`- Talk has been found in ${TALK_PATH}`
-		echo`[3.1/5] Check for uncommitted changes in Talk repository`
+		echo`[3.1/5] Checking for uncommitted changes in Talk repository`
 		if ((await gitSpreed(['status', '-s'])).stdout) {
 			exit('❌ You have uncommitted changes in the Talk repository', 1)
 		}
-		echo`[3.2/5] Fetch Talk ${version} from origin`
+		echo`[3.2/5] Fetching Talk ${version} from origin`
 		await spinner(
-			`Fetch Talk ${version} from origin`,
+			`Fetching Talk ${version} from origin`,
 			() => gitSpreed(['fetch', '--no-tags', '--depth=1', 'origin', 'tag', version]),
 		)
 		echo`[3.3/5] Checkout Talk ${version}`
@@ -91,7 +93,7 @@ async function prepareRelease() {
 		)
 	} else {
 		echo`- No Talk has been found in ${TALK_PATH}`
-		echo`[3/5] Clone Talk@${version} to ${TALK_PATH}`
+		echo`[3/5] Cloning Talk@${version} to ${TALK_PATH}`
 		await spinner(
 			`Cloning Talk@${version} to ${TALK_PATH}`,
 			() => $`git clone --branch=${version} --depth=1 -- https://github.com/nextcloud/spreed ${TALK_PATH}`,
@@ -99,23 +101,21 @@ async function prepareRelease() {
 	}
 
 	// (Re)-install Talk dependencies
+	echo`[4/5] Installing dependencies${argv['skip-install'] ? ' (SKIPPED)' : '...'}`
 	if (!argv['skip-install']) {
-		echo`[4/5] Install dependencies`
 		await spinner(
-			'Installing dependencies in Talk Desktop',
+			'[4.1/5] Installing dependencies in Talk Desktop',
 			() => $`npm ci`,
 		)
 
 		await spinner(
-			'Installing dependencies in Talk',
+			'[4.2/5] Installing dependencies in Talk',
 			() => $`npm ci --prefix ${TALK_PATH}`,
 		)
-	} else {
-		echo`SKIPPED [5/5] Install dependencies`
 	}
 
-	// Package with Talk from TALK_PATH
-	echo`[5/5] Package with Talk from ${TALK_PATH}`
+	// Build and package
+	echo`[5/5] Packaging...`
 	$.env.TALK_PATH = TALK_PATH
 	argv.windows && await spinner('Package Windows', () => $`npm run build:windows && npm run package:windows`)
 	argv.linux && await spinner('Package Linux', () => $`npm run build:linux && npm run package:linux`)

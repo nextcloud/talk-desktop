@@ -4,20 +4,19 @@
   -->
 
 <script setup lang="ts">
-import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import type { ScreensharingSource } from './screensharing.types.ts'
 import IconMonitor from 'vue-material-design-icons/Monitor.vue'
 import IconApplicationOutline from 'vue-material-design-icons/ApplicationOutline.vue'
 import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
+import DesktopMediaSourcePreviewVideo from './DesktopMediaSourcePreviewVideo.vue'
 
 // On Wayland getting each stream for the live preview requests user to select the source via system dialog again
 // Instead - show static images.
 // See: https://github.com/electron/electron/issues/27732
-const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
+// const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
+const previewType = 'thumbnail'
 
-const videoElement = ref<HTMLVideoElement | null>(null)
-
-const props = defineProps<{
+defineProps<{
 	source: ScreensharingSource
 	selected: boolean
 }>()
@@ -26,78 +25,6 @@ const emit = defineEmits<{
 	(event: 'select'): void
 	(event: 'suspend'): void
 }>()
-
-const getStreamForMediaSource = (mediaSourceId: ScreensharingSourceId) => {
-	const MAX_PREVIEW_SIZE = 320
-	// Special case for sharing all the screens with desktop audio in Electron
-	// In this case, it must have exactly these constraints
-	// "entire-desktop:0:0" is a custom sourceId for this specific case
-	const constraints = mediaSourceId === 'entire-desktop:0:0'
-		? {
-			audio: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
-				},
-			},
-			video: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
-					maxWidth: MAX_PREVIEW_SIZE,
-					maxHeight: MAX_PREVIEW_SIZE,
-				},
-			},
-		}
-		: {
-			audio: false,
-			video: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
-					chromeMediaSourceId: mediaSourceId,
-					maxWidth: MAX_PREVIEW_SIZE,
-					maxHeight: MAX_PREVIEW_SIZE,
-				},
-			},
-		}
-
-	// @ts-expect-error Each browser has a different API, the current object is compatible with Chromium
-	return navigator.mediaDevices.getUserMedia(constraints)
-}
-
-/**
- * Set the video source to the selected source
- */
-async function setVideoSource() {
-	videoElement.value!.srcObject = await getStreamForMediaSource(props.source.id)
-}
-
-/**
- * Release the video source
- */
-function releaseVideoSource() {
-	const stream = videoElement.value!.srcObject! as MediaStream
-	for (const track of stream.getTracks()) {
-		track.stop()
-	}
-}
-
-onMounted(async () => {
-	if (previewType === 'live') {
-		await setVideoSource()
-	}
-})
-
-onBeforeUnmount(() => {
-	// Release the stream, otherwise it is still captured even if no video element is using it
-	releaseVideoSource()
-})
-
-/**
- * Handle the loadedmetadata event of the video element
- * @param event - The event
- */
-function onLoadedMetadata(event: Event) {
-	(event.target as HTMLVideoElement).play()
-}
 </script>
 
 <template>
@@ -109,11 +36,9 @@ function onLoadedMetadata(event: Event) {
 			:checked="selected"
 			@change="emit('select')">
 
-		<video v-if="previewType === 'live'"
-			ref="videoElement"
+		<DesktopMediaSourcePreviewVideo v-if="previewType === 'live'"
 			class="capture-source__preview"
-			muted
-			@loadedmetadata="onLoadedMetadata"
+			:source="source"
 			@suspend="emit('suspend')" />
 		<img v-else-if="previewType === 'thumbnail' && source.thumbnail"
 			alt=""

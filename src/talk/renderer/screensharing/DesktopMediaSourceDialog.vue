@@ -6,6 +6,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import IconCancel from '@mdi/svg/svg/cancel.svg?raw'
+import IconMonitor from 'vue-material-design-icons/Monitor.vue'
 import IconMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
 import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
@@ -13,13 +14,14 @@ import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import { translate as t } from '@nextcloud/l10n'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
 import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
+import DesktopMediaSourcePreviewVideo from './DesktopMediaSourcePreviewVideo.vue'
 
 const emit = defineEmits<{
 	(event: 'submit', sourceId: ScreensharingSourceId): void
 	(event: 'cancel'): void
 }>()
 
-const RE_REQUEST_SOURCES_TIMEOUT = 1000
+const RE_REQUEST_SOURCES_TIMEOUT = 5000
 
 // On Wayland getting each stream for the live preview requests user to select the source via system dialog again
 // Instead - show static images.
@@ -28,6 +30,11 @@ const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
 
 const selectedSourceId = ref<ScreensharingSourceId | null>(null)
 const sources = ref<ScreensharingSource[] | null>(null)
+
+const selectedSource = computed(() => {
+	console.log('changed', sources.value, selectedSourceId.value)
+	return sources.value?.find((source) => source.id === selectedSourceId.value)
+})
 
 const handleSubmit = () => emit('submit', selectedSourceId.value!)
 const handleCancel = () => emit('cancel')
@@ -107,9 +114,9 @@ onMounted(async () => {
 	await requestDesktopCapturerSources()
 
 	// Preselect the first media source if any
-	if (!selectedSourceId.value) {
-		selectedSourceId.value = sources.value?.[0]?.id ?? null
-	}
+	// if (!selectedSourceId.value) {
+	// 	selectedSourceId.value = sources.value?.[0]?.id ?? null
+	// }
 
 	if (previewType === 'live') {
 		scheduleRequestDesktopCaprutererSources()
@@ -128,13 +135,24 @@ onBeforeUnmount(() => {
 		size="normal"
 		:buttons="dialogButtons"
 		@update:open="handleCancel">
-		<div v-if="sources" class="capture-source-grid">
-			<DesktopMediaSourcePreview v-for="source in sources"
-				:key="source.id"
-				:source="source"
-				:selected="selectedSourceId === source.id"
-				@select="selectedSourceId = source.id"
-				@suspend="handleVideoSuspend(source)" />
+		<div v-if="sources" class="capture-source-container">
+			<div v-if="previewType === 'live'" class="capture-source-preview">
+				<!-- @vue-expect-error Vue 2 doesn't understand that selectedSourceId is not undefined here -->
+				<DesktopMediaSourcePreviewVideo v-if="selectedSourceId" :key="selectedSource.id" :media-source-id="selectedSource.id" />
+				<NcEmptyContent v-else :name="t('talk_desktop', 'Choose source')">
+					<template #icon>
+						<IconMonitor />
+					</template>
+				</NcEmptyContent>
+			</div>
+			<div class="capture-source-grid">
+				<DesktopMediaSourcePreview v-for="source in sources"
+					:key="source.id"
+					:source="source"
+					:selected="selectedSourceId === source.id"
+					@select="selectedSourceId = source.id"
+					@suspend="handleVideoSuspend(source)" />
+			</div>
 		</div>
 		<NcEmptyContent v-else :name="t('talk_desktop', 'Loading …')">
 			<template #icon>
@@ -145,6 +163,26 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
+.capture-source-container {
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--default-grid-baseline) * 2);
+}
+
+.capture-source-preview {
+	aspect-ratio: 16 / 9;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--color-background-darker);
+	border-radius: var(--border-radius-container);
+}
+
+.capture-source-preview :deep(video) {
+	aspect-ratio: 16 / 9;
+	object-fit: scale-down;
+}
+
 .capture-source-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));

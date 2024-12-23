@@ -1,12 +1,12 @@
 <!--
   - SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
   - SPDX-License-Identifier: AGPL-3.0-or-later
--->
+  -->
 
 <script setup>
 import { ref } from 'vue'
 
-import DesktopMediaSourceDialog from './components/DesktopMediaSourceDialog.vue'
+import DesktopMediaSourceDialog from './DesktopMediaSourceDialog.vue'
 
 const showDialog = ref(false)
 

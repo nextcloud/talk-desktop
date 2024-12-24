@@ -35,7 +35,11 @@ export type AppConfig = {
 	// General settings
 	// ----------------
 
-	// Nothing yet...
+	/**
+	 * Whether to launch the application at startup
+	 * Default: false
+	 */
+	launchAtStartup: boolean
 
 	// -------------------
 	// Appearance settings
@@ -103,6 +107,7 @@ export type AppConfigKey = keyof AppConfig
  * Get the default config
  */
 const defaultAppConfig: AppConfig = {
+	launchAtStartup: false,
 	theme: 'default',
 	systemTitleBar: isLinux,
 	monochromeTrayIcon: isMac,

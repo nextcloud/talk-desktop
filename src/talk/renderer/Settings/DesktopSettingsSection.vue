@@ -27,7 +27,11 @@ import { useAppConfigValue } from './useAppConfigValue.ts'
 import { useNcSelectModel } from '../composables/useNcSelectModel.ts'
 import { ZOOM_MIN, ZOOM_MAX } from '../../../constants.js'
 
+const isLinux = window.systemInfo.isLinux
+
 const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
+
+const launchAtStartup = useAppConfigValue('launchAtStartup')
 
 const theme = useAppConfigValue('theme')
 const themeOptions = [
@@ -96,6 +100,12 @@ function relaunch() {
 				</NcButton>
 			</div>
 		</NcNoteCard>
+
+		<SettingsSubsection v-if="!isLinux" :name="t('talk_desktop', 'General')">
+			<NcCheckboxRadioSwitch :checked.sync="launchAtStartup" type="switch">
+				{{ t('talk_desktop', 'Launch at startup') }}
+			</NcCheckboxRadioSwitch>
+		</SettingsSubsection>
 
 		<SettingsSubsection :name="t('talk_desktop', 'Appearance')">
 			<SettingsSelect v-model="themeOption" :options="themeOptions" :label="t('talk_desktop', 'Theme')">

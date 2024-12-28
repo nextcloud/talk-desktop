@@ -63,7 +63,7 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 				<template v-if="content">
 					<fieldset :aria-label="t('talk_desktop', 'Controls')" class="viewer-text__controls">
 						<fieldset class="viewer-text__layout-switch" :aria-label="t('talk_desktop', 'Layout')">
-							<NcCheckboxRadioSwitch :checked.sync="layout"
+							<NcCheckboxRadioSwitch v-model="layout"
 								:aria-label="t('talk_desktop', 'Compact')"
 								value="compact"
 								type="radio"
@@ -74,7 +74,7 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 									<IconFileDocumentOutline :size="20" />
 								</template>
 							</NcCheckboxRadioSwitch>
-							<NcCheckboxRadioSwitch :checked.sync="layout"
+							<NcCheckboxRadioSwitch v-model="layout"
 								:aria-label="t('talk_desktop', 'Wide')"
 								value="wide"
 								type="radio"

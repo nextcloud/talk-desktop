@@ -151,9 +151,9 @@ async function login() {
 					<h2 class="login-box__header">
 						{{ t('talk_desktop', 'Log in to Nextcloud') }}
 					</h2>
-					<NcTextField :label="t('talk_desktop', 'Nextcloud server address')"
+					<NcTextField v-model="rawServerUrl"
+						:label="t('talk_desktop', 'Nextcloud server address')"
 						label-visible
-						:value.sync="rawServerUrl"
 						placeholder="https://try.nextcloud.com"
 						inputmode="url"
 						:success="state === 'success'"

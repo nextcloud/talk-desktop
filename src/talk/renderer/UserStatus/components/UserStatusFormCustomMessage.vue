@@ -51,8 +51,8 @@ const handleUserStatusMessageChange = (message) => {
 		<NcTextField :label="t('talk_desktop', 'Status message')"
 			maxlength="80"
 			:disabled="disabled"
-			:value="message ?? ''"
-			@update:value="handleUserStatusMessageChange" />
+			:model-value="message ?? ''"
+			@update:model-value="handleUserStatusMessageChange" />
 	</div>
 </template>
 

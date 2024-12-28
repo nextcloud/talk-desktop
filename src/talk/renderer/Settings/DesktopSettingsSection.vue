@@ -102,7 +102,7 @@ function relaunch() {
 		</NcNoteCard>
 
 		<SettingsSubsection v-if="!isLinux" :name="t('talk_desktop', 'General')">
-			<NcCheckboxRadioSwitch :checked.sync="launchAtStartup" type="switch">
+			<NcCheckboxRadioSwitch v-model="launchAtStartup" type="switch">
 				{{ t('talk_desktop', 'Launch at startup') }}
 			</NcCheckboxRadioSwitch>
 		</SettingsSubsection>
@@ -114,11 +114,11 @@ function relaunch() {
 				</template>
 			</SettingsSelect>
 
-			<NcCheckboxRadioSwitch :checked.sync="monochromeTrayIcon" type="switch">
+			<NcCheckboxRadioSwitch v-model="monochromeTrayIcon" type="switch">
 				{{ t('talk_desktop', 'Use monochrome tray icon') }}
 			</NcCheckboxRadioSwitch>
 
-			<NcCheckboxRadioSwitch :checked.sync="systemTitleBar" type="switch">
+			<NcCheckboxRadioSwitch v-model="systemTitleBar" type="switch">
 				{{ t('talk_desktop', 'Use system title bar') }}
 			</NcCheckboxRadioSwitch>
 
@@ -141,7 +141,7 @@ function relaunch() {
 						:aria-describedby="descriptionId"
 						label-outside
 						inputmode="number"
-						:value="zoomFactorPercentage"
+						:model-value="zoomFactorPercentage"
 						@change="zoomFactorPercentage = $event.target.value"
 						@blur="$event.target.value = zoomFactorPercentage" />
 					<NcButton :aria-label="t('talk_desktop', 'Zoom in')" type="tertiary" @click="zoomFactor *= ZOOM_STEP">

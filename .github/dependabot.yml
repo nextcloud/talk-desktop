@@ -8,6 +8,3 @@ updates:
     time: "03:00"
     timezone: Europe/Berlin
   open-pull-requests-limit: 10
-  ignore:
-    - dependency-name: "undici"
-      versions: [ "6.7.x" ]

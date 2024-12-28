@@ -72,7 +72,7 @@ const handleSelected = (option) => {
 			:clearable="false"
 			placement="top"
 			:options="clearAtOptions"
-			:value="{ label: clearAtAsLabel }"
+			:model-value="{ label: clearAtAsLabel }"
 			:disabled="disabled"
 			@option:selected="handleSelected" />
 	</div>

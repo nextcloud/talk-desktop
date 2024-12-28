@@ -35,6 +35,7 @@ OC.L10N.register(
     "Never" : "從不",
     "Some changes require a relaunch to take effect" : "部份變更需要重新啟動才能生效",
     "Restart" : "重新啟動",
+    "General" : "常規",
     "Appearance" : "外觀",
     "Theme" : "主題",
     "Use monochrome tray icon" : "使用單色系統匣圖示",

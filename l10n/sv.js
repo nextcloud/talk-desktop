@@ -35,6 +35,7 @@ OC.L10N.register(
     "Never" : "Aldrig",
     "Some changes require a relaunch to take effect" : "Vissa ändringar kräver en omstart för att träda i kraft",
     "Restart" : "Omstart",
+    "General" : "Allmänt",
     "Appearance" : "Utseende",
     "Theme" : "Tema",
     "Use monochrome tray icon" : "Använd monokrom ikon",

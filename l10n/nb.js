@@ -28,6 +28,7 @@ OC.L10N.register(
     "Dark" : "Mørk",
     "Never" : "Aldri",
     "Restart" : "Omstart",
+    "General" : "Generell",
     "Appearance" : "Utseende",
     "Theme" : "Tema",
     "Zoom" : "Zoom",

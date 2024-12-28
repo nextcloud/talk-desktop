@@ -22,6 +22,7 @@ OC.L10N.register(
     "Always" : "همواره",
     "Never" : "هرگز",
     "Restart" : "Restart",
+    "General" : "عمومی",
     "Appearance" : "ظاهر",
     "Theme" : "پوسته",
     "Zoom" : "Zoom",

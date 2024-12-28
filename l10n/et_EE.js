@@ -11,6 +11,7 @@ OC.L10N.register(
     "Light" : "Tume",
     "Dark" : "Hele",
     "Never" : "Mitte kunagi",
+    "General" : "Üldine",
     "Theme" : "Teema",
     "Reset" : "Lähtesta",
     "User status" : "Kasutaja staatus",

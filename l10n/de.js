@@ -32,6 +32,7 @@ OC.L10N.register(
     "Never" : "Niemals",
     "Some changes require a relaunch to take effect" : "Einige Änderungen erfordern einen Neustart, um wirksam zu werden",
     "Restart" : "Neustart",
+    "General" : "Allgemein",
     "Appearance" : "Aussehen",
     "Theme" : "Design",
     "Use monochrome tray icon" : "Monochromes Tray-Symbol verwenden",

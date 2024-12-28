@@ -12,6 +12,7 @@ OC.L10N.register(
     "Issues" : "Vandamál",
     "Ok" : "Í lagi",
     "Never" : "Aldrei",
+    "General" : "Almennt",
     "Appearance" : "Útlit",
     "Zoom" : "Aðdráttur",
     "Zoom out" : "Renna frá",

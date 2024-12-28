@@ -17,6 +17,7 @@ OC.L10N.register(
     "Dark" : "Tamno",
     "Always" : "Uvijek",
     "Never" : "Nikad",
+    "General" : "Općenito",
     "Appearance" : "Izgled",
     "Theme" : "Tema",
     "Zoom" : "Uvećaj",

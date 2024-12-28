@@ -13,6 +13,7 @@ OC.L10N.register(
     "Light" : "E çelët",
     "Always" : "Përherë",
     "Never" : "Kurrë",
+    "General" : "Të përgjithshme",
     "Theme" : "Shabllon",
     "Reset" : "Rivendos",
     "30 minutes" : "30 minuta",

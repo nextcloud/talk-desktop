@@ -10,6 +10,7 @@ OC.L10N.register(
     "Yes" : "Hawa",
     "Light" : "Ýagtylyk",
     "Dark" : "Garaňky",
+    "General" : "Esasy",
     "Theme" : "Tema",
     "Don't clear" : "Arassalama",
     "30 minutes" : "30 minut",

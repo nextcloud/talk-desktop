@@ -14,6 +14,7 @@ OC.L10N.register(
     "Light" : "בהירה",
     "Dark" : "כהה",
     "Never" : "מעולם לא",
+    "General" : "כללי",
     "Appearance" : "מראה",
     "Theme" : "ערכת עיצוב",
     "Zoom" : "תקריב",

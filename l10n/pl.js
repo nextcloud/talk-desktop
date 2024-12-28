@@ -29,6 +29,7 @@ OC.L10N.register(
     "Always" : "Zawsze",
     "Never" : "Nigdy",
     "Restart" : "Restart",
+    "General" : "Ogólne",
     "Appearance" : "Wygląd",
     "Theme" : "Motyw",
     "Zoom" : "Powiększ",

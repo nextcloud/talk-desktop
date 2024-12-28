@@ -34,6 +34,7 @@ OC.L10N.register(
     "Never" : "Nooit",
     "Some changes require a relaunch to take effect" : "Sommige aanpassingen vereisen een restart",
     "Restart" : "Restart",
+    "General" : "Algemeen",
     "Appearance" : "Uiterlijk",
     "Theme" : "Thema",
     "Use monochrome tray icon" : "Gebruik monochroom systeemvakpictogram",

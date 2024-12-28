@@ -10,6 +10,7 @@ OC.L10N.register(
     "No" : "ບໍ່",
     "Light" : "ແຈ້ງ",
     "Dark" : "ມືດ",
+    "General" : "ທົ່ວໄປ",
     "Theme" : "ຫົວຂໍ້",
     "Don't clear" : "ບໍ່ຈະແຈ້ງ",
     "30 minutes" : "30 ນາທີ",

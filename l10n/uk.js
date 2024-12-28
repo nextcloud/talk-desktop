@@ -29,6 +29,7 @@ OC.L10N.register(
     "Always" : "Завжди",
     "Never" : "Ніколи",
     "Restart" : "Перезавантажити",
+    "General" : "Загальне",
     "Appearance" : "Вигляд",
     "Theme" : "Тема",
     "Zoom" : "Масштаб",

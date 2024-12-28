@@ -16,6 +16,7 @@ OC.L10N.register(
     "Dark" : "Escur",
     "Always" : "Totjorn",
     "Never" : "Jamai",
+    "General" : "Generals",
     "Theme" : "Tèma",
     "Reset" : "Reïnicializar",
     "User status" : "Estat utilizaire",

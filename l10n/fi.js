@@ -17,6 +17,7 @@ OC.L10N.register(
     "Always" : "Aina",
     "Never" : "Ei koskaan",
     "Restart" : "Käynnistä uudelleen",
+    "General" : "Yleiset",
     "Appearance" : "Ulkoasu",
     "Theme" : "Teema",
     "Zoom" : "Suurennus",

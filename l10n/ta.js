@@ -7,6 +7,7 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "இல்லை",
     "Yes" : "ஆம்",
+    "General" : "பொதுவான",
     "Today" : "இன்று",
     "Cancel" : "ரத்து செய்",
     "Settings" : "அமைப்புகள்",

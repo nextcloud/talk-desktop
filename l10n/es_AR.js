@@ -11,6 +11,7 @@ OC.L10N.register(
     "Yes" : "Sí",
     "Dark" : "Oscuro",
     "Never" : "Nunca",
+    "General" : "General",
     "Reset" : "Restablecer",
     "Don't clear" : "No vaciar",
     "30 minutes" : "30 minutos",

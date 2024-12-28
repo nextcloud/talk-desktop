@@ -12,6 +12,7 @@ OC.L10N.register(
     "Yes" : "Si",
     "Dark" : "Oscuro",
     "Never" : "Nunca",
+    "General" : "General",
     "Theme" : "Tema",
     "Reset" : "Restablecer",
     "30 minutes" : "30 minutos",

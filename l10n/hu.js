@@ -20,6 +20,7 @@ OC.L10N.register(
     "Always" : "Mindig",
     "Never" : "Soha",
     "Restart" : "Újraindítás",
+    "General" : "Általános",
     "Appearance" : "Megjelenés",
     "Theme" : "Téma",
     "Zoom" : "Nagyítás",

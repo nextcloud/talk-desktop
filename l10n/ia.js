@@ -5,6 +5,7 @@ OC.L10N.register(
     "Close" : "Clauder",
     "Dismiss" : "Dimitter",
     "Never" : "Nunquam",
+    "General" : "General",
     "Reset" : "Re-fixar",
     "Today" : "Hodie",
     "This week" : "Iste septimana",

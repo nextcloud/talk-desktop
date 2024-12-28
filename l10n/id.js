@@ -13,6 +13,7 @@ OC.L10N.register(
     "Light" : "Terang",
     "Dark" : "Gelap",
     "Never" : "Tidak pernah",
+    "General" : "Umum",
     "Appearance" : "Tampilan",
     "Theme" : "Tema",
     "Reset" : "Setel ulang",

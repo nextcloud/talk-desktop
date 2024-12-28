@@ -9,6 +9,7 @@ OC.L10N.register(
     "Light" : "ភ្លឺt",
     "Dark" : "ងងឹត",
     "Always" : "រាល់ពេល",
+    "General" : "ទូទៅ",
     "Today" : "ថ្ងៃ​នេះ",
     "Cancel" : "លើកលែង",
     "Settings" : "ការកំណត់"

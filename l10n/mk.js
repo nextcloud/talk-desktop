@@ -10,6 +10,7 @@ OC.L10N.register(
     "Dark" : "Темна",
     "Always" : "Секогаш",
     "Never" : "Никогаш",
+    "General" : "Општо",
     "Appearance" : "Изглед",
     "Theme" : "Тема",
     "Zoom" : "Зум",

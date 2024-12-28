@@ -33,6 +33,7 @@ OC.L10N.register(
     "Never" : "Nunca",
     "Some changes require a relaunch to take effect" : "Algumas mudanças requerem um relançamento para entrar em vigor",
     "Restart" : "Reiniciar",
+    "General" : "Geral",
     "Appearance" : "Aparência",
     "Theme" : "Tema",
     "Use monochrome tray icon" : "Use o ícone da bandeja monocromática",

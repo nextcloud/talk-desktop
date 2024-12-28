@@ -35,6 +35,7 @@ OC.L10N.register(
     "Never" : "Nunca",
     "Some changes require a relaunch to take effect" : "Algúns cambios requiren un reinicio para ter efecto",
     "Restart" : "Reiniciar",
+    "General" : "Xeral",
     "Appearance" : "Aparencia",
     "Theme" : "Tema",
     "Use monochrome tray icon" : "Usar iconas monocromáticas na área de notificación",

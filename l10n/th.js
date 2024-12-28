@@ -16,6 +16,7 @@ OC.L10N.register(
     "Dark" : "มืด",
     "Always" : "เสมอ",
     "Never" : "ไม่เคย",
+    "General" : "ทั่วไป",
     "Appearance" : "ลักษณะที่ปรากฏ",
     "Theme" : "ธีม",
     "Reset" : "รีเซ็ต",

@@ -13,6 +13,7 @@ OC.L10N.register(
     "Dark" : "Malluma",
     "Always" : "Ĉiam",
     "Never" : "Neniam",
+    "General" : "Ĝenerala",
     "Theme" : "Etoso",
     "Reset" : "Restarigi",
     "30 minutes" : "30 minutoj",

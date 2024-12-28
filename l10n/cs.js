@@ -35,6 +35,7 @@ OC.L10N.register(
     "Never" : "Nikdy",
     "Some changes require a relaunch to take effect" : "Aby se projevily, některé změny vyžadují opětovné spuštění",
     "Restart" : "Restartovat",
+    "General" : "Obecné",
     "Appearance" : "Vzhled",
     "Theme" : "Vzhled",
     "Use monochrome tray icon" : "Použít monochromomatickou ikonu v oznamovací oblasti",

@@ -11,6 +11,7 @@ OC.L10N.register(
     "Yes" : "Oui",
     "Light" : "Aceɛlal",
     "Dark" : "Ubrik",
+    "General" : "Amatu",
     "Appearance" : "Apparence",
     "Theme" : "Asentel",
     "Don't clear" : "Ur seffeḍ ara",

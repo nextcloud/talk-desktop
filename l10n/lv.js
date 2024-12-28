@@ -11,6 +11,7 @@ OC.L10N.register(
     "Ok" : "Labi",
     "No" : "Nē",
     "Yes" : "Jā",
+    "General" : "Vispārīgs",
     "Appearance" : "Izskats",
     "Theme" : "Motīvs",
     "Reset" : "Atiestatīt",

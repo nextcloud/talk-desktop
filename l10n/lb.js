@@ -8,6 +8,7 @@ OC.L10N.register(
     "Ok" : "OK",
     "No" : "Nee",
     "Yes" : "Jo",
+    "General" : "Allgemeng",
     "Reset" : "Zeréck setzen",
     "Today" : "Haut",
     "Menu" : "Menü",

@@ -24,6 +24,7 @@ OC.L10N.register(
     "Always" : "Beti",
     "Never" : "Inoiz ez",
     "Restart" : "Berrabiarazi",
+    "General" : "Orokorra",
     "Appearance" : "Itxura",
     "Theme" : "Gaia",
     "Zoom" : "Zoom",

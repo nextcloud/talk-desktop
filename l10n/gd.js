@@ -11,6 +11,7 @@ OC.L10N.register(
     "Yes" : "Tha",
     "Light" : "Soilleir",
     "Dark" : "Dorcha",
+    "General" : "Coitcheann",
     "Theme" : "Ùrlar dorcha",
     "Don't clear" : "Na falamhaich",
     "30 minutes" : "Leth-uair a thìde",

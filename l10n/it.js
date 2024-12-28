@@ -35,6 +35,7 @@ OC.L10N.register(
     "Never" : "Mai",
     "Some changes require a relaunch to take effect" : "Alcune modifiche richiedono un riavvio per avere effetto",
     "Restart" : "Ricomincia",
+    "General" : "Generale",
     "Appearance" : "Aspetto",
     "Theme" : "Tema",
     "Use monochrome tray icon" : "Usa l'icona della barra delle applicazioni monocromatica",

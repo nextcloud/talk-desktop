@@ -10,6 +10,7 @@ OC.L10N.register(
     "Yes" : "Ie",
     "Light" : "Golau",
     "Dark" : "Tywyll",
+    "General" : "Cyffredinol",
     "Today" : "Heddiw",
     "This week" : "Wythnos yma",
     "Settings" : "Gosodiadau",

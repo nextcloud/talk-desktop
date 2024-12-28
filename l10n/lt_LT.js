@@ -25,6 +25,7 @@ OC.L10N.register(
     "Always" : "Visada",
     "Never" : "Niekada",
     "Restart" : "Paleisti iš naujo",
+    "General" : "Bendra",
     "Appearance" : "Išvaizda",
     "Theme" : "Apipavidalinimas",
     "Use monochrome tray icon" : "Naudoti vienspalvę dėklo piktogramą",

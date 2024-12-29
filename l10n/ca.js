@@ -19,6 +19,7 @@ OC.L10N.register(
     "Light" : "Clar",
     "Dark" : "Fosc",
     "Never" : "Mai",
+    "General" : "General",
     "Appearance" : "Aparença",
     "Theme" : "Tema",
     "Zoom" : "Apropa/Allunya",

@@ -19,6 +19,7 @@ OC.L10N.register(
     "Always" : "Винаги",
     "Never" : "Никога",
     "Restart" : "Рестартиране",
+    "General" : "Общи",
     "Appearance" : "Изглед",
     "Theme" : "Тема",
     "Zoom" : "Увеличаване",

@@ -35,6 +35,7 @@ OC.L10N.register(
     "Never" : "مُطلَقاً",
     "Some changes require a relaunch to take effect" : "بعض التغيرات تحتاج إلى إعادة التشغيل ليظهر تأثيرها",
     "Restart" : "إعادة التشغيل",
+    "General" : "عامٌّ",
     "Appearance" : "المظهر",
     "Theme" : "السمة",
     "Use monochrome tray icon" : "استعمل أيقونة الدرج أحادية اللون",

@@ -20,6 +20,7 @@ OC.L10N.register(
     "Dark" : "Escuridá",
     "Always" : "Siempres",
     "Never" : "Enxamás",
+    "General" : "Xeneral",
     "Appearance" : "Aspeutu",
     "Theme" : "Estilu",
     "Zoom" : "Zoom",

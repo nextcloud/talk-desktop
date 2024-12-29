@@ -36,6 +36,7 @@ OC.L10N.register(
     "Some changes require a relaunch to take effect" : "Aby se projevily, některé změny vyžadují opětovné spuštění",
     "Restart" : "Restartovat",
     "General" : "Obecné",
+    "Launch at startup" : "Spouštět při spuštění",
     "Appearance" : "Vzhled",
     "Theme" : "Vzhled",
     "Use monochrome tray icon" : "Použít monochromomatickou ikonu v oznamovací oblasti",

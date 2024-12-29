@@ -11,6 +11,7 @@ OC.L10N.register(
     "Light" : "Lugernus",
     "Dark" : "Teñval",
     "Never" : "James",
+    "General" : "Hollek",
     "Theme" : "Tem",
     "Don't clear" : "Arabat diverkañ",
     "Today" : "Hiziv",

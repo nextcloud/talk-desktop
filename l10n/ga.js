@@ -36,6 +36,7 @@ OC.L10N.register(
     "Some changes require a relaunch to take effect" : "Teastaíonn athsheoladh ó roinnt athruithe le go dtiocfaidh siad i bhfeidhm",
     "Restart" : "Atosaigh",
     "General" : "Ginearálta",
+    "Launch at startup" : "Seoladh ag am tosaithe",
     "Appearance" : "Dealramh",
     "Theme" : "Téama",
     "Use monochrome tray icon" : "Úsáid deilbhín tráidire monacrómach",

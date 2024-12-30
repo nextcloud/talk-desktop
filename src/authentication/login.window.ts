@@ -3,26 +3,25 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const os = require('node:os')
-const { BrowserWindow, app } = require('electron')
-const { parseLoginRedirectUrl } = require('./login.service.js')
-const { osTitle } = require('../app/system.utils.ts')
-const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
-const { getAppConfig } = require('../app/AppConfig.ts')
+import os from 'node:os'
+import { BrowserWindow, app } from 'electron'
+import { parseLoginRedirectUrl } from './login.service.js'
+import { osTitle } from '../app/system.utils.ts'
+import { applyContextMenu } from '../app/applyContextMenu.js'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
+import { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle } from '../app/utils.ts'
+import { getAppConfig } from '../app/AppConfig.ts'
 
 const genId = () => Math.random().toString(36).slice(2, 9)
 
 /**
  * Open a web-view modal window with Nextcloud Server login page
  *
- * @param {import('electron').BrowserWindow} parentWindow - Parent window
- * @param {string} serverUrl - Server URL
- * @return {Promise<import('./login.service.js').Credentials|Error>}
+ * @param parentWindow - Parent window
+ * @param serverUrl - Server URL
  */
-function openLoginWebView(parentWindow, serverUrl) {
-	return new Promise((resolve, reject) => {
+export function openLoginWebView(parentWindow: BrowserWindow, serverUrl: string) {
+	return new Promise((resolve) => {
 		const WIDTH = 750
 		const HEIGHT = 750
 		const TITLE = buildTitle('Login')
@@ -36,8 +35,8 @@ function openLoginWebView(parentWindow, serverUrl) {
 				height: HEIGHT,
 			}),
 			...getScaledWindowMinSize({
-				width: WIDTH,
-				height: HEIGHT,
+				minWidth: WIDTH,
+				minHeight: HEIGHT,
 			}),
 			useContentSize: true,
 			resizable: true,
@@ -85,7 +84,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 				} catch (e) {
 					resolve(new Error('Unexpected server error'))
 				} finally {
-					// Anyway close the window
+					// Anyway, close the window
 					window.close()
 				}
 			}
@@ -98,8 +97,4 @@ function openLoginWebView(parentWindow, serverUrl) {
 			resolve(new Error('Login window was closed'))
 		})
 	})
-}
-
-module.exports = {
-	openLoginWebView,
 }

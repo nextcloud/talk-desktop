@@ -3,7 +3,7 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref } from 'vue'
 import IconArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
@@ -21,15 +21,14 @@ const version = window.TALK_DESKTOP.packageInfo.version
 const rawServerUrl = ref('')
 
 const serverUrl = computed(() => {
-	const addHTTPS = (url) => url.startsWith('http') ? url : `https://${url}`
-	const removeIndexPhp = (url) => url.includes('/index.php') ? url.slice(0, url.indexOf('/index.php')) : url
-	const removeTrailingSlash = (url) => url.endsWith('/') ? url.slice(0, -1) : url
+	const addHTTPS = (url: string) => url.startsWith('http') ? url : `https://${url}`
+	const removeIndexPhp = (url: string) => url.includes('/index.php') ? url.slice(0, url.indexOf('/index.php')) : url
+	const removeTrailingSlash = (url: string) => url.endsWith('/') ? url.slice(0, -1) : url
 	return removeTrailingSlash(removeIndexPhp(addHTTPS(rawServerUrl.value))).trim()
 })
 
-/** @type {import('vue').Ref<'idle'|'loading'|'error'|'success'>} */
-const state = ref('idle')
-const stateText = ref('')
+const state = ref<'idle'|'loading'|'error'|'success'>('idle')
+const stateText = ref<string>('')
 
 /**
  * Switch state to success
@@ -49,9 +48,9 @@ function setLoading() {
 
 /**
  * Switch state to error
- * @param {string} error - Error message
+ * @param error - Error message
  */
-function setError(error) {
+function setError(error: string) {
 	state.value = 'error'
 	stateText.value = error
 }
@@ -92,7 +91,7 @@ async function login() {
 	}
 
 	// Check versions compatibilities
-	const createVersionError = (componentName, minRequiredVersion, foundVersion) => t('talk_desktop', '{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed', {
+	const createVersionError = (componentName: string, minRequiredVersion: string, foundVersion: string) => t('talk_desktop', '{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed', {
 		componentName,
 		minRequiredVersion,
 		foundVersion,
@@ -197,7 +196,7 @@ async function login() {
 	flex-direction: column;
 	align-items: center;
 	user-select: none;
-	app-region: drag;
+	-webkit-app-region: drag;
 }
 
 .spacer {
@@ -226,7 +225,7 @@ async function login() {
 	border-radius: var(--border-radius-large);
 	box-shadow: 0 0 10px var(--color-box-shadow);
 	width: 300px;
-	app-region: no-drag;
+	-webkit-app-region: no-drag;
 }
 
 .login-box__header {

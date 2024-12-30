@@ -3,25 +3,29 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-/**
- * @typedef Credentials
- * @property {string} server - Server URL
- * @property {string} user - User's Login (user@example.com, not userid)
- * @property {string} password - App password
- */
+type NcLoginRedirectURL = `nc://login/server:${string}&user:${string}&password:${string}`
+
+type Credentials = {
+	/** Server URL */
+	server: string
+	/** User's Login (user@example.com, not userid) */
+	user: string
+	/** App password */
+	password: string
+}
 
 /**
  * Parse redirect URL
  *
- * @param {string} url - Redirect URL nc://login/server:URL&user:USER&password:PASSWORD
- * @return {Credentials} - Credentials data
+ * @param url - Redirect URL
+ * @return Credentials data
  * @throws {Error} - Parsing error
  */
-function parseLoginRedirectUrl(url) {
+export function parseLoginRedirectUrl(url: NcLoginRedirectURL): Credentials {
 	// nc://login/server:URL&user:USER&password:PASSWORD
 	const re = /^nc:\/\/login\/server:(.*)&user:(.*)&password:(.*)$/
 	const parsed = url.match(re)
-	if (parsed.length < 4) {
+	if (!parsed || parsed.length < 4) {
 		throw new Error('Error on parsing login redirect URL')
 	}
 	return {
@@ -29,8 +33,4 @@ function parseLoginRedirectUrl(url) {
 		user: decodeURIComponent(parsed[2].replaceAll('+', ' ')),
 		password: decodeURIComponent(parsed[3].replaceAll('+', ' ')),
 	}
-}
-
-module.exports = {
-	parseLoginRedirectUrl,
 }

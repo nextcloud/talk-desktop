@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow } = require('electron')
-const { TITLE_BAR_HEIGHT } = require('../constants.js')
-const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getAppConfig } = require('../app/AppConfig.ts')
-const { getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
+import { BrowserWindow } from 'electron'
+import { TITLE_BAR_HEIGHT } from '../constants.js'
+import { applyContextMenu } from '../app/applyContextMenu.js'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
+import { getAppConfig } from '../app/AppConfig.ts'
+import { getScaledWindowSize, applyZoom, buildTitle } from '../app/utils.ts'
 
 /**
- * @return {import('electron').BrowserWindow}
+ * Open a new window for the authentication via Login Flow v1
  */
-function createAuthenticationWindow() {
+export function createAuthenticationWindow() {
 	const zoomFactor = getAppConfig('zoomFactor')
 	const window = new BrowserWindow({
 		title: buildTitle('Authentication'),
@@ -54,8 +54,4 @@ function createAuthenticationWindow() {
 	window.loadURL(AUTHENTICATION_WINDOW_WEBPACK_ENTRY)
 
 	return window
-}
-
-module.exports = {
-	createAuthenticationWindow,
 }

@@ -313,7 +313,7 @@ app.whenReady().then(async () => {
 	})
 
 	ipcMain.handle('authentication:logout', async (event) => {
-		if (createMainWindow === createTalkWindow) {
+		if (createMainWindow === createTalkWindow || createMainWindow === createWelcomeWindow) {
 			await mainWindow.webContents.session.clearStorageData()
 			const authenticationWindow = createAuthenticationWindow()
 			createMainWindow = createAuthenticationWindow

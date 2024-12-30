@@ -5,7 +5,6 @@
 
 const semver = require('semver')
 const { Notification, shell } = require('electron')
-const { fetch } = require('undici')
 const packageJson = require('../../package.json')
 
 /**

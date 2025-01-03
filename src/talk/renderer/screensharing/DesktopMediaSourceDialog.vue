@@ -1,34 +1,42 @@
 <!--
   - SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
   - SPDX-License-Identifier: AGPL-3.0-or-later
--->
+  -->
 
-<script setup>
+<script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-
 import IconCancel from '@mdi/svg/svg/cancel.svg?raw'
+import IconMonitor from 'vue-material-design-icons/Monitor.vue'
 import IconMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
-
 import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-
 import { translate as t } from '@nextcloud/l10n'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
+import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
+import DesktopMediaSourcePreviewVideo from './DesktopMediaSourcePreviewVideo.vue'
 
-const emit = defineEmits(['submit', 'cancel'])
+const emit = defineEmits<{
+	(event: 'submit', sourceId: ScreensharingSourceId): void
+	(event: 'cancel'): void
+}>()
 
-const RE_REQUEST_SOURCES_TIMEOUT = 1000
+const RE_REQUEST_SOURCES_TIMEOUT = 5000
 
 // On Wayland getting each stream for the live preview requests user to select the source via system dialog again
 // Instead - show static images.
 // See: https://github.com/electron/electron/issues/27732
 const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
 
-const selectedSourceId = ref(null)
-const sources = ref(null)
+const selectedSourceId = ref<ScreensharingSourceId | null>(null)
+const sources = ref<ScreensharingSource[] | null>(null)
 
-const handleSubmit = () => emit('submit', selectedSourceId.value)
+const selectedSource = computed(() => {
+	console.log('changed', sources.value, selectedSourceId.value)
+	return sources.value?.find((source) => source.id === selectedSourceId.value)
+})
+
+const handleSubmit = () => emit('submit', selectedSourceId.value!)
 const handleCancel = () => emit('cancel')
 
 const dialogButtons = computed(() => [
@@ -47,11 +55,12 @@ const dialogButtons = computed(() => [
 ])
 
 const requestDesktopCapturerSources = async () => {
-	sources.value = await window.TALK_DESKTOP.getDesktopCapturerSources()
+	sources.value = await window.TALK_DESKTOP.getDesktopCapturerSources() as ScreensharingSource[] | null
 
 	// There is no source. Probably the user hasn't granted the permission.
 	if (!sources.value) {
 		emit('cancel')
+		return
 	}
 
 	// On Wayland there might be no name from the desktopCapturer
@@ -67,26 +76,35 @@ const requestDesktopCapturerSources = async () => {
 
 	// There is no sourceId for the entire desktop with all the screens and audio in Electron.
 	// But it is possible to capture it. "entire-desktop:0:0" is a custom sourceId for this specific case.
-	const entireDesktop = {
+	const entireDesktop: ScreensharingSource = {
 		id: 'entire-desktop:0:0',
 		name: screens.length > 1 ? t('talk_desktop', 'Audio + All screens') : t('talk_desktop', 'Audio + Screen'),
+		icon: null,
+		thumbnail: null,
 	}
 
 	// On Wayland we don't manually provide the source stream. It is covered by Wayland and entire-desktop is not supported
 	sources.value = window.systemInfo.isWayland ? [...screens, ...windows] : [...screens, entireDesktop, ...windows]
 }
 
-const handleVideoSuspend = (source) => {
-	sources.value.splice(sources.value.indexOf(source), 1)
+/**
+ * Handle the suspend event of the video element
+ * @param source - The source that was suspended
+ */
+function handleVideoSuspend(source: ScreensharingSource) {
+	sources.value!.splice(sources.value!.indexOf(source), 1)
 	if (selectedSourceId.value === source.id) {
 		selectedSourceId.value = null
 	}
 }
 
-let reRequestTimeout
+let reRequestTimeout: number | undefined
 
-const scheduleRequestDesktopCaprutererSources = () => {
-	reRequestTimeout = setTimeout(async () => {
+/**
+ * Schedule a request for desktop capturer sources
+ */
+function scheduleRequestDesktopCaprutererSources() {
+	reRequestTimeout = window.setTimeout(async () => {
 		await requestDesktopCapturerSources()
 		scheduleRequestDesktopCaprutererSources()
 	}, RE_REQUEST_SOURCES_TIMEOUT)
@@ -96,9 +114,9 @@ onMounted(async () => {
 	await requestDesktopCapturerSources()
 
 	// Preselect the first media source if any
-	if (!selectedSourceId.value) {
-		selectedSourceId.value = sources.value[0]?.id
-	}
+	// if (!selectedSourceId.value) {
+	// 	selectedSourceId.value = sources.value?.[0]?.id ?? null
+	// }
 
 	if (previewType === 'live') {
 		scheduleRequestDesktopCaprutererSources()
@@ -117,13 +135,24 @@ onBeforeUnmount(() => {
 		size="normal"
 		:buttons="dialogButtons"
 		@update:open="handleCancel">
-		<div v-if="sources" class="capture-source-grid">
-			<DesktopMediaSourcePreview v-for="source in sources"
-				:key="source.id"
-				:source="source"
-				:selected="selectedSourceId === source.id"
-				@select="selectedSourceId = source.id"
-				@suspend="handleVideoSuspend(source)" />
+		<div v-if="sources" class="capture-source-container">
+			<div v-if="previewType === 'live'" class="capture-source-preview">
+				<!-- @vue-expect-error Vue 2 doesn't understand that selectedSourceId is not undefined here -->
+				<DesktopMediaSourcePreviewVideo v-if="selectedSourceId" :key="selectedSource.id" :media-source-id="selectedSource.id" />
+				<NcEmptyContent v-else :name="t('talk_desktop', 'Choose source')">
+					<template #icon>
+						<IconMonitor />
+					</template>
+				</NcEmptyContent>
+			</div>
+			<div class="capture-source-grid">
+				<DesktopMediaSourcePreview v-for="source in sources"
+					:key="source.id"
+					:source="source"
+					:selected="selectedSourceId === source.id"
+					@select="selectedSourceId = source.id"
+					@suspend="handleVideoSuspend(source)" />
+			</div>
 		</div>
 		<NcEmptyContent v-else :name="t('talk_desktop', 'Loading …')">
 			<template #icon>
@@ -134,6 +163,26 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
+.capture-source-container {
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--default-grid-baseline) * 2);
+}
+
+.capture-source-preview {
+	aspect-ratio: 16 / 9;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--color-background-darker);
+	border-radius: var(--border-radius-container);
+}
+
+.capture-source-preview :deep(video) {
+	aspect-ratio: 16 / 9;
+	object-fit: scale-down;
+}
+
 .capture-source-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));

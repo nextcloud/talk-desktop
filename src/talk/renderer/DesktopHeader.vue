@@ -45,6 +45,13 @@ function handleGlobalEscape(event) {
 	}
 }
 
+/**
+ *
+ */
+async function handleScreenshare() {
+	console.log(await window.OCA.Talk.Desktop.getDesktopMediaSource())
+}
+
 onMounted(() => {
 	window.addEventListener('keydown', handleGlobalEscape, { capture: true })
 })
@@ -67,6 +74,12 @@ onUnmounted(() => {
 			</div>
 
 			<div class="spacer" />
+
+			<div class="header__item" data-theme-dark>
+				<button @click="handleScreenshare">
+					Screenshare
+				</button>
+			</div>
 
 			<div class="header__item" data-theme-dark>
 				<MainMenu />

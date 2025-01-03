@@ -90,8 +90,7 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 		return null
 	}
 
-	// We cannot show live previews on Wayland, so we show thumbnails
-	const thumbnailWidth = isWayland ? 320 : 0
+	const thumbnailWidth = 320
 
 	const sources = await desktopCapturer.getSources({
 		types: ['screen', 'window'],

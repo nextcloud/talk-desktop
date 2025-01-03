@@ -28,17 +28,36 @@
 		display: none;
 	}
 
-	.quit {
+	.button {
 		-webkit-app-region: no-drag;
-		position: fixed;
-		inset-block-start: 4px;
-		inset-inline-end: 4px;
 		width: 44px;
 		height: 44px;
 		border: none;
-		background: transparent var(--original-icon-close-white) no-repeat center;
+		border-radius: 8px;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-position: center;
 		background-size: 20px;
 		cursor: pointer;
+		transition: background-color 0.3s;
+	}
+
+	.button:hover {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+
+	.quit {
+		position: fixed;
+		inset-block-start: 4px;
+		inset-inline-end: 4px;
+		background-image: var(--original-icon-close-white);
+	}
+
+	.logout {
+		position: fixed;
+		inset-block-start: 4px;
+		inset-inline-end: calc(4px + 4px + 44px);
+		background-image: var(--original-icon-logout-white);
 	}
 
 	.quit_mac {
@@ -123,7 +142,8 @@
 	<title>Nextcloud Talk</title>
 </head>
 <body>
-	<button class="quit hidden" aria-label="Quit" type="button"></button>
+	<button class="button logout hidden" aria-label="Log out" title="Log out" type="button"></button>
+	<button class="button quit hidden" aria-label="Quit" title="Quit" type="button"></button>
 	<div class="wrapper">
 		<div class="spacer"></div>
 		<div class="logo"></div>

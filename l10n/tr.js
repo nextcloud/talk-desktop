@@ -36,6 +36,7 @@ OC.L10N.register(
     "Some changes require a relaunch to take effect" : "Bazı değişikliklerin etkili olması için uygulama yeniden başlatılmalıdır",
     "Restart" : "Yeniden başlat",
     "General" : "Genel",
+    "Launch at startup" : "Başlangıçta çalıştırılsın",
     "Appearance" : "Görünüm",
     "Theme" : "Tema",
     "Use monochrome tray icon" : "Sistem tepsisi simgesi tek renkli olsun",

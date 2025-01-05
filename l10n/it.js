@@ -36,6 +36,7 @@ OC.L10N.register(
     "Some changes require a relaunch to take effect" : "Alcune modifiche richiedono un riavvio per avere effetto",
     "Restart" : "Ricomincia",
     "General" : "Generale",
+    "Launch at startup" : "Esegui all'avvio",
     "Appearance" : "Aspetto",
     "Theme" : "Tema",
     "Use monochrome tray icon" : "Usa l'icona della barra delle applicazioni monocromatica",

@@ -72,8 +72,11 @@ const requestDesktopCapturerSources = async () => {
 		name: screens.length > 1 ? t('talk_desktop', 'Audio + All screens') : t('talk_desktop', 'Audio + Screen'),
 	}
 
-	// On Wayland we don't manually provide the source stream. It is covered by Wayland and entire-desktop is not supported
-	sources.value = window.systemInfo.isWayland ? [...screens, ...windows] : [...screens, entireDesktop, ...windows]
+	// Wayland uses the system picker via PipeWire to select the source.
+	// Thus, only the selected source is available, and the custom entire-desktop option is neither supported nor needed.
+	// On macOS the entire-desktop captures only the primary screen and capturing system audio crashes audio (microphone).
+	// TODO: use the system picker on macOS Sonoma and later
+	sources.value = window.systemInfo.isWayland || window.systemInfo.isMac ? [...screens, ...windows] : [...screens, entireDesktop, ...windows]
 }
 
 const handleVideoSuspend = (source) => {

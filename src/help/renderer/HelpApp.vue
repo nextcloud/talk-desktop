@@ -83,6 +83,7 @@ function close() {
 <style>
 * {
 	box-sizing: border-box;
+	background: none !important;
 }
 </style>
 
@@ -141,7 +142,7 @@ function close() {
 }
 
 .help__report {
-	background-color: var(--color-main-background);
+	x-background-color: var(--color-main-background);
 	border-radius: var(--border-radius-small);
 	padding: calc(var(--default-grid-baseline) * 2);
 	flex: 1 1 auto;

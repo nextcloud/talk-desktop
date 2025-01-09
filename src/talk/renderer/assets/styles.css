@@ -24,3 +24,49 @@
 	*/
 	--color-header-contrast: var(--color-background-plain-text, var(--background-image-color-text, #ffffff))
 }
+
+html, body {
+	background: none !important;
+}
+
+.app-navigation {
+	background: none !important;
+	backdrop-filter: none !important;
+}
+
+.list-item {
+	&:hover,
+	&:focus-within,
+	&:has(:focus-visible),
+	&:has(:active) {
+		background-color: rgb(from var(--color-background-hover) r g b / 0.75) !important;
+	}
+}
+
+:root {
+	--color-primary-element-macos: rgb(from var(--color-primary-element) r g b / 0.75);
+	--color-primary-element-hover-macos: rgb(from var(--color-primary-element-hover) r g b / 0.75);
+	--color-main-background-macos: rgb(from var(--color-main-background) r g b / 0.4);
+
+}
+
+.list-item__wrapper--active,
+.list-item__wrapper.active {
+	.list-item {
+		background-color: var(--color-primary-element-macos) !important;
+
+		&:hover {
+			background-color: var(--color-primary-element-hover-macos) !important;
+		}
+	}
+}
+
+.app-navigation {
+	.input-field__input {
+		background-color: var(--color-main-background-macos) !important;
+	}
+
+	.button-vue:is(:hover, :focus, :active) {
+		background-color: var(--color-main-background-macos) !important;
+	}
+}

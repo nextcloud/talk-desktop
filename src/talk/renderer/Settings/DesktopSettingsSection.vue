@@ -79,6 +79,26 @@ const playSoundCallOption = useNcSelectModel(playSoundCall, generalNotificationO
 const enableCallbox = useAppConfigValue('enableCallbox')
 const enableCallboxOption = useNcSelectModel(enableCallbox, generalNotificationOptions)
 
+const vibrancy = useAppConfigValue('vibrancy')
+const vibrancyOptions = [
+	{ label: 'null', value: null },
+	{ label: 'titlebar', value: 'titlebar' },
+	{ label: 'selection', value: 'selection' },
+	{ label: 'menu', value: 'menu' },
+	{ label: 'popover', value: 'popover' },
+	{ label: 'sidebar', value: 'sidebar' },
+	{ label: 'header', value: 'header' },
+	{ label: 'sheet', value: 'sheet' },
+	{ label: 'window', value: 'window' },
+	{ label: 'hud', value: 'hud' },
+	{ label: 'fullscreen-ui', value: 'fullscreen-ui' },
+	{ label: 'tooltip', value: 'tooltip' },
+	{ label: 'content', value: 'content' },
+	{ label: 'under-window', value: 'under-window' },
+	{ label: 'under-page', value: 'under-page' },
+]
+const vibrancyOption = useNcSelectModel(vibrancy, vibrancyOptions)
+
 /**
  * Restart the app
  */
@@ -100,6 +120,8 @@ function relaunch() {
 				</NcButton>
 			</div>
 		</NcNoteCard>
+
+		<SettingsSelect label="Vibrancy" :options="vibrancyOptions" v-model="vibrancyOption" />
 
 		<SettingsSubsection v-if="!isLinux" :name="t('talk_desktop', 'General')">
 			<NcCheckboxRadioSwitch v-model="launchAtStartup" type="switch">

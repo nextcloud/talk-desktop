@@ -17,12 +17,14 @@ const { applyContextMenu } = require('../app/applyContextMenu.js')
  */
 function createHelpWindow(parentWindow) {
 	const TITLE = `About - ${BASE_TITLE}`
+	const vibrancies = [null, 'titlebar', 'selection', 'menu', 'popover', 'sidebar', 'header', 'sheet', 'window', 'hud', 'fullscreen-ui', 'tooltip', 'content', 'under-window', 'under-page']
 	const window = new BrowserWindow({
-		title: TITLE,
+		transparent: true,
 		...getScaledWindowSize({
 			width: 1024,
 			height: 720,
 		}),
+		title: TITLE,
 		show: false,
 		maximizable: false,
 		resizable: false,
@@ -36,6 +38,13 @@ function createHelpWindow(parentWindow) {
 		titleBarStyle: 'hidden',
 		icon: getBrowserWindowIcon(),
 	})
+
+	let i = 0
+	setInterval(() => {
+		console.log(vibrancies[i])
+		window.setVibrancy(vibrancies[i])
+		i = (i + 1) % vibrancies.length
+	}, 5000)
 
 	window.removeMenu()
 

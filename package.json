@@ -56,7 +56,7 @@
     "@nextcloud/router": "^3.0.1",
     "@nextcloud/vue": "^8.22.0",
     "@vueuse/core": "^11.3.0",
-    "core-js": "^3.39.0",
+    "core-js": "^3.40.0",
     "electron-squirrel-startup": "^1.0.1",
     "howler": "^2.2.4",
     "pinia": "^2.3.0",

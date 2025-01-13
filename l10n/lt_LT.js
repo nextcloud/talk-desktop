@@ -60,6 +60,7 @@ OC.L10N.register(
     "Back" : "Atgal",
     "View profile" : "Rodyti profilį",
     "Log out" : "Atsijungti",
+    "Continue in Web-Browser ↗" : "Tęsti saityno naršyklėje ↗",
     "Away" : "Atsitraukęs",
     "Do not disturb" : "Netrukdyti",
     "Invisible" : "Nematomas",

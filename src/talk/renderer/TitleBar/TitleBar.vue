@@ -16,7 +16,7 @@ useUserStatusStore()
 useUserStatusHeartbeat()
 useAppConfigStore()
 
-const isPreview = false
+const channel = __CHANNEL__
 
 // TODO: add a proper type for userMetadata
 const user = appData.userMetadata! as { id: string; 'display-name': string }
@@ -44,12 +44,15 @@ useHotKey('Escape', pushToRoot)
 	<header id="header" class="title-bar">
 		<div class="title-bar__inner">
 			<div v-if="!OS.isMac"
-				class="title-bar__title-wrapper"
+				class="title-bar__title"
 				role="button"
 				tabindex="0"
 				@click="pushToRoot">
-				<span class="title-bar__title">Nextcloud Talk</span>
-				<span v-if="isPreview" class="title-bar__preview-badge">Preview</span>
+				Nextcloud Talk
+			</div>
+
+			<div v-if="channel !== 'stable'" class="title-bar__channel">
+				{{ channel }}
 			</div>
 
 			<div class="spacer" />
@@ -75,14 +78,14 @@ useHotKey('Escape', pushToRoot)
 }
 
 .title-bar__inner {
-	padding: 0 calc(var(--body-container-margin) + 4px) 0 var(--body-container-margin);
 	display: flex;
 	align-items: center;
 	height: 100%;
 	/* Save space for native title bar buttons */
+	/* If there is no system area - inline with navigation items */
 	/* Note: titlebar-area-x always represents left offset */
 	/* Logical properties cannot be used here */
-	margin-left: env(titlebar-area-x, 0);
+	margin-left: max(env(titlebar-area-x, 0), 3 * var(--default-grid-baseline));
 	margin-right: auto;
 	width: env(titlebar-area-width, 100%);
 }
@@ -93,31 +96,23 @@ useHotKey('Escape', pushToRoot)
 	justify-content: center;
 }
 
-.title-bar__title-wrapper {
-	display: flex;
-	align-items: center;
-	height: 100%;
-	margin-inline-start: calc(var(--default-grid-baseline) * 3);
+.title-bar__title {
+	margin-inline-end: calc(var(--default-grid-baseline) * 2);
 	position: relative;
-
+	font-size: 18px;
+	font-weight: bold;
 	&:focus-visible::after {
 		bottom: 0;
 	}
 }
 
-.title-bar__title {
-	font-size: 18px;
-	font-weight: bold;
-}
-
-.title-bar__preview-badge {
-	margin-inline-start: var(--default-grid-baseline);
+.title-bar__channel {
+	text-transform: capitalize;
 }
 
 .spacer {
 	flex: 1 0 auto;
 	height: 100%;
-	/* Allow to drag the window using header */
 	-webkit-app-region: drag;
 }
 </style>

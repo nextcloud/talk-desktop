@@ -15,24 +15,30 @@ const packageJson = require('../../package.json')
 let cachedNewLatestVersion
 
 /**
- * Request the latest release with GitHub REST API and get version from tag name
- *
- * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
- * @return {Promise<string>} Version tag, for example, v0.2.1
+ * Request the latest release version of Nextcloud Talk on GitHub releases
+ * @param {boolean} beta - Whether to use beta release channel
+ * @return {Promise<string>} Version tag, for example, v1.0.2-beta
  */
-async function getLatestReleaseVersion() {
+function getLatestReleaseVersion(beta = false) {
+	return beta ? getLatestBetaReleaseVersion() : getLatestStableReleaseVersion()
+}
+
+/**
+ * Request the latest beta release version of Nextcloud Talk on GitHub releases
+ * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
+ * @return {Promise<string>} Version tag, for example, v1.0.2-beta
+ */
+async function getLatestBetaReleaseVersion() {
 	try {
-		const response = await fetch('https://api.github.com/repos/nextcloud-releases/talk-desktop/releases/latest', {
+		const response = await fetch('https://api.github.com/repos/nextcloud-releases/talk-desktop/releases', {
 			headers: {
 				Accept: 'application/vnd.github+json',
 				'X-GitHub-Api-Version': '2022-11-28',
 			},
 		})
-		const data = await response.json()
+		const releases = await response.json()
 		if (response.ok) {
-			return data?.tag_name
-		} else {
-			console.error(data)
+			return semver.maxSatisfying(releases.map((release) => release.tag_name), '*', { includePrerelease: true })
 		}
 	} catch (e) {
 		console.error(e)
@@ -40,8 +46,30 @@ async function getLatestReleaseVersion() {
 }
 
 /**
- * Show native notification about new version. It opens the releases page on click
- *
+ * Request the latest stable release version of Nextcloud Talk on GitHub releases
+ * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
+ * @return {Promise<string>} Version tag, for example, v1.0.2
+ */
+async function getLatestStableReleaseVersion() {
+	try {
+		const response = await fetch('https://api.github.com/repos/nextcloud-releases/talk-desktop/releases/latest', {
+			headers: {
+				Accept: 'application/vnd.github+json',
+				'X-GitHub-Api-Version': '2022-11-28',
+			},
+		})
+		const release = await response.json()
+		if (response.ok) {
+			return release.tag_name
+		}
+	} catch (e) {
+		console.error(e)
+	}
+}
+
+/**
+ * Show native notification about the new version.
+ * It opens the release page on click.
  * @param {string} version - New version
  */
 function notifyAboutNewVersion(version) {
@@ -50,7 +78,7 @@ function notifyAboutNewVersion(version) {
 		body: `Nextcloud Talk ${version} is now available to download from the release page. Click to open the page.`,
 	})
 	notification.on('click', () => {
-		shell.openExternal('https://github.com/nextcloud-releases/talk-desktop/releases/latest')
+		shell.openExternal(`https://github.com/nextcloud-releases/talk-desktop/releases/${version}`)
 	})
 	notification.show()
 }
@@ -64,8 +92,8 @@ function notifyAboutNewVersion(version) {
  * @return {Promise<boolean>} true if there is a new version
  */
 async function checkForNewVersion({ showNotification = false, forceRequest = false }) {
-	// Request new version or get cached
-	const latest = (!forceRequest && cachedNewLatestVersion) ? cachedNewLatestVersion : await getLatestReleaseVersion()
+	// Request a new version or get cached
+	const latest = (!forceRequest && cachedNewLatestVersion) ? cachedNewLatestVersion : await getLatestReleaseVersion(__CHANNEL__ === 'beta')
 
 	// Something goes wrong... No worries, we will try again later.
 	if (!latest) {
@@ -119,9 +147,5 @@ function stopReleaseNotificationScheduler() {
 }
 
 module.exports = {
-	getLatestReleaseVersion,
-	notifyAboutNewVersion,
-	checkForNewVersion,
 	setupReleaseNotificationScheduler,
-	stopReleaseNotificationScheduler,
 }

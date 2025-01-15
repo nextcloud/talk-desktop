@@ -94,8 +94,11 @@ onUnmounted(() => {
 	align-items: center;
 	height: 100%;
 	/* Save space for native title bar buttons */
-	margin-inline-start: env(titlebar-area-x, 0);
-	width: env(titlebar-area-width, 100%);
+	x-margin-inline-start: env(titlebar-area-x, 0);
+	margin-inline-start: 300px;
+	background-color: var(--color-main-background);
+	x-width: env(titlebar-area-width, 100%);
+	width: calc(100% - 300px);
 }
 
 .header__item {

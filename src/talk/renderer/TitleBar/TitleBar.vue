@@ -4,7 +4,7 @@
   -->
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { useHotKey } from '@nextcloud/vue/dist/Composables/useHotKey.js'
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../../app/AppData.js'
@@ -36,23 +36,8 @@ function logout() {
 	window.TALK_DESKTOP.logout()
 }
 
-/**
- * Handle the global escape key to unselect any chat
- * @param event - Keyboard event
- */
-function handleGlobalEscape(event: KeyboardEvent) {
-	if (event.key === 'Escape' && document.activeElement === document.body) {
-		pushToRoot()
-	}
-}
-
-onMounted(() => {
-	window.addEventListener('keydown', handleGlobalEscape, { capture: true })
-})
-
-onUnmounted(() => {
-	window.removeEventListener('keydown', handleGlobalEscape, { capture: true })
-})
+// Unselect chat by escape key
+useHotKey('Escape', pushToRoot)
 </script>
 
 <template>

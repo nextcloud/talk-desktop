@@ -3,58 +3,66 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import type {
+	PredefinedUserStatus,
+	UserStatusPrivate,
+	UserStatusStatusType,
+	UserStatusBackup,
+} from './userStatus.types.ts'
 import axios from '@nextcloud/axios'
 import { generateOcsUrl } from '@nextcloud/router'
 
+// TODO: add types to @nextcloud/types or @nextcloud/axios
+type OcsResponse<T> = {
+	'meta': {
+		'status': string,
+		'statuscode': number,
+		'message': string,
+	},
+	ocs: {
+		data: T
+	}
+}
+
 /**
- * Fetches all predefined statuses from the server
- *
- * @return {Promise<import('./userStatus.types.ts').PredefinedUserStatus[]>}
+ * Fetch all predefined statuses
  */
 export async function fetchAllPredefinedStatuses() {
-	const response = await axios.get(generateOcsUrl('apps/user_status/api/v1/predefined_statuses?format=json'))
+	const response = await axios.get<OcsResponse<PredefinedUserStatus[]>>(generateOcsUrl('apps/user_status/api/v1/predefined_statuses?format=json'))
 	return response.data.ocs.data
 }
 
 /**
- * Fetches the current user status
- *
- * @return {Promise<import('./userStatus.types.ts').UserStatusPrivate>}
+ * Fetch the current user status
  */
 export async function fetchCurrentUserStatus() {
-	const response = await axios.get(generateOcsUrl('apps/user_status/api/v1/user_status'))
+	const response = await axios.get<OcsResponse<UserStatusPrivate>>(generateOcsUrl('apps/user_status/api/v1/user_status'))
 	return response.data.ocs.data
 }
 
 /**
- * Fetches the current user-status
- *
- * @param {string} userId - User id
- * @return {Promise<import('./userStatus.types.ts').UserStatus>}
+ * Fetch the current user backup status
+ * @param userId - User id
  */
-export async function fetchBackupStatus(userId) {
-	const response = await axios.get(generateOcsUrl('apps/user_status/api/v1/statuses/{userId}', { userId: '_' + userId }))
+export async function fetchBackupStatus(userId: string) {
+	const response = await axios.get<OcsResponse<UserStatusBackup>>(generateOcsUrl('apps/user_status/api/v1/statuses/{userId}', { userId: '_' + userId }))
 	return response.data.ocs.data
 }
 
 /**
- * Sets the status
- *
- * @param {import('./userStatus.types.ts').UserStatusStatusType} statusType The status
- * @return {Promise<void>}
+ * Set the user status's status
+ * @param statusType - Status
  */
-export async function putUserStatusStatus(statusType) {
+export async function putUserStatusStatus(statusType: UserStatusStatusType) {
 	await axios.put(generateOcsUrl('apps/user_status/api/v1/user_status/status'), { statusType })
 }
 
 /**
- * Sets a message based on our predefined statuses
- *
- * @param {string} messageId The id of the message, taken from predefined status service
- * @param {number | null} clearAt When to automatically clean the status
- * @return {Promise<void>}
+ * Set user status message based on predefined statuses
+ * @param messageId - ID of the message, taken from predefined status service
+ * @param clearAt - When to automatically clean the status
  */
-export async function putUserStatusPredefinedMessage(messageId, clearAt = null) {
+export async function putUserStatusPredefinedMessage(messageId: string, clearAt: number | null = null) {
 	await axios.put(generateOcsUrl('apps/user_status/api/v1/user_status/message/predefined?format=json'), {
 		messageId,
 		clearAt,
@@ -62,14 +70,12 @@ export async function putUserStatusPredefinedMessage(messageId, clearAt = null) 
 }
 
 /**
- * Sets a custom message
- *
- * @param {string} message The user-defined message
- * @param {string | null} statusIcon The user-defined icon
- * @param {number | null} clearAt When to automatically clean the status
- * @return {Promise<void>}
+ * Set custom user status message
+ * @param message - User-defined message
+ * @param statusIcon - User-defined icon
+ * @param clearAt - When to automatically clean the status
  */
-export async function putUserStatusCustomMessage(message, statusIcon = null, clearAt = null) {
+export async function putUserStatusCustomMessage(message: string | null, statusIcon: string | null = null, clearAt: number | null = null) {
 	await axios.put(generateOcsUrl('apps/user_status/api/v1/user_status/message/custom?format=json'), {
 		message,
 		statusIcon,
@@ -78,22 +84,18 @@ export async function putUserStatusCustomMessage(message, statusIcon = null, cle
 }
 
 /**
- * Clears the current status of the user
- *
- * @return {Promise<void>}
+ * Clear the current user status
  */
 export async function deleteUserStatusMessage() {
 	await axios.delete(generateOcsUrl('apps/user_status/api/v1/user_status/message?format=json'))
 }
 
 /**
- * Updates the user status, including the online status, the custom message and removing the custom message
- *
- * @param {import('./userStatus.types.ts').UserStatus} oldUserStatus - The current user status
- * @param {import('./userStatus.types.ts').UserStatus} newUserStatus - The new user status
- * @return {Promise<void>}
+ * Update the user status, including online status, a custom message, or removing a custom message
+ * @param oldUserStatus - Current user status
+ * @param newUserStatus - New user status
  */
-export async function updateUserStatus(oldUserStatus, newUserStatus) {
+export async function updateUserStatus(oldUserStatus: UserStatusPrivate, newUserStatus: UserStatusPrivate) {
 	const hasStatusChanged = newUserStatus.status !== oldUserStatus.status
 	const hasPredefinedMessageChanged = newUserStatus.messageIsPredefined && newUserStatus.messageId !== oldUserStatus.messageId
 	const hasCustomMessageChanged = newUserStatus.message !== oldUserStatus.message || newUserStatus.icon !== oldUserStatus.icon || newUserStatus.clearAt !== oldUserStatus.clearAt
@@ -119,24 +121,20 @@ export async function updateUserStatus(oldUserStatus, newUserStatus) {
 }
 
 /**
- * Revert the automated status
- *
- * @param {string} messageId - The id of the message that should be reverted
- * @return {Promise<import('./userStatus.types.ts').UserStatus>}
+ * Revert the automated (backup) status
+ * @param messageId - ID of the message that should be reverted
  */
-export async function revertToBackupStatus(messageId) {
-	const response = await axios.delete(generateOcsUrl('apps/user_status/api/v1/user_status/revert/{messageId}', { messageId }))
+export async function revertToBackupStatus(messageId: string) {
+	const response = await axios.delete<OcsResponse<UserStatusPrivate>>(generateOcsUrl('apps/user_status/api/v1/user_status/revert/{messageId}', { messageId }))
 	return response.data.ocs.data
 }
 
 /**
- * Send a heartbeat and returns the current user status
- *
- * @param {boolean} isAway - Whether the user is away
- * @return {Promise<import('./userStatus.types.ts').UserStatus|null>}
+ * Send a heartbeat and get the current user status again
+ * @param isAway - Whether the user is away
  */
-export async function heartbeatUserStatus(isAway) {
-	const response = await axios.put(generateOcsUrl('apps/user_status/api/v1/heartbeat?format=json'), {
+export async function heartbeatUserStatus(isAway: boolean) {
+	const response = await axios.put<OcsResponse<UserStatusPrivate> | null>(generateOcsUrl('apps/user_status/api/v1/heartbeat?format=json'), {
 		status: isAway ? 'away' : 'online',
 	})
 	// If 204 No content - return null

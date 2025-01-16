@@ -3,22 +3,23 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 import { translate as t } from '@nextcloud/l10n'
 import { clearAtToLabel, getTimestampForPredefinedClearAt } from '../userStatus.utils.ts'
 
-const props = defineProps({
-	clearAt: {
-		type: Number,
-		required: false,
-		default: null,
-	},
-	disabled: Boolean,
+const props = withDefaults(defineProps<{
+	clearAt?: number | null,
+	disabled?: boolean,
+}>(), {
+	clearAt: null,
+	disabled: false,
 })
 
-const emit = defineEmits(['update:clearAt'])
+const emit = defineEmits<{
+	(event: 'update:clearAt', value: number | null): void
+}>()
 
 const clearAtOptions = [{
 	label: t('talk_desktop', 'Don\'t clear'),
@@ -53,11 +54,15 @@ const clearAtOptions = [{
 		type: 'end-of',
 		time: 'week',
 	},
-}]
+}] as const
 
 const clearAtAsLabel = computed(() => clearAtToLabel(props.clearAt))
 
-const handleSelected = (option) => {
+/**
+ * Handle the selected option
+ * @param option - selected option
+ */
+function handleSelected(option: typeof clearAtOptions[number]) {
 	emit('update:clearAt', getTimestampForPredefinedClearAt(option.clearAt))
 }
 </script>

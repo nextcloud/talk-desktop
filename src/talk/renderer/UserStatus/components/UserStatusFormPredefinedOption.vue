@@ -3,19 +3,21 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
+import type { PredefinedUserStatus, UserStatusBackup } from '../userStatus.types.ts'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import { clearAtToLabel } from '../userStatus.utils.ts'
 
-defineProps({
-	userStatus: {
-		type: Object,
-		required: true,
-	},
-	pressed: Boolean,
+withDefaults(defineProps<{
+	userStatus: PredefinedUserStatus | UserStatusBackup,
+	pressed?: boolean,
+}>(), {
+	pressed: false,
 })
 
-const emit = defineEmits(['click'])
+const emit = defineEmits<{
+	(event: 'click'): void
+}>()
 </script>
 
 <template>

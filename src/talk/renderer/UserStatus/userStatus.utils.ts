@@ -3,25 +3,26 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import type { ClearAtPredefinedConfig, PredefinedUserStatus, UserStatus, UserStatusStatusType } from './userStatus.types.ts'
 import moment from '@nextcloud/moment'
 import { translate as t } from '@nextcloud/l10n'
 
-/** @type {Record<import('./userStatus.types.ts').UserStatusStatusType, string>} */
-export const userStatusTranslations = {
+export const userStatusStatusTypes: UserStatusStatusType[] = ['online', 'away', 'busy', 'dnd', 'invisible', 'offline'] as const
+
+export const userStatusTranslations: Record<UserStatusStatusType, string> = {
 	online: t('talk_desktop', 'Online'),
 	away: t('talk_desktop', 'Away'),
 	busy: t('talk_desktop', 'Away'),
 	dnd: t('talk_desktop', 'Do not disturb'),
 	invisible: t('talk_desktop', 'Invisible'),
 	offline: t('talk_desktop', 'Offline'),
-}
+} as const
 
 /**
  * Get a human-readable string for the user status
- *
- * @param {import('./userStatus.types.ts').UserStatus} userStatus - The user status
+ * @param userStatus - User status
  */
-export function getVisibleUserStatus(userStatus) {
+export function getVisibleUserStatus(userStatus: UserStatus) {
 	if (!userStatus) {
 		return ''
 	}
@@ -35,11 +36,10 @@ export function getVisibleUserStatus(userStatus) {
 
 /**
  * Convert predefined clearAt config into UserStatus.clearAt value
- *
- * @param {import('./userStatus.types.ts').ClearAtPredefinedConfig|number|null} clearAt - The clear-at config
- * @return {number|null} - The UNIX timestamp in seconds or null if not defined
+ * @param clearAt - Clear-at config
+ * @return UNIX timestamp in seconds or null if not defined
  */
-export function getTimestampForPredefinedClearAt(clearAt) {
+export function getTimestampForPredefinedClearAt(clearAt: ClearAtPredefinedConfig | number | null) {
 	if (!clearAt) {
 		return null
 	}
@@ -68,11 +68,10 @@ export function getTimestampForPredefinedClearAt(clearAt) {
 
 /**
  * Convert clearAt config to human-readable label
- *
- * @param {import('./userStatus.types.ts').ClearAtPredefinedConfig|number|null} clearAt - The clearAt config
- * @return {string} - human-readable string
+ * @param clearAt - clearAt config
+ * @return Human-readable string
  */
-export function clearAtToLabel(clearAt) {
+export function clearAtToLabel(clearAt: ClearAtPredefinedConfig | number | null) {
 	// Clear At is not set
 	if (!clearAt) {
 		return t('talk_desktop', 'Don\'t clear')
@@ -104,11 +103,9 @@ export function clearAtToLabel(clearAt) {
 
 /**
  * Convert a predefined status into a user status
- *
- * @param {import('./userStatus.types.ts').PredefinedUserStatus} predefinedStatus - The predefined status
- * @return {Partial<import('./userStatus.types.ts').UserStatus>} - The user status
+ * @param predefinedStatus - Predefined status
  */
-export function convertPredefinedStatusToUserStatus(predefinedStatus) {
+export function convertPredefinedStatusToUserStatus(predefinedStatus: PredefinedUserStatus): Partial<UserStatus> {
 	return {
 		icon: predefinedStatus.icon,
 		message: predefinedStatus.message,

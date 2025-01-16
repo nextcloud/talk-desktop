@@ -4,7 +4,7 @@
  */
 
 import { onBeforeUnmount, watch } from 'vue'
-import { useUserStatusStore } from './userStatus.store.js'
+import { useUserStatusStore } from './userStatus.store.ts'
 import { useIdle } from './useIdle.ts'
 
 /** How often to update the user status */
@@ -14,23 +14,27 @@ const USER_STATUS_UPDATE_INTERVAL = 5 * 60 * 1000 // 5 minutes
 const USER_STATUS_ACTIVE_TIMEOUT = 2 * 60 * 1000 // 2 minutes
 
 /**
- * Hook to update the user status in the background
- *
- * @return {{ isIdle: import('vue').Ref<boolean> }}
+ * Composable to update the user status in the background
  */
 export function useUserStatusHeartbeat() {
 	const userStatusStore = useUserStatusStore()
 	const { isIdle } = useIdle({ timeout: USER_STATUS_ACTIVE_TIMEOUT })
 
-	const heartbeat = () => userStatusStore.updateUserStatusWithHeartbeat(isIdle.value)
+	/**
+	 * Send a heartbeat
+	 */
+	function heartbeat() {
+		userStatusStore.updateUserStatusWithHeartbeat(isIdle.value)
+	}
 
-	let heartbeatInterval
+	let heartbeatInterval: number | undefined
 	const restartHeartbeat = () => {
 		if (heartbeatInterval) {
 			clearInterval(heartbeatInterval)
 		}
 		heartbeat()
-		heartbeatInterval = setInterval(heartbeat, USER_STATUS_UPDATE_INTERVAL)
+		// TODO: fix when main and renderer process have separate tsconfig
+		heartbeatInterval = setInterval(heartbeat, USER_STATUS_UPDATE_INTERVAL) as unknown as number
 	}
 
 	watch(isIdle, () => {

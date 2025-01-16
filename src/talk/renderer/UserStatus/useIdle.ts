@@ -5,31 +5,40 @@
 
 import { onBeforeUnmount, ref } from 'vue'
 
-const WINDOW_ACTIVE_EVENTS = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']
+const WINDOW_ACTIVE_EVENTS = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'] as const
 
 /**
- * Hook to detect if the user is active or away (idle)
- *
- * @param {number} timeout - How long user is considered active, default is 1 minute
- * @return {{ isIdle: import('vue').Ref<boolean> }}
+ * Hook to detect whether the user is active or away (idle)
+ * @param options - Options
+ * @param options.timeout - How long user is considered active, default is 1 minute
  */
 export function useIdle({ timeout = 1000 * 60 }) {
 	const isIdle = ref(false)
 
-	let isActiveTimeout = null
+	let isActiveTimeout: number | undefined
 
-	const markInactive = () => {
+	/**
+	 * Mark user as inactive
+	 */
+	function markInactive() {
 		isIdle.value = true
 		clearTimeout(isActiveTimeout)
 	}
 
-	const markActive = () => {
+	/**
+	 * Mark user as active
+	 */
+	function markActive() {
 		isIdle.value = false
 		clearTimeout(isActiveTimeout)
-		isActiveTimeout = setTimeout(markInactive, timeout)
+		// TODO: separate tsconfig for main process (Node.js Environment) and renderer process (Browser Environment)
+		isActiveTimeout = setTimeout(markInactive, timeout) as unknown as number
 	}
 
-	const handleVisibilityChange = () => {
+	/**
+	 * Handle visibility change
+	 */
+	function handleVisibilityChange() {
 		if (document.hidden) {
 			markInactive()
 		} else {

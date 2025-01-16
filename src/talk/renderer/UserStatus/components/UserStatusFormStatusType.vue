@@ -3,24 +3,24 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
-import { userStatusTranslations } from '../userStatus.utils.ts'
+import { userStatusStatusTypes, userStatusTranslations } from '../userStatus.utils.ts'
+import type { UserStatusStatusType } from '../userStatus.types.ts'
 
-defineProps({
-	status: {
-		type: String,
-		required: true,
-	},
-})
+defineProps<{
+	status: UserStatusStatusType,
+}>()
 
-const emit = defineEmits(['update:status'])
+const emit = defineEmits<{
+	(event: 'update:status', value: UserStatusStatusType): void
+}>()
 </script>
 
 <template>
 	<div class="user-status-form-status">
-		<NcButton v-for="option in ['online', 'away', 'dnd', 'offline']"
+		<NcButton v-for="option in userStatusStatusTypes"
 			:key="option"
 			type="tertiary"
 			alignment="start"

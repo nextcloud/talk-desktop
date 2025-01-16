@@ -3,22 +3,22 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
   -->
 
-<script setup>
+<script setup lang="ts">
+import type { CSSProperties } from 'vue'
 import { computed } from 'vue'
 import { appData } from '../../../../app/AppData.js'
 
-const props = defineProps({
-	size: {
-		type: [Number, String],
-		default: 20,
-	},
+const props = withDefaults(defineProps<{
+	size: number | string
+}>(), {
+	size: 20,
 })
 
 const theming = appData.capabilities.theming
 const logoUrl = theming.logo
 const primaryColor = theming.color
 
-const cssVars = computed(() => ({
+const cssVars = computed<CSSProperties>(() => ({
 	'--ThemeLogo-size': typeof props.size === 'number' ? `${props.size}px` : props.size,
 	'--ThemeLogo-background-color': primaryColor,
 }))
@@ -30,7 +30,7 @@ const cssVars = computed(() => ({
 	</span>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .theme-logo {
 	display: flex;
 	align-items: stretch;

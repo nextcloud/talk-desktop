@@ -3,19 +3,20 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script>
+<script setup lang="ts">
+import type { Component } from 'vue'
+
+withDefaults(defineProps<{
+	tag: string | Component
+}>(), {
+	tag: 'button',
+})
+</script>
+
+<script lang="ts">
 export default {
 	inheritAttrs: false,
 }
-</script>
-
-<script setup>
-defineProps({
-	tag: {
-		type: [String, Object, Function],
-		default: 'button',
-	},
-})
 </script>
 
 <template>

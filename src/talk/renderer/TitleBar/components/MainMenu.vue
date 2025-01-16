@@ -3,21 +3,18 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
   -->
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
-
 import IconCog from 'vue-material-design-icons/Cog.vue'
 import IconReload from 'vue-material-design-icons/Reload.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
 import IconBug from 'vue-material-design-icons/Bug.vue'
 import IconInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
 import IconMenu from 'vue-material-design-icons/Menu.vue'
-
 import NcActions from '@nextcloud/vue/dist/Components/NcActions.js'
 import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
 import NcActionLink from '@nextcloud/vue/dist/Components/NcActionLink.js'
 import NcActionSeparator from '@nextcloud/vue/dist/Components/NcActionSeparator.js'
-
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 

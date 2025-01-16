@@ -3,50 +3,47 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
   -->
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
-
-import { translate as t } from '@nextcloud/l10n'
+import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
-
 import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
 import NcPopover from '@nextcloud/vue/dist/Components/NcPopover.js'
 import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
-
 import IconCheck from 'vue-material-design-icons/Check.vue'
 import IconChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import IconChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
 import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 import IconPencil from 'vue-material-design-icons/Pencil.vue'
 import IconLogout from 'vue-material-design-icons/Logout.vue'
-
 import ThemeLogo from './ThemeLogo.vue'
 import UiMenu from './UiMenu.vue'
 import UiMenuItem from './UiMenuItem.vue'
 import UiMenuSeparator from './UiMenuSeparator.vue'
 import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
 import { useUserStatusStore } from '../../UserStatus/userStatus.store.ts'
-import { userStatusTranslations } from '../../UserStatus/userStatus.utils.ts'
+import { userStatusTranslations, userStatusStatusTypes } from '../../UserStatus/userStatus.utils.ts'
 import { appData } from '../../../../app/AppData.js'
+import type { UserStatusStatusType } from '../../UserStatus/userStatus.types.ts'
 
-const props = defineProps({
-	user: {
-		type: Object,
-		required: true,
-	},
-})
+const props = defineProps<{
+	// TODO: define a proper type for userMetadata
+	user: { id: string; 'display-name': string }
+}>()
 
-const emit = defineEmits(['logout'])
+const emit = defineEmits<{
+	(event: 'logout'): void
+}>()
 
 const userStatusStore = useUserStatusStore()
 const { userStatus } = storeToRefs(userStatusStore)
-const serverUrl = appData.serverUrl
+const serverUrl = appData.serverUrl! as string
 const serverUrlShort = serverUrl.replace(/^https?:\/\//, '')
 const theming = appData.capabilities.theming
 
 const isOpen = ref(false)
-const userMenuContainer = ref(null)
+const userMenuContainer = ref<HTMLElement | null>(null)
 const isUserStatusDialogOpen = ref(false)
 const userStatusSubMenuOpen = ref(false)
 
@@ -59,12 +56,16 @@ watch(isOpen, () => {
 
 const userProfileLink = computed(() => generateUrl('/u/{userid}', { userid: props.user.id }))
 
+// Vue 2 doesn't allow using types in templates
+// TODO: Vue 3: return back to template
+const popoverHideTriggers = (triggers: string[]) => [...triggers, 'click']
+
 /**
  * Handle user status type change
- * @param {string} status - new user status
+ * @param status - new user status
  */
-function handleUserStatusChange(status) {
-	userStatusStore.saveUserStatus({ ...userStatus.value, status })
+function handleUserStatusChange(status: UserStatusStatusType) {
+	userStatusStore.saveUserStatus({ ...userStatus.value!, status })
 	userStatusSubMenuOpen.value = false
 }
 </script>
@@ -74,7 +75,7 @@ function handleUserStatusChange(status) {
 		<NcPopover v-if="userMenuContainer"
 			:shown.sync="isOpen"
 			:container="userMenuContainer"
-			:popper-hide-triggers="triggers => [...triggers, 'click']"
+			:popper-hide-triggers="popoverHideTriggers"
 			:triggers="[]"
 			no-auto-focus>
 			<template #trigger="{ attrs }">
@@ -103,7 +104,7 @@ function handleUserStatusChange(status) {
 							</template>
 							{{ t('talk_desktop', 'Back') }}
 						</UiMenuItem>
-						<UiMenuItem v-for="status in ['online', 'away', 'dnd', 'invisible']"
+						<UiMenuItem v-for="status in userStatusStatusTypes"
 							:key="status"
 							tag="button"
 							@click.native.stop="handleUserStatusChange(status)">
@@ -111,6 +112,7 @@ function handleUserStatusChange(status) {
 								<NcUserStatusIcon :status="status" />
 							</template>
 							{{ userStatusTranslations[status] }}
+							<!-- @vue-expect-error This menu can only be open from a button with v-if="userStatus", but in Vue 2 we cannot add type assertion -->
 							<template v-if="status === userStatus.status" #action-icon>
 								<IconCheck :size="20" />
 							</template>

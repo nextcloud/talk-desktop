@@ -3,7 +3,7 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
   -->
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
@@ -18,7 +18,8 @@ useAppConfigStore()
 
 const isPreview = false
 
-const user = appData.userMetadata
+// TODO: add a proper type for userMetadata
+const user = appData.userMetadata! as { id: string; 'display-name': string }
 const OS = window.systemInfo
 
 /**
@@ -37,9 +38,9 @@ function logout() {
 
 /**
  * Handle the global escape key to unselect any chat
- * @param {KeyboardEvent} event - Keyboard event
+ * @param event - Keyboard event
  */
-function handleGlobalEscape(event) {
+function handleGlobalEscape(event: KeyboardEvent) {
 	if (event.key === 'Escape' && document.activeElement === document.body) {
 		pushToRoot()
 	}
@@ -129,6 +130,6 @@ onUnmounted(() => {
 	flex: 1 0 auto;
 	height: 100%;
 	/* Allow to drag the window using header */
-	app-region: drag;
+	-webkit-app-region: drag;
 }
 </style>

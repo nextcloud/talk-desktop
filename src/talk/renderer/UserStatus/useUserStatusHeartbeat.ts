@@ -5,7 +5,7 @@
 
 import { onBeforeUnmount, watch } from 'vue'
 import { useUserStatusStore } from './userStatus.store.js'
-import { useIdle } from './useIdle.js'
+import { useIdle } from './useIdle.ts'
 
 /** How often to update the user status */
 const USER_STATUS_UPDATE_INTERVAL = 5 * 60 * 1000 // 5 minutes

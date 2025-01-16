@@ -7,7 +7,7 @@
 import { computed } from 'vue'
 import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 import { translate as t } from '@nextcloud/l10n'
-import { clearAtToLabel, getTimestampForPredefinedClearAt } from '../userStatus.utils.js'
+import { clearAtToLabel, getTimestampForPredefinedClearAt } from '../userStatus.utils.ts'
 
 const props = defineProps({
 	clearAt: {

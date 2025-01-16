@@ -12,7 +12,7 @@ import {
 	revertToBackupStatus,
 	heartbeatUserStatus,
 	updateUserStatus, fetchBackupStatus,
-} from './userStatus.service.js'
+} from './userStatus.service.ts'
 
 const cacheUserStatus = (userStatus) => localStorage.setItem('TalkDesktop:userStatus', JSON.stringify(userStatus))
 const restoreUserStatus = () => JSON.parse(localStorage.getItem('TalkDesktop:userStatus'))

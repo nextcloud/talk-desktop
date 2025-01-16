@@ -9,12 +9,12 @@ import { storeToRefs } from 'pinia'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
 import { translate as t } from '@nextcloud/l10n'
-import { useUserStatusStore } from '../userStatus.store.js'
+import { useUserStatusStore } from '../userStatus.store.ts'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'
 import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
 import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import UserStatusFormPredefinedOption from './UserStatusFormPredefinedOption.vue'
-import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.js'
+import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
 
 const emit = defineEmits(['submit'])
 

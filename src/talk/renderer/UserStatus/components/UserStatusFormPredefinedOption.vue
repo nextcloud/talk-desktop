@@ -5,7 +5,7 @@
 
 <script setup>
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import { clearAtToLabel } from '../userStatus.utils.js'
+import { clearAtToLabel } from '../userStatus.utils.ts'
 
 defineProps({
 	userStatus: {

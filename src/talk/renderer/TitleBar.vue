@@ -55,24 +55,24 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<header id="header" class="header">
-		<div class="header__inner">
+	<header id="header" class="title-bar">
+		<div class="title-bar__inner">
 			<div v-if="!OS.isMac"
-				class="header__title-wrapper"
+				class="title-bar__title-wrapper"
 				role="button"
 				tabindex="0"
 				@click="pushToRoot">
-				<span class="header__title">Nextcloud Talk</span>
-				<span v-if="isPreview" class="header__preview-badge">Preview</span>
+				<span class="title-bar__title">Nextcloud Talk</span>
+				<span v-if="isPreview" class="title-bar__preview-badge">Preview</span>
 			</div>
 
 			<div class="spacer" />
 
-			<div class="header__item" data-theme-dark>
+			<div class="title-bar__item" data-theme-dark>
 				<MainMenu />
 			</div>
 
-			<div class="header__item">
+			<div class="title-bar__item">
 				<UserMenu :user="user" @logout="logout" />
 			</div>
 		</div>
@@ -80,7 +80,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.header {
+.title-bar {
 	height: var(--header-height);
 	margin-bottom: calc(-1 * var(--header-height));
 	box-sizing: border-box;
@@ -88,7 +88,7 @@ onUnmounted(() => {
 	user-select: none;
 }
 
-.header__inner {
+.title-bar__inner {
 	padding: 0 calc(var(--body-container-margin) + 4px) 0 var(--body-container-margin);
 	display: flex;
 	align-items: center;
@@ -98,13 +98,13 @@ onUnmounted(() => {
 	width: env(titlebar-area-width, 100%);
 }
 
-.header__item {
+.title-bar__item {
 	width: var(--header-height); /* Make it square */
 	display: flex;
 	justify-content: center;
 }
 
-.header__title-wrapper {
+.title-bar__title-wrapper {
 	display: flex;
 	align-items: center;
 	height: 100%;
@@ -116,12 +116,12 @@ onUnmounted(() => {
 	}
 }
 
-.header__title {
+.title-bar__title {
 	font-size: 18px;
 	font-weight: bold;
 }
 
-.header__preview-badge {
+.title-bar__preview-badge {
 	margin-inline-start: var(--default-grid-baseline);
 }
 

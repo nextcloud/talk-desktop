@@ -1,7 +1,7 @@
 <!--
   - SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
   - SPDX-License-Identifier: AGPL-3.0-or-later
--->
+  -->
 
 <script setup>
 import { computed, ref, watch } from 'vue'
@@ -25,10 +25,10 @@ import ThemeLogo from './ThemeLogo.vue'
 import UiMenu from './UiMenu.vue'
 import UiMenuItem from './UiMenuItem.vue'
 import UiMenuSeparator from './UiMenuSeparator.vue'
-import UserStatusDialog from '../UserStatus/UserStatusDialog.vue'
-import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
-import { userStatusTranslations } from '../UserStatus/userStatus.utils.js'
-import { appData } from '../../../app/AppData.js'
+import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
+import { useUserStatusStore } from '../../UserStatus/userStatus.store.js'
+import { userStatusTranslations } from '../../UserStatus/userStatus.utils.js'
+import { appData } from '../../../../app/AppData.js'
 
 const props = defineProps({
 	user: {

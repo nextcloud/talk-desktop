@@ -5,7 +5,7 @@
 
 import Vue from 'vue'
 import { createPinia, PiniaVuePlugin } from 'pinia'
-import TitleBar from './TitleBar.vue'
+import TitleBar from './TitleBar/TitleBar.vue'
 
 /**
  * @return {import('vue').ComponentPublicInstance}

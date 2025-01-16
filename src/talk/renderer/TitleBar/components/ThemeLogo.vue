@@ -5,7 +5,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { appData } from '../../../app/AppData.js'
+import { appData } from '../../../../app/AppData.js'
 
 const props = defineProps({
 	size: {

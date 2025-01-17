@@ -80,7 +80,10 @@ useHotKey('Escape', pushToRoot)
 	align-items: center;
 	height: 100%;
 	/* Save space for native title bar buttons */
-	margin-inline-start: env(titlebar-area-x, 0);
+	/* Note: titlebar-area-x always represents left offset */
+	/* Logical properties cannot be used here */
+	margin-left: env(titlebar-area-x, 0);
+	margin-right: auto;
 	width: env(titlebar-area-width, 100%);
 }
 

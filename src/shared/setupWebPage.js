@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { register } from '@nextcloud/l10n'
+import { isRTL, register } from '@nextcloud/l10n'
 import axios from '@nextcloud/axios'
 
 import { appData } from '../app/AppData.js'
@@ -67,6 +67,8 @@ async function applyL10n() {
 			loadAndRegisterL10n('talk_desktop', language, (lang) => import(`../../l10n/${lang}.json`)),
 		])
 	}
+
+	document.body.dir = isRTL(language) ? 'rtl' : 'ltr'
 }
 
 /**

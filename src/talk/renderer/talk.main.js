@@ -13,7 +13,7 @@ import { initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 import { subscribeBroadcast } from '../../shared/broadcast.service.ts'
 import { createViewer } from './Viewer/Viewer.js'
-import { createDesktopApp } from './desktop.app.js'
+import { createDesktopApp } from './desktop.app.ts'
 import { registerTalkDesktopSettingsSection } from './Settings/index.ts'
 import { openConversation } from './utils/talk.service.ts'
 

@@ -3,13 +3,15 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
 import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
 import { translate as t } from '@nextcloud/l10n'
-import { useUserStatusStore } from './userStatus.store.js'
+import { useUserStatusStore } from './userStatus.store.ts'
 import UserStatusForm from './components/UserStatusForm.vue'
 
-const emit = defineEmits(['close'])
+const emit = defineEmits<{
+	(event: 'close'): void
+}>()
 
 const userStatusStore = useUserStatusStore()
 </script>

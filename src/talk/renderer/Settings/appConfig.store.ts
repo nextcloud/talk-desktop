@@ -9,7 +9,7 @@ import { readonly, ref, set, watch, watchEffect } from 'vue'
 import { defineStore } from 'pinia'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
 import { setInitialState } from '../../../shared/initialState.service.js'
-import { useUserStatusStore } from '../UserStatus/userStatus.store.js'
+import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 
 export const useAppConfigStore = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())

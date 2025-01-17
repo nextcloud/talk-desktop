@@ -3,13 +3,14 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup></script>
+<script setup lang="ts">
+</script>
 
 <template>
 	<li class="menu-item-separator" />
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .menu-item-separator {
 	border-top: 1px solid var(--color-border-dark);
 	margin: 2px 0;

@@ -5,7 +5,7 @@
 
 import Vue from 'vue'
 import { createPinia, PiniaVuePlugin } from 'pinia'
-import DesktopHeader from './DesktopHeader.vue'
+import TitleBar from './TitleBar/TitleBar.vue'
 
 /**
  * @return {import('vue').ComponentPublicInstance}
@@ -13,7 +13,7 @@ import DesktopHeader from './DesktopHeader.vue'
 export function createDesktopApp() {
 	Vue.use(PiniaVuePlugin)
 
-	const DesktopHeaderApp = Vue.extend(DesktopHeader)
+	const TitleBarApp = Vue.extend(TitleBar)
 
-	return new DesktopHeaderApp({ pinia: createPinia() }).$mount('#desktop-header')
+	return new TitleBarApp({ pinia: createPinia() }).$mount('#title-bar')
 }

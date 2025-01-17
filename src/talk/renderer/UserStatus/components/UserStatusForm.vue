@@ -3,26 +3,26 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
+import type { PredefinedUserStatus, UserStatusPrivate } from '../userStatus.types.ts'
 import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcNoteCard from '@nextcloud/vue/dist/Components/NcNoteCard.js'
 import { translate as t } from '@nextcloud/l10n'
-import { useUserStatusStore } from '../userStatus.store.js'
+import { useUserStatusStore } from '../userStatus.store.ts'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'
 import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
 import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import UserStatusFormPredefinedOption from './UserStatusFormPredefinedOption.vue'
-import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.js'
+import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
 
-const emit = defineEmits(['submit'])
+const emit = defineEmits<{
+	(event: 'submit'): void
+}>()
 
 const userStatusStore = useUserStatusStore()
-
-/** @type {import('vue').Ref<import('./userStatus.types.ts').UserStatus>} */
-const userStatus = ref({ ...userStatusStore.userStatus })
-
+const userStatus = ref<UserStatusPrivate>({ ...userStatusStore.userStatus! })
 const backupStatus = ref(userStatusStore.backupStatus ? { ...userStatusStore.backupStatus } : null)
 
 const isDirty = ref(false)
@@ -30,20 +30,30 @@ const isDirty = ref(false)
 const { predefinedStatuses } = storeToRefs(userStatusStore)
 
 const statusIsUserDefined = computed(() => userStatus.value.icon || userStatus.value.message)
-
 const isClear = computed(() => userStatus.value.status === 'online' && !userStatus.value.icon && !userStatus.value.message)
 
-const patchStatus = (newUserStatus) => {
+/**
+ * Patch the user status with the new values
+ * @param newUserStatus - New user status values
+ */
+function patchStatus(newUserStatus: Partial<UserStatusPrivate>) {
 	isDirty.value = true
 	backupStatus.value = null
 	Object.assign(userStatus.value, newUserStatus)
 }
 
-const selectPredefinedStatus = (status) => {
+/**
+ * Select a predefined status
+ * @param status - Predefined status to select
+ */
+function selectPredefinedStatus(status: PredefinedUserStatus) {
 	patchStatus(convertPredefinedStatusToUserStatus(status))
 }
 
-const clearUserStatusCustomMessage = () => {
+/**
+ * Clear the custom message
+ */
+function clearUserStatusCustomMessage() {
 	patchStatus({
 		messageId: null,
 		messageIsPredefined: false,
@@ -53,17 +63,23 @@ const clearUserStatusCustomMessage = () => {
 	})
 }
 
-const save = async () => {
+/**
+ * Save the user status
+ */
+async function save() {
 	const isSuccess = await userStatusStore.saveUserStatus(userStatus.value)
 	if (isSuccess) {
 		emit('submit')
 	}
 }
 
-const revertStatus = async () => {
+/**
+ * Revert the user status from the backup
+ */
+async function revertStatus() {
 	await userStatusStore.revertUserStatusFromBackup()
 	backupStatus.value = null
-	userStatus.value = { ...userStatusStore.userStatus }
+	userStatus.value = { ...userStatusStore.userStatus! }
 	isDirty.value = true
 }
 </script>
@@ -77,10 +93,9 @@ const revertStatus = async () => {
 		</NcNoteCard>
 
 		<UserStatusFormCustomMessage class="user-status-form__row"
-			:disabled="backupStatus"
+			:disabled="!!backupStatus"
 			:message="userStatus.message"
 			:icon="userStatus.icon"
-
 			@update:message="patchStatus({ message: $event })"
 			@update:icon="patchStatus({ icon: $event })" />
 

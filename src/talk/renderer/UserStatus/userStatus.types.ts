@@ -3,52 +3,30 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-export type UserStatusStatusType = 'online' | 'away' | 'dnd' | 'invisible' | 'offline';
+export type UserStatusStatusType = 'online' | 'away' | 'busy' | 'dnd' | 'invisible' | 'offline'
 
-export type UserStatusBase = {
-	/** So-called status type or online status */
-	status: UserStatusStatusType,
+/** Generic User Status - base for different cases */
+type UserStatusBase = {
 	/** The id of the user */
 	userId: string,
+	/** So-called status type or online status */
+	status: UserStatusStatusType,
 	/** Whether the status is user-defined with a custom message/icon */
 	statusIsUserDefined: boolean,
-	/** A custom message set by the user */
-	message: string|null,
-	/** The emoji symbol selected by the user */
-	icon: string|null,
+	/** Custom message set by the user */
+	message: string | null,
+	/** Custom emoji symbol selected by the user */
+	icon: string | null,
 	/** When to automatically remove the status */
-	clearAt: number|null,
+	clearAt: number | null,
 	/** Whether the message is predefined */
 	messageIsPredefined: boolean,
-	/** The id of the message in case it's predefined */
-	messageId: string|null,
+	/** ID of the predefined message */
+	messageId: string | null,
 }
 
-export type UserStatusCustomBase = UserStatusBase & {
-	statusIsUserDefined: true,
-	messageIsPredefined: false,
-	messageId: null,
-}
-
-export type UserStatusCustomWithIcon = UserStatusCustomBase & {
-	message: string | null,
-	icon: string,
-}
-
-export type UserStatusCustomWithMessage = UserStatusCustomBase & {
-	message: string,
-	icon: string | null,
-}
-
-export type UserStatusCustom = UserStatusCustomWithIcon | UserStatusCustomWithMessage;
-
-export type UserStatusPredefined = UserStatusBase & {
-	statusIsUserDefined: true,
-	messageIsPredefined: true,
-	messageId: string,
-}
-
-export type UserStatusNonCustom = UserStatusBase & {
+/** User Status without any additional values except the status type */
+type UserStatusClean = UserStatusBase & {
 	statusIsUserDefined: false,
 	message: null,
 	icon: null,
@@ -57,12 +35,32 @@ export type UserStatusNonCustom = UserStatusBase & {
 	messageId: null,
 }
 
-export type UserStatus = UserStatusCustom | UserStatusPredefined | UserStatusNonCustom;
+/** User Status set by user with at least a custom icon or message */
+type UserStatusCustom = UserStatusBase & {
+	statusIsUserDefined: true,
+	messageIsPredefined: false,
+	messageId: null,
+} & ({ icon: string } | { message: string })
 
-export type UserStatusPrivate = Omit<UserStatus, 'messageId' | 'messageIsPredefined' | 'statusIsUserDefined'>
+/** User Status set from predefined statuses */
+type UserStatusPredefined = UserStatusBase & {
+	statusIsUserDefined: true,
+	messageIsPredefined: true,
+	messageId: string,
+}
+
+export type UserStatusPrivate = UserStatusCustom | UserStatusPredefined | UserStatusClean
+
+export type UserStatusPublic = Pick<UserStatusPrivate, 'userId' | 'message' | 'icon' | 'clearAt' | 'status'>
+
+export type UserStatus = UserStatusPrivate | UserStatusClean
+
+export type UserStatusBackup = UserStatusPublic & {
+	userId: `_${string}`,
+}
 
 /**
- * The configuration for the predefined status message clearAt field
+ * Configuration for the predefined status message clearAt field
  */
 
 export type ClearAtPredefinedConfigForEndOf = {

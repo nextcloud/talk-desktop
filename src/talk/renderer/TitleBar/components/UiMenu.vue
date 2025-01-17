@@ -3,7 +3,7 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
 </script>
 
 <template>
@@ -15,9 +15,6 @@
 </template>
 
 <style scoped>
-.menu {
-}
-
 .menu__inner {
 	display: flex;
 	flex-direction: column;

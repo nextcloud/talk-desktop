@@ -13,17 +13,17 @@
     "General" : "General",
     "Theme" : "Tema",
     "Reset" : "Restablecer",
+    "Menu" : "Menú",
+    "Report a bug" : "Reporta un detalle",
+    "Settings" : "Configuraciones ",
+    "About" : "Acerca",
+    "Log out" : "Cerrar sesión",
     "30 minutes" : "30 minutos",
     "1 hour" : "1 hora",
     "Today" : "Hoy",
     "This week" : "Esta semana",
     "Status message" : "Mensaje de estado",
     "Share screen" : "Compartir la pantalla",
-    "Menu" : "Menú",
-    "Report a bug" : "Reporta un detalle",
-    "Settings" : "Configuraciones ",
-    "About" : "Acerca",
-    "Log out" : "Cerrar sesión",
     "Invisible" : "Invisible"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

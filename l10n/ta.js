@@ -8,9 +8,9 @@ OC.L10N.register(
     "No" : "இல்லை",
     "Yes" : "ஆம்",
     "General" : "பொதுவான",
-    "Today" : "இன்று",
-    "Cancel" : "ரத்து செய்",
     "Settings" : "அமைப்புகள்",
-    "Back" : "பின்னுக்கு"
+    "Back" : "பின்னுக்கு",
+    "Today" : "இன்று",
+    "Cancel" : "ரத்து செய்"
 },
 "nplurals=2; plural=(n != 1);");

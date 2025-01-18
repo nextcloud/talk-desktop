@@ -10,10 +10,10 @@ OC.L10N.register(
     "Yes" : "Jo",
     "General" : "Allgemeng",
     "Reset" : "Zeréck setzen",
-    "Today" : "Haut",
     "Menu" : "Menü",
     "Report a bug" : "E Feeler melden",
     "Settings" : "Astellungen",
+    "Today" : "Haut",
     "Away" : "ewech"
 },
 "nplurals=2; plural=(n != 1);");

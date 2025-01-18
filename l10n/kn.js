@@ -7,7 +7,7 @@ OC.L10N.register(
     "No" : "﻿ಇಲ್ಲ",
     "Yes" : "﻿ಹೌದು",
     "Reset" : "ಮರುಹೊಂದಿಸಿ",
-    "Today" : "Today",
-    "Settings" : "ಆಯ್ಕೆ"
+    "Settings" : "ಆಯ್ಕೆ",
+    "Today" : "Today"
 },
 "nplurals=2; plural=(n > 1);");

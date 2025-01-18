@@ -11,8 +11,8 @@ OC.L10N.register(
     "Always" : "সর্বদা",
     "General" : "সাধারণ",
     "Reset" : "পূণঃনির্ধানণ",
+    "Settings" : "সেটিংস",
     "Today" : "আজ",
-    "Cancel" : "বাতিল করুন",
-    "Settings" : "সেটিংস"
+    "Cancel" : "বাতিল করুন"
 },
 "nplurals=2; plural=(n != 1);");

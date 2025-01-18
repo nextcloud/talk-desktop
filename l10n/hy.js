@@ -11,10 +11,10 @@ OC.L10N.register(
     "Yes" : "Այո",
     "Never" : "Երբեք",
     "General" : "Ընդհանուր",
+    "Settings" : "Կարգավորումներ",
+    "About" : "Մասին",
     "Today" : "Այսօր",
     "This week" : "այս շաբաթ",
-    "Cancel" : "չեղարկել",
-    "Settings" : "Կարգավորումներ",
-    "About" : "Մասին"
+    "Cancel" : "չեղարկել"
 },
 "nplurals=2; plural=(n != 1);");

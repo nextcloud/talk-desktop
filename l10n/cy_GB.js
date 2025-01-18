@@ -11,9 +11,9 @@ OC.L10N.register(
     "Light" : "Golau",
     "Dark" : "Tywyll",
     "General" : "Cyffredinol",
-    "Today" : "Heddiw",
-    "This week" : "Wythnos yma",
     "Settings" : "Gosodiadau",
-    "About" : "Ynglyn â"
+    "About" : "Ynglyn â",
+    "Today" : "Heddiw",
+    "This week" : "Wythnos yma"
 },
 "nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3;");

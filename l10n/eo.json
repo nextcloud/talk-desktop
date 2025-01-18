@@ -14,6 +14,9 @@
     "General" : "Ĝenerala",
     "Theme" : "Etoso",
     "Reset" : "Restarigi",
+    "Report a bug" : "Raporti problemon",
+    "Settings" : "Agordoj",
+    "View profile" : "Vidi profilon",
     "30 minutes" : "30 minutoj",
     "1 hour" : "1 horo",
     "4 hours" : "4 horoj",
@@ -21,9 +24,6 @@
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
     "Loading …" : "Ŝargado...",
-    "Report a bug" : "Raporti problemon",
-    "Settings" : "Agordoj",
-    "View profile" : "Vidi profilon",
     "Invisible" : "Nevidebla"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

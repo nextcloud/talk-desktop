@@ -12,6 +12,10 @@
     "General" : "Amatu",
     "Appearance" : "Apparence",
     "Theme" : "Asentel",
+    "Settings" : "Iɣewwaṛen",
+    "About" : "Γef",
+    "Back" : "Retour",
+    "Log out" : "Senser",
     "Don't clear" : "Ur seffeḍ ara",
     "30 minutes" : "30 n tesdatin",
     "1 hour" : "1 n usrag",
@@ -19,10 +23,6 @@
     "Today" : "Ass-a",
     "This week" : "Dduṛt agi",
     "Loading …" : "Asali ...",
-    "Settings" : "Iɣewwaṛen",
-    "About" : "Γef",
-    "Back" : "Retour",
-    "Log out" : "Senser",
     "Away" : "Akin",
     "Invisible" : "Ur d-ittban ara"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

@@ -13,6 +13,12 @@
     "Appearance" : "Izskats",
     "Theme" : "Motīvs",
     "Reset" : "Atiestatīt",
+    "Menu" : "Izvēlne",
+    "Report a bug" : "Ziņot par kļūdu",
+    "Settings" : "Iestatījumi",
+    "View profile" : "Skatīt profilu",
+    "Set custom status" : "Iestatīt pielāgotu stāvokli",
+    "Log out" : "Izrakstīties",
     "Your status was set automatically" : "Stāvoklis tika automātiski iestatīts",
     "Previously set status" : "Iepriekš iestatīts stāvoklis",
     "Clear custom status" : "Notīrīt pielāgotu stāvokli",
@@ -26,12 +32,6 @@
     "Loading …" : "Ielādē…",
     "Cancel" : "Atcelt",
     "Share screen" : "Koplietot ekrānu",
-    "Menu" : "Izvēlne",
-    "Report a bug" : "Ziņot par kļūdu",
-    "Settings" : "Iestatījumi",
-    "View profile" : "Skatīt profilu",
-    "Set custom status" : "Iestatīt pielāgotu stāvokli",
-    "Log out" : "Izrakstīties",
     "Invisible" : "Neredzama"
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);"
 }

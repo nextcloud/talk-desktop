@@ -10,9 +10,9 @@ OC.L10N.register(
     "Ok" : "Greitt",
     "General" : "Generelt",
     "Appearance" : "Utsjånad",
-    "Today" : "I dag",
     "Report a bug" : "Rapporter feil",
     "Settings" : "Innstillingar",
+    "Today" : "I dag",
     "Away" : "Borte",
     "Invisible" : "Usynleg"
 },

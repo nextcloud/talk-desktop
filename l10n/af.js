@@ -6,13 +6,13 @@ OC.L10N.register(
     "Dismiss" : "Ontslaan",
     "License" : "Lisensie",
     "Reset" : "Herstel",
-    "User status" : "Gebruikerstatus",
-    "Don't clear" : "Moenie wis nie",
-    "This week" : "Vandeesweek",
     "Menu" : "Kieslys",
     "Settings" : "Instellings",
     "About" : "Aangaande",
     "Log out" : "Teken af",
+    "User status" : "Gebruikerstatus",
+    "Don't clear" : "Moenie wis nie",
+    "This week" : "Vandeesweek",
     "Invisible" : "Onsigbaar"
 },
 "nplurals=2; plural=(n != 1);");

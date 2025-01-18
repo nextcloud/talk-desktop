@@ -14,6 +14,12 @@
     "General" : "Të përgjithshme",
     "Theme" : "Shabllon",
     "Reset" : "Rivendos",
+    "Menu" : "Menu",
+    "Report a bug" : "Njoftoni një të metë",
+    "Settings" : "Rregullimet",
+    "About" : "Rreth",
+    "Back" : "Mbrapsht",
+    "Log out" : "Shkyçu",
     "30 minutes" : "30 minuta",
     "1 hour" : "1 Orë",
     "4 hours" : "4 orë",
@@ -21,12 +27,6 @@
     "This week" : "Këtë javë",
     "Cancel" : "Anuloje",
     "Share screen" : "Ndaje ekranin",
-    "Menu" : "Menu",
-    "Report a bug" : "Njoftoni një të metë",
-    "Settings" : "Rregullimet",
-    "About" : "Rreth",
-    "Back" : "Mbrapsht",
-    "Log out" : "Shkyçu",
     "Invisible" : "I padukshëm"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

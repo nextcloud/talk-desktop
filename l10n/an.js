@@ -6,9 +6,9 @@ OC.L10N.register(
     "No" : "No",
     "Yes" : "Si",
     "Never" : "Nunca",
-    "Today" : "Hue",
-    "Cancel" : "Canzelar",
     "Settings" : "Configurazión",
-    "Back" : "Ta zaga"
+    "Back" : "Ta zaga",
+    "Today" : "Hue",
+    "Cancel" : "Canzelar"
 },
 "nplurals=2; plural=(n != 1);");

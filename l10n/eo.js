@@ -16,6 +16,9 @@ OC.L10N.register(
     "General" : "Ĝenerala",
     "Theme" : "Etoso",
     "Reset" : "Restarigi",
+    "Report a bug" : "Raporti problemon",
+    "Settings" : "Agordoj",
+    "View profile" : "Vidi profilon",
     "30 minutes" : "30 minutoj",
     "1 hour" : "1 horo",
     "4 hours" : "4 horoj",
@@ -23,9 +26,6 @@ OC.L10N.register(
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
     "Loading …" : "Ŝargado...",
-    "Report a bug" : "Raporti problemon",
-    "Settings" : "Agordoj",
-    "View profile" : "Vidi profilon",
     "Invisible" : "Nevidebla"
 },
 "nplurals=2; plural=(n != 1);");

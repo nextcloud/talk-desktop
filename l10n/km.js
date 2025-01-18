@@ -10,8 +10,8 @@ OC.L10N.register(
     "Dark" : "ងងឹត",
     "Always" : "រាល់ពេល",
     "General" : "ទូទៅ",
+    "Settings" : "ការកំណត់",
     "Today" : "ថ្ងៃ​នេះ",
-    "Cancel" : "លើកលែង",
-    "Settings" : "ការកំណត់"
+    "Cancel" : "លើកលែង"
 },
 "nplurals=1; plural=0;");

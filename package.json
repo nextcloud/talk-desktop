@@ -78,7 +78,7 @@
     "@vercel/webpack-asset-relocator-loader": "^1.7.4",
     "@vue/tsconfig": "^0.5.1",
     "dotenv": "^16.4.7",
-    "electron": "^33.3.1",
+    "electron": "^34.0.0",
     "esbuild-loader": "^4.2.2",
     "eslint": "^8.57.1",
     "eslint-config-standard": "^17.1.0",

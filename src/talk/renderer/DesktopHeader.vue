@@ -68,7 +68,7 @@ onUnmounted(() => {
 
 			<div class="spacer" />
 
-			<div class="header__item" data-theme-dark>
+			<div class="header__item" :data-theme-dark="!OS.isMac ? true : undefined">
 				<MainMenu />
 			</div>
 
@@ -95,10 +95,18 @@ onUnmounted(() => {
 	height: 100%;
 	/* Save space for native title bar buttons */
 	x-margin-inline-start: env(titlebar-area-x, 0);
-	margin-inline-start: 300px;
+	margin-inline-start: calc(300px - 1px);
 	background-color: var(--color-main-background-macos);
 	x-width: env(titlebar-area-width, 100%);
-	width: calc(100% - 300px);
+	width: calc(100% - 300px + 1);
+	border-inline-start: 1px solid var(--color-border-macos);
+	border-block-end: 1px solid var(--color-border-macos);
+	transition: margin-inline-start var(--animation-quick) ease;
+}
+
+body:has(#app-navigation-vue[aria-hidden="true"]) .header__inner {
+	margin-inline-start: 0;
+	border-inline-start: none;
 }
 
 .header__item {

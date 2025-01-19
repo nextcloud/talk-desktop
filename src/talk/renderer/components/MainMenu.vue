@@ -27,6 +27,8 @@ const talkWebLink = computed(() => generateUrl(talkRouter.value?.currentRoute?.f
 const showHelp = () => window.TALK_DESKTOP.showHelp()
 const reload = () => window.location.reload()
 const openSettings = () => window.OCA.Talk.Settings.open()
+
+const OS = window.systemInfo
 </script>
 
 <template>
@@ -34,7 +36,7 @@ const openSettings = () => window.OCA.Talk.Settings.open()
 		type="tertiary-no-background"
 		container="body">
 		<template #icon>
-			<IconMenu :size="20" fill-color="var(--color-header-contrast)" />
+			<IconMenu :size="20" :fill-color="!OS.isMac ? 'var(--color-header-contrast)' : undefined" />
 		</template>
 
 		<NcActionLink :href="talkWebLink" target="_blank">

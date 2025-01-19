@@ -13,7 +13,7 @@ const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
 const { getScaledWindowMinSize, getScaledWindowSize, applyZoom } = require('../app/utils.ts')
-const {onAppConfigChange} = require('../app/AppConfig.ts')
+const {isMac} = require('../app/system.utils')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -24,13 +24,12 @@ function createTalkWindow() {
 	const talkWindowOptions = {
 		transparent: true,
 		frame: false,
-		vibrancy: null,
-
+		vibrancy: 'sidebar',
 		...getScaledWindowMinSize({
 			minWidth: 600,
 			minHeight: 400,
 		}),
-		//backgroundColor: '#00679E',
+		backgroundColor: !isMac ? '#00679E' : undefined,
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
@@ -60,10 +59,6 @@ function createTalkWindow() {
 		show: false,
 	})
 
-	onAppConfigChange('vibrancy', (value) => {
-		window.setVibrancy(value)
-	})
-
 	// TODO: return it on release
 	/*
 	if (process.env.NODE_ENV === 'production') {
@@ -85,6 +80,8 @@ function createTalkWindow() {
 	applyZoom(window)
 
 	setupTray(window)
+
+	window.setVibrancy('sidebar')
 
 	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)
 

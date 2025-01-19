@@ -29,9 +29,22 @@ html, body {
 	background: none !important;
 }
 
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-border-macos: #000000;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--color-border-macos: #DCDCDC;
+	}
+}
+
 .app-navigation {
 	background: none !important;
 	backdrop-filter: none !important;
+	border-inline-end: 1px solid var(--color-border-macos) !important;
 }
 
 .list-item {
@@ -46,7 +59,7 @@ html, body {
 :root {
 	--color-primary-element-macos: rgb(from var(--color-primary-element) r g b / 0.75);
 	--color-primary-element-hover-macos: rgb(from var(--color-primary-element-hover) r g b / 0.75);
-	--color-main-background-macos: rgb(from var(--color-main-background) r g b / 0.4);
+	--color-main-background-macos: rgb(from var(--color-main-background) r g b / 0.5);
 
 }
 

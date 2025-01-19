@@ -31,7 +31,6 @@ function getAppConfigFilePath() {
  * Stored in the application data directory.
  */
 export type AppConfig = {
-	vibrancy: string | null
 	// ----------------
 	// General settings
 	// ----------------
@@ -108,7 +107,6 @@ export type AppConfigKey = keyof AppConfig
  * Get the default config
  */
 const defaultAppConfig: AppConfig = {
-	vibrancy: null,
 	launchAtStartup: false,
 	theme: 'default',
 	systemTitleBar: isLinux,

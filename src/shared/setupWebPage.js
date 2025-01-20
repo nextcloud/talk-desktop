@@ -215,8 +215,13 @@ function applyDownloadLinkHandler() {
 
 /**
  * Make all required initial setup for the web page for authorized user: server-rendered data, globals and ect.
+ * @param {object} options - options
+ * @param {string} options.routeHash - Initial route hash
  */
-export async function setupWebPage() {
+export async function setupWebPage({ routeHash } = {}) {
+	if (!window.location.hash && routeHash) {
+		window.location.hash = routeHash
+	}
 	document.title = await window.TALK_DESKTOP.getTitle()
 	appData.restore()
 	await initAppConfig()

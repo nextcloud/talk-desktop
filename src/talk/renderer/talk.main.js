@@ -18,11 +18,9 @@ import { registerTalkDesktopSettingsSection } from './Settings/index.ts'
 import { openConversation } from './utils/talk.service.ts'
 
 // Initially open the welcome page, if not specified
-if (!window.location.hash) {
-	window.location.hash = '#/apps/spreed'
-}
-
-await setupWebPage()
+await setupWebPage({
+	routeHash: '#/apps/spreed',
+})
 
 createDesktopApp()
 

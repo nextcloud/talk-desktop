@@ -13,6 +13,9 @@ import { applyAxiosInterceptors } from '../shared/setupWebPage.js'
 const quitButton = document.querySelector('.quit')
 quitButton.addEventListener('click', () => window.TALK_DESKTOP.quit())
 
+const logoutButton = document.querySelector('.logout')
+logoutButton.addEventListener('click', () => window.TALK_DESKTOP.logout())
+
 window.TALK_DESKTOP.getSystemInfo().then(os => {
 	quitButton.classList.remove('hidden')
 	if (os.isMac) {
@@ -26,6 +29,7 @@ initGlobals()
 applyAxiosInterceptors()
 
 if (appData.credentials) {
+	logoutButton.classList.remove('hidden')
 	await window.TALK_DESKTOP.enableWebRequestInterceptor(appData.serverUrl, { enableCors: true, enableCookies: true, credentials: appData.credentials })
 	await refetchAppDataIfDirty(appData)
 }

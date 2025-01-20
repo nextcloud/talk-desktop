@@ -28,7 +28,7 @@ window.OCA.Viewer = await createViewer()
 
 await import('@talk/src/main.js')
 
-initTalkHashIntegration(window.OCA.Talk.instance)
+initTalkHashIntegration()
 
 registerTalkDesktopSettingsSection()
 

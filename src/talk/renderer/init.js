@@ -57,7 +57,7 @@ export async function initLocalStyles() {
  * @param {import('vue').ComponentPublicInstance} talkInstance - Talk instance
  * @return {TalkHashStoreAdapter|null} - Pinia TalkHash store adapter or null if it is not available
  */
-function createTalkHashPiniaAdapter(talkInstance) {
+function createTalkHashStoreAdapter(talkInstance) {
 	let useTalkHashStore
 	try {
 		useTalkHashStore = require(/* wrappedContextCritical: false */ '@talk/src/stores/talkHash.js').useTalkHashStore
@@ -91,51 +91,6 @@ function createTalkHashPiniaAdapter(talkInstance) {
 		setNextcloudTalkHash,
 		onTalkHashChange,
 	}
-}
-
-/**
- * @param {import('vue').ComponentPublicInstance} talkInstance - Talk instance
- * @return {TalkHashStoreAdapter|null} - Vuex TalkHash store adapter or null if it is not available for hash
- */
-function createTalkHashVuexAdapter(talkInstance) {
-	let store
-	try {
-		store = require('@talk/src/store/index.js').default
-	} catch {
-		return null
-	}
-
-	if (!store.hasModule('talkHashStore')) {
-		return null
-	}
-
-	const setNextcloudTalkHash = async (hash) => store.dispatch('setNextcloudTalkHash', appData.talkHash)
-	const onTalkHashChange = ({
-		onSetInitial,
-		onMarkDirty,
-	}) => {
-		store.subscribe((mutation, state) => {
-			if (mutation.type === 'setInitialNextcloudTalkHash') {
-				onSetInitial(state.talkHashStore.initialNextcloudTalkHash)
-			} else if (mutation.type === 'markNextcloudTalkHashDirty') {
-				onMarkDirty()
-			}
-		})
-	}
-	return {
-		setNextcloudTalkHash,
-		onTalkHashChange,
-	}
-}
-
-/**
- * @param {import('vue').ComponentPublicInstance} talkInstance - Talk instance
- * @return {Promise<TalkHashStoreAdapter>}
- */
-function createTalkHashStoreAdapter(talkInstance) {
-	// Talk is using Pinia only since v19 (Nextcloud 29)
-	// Use Vuex as a fallback
-	return createTalkHashPiniaAdapter(talkInstance) ?? createTalkHashVuexAdapter(talkInstance)
 }
 
 /**

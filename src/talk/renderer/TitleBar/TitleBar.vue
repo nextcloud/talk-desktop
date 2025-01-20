@@ -4,13 +4,13 @@
   -->
 
 <script setup lang="ts">
-import { useHotKey } from '@nextcloud/vue/dist/Composables/useHotKey.js'
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../../app/AppData.js'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 import { useAppConfigStore } from '../Settings/appConfig.store.ts'
 import { useUserStatusHeartbeat } from '../UserStatus/useUserStatusHeartbeat.ts'
+import { openRoot } from '../TalkWrapper/talk.service.ts'
 
 useUserStatusStore()
 useUserStatusHeartbeat()
@@ -23,31 +23,21 @@ const user = appData.userMetadata! as { id: string; 'display-name': string }
 const OS = window.systemInfo
 
 /**
- * Push to root in Talk app to unselect any chat
- */
-function pushToRoot() {
-	window.OCA.Talk.instance?.$router?.push({ name: 'root' }).catch(() => {})
-}
-
-/**
  * Logout in Talk Desktop
  */
 function logout() {
 	window.TALK_DESKTOP.logout()
 }
-
-// Unselect chat by escape key
-useHotKey('Escape', pushToRoot)
 </script>
 
 <template>
-	<header id="header" class="title-bar">
+	<header class="title-bar">
 		<div class="title-bar__inner">
 			<template v-if="!OS.isMac">
 				<div class="title-bar__title"
 					role="button"
 					tabindex="0"
-					@click="pushToRoot">
+					@click="openRoot">
 					Nextcloud Talk
 				</div>
 

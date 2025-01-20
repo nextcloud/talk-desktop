@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { ref } from 'vue'
-
 import { loadState } from '@nextcloud/initial-state'
 import { translate, translatePlural } from '@nextcloud/l10n'
 
@@ -110,7 +108,6 @@ const OCA = {
 			getDesktopMediaSource,
 			runWithAbsoluteWebroot,
 			enabledAbsoluteWebroot: false,
-			talkRouter: ref(null),
 		},
 	},
 }

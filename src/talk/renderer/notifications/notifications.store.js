@@ -23,14 +23,14 @@ import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 import { checkCurrentUserHasPendingCall } from '../../../callbox/renderer/callbox.service.ts'
 import { getAppConfigValue } from '../../../shared/appConfig.service.ts'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
-import { openConversation } from '../utils/talk.service.ts'
-
-const userStatusStore = useUserStatusStore()
+import { openConversation } from '../TalkWrapper/talk.service.ts'
 
 /**
  *
  */
 export function createNotificationStore() {
+	const userStatusStore = useUserStatusStore()
+
 	let _oldcount = 0
 	let notificationsSet = new Set()
 
@@ -387,7 +387,12 @@ export function createNotificationStore() {
 	}
 }
 
-export const notificationsStore = createNotificationStore()
+/**
+ *
+ */
+export function useNotificationsStore() {
+	return createNotificationStore()
+}
 
 subscribeBroadcast('notifications:missedCall', ({ token, name, type, avatar }) => {
 	const title = type === 'one2one'

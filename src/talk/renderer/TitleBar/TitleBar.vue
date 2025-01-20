@@ -4,7 +4,6 @@
   -->
 
 <script setup lang="ts">
-import { useHotKey } from '@nextcloud/vue/dist/Composables/useHotKey.js'
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
 import { appData } from '../../../app/AppData.js'
@@ -29,9 +28,6 @@ const OS = window.systemInfo
 function logout() {
 	window.TALK_DESKTOP.logout()
 }
-
-// Unselect chat by escape key
-useHotKey('Escape', openRoot)
 </script>
 
 <template>

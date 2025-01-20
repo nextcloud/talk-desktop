@@ -5,6 +5,25 @@
 
 # Changelog
 
+## v1.1.0 - 2025-20-01
+
+### Features
+
+- Add launch at startup for Windows and macOS [#1004](https://github.com/nextcloud/talk-desktop/pull/1004)
+
+### Fixes
+
+- Fix macOS microphone issue on screen sharing [#1023](https://github.com/nextcloud/talk-desktop/pull/1023)
+- Fix bidirectional text support [#1033](https://github.com/nextcloud/talk-desktop/pull/1033)
+
+### Changes
+
+- Built-in Talk in binaries is updated to in v20.1.3 in the stable release channel [#1039](https://github.com/nextcloud/talk-desktop/pull/1039)
+- Release with beta versions of Talk is now supported starting v21.0.0-beta.2 [#1029](https://github.com/nextcloud/talk-desktop/pull/1029)
+- Building with built-in Talk v18 is no longer supported [#1037](https://github.com/nextcloud/talk-desktop/pull/1037) 
+- Update translations
+- Update dependencies
+
 ## v1.0.1 - 2024-12-19
 
 ### Fixes

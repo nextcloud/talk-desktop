@@ -37,13 +37,13 @@ const YEAR = new Date().getFullYear()
  * @param {'darwin'|'linux'|'win32'} platform - Distribution target platform
  * @param {'arm64'|'universal'|'x64'} arch - Distribution target architecture
  * @param {string} ext - File extension
- * @param {boolean} includeVersion - Include the version in the name
  * @return {string} The distribution name, e.g., Nextcloud.Talk-v1.0.0-macos-x64.dmg
  * @example Nextcloud.Talk-macos-universal.dmg
  * @example Nextcloud.Talk-linux-x64.flatpak
  * @example Nextcloud.Talk-windows-x64.exe
+ * @example Nextcloud.Talk-beta-windows-x64.exe
  */
-function generateDistName(platform, arch, ext, includeVersion = false) {
+function generateDistName(platform, arch, ext) {
 	// Map technical platform name to user-friendly
 	const platformTitles = {
 		darwin: 'macos',
@@ -56,10 +56,10 @@ function generateDistName(platform, arch, ext, includeVersion = false) {
 	}
 	const platformTitle = platformTitles[platform] ?? platform
 	const archTitle = archTitles[arch] ?? arch
-	const version = packageJSON.version
-	return includeVersion
-		? `${CONFIG.applicationNameSanitized}-v${version}-${platformTitle}-${archTitle}${ext}`
-		: `${CONFIG.applicationNameSanitized}-${platformTitle}-${archTitle}${ext}`
+	const CHANNEL = process.env.CHANNEL ?? 'stable'
+	const channel = CHANNEL !== 'stable' ? CHANNEL : ''
+
+	return [CONFIG.applicationNameSanitized, channel, platformTitle, archTitle].filter(Boolean).join('-') + ext
 }
 
 /**

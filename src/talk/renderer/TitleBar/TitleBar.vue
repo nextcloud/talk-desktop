@@ -43,17 +43,18 @@ useHotKey('Escape', pushToRoot)
 <template>
 	<header id="header" class="title-bar">
 		<div class="title-bar__inner">
-			<div v-if="!OS.isMac"
-				class="title-bar__title"
-				role="button"
-				tabindex="0"
-				@click="pushToRoot">
-				Nextcloud Talk
-			</div>
+			<template v-if="!OS.isMac">
+				<div class="title-bar__title"
+					role="button"
+					tabindex="0"
+					@click="pushToRoot">
+					Nextcloud Talk
+				</div>
 
-			<div v-if="channel !== 'stable'" class="title-bar__channel">
-				{{ channel }}
-			</div>
+				<div v-if="channel !== 'stable'" class="title-bar__channel">
+					{{ channel }}
+				</div>
+			</template>
 
 			<div class="spacer" />
 

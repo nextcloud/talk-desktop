@@ -33,11 +33,11 @@ const TALK_DESKTOP = {
 	 */
 	packageInfo,
 	/**
-	 * Get app name
+	 * Get the current window title
 	 *
 	 * @return {Promise<string>}
 	 */
-	getAppName: () => ipcRenderer.invoke('app:getAppName'),
+	getTitle: () => ipcRenderer.invoke('app:getTitle'),
 	/**
 	 * Quit the application
 	 */

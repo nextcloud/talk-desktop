@@ -5,7 +5,7 @@
 
 const path = require('node:path')
 const { spawn } = require('node:child_process')
-const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell } = require('electron')
+const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow } = require('electron')
 const { setupMenu } = require('./app/app.menu.js')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -66,7 +66,7 @@ if (process.env.NODE_ENV === 'production') {
 
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getSystemInfo', () => systemInfo)
-ipcMain.handle('app:getAppName', () => app.getName())
+ipcMain.handle('app:getTitle', (event) => BrowserWindow.fromWebContents(event.sender).title || app.getName())
 ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_'),
 	language: app.getPreferredSystemLanguages()[0].replace('-', '_'),

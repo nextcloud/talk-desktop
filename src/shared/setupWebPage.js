@@ -217,7 +217,7 @@ function applyDownloadLinkHandler() {
  * Make all required initial setup for the web page for authorized user: server-rendered data, globals and ect.
  */
 export async function setupWebPage() {
-	document.title = await window.TALK_DESKTOP.getAppName()
+	document.title = await window.TALK_DESKTOP.getTitle()
 	appData.restore()
 	await initAppConfig()
 	applyInitialState()

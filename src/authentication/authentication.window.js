@@ -4,20 +4,19 @@
  */
 
 const { BrowserWindow } = require('electron')
-const { BASE_TITLE, TITLE_BAR_HEIGHT } = require('../constants.js')
+const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
-const { getScaledWindowSize, applyZoom } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
  */
 function createAuthenticationWindow() {
 	const zoomFactor = getAppConfig('zoomFactor')
-	const TITLE = `Authentication - ${BASE_TITLE}`
 	const window = new BrowserWindow({
-		title: TITLE,
+		title: buildTitle('Authentication'),
 		...getScaledWindowSize({
 			width: 450,
 			height: 500,

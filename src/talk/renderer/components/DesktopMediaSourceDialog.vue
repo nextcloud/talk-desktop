@@ -16,6 +16,13 @@ import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import { translate as t } from '@nextcloud/l10n'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
 
+const props = defineProps({
+	sources: {
+		type: Array,
+		required: true,
+	},
+})
+
 const emit = defineEmits(['submit', 'cancel'])
 
 const RE_REQUEST_SOURCES_TIMEOUT = 1000
@@ -47,10 +54,10 @@ const dialogButtons = computed(() => [
 ])
 
 const requestDesktopCapturerSources = async () => {
-	sources.value = await window.TALK_DESKTOP.getDesktopCapturerSources()
+	// props.sources = await window.TALK_DESKTOP.getDesktopCapturerSources()
 
 	// There is no source. Probably the user hasn't granted the permission.
-	if (!sources.value) {
+	if (!props.sources) {
 		emit('cancel')
 	}
 

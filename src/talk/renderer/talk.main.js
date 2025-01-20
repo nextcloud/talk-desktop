@@ -39,3 +39,9 @@ registerTalkDesktopSettingsSection()
 await import('./notifications/notifications.store.js')
 
 subscribeBroadcast('talk:conversation:open', ({ token, directCall }) => openConversation(token, { directCall }))
+
+window.TALK_DESKTOP.onPromptDesktopCaptureSource(async (sources) => {
+	const { sourceId } = await getDesktopMediaSource(sources)
+	console.log('Selected sourceId:', sourceId)
+	window.TALK_DESKTOP.desktopCaptureSourceSelected(sourceId)
+})

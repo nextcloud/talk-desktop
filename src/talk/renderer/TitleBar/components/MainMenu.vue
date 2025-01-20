@@ -4,7 +4,6 @@
   -->
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import IconCog from 'vue-material-design-icons/Cog.vue'
 import IconReload from 'vue-material-design-icons/Reload.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
@@ -17,13 +16,14 @@ import NcActionLink from '@nextcloud/vue/dist/Components/NcActionLink.js'
 import NcActionSeparator from '@nextcloud/vue/dist/Components/NcActionSeparator.js'
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
+import { getCurrentTalkRoutePath } from '../../TalkWrapper/talk.service.ts'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
-const talkRouter = window.OCA.Talk.Desktop.talkRouter
-const talkWebLink = computed(() => generateUrl(talkRouter.value?.currentRoute?.fullPath ?? ''))
+
 const showHelp = () => window.TALK_DESKTOP.showHelp()
 const reload = () => window.location.reload()
 const openSettings = () => window.OCA.Talk.Settings.open()
+const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_blank')
 </script>
 
 <template>
@@ -34,12 +34,12 @@ const openSettings = () => window.OCA.Talk.Settings.open()
 			<IconMenu :size="20" fill-color="var(--color-header-contrast)" />
 		</template>
 
-		<NcActionLink :href="talkWebLink" target="_blank">
+		<NcActionButton @click="openInWeb">
 			<template #icon>
 				<IconWeb :size="20" />
 			</template>
 			{{ t('talk_desktop', 'Open in Web-Browser') }}
-		</NcActionLink>
+		</NcActionButton>
 
 		<NcActionSeparator />
 

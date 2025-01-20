@@ -30,8 +30,6 @@ await import('@talk/src/main.js')
 
 initTalkHashIntegration(window.OCA.Talk.instance)
 
-window.OCA.Talk.Desktop.talkRouter.value = window.OCA.Talk.instance.$router
-
 registerTalkDesktopSettingsSection()
 
 await import('./notifications/notifications.store.js')

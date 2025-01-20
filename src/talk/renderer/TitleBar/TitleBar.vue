@@ -35,7 +35,7 @@ useHotKey('Escape', openRoot)
 </script>
 
 <template>
-	<header id="header" class="title-bar">
+	<header class="title-bar">
 		<div class="title-bar__inner">
 			<template v-if="!OS.isMac">
 				<div class="title-bar__title"

@@ -9,29 +9,17 @@ import './assets/styles.css'
 import './assets/overrides.css'
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
-import { initTalkHashIntegration } from './init.js'
 import { setupWebPage } from '../../shared/setupWebPage.js'
-import { subscribeBroadcast } from '../../shared/broadcast.service.ts'
 import { createViewer } from './Viewer/Viewer.js'
-import { createDesktopApp } from './desktop.app.ts'
-import { registerTalkDesktopSettingsSection } from './Settings/index.ts'
-import { openConversation } from './TalkWrapper/talk.service.ts'
+import { createTalkDesktopApp } from './desktop.app.ts'
 
 // Initially open the welcome page, if not specified
 await setupWebPage({
 	routeHash: '#/apps/spreed',
 })
 
-createDesktopApp()
+await createTalkDesktopApp()
 
 window.OCA.Viewer = await createViewer()
 
-await import('@talk/src/main.js')
-
-initTalkHashIntegration()
-
-registerTalkDesktopSettingsSection()
-
 await import('./notifications/notifications.store.js')
-
-subscribeBroadcast('talk:conversation:open', ({ token, directCall }) => openConversation(token, { directCall }))

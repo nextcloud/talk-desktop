@@ -5,15 +5,18 @@
 
 import Vue from 'vue'
 import { createPinia, PiniaVuePlugin } from 'pinia'
-import TitleBar from './TitleBar/TitleBar.vue'
 
 /**
- * @return {import('vue').ComponentPublicInstance}
+ * Create and mount the Talk Desktop
  */
-export function createDesktopApp() {
+export async function createTalkDesktopApp() {
 	Vue.use(PiniaVuePlugin)
+	const pinia = createPinia()
 
-	const TitleBarApp = Vue.extend(TitleBar)
+	// Load Talk Desktop asynchronously to make sure,
+	// no module is loaded before the page has been set up and ready to run apps
+	const { default: TalkDesktop } = await import('./TalkDesktop.vue')
 
-	return new TitleBarApp({ pinia: createPinia() }).$mount('#title-bar')
+	const TalkDesktopApp = Vue.extend(TalkDesktop)
+	return new TalkDesktopApp({ pinia }).$mount('#app')
 }

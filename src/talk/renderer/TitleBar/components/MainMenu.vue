@@ -4,6 +4,8 @@
   -->
 
 <script setup lang="ts">
+import type { Ref } from 'vue'
+import { inject } from 'vue'
 import IconCog from 'vue-material-design-icons/Cog.vue'
 import IconReload from 'vue-material-design-icons/Reload.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
@@ -20,6 +22,8 @@ import { getCurrentTalkRoutePath } from '../../TalkWrapper/talk.service.ts'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
 
+const isTalkInitialized = inject<Ref<boolean>>('talk:isInitialized')
+
 const showHelp = () => window.TALK_DESKTOP.showHelp()
 const reload = () => window.location.reload()
 const openSettings = () => window.OCA.Talk.Settings.open()
@@ -34,12 +38,14 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 			<IconMenu :size="20" fill-color="var(--color-header-contrast)" />
 		</template>
 
-		<NcActionButton @click="openInWeb">
-			<template #icon>
-				<IconWeb :size="20" />
-			</template>
-			{{ t('talk_desktop', 'Open in Web-Browser') }}
-		</NcActionButton>
+		<template v-if="isTalkInitialized">
+			<NcActionButton @click="openInWeb">
+				<template #icon>
+					<IconWeb :size="20" />
+				</template>
+				{{ t('talk_desktop', 'Open in Web-Browser') }}
+			</NcActionButton>
+		</template>
 
 		<NcActionSeparator />
 

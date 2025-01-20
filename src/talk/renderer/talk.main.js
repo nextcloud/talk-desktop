@@ -10,11 +10,9 @@ import './assets/overrides.css'
 
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { setupWebPage } from '../../shared/setupWebPage.js'
-import { createTalkDesktopApp } from './desktop.app.ts'
+import { createTalkDesktopApp } from './TalkDesktop.app.ts'
 
-// Initially open the welcome page, if not specified
-await setupWebPage({
-	routeHash: '#/apps/spreed',
-})
+// Initially open the Welcome page, if not specified
+await setupWebPage({ routeHash: '#/apps/spreed' })
 
 await createTalkDesktopApp()

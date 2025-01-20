@@ -69,6 +69,7 @@ OC.L10N.register(
     "Away" : "Preč",
     "Do not disturb" : "Nerušiť",
     "Invisible" : "Neviditeľnosť",
+    "Offline" : "Odpojené",
     "Unknown status" : "Neznámy stav",
     "Cannot connect to the server. Please check your internet connection and try again later." : "Nedá sa pripojiť k serveru. Skontrolujte svoje internetové pripojenie a skúste to znova neskôr.",
     "You missed a call from {user}" : "Zmeškali ste hovor od používateľa {user}",

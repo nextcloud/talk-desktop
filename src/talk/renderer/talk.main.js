@@ -18,5 +18,3 @@ await setupWebPage({
 })
 
 await createTalkDesktopApp()
-
-await import('./notifications/notifications.store.js')

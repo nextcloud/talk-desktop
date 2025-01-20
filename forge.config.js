@@ -323,7 +323,7 @@ module.exports = {
 						{
 							name: 'talk_window',
 							html: './src/talk/renderer/talk.html',
-							js: './src/talk/renderer/talk.main.js',
+							js: './src/talk/renderer/talk.main.ts',
 							preload: {
 								js: './src/preload.js',
 							},

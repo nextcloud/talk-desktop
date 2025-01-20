@@ -15,7 +15,7 @@ import { subscribeBroadcast } from '../../shared/broadcast.service.ts'
 import { createViewer } from './Viewer/Viewer.js'
 import { createDesktopApp } from './desktop.app.ts'
 import { registerTalkDesktopSettingsSection } from './Settings/index.ts'
-import { openConversation } from './utils/talk.service.ts'
+import { openConversation } from './TalkWrapper/talk.service.ts'
 
 // Initially open the welcome page, if not specified
 await setupWebPage({

@@ -82,12 +82,13 @@ useHotKey('Escape', pushToRoot)
 	align-items: center;
 	height: 100%;
 	/* Save space for native title bar buttons */
-	/* If there is no system area - inline with navigation items */
 	/* Note: titlebar-area-x always represents left offset */
 	/* Logical properties cannot be used here */
-	margin-left: max(env(titlebar-area-x, 0), 3 * var(--default-grid-baseline));
+	margin-left: env(titlebar-area-x, 0);
 	margin-right: auto;
-	width: env(titlebar-area-width, 100%);
+	max-width: env(titlebar-area-width, 100%);
+	/* Inline with navigation items */
+	padding-inline-start: calc(3 * var(--default-grid-baseline));
 }
 
 .title-bar__item {

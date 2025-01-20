@@ -3,49 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { loadServerCss } from '../../shared/resource.utils.js'
 import { appData } from '../../app/AppData.js'
-import { getCapabilities } from '../../shared/ocs.service.js'
-
-/**
- * Fetch and load server styles.
- * Currently unused, until this feature is available
- * @return {Promise<void>}
- */
-export async function initServerStyles() {
-	// Load application styles from server
-	await Promise.all([
-		loadServerCss('/apps/theming/css/default.css'),
-		loadServerCss('/index.php/apps/theming/theme/light.css'),
-		loadServerCss('/index.php/apps/theming/theme/dark.css'),
-		loadServerCss('/core/css/server.css'),
-	]).catch(async () => {
-		// It is not possible to determine why styles loading failed in a web-browser
-		// There are 2 the most likely reasons:
-		// 1. Invalid authentication (401 or 500)
-		// 2. Server is unavailable
-
-		// Request any data from the server to check
-		await getCapabilities()
-	}).catch((error) => {
-		// Problem #1 is handled globally
-		// For problem #2 - just quit until the app supports opening offline
-		if (![401, 500].includes(error.response?.status)) {
-			// Mark Talk hash dirty to check server availability on the next app start
-			appData.setTalkHashDirty(true).persist()
-			alert(t('talk_desktop', 'Cannot connect to the server. Please check your internet connection and try again later.'))
-			window.TALK_DESKTOP.quit()
-		}
-	})
-}
-
-/**
- * @return {Promise<void>}
- */
-export async function initLocalStyles() {
-	// Load styles overrides
-	await import('./assets/overrides.css')
-}
 
 /**
  * @typedef TalkHashStoreAdapter

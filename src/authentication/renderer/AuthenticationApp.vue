@@ -15,7 +15,7 @@ import { appData } from '../../app/AppData.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
 import { refetchAppData } from '../../app/appData.service.js'
 
-const isPreview = false
+const channel = __CHANNEL__
 
 const version = window.TALK_DESKTOP.packageInfo.version
 const rawServerUrl = ref('')
@@ -183,7 +183,7 @@ async function login() {
 			</form>
 		</div>
 		<div class="spacer">
-			<footer v-if="isPreview" class="footer">
+			<footer v-if="channel !== 'stable'" class="footer">
 				Nextcloud Talk Desktop {{ version }}
 			</footer>
 		</div>

@@ -18,6 +18,7 @@ export function generateDiagnosisReport() {
 		},
 		server: appData.credentials
 			? {
+				channel: __CHANNEL__,
 				version: appData.version.nextcloud?.string ?? 'Not available',
 				talkVersion: appData.version.talk ?? 'Not available',
 				notifications: !!(appData.capabilities as any)?.notifications, // eslint-disable-line
@@ -55,6 +56,7 @@ export function generateDiagnosisReportMD() {
 ${table('Nextcloud Talk Desktop', {
 		Version: report.talkDesktop.version,
 		'Built-in Talk version': report.talkDesktop.builtInTalkVersion,
+		'Release channel': __CHANNEL__,
 		'Operating system': report.platform.os,
 		'Executable Path': report.talkDesktop.execPath,
 		...(window.systemInfo.isLinux

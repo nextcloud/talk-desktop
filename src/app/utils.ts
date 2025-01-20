@@ -6,6 +6,7 @@
 import type { BrowserWindow } from 'electron'
 import { screen } from 'electron'
 import { getAppConfig } from './AppConfig.ts'
+import packageJson from '../../package.json'
 
 /**
  * Get the scaled window size based on the current zoom factor
@@ -64,4 +65,16 @@ export function applyZoom(window: BrowserWindow) {
 	window.once('ready-to-show', () => {
 		window.webContents.setZoomFactor(zoomFactor)
 	})
+}
+
+/**
+ * Build a title for the window from base (product name) and release channel
+ * @param title - the title of the window
+ */
+export function buildTitle(title?: string) {
+	const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
+	const BASE_TITLE = packageJson.productName
+
+	const base = __CHANNEL__ !== 'stable' ? `${BASE_TITLE} ${capitalize(__CHANNEL__)}` : BASE_TITLE
+	return title ? `${title} - ${base}` : base
 }

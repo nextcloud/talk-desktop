@@ -3,11 +3,10 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowSize, applyZoom } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 
 /**
@@ -16,7 +15,7 @@ const { applyContextMenu } = require('../app/applyContextMenu.js')
  * @return {import('electron').BrowserWindow}
  */
 function createHelpWindow(parentWindow) {
-	const TITLE = `About - ${BASE_TITLE}`
+	const TITLE = buildTitle('About')
 	const window = new BrowserWindow({
 		title: TITLE,
 		...getScaledWindowSize({

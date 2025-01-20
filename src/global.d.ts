@@ -46,6 +46,8 @@ declare module '@nextcloud/vue/dist/Composables/useHotKey.js' {
 
 // Built-time constants
 declare const IS_DESKTOP: true
+declare const __IS_DESKTOP__: true
+declare const __CHANNEL__: 'stable' | 'beta'
 declare const __VERSION_TAG__: string
 declare const __TALK_VERSION_TAG__: string
 
@@ -88,6 +90,7 @@ declare global {
 	namespace NodeJS {
 		interface ProcessEnv {
 			NODE_ENV: 'production' | 'development'
+			CHANNEL: 'stable' | 'beta'
 			NEXTCLOUD_DEV_SERVER_HOSTS: string
 		}
 	}

@@ -3,18 +3,17 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BASE_TITLE } = require('../constants.js')
 const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowSize, applyZoom } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
 
 /**
  *
  * @return {import('electron').BrowserWindow}
  */
 function createUpgradeWindow() {
-	const TITLE = `Upgrade required - ${BASE_TITLE}`
+	const TITLE = buildTitle('Upgrade required')
 	const window = new BrowserWindow({
 		title: TITLE,
 		...getScaledWindowSize({

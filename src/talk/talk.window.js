@@ -12,7 +12,7 @@ const { setupTray } = require('../app/app.tray.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
-const { getScaledWindowMinSize, getScaledWindowSize, applyZoom } = require('../app/utils.ts')
+const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -21,6 +21,7 @@ function createTalkWindow() {
 	const zoomFactor = getAppConfig('zoomFactor')
 
 	const talkWindowOptions = {
+		title: buildTitle(),
 		...getScaledWindowMinSize({
 			minWidth: 600,
 			minHeight: 400,

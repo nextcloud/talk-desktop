@@ -5,12 +5,11 @@
 
 const os = require('node:os')
 const { BrowserWindow, app } = require('electron')
-const { BASE_TITLE } = require('../constants.js')
 const { parseLoginRedirectUrl } = require('./login.service.js')
 const { osTitle } = require('../app/system.utils.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowMinSize, getScaledWindowSize, applyZoom } = require('../app/utils.ts')
+const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
 const { getAppConfig } = require('../app/AppConfig.ts')
 
 const genId = () => Math.random().toString(36).slice(2, 9)
@@ -26,7 +25,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 	return new Promise((resolve, reject) => {
 		const WIDTH = 750
 		const HEIGHT = 750
-		const TITLE = `Login - ${BASE_TITLE}`
+		const TITLE = buildTitle('Login')
 
 		const zoomFactor = getAppConfig('zoomFactor')
 

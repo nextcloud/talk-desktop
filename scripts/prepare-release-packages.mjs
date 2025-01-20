@@ -36,7 +36,8 @@ function help() {
 
 	Args:
 	--help - show help
-	--version - Optionally a specific Talk version/branch to build with, for example, v20.0.0-rc.1 or main. Default is package.json/talk.stable.
+	--version - Optionally a specific Talk version/branch to build with, for example, v20.0.0-rc.1 or main. Default is package.json/talk.
+	--channel [CHANNEL] - Release channel: stable, beta, or dev. Default is stable.
 	--windows - build Windows package
 	--linux - build Linux package
 	--mac - build macOS package using universal architecture (recommended)
@@ -54,7 +55,8 @@ function help() {
  * @return {Promise<void>}
  */
 async function prepareRelease() {
-	const version = argv.version ?? packageJson.talk.stable
+	const CHANNEL = process.env.CHANNEL || argv.channel || 'stable'
+	const TALK_VERSION = argv.version || packageJson.talk[CHANNEL]
 
 	// Default to the current platform
 	if (!argv.windows && !argv.linux && !argv.mac && !argv['mac-x64'] && !argv['mac-arm64']) {
@@ -62,7 +64,7 @@ async function prepareRelease() {
 		argv[platform] = true
 	}
 
-	echo`Packaging Nextcloud Talk v${packageJson.version} with Talk ${version}...`
+	echo`Packaging Nextcloud Talk v${packageJson.version} with Talk ${TALK_VERSION}...`
 
 	// Git wrapper for Talk repository
 	const gitSpreed = (command) => $`git --git-dir=${talkDotGit} --work-tree=${TALK_PATH} ${command}`
@@ -81,22 +83,22 @@ async function prepareRelease() {
 		if ((await gitSpreed(['status', '-s'])).stdout) {
 			exit('❌ You have uncommitted changes in the Talk repository', 1)
 		}
-		echo`[3.2/5] Fetching Talk ${version} from origin`
+		echo`[3.2/5] Fetching Talk ${TALK_VERSION} from origin`
 		await spinner(
-			`Fetching Talk ${version} from origin`,
-			() => gitSpreed(['fetch', '--no-tags', '--depth=1', 'origin', 'tag', version]),
+			`Fetching Talk ${TALK_VERSION} from origin`,
+			() => gitSpreed(['fetch', '--no-tags', '--depth=1', 'origin', 'tag', TALK_VERSION]),
 		)
-		echo`[3.3/5] Checkout Talk ${version}`
+		echo`[3.3/5] Checkout Talk ${TALK_VERSION}`
 		await spinner(
-			`Checkout Talk ${version}`,
-			() => gitSpreed(['checkout', version]),
+			`Checkout Talk ${TALK_VERSION}`,
+			() => gitSpreed(['checkout', TALK_VERSION]),
 		)
 	} else {
 		echo`- No Talk has been found in ${TALK_PATH}`
-		echo`[3/5] Cloning Talk@${version} to ${TALK_PATH}`
+		echo`[3/5] Cloning Talk@${TALK_VERSION} to ${TALK_PATH}`
 		await spinner(
-			`Cloning Talk@${version} to ${TALK_PATH}`,
-			() => $`git clone --branch=${version} --depth=1 -- https://github.com/nextcloud/spreed ${TALK_PATH}`,
+			`Cloning Talk@${TALK_VERSION} to ${TALK_PATH}`,
+			() => $`git clone --branch=${TALK_VERSION} --depth=1 -- https://github.com/nextcloud/spreed ${TALK_PATH}`,
 		)
 	}
 
@@ -117,6 +119,7 @@ async function prepareRelease() {
 	// Build and package
 	echo`[5/5] Packaging...`
 	$.env.TALK_PATH = TALK_PATH
+	$.env.CHANNEL = CHANNEL
 	argv.windows && await spinner('Package Windows', () => $`npm run build:windows && npm run package:windows`)
 	argv.linux && await spinner('Package Linux', () => $`npm run build:linux && npm run package:linux`)
 	argv.mac && await spinner('Package MacOS', () => $`npm run build:mac && npm run package:mac`)

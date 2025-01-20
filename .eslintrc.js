@@ -29,6 +29,8 @@ module.exports = {
 		WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
 		// Build constants
 		IS_DESKTOP: 'readonly',
+		__IS_DESKTOP__: 'readonly',
+		__CHANNEL__: 'readonly',
 		__VERSION_TAG__: 'readonly',
 		__TALK_VERSION_TAG__: 'readonly',
 	},

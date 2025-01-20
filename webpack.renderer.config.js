@@ -11,6 +11,7 @@ const webpack = require('webpack')
 const { mergeWithRules } = require('webpack-merge')
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
+const CHANNEL = process.env.CHANNEL ?? 'dev'
 
 /**
  * appName and appVersion constants are set by process.env.npm_package_* in @nextcloud/webpack-vue-config.
@@ -93,6 +94,7 @@ const webpackRendererConfig = mergeWithRules({
 			options: 'replace',
 		},
 	},
+	plugins: 'append',
 })(commonTalkWebpackConfig, {
 	output: {
 		assetModuleFilename: '[name][ext]?v=[contenthash]',
@@ -162,6 +164,7 @@ const webpackRendererConfig = mergeWithRules({
 
 		new webpack.DefinePlugin({
 			IS_DESKTOP: true,
+			__CHANNEL__: JSON.stringify(CHANNEL),
 			__VERSION_TAG__: JSON.stringify(getFullVersion()),
 			__TALK_VERSION_TAG__: JSON.stringify(getFullVersion(TALK_PATH)),
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),

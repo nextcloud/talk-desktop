@@ -13,6 +13,10 @@ import { applyAxiosInterceptors } from '../shared/setupWebPage.js'
 const quitButton = document.querySelector('.quit')
 quitButton.addEventListener('click', () => window.TALK_DESKTOP.quit())
 
+if (__CHANNEL__ !== 'stable') {
+	document.querySelector('.footer').textContent = __VERSION_TAG__
+}
+
 window.TALK_DESKTOP.getSystemInfo().then(os => {
 	quitButton.classList.remove('hidden')
 	if (os.isMac) {

@@ -28,6 +28,7 @@ OC.L10N.register(
     "Settings" : "설정",
     "Back" : "뒤로",
     "View profile" : "프로필 보기",
+    "Log out" : "로그아웃",
     "User status" : "사용자 상태",
     "30 minutes" : "30분",
     "1 hour" : "1시간",

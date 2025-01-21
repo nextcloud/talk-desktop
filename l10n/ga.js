@@ -103,7 +103,6 @@ OC.L10N.register(
     "Invisible" : "Dofheicthe",
     "Offline" : "As líne",
     "Unknown status" : "Stádas anaithnid",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Ní féidir ceangal leis an bhfreastalaí. Seiceáil do cheangal idirlín agus bain triail eile as ar ball le do thoil.",
     "You missed a call from {user}" : "Chaill tú glao ó {user}",
     "You missed a group call in {call}" : "Chaill tú glao grúpa i {call}"
 },

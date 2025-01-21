@@ -103,7 +103,6 @@ OC.L10N.register(
     "Invisible" : "隱藏",
     "Offline" : "離線",
     "Unknown status" : "未知狀態",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "無法連線到伺服器。請檢查您的網際網路連線並再試一次。",
     "You missed a call from {user}" : "您錯過了 {user} 的來電",
     "You missed a group call in {call}" : "您錯過了 {call} 中的群組通話"
 },

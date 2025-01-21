@@ -103,7 +103,6 @@ OC.L10N.register(
     "Invisible" : "Görünmez",
     "Offline" : "Çevrim dışı",
     "Unknown status" : "Durum bilinmiyor",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Sunucu ile bağlantı kurulamadı. Lütfen İnternet bağlantınızı denetleyip yeniden deneyin.",
     "You missed a call from {user}" : "{user} kullanıcısı sizi aramış",
     "You missed a group call in {call}" : "{call} grubu sizi aramış"
 },

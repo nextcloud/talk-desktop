@@ -59,7 +59,6 @@ OC.L10N.register(
     "Do not disturb" : "Ne zavarjanak",
     "Invisible" : "Láthatatlan",
     "Offline" : "Nincs kapcsolat",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Nem sikerült a kiszolgálóhoz csatlakozni. Ellenőrizze az internetkapcsolatot és próbálja meg újra.",
     "You missed a call from {user}" : "Nem fogadott hívás tőle: {user}",
     "You missed a group call in {call}" : "Nem fogadott csoportos hívás itt: {call}"
 },

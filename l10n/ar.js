@@ -103,7 +103,6 @@ OC.L10N.register(
     "Invisible" : "غير مرئي",
     "Offline" : "بدون اتصالٍ",
     "Unknown status" : "الحالة غير معروفة",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "تعذّر الاتصال بالخادم. رجاءً، تحقَّق من اتصالك بالانترنت و حاول مرة أخرى.",
     "You missed a call from {user}" : "مكالمة لم ترد عليها من {user}",
     "You missed a group call in {call}" : "اتصال جماعي لم ترد عليه في {call}"
 },

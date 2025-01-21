@@ -99,7 +99,6 @@ OC.L10N.register(
     "Invisible" : "Verborgen",
     "Offline" : "Offline",
     "Unknown status" : "Onbekende status",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Kan niet verbinden met de server. Controleer uw internetverbinding en probeer het later opnieuw a.u.b.",
     "You missed a call from {user}" : "Je hebt een gesprek gemist van {user}",
     "You missed a group call in {call}" : "Je hebt een groepsgesprek gemist in {call}"
 },

@@ -101,7 +101,6 @@
     "Invisible" : "Neviditelný",
     "Offline" : "Bez připojení",
     "Unknown status" : "Neznámý stav",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Nepodařilo se připojit k serveru. Zkontrolujte své připojení k Internetu a zkuste to znovu.",
     "You missed a call from {user}" : "Zmeškali jste hovor od {user}",
     "You missed a group call in {call}" : "Zmeškali jste skupinový hovor v {call}"
 },"pluralForm" :"nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;"

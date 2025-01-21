@@ -103,7 +103,6 @@ OC.L10N.register(
     "Invisible" : "Invisíbel",
     "Offline" : "Sen conexión",
     "Unknown status" : "Estado descoñecido",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Non é posíbel conectar ac servidor. Comproe a súa conexión a Internet e ténteo de novo máis tarde.",
     "You missed a call from {user}" : "Perdeu unha chamada de {user}",
     "You missed a group call in {call}" : "Perdeu unha chamada de grupo en {call}"
 },

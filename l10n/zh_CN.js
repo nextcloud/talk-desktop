@@ -65,7 +65,6 @@ OC.L10N.register(
     "Do not disturb" : "请勿打扰",
     "Invisible" : "隐身",
     "Unknown status" : "未知状态",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "无法连接到服务器。请检查您的网络连接后重试",
     "You missed a call from {user}" : "您错过了来自 {user} 的一个通话",
     "You missed a group call in {call}" : "您在 {call} 中错过了一个组通话"
 },

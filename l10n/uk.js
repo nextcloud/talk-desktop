@@ -69,7 +69,6 @@ OC.L10N.register(
     "Do not disturb" : "Не турбувати",
     "Invisible" : "Приховано",
     "Offline" : "Офлайн",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Неможливо з'єднатися із сервером. Перевірте доступ до мережі та спробуйте повторно.",
     "You missed a call from {user}" : "Ви пропустили виклик від {user}",
     "You missed a group call in {call}" : "Ви пропустили груповий виклик у {call}"
 },

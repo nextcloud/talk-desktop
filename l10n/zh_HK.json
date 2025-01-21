@@ -101,7 +101,6 @@
     "Invisible" : "隱藏",
     "Offline" : "離線",
     "Unknown status" : "狀態不詳",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "無法連接到伺服器。請檢查您的互聯網連接並再試一次。",
     "You missed a call from {user}" : "您錯過了 {user} 的來電",
     "You missed a group call in {call}" : "您錯過了 {call} 中的群組通話"
 },"pluralForm" :"nplurals=1; plural=0;"

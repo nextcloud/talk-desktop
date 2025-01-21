@@ -80,7 +80,6 @@ OC.L10N.register(
     "Invisible" : "Usynlig",
     "Offline" : "Frakoblet",
     "Unknown status" : "Ukjent status",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Kan ikke koble til serveren. Kontroller Internett-tilkoblingen din og prøv igjen senere.",
     "You missed a call from {user}" : "Du har et tapt anrop fra {user}",
     "You missed a group call in {call}" : "Du gikk glipp av en gruppesamtale i {call}"
 },

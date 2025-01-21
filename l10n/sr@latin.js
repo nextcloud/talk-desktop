@@ -62,7 +62,6 @@ OC.L10N.register(
     "Away" : "Odsutan",
     "Do not disturb" : "Ne uznemiravaj",
     "Invisible" : "Nevidljiv",
-    "Offline" : "Van mreže",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Nemoguće spajanje na server. Proverite Internet konekciju i pokušajte ponovo."
+    "Offline" : "Van mreže"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);");

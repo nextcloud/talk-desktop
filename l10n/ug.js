@@ -95,7 +95,6 @@ OC.L10N.register(
     "Invisible" : "كۆرۈنمەيدۇ",
     "Offline" : "تورسىز",
     "Unknown status" : "نامەلۇم ھالەت",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "مۇلازىمېتىرغا ئۇلىنالمايدۇ. تور ئۇلىنىشىڭىزنى تەكشۈرۈپ ئاندىن قايتا سىناڭ.",
     "You missed a call from {user}" : "{ئىشلەتكۈچى} نىڭ تېلېفونىنى قولدىن بېرىپ قويدىڭىز",
     "You missed a group call in {call}" : "{Call in دىكى گۇرۇپپا چاقىرىشنى قولدىن بېرىپ قويدىڭىز"
 },

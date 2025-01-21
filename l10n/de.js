@@ -95,7 +95,6 @@ OC.L10N.register(
     "Invisible" : "Unsichtbar",
     "Offline" : "Offline",
     "Unknown status" : "Unbekannter Status",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Kann nicht mit dem Server verbinden. Bitte überprüfe deine Internetverbindung und versuche es später erneut.",
     "You missed a call from {user}" : "Du hast einen Anruf von {user} verpasst",
     "You missed a group call in {call}" : "Du hast einen Gruppenanruf in {call} verpasst"
 },

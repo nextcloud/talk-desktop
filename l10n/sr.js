@@ -102,7 +102,6 @@ OC.L10N.register(
     "Invisible" : "Невидљива",
     "Offline" : "Ван мреже",
     "Unknown status" : "Статус се не зна",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Не може да се успостави веза са сервером. Молимо вас да проверите везу са интернетом и покушате касније.",
     "You missed a call from {user}" : "Пропустили сте позив од корисника {user}",
     "You missed a group call in {call}" : "Пропустили сте групни позив у разговору {call}"
 },

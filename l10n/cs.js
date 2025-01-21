@@ -103,7 +103,6 @@ OC.L10N.register(
     "Invisible" : "Neviditelný",
     "Offline" : "Bez připojení",
     "Unknown status" : "Neznámý stav",
-    "Cannot connect to the server. Please check your internet connection and try again later." : "Nepodařilo se připojit k serveru. Zkontrolujte své připojení k Internetu a zkuste to znovu.",
     "You missed a call from {user}" : "Zmeškali jste hovor od {user}",
     "You missed a group call in {call}" : "Zmeškali jste skupinový hovor v {call}"
 },

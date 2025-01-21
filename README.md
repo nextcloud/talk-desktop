@@ -14,7 +14,7 @@
 
 ## 📥 Install
 
-All binaries are available on [Nextcloud Releases](https://github.com/nextcloud-releases/talk-desktop/releases).
+All binaries and `beta` releases are available on [Nextcloud Releases](https://github.com/nextcloud-releases/talk-desktop/releases).
 
 | Platform (arch)          | Distribution type                                                                                                                                                   | Download link                                                                                                                                        |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|

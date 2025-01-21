@@ -2,7 +2,7 @@
   "private": true,
   "name": "talk-desktop",
   "productName": "Nextcloud Talk",
-  "version": "1.0.2",
+  "version": "1.1.0-beta",
   "description": "Official Desktop client for Nextcloud Talk",
   "bugs": {
     "url": "https://github.com/nextcloud/talk-desktop/issues",

@@ -5,6 +5,12 @@
 
 # Changelog
 
+## v1.1.0-beta - 2025-01-20
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.0.0-beta.2 in the beta release channel [#1029](https://github.com/nextcloud/talk-desktop/pull/1029)
+
 ## v1.0.2 - 2025-01-20
 
 ### Features

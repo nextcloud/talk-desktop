@@ -7,7 +7,10 @@ import type { ClearAtPredefinedConfig, PredefinedUserStatus, UserStatus, UserSta
 import moment from '@nextcloud/moment'
 import { translate as t } from '@nextcloud/l10n'
 
-export const userStatusStatusTypes: UserStatusStatusType[] = ['online', 'away', 'busy', 'dnd', 'invisible', 'offline'] as const
+/**
+ * List of user status types that user can set
+ */
+export const availableUserStatusStatusTypes: UserStatusStatusType[] = ['online', 'away', 'dnd', 'invisible']
 
 export const userStatusTranslations: Record<UserStatusStatusType, string> = {
 	online: t('talk_desktop', 'Online'),

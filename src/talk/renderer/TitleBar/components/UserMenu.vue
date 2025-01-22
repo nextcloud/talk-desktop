@@ -4,6 +4,7 @@
   -->
 
 <script setup lang="ts">
+import type { UserStatusStatusType } from '../../UserStatus/userStatus.types.ts'
 import { computed, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { t } from '@nextcloud/l10n'
@@ -23,9 +24,8 @@ import UiMenuItem from './UiMenuItem.vue'
 import UiMenuSeparator from './UiMenuSeparator.vue'
 import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
 import { useUserStatusStore } from '../../UserStatus/userStatus.store.ts'
-import { userStatusTranslations, userStatusStatusTypes } from '../../UserStatus/userStatus.utils.ts'
+import { userStatusTranslations, availableUserStatusStatusTypes } from '../../UserStatus/userStatus.utils.ts'
 import { appData } from '../../../../app/AppData.js'
-import type { UserStatusStatusType } from '../../UserStatus/userStatus.types.ts'
 
 const props = defineProps<{
 	// TODO: define a proper type for userMetadata
@@ -104,7 +104,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							</template>
 							{{ t('talk_desktop', 'Back') }}
 						</UiMenuItem>
-						<UiMenuItem v-for="status in userStatusStatusTypes"
+						<UiMenuItem v-for="status in availableUserStatusStatusTypes"
 							:key="status"
 							tag="button"
 							@click.native.stop="handleUserStatusChange(status)">

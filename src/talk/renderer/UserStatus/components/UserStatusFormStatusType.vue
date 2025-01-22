@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
-import { userStatusStatusTypes, userStatusTranslations } from '../userStatus.utils.ts'
+import { availableUserStatusStatusTypes, userStatusTranslations } from '../userStatus.utils.ts'
 import type { UserStatusStatusType } from '../userStatus.types.ts'
 
 defineProps<{
@@ -20,7 +20,7 @@ const emit = defineEmits<{
 
 <template>
 	<div class="user-status-form-status">
-		<NcButton v-for="option in userStatusStatusTypes"
+		<NcButton v-for="option in availableUserStatusStatusTypes"
 			:key="option"
 			type="tertiary"
 			alignment="start"

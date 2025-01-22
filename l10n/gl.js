@@ -1,11 +1,11 @@
 OC.L10N.register(
     "talk_desktop",
     {
-    "Talk Desktop" : "Talk para escritorio",
+    "Talk Desktop" : "Parlar para escritorio",
     "Logged in successfully" : "Accedeu satisfactoriamente",
     "Invalid server address" : "O enderezo do servidor é incorrecto",
     "Nextcloud server not found" : "Non se atopa o servidor de Nextcloud",
-    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk non está instalado no servidor.",
+    "Nextcloud Talk is not installed in the server" : "Parlar de Nextcloud non está instalado no servidor.",
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Precísase de {componentName} {minRequiredVersion} ou superior, mais está instalado {foundVersion}",
     "Unexpected error" : "Produciuse un erro non agardado",
     "Login was successful but something went wrong." : "O acceso realizouse correctamente, mais houbo un problema.",
@@ -94,7 +94,7 @@ OC.L10N.register(
     "Choose what to share" : "Escolla o que quere compartir",
     "Upgrade required" : "Precísase dunha anovación",
     "The client version is too old and no longer supported by this server. Update is required." : "A versión do cliente é demasiado antiga e xa non é compatíbel con este servidor. É preciso actualizar.",
-    "Update Talk Desktop ↗" : "Actualizar Talk para escritorio ↗",
+    "Update Talk Desktop ↗" : "Actualizar Parlar para escritorio ↗",
     "Continue in Web-Browser ↗" : "Continuar no navegador ↗",
     "Application" : "Aplicación",
     "Online" : "En liña",

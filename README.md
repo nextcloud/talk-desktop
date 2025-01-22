@@ -26,9 +26,10 @@ All binaries are available on [Nextcloud Releases](https://github.com/nextcloud-
 
 ### via Package manager
 
-| Platform       | Package manager                                                                       | Command                         |
-|----------------|---------------------------------------------------------------------------------------|---------------------------------|
-| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk` |
+| Package       | Package manager                                                                       | Command                              |
+|----------------|---------------------------------------------------------------------------------------|--------------------------------------|
+| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk`      |
+| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk.Beta` |
 
 ## 🏗️ Prerequisites
 

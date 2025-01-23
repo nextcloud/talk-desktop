@@ -78,9 +78,9 @@ SPDX-FileCopyrightText = "2016-2024 Collabora Ltd."
 SPDX-License-Identifier = "LicenseRef-CollaboraTrademarks"
 
 [[annotations]]
-path = ["core/img/twitter.svg","core/img/actions/twitter.svg"]
+path = ["core/img/x.svg","core/img/twitter.svg","core/img/actions/twitter.svg"]
 precedence = "aggregate"
-SPDX-FileCopyrightText = "X Corp. "
+SPDX-FileCopyrightText = "X Corp."
 SPDX-License-Identifier = "LicenseRef-XTrademarks"
 
 [[annotations]]

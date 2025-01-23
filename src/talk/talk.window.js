@@ -77,7 +77,7 @@ function createTalkWindow() {
 
 	setupTray(window)
 
-	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY)
+	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY + '#/apps/spreed')
 
 	return window
 }

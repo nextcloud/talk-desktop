@@ -4,7 +4,7 @@
  */
 
 const { BrowserWindow } = require('electron')
-const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.js')
+const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadHandler } = require('../app/downloads.ts')
 const { applyWheelZoom } = require('../app/zoom.service.ts')

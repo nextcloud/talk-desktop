@@ -3,41 +3,56 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { shell } = require('electron')
-const { DEV_SERVER_ORIGIN } = require('../constants.js')
+import type {
+	BrowserWindow,
+	BrowserWindowConstructorOptions,
+	Event,
+	HandlerDetails,
+	WebContentsWillNavigateEventParams,
+	WindowOpenHandlerResponse,
+} from 'electron'
+import { shell } from 'electron'
+import { DEV_SERVER_ORIGIN } from '../constants.js'
 
 /**
- * A link is internal, if it is file:// link or devServer's origin on non-production
- *
- * @param {string} url - URL
- * @return {boolean}
+ * Check if a link is an internal application link
+ * @param url - URL
  */
-function isInternalLink(url) {
+export function isInternalLink(url: string) {
 	return url.startsWith('file') || (process.env.NODE_ENV !== 'production' && url.startsWith(DEV_SERVER_ORIGIN))
 }
 
 /**
- * A link is external, if it not file:// link and not devServer's origin on non-production
- *
- * @param {string} url - URL
- * @return {boolean}
+ * Check if a link is external
+ * @param url - URL
  */
-function isExternalLink(url) {
+export function isExternalLink(url: string) {
 	return !isInternalLink(url)
 }
 
 /**
- * Open external link in the default OS handler (i.e. Web-Browser) on new window open
- *
- * @param {import('electron').HandlerDetails} details - HandlerDetails
- * @param {import('electron').BrowserWindowConstructorOptions} [browserWindowOptions] - options for new BrowserWindow, usually based on parent options
- * @return {{action: 'deny'} | {action: 'allow', outlivesOpener?: boolean, overrideBrowserWindowOptions?: import('electron').BrowserWindowConstructorOptions}}
+ * Apply external links handling at BrowserWindow
+ * @param browserWindow - Browser window
+ * @param browserWindowOptions - options for new BrowserWindow, usually based on parent options
  */
-function windowOpenExternalLinkHandler(details, browserWindowOptions = {}) {
+export function applyExternalLinkHandler(browserWindow: BrowserWindow, browserWindowOptions: Partial<BrowserWindowConstructorOptions> = {}) {
+	browserWindow.webContents.on('will-navigate', willNavigateExternalLinkHandler)
+	browserWindow.webContents.setWindowOpenHandler((details) => windowOpenExternalLinkHandler(details, browserWindowOptions))
+}
+
+/**
+ * Handle new window open
+ * @param details - HandlerDetails
+ * @param browserWindowOptions - Options for new BrowserWindow, usually based on parent options
+ */
+function windowOpenExternalLinkHandler(details: HandlerDetails, browserWindowOptions: BrowserWindowConstructorOptions = {}): WindowOpenHandlerResponse {
+	// Open external links in the default web-browser instead of a new app window
 	if (isExternalLink(details.url)) {
 		shell.openExternal(details.url)
 		return { action: 'deny' }
 	}
+	// Open apps link as a new window
+	// TODO: instead of native open - manually create fully controlled window
 	return {
 		action: 'allow',
 		overrideBrowserWindowOptions: browserWindowOptions,
@@ -46,30 +61,13 @@ function windowOpenExternalLinkHandler(details, browserWindowOptions = {}) {
 
 /**
  * Open external link in the default OS handler (i.e. Web-Browser) on navigate
- *
- * @param {import('electron').Event} event - Will Navigate Electron Event
- * @param {string} url - URL
+ * @param event - Will Navigate Electron Event
  */
-function willNavigateExternalLinkHandler(event, url) {
+function willNavigateExternalLinkHandler(event: Event<WebContentsWillNavigateEventParams>) {
+	const { url } = event
+
 	if (isExternalLink(url)) {
 		event.preventDefault()
 		shell.openExternal(url)
 	}
-}
-
-/**
- * Apply external links handling at BrowserWindow
- *
- * @param {import('electron').BrowserWindow} browserWindow - Browser window
- * @param {import('electron').BrowserWindowConstructorOptions} [browserWindowOptions] - options for new BrowserWindow, usually based on parent options
- */
-function applyExternalLinkHandler(browserWindow, browserWindowOptions = {}) {
-	browserWindow.webContents.on('will-navigate', willNavigateExternalLinkHandler)
-	browserWindow.webContents.setWindowOpenHandler((details) => windowOpenExternalLinkHandler(details, browserWindowOptions))
-}
-
-module.exports = {
-	isInternalLink,
-	isExternalLink,
-	applyExternalLinkHandler,
 }

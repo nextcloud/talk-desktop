@@ -16,7 +16,7 @@
   --color-text-maxcontrast-background-blur:#a8a8a8;
   --color-text-light:var(--color-main-text);
   --color-text-lighter:var(--color-text-maxcontrast);
-  --color-scrollbar:#3d3d3d;
+  --color-scrollbar:var(--color-border-maxcontrast) transparent;
   --color-error:#FF3333;
   --color-error-rgb:255,51,51;
   --color-error-hover:#ff6666;

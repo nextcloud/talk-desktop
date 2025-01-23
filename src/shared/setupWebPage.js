@@ -11,6 +11,7 @@ import { initGlobals } from './globals/globals.js'
 import { setupInitialState } from './initialState.service.js'
 import { initAppConfig } from './appConfig.service.ts' // eslint-disable-line import/namespace
 import { TITLE_BAR_HEIGHT } from '../constants.js'
+import { refetchAppData } from '../app/appData.service.js'
 
 /**
  * @param {string} lang - language code, TS type: `${lang}_${countryCode}`|`${lang}`
@@ -228,4 +229,17 @@ export async function setupWebPage() {
 	applyAxiosInterceptors()
 	await applyL10n()
 	applyDownloadLinkHandler()
+
+	// Re-fetch appData if dirty
+	if (appData.talkHashDirty) {
+		try {
+			await refetchAppData(appData)
+		} catch {
+			// This should never happen
+			// If it does, let's try to relaunch the app
+			window.TALK_DESKTOP.relaunch()
+		}
+		// Re-apply initial state after re-fetch
+		applyInitialState()
+	}
 }

@@ -12,6 +12,7 @@ import type {
 	WindowOpenHandlerResponse,
 } from 'electron'
 import { shell } from 'electron'
+import { appData } from './AppData.js'
 import { DEV_SERVER_ORIGIN } from '../constants.js'
 
 /**
@@ -28,6 +29,33 @@ export function isInternalLink(url: string) {
  */
 export function isExternalLink(url: string) {
 	return !isInternalLink(url)
+}
+
+// eslint-disable-next-line prefer-regex-literals
+const talkPathRe = new RegExp('^/apps/spreed(?:/(?:not-found|forbidden|duplicate-session))?|/call/[^/]+$')
+
+/**
+ * Try to extract Talk route from the link
+ * @param link - URL link
+ */
+function tryExtractTalkRoute(link: string) {
+	const url = new URL(link)
+
+	// Not a link to this instance
+	if (!appData.serverUrl || url.origin !== appData.serverUrl) {
+		return null
+	}
+
+	// Path without /index.php
+	const pathname = url.pathname.slice(url.pathname.startsWith('/index.php') ? '/index.php'.length : 0)
+
+	// Check whether the path is a valid Talk path or some other app
+	if (!talkPathRe.test(pathname)) {
+		return null
+	}
+
+	// Built app's fullPath
+	return pathname + url.search + url.hash
 }
 
 /**
@@ -63,11 +91,29 @@ function windowOpenExternalLinkHandler(details: HandlerDetails, browserWindowOpt
  * Open external link in the default OS handler (i.e. Web-Browser) on navigate
  * @param event - Will Navigate Electron Event
  */
-function willNavigateExternalLinkHandler(event: Event<WebContentsWillNavigateEventParams>) {
-	const { url } = event
+async function willNavigateExternalLinkHandler(event: Event<WebContentsWillNavigateEventParams>) {
+	const { url, initiator: webFrameMain } = event
 
-	if (isExternalLink(url)) {
-		event.preventDefault()
-		shell.openExternal(url)
+	// Internal navigation - do nothing
+	if (!isExternalLink(url)) {
+		if (process.env.NODE_ENV === 'production') {
+			console.warn('Unexpected internal navigation to URL:', url)
+		}
+		return
 	}
+
+	// Prevent opening a web-page in the window
+	event.preventDefault()
+
+	const talkRoute = tryExtractTalkRoute(url)
+	if (talkRoute && webFrameMain) {
+		// Talk route is about to open - navigate in app internally instead
+		// TODO: is it better to use browserWindow API here?
+		await webFrameMain.executeJavaScript(`window.location.hash = '#${talkRoute}'`)
+		webFrameMain.reload()
+		return
+	}
+
+	// External link - open in the default browser
+	await shell.openExternal(url)
 }

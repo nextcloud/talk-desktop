@@ -18,6 +18,7 @@ const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
+const { appData } = require('./app/AppData.js')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
@@ -253,7 +254,9 @@ app.whenReady().then(async () => {
 	createMainWindow = createWelcomeWindow
 	mainWindow.once('ready-to-show', () => mainWindow.show())
 
-	ipcMain.once('appData:receive', async (event, appData) => {
+	ipcMain.once('appData:receive', async (event, newAppData) => {
+		appData.fromJSON(newAppData)
+
 		const welcomeWindow = mainWindow
 
 		if (appData.credentials) {

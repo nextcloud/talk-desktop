@@ -1,0 +1,51 @@
+# SPDX-FileCopyrightText: 2025 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: CC0-1.0
+
+name: Update Built-in Talk
+
+permissions:
+  contents: write
+  pull-requests: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-built-in-talk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+
+      - name: Run update-built-in-talk.mjs
+        id: update
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Execute the script and capture the output
+          stdout=$(npx -y zx ./scripts/update-built-in-talk.mjs)
+          # Pass the result to the next steps
+          echo "stdout<<EOF" >> $GITHUB_OUTPUT
+          echo "$stdout" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Print result
+        run: echo "${{ steps.update.outputs.stdout }}"
+
+      - name: Create Pull Request
+        if: steps.update.outcome == 'success'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: 'build: update built-in Talk version'
+          signoff: true
+          branch: 'build/update-built-in-talk-version'
+          delete-branch: true
+          title: 'build: update built-in Talk versions'
+          body: |
+            ## Update Built-in Talk Version
+
+            ${{ steps.update.outputs.stdout }}

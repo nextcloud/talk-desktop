@@ -63,6 +63,7 @@ OC.L10N.register(
     "Open in a Web-Browser" : "Abrir en navegador web",
     "Loading …" : "Cargando …",
     "Layout" : "Diseño",
+    "Compact" : "Compacto",
     "Cancel" : "Cancelar",
     "Share screen" : "Compartir pantalla",
     "Selected screen or window" : "Pantalla o ventana seleccionada",

@@ -36,6 +36,7 @@ OC.L10N.register(
     "Some changes require a relaunch to take effect" : "Да би неке измене имале ефекта, потребно је поновно покретање",
     "Restart" : "Поново покрени",
     "General" : "Опште",
+    "Launch at startup" : "Покрени при покретању система",
     "Appearance" : "Изглед",
     "Theme" : "Тема",
     "Use monochrome tray icon" : "Користи једнобојну икону",

@@ -41,7 +41,7 @@
   },
   "talk": {
     "stable": "v20.1.3",
-    "beta": "v21.0.0-beta.2",
+    "beta": "v21.0.0-rc.1",
     "dev": "main"
   },
   "dependencies": {

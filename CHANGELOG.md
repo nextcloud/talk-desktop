@@ -5,6 +5,17 @@
 
 # Changelog
 
+## v1.1.1-beta - 2025-01-24
+
+### Fixes
+
+- Fix app immediately relaunches on server update [#1050](https://github.com/nextcloud/talk-desktop/pull/1050)
+- Fix duplicated options in user status settings [#1048](https://github.com/nextcloud/talk-desktop/pull/1048)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.0.0-rc.1 in the beta release channel [#1053](https://github.com/nextcloud/talk-desktop/pull/1053)
+
 ## v1.1.0-beta - 2025-01-20
 
 ### Changes

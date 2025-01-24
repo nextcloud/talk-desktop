@@ -32,8 +32,6 @@ onMounted(async () => {
 	})
 	onTalkHashDirty(() => {
 		appData.setTalkHashDirty(true).persist()
-		// TODO: make soft restart (!)
-		window.TALK_DESKTOP.relaunch()
 	})
 
 	// Ready

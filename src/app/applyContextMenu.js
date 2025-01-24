@@ -4,7 +4,7 @@
  */
 
 const { clipboard, Menu } = require('electron')
-const { isExternalLink } = require('./externalLinkHandlers.js')
+const { isExternalLink } = require('./externalLinkHandlers.ts')
 
 /**
  * Enable context menu by right click

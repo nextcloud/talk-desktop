@@ -86,7 +86,7 @@
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsdoc": "^46.10.1",
-    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-n": "^17.15.1",
     "eslint-plugin-promise": "^6.6.0",
     "eslint-plugin-vue": "^9.32.0",
     "icon-gen": "^5.0.0",

@@ -82,7 +82,7 @@
     "dotenv": "^16.4.7",
     "electron": "^34.0.1",
     "esbuild-loader": "^4.2.2",
-    "eslint": "^8.57.1",
+    "eslint": "^9.19.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsdoc": "^46.10.1",

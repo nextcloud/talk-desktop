@@ -16,6 +16,7 @@ import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
 const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
 
 const videoElement = ref<HTMLVideoElement | null>(null)
+let stream: MediaStream | null = null
 
 const props = defineProps<{
 	source: ScreensharingSource
@@ -67,14 +68,23 @@ const getStreamForMediaSource = (mediaSourceId: ScreensharingSourceId) => {
  * Set the video source to the selected source
  */
 async function setVideoSource() {
-	videoElement.value!.srcObject = await getStreamForMediaSource(props.source.id)
+	stream = await getStreamForMediaSource(props.source.id)
+	if (videoElement.value) {
+		videoElement.value.srcObject = stream
+	} else {
+		// If there is no video element - something went wrong or the component is destroyed already
+		// We still must release the stream
+		releaseVideoSource()
+	}
 }
 
 /**
  * Release the video source
  */
 function releaseVideoSource() {
-	const stream = videoElement.value!.srcObject! as MediaStream
+	if (!stream) {
+		return
+	}
 	for (const track of stream.getTracks()) {
 		track.stop()
 	}
@@ -87,7 +97,6 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
-	// Release the stream, otherwise it is still captured even if no video element is using it
 	releaseVideoSource()
 })
 

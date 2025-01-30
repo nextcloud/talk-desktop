@@ -67,8 +67,8 @@ function passDuplicatedNavigationError(error: Error) {
 type TalkHashStoreAdapter = {
 	/** Set Nextcloud Talk hash */
 	setTalkHash: (hash: string) => void,
-	/** Listen to Nextcloud Talk initialized */
-	onSetInitial: (callback: (hash: string) => void) => void,
+	/** Listen to Nextcloud Talk update */
+	onUpdate: (callback: (hash: string) => void) => void,
 	/** Listen to Nextcloud Talk hash set dirty */
 	onDirty: (callback: () => void) => void,
 }
@@ -80,7 +80,7 @@ function createTalkHashStoreAdapter(): TalkHashStoreAdapter {
 	const talkHashStore = useTalkHashStore(getTalkInstance().$pinia)
 
 	let onDirty: Parameters<TalkHashStoreAdapter['onDirty']>[0]
-	let onSetInitial: Parameters<TalkHashStoreAdapter['onSetInitial']>[0]
+	let onUpdate: Parameters<TalkHashStoreAdapter['onUpdate']>[0]
 
 	talkHashStore.$onAction(({ name, after }) => {
 		if (name !== 'setNextcloudTalkHash') {
@@ -90,7 +90,7 @@ function createTalkHashStoreAdapter(): TalkHashStoreAdapter {
 			if (talkHashStore.isNextcloudTalkHashDirty) {
 				onDirty?.()
 			} else {
-				onSetInitial?.(talkHashStore.initialNextcloudTalkHash)
+				onUpdate?.(talkHashStore.initialNextcloudTalkHash)
 			}
 		})
 	})
@@ -100,8 +100,8 @@ function createTalkHashStoreAdapter(): TalkHashStoreAdapter {
 		onDirty: (callback) => {
 			onDirty = callback
 		},
-		onSetInitial: (callback) => {
-			onSetInitial = callback
+		onUpdate: (callback) => {
+			onUpdate = callback
 		},
 	}
 }
@@ -127,11 +127,11 @@ export function setTalkHash(hash: string) {
 }
 
 /**
- * Listen to Talk hash set initial
+ * Listen to Talk hash update
  * @param callback - Callback
  */
-export function onTalkHashSetInitial(callback: (hash: string) => void) {
-	getTalkHashStoreAdapter().onSetInitial(callback)
+export function onTalkHashUpdate(callback: (hash: string) => void) {
+	getTalkHashStoreAdapter().onUpdate(callback)
 }
 
 /**

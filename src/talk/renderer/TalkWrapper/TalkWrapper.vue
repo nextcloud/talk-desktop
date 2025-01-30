@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { onTalkHashDirty, onTalkHashSetInitial, openConversation, setTalkHash } from './talk.service.ts'
+import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from './talk.service.ts'
 import { registerTalkDesktopSettingsSection } from '../Settings/index.ts'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { appData } from '../../../app/AppData.js'
@@ -27,7 +27,7 @@ onMounted(async () => {
 		setTalkHash(appData.talkHash)
 	}
 	// Handle Talk Hash updates
-	onTalkHashSetInitial((hash: string) => {
+	onTalkHashUpdate((hash: string) => {
 		appData.setTalkHash(hash).persist()
 	})
 	onTalkHashDirty(() => {

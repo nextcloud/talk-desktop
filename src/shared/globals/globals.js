@@ -9,7 +9,7 @@ import { translate, translatePlural } from '@nextcloud/l10n'
 import { appData } from '../../app/AppData.js'
 import { dialogs } from './OC/dialogs.js'
 import { MimeTypeList } from './OC/mimetype.js'
-import { getDesktopMediaSource } from '../../talk/renderer/screensharing/getDesktopMediaSource.js'
+import { getDesktopMediaSource } from '../../talk/renderer/screensharing/getDesktopMediaSource.ts'
 
 let enabledAbsoluteWebroot = false
 

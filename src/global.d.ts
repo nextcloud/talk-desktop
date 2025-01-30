@@ -47,7 +47,7 @@ declare module '@nextcloud/vue/dist/Composables/useHotKey.js' {
 // Built-time constants
 declare const IS_DESKTOP: true
 declare const __IS_DESKTOP__: true
-declare const __CHANNEL__: 'stable' | 'beta'
+declare const __CHANNEL__: 'stable' | 'beta' | 'dev'
 declare const __VERSION_TAG__: string
 declare const __TALK_VERSION_TAG__: string
 

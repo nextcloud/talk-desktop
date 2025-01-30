@@ -82,6 +82,8 @@ ipcMain.on('app:relaunch', () => {
 })
 ipcMain.handle('app:config:get', (event, key) => getAppConfig(key))
 ipcMain.handle('app:config:set', (event, key, value) => setAppConfig(key, value))
+ipcMain.on('app:toggleDevTools', (event) => event.sender.toggleDevTools())
+ipcMain.handle('app:anything', () => { /* Put any code here to run it from UI */ })
 ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	// macOS 10.15 Catalina or higher requires consent for screen access
 	if (isMac && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {

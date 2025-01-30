@@ -6,7 +6,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import DesktopMediaSourceDialog from './components/DesktopMediaSourceDialog.vue'
+import DesktopMediaSourceDialog from './DesktopMediaSourceDialog.vue'
 
 const showDialog = ref(false)
 

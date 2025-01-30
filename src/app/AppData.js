@@ -98,16 +98,15 @@ export class AppData {
 	}
 
 	/**
-	 * Set TalkHash and reset dirty flag
-	 *
+	 * Set TalkHash and mark it as dirty if changed
 	 * @param {string} hash new hash
 	 * @return {AppData} this
 	 */
 	setTalkHash(hash) {
-		if (this.talkHash) {
+		if (this.talkHash && this.talkHash !== hash) {
 			this.talkHashDirty = true
+			this.talkHash = hash
 		}
-		this.talkHash = hash
 		return this
 	}
 

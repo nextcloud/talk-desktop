@@ -7,8 +7,8 @@
 import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcRichText from '@nextcloud/vue/dist/Components/NcRichText.js'
+import { useHotKey } from '@nextcloud/vue/dist/Composables/useHotKey.js'
 import { translate as t } from '@nextcloud/l10n'
-import { useEventListener } from '@vueuse/core'
 import { generateDiagnosisReportMD } from './diagnosis.service.ts'
 import ButtonCopy from './ButtonCopy.vue'
 import TalkLogo from '../../../img/talk-icon-rounded.svg'
@@ -18,14 +18,7 @@ const isMac = window.systemInfo.isMac
 
 const report = generateDiagnosisReportMD()
 
-/**
- * Handle the escape key to close the window
- */
-useEventListener(window, 'keyup', (event: KeyboardEvent) => {
-	if (event.key === 'Escape') {
-		close()
-	}
-})
+useHotKey('Escape', close)
 
 /**
  * Close the window

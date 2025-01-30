@@ -4,33 +4,24 @@
 -->
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
+import { computed, ref, watch } from 'vue'
 import IconCancel from '@mdi/svg/svg/cancel.svg?raw'
 import IconMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
 import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-import { translate as t } from '@nextcloud/l10n'
+import { t } from '@nextcloud/l10n'
+import { useWindowFocus } from '@vueuse/core'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
-import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
 
 const emit = defineEmits<{
 	(event: 'submit', sourceId: ScreensharingSourceId): void
 	(event: 'cancel'): void
 }>()
 
-const RE_REQUEST_SOURCES_TIMEOUT = 1000
-
-// On Wayland getting each stream for the live preview requests user to select the source via system dialog again
-// Instead - show static images.
-// See: https://github.com/electron/electron/issues/27732
-const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
-
 const selectedSourceId = ref<ScreensharingSourceId | null>(null)
 const sources = ref<ScreensharingSource[] | null>(null)
-
-const handleSubmit = () => emit('submit', selectedSourceId.value!)
-const handleCancel = () => emit('cancel')
 
 const dialogButtons = computed(() => [
 	{
@@ -47,7 +38,25 @@ const dialogButtons = computed(() => [
 	},
 ])
 
-const requestDesktopCapturerSources = async () => {
+// On Wayland instead of the list of all available sources,
+// the system picker is used to have a list of a single selected source.
+// Getting the stream for the selected source triggers the system picker again.
+// As a result:
+// - Live preview is not possible
+// - Sources list update is not possible
+// - There is no the entire-desktop option
+// See also: https://github.com/electron/electron/issues/27732
+if (!window.systemInfo.isWayland) {
+	const isWindowFocused = useWindowFocus()
+	watch(isWindowFocused, requestDesktopCapturerSources)
+}
+
+requestDesktopCapturerSources()
+
+/**
+ * Request the desktop capturer sources
+ */
+async function requestDesktopCapturerSources() {
 	sources.value = await window.TALK_DESKTOP.getDesktopCapturerSources() as ScreensharingSource[] | null
 
 	// There is no source. Probably the user hasn't granted the permission.
@@ -81,6 +90,11 @@ const requestDesktopCapturerSources = async () => {
 	// On macOS the entire-desktop captures only the primary screen and capturing system audio crashes audio (microphone).
 	// TODO: use the system picker on macOS Sonoma and later
 	sources.value = window.systemInfo.isWayland || window.systemInfo.isMac ? [...screens, ...windows] : [...screens, entireDesktop, ...windows]
+
+	// Preselect the first media source if any
+	if (!selectedSourceId.value) {
+		selectedSourceId.value = sources.value?.[0]?.id ?? null
+	}
 }
 
 /**
@@ -94,36 +108,19 @@ function handleVideoSuspend(source: ScreensharingSource) {
 	}
 }
 
-let reRequestTimeout: number | undefined
-
 /**
- * Schedule a request for desktop capturer sources
+ * Handle the submit event of the dialog
  */
-function scheduleRequestDesktopCaprutererSources() {
-	reRequestTimeout = window.setTimeout(async () => {
-		await requestDesktopCapturerSources()
-		scheduleRequestDesktopCaprutererSources()
-	}, RE_REQUEST_SOURCES_TIMEOUT)
+function handleSubmit() {
+	emit('submit', selectedSourceId.value!)
 }
 
-onMounted(async () => {
-	await requestDesktopCapturerSources()
-
-	// Preselect the first media source if any
-	if (!selectedSourceId.value) {
-		selectedSourceId.value = sources.value?.[0]?.id ?? null
-	}
-
-	if (previewType === 'live') {
-		scheduleRequestDesktopCaprutererSources()
-	}
-})
-
-onBeforeUnmount(() => {
-	if (reRequestTimeout) {
-		clearTimeout(reRequestTimeout)
-	}
-})
+/**
+ * Handle the cancel event of the dialog
+ */
+function handleCancel() {
+	emit('cancel')
+}
 </script>
 
 <template>

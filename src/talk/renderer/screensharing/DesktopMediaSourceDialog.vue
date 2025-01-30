@@ -3,20 +3,21 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-
 import IconCancel from '@mdi/svg/svg/cancel.svg?raw'
 import IconMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
-
 import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
 import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-
 import { translate as t } from '@nextcloud/l10n'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
+import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
 
-const emit = defineEmits(['submit', 'cancel'])
+const emit = defineEmits<{
+	(event: 'submit', sourceId: ScreensharingSourceId): void
+	(event: 'cancel'): void
+}>()
 
 const RE_REQUEST_SOURCES_TIMEOUT = 1000
 
@@ -25,10 +26,10 @@ const RE_REQUEST_SOURCES_TIMEOUT = 1000
 // See: https://github.com/electron/electron/issues/27732
 const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
 
-const selectedSourceId = ref(null)
-const sources = ref(null)
+const selectedSourceId = ref<ScreensharingSourceId | null>(null)
+const sources = ref<ScreensharingSource[] | null>(null)
 
-const handleSubmit = () => emit('submit', selectedSourceId.value)
+const handleSubmit = () => emit('submit', selectedSourceId.value!)
 const handleCancel = () => emit('cancel')
 
 const dialogButtons = computed(() => [
@@ -47,11 +48,12 @@ const dialogButtons = computed(() => [
 ])
 
 const requestDesktopCapturerSources = async () => {
-	sources.value = await window.TALK_DESKTOP.getDesktopCapturerSources()
+	sources.value = await window.TALK_DESKTOP.getDesktopCapturerSources() as ScreensharingSource[] | null
 
 	// There is no source. Probably the user hasn't granted the permission.
 	if (!sources.value) {
 		emit('cancel')
+		return
 	}
 
 	// On Wayland there might be no name from the desktopCapturer
@@ -67,9 +69,11 @@ const requestDesktopCapturerSources = async () => {
 
 	// There is no sourceId for the entire desktop with all the screens and audio in Electron.
 	// But it is possible to capture it. "entire-desktop:0:0" is a custom sourceId for this specific case.
-	const entireDesktop = {
+	const entireDesktop: ScreensharingSource = {
 		id: 'entire-desktop:0:0',
 		name: screens.length > 1 ? t('talk_desktop', 'Audio + All screens') : t('talk_desktop', 'Audio + Screen'),
+		icon: null,
+		thumbnail: null,
 	}
 
 	// Wayland uses the system picker via PipeWire to select the source.
@@ -79,17 +83,24 @@ const requestDesktopCapturerSources = async () => {
 	sources.value = window.systemInfo.isWayland || window.systemInfo.isMac ? [...screens, ...windows] : [...screens, entireDesktop, ...windows]
 }
 
-const handleVideoSuspend = (source) => {
-	sources.value.splice(sources.value.indexOf(source), 1)
+/**
+ * Handle the suspend event of the video element
+ * @param source - The source that was suspended
+ */
+function handleVideoSuspend(source: ScreensharingSource) {
+	sources.value!.splice(sources.value!.indexOf(source), 1)
 	if (selectedSourceId.value === source.id) {
 		selectedSourceId.value = null
 	}
 }
 
-let reRequestTimeout
+let reRequestTimeout: number | undefined
 
-const scheduleRequestDesktopCaprutererSources = () => {
-	reRequestTimeout = setTimeout(async () => {
+/**
+ * Schedule a request for desktop capturer sources
+ */
+function scheduleRequestDesktopCaprutererSources() {
+	reRequestTimeout = window.setTimeout(async () => {
 		await requestDesktopCapturerSources()
 		scheduleRequestDesktopCaprutererSources()
 	}, RE_REQUEST_SOURCES_TIMEOUT)
@@ -100,7 +111,7 @@ onMounted(async () => {
 
 	// Preselect the first media source if any
 	if (!selectedSourceId.value) {
-		selectedSourceId.value = sources.value[0]?.id
+		selectedSourceId.value = sources.value?.[0]?.id ?? null
 	}
 
 	if (previewType === 'live') {

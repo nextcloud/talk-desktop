@@ -3,25 +3,24 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
+import type { ScreensharingSourceId } from './screensharing.types.ts'
 import { ref } from 'vue'
-
 import DesktopMediaSourceDialog from './DesktopMediaSourceDialog.vue'
 
-const showDialog = ref(false)
+const showDialog = ref<boolean>(false)
 
-let promiseWithResolvers = null
+let promiseWithResolvers: PromiseWithResolvers<{ sourceId: ScreensharingSourceId | '' }> | null = null
 
-const handlePrompt = (sourceId) => {
-	promiseWithResolvers.resolve({ sourceId })
+const handlePrompt = (sourceId: ScreensharingSourceId | '') => {
+	promiseWithResolvers!.resolve({ sourceId })
 	promiseWithResolvers = null
 	showDialog.value = false
 }
 
 /**
  * Prompt user to select a desktop media source to share and return the selected sourceId or an empty string if canceled
- *
- * @return {Promise<{ sourceId: string }>} sourceId of the selected mediaSource or an empty string if canceled
+ * @return sourceId of the selected mediaSource or an empty string if canceled
  */
 function promptDesktopMediaSource() {
 	if (promiseWithResolvers) {

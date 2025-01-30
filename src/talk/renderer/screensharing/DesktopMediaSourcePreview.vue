@@ -3,9 +3,9 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
+import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-
 import IconMonitor from 'vue-material-design-icons/Monitor.vue'
 import IconApplicationOutline from 'vue-material-design-icons/ApplicationOutline.vue'
 import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
@@ -15,22 +15,19 @@ import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
 // See: https://github.com/electron/electron/issues/27732
 const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
 
-const videoElement = ref(null)
+const videoElement = ref<HTMLVideoElement | null>(null)
 
-const props = defineProps({
-	source: {
-		type: Object,
-		required: true,
-	},
-	selected: {
-		type: Boolean,
-		required: true,
-	},
-})
+const props = defineProps<{
+	source: ScreensharingSource
+	selected: boolean
+}>()
 
-const emit = defineEmits(['select', 'suspended'])
+const emit = defineEmits<{
+	(event: 'select'): void
+	(event: 'suspend'): void
+}>()
 
-const getStreamForMediaSource = (mediaSourceId) => {
+const getStreamForMediaSource = (mediaSourceId: ScreensharingSourceId) => {
 	const MAX_PREVIEW_SIZE = 320
 	// Special case for sharing all the screens with desktop audio in Electron
 	// In this case, it must have exactly these constraints
@@ -62,15 +59,22 @@ const getStreamForMediaSource = (mediaSourceId) => {
 			},
 		}
 
+	// @ts-expect-error Each browser has a different API, the current object is compatible with Chromium
 	return navigator.mediaDevices.getUserMedia(constraints)
 }
 
-const setVideoSource = async () => {
-	videoElement.value.srcObject = await getStreamForMediaSource(props.source.id)
+/**
+ * Set the video source to the selected source
+ */
+async function setVideoSource() {
+	videoElement.value!.srcObject = await getStreamForMediaSource(props.source.id)
 }
 
-const releaseVideoSource = () => {
-	const stream = videoElement.value.srcObject
+/**
+ * Release the video source
+ */
+function releaseVideoSource() {
+	const stream = videoElement.value!.srcObject! as MediaStream
 	for (const track of stream.getTracks()) {
 		track.stop()
 	}
@@ -86,6 +90,14 @@ onBeforeUnmount(() => {
 	// Release the stream, otherwise it is still captured even if no video element is using it
 	releaseVideoSource()
 })
+
+/**
+ * Handle the loadedmetadata event of the video element
+ * @param event - The event
+ */
+function onLoadedMetadata(event: Event) {
+	(event.target as HTMLVideoElement).play()
+}
 </script>
 
 <template>
@@ -101,7 +113,7 @@ onBeforeUnmount(() => {
 			ref="videoElement"
 			class="capture-source__preview"
 			muted
-			@loadedmetadata="$event.target.play()"
+			@loadedmetadata="onLoadedMetadata"
 			@suspend="emit('suspend')" />
 		<img v-else-if="previewType === 'thumbnail' && source.thumbnail"
 			alt=""

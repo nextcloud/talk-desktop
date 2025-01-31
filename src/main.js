@@ -13,7 +13,7 @@ const { createAuthenticationWindow } = require('./authentication/authentication.
 const { openLoginWebView } = require('./authentication/login.window.js')
 const { createHelpWindow } = require('./help/help.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.js')
-const { systemInfo, isLinux, isMac, isWayland, isWindows } = require('./app/system.utils.ts')
+const { systemInfo, isLinux, isMac, isWindows } = require('./app/system.utils.ts')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
@@ -94,8 +94,7 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 		return null
 	}
 
-	// We cannot show live previews on Wayland, so we show thumbnails
-	const thumbnailWidth = isWayland ? 320 : 0
+	const thumbnailWidth = 800
 
 	const sources = await desktopCapturer.getSources({
 		types: ['screen', 'window'],

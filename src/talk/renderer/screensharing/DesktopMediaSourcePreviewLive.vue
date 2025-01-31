@@ -4,8 +4,9 @@
 -->
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
 import type { ScreensharingSourceId } from './screensharing.types.ts'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 
 const props = defineProps<{
 	mediaSourceId: ScreensharingSourceId
@@ -17,13 +18,14 @@ const emit = defineEmits<{
 
 const videoElement = ref<HTMLVideoElement | null>(null)
 let stream: MediaStream | null = null
+const isReady = ref(false)
 
 /**
  * Get the stream for the media source
  * @param mediaSourceId - The media source ID
  */
 function getStreamForMediaSource(mediaSourceId: ScreensharingSourceId) {
-	const MAX_PREVIEW_SIZE = 320
+	const MAX_PREVIEW_SIZE = 1024
 	// Special case for sharing all the screens with desktop audio in Electron
 	// In this case, it must have exactly these constraints
 	// "entire-desktop:0:0" is a custom sourceId for this specific case
@@ -97,7 +99,8 @@ onBeforeUnmount(() => {
  * @param event - The event
  */
 function onLoadedMetadata(event: Event) {
-	(event.target as HTMLVideoElement).play()
+	isReady.value = true
+	;(event.target as HTMLVideoElement).play()
 }
 
 /**
@@ -112,8 +115,36 @@ function onSuspend() {
 </script>
 
 <template>
-	<video ref="videoElement"
-		muted
-		@loadedmetadata="onLoadedMetadata"
-		@suspend="onSuspend" />
+	<div class="live-preview">
+		<video v-show="isReady"
+			ref="videoElement"
+			class="live-preview__video"
+			muted
+			@loadedmetadata="onLoadedMetadata"
+			@suspend="onSuspend" />
+		<span v-if="!isReady" class="live-preview__placeholder">
+			<NcLoadingIcon :size="40" />
+		</span>
+	</div>
 </template>
+
+<style scoped>
+.live-preview {
+	max-width: 100%;
+}
+
+.live-preview__video {
+	width: 100%;
+	height: 100%;
+}
+
+.live-preview__placeholder {
+	border-radius: var(--border-radius-small);
+	background-color: var(--color-background-hover);
+	color: var(--color-text-maxcontrast);
+	display: grid;
+	place-content: center;
+	width: 100%;
+	height: 100%;
+}
+</style>

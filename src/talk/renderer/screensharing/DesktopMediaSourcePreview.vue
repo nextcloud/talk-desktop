@@ -5,18 +5,15 @@
 
 <script setup lang="ts">
 import type { ScreensharingSource } from './screensharing.types.ts'
+import { t } from '@nextcloud/l10n'
 import IconMonitor from 'vue-material-design-icons/Monitor.vue'
 import IconApplicationOutline from 'vue-material-design-icons/ApplicationOutline.vue'
 import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
 import DesktopMediaSourcePreviewLive from './DesktopMediaSourcePreviewLive.vue'
 
-// On Wayland getting each stream for the live preview requests user to select the source via system dialog again
-// Instead - show static images.
-// See: https://github.com/electron/electron/issues/27732
-const previewType = window.systemInfo.isWayland ? 'thumbnail' : 'live'
-
 defineProps<{
 	source: ScreensharingSource
+	live: boolean
 	selected: boolean
 }>()
 
@@ -35,15 +32,17 @@ const emit = defineEmits<{
 			:checked="selected"
 			@change="emit('select')">
 
-		<DesktopMediaSourcePreviewLive v-if="previewType === 'live'"
+		<DesktopMediaSourcePreviewLive v-if="live"
 			class="capture-source__preview"
 			:media-source-id="source.id"
 			@suspend="emit('suspend')" />
-		<img v-else-if="previewType === 'thumbnail' && source.thumbnail"
+		<img v-else-if="source.thumbnail"
 			alt=""
 			:src="source.thumbnail"
 			class="capture-source__preview">
-		<span v-else class="capture-source__preview" />
+		<span v-else class="capture-source__preview capture-source__preview-unavailable">
+			{{ t('talk_desktop', 'Preview is not available') }}
+		</span>
 
 		<span class="capture-source__caption">
 			<img v-if="source.icon"
@@ -60,6 +59,8 @@ const emit = defineEmits<{
 
 <style scoped lang="scss">
 .capture-source {
+  border-radius: var(--border-radius-element);
+  padding: calc(2 * var(--default-grid-baseline));
 	display: flex;
 	flex-direction: column;
 	gap: var(--default-grid-baseline);
@@ -74,31 +75,42 @@ const emit = defineEmits<{
 		margin: 4px 14px;
 	}
 
-	&__preview {
-		aspect-ratio: 16 / 9;
-		object-fit: contain;
-		width: calc(100% - 4px - 4px);
-		flex: 1 0;
-		margin: 4px auto;
-		border-radius: var(--border-radius-large);
+  &__preview {
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    width: 100%;
+    border-radius: var(--border-radius-small);
+    flex: 1 0;
+  }
+
+  &__preview-unavailable {
+    background-color: var(--color-background-hover);
+    display: grid;
+    place-content: center;
+    color: var(--color-text-maxcontrast);
+    font-size: 120%;
+  }
+
+	&:focus,
+	&:hover {
+    background-color: var(--color-background-hover);
+    outline: 2px solid var(--color-primary-element);
+    outline-offset: 2px;
 	}
 
-	&:focus &__preview,
-	&:hover &__preview {
-		box-shadow: 0 0 0 2px var(--color-primary-element);
-		background-color: var(--color-background-hover);
-	}
+	&:has(&__input:checked) {
+    background-color: var(--color-primary-element);
+    color: var(--color-primary-text);
 
-	&:has(&__input:checked) &__preview {
-		box-shadow: 0 0 0 4px var(--color-primary-element);
-		background-color: var(--color-background-hover);
+    .capture-source__caption-text {
+      font-weight: bolder;
+    }
 	}
 
 	&__caption {
 		display: flex;
-		gap: var(--default-grid-baseline);
+		gap: 1ch;
 		align-items: center;
-		padding: var(--default-grid-baseline);
 	}
 
 	&__caption-icon {

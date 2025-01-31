@@ -6,11 +6,13 @@
 <script setup lang="ts">
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
+import DevMenu from './components/DevMenu.vue'
 import { appData } from '../../../app/AppData.js'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 import { useAppConfigStore } from '../Settings/appConfig.store.ts'
 import { useUserStatusHeartbeat } from '../UserStatus/useUserStatusHeartbeat.ts'
 import { openRoot } from '../TalkWrapper/talk.service.ts'
+import { useDevMode } from '../../../shared/useDevMode.ts'
 
 useUserStatusStore()
 useUserStatusHeartbeat()
@@ -21,6 +23,8 @@ const channel = __CHANNEL__
 // TODO: add a proper type for userMetadata
 const user = appData.userMetadata! as { id: string; 'display-name': string }
 const OS = window.systemInfo
+
+const { isDevMode } = useDevMode()
 
 /**
  * Logout in Talk Desktop
@@ -47,6 +51,10 @@ function logout() {
 			</template>
 
 			<div class="spacer" />
+
+			<div v-if="isDevMode" class="title-bar__item" data-theme-dark>
+				<DevMenu />
+			</div>
 
 			<div class="title-bar__item" data-theme-dark>
 				<MainMenu />

@@ -118,6 +118,15 @@ const TALK_DESKTOP = {
 	 */
 	downloadURL: (url, filename) => ipcRenderer.send('app:downloadURL', url, filename),
 	/**
+	 * Open developer tools
+	 */
+	toggleDevTools: () => ipcRenderer.send('app:toggleDevTools'),
+	/**
+	 * Invoke app:anything
+	 * @param {...any} args - Arguments
+	 */
+	invokeAnything: (...args) => ipcRenderer.invoke('app:anything', ...args),
+	/**
 	 * Send appData to main process on restore
 	 *
 	 * @param {object} appDataDto appData as plain object

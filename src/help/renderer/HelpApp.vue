@@ -4,27 +4,30 @@
 -->
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcRichText from '@nextcloud/vue/dist/Components/NcRichText.js'
+import { useHotKey } from '@nextcloud/vue/dist/Composables/useHotKey.js'
 import { translate as t } from '@nextcloud/l10n'
-import { useEventListener } from '@vueuse/core'
 import { generateDiagnosisReportMD } from './diagnosis.service.ts'
 import ButtonCopy from './ButtonCopy.vue'
 import TalkLogo from '../../../img/talk-icon-rounded.svg'
+import { useDevMode } from '../../shared/useDevMode.ts'
+import { whenever } from '@vueuse/core'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
 const isMac = window.systemInfo.isMac
 
 const report = generateDiagnosisReportMD()
 
-/**
- * Handle the escape key to close the window
- */
-useEventListener(window, 'keyup', (event: KeyboardEvent) => {
-	if (event.key === 'Escape') {
-		close()
-	}
+useHotKey('Escape', close)
+
+const logoClicked = ref(0)
+const { isDevMode } = useDevMode()
+whenever(() => logoClicked.value === 5, () => {
+	isDevMode.value = !isDevMode.value
+	logoClicked.value = 0
 })
 
 /**
@@ -53,8 +56,9 @@ function close() {
 				<img :src="TalkLogo"
 					width="72"
 					alt=""
-					draggable="false">
-				<p><strong>{{ packageInfo.productName }}</strong></p>
+					draggable="false"
+					@click="logoClicked += 1">
+				<p><strong>{{ packageInfo.productName }}{{ isDevMode ? ' 👾' : '' }}</strong></p>
 				<p>{{ packageInfo.description }}</p>
 				<p>
 					<a class="link" href="https://nextcloud.com/privacy/" target="_blank">{{ t('talk_desktop', 'Privacy and Legal Policy') }}</a><br>

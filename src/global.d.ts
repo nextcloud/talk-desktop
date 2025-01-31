@@ -16,6 +16,11 @@ declare module '*.svg' {
 	export default url
 }
 
+declare module '*.svg?raw' {
+	const url: string
+	export default url
+}
+
 declare module 'vue-material-design-icons/*.vue' {
 	import type { Component } from 'vue'
 	const component: Component<Record<string, never>, Record<string, never>, Record<string, never>, { size: number }, Record<string, never>>

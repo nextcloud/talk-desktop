@@ -52,8 +52,10 @@ module.exports = {
 		// It works fine on server because by default in @nextcloud/eslint-config .vue files are not inspected via eslint-plugin-import thus import/extensions doesn't include .vue
 		// See: https://github.com/import-js/eslint-plugin-import/blob/main/README.md#importextensions
 		'import/default': 'off',
-		// import/namespace is not compatible with TS/JS mix
+		// Not compatible with TS/JS mix
 		'import/namespace': 'off',
+		// Not compatible with TS/JS mix or reexports
+		'import/named': 'off',
 		/**
 		 * ESLint
 		 */
@@ -135,7 +137,7 @@ module.exports = {
 
 	overrides: [
 		{
-			files: '*.ts',
+			files: ['*.ts', '*.vue'],
 			rules: {
 				'jsdoc/require-returns-type': 'off', // TODO upstream
 			},

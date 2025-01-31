@@ -19,9 +19,9 @@ import { t } from '@nextcloud/l10n'
 
 const props = withDefaults(
 	defineProps<{
-  text?: string,
-  content?: string,
-  getContent?: () => string,
+	text?: string,
+	content?: string,
+	getContent?: () => string,
 }>(), {
 		text: t('talk_desktop', 'Copy'),
 		content: undefined,

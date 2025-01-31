@@ -59,8 +59,8 @@ const emit = defineEmits<{
 
 <style scoped lang="scss">
 .capture-source {
-  border-radius: var(--border-radius-element);
-  padding: calc(2 * var(--default-grid-baseline));
+	border-radius: var(--border-radius-element);
+	padding: calc(2 * var(--default-grid-baseline));
 	display: flex;
 	flex-direction: column;
 	gap: var(--default-grid-baseline);
@@ -75,36 +75,36 @@ const emit = defineEmits<{
 		margin: 4px 14px;
 	}
 
-  &__preview {
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-    width: 100%;
-    border-radius: var(--border-radius-small);
-    flex: 1 0;
-  }
+	&__preview {
+		aspect-ratio: 16 / 9;
+		object-fit: contain;
+		width: 100%;
+		border-radius: var(--border-radius-small);
+		flex: 1 0;
+	}
 
-  &__preview-unavailable {
-    background-color: var(--color-background-hover);
-    display: grid;
-    place-content: center;
-    color: var(--color-text-maxcontrast);
-    font-size: 120%;
-  }
+	&__preview-unavailable {
+		background-color: var(--color-background-hover);
+		display: grid;
+		place-content: center;
+		color: var(--color-text-maxcontrast);
+		font-size: 120%;
+	}
 
 	&:focus,
 	&:hover {
-    background-color: var(--color-background-hover);
-    outline: 2px solid var(--color-primary-element);
-    outline-offset: 2px;
+		background-color: var(--color-background-hover);
+		outline: 2px solid var(--color-primary-element);
+		outline-offset: 2px;
 	}
 
 	&:has(&__input:checked) {
-    background-color: var(--color-primary-element);
-    color: var(--color-primary-text);
+		background-color: var(--color-primary-element);
+		color: var(--color-primary-text);
 
-    .capture-source__caption-text {
-      font-weight: bolder;
-    }
+		.capture-source__caption-text {
+			font-weight: bolder;
+		}
 	}
 
 	&__caption {

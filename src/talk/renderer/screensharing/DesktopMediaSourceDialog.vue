@@ -171,21 +171,21 @@ function handleCancel() {
 <style scoped lang="scss">
 .capture-source-grid {
 	display: grid;
-  /* 280 is approximately 1/3 of the default large dialog size */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	/* 280 is approximately 1/3 of the default large dialog size */
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	grid-gap: calc(var(--default-grid-baseline) * 2);
 	width: 100%;
-  padding: calc(2 * var(--default-grid-baseline));
+	padding: calc(2 * var(--default-grid-baseline));
 }
 
 .capture-source-section-heading {
-  grid-column: 1 / -1;
-  font-size: 18px;
-  text-align: center;
-  margin-block: calc(2 * var(--default-grid-baseline)) 0;
+	grid-column: 1 / -1;
+	font-size: 18px;
+	text-align: center;
+	margin-block: calc(2 * var(--default-grid-baseline)) 0;
 }
 
 .capture-mode-switch {
-  margin-inline-end: auto;
+	margin-inline-end: auto;
 }
 </style>

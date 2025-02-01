@@ -79,7 +79,7 @@
     "@vercel/webpack-asset-relocator-loader": "^1.7.4",
     "@vue/tsconfig": "^0.5.1",
     "dotenv": "^16.4.7",
-    "electron": "^34.0.1",
+    "electron": "^34.0.2",
     "esbuild-loader": "^4.2.2",
     "eslint": "^8.57.1",
     "icon-gen": "^5.0.0",

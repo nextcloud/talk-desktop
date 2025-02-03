@@ -7,6 +7,7 @@ import { BrowserWindow } from 'electron'
 import { applyExternalLinkHandler } from '../app/externalLinkHandlers.ts'
 import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 import { getScaledWindowSize, applyZoom, buildTitle } from '../app/utils.ts'
+import { applyContextMenu } from '../app/applyContextMenu.js'
 
 /**
  * Create the upgrade window
@@ -21,6 +22,7 @@ export function createUpgradeWindow() {
 		}),
 		show: false,
 		maximizable: false,
+		minimizable: false,
 		resizable: false,
 		fullscreenable: false,
 		autoHideMenuBar: true,
@@ -34,6 +36,7 @@ export function createUpgradeWindow() {
 
 	window.loadURL(UPGRADE_WINDOW_WEBPACK_ENTRY)
 
+	applyContextMenu(window)
 	applyExternalLinkHandler(window)
 	applyZoom(window)
 

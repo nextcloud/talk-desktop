@@ -3,11 +3,11 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup>
+<script setup lang="ts">
 import IconUpdate from 'vue-material-design-icons/Update.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import { translate as t } from '@nextcloud/l10n'
+import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo

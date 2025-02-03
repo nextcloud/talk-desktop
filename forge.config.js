@@ -339,7 +339,7 @@ module.exports = {
 						{
 							name: 'upgrade_window',
 							html: './src/upgrade/renderer/upgrade.html',
-							js: './src/upgrade/renderer/upgrade.app.js',
+							js: './src/upgrade/renderer/upgrade.main.ts',
 							preload: {
 								js: './src/preload.js',
 							},

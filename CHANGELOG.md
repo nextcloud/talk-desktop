@@ -5,6 +5,18 @@
 
 # Changelog
 
+## v1.1.2-beta - 2025-02-04
+
+### Fixes
+
+- Improve screen sharing picker and fix performance issues [#1003](https://github.com/nextcloud/talk-desktop/pull/1003)
+- Fix loading performance regression from server update handling in the previous release [#1073](https://github.com/nextcloud/talk-desktop/pull/1073)
+- Fix crash on Linux when C (POSIX) is set as the preferred language [#1070](https://github.com/nextcloud/talk-desktop/pull/1070)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.0.0-rc.2 in the beta release channel [#1074](https://github.com/nextcloud/talk-desktop/pull/1074)
+
 ## v1.1.1-beta - 2025-01-24
 
 ### Fixes

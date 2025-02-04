@@ -6,6 +6,9 @@
 # Nextcloud Talk Desktop
 
 [![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/talk-desktop)](https://api.reuse.software/info/github.com/nextcloud/talk-desktop)
+[![GitHub Release Stable](https://img.shields.io/github/v/release/nextcloud-releases/talk-desktop?sort=semver&display_name=tag&style=flat)](https://github.com/nextcloud-releases/talk-desktop/releases/latest)
+[![GitHub Release Beta](https://img.shields.io/github/v/release/nextcloud-releases/talk-desktop?include_prereleases&sort=semver&display_name=tag&style=flat)](https://github.com/nextcloud-releases/talk-desktop/releases/)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/nextcloud-releases/talk-desktop/total?style=flat)
 
 > Official Nextcloud Talk Desktop client
 

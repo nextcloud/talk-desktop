@@ -6,6 +6,9 @@
 # Nextcloud Talk Desktop
 
 [![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/talk-desktop)](https://api.reuse.software/info/github.com/nextcloud/talk-desktop)
+[![GitHub Release Stable](https://img.shields.io/github/v/release/nextcloud-releases/talk-desktop?sort=semver&display_name=tag&style=flat)](https://github.com/nextcloud-releases/talk-desktop/releases/latest)
+[![GitHub Release Beta](https://img.shields.io/github/v/release/nextcloud-releases/talk-desktop?include_prereleases&sort=semver&display_name=tag&style=flat)](https://github.com/nextcloud-releases/talk-desktop/releases/)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/nextcloud-releases/talk-desktop/total?style=flat)
 
 > Official Nextcloud Talk Desktop client
 
@@ -26,10 +29,10 @@ All binaries and `beta` releases are available on [Nextcloud Releases](https://g
 
 ### via Package manager
 
-| Package       | Package manager                                                                       | Command                              |
-|----------------|---------------------------------------------------------------------------------------|--------------------------------------|
-| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk`      |
-| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk.Beta` |
+| Package        | Package manager                                                                       | Command                              | Status                                                                                    |
+|----------------|---------------------------------------------------------------------------------------|--------------------------------------|-------------------------------------------------------------------------------------------|
+| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk`      | ![WinGet Package Version](https://img.shields.io/winget/v/Nextcloud.Talk?style=flat)      |
+| **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk.Beta` | ![WinGet Package Version](https://img.shields.io/winget/v/Nextcloud.Talk.Beta?style=flat) |                                                                                     |
 
 ## 🏗️ Prerequisites
 

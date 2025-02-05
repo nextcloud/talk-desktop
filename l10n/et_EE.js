@@ -19,6 +19,7 @@ OC.L10N.register(
     "Settings" : "Seaded",
     "View profile" : "Vaata profiili",
     "User status" : "Kasutaja staatus",
+    "Your status was set automatically" : "Su staatus määrati automaatselt",
     "Predefined statuses" : "Eeldefineeritud staatused",
     "Don't clear" : "Ära tühjenda",
     "30 minutes" : "30 minutit",

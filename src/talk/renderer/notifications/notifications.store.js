@@ -11,7 +11,6 @@
  */
 
 import { Howl } from 'howler'
-import { getRequestToken } from '@nextcloud/auth'
 import { listen } from '@nextcloud/notify_push'
 import { loadState } from '@nextcloud/initial-state'
 import { emit } from '@nextcloud/event-bus'
@@ -355,7 +354,7 @@ export function createNotificationStore() {
 			})
 	}
 
-	state.tabId = getRequestToken()
+	state.tabId = Math.random().toString(36).slice(2, 8)
 	// Bind the button click event
 	console.debug('Registering notifications container as a menu')
 

@@ -5,6 +5,16 @@
 
 # Changelog
 
+## v1.1.3-beta - 2025-02-10
+
+### Fixes
+
+- Fix unexpected notifications delay [#1097](https://github.com/nextcloud/talk-desktop/pull/1097)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.0.0-rc.3 in the beta release channel [#1098](https://github.com/nextcloud/talk-desktop/pull/1098)
+
 ## v1.1.2-beta - 2025-02-04
 
 ### Fixes

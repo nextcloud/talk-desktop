@@ -4,7 +4,8 @@
   -->
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import type { NcSelectOption } from '../composables/useNcSelectModel.ts'
+import { computed, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { t } from '@nextcloud/l10n'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
@@ -17,6 +18,7 @@ import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 import IconCardAccountPhoneOutline from 'vue-material-design-icons/CardAccountPhoneOutline.vue'
 import IconPhoneRingOutline from 'vue-material-design-icons/PhoneRingOutline.vue'
 import IconBellRingOutline from 'vue-material-design-icons/BellRingOutline.vue'
+import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
 import IconRestore from 'vue-material-design-icons/Restore.vue'
 import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
 import SettingsSubsection from './components/SettingsSubsection.vue'
@@ -78,6 +80,37 @@ const playSoundCallOption = useNcSelectModel(playSoundCall, generalNotificationO
 
 const enableCallbox = useAppConfigValue('enableCallbox')
 const enableCallboxOption = useNcSelectModel(enableCallbox, generalNotificationOptions)
+
+const secondarySpeaker = useAppConfigValue('secondarySpeaker')
+
+const EMPTY_DEVICE_OPTION = { value: null, label: t('talk_desktop', 'None') }
+const secondarySpeakerOptions = ref<NcSelectOption<string|null>[]>([])
+
+const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
+const secondarySpeakerDeviceOption = useNcSelectModel(secondarySpeakerDevice, secondarySpeakerOptions, EMPTY_DEVICE_OPTION)
+
+/**
+ * Enumerate available media devices (audio output) in format of NcSelectOption
+ */
+async function initializeDevices() {
+	let stream = null
+	try {
+		stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+		const deviceOptions = (await navigator.mediaDevices.enumerateDevices() ?? [])
+			.filter(device => device.kind === 'audiooutput')
+			.map(device => ({ value: device.deviceId, label: device.label }))
+
+		secondarySpeakerOptions.value = [EMPTY_DEVICE_OPTION, ...deviceOptions]
+	} catch (error) {
+		console.error('Error while requesting or initializing audio devices: ', error)
+		secondarySpeakerOptions.value = [EMPTY_DEVICE_OPTION]
+	} finally {
+		if (stream) {
+			stream.getTracks().forEach(track => track.stop())
+		}
+	}
+}
+initializeDevices()
 
 /**
  * Restart the app
@@ -175,6 +208,20 @@ function relaunch() {
 			<SettingsSelect v-model="enableCallboxOption" :options="generalNotificationOptions" :label="t('talk_desktop', 'Show call notification popup')">
 				<template #icon="{ size }">
 					<IconCardAccountPhoneOutline :size="size" />
+				</template>
+			</SettingsSelect>
+
+			<NcCheckboxRadioSwitch v-model="secondarySpeaker" type="switch">
+				{{ t('talk_desktop', 'Also repeat call notification on a secondary speaker') }}
+			</NcCheckboxRadioSwitch>
+
+			<SettingsSelect v-if="secondarySpeaker"
+				v-model="secondarySpeakerDeviceOption"
+				:options="secondarySpeakerOptions"
+				:disabled="secondarySpeakerOptions.length === 1"
+				:label="t('talk_desktop', 'Secondary speaker')">
+				<template #icon="{ size }">
+					<IconVolumeHigh :size="size" />
 				</template>
 			</SettingsSelect>
 		</SettingsSubsection>

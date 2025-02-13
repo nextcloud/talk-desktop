@@ -13,6 +13,7 @@ import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
 import NcActionSeparator from '@nextcloud/vue/dist/Components/NcActionSeparator.js'
 import IconApplicationBracketsOutline from 'vue-material-design-icons/ApplicationBracketsOutline.vue'
 import IconDeveloperBoard from 'vue-material-design-icons/DeveloperBoard.vue'
+import IconLan from 'vue-material-design-icons/Lan.vue'
 import IconMonitorShare from 'vue-material-design-icons/MonitorShare.vue'
 import IconMessageBadge from 'vue-material-design-icons/MessageBadge.vue'
 import IconMessageBadgeOutline from 'vue-material-design-icons/MessageBadgeOutline.vue'
@@ -82,6 +83,10 @@ function requestTestNotification() {
 async function invokeAnything() {
 	console.log(await window.TALK_DESKTOP.invokeAnything())
 }
+
+async function openChromeWebRtcInternals() {
+	window.TALK_DESKTOP.openChromeWebRtcInternals()
+}
 </script>
 
 <template>
@@ -131,6 +136,15 @@ async function invokeAnything() {
 				<IconMessageBadge :size="20" />
 			</template>
 			Request Test Notification
+		</NcActionButton>
+
+		<NcActionSeparator />
+
+		<NcActionButton @click="openChromeWebRtcInternals">
+			<template #icon>
+				<IconLan :size="20" />
+			</template>
+			Open chrome://webrtc-internals
 		</NcActionButton>
 	</NcActions>
 </template>

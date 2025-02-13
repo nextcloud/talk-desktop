@@ -24,6 +24,8 @@ import { getAppConfigValue } from '../../../shared/appConfig.service.ts'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { openConversation } from '../TalkWrapper/talk.service.ts'
 
+const isTestNotificationApp = (notificationApp) => ['admin_notification_talk', 'admin_notifications'].includes(notificationApp)
+
 /**
  *
  */
@@ -162,6 +164,10 @@ export function createNotificationStore() {
 	 * @param notification
 	 */
 	async function showNativeNotification(notification) {
+		if (isTestNotificationApp(notification.app)) {
+			return showTestNotification(notification)
+		}
+
 		if (notification.app !== 'spreed') {
 			return
 		}
@@ -211,6 +217,26 @@ export function createNotificationStore() {
 	}
 
 	/**
+	 * Handle test notifications from "occ notification:test-push" or OCS Test Push Notification
+	 * @param {object} notification - Notification DTO
+	 */
+	function showTestNotification(notification) {
+		console.timeEnd('debug:notification:test-push')
+		console.log('Test Notification Received', notification)
+		const n = new Notification(notification.subject, {
+			lang: appData.userMetadata.locale,
+			body: notification.datetime,
+			tag: notification.notificationId,
+			icon: notification.icon,
+			silent: true,
+		})
+		n.addEventListener('click', () => {
+			console.log('Test Notification Clicked', notification)
+			window.TALK_DESKTOP.focusTalk()
+		})
+	}
+
+	/**
 	 * Performs the AJAX request to retrieve the notifications
 	 */
 	async function _fetch() {
@@ -223,7 +249,7 @@ export function createNotificationStore() {
 			state.userStatus = response.headers['x-nextcloud-user-status']
 			state.lastETag = response.headers.etag
 			state.lastTabId = response.tabId
-			state.notifications = response.data.filter((notification) => notification.app === 'spreed')
+			state.notifications = response.data.filter((notification) => notification.app === 'spreed' || isTestNotificationApp(notification.app))
 			const newNotifications = state.notifications.filter((notification) => {
 				return !notificationsSet.has(notification.notificationId) && notification.notificationId > state.notificationThresholdId
 			})

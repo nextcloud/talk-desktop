@@ -140,13 +140,29 @@ export function createNotificationStore() {
 	function playSound(isCall) {
 		if (isCall) {
 			if (loadState('notifications', 'sound_talk')) {
-				const sound = new Howl({
+				const howlPayload = {
 					src: [
 						generateFilePath('notifications', 'img', 'talk.ogg'),
 					],
+					html5: true, // to access HTMLAudioElement property 'sinkId'
 					volume: 0.5,
-				})
+				}
+				const sound = new Howl(howlPayload)
 				sound.play()
+
+				const secondarySpeaker = getAppConfigValue('secondarySpeaker')
+				const secondarySpeakerDevice = getAppConfigValue('secondarySpeakerDevice')
+
+				// Play only if secondary device is enabled, selected and different from primary device
+				const primarySpeakerDevice = sound._sounds[0]._node.sinkId ?? ''
+				if (secondarySpeaker && secondarySpeakerDevice && primarySpeakerDevice !== secondarySpeakerDevice) {
+					const soundDuped = new Howl(howlPayload)
+					const audioElement = sound._sounds[0]._node // Access the underlying HTMLAudioElement
+					audioElement.setSinkId(secondarySpeakerDevice)
+						.then(() => console.debug('Audio output successfully redirected to secondary speaker'))
+						.catch((error) => console.error('Failed to redirect audio output:', error))
+					soundDuped.play()
+				}
 			}
 		} else if (loadState('notifications', 'sound_notification')) {
 			const sound = new Howl({

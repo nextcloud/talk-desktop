@@ -33,6 +33,7 @@ const descriptionId = 'settings-form-group-description-' + id
 				</slot>
 			</p>
 		</div>
+		<slot name="action" />
 	</div>
 </template>
 

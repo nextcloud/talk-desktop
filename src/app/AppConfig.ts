@@ -99,6 +99,14 @@ export type AppConfig = {
 	 * - 'never': disable the call popup
 	 */
 	enableCallbox: 'always' | 'respect-dnd' | 'never'
+	/**
+	 * Whether to play ring sound on secondary speaker when a call notification is received.
+	 */
+	secondarySpeaker: boolean
+	/**
+	 * Device ID of secondary speaker output device.
+	 */
+	secondarySpeakerDevice: string | null
 }
 
 export type AppConfigKey = keyof AppConfig
@@ -115,6 +123,8 @@ const defaultAppConfig: AppConfig = {
 	playSoundChat: 'respect-dnd',
 	playSoundCall: 'respect-dnd',
 	enableCallbox: 'respect-dnd',
+	secondarySpeaker: false,
+	secondarySpeakerDevice: null,
 }
 
 /** Local cache of the config file mixed with the default values */

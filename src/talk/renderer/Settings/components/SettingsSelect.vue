@@ -13,6 +13,7 @@ const props = defineProps<{
 	label: string
 	options: NcSelectOption<unknown>[]
 	modelValue: NcSelectOption<unknown>
+	disabled?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -44,10 +45,15 @@ export default {
 			<NcSelect v-model="model"
 				class="settings-select"
 				:options="options"
+				:disabled="disabled"
 				:clearable="false"
 				:searchable="false"
 				:input-id="inputId"
 				label-outside />
+		</template>
+
+		<template #action>
+			<slot name="action" />
 		</template>
 	</SettingsFormGroup>
 </template>

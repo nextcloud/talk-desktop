@@ -127,6 +127,10 @@ const TALK_DESKTOP = {
 	 */
 	invokeAnything: (...args) => ipcRenderer.invoke('app:anything', ...args),
 	/**
+	 * Open chrome://webrtc-internals
+	 */
+	openChromeWebRtcInternals: () => ipcRenderer.send('app:openChromeWebRtcInternals'),
+	/**
 	 * Send appData to main process on restore
 	 *
 	 * @param {object} appDataDto appData as plain object

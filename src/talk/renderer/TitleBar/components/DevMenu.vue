@@ -5,14 +5,24 @@
 
 <script setup lang="ts">
 /* eslint-disable jsdoc/require-jsdoc */
+import axios from '@nextcloud/axios'
+import { generateOcsUrl } from '@nextcloud/router'
+import { getCurrentUser } from '@nextcloud/auth'
 import NcActions from '@nextcloud/vue/dist/Components/NcActions.js'
 import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
+import NcActionSeparator from '@nextcloud/vue/dist/Components/NcActionSeparator.js'
 import IconApplicationBracketsOutline from 'vue-material-design-icons/ApplicationBracketsOutline.vue'
 import IconDeveloperBoard from 'vue-material-design-icons/DeveloperBoard.vue'
+import IconLan from 'vue-material-design-icons/Lan.vue'
 import IconMonitorShare from 'vue-material-design-icons/MonitorShare.vue'
+import IconMessageBadge from 'vue-material-design-icons/MessageBadge.vue'
 import IconMessageBadgeOutline from 'vue-material-design-icons/MessageBadgeOutline.vue'
 import IconConsole from 'vue-material-design-icons/Console.vue'
 import { appData } from '../../../../app/AppData.js'
+
+const supportsTestAdminNotification = appData.capabilities?.notifications?.['admin-notifications']?.includes('ocs') && appData.userMetadata?.groups.includes('admin')
+const supportsTestPushNotification = appData.capabilities?.notifications?.['ocs-endpoints']?.includes('test-push')
+const supportsTestNotification = supportsTestPushNotification || supportsTestAdminNotification
 
 async function openDevTools() {
 	window.TALK_DESKTOP.toggleDevTools()
@@ -39,8 +49,43 @@ async function triggerNotification() {
 	}, false)
 }
 
+async function requestTestAdminNotification() {
+	try {
+		await axios.post(generateOcsUrl('/apps/notifications/api/v3/admin_notifications/{uid}', { uid: getCurrentUser()!.uid }), {
+			subject: 'Test Push Notification',
+			message: 'This is a test push notification triggered by the Talk Desktop client',
+		})
+		console.log('Requested test notification')
+		console.time('debug:notification:test-push')
+	} catch (error) {
+		console.error('Failed to request test notification', error)
+	}
+}
+
+async function requestTestPushNotification() {
+	try {
+		await axios.post(generateOcsUrl('/apps/notifications/api/v3/test/self'))
+		console.log('Requested test notification')
+		console.time('debug:notification:test-push')
+	} catch (error) {
+		console.error('Failed to request test notification', error)
+	}
+}
+
+function requestTestNotification() {
+	if (supportsTestPushNotification) {
+		requestTestPushNotification()
+	} else if (supportsTestAdminNotification) {
+		requestTestAdminNotification()
+	}
+}
+
 async function invokeAnything() {
 	console.log(await window.TALK_DESKTOP.invokeAnything())
+}
+
+async function openChromeWebRtcInternals() {
+	window.TALK_DESKTOP.openChromeWebRtcInternals()
 }
 </script>
 
@@ -52,29 +97,54 @@ async function invokeAnything() {
 		<template #icon>
 			<IconDeveloperBoard :size="20" fill-color="var(--color-header-contrast)" />
 		</template>
+
 		<NcActionButton @click="openDevTools">
 			<template #icon>
 				<IconApplicationBracketsOutline :size="20" />
 			</template>
 			Toggle Developer Tools
 		</NcActionButton>
+
+		<NcActionSeparator />
+
 		<NcActionButton @click="invokeAnything">
 			<template #icon>
 				<IconConsole :size="20" />
 			</template>
 			Invoke 'app:anything'
 		</NcActionButton>
+
+		<NcActionSeparator />
+
 		<NcActionButton @click="triggerScreenSharing">
 			<template #icon>
 				<IconMonitorShare :size="20" />
 			</template>
 			Screen share picker
 		</NcActionButton>
+
+		<NcActionSeparator />
+
 		<NcActionButton @click="triggerNotification">
 			<template #icon>
 				<IconMessageBadgeOutline :size="20" />
 			</template>
-			Notification
+			Show Notification
+		</NcActionButton>
+		<NcActionButton v-if="supportsTestNotification" @click="requestTestNotification">
+			<template #icon>
+				<IconMessageBadge :size="20" />
+			</template>
+			Request Test Notification
+		</NcActionButton>
+
+		<NcActionSeparator />
+
+		<NcActionButton @click="openChromeWebRtcInternals">
+			<template #icon>
+				<IconLan :size="20" />
+			</template>
+			Open chrome://webrtc-internals
 		</NcActionButton>
 	</NcActions>
 </template>

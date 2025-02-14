@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import { provide, ref } from 'vue'
-import { useHotKey } from '@nextcloud/vue/dist/Composables/useHotKey.js'
+import { useHotKey } from '@nextcloud/vue/composables/useHotKey'
 import TitleBar from './TitleBar/TitleBar.vue'
 import TalkWrapper from './TalkWrapper/TalkWrapper.vue'
 import { openRoot } from './TalkWrapper/talk.service.ts'

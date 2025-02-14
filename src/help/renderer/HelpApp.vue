@@ -6,9 +6,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcRichText from '@nextcloud/vue/dist/Components/NcRichText.js'
-import { useHotKey } from '@nextcloud/vue/dist/Composables/useHotKey.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcRichText from '@nextcloud/vue/components/NcRichText'
+import { useHotKey } from '@nextcloud/vue/composables/useHotKey'
 import { translate as t } from '@nextcloud/l10n'
 import { generateDiagnosisReportMD } from './diagnosis.service.ts'
 import ButtonCopy from './ButtonCopy.vue'

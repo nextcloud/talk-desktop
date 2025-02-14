@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import IconCloudDownload from 'vue-material-design-icons/CloudDownload.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 

@@ -4,8 +4,8 @@
 -->
 
 <script setup lang="ts">
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcUserStatusIcon from '@nextcloud/vue/dist/Components/NcUserStatusIcon.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
 import { availableUserStatusStatusTypes, userStatusTranslations } from '../userStatus.utils.ts'
 import type { UserStatusStatusType } from '../userStatus.types.ts'
 

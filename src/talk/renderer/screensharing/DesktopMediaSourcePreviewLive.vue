@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import type { ScreensharingSourceId } from './screensharing.types.ts'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 
 const props = defineProps<{
 	mediaSourceId: ScreensharingSourceId

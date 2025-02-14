@@ -14,7 +14,7 @@ export default {
 import { ref } from 'vue'
 import IconCheck from 'vue-material-design-icons/Check.vue'
 import IconCopy from 'vue-material-design-icons/ContentCopy.vue'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
 import { t } from '@nextcloud/l10n'
 
 const props = withDefaults(

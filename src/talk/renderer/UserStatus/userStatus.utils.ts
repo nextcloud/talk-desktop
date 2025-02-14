@@ -4,8 +4,8 @@
  */
 
 import type { ClearAtPredefinedConfig, PredefinedUserStatus, UserStatus, UserStatusStatusType } from './userStatus.types.ts'
-import moment from '@nextcloud/moment'
-import { translate as t } from '@nextcloud/l10n'
+import { t, getFirstDay } from '@nextcloud/l10n'
+import { formatDurationFromNow, formatDuration } from '../../../shared/datetime.utils.ts'
 
 /**
  * List of user status types that user can set
@@ -58,11 +58,17 @@ export function getTimestampForPredefinedClearAt(clearAt: ClearAtPredefinedConfi
 	}
 
 	if (clearAt.type === 'end-of') {
-		switch (clearAt.time) {
-		case 'day':
-		case 'week':
-			return Number(moment(new Date()).endOf(clearAt.time).format('X'))
+		const date = new Date()
+		// In any case, set the end of the day
+		date.setHours(23, 59, 59, 999)
+
+		if (clearAt.time === 'week') {
+			const firstDay = getFirstDay()
+			const lastDay = (firstDay + 6) % 7
+			date.setDate(date.getDate() + (lastDay + 7 - date.getDay()) % 7)
 		}
+
+		return Math.floor(date.getTime() / 1000)
 	}
 
 	// Unknown type
@@ -82,9 +88,7 @@ export function clearAtToLabel(clearAt: ClearAtPredefinedConfig | number | null)
 
 	// Clear At has been already set
 	if (typeof clearAt === 'number') {
-		const momentNow = moment(new Date())
-		const momentClearAt = moment(new Date(clearAt * 1000))
-		return moment.duration(momentNow.diff(momentClearAt)).humanize()
+		return formatDurationFromNow(clearAt * 1000)
 	}
 
 	// ClearAt is an object description of predefined value
@@ -98,7 +102,7 @@ export function clearAtToLabel(clearAt: ClearAtPredefinedConfig | number | null)
 
 	// ClearAt is an object description of predefined value
 	if (clearAt.type === 'period') {
-		return moment.duration(clearAt.time * 1000).humanize()
+		return formatDuration(clearAt.time * 1000)
 	}
 
 	return ''

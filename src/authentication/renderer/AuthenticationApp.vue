@@ -6,9 +6,9 @@
 <script setup>
 import { computed, ref } from 'vue'
 import IconArrowRight from 'vue-material-design-icons/ArrowRight.vue'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 import { translate as t } from '@nextcloud/l10n'
 import { getCapabilities } from '../../shared/ocs.service.js'
 import { appData } from '../../app/AppData.js'

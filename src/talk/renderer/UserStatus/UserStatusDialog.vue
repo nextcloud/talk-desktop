@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
+import NcDialog from '@nextcloud/vue/components/NcDialog'
 import { translate as t } from '@nextcloud/l10n'
 import { useUserStatusStore } from './userStatus.store.ts'
 import UserStatusForm from './components/UserStatusForm.vue'

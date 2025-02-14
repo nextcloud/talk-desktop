@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
+import NcSelect from '@nextcloud/vue/components/NcSelect'
 import SettingsFormGroup from './SettingsFormGroup.vue'
 import type { NcSelectOption } from '../../composables/useNcSelectModel.ts'
 

@@ -6,7 +6,7 @@
 <script setup>
 import { del, ref, set } from 'vue'
 import { translate as t } from '@nextcloud/l10n'
-import NcDialog from '@nextcloud/vue/dist/Components/NcDialog.js'
+import NcDialog from '@nextcloud/vue/components/NcDialog'
 
 const Buttons = {
 	OK_BUTTONS: (callback) => [

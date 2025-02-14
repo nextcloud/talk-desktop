@@ -28,12 +28,12 @@ declare module 'vue-material-design-icons/*.vue' {
 }
 
 // @nextcloud/vue has declarations only since 9.0.0
-declare module '@nextcloud/vue/dist/Components/*.js' {
+declare module '@nextcloud/vue/components/*' {
 	import type { Component } from 'vue'
 	const component: Component
 	export default component
 }
-declare module '@nextcloud/vue/dist/Composables/useHotKey.js' {
+declare module '@nextcloud/vue/composables/useHotKey' {
 	export function useHotKey(
 		keysOrFilter: string | string[] | ((event: KeyboardEvent) => boolean) | true,
 		callback: (event: KeyboardEvent) => void,

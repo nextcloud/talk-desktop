@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow } = require('electron')
-const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
+import { BrowserWindow } from 'electron'
+import { applyExternalLinkHandler } from '../app/externalLinkHandlers.ts'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
+import { getScaledWindowSize, applyZoom, buildTitle } from '../app/utils.ts'
+import { applyContextMenu } from '../app/applyContextMenu.js'
 
 /**
- *
- * @return {import('electron').BrowserWindow}
+ * Create the upgrade window
  */
-function createUpgradeWindow() {
+export function createUpgradeWindow() {
 	const TITLE = buildTitle('Upgrade required')
 	const window = new BrowserWindow({
 		title: TITLE,
@@ -22,6 +22,7 @@ function createUpgradeWindow() {
 		}),
 		show: false,
 		maximizable: false,
+		minimizable: false,
 		resizable: false,
 		fullscreenable: false,
 		autoHideMenuBar: true,
@@ -35,6 +36,7 @@ function createUpgradeWindow() {
 
 	window.loadURL(UPGRADE_WINDOW_WEBPACK_ENTRY)
 
+	applyContextMenu(window)
 	applyExternalLinkHandler(window)
 	applyZoom(window)
 
@@ -43,8 +45,4 @@ function createUpgradeWindow() {
 	})
 
 	return window
-}
-
-module.exports = {
-	createUpgradeWindow,
 }

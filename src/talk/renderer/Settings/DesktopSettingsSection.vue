@@ -223,6 +223,13 @@ function relaunch() {
 				<template #icon="{ size }">
 					<IconVolumeHigh :size="size" />
 				</template>
+				<template #action>
+					<NcButton type="tertiary" @click="initializeDevices">
+						<template #icon>
+							<IconRestore :size="20" />
+						</template>
+					</NcButton>
+				</template>
 			</SettingsSelect>
 		</SettingsSubsection>
 	</div>

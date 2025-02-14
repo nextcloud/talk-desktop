@@ -51,6 +51,10 @@ export default {
 				:input-id="inputId"
 				label-outside />
 		</template>
+
+		<template #action>
+			<slot name="action" />
+		</template>
 	</SettingsFormGroup>
 </template>
 

@@ -10,6 +10,7 @@ OC.L10N.register(
     "Yes" : "Hawa",
     "Light" : "Ýagtylyk",
     "Dark" : "Garaňky",
+    "None" : "Hiç",
     "General" : "Esasy",
     "Theme" : "Tema",
     "Settings" : "Sazlamalar",

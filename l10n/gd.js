@@ -11,6 +11,7 @@ OC.L10N.register(
     "Yes" : "Tha",
     "Light" : "Soilleir",
     "Dark" : "Dorcha",
+    "None" : "Chan eil gin",
     "General" : "Coitcheann",
     "Theme" : "Ùrlar dorcha",
     "Settings" : "Roghainnean",

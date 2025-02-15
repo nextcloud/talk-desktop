@@ -5,6 +5,7 @@ OC.L10N.register(
     "Close" : "Clauder",
     "Dismiss" : "Dimitter",
     "Never" : "Nunquam",
+    "None" : "Nulle",
     "General" : "General",
     "Reset" : "Re-fixar",
     "Menu" : "Menu",

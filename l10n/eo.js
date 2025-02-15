@@ -13,6 +13,7 @@ OC.L10N.register(
     "Dark" : "Malluma",
     "Always" : "Ĉiam",
     "Never" : "Neniam",
+    "None" : "Nenio",
     "General" : "Ĝenerala",
     "Theme" : "Etoso",
     "Reset" : "Restarigi",

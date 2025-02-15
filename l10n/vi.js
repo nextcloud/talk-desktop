@@ -17,6 +17,7 @@ OC.L10N.register(
     "Dark" : "Tối",
     "Always" : "Luôn luôn",
     "Never" : "Không bao giờ",
+    "None" : "Không có",
     "General" : "Cài đặt chung",
     "Appearance" : "Ngoại hình",
     "Theme" : "Chủ đề",

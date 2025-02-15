@@ -11,6 +11,7 @@ OC.L10N.register(
     "Light" : "Tume",
     "Dark" : "Hele",
     "Never" : "Mitte kunagi",
+    "None" : "Pole",
     "General" : "Üldine",
     "Theme" : "Teema",
     "Zoom out" : "Suumi välja",

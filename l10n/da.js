@@ -17,6 +17,7 @@ OC.L10N.register(
     "Light" : "Lys",
     "Dark" : "Mørk",
     "Never" : "Aldrig",
+    "None" : "Ingen",
     "General" : "Generelt",
     "Appearance" : "Udseende",
     "Theme" : "Tema",

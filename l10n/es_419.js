@@ -14,6 +14,7 @@ OC.L10N.register(
     "Dark" : "Oscuro",
     "Always" : "Siempre",
     "Never" : "Nunca",
+    "None" : "Ninguno",
     "General" : "General",
     "Theme" : "Tema",
     "Reset" : "Restaurar",

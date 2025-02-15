@@ -20,6 +20,7 @@ OC.L10N.register(
     "Dark" : "Temna",
     "Always" : "Vedno",
     "Never" : "nikoli",
+    "None" : "Brez",
     "General" : "Splošno",
     "Appearance" : "Videz",
     "Theme" : "Tema",

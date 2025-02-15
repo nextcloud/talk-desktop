@@ -8,6 +8,7 @@ OC.L10N.register(
     "Copy" : "Kopier",
     "License" : "Lisens",
     "Ok" : "Greitt",
+    "None" : "Ingen",
     "General" : "Generelt",
     "Appearance" : "Utsjånad",
     "Report a bug" : "Rapporter feil",

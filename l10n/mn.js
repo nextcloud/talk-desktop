@@ -8,6 +8,7 @@ OC.L10N.register(
     "License" : "Тусгай зөвшөөрөл",
     "Ok" : "За",
     "Never" : "хэзээч",
+    "None" : "юу ч үгүй",
     "General" : "ерөнхий",
     "Reset" : "тохируулах",
     "Settings" : "Тохиргоо",

@@ -12,6 +12,7 @@ OC.L10N.register(
     "License" : "Licencia",
     "Issues" : "Temas",
     "Dark" : "Oscuro",
+    "None" : "Ninguno",
     "General" : "General",
     "Appearance" : "Apariencia",
     "Zoom out" : "Alejar",

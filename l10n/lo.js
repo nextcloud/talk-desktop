@@ -10,6 +10,7 @@ OC.L10N.register(
     "No" : "ບໍ່",
     "Light" : "ແຈ້ງ",
     "Dark" : "ມືດ",
+    "None" : "ບໍ່ມີ",
     "General" : "ທົ່ວໄປ",
     "Theme" : "ຫົວຂໍ້",
     "Settings" : "ການຕັ້ງຄ່າ",

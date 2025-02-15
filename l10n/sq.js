@@ -13,6 +13,7 @@ OC.L10N.register(
     "Light" : "E çelët",
     "Always" : "Përherë",
     "Never" : "Kurrë",
+    "None" : "Asnjë",
     "General" : "Të përgjithshme",
     "Theme" : "Shabllon",
     "Reset" : "Rivendos",

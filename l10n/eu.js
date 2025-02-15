@@ -23,6 +23,7 @@ OC.L10N.register(
     "Dark" : "Iluna",
     "Always" : "Beti",
     "Never" : "Inoiz ez",
+    "None" : "Bat ere ez",
     "Restart" : "Berrabiarazi",
     "General" : "Orokorra",
     "Appearance" : "Itxura",

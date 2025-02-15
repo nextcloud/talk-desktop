@@ -7,6 +7,7 @@ OC.L10N.register(
     "No" : "No",
     "Yes" : "Yes",
     "Always" : "Always",
+    "None" : "None",
     "General" : "General",
     "Settings" : "Sozlamalar",
     "About" : "About",

@@ -14,6 +14,7 @@ OC.L10N.register(
     "Dark" : "Escuro",
     "Always" : "Sempre",
     "Never" : "Nunca",
+    "None" : "Nenhum",
     "General" : "Geral",
     "Theme" : "Tema",
     "Zoom" : "Zoom",

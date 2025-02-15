@@ -16,6 +16,7 @@ OC.L10N.register(
     "Dark" : "Tumma",
     "Always" : "Aina",
     "Never" : "Ei koskaan",
+    "None" : "Ei mitään",
     "Restart" : "Käynnistä uudelleen",
     "General" : "Yleiset",
     "Appearance" : "Ulkoasu",

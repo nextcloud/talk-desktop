@@ -16,6 +16,7 @@ OC.L10N.register(
     "Dark" : "어둡게",
     "Always" : "항상",
     "Never" : "하지 않음",
+    "None" : "없음",
     "General" : "일반",
     "Appearance" : "외형",
     "Theme" : "테마",

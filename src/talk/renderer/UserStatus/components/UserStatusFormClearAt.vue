@@ -8,6 +8,7 @@ import { computed } from 'vue'
 import NcSelect from '@nextcloud/vue/components/NcSelect'
 import { translate as t } from '@nextcloud/l10n'
 import { clearAtToLabel, getTimestampForPredefinedClearAt } from '../userStatus.utils.ts'
+import { formatDuration } from '../../../../shared/datetime.utils.ts'
 
 const props = withDefaults(defineProps<{
 	clearAt?: number | null,
@@ -25,19 +26,19 @@ const clearAtOptions = [{
 	label: t('talk_desktop', 'Don\'t clear'),
 	clearAt: null,
 }, {
-	label: t('talk_desktop', '30 minutes'),
+	label: formatDuration(1800 * 1000), // 30 minutes
 	clearAt: {
 		type: 'period',
 		time: 1800,
 	},
 }, {
-	label: t('talk_desktop', '1 hour'),
+	label: formatDuration(3600 * 1000), // 1 hour
 	clearAt: {
 		type: 'period',
 		time: 3600,
 	},
 }, {
-	label: t('talk_desktop', '4 hours'),
+	label: formatDuration(14400 * 1000), // 4 hours
 	clearAt: {
 		type: 'period',
 		time: 14400,

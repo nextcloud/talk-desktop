@@ -6,8 +6,8 @@
 <script setup>
 import { computed } from 'vue'
 import { t } from '@nextcloud/l10n'
-import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import IconAlertCircleOutline from 'vue-material-design-icons/AlertCircleOutline.vue'
 
 const props = defineProps({

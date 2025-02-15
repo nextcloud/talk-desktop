@@ -5,8 +5,8 @@
 
 <script setup>
 import { computed, ref } from 'vue'
-import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
-import NcActionLink from '@nextcloud/vue/dist/Components/NcActionLink.js'
+import NcModal from '@nextcloud/vue/components/NcModal'
+import NcActionLink from '@nextcloud/vue/components/NcActionLink'
 import IconOpenInNew from 'vue-material-design-icons/OpenInNew.vue'
 import { generateUrl } from '@nextcloud/router'
 import { translate as t } from '@nextcloud/l10n'

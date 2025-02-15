@@ -5,8 +5,8 @@
 
 <script setup lang="ts">
 import { useEventListener } from '@vueuse/core'
-import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcAvatar from '@nextcloud/vue/components/NcAvatar'
+import NcButton from '@nextcloud/vue/components/NcButton'
 import IconClose from 'vue-material-design-icons/Close.vue'
 import IconPhone from 'vue-material-design-icons/Phone.vue'
 import IconPhoneHangup from 'vue-material-design-icons/PhoneHangup.vue'

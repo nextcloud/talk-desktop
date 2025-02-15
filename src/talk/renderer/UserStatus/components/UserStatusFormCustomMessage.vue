@@ -4,9 +4,9 @@
 -->
 
 <script setup lang="ts">
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcEmojiPicker from '@nextcloud/vue/dist/Components/NcEmojiPicker.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcEmojiPicker from '@nextcloud/vue/components/NcEmojiPicker'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 import { translate as t } from '@nextcloud/l10n'
 import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 

@@ -10,6 +10,7 @@ OC.L10N.register(
     "Yes" : "Ie",
     "Light" : "Golau",
     "Dark" : "Tywyll",
+    "None" : "Dim",
     "General" : "Cyffredinol",
     "Settings" : "Gosodiadau",
     "About" : "Ynglyn â",

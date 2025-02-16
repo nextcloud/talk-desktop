@@ -13,8 +13,6 @@ OC.L10N.register(
     "Reset" : "тохируулах",
     "Settings" : "Тохиргоо",
     "Back" : "Буцах",
-    "30 minutes" : "30 минут",
-    "1 hour" : "1 цаг",
     "Today" : "өнөөдөр",
     "This week" : "7 хоног",
     "Cancel" : "Цуцлах",

@@ -11,6 +11,7 @@ OC.L10N.register(
     "Light" : "Lugernus",
     "Dark" : "Teñval",
     "Never" : "James",
+    "None" : "Hini ebet",
     "General" : "Hollek",
     "Theme" : "Tem",
     "Menu" : "Roll",

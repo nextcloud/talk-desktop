@@ -13,8 +13,6 @@ OC.L10N.register(
     "About" : "පිළිබඳ",
     "Back" : "ආපසු",
     "Log out" : "නික්මෙන්න",
-    "30 minutes" : "විනාඩි 30 යි",
-    "1 hour" : "හෝරා 1 යි",
     "Today" : "අද",
     "This week" : "මෙම සතිය",
     "Cancel" : "අවලංගු"

@@ -5,6 +5,7 @@ OC.L10N.register(
     "Logging in …" : "Meld tans aan …",
     "Dismiss" : "Ontslaan",
     "License" : "Lisensie",
+    "None" : "Geen",
     "Reset" : "Herstel",
     "Menu" : "Kieslys",
     "Settings" : "Instellings",

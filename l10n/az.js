@@ -13,6 +13,7 @@ OC.L10N.register(
     "Dark" : "Qaranlıq",
     "Always" : "Həmişə",
     "Never" : "Heç vaxt",
+    "None" : "Heç bir",
     "General" : "Ümumi",
     "Reset" : "Sıfırla",
     "Menu" : "Menyu",

@@ -31,8 +31,6 @@ OC.L10N.register(
     "View profile" : "프로필 보기",
     "Log out" : "로그아웃",
     "User status" : "사용자 상태",
-    "30 minutes" : "30분",
-    "1 hour" : "1시간",
     "Today" : "오늘",
     "Loading …" : "불러오는 중 ...",
     "Cancel" : "취소",

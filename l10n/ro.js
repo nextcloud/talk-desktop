@@ -33,8 +33,6 @@ OC.L10N.register(
     "User status" : "Statusul utilizatorului",
     "Your status was set automatically" : "Statusul a fost setat automat",
     "Predefined statuses" : "Stări predefinite",
-    "30 minutes" : "30 de minute",
-    "1 hour" : "1 oră",
     "Today" : "Azi",
     "This week" : "Săptămâna asta",
     "Emoji for your status message" : "Emoji pentru mesajul de status",

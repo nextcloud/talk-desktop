@@ -6,6 +6,7 @@ OC.L10N.register(
     "No" : "No",
     "Yes" : "Si",
     "Never" : "Nunca",
+    "None" : "Denguno",
     "Settings" : "Configurazión",
     "Back" : "Ta zaga",
     "Today" : "Hue",

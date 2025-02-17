@@ -5,6 +5,31 @@
 
 # Changelog
 
+## v1.1.4-beta - 2025-02-17
+
+### Notes
+
+**Squirrel Deployment Tool .msi → WiX v3 .msi**:\
+Experimental MSI installer with Squirrel Deployment Tool is removed
+and replaced with a new MSI installer based on WiX v3.
+You may remove the old installation. Your settings will be preserved.  
+
+### Features
+
+- Add a new MSI installer based on WiX v3 for Windows [#1103](https://github.com/nextcloud/talk-desktop/pull/1103)
+- Add an option to repeat call notification sound on a second output device [#772](https://github.com/nextcloud/talk-desktop/issues/772)
+
+### Fixes
+  
+- Fix call notification is still active when the call is joined [#1117](https://github.com/nextcloud/talk-desktop/issues/1117)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.0.0-rc.4 in the beta release channel [#1119](https://github.com/nextcloud/talk-desktop/pull/1119)
+- Click five times on the logo in the about window to enable dev mode [#1105](https://github.com/nextcloud/talk-desktop/pull/1105)
+- Update translations
+- Update dependencies
+
 ## v1.1.3-beta - 2025-02-10
 
 ### Fixes

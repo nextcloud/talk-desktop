@@ -1,0 +1,102 @@
+<!--
+  ~ SPDX-FileCopyrightText: 2025 Nextcloud GmbH and Nextcloud contributors
+  ~ SPDX-License-Identifier: AGPL-3.0-or-later
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WiX Backgrounds</title>
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap');
+
+	:root {
+		/* WiX Images */
+		--dialog-width: 493px;
+		--dialog-height: 312px;
+		--banner-width: var(--dialog-width);
+		--banner-height: 58px;
+		--background-width: var(--dialog-width);
+		--background-height: var(--dialog-height);
+		--side-width: 164px;
+		--side-height: var(--dialog-height);
+
+		/* Nextcloud colors */
+		--color-primary: #0082c9;
+		--color-primary-text: #ffffff;
+		--color-primary-hover: #1cafff;
+		--gradient-primary-background: linear-gradient(40deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+
+		/* Logo sizes */
+		--side-logo: 54px;
+		--banner-logo: 42px;
+	}
+
+	body {
+		background: #DDD;
+		font-family: "Open Sans", sans-serif;
+	}
+
+	.nunito {
+		font-family: "Nunito", serif;
+		font-optical-sizing: auto;
+		font-weight: 600;
+		font-style: normal;
+	}
+
+	.dialog {
+		width: var(--dialog-width);
+		height: var(--dialog-height);
+		display: flex;
+		background-color: #FFFFFF;
+
+		.side {
+			width: var(--side-width);
+			height: var(--side-height);
+			background: var(--gradient-primary-background);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 14pt;
+
+			.logo {
+				width: var(--side-logo);
+				margin-top: 28pt;
+			}
+
+			.title {
+				color: white;
+				font-size: 14pt;
+				line-height: 1;
+			}
+		}
+	}
+
+	.banner {
+		width: var(--banner-width);
+		height: var(--banner-height);
+		background-color: white;
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		.logo {
+			width: var(--banner-logo);
+			margin-right: calc((var(--banner-height) - var(--banner-logo)) / 2);
+		}
+	}
+	</style>
+</head>
+<body>
+	<div  class="dialog">
+		<div class="side">
+			<img class="logo" src="../img/talk-icon-plain-dark.svg" alt="" />
+			<div class="title">Nextcloud Talk</div>
+		</div>
+	</div>
+	<br>
+	<div class="banner">
+		<img class="logo" src="../img/talk-icon-rounded.svg" alt="" />
+	</div>
+</body>
+</html>

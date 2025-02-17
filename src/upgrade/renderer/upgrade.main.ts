@@ -6,9 +6,11 @@
 import '../../shared/assets/global.styles.css'
 
 import Vue from 'vue'
-import UpgradeApp from './UpgradeApp.vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
 await setupWebPage()
 
-new Vue(UpgradeApp).$mount('#app')
+const { default: Upgrade } = await import('./UpgradeApp.vue')
+
+const UpgradeApp = Vue.extend(Upgrade)
+new UpgradeApp().$mount('#app')

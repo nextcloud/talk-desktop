@@ -6,9 +6,11 @@
 import '../../shared/assets/global.styles.css'
 
 import Vue from 'vue'
-import AuthenticationApp from './AuthenticationApp.vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
 await setupWebPage()
 
-new Vue(AuthenticationApp).$mount('#app')
+const { default: Authentication } = await import('./AuthenticationApp.vue')
+
+const AuthenticationApp = Vue.extend(Authentication)
+new AuthenticationApp().$mount('#app')

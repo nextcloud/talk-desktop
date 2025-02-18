@@ -19,7 +19,7 @@ OC.L10N.register(
     "Join call" : "Anruf beitreten",
     "Copy" : "Kopieren",
     "Copied" : "Kopiert",
-    "Privacy and Legal Policy" : "Datenschutz und Geschäftsbedingungen",
+    "Privacy and Legal Policy" : "Datenschutzerklärung und Geschäftsbedingungen",
     "License" : "Lizenz",
     "Issues" : "Probleme",
     "Copy report" : "Bericht kopieren",

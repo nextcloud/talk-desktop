@@ -14,7 +14,7 @@ OC.L10N.register(
     "None" : "Nav",
     "General" : "Vispārīgs",
     "Appearance" : "Izskats",
-    "Theme" : "Motīvs",
+    "Theme" : "Izskats",
     "Reset" : "Atiestatīt",
     "Menu" : "Izvēlne",
     "Report a bug" : "Ziņot par kļūdu",

@@ -1,15 +1,15 @@
 OC.L10N.register(
     "talk_desktop",
     {
-    "Log in" : "Iniziar sesión",
+    "Log in" : "Iniciar sesión",
     "Close" : "Zarrar",
     "No" : "No",
     "Yes" : "Si",
     "Never" : "Nunca",
     "None" : "Denguno",
-    "Settings" : "Configurazión",
+    "Settings" : "Configuración",
     "Back" : "Ta zaga",
     "Today" : "Hue",
-    "Cancel" : "Canzelar"
+    "Cancel" : "Cancelar"
 },
 "nplurals=2; plural=(n != 1);");

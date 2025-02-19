@@ -1,13 +1,13 @@
 { "translations": {
-    "Log in" : "Iniziar sesión",
+    "Log in" : "Iniciar sesión",
     "Close" : "Zarrar",
     "No" : "No",
     "Yes" : "Si",
     "Never" : "Nunca",
     "None" : "Denguno",
-    "Settings" : "Configurazión",
+    "Settings" : "Configuración",
     "Back" : "Ta zaga",
     "Today" : "Hue",
-    "Cancel" : "Canzelar"
+    "Cancel" : "Cancelar"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

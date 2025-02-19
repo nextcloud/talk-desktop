@@ -12,6 +12,7 @@ import IconPhone from 'vue-material-design-icons/Phone.vue'
 import IconPhoneHangup from 'vue-material-design-icons/PhoneHangup.vue'
 import { t } from '@nextcloud/l10n'
 import { waitCurrentUserHasJoinedCall } from './callbox.service.ts'
+import { playRingtone } from './callbox.utils.ts'
 import { postBroadcast } from '../../shared/broadcast.service.ts'
 
 const AVATAR_SIZE = 15 * 1.5 * 2 // 2 lines
@@ -31,9 +32,8 @@ useEventListener('keydown', (event) => {
 	}
 })
 
-/**
- * Handle the call joined/missed outside the callbox
- */
+playRingtone()
+
 waitCurrentUserHasJoinedCall(token, TIME_LIMIT).then((joined) => {
 	console.log(`Callbox popup is not actual anymore: ${joined ? 'the user has joined the call' : 'missed call'}`)
 	if (debug) {

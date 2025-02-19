@@ -6,12 +6,13 @@
 <script setup lang="ts">
 /* eslint-disable jsdoc/require-jsdoc */
 import axios from '@nextcloud/axios'
-import { generateOcsUrl } from '@nextcloud/router'
+import { generateOcsUrl, generateUrl } from '@nextcloud/router'
 import { getCurrentUser } from '@nextcloud/auth'
 import NcActions from '@nextcloud/vue/components/NcActions'
 import NcActionButton from '@nextcloud/vue/components/NcActionButton'
 import NcActionSeparator from '@nextcloud/vue/components/NcActionSeparator'
 import IconApplicationBracketsOutline from 'vue-material-design-icons/ApplicationBracketsOutline.vue'
+import IconCardAccountPhoneOutline from 'vue-material-design-icons/CardAccountPhoneOutline.vue'
 import IconDeveloperBoard from 'vue-material-design-icons/DeveloperBoard.vue'
 import IconLan from 'vue-material-design-icons/Lan.vue'
 import IconMonitorShare from 'vue-material-design-icons/MonitorShare.vue'
@@ -80,6 +81,20 @@ function requestTestNotification() {
 	}
 }
 
+function triggerCallbox() {
+	if (!location.hash.startsWith('#/call/')) {
+		console.log('Trigger callbox is only available when there is current conversation')
+		return
+	}
+	window.TALK_DESKTOP.showCallbox({
+		token: location.hash.slice('#/call/'.length),
+		name: 'Test Call Popup',
+		type: 'one2one',
+		avatar: generateUrl(`/avatar/${getCurrentUser()?.uid}/64`),
+		debug: 'true',
+	})
+}
+
 async function invokeAnything() {
 	console.log(await window.TALK_DESKTOP.invokeAnything())
 }
@@ -136,6 +151,12 @@ async function openChromeWebRtcInternals() {
 				<IconMessageBadge :size="20" />
 			</template>
 			Request Test Notification
+		</NcActionButton>
+		<NcActionButton @click="triggerCallbox">
+			<template #icon>
+				<IconCardAccountPhoneOutline :size="20" />
+			</template>
+			Show Call Popup
 		</NcActionButton>
 
 		<NcActionSeparator />

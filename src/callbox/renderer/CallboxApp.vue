@@ -23,6 +23,7 @@ const token = params.get('token')!
 const name = params.get('name')!
 const avatar = params.get('avatar')!
 const type = params.get('type')! as 'one2one' | 'group' | 'public'
+const debug = params.get('debug') === 'true'
 
 useEventListener('keydown', (event) => {
 	if (event.key === 'Escape') {
@@ -34,6 +35,10 @@ useEventListener('keydown', (event) => {
  * Handle the call joined/missed outside the callbox
  */
 waitCurrentUserHasJoinedCall(token, TIME_LIMIT).then((joined) => {
+	console.log(`Callbox popup is not actual anymore: ${joined ? 'the user has joined the call' : 'missed call'}`)
+	if (debug) {
+		return
+	}
 	if (!joined) {
 		postBroadcast('notifications:missedCall', { name, token, type, avatar })
 	}

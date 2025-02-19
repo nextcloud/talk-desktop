@@ -18,6 +18,10 @@ export type CallboxParams = {
 	type: 'one2one' | 'group' | 'public'
 	/** Conversation avatar URL */
 	avatar: string
+	/**
+	 * Debug mode without auto-dismiss on joined/missed
+	 */
+	debug?: 'true' | 'false'
 }
 
 /**

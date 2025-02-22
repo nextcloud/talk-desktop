@@ -84,7 +84,7 @@
     "dotenv": "^16.4.7",
     "electron": "^34.2.0",
     "esbuild-loader": "^4.3.0",
-    "eslint": "^8.57.1",
+    "eslint": "^9.21.0",
     "icon-gen": "^5.0.0",
     "node-loader": "^2.1.0",
     "regenerator-runtime": "^0.14.1",

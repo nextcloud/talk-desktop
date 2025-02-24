@@ -5,6 +5,19 @@
 
 # Changelog
 
+## v1.1.5 - 2025-02-24
+
+### Fixes
+
+- Loop ringtone on incoming call [#1123](https://github.com/nextcloud/talk-desktop/pull/1123)
+- Teams (Circles) support [#1121](https://github.com/nextcloud/talk-desktop/pull/1121)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.0.0 in both beta and stable release channels [#1137](https://github.com/nextcloud/talk-desktop/pull/1137)
+- Update translations
+- Update dependencies
+
 ## v1.1.4-beta - 2025-02-17
 
 ### Notes

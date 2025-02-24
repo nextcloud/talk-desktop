@@ -24,11 +24,14 @@ const emit = defineEmits<{
 	(event: 'update:icon', value: string | null): void,
 	(event: 'update:message', value: string | null): void,
 }>()
+
+// TODO: Vue 3 - replace with `useId`
+const id = Math.random().toString(36).slice(2, 8)
 </script>
 
 <template>
-	<div class="user-status-form-custom-message">
-		<NcEmojiPicker @select="emit('update:icon', $event)">
+	<div :id="id" class="user-status-form-custom-message">
+		<NcEmojiPicker :container="'#' + id" @select="emit('update:icon', $event)">
 			<NcButton :aria-label="t('talk_desktop', 'Emoji for your status message')" type="tertiary" :disabled="disabled">
 				<template #icon>
 					<template v-if="icon">

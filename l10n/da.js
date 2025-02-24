@@ -44,7 +44,7 @@ OC.L10N.register(
     "Entire screens" : "Fuldskærm",
     "Application windows" : "Applikationsvinduer",
     "Live preview" : "Live forhåndsvisning",
-    "Cancel" : "Annullér",
+    "Cancel" : "Annuller",
     "Share screen" : "Del skærm",
     "Preview is not available" : "Forhåndsvisning er ikke tilgængelig",
     "Update Talk Desktop" : "Opdater Snak desktop",

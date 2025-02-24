@@ -42,8 +42,8 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "talk": {
-    "stable": "v20.1.4",
-    "beta": "v21.0.0-rc.4",
+    "stable": "v21.0.0",
+    "beta": "v21.0.0",
     "dev": "main"
   },
   "dependencies": {

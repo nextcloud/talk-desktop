@@ -9,8 +9,6 @@
 	<meta charset="UTF-8">
 	<title>WiX Backgrounds</title>
 	<style>
-	@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap');
-
 	:root {
 		/* WiX Images */
 		--dialog-width: 493px;
@@ -28,21 +26,15 @@
 		--color-primary-hover: #1cafff;
 		--gradient-primary-background: linear-gradient(40deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
 
-		/* Logo sizes */
-		--side-logo: 54px;
+		/* Logos */
+		--side-logo: 100%;
+		--side-top-offset: 0;
 		--banner-logo: 42px;
 	}
 
 	body {
 		background: #DDD;
 		font-family: "Open Sans", sans-serif;
-	}
-
-	.nunito {
-		font-family: "Nunito", serif;
-		font-optical-sizing: auto;
-		font-weight: 600;
-		font-style: normal;
 	}
 
 	.dialog {
@@ -55,20 +47,14 @@
 			width: var(--side-width);
 			height: var(--side-height);
 			background: var(--gradient-primary-background);
+
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 14pt;
 
 			.logo {
 				width: var(--side-logo);
-				margin-top: 28pt;
-			}
-
-			.title {
-				color: white;
-				font-size: 14pt;
-				line-height: 1;
+				margin-top: var(--side-top-offset);
 			}
 		}
 	}
@@ -90,8 +76,7 @@
 <body>
 	<div  class="dialog">
 		<div class="side">
-			<img class="logo" src="../img/talk-icon-plain-dark.svg" alt="" />
-			<div class="title">Nextcloud Talk</div>
+			<img class="logo" src="../img/talk-logo-spaced.svg" alt="" />
 		</div>
 	</div>
 	<br>

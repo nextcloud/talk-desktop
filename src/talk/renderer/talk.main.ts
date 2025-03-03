@@ -12,7 +12,6 @@ import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 import { setupWebPage } from '../../shared/setupWebPage.js'
 import { createTalkDesktopApp } from './TalkDesktop.app.ts'
 
-// Initially open the Welcome page, if not specified
-await setupWebPage({ routeHash: '#/apps/spreed' })
+await setupWebPage()
 
 await createTalkDesktopApp()

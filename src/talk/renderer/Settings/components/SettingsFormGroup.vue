@@ -20,20 +20,25 @@ const descriptionId = 'settings-form-group-description-' + id
 		<div class="settings-form-group__icon">
 			<slot name="icon" :size="20" />
 		</div>
-		<div>
+		<div class="settings-form-group__inner">
 			<div class="settings-form-group__content">
-				<label :for="inputId">
+				<label class="settings-form-group__label" :for="inputId">
 					{{ label }}
 				</label>
-				<slot :input-id="inputId" :description-id="descriptionId" />
+				<span class="settings-form-group__divider" />
+				<div class="settings-form-group__input">
+					<slot :input-id="inputId" :description-id="descriptionId" />
+				</div>
 			</div>
-			<p v-if="description || $slots.description" id="descriptionId" class="settings-form-group__hint">
+			<p v-if="description || $slots.description" :id="descriptionId" class="settings-form-group__hint">
 				<slot name="description">
 					{{ description }}
 				</slot>
 			</p>
+			<div v-if="$slots.subform">
+				<slot name="subform" />
+			</div>
 		</div>
-		<slot name="action" />
 	</div>
 </template>
 
@@ -41,7 +46,26 @@ const descriptionId = 'settings-form-group-description-' + id
 .settings-form-group {
 	display: flex;
 	gap: var(--default-grid-baseline);
-	padding-inline-start: calc(var(--default-grid-baseline) * 2);
+	margin-block: calc(3 * var(--default-grid-baseline));
+}
+
+.settings-form-group + .settings-form-group {
+	border-block-start: 1px solid var(--color-border);
+	padding-block-start: calc(3 * var(--default-grid-baseline));
+}
+
+.settings-form-group__icon {
+	display: flex;
+	justify-content: center;
+	width: var(--default-clickable-area);
+	height: var(--default-clickable-area);
+}
+
+.settings-form-group__inner {
+	display: flex;
+	flex-direction: column;
+	gap: calc(3 * var(--default-grid-baseline));
+	flex: 1 1 auto;
 }
 
 .settings-form-group__content {
@@ -50,15 +74,15 @@ const descriptionId = 'settings-form-group-description-' + id
 	gap: var(--default-grid-baseline);
 }
 
-.settings-form-group__icon {
-	display: flex;
-	justify-content: center;
-	width: 36px;
-	height: var(--default-clickable-area);
+.settings-form-group__label {
+	flex: 1;
+}
+
+.settings-form-group__input {
+	max-width: 300px;
 }
 
 .settings-form-group__hint {
 	color: var(--color-text-maxcontrast);
-	margin-block-start: var(--default-grid-baseline);
 }
 </style>

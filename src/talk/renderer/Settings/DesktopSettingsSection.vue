@@ -10,17 +10,21 @@ import { storeToRefs } from 'pinia'
 import { t } from '@nextcloud/l10n'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import NcSelect from '@nextcloud/vue/components/NcSelect'
 import IconMagnify from 'vue-material-design-icons/Magnify.vue'
 import IconMinus from 'vue-material-design-icons/Minus.vue'
 import IconPlus from 'vue-material-design-icons/Plus.vue'
+import IconReload from 'vue-material-design-icons/Reload.vue'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
+import IconApplicationOutline from 'vue-material-design-icons/ApplicationOutline.vue'
 import IconCardAccountPhoneOutline from 'vue-material-design-icons/CardAccountPhoneOutline.vue'
 import IconPhoneRingOutline from 'vue-material-design-icons/PhoneRingOutline.vue'
 import IconBellRingOutline from 'vue-material-design-icons/BellRingOutline.vue'
-import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
 import IconRestore from 'vue-material-design-icons/Restore.vue'
+import IconRocketLaunch from 'vue-material-design-icons/RocketLaunch.vue'
 import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
+import IconSpeakerMultiple from 'vue-material-design-icons/SpeakerMultiple.vue'
 import SettingsSubsection from './components/SettingsSubsection.vue'
 import SettingsSelect from './components/SettingsSelect.vue'
 import SettingsFormGroup from './components/SettingsFormGroup.vue'
@@ -66,20 +70,9 @@ const zoomHint = t('talk_desktop', 'Zoom can be also changed by {key} or mouse w
 	resetKey: `<kbd>${ctrl} + 0</kbd>`,
 }, undefined, { escape: false })
 
-const generalNotificationOptions = [
-	{ label: t('talk_desktop', 'When not in "Do not disturb"'), value: true } as const,
-	{ label: t('talk_desktop', 'Never'), value: false } as const,
-]
-
 const playSoundChat = useAppConfigValue('playSoundChat')
-const playSoundChatOption = useNcSelectModel(playSoundChat, generalNotificationOptions)
-
 const playSoundCall = useAppConfigValue('playSoundCall')
-const playSoundCallOption = useNcSelectModel(playSoundCall, generalNotificationOptions)
-
 const enableCallbox = useAppConfigValue('enableCallbox')
-const enableCallboxOption = useNcSelectModel(enableCallbox, generalNotificationOptions)
-
 const secondarySpeaker = useAppConfigValue('secondarySpeaker')
 
 const EMPTY_DEVICE_OPTION = { value: null, label: t('talk_desktop', 'None') }
@@ -134,9 +127,14 @@ function relaunch() {
 		</NcNoteCard>
 
 		<SettingsSubsection v-if="!isLinux" :name="t('talk_desktop', 'General')">
-			<NcCheckboxRadioSwitch v-model="launchAtStartup" type="switch">
-				{{ t('talk_desktop', 'Launch at startup') }}
-			</NcCheckboxRadioSwitch>
+			<SettingsFormGroup :label="t('talk_desktop', 'Launch at startup')">
+				<template #icon="{ size }">
+					<IconRocketLaunch :size="size" />
+				</template>
+				<template #default="{ inputId }">
+					<NcCheckboxRadioSwitch :id="inputId" v-model="launchAtStartup" type="switch" />
+				</template>
+			</SettingsFormGroup>
 		</SettingsSubsection>
 
 		<SettingsSubsection :name="t('talk_desktop', 'Appearance')">
@@ -146,13 +144,14 @@ function relaunch() {
 				</template>
 			</SettingsSelect>
 
-			<NcCheckboxRadioSwitch v-model="monochromeTrayIcon" type="switch">
-				{{ t('talk_desktop', 'Use monochrome tray icon') }}
-			</NcCheckboxRadioSwitch>
-
-			<NcCheckboxRadioSwitch v-model="systemTitleBar" type="switch">
-				{{ t('talk_desktop', 'Use system title bar') }}
-			</NcCheckboxRadioSwitch>
+			<SettingsFormGroup :label="t('talk_desktop', 'Use system title bar')">
+				<template #icon="{ size }">
+					<IconApplicationOutline :size="size" />
+				</template>
+				<template #default="{ inputId }">
+					<NcCheckboxRadioSwitch :id="inputId" v-model="systemTitleBar" type="switch" />
+				</template>
+			</SettingsFormGroup>
 
 			<SettingsFormGroup :label="t('talk_desktop', 'Zoom')">
 				<template #icon="{ size }">
@@ -163,73 +162,89 @@ function relaunch() {
 					<span v-html="zoomHint" />
 				</template>
 				<template #default="{ inputId, descriptionId }">
-					<NcButton :aria-label="t('talk_desktop', 'Zoom out')" type="tertiary" @click="zoomFactor /= ZOOM_STEP">
-						<template #icon>
-							<IconMinus :size="20" />
-						</template>
-					</NcButton>
-					<NcTextField :id="inputId"
-						class="zoom-input"
-						:aria-describedby="descriptionId"
-						label-outside
-						inputmode="number"
-						:model-value="zoomFactorPercentage"
-						@change="zoomFactorPercentage = $event.target.value"
-						@blur="$event.target.value = zoomFactorPercentage" />
-					<NcButton :aria-label="t('talk_desktop', 'Zoom in')" type="tertiary" @click="zoomFactor *= ZOOM_STEP">
-						<template #icon>
-							<IconPlus :size="20" />
-						</template>
-					</NcButton>
-					<NcButton @click="zoomFactor = 1">
-						<template #icon>
-							<IconRestore :size="20" />
-						</template>
-						{{ t('talk_desktop', 'Reset') }}
-					</NcButton>
+					<div style="display: flex; gap: var(--default-grid-baseline);">
+						<NcButton :aria-label="t('talk_desktop', 'Zoom out')" type="tertiary" @click="zoomFactor /= ZOOM_STEP">
+							<template #icon>
+								<IconMinus :size="20" />
+							</template>
+						</NcButton>
+						<NcTextField :id="inputId"
+							class="zoom-input"
+							:aria-describedby="descriptionId"
+							label-outside
+							inputmode="number"
+							:model-value="zoomFactorPercentage"
+							@change="zoomFactorPercentage = $event.target.value"
+							@blur="$event.target.value = zoomFactorPercentage" />
+						<NcButton :aria-label="t('talk_desktop', 'Zoom in')" type="tertiary" @click="zoomFactor *= ZOOM_STEP">
+							<template #icon>
+								<IconPlus :size="20" />
+							</template>
+						</NcButton>
+						<NcButton @click="zoomFactor = 1">
+							<template #icon>
+								<IconRestore :size="20" />
+							</template>
+							{{ t('talk_desktop', 'Reset') }}
+						</NcButton>
+					</div>
 				</template>
 			</SettingsFormGroup>
 		</SettingsSubsection>
 
 		<SettingsSubsection :name="t('talk_desktop', 'Notifications and sounds')">
-			<SettingsSelect v-model="playSoundChatOption" :options="generalNotificationOptions" :label="t('talk_desktop', 'Play chat notification sound')">
+			<SettingsFormGroup :label="t('talk_desktop', 'Play chat notification sound')">
 				<template #icon="{ size }">
 					<IconBellRingOutline :size="size" />
 				</template>
-			</SettingsSelect>
+				<template #default="{ inputId }">
+					<NcCheckboxRadioSwitch :id="inputId" v-model="playSoundCall" type="switch" />
+				</template>
+			</SettingsFormGroup>
 
-			<SettingsSelect v-model="playSoundCallOption" :options="generalNotificationOptions" :label="t('talk_desktop', 'Play call notification sound')">
+			<SettingsFormGroup :label="t('talk_desktop', 'Play call notification sound')">
 				<template #icon="{ size }">
 					<IconPhoneRingOutline :size="size" />
 				</template>
-			</SettingsSelect>
+				<template #default="{ inputId }">
+					<NcCheckboxRadioSwitch :id="inputId" v-model="playSoundChat" type="switch" />
+				</template>
+			</SettingsFormGroup>
 
-			<SettingsSelect v-model="enableCallboxOption" :options="generalNotificationOptions" :label="t('talk_desktop', 'Show call notification popup')">
+			<SettingsFormGroup :label="t('talk_desktop', 'Show call notification popup')">
 				<template #icon="{ size }">
 					<IconCardAccountPhoneOutline :size="size" />
 				</template>
-			</SettingsSelect>
+				<template #default="{ inputId }">
+					<NcCheckboxRadioSwitch :id="inputId" v-model="enableCallbox" type="switch" />
+				</template>
+			</SettingsFormGroup>
 
-			<NcCheckboxRadioSwitch v-model="secondarySpeaker" type="switch">
-				{{ t('talk_desktop', 'Also repeat call notification on a secondary speaker') }}
-			</NcCheckboxRadioSwitch>
-
-			<SettingsSelect v-if="secondarySpeaker"
-				v-model="secondarySpeakerDeviceOption"
-				:options="secondarySpeakerOptions"
-				:disabled="secondarySpeakerOptions.length === 1"
-				:label="t('talk_desktop', 'Secondary speaker')">
+			<SettingsFormGroup :label="t('talk_desktop', 'Also repeat call notification on a secondary speaker')">
 				<template #icon="{ size }">
-					<IconVolumeHigh :size="size" />
+					<IconSpeakerMultiple :size="size" />
 				</template>
-				<template #action>
-					<NcButton type="tertiary" @click="initializeDevices">
-						<template #icon>
-							<IconRestore :size="20" />
-						</template>
-					</NcButton>
+				<template #default="{ inputId }">
+					<NcCheckboxRadioSwitch :id="inputId" v-model="secondarySpeaker" type="switch" />
 				</template>
-			</SettingsSelect>
+				<template v-if="secondarySpeaker" #subform>
+					<div style="display: flex; gap: var(--default-grid-baseline);">
+						<NcSelect v-model="secondarySpeakerDeviceOption"
+							:aria-label-combobox="t('talk_desktop', 'Secondary speaker device')"
+							style="flex: 1"
+							:options="secondarySpeakerOptions"
+							:disabled="secondarySpeakerOptions.length === 1"
+							:clearable="false"
+							:searchable="false"
+							label-outside />
+						<NcButton type="tertiary" @click="initializeDevices">
+							<template #icon>
+								<IconReload :size="20" />
+							</template>
+						</NcButton>
+					</div>
+				</template>
+			</SettingsFormGroup>
 		</SettingsSubsection>
 	</div>
 </template>
@@ -256,5 +271,15 @@ function relaunch() {
 
 .zoom-input {
 	width: 50px !important;
+}
+
+:deep(.checkbox-content) {
+	padding: var(--default-grid-baseline);
+}
+
+:deep(.checkbox-content__icon) {
+	height: 28px;
+	display: flex;
+	align-items: center;
 }
 </style>

@@ -36,6 +36,7 @@ OC.L10N.register(
     "Loading …" : "Φόρτωση…",
     "Cancel" : "Ακύρωση",
     "Share screen" : "Διαμοιρασμός οθόνης",
+    "Application" : "Εφαρμογή",
     "Away" : "Λείπω",
     "Invisible" : "Αόρατο",
     "You missed a call from {user}" : "Αναπάντητη κλήση από τον {user}",

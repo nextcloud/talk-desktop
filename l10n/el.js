@@ -39,6 +39,7 @@ OC.L10N.register(
     "Application" : "Εφαρμογή",
     "Away" : "Λείπω",
     "Invisible" : "Αόρατο",
+    "Unknown status" : "Άγνωστη κατάσταση",
     "You missed a call from {user}" : "Αναπάντητη κλήση από τον {user}",
     "You missed a group call in {call}" : "Αναπάντητη από ομαδική κλήση {call}"
 },

@@ -5,10 +5,8 @@
 
 <script setup lang="ts">
 import { provide, ref } from 'vue'
-import { useHotKey } from '@nextcloud/vue/composables/useHotKey'
 import TitleBar from './TitleBar/TitleBar.vue'
 import TalkWrapper from './TalkWrapper/TalkWrapper.vue'
-import { openRoot } from './TalkWrapper/talk.service.ts'
 import { createViewer } from './Viewer/Viewer.js'
 import { useNotificationsStore } from './notifications/notifications.store.js'
 
@@ -18,9 +16,6 @@ provide('talk:isInitialized', isTalkInitialized)
 useNotificationsStore()
 
 window.OCA.Viewer = createViewer()
-
-// Unselect chat by escape key
-useHotKey('Escape', openRoot)
 </script>
 
 <template>

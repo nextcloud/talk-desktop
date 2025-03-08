@@ -14,17 +14,12 @@ defineProps<{
 		<h4 v-if="name" class="settings-subsection__title">
 			{{ name }}
 		</h4>
-		<div class="setting-subsection__content">
-			<slot />
-		</div>
+		<slot />
 	</div>
 </template>
 
 <style scoped>
-.setting-subsection__content {
-	display: flex;
-	flex-direction: column;
-	gap: var(--default-grid-baseline);
-	align-items: stretch;
+.settings-subsection__title {
+	margin-block: calc(3 * var(--default-grid-baseline));
 }
 </style>

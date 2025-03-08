@@ -12,6 +12,7 @@ OC.L10N.register(
     "Nextcloud server address" : "Адрес сервера Nextcloud",
     "Log in" : "Войти",
     "Logging in …" : "Вход в систему…",
+    "Incoming call" : "Входящий вызов",
     "Close" : "Закрыть",
     "Dismiss" : "Закрыть",
     "Join call" : "Присоединиться к вызову",

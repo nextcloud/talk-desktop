@@ -12,6 +12,7 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud 服务器地址",
     "Log in" : "登录",
     "Logging in …" : "正在登录……",
+    "Incoming call" : "来电",
     "Close" : "关闭",
     "Dismiss" : "忽略",
     "Join call" : "加入通话",

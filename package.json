@@ -93,7 +93,7 @@
     "webpack": "^5.98.0",
     "webpack-merge": "^6.0.1",
     "worker-loader": "^3.0.8",
-    "zx": "^8.3.2"
+    "zx": "^8.4.0"
   },
   "engines": {
     "node": "^20.14.0",

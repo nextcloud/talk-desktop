@@ -55,7 +55,8 @@ async function loadAndRegisterL10n(app, lang, resolver) {
  * @return {Promise<void>}
  */
 async function applyL10n() {
-	const { language, locale } = appData.userMetadata ?? await window.TALK_DESKTOP.getSystemL10n()
+	const language = appData.userMetadata?.language || (await window.TALK_DESKTOP.getSystemL10n()).language
+	const locale = appData.userMetadata?.locale || (await window.TALK_DESKTOP.getSystemL10n()).locale
 
 	document.documentElement.lang = language
 	document.documentElement.dataset.locale = locale

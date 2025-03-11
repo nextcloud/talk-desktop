@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Unexpected error" : "Απροσδόκητο σφάλμα",
     "Nextcloud server address" : "Διεύθυνση διακομιστή Nextcloud",
     "Log in" : "Είσοδος",
     "Logging in …" : "Σύνδεση …",
@@ -17,6 +18,7 @@ OC.L10N.register(
     "Dark" : "Σκούρο",
     "Never" : "Ποτέ",
     "None" : "Καμμία",
+    "Restart" : "Επανεκκίνηση",
     "General" : "Γενικά",
     "Appearance" : "Εμφάνιση",
     "Theme" : "Θέμα",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Close" : "Close",
     "Dismiss" : "Dismiss",
     "Copy" : "Nusxalash",
+    "Issues" : "Muammolar",
     "No" : "No",
     "Yes" : "Yes",
     "Always" : "Always",

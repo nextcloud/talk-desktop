@@ -10,6 +10,8 @@ OC.L10N.register(
     "License" : "Licença",
     "Issues" : "Problemas",
     "Ok" : "CONFIRMAR",
+    "No" : "Não",
+    "Yes" : "Sim",
     "Light" : "Claro",
     "Dark" : "Escuro",
     "Always" : "Sempre",

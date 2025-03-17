@@ -47,10 +47,13 @@ OC.L10N.register(
     "Emoji for your status message" : "Emoji per al missatge d'estat",
     "Status message" : "Missatge d'estat",
     "Loading …" : "S'està carregant…",
+    "Layout" : "Disposició",
+    "Compact" : "Compacte",
     "Cancel" : "Cancel·la",
     "Share screen" : "Comparteix la pantalla",
     "Application" : "Aplicació",
     "Online" : "En línia",
+    "Unknown status" : "Estat desconegut",
     "You missed a call from {user}" : "Teniu una trucada perduda de {user}",
     "You missed a group call in {call}" : "Teniu una trucada de grup perduda a {call}"
 },

@@ -94,7 +94,6 @@ export function createNotificationStore() {
 		if (notifications.length > _oldcount) {
 			_oldcount = notifications.length
 			if (state.backgroundFetching && document.hidden) {
-				window.TALK_DESKTOP.setBadgeCount()
 				window.TALK_DESKTOP.flashAppIcon(true)
 				// If we didn't already highlight, store the title so we can restore on tab-view
 				if (!document.title.startsWith('* ')) {
@@ -110,7 +109,6 @@ export function createNotificationStore() {
 	 * the Talk might have altered it.
 	 */
 	function _restoreTitle() {
-		window.TALK_DESKTOP.setBadgeCount(0)
 		window.TALK_DESKTOP.flashAppIcon(false)
 		if (document.title.startsWith('* ')) {
 			document.title = document.title.substring(2)

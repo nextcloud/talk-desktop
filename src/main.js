@@ -85,7 +85,9 @@ ipcMain.handle('app:getSystemL10n', () => ({
 }))
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))
-ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(count))
+ipcMain.handle('app:setBadgeCount', async (event, count) => {
+	return app.setBadgeCount(count)
+})
 ipcMain.on('app:relaunch', () => {
 	app.relaunch()
 	app.exit(0)

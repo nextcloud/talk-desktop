@@ -47,7 +47,7 @@ OC.L10N.register(
     "Zoom in" : "Ampliar",
     "Reset" : "Redefinir",
     "Notifications and sounds" : "Notificações e sons",
-    "Play chat notification sound" : "Repoduzir o som de notificação de chat",
+    "Play chat notification sound" : "Repoduzir o som de notificação de bate-papo",
     "Play call notification sound" : "Repoduzir o som de notificação de chamada",
     "Show call notification popup" : "Mostrar pop-up de notificação de chamada",
     "Also repeat call notification on a secondary speaker" : "Também repetir a notificação de chamada em um alto-falante secundário",

@@ -97,8 +97,8 @@ async function initializeDevices() {
 	try {
 		stream = await navigator.mediaDevices.getUserMedia({ audio: true })
 		const deviceOptions = (await navigator.mediaDevices.enumerateDevices() ?? [])
-			.filter(device => device.kind === 'audiooutput')
-			.map(device => ({ value: device.deviceId, label: device.label }))
+			.filter((device) => device.kind === 'audiooutput')
+			.map((device) => ({ value: device.deviceId, label: device.label }))
 
 		secondarySpeakerOptions.value = [EMPTY_DEVICE_OPTION, ...deviceOptions]
 	} catch (error) {
@@ -106,7 +106,7 @@ async function initializeDevices() {
 		secondarySpeakerOptions.value = [EMPTY_DEVICE_OPTION]
 	} finally {
 		if (stream) {
-			stream.getTracks().forEach(track => track.stop())
+			stream.getTracks().forEach((track) => track.stop())
 		}
 	}
 }

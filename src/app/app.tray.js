@@ -35,14 +35,14 @@ function setupTray(browserWindow) {
 	]))
 	tray.on('click', () => browserWindow.show())
 
-	browserWindow.on('close', event => {
+	browserWindow.on('close', (event) => {
 		if (!isAppQuitting) {
 			event.preventDefault()
 			browserWindow.hide()
 		}
 	})
 
-	browserWindow.on('closed', event => {
+	browserWindow.on('closed', (event) => {
 		tray.destroy()
 	})
 

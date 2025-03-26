@@ -85,7 +85,7 @@ export function createViewer() {
 		}],
 
 		get mimetypes() {
-			return this.availableHandlers.flatMap(handler => handler.mimes)
+			return this.availableHandlers.flatMap((handler) => handler.mimes)
 		},
 
 		open(...args) {

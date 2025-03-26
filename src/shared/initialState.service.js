@@ -8,7 +8,7 @@
  * @param {string} str - source string
  * @return {string} - string with escaped unicode characters
  */
-const escapeUnicode = (str) => str.split('').map(char => {
+const escapeUnicode = (str) => str.split('').map((char) => {
 	const codePoint = char.codePointAt(0)
 	if (codePoint <= 0x7F) {
 		return char

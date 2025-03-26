@@ -19,8 +19,8 @@ export function useNcSelectModel<T>(modelValue: Ref<T>, options: NcSelectOption<
 	return computed({
 		get() {
 			return fallback
-				? unref(options).find(item => item.value === modelValue.value) ?? fallback
-				: unref(options).find(item => item.value === modelValue.value)!
+				? unref(options).find((item) => item.value === modelValue.value) ?? fallback
+				: unref(options).find((item) => item.value === modelValue.value)!
 		},
 
 		set(option: NcSelectOption<T>) {

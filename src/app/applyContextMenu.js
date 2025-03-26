@@ -17,7 +17,7 @@ export function applyContextMenu(browserWindow) {
 
 		// Add context actions for misspelling words and typos
 		const menuMisspellingItems = [
-			...params.dictionarySuggestions.map(suggestion => ({
+			...params.dictionarySuggestions.map((suggestion) => ({
 				label: suggestion,
 				click: () => browserWindow.webContents.replaceMisspelling(suggestion),
 			})),

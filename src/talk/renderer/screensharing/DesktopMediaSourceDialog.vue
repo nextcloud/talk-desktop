@@ -93,6 +93,7 @@ async function requestDesktopCapturerSources() {
 
 /**
  * Handle the suspend event of the video element
+ *
  * @param source - The source that was suspended
  */
 function handleVideoSuspend(source: ScreensharingSource) {

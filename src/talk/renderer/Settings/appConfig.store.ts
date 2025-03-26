@@ -42,6 +42,7 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 
 	/**
 	 * Get an application config value
+	 *
 	 * @param key - The key of the config value
 	 * @return - The config
 	 */
@@ -51,6 +52,7 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 
 	/**
 	 * Set an application config value
+	 *
 	 * @param key - The key of the config value
 	 * @param value - The value to set
 	 */

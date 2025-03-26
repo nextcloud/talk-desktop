@@ -40,6 +40,7 @@ export function openRoot() {
 
 /**
  * Open a conversation in Talk
+ *
  * @param token - Conversation token
  * @param options - Options
  * @param options.directCall - Use direct call (open media settings to join a call)
@@ -56,6 +57,7 @@ export async function openConversation(token: string, { directCall = false }: { 
 
 /**
  * Ignore duplicated navigation error
+ *
  * @param error - Error
  */
 function passDuplicatedNavigationError(error: Error) {
@@ -120,6 +122,7 @@ function getTalkHashStoreAdapter() {
 
 /**
  * Set the Talk hash
+ *
  * @param hash - Talk Hash
  */
 export function setTalkHash(hash: string) {
@@ -128,6 +131,7 @@ export function setTalkHash(hash: string) {
 
 /**
  * Listen to Talk hash update
+ *
  * @param callback - Callback
  */
 export function onTalkHashUpdate(callback: (hash: string) => void) {
@@ -136,6 +140,7 @@ export function onTalkHashUpdate(callback: (hash: string) => void) {
 
 /**
  * Listen to Talk hash dirty
+ *
  * @param callback - Callback
  */
 export function onTalkHashDirty(callback: () => void) {

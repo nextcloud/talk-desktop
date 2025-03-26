@@ -37,7 +37,6 @@ export async function getUserMetadata({ userId }) {
  *
  * @see TODO: ADD LINKS
  * @return {Promise<*>}
- *
  */
 export async function getCurrentUserData() {
 	const response = await axios.get(generateOcsUrl('cloud/user'))

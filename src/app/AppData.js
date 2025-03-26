@@ -99,6 +99,7 @@ export class AppData {
 
 	/**
 	 * Set TalkHash and mark it as dirty if changed
+	 *
 	 * @param {string} hash new hash
 	 * @return {AppData} this
 	 */

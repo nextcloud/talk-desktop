@@ -5,6 +5,7 @@
 
 /**
  * Escape unicode characters in string with \\u{code}
+ *
  * @param {string} str - source string
  * @return {string} - string with escaped unicode characters
  */
@@ -21,6 +22,7 @@ const escapeUnicode = (str) => str.split('').map((char) => {
 
 /**
  * Find or create and add to body if not exists a container for initial state input elements
+ *
  * @return {HTMLTemplateElement} - the container template element
  */
 function findOrCreateInitialStateContainer() {
@@ -38,6 +40,7 @@ function findOrCreateInitialStateContainer() {
 
 /**
  * Find or create an input element for initial state data
+ *
  * @param {string} app - application name
  * @param {string} key - state key
  * @param {HTMLElement} [container] - the container element with all items
@@ -57,6 +60,7 @@ function findOrCreateInitialStateElement(app, key, container = document.body) {
 
 /**
  * Set initial state data for app
+ *
  * @param {string} app - application name
  * @param {string} key - state key
  * @param {any} data - serializable state data

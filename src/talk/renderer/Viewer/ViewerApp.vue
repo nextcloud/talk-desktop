@@ -23,6 +23,7 @@ const link = computed(() => file.value && generateUrl(`/f/${file.value.fileid}`)
 
 /**
  * Open the viewer modal
+ *
  * @param {object} options - Options
  * @param {object} options.fileInfo - File info
  * @param {Function} options.onClose - Callback called then the modal is closed

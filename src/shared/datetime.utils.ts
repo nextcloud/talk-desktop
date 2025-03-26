@@ -12,6 +12,7 @@ const relativeTimeFormat = new Intl.RelativeTimeFormat(locale, { numeric: 'auto'
 /**
  * Format duration in human-readable format.
  * If the unit is not provided, the largest unit is used for rounded duration in milliseconds.
+ *
  * @param duration - Duration in the unit
  * @param unit - Unit to format to
  */
@@ -28,6 +29,7 @@ export function formatDuration(duration: number, unit?: Intl.RelativeTimeFormatU
 /**
  * Format duration in human-readable format from now.
  * If the unit is not provided, the largest unit is used for rounded duration in milliseconds.
+ *
  * @param dateOrMs - Date or ms to format
  * @param unit - Unit to format to
  */
@@ -37,6 +39,7 @@ export function formatDurationFromNow(dateOrMs: Date | number, unit?: Intl.Relat
 
 /**
  * Format relative time duration in human-readable format
+ *
  * @param ms - Duration in milliseconds
  */
 export function formatRelativeTime(ms: number) {
@@ -47,6 +50,7 @@ export function formatRelativeTime(ms: number) {
 
 /**
  * Format relative time duration in human-readable format from now
+ *
  * @param dateOrMs - Date or ms to format
  */
 export function formatRelativeTimeFromNow(dateOrMs: Date | number) {
@@ -55,6 +59,7 @@ export function formatRelativeTimeFromNow(dateOrMs: Date | number) {
 
 /**
  * Convert milliseconds to the largest unit rounded from 0.75 point.
+ *
  * @example 123 -> { value: 0, unit: 'second' }
  * @example 1000 -> { value: 1, unit: 'second' }
  * @example 25 * 60 * 60 * 1000 -> { value: 25, unit: 'minute' }

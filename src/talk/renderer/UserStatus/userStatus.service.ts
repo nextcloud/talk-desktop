@@ -42,6 +42,7 @@ export async function fetchCurrentUserStatus() {
 
 /**
  * Fetch the current user backup status
+ *
  * @param userId - User id
  */
 export async function fetchBackupStatus(userId: string) {
@@ -51,6 +52,7 @@ export async function fetchBackupStatus(userId: string) {
 
 /**
  * Set the user status's status
+ *
  * @param statusType - Status
  */
 export async function putUserStatusStatus(statusType: UserStatusStatusType) {
@@ -59,6 +61,7 @@ export async function putUserStatusStatus(statusType: UserStatusStatusType) {
 
 /**
  * Set user status message based on predefined statuses
+ *
  * @param messageId - ID of the message, taken from predefined status service
  * @param clearAt - When to automatically clean the status
  */
@@ -71,6 +74,7 @@ export async function putUserStatusPredefinedMessage(messageId: string, clearAt:
 
 /**
  * Set custom user status message
+ *
  * @param message - User-defined message
  * @param statusIcon - User-defined icon
  * @param clearAt - When to automatically clean the status
@@ -92,6 +96,7 @@ export async function deleteUserStatusMessage() {
 
 /**
  * Update the user status, including online status, a custom message, or removing a custom message
+ *
  * @param oldUserStatus - Current user status
  * @param newUserStatus - New user status
  */
@@ -122,6 +127,7 @@ export async function updateUserStatus(oldUserStatus: UserStatusPrivate, newUser
 
 /**
  * Revert the automated (backup) status
+ *
  * @param messageId - ID of the message that should be reverted
  */
 export async function revertToBackupStatus(messageId: string) {
@@ -131,6 +137,7 @@ export async function revertToBackupStatus(messageId: string) {
 
 /**
  * Send a heartbeat and get the current user status again
+ *
  * @param isAway - Whether the user is away
  */
 export async function heartbeatUserStatus(isAway: boolean) {

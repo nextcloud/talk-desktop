@@ -19,6 +19,7 @@ const ZOOM_STEP_FACTOR = Math.pow(ELECTRON_ZOOM_LEVEL_FACTOR, 0.5)
 
 /**
  * Set zoom factor for a browser window
+ *
  * @param browserWindow - Browser window
  * @param zoom - Zoom factor
  */
@@ -48,6 +49,7 @@ export function setZoom(browserWindow: BrowserWindow, zoom: number) {
 
 /**
  * Increase zoom level
+ *
  * @param browserWindow - Browser window
  */
 export function increaseZoom(browserWindow: BrowserWindow) {
@@ -56,6 +58,7 @@ export function increaseZoom(browserWindow: BrowserWindow) {
 
 /**
  * Decrease zoom level
+ *
  * @param browserWindow - Browser window
  */
 export function decreaseZoom(browserWindow: BrowserWindow) {
@@ -64,6 +67,7 @@ export function decreaseZoom(browserWindow: BrowserWindow) {
 
 /**
  * Enable zooming a window by mouse wheel
+ *
  * @param browserWindow - Browser window
  */
 export function applyWheelZoom(browserWindow: BrowserWindow) {

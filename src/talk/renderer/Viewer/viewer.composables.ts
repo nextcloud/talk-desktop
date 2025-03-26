@@ -19,6 +19,7 @@ export function useFileContent(filename: MaybeRefOrGetter<string>, format: 'bina
 export function useFileContent(filename: MaybeRefOrGetter<string>, format: 'text'): FileContentComposableResult<string | null>
 /**
  * Fetch file content with reactive state in a watch effect
+ *
  * @param filename - Path to user's file, e.g. '/Talk/file.txt'
  * @param format - Format of the file content to be returned. Binary is returned as Blob
  */

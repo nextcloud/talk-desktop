@@ -49,6 +49,7 @@ function setLoading() {
 
 /**
  * Switch state to error
+ *
  * @param {string} error - Error message
  */
 function setError(error) {

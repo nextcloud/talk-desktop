@@ -8,6 +8,7 @@ import { generateUrl } from '@nextcloud/router'
 
 /**
  * Generate an absolute WebDAV URL to a user's file
+ *
  * @param filename - Path to user's file, e.g. '/Talk/file.txt'
  * @return {string} Full path to the file, e.g. 'https://nextcloud.ltd/remote.php/dav/files/username/Talk/file.txt'
  */
@@ -17,6 +18,7 @@ export function generateUserFileDavUrl(filename: string): string {
 
 /**
  * Generate an absolute URL for a Nextcloud file preview
+ *
  * @param fileId - the fileid
  * @param etag - the ETag
  */

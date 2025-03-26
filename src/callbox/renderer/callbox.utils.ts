@@ -11,6 +11,7 @@ import { getAppConfigValue } from '../../shared/appConfig.service.ts'
 
 /**
  * Play ringtone
+ *
  * @return function to stop ringing
  */
 export function playRingtone() {

@@ -62,6 +62,7 @@ const popoverHideTriggers = (triggers: string[]) => [...triggers, 'click']
 
 /**
  * Handle user status type change
+ *
  * @param status - new user status
  */
 function handleUserStatusChange(status: UserStatusStatusType) {

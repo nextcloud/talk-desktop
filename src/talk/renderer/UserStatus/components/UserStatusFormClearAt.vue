@@ -61,6 +61,7 @@ const clearAtAsLabel = computed(() => clearAtToLabel(props.clearAt))
 
 /**
  * Handle the selected option
+ *
  * @param option - selected option
  */
 function handleSelected(option: typeof clearAtOptions[number]) {

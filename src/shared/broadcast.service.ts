@@ -14,6 +14,7 @@ export const broadcastChannel = new BroadcastChannel('TalkDesktop')
 
 /**
  * Broadcast a message to all windows
+ *
  * @param type - Message type
  * @param payload - Message payload
  */
@@ -23,6 +24,7 @@ export function postBroadcast<T extends BroadcastEventTypes>(type: T, payload: B
 
 /**
  * Listen for a broadcast message
+ *
  * @param type - Message type
  * @param callback - Callback function
  */

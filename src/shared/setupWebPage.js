@@ -75,6 +75,7 @@ async function applyL10n() {
 
 /**
  * Apply user data to the document attributes and global variables that can be then used by @nextcloud/auth
+ *
  * @return {void}
  */
 async function applyUserData() {
@@ -97,6 +98,7 @@ async function applyUserData() {
 
 /**
  * Apply Talk Desktop specific Axios interceptors globally to use authentication for API and handle some responses on app level.
+ *
  * @return {void}
  */
 export function applyAxiosInterceptors() {

@@ -34,6 +34,7 @@ const isClear = computed(() => userStatus.value.status === 'online' && !userStat
 
 /**
  * Patch the user status with the new values
+ *
  * @param newUserStatus - New user status values
  */
 function patchStatus(newUserStatus: Partial<UserStatusPrivate>) {
@@ -44,6 +45,7 @@ function patchStatus(newUserStatus: Partial<UserStatusPrivate>) {
 
 /**
  * Select a predefined status
+ *
  * @param status - Predefined status to select
  */
 function selectPredefinedStatus(status: PredefinedUserStatus) {

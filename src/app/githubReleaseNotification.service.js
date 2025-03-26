@@ -16,6 +16,7 @@ let cachedNewLatestVersion
 
 /**
  * Request the latest release version of Nextcloud Talk on GitHub releases
+ *
  * @param {boolean} beta - Whether to use beta release channel
  * @return {Promise<string>} Version tag, for example, v1.0.2-beta
  */
@@ -25,6 +26,7 @@ function getLatestReleaseVersion(beta = false) {
 
 /**
  * Request the latest beta release version of Nextcloud Talk on GitHub releases
+ *
  * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
  * @return {Promise<string>} Version tag, for example, v1.0.2-beta
  */
@@ -47,6 +49,7 @@ async function getLatestBetaReleaseVersion() {
 
 /**
  * Request the latest stable release version of Nextcloud Talk on GitHub releases
+ *
  * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
  * @return {Promise<string>} Version tag, for example, v1.0.2
  */
@@ -70,6 +73,7 @@ async function getLatestStableReleaseVersion() {
 /**
  * Show native notification about the new version.
  * It opens the release page on click.
+ *
  * @param {string} version - New version
  */
 function notifyAboutNewVersion(version) {

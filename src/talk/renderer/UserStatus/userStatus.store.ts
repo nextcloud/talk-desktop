@@ -29,6 +29,7 @@ declare module '@nextcloud/event-bus' {
 
 /**
  * Cache the user status in local storage
+ *
  * @param userStatus - User status
  */
 function cacheUserStatus(userStatus: UserStatusPrivate) {
@@ -45,6 +46,7 @@ function restoreUserStatus(): UserStatusPrivate | null {
 
 /**
  * Cache the predefined statuses in local storage
+ *
  * @param predefinedStatuses - Predefined statuses
  */
 function cachePredefinedStatuses(predefinedStatuses: PredefinedUserStatus[]) {
@@ -61,6 +63,7 @@ function restorePredefinedStatuses(): PredefinedUserStatus[] | null {
 
 /**
  * Emit the user status update event
+ *
  * @param userStatus - User status
  */
 function emitUserStatusUpdated(userStatus: UserStatusPublic) {
@@ -103,6 +106,7 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 
 	/**
 	 * Set the user status
+	 *
 	 * @param newUserStatus - New user status
 	 * @param withEmit - Whether to emit the update event
 	 */
@@ -116,6 +120,7 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 
 	/**
 	 * Patch the user status
+	 *
 	 * @param newUserStatus - New user status
 	 * @param withEmit - Whether to emit the update event
 	 */
@@ -129,6 +134,7 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 
 	/**
 	 * Save the user status
+	 *
 	 * @param newUserStatus - New user status
 	 */
 	async function saveUserStatus(newUserStatus: UserStatusPrivate) {
@@ -153,6 +159,7 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 
 	/**
 	 * Update the user status with a heartbeat
+	 *
 	 * @param isAway - Whether the user is away
 	 * @param forceFetchStatus - Whether to force fetch the current status
 	 */

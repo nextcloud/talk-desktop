@@ -209,6 +209,7 @@ export function createNotificationStore() {
 
 	/**
 	 * Handle test notifications from "occ notification:test-push" or OCS Test Push Notification
+	 *
 	 * @param {object} notification - Notification DTO
 	 */
 	function showTestNotification(notification) {

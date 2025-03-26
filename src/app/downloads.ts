@@ -18,6 +18,7 @@ const suggestedNames: Map<string, string> = new Map()
 
 /**
  * Push a suggested filename for a download URL
+ *
  * @param url - The URL to suggest a filename for
  * @param filename - The suggested filename
  */
@@ -27,6 +28,7 @@ export function pushDownloadUrlFilenameSuggestion(url: string, filename: string)
 
 /**
  * Get a suggested filename for a download URL and remove it from the list
+ *
  * @param url - The URL to pop a suggested filename for
  * @return - The suggested filename if any
  */
@@ -38,6 +40,7 @@ function popDownloadUrlFilenameSuggestion(url: string): string | undefined {
 
 /**
  * Trigger a download of a URL
+ *
  * @param browserWindow - Browser window to use as a download context
  * @param url - URL to download
  * @param filename - Suggested filename for the download if any, otherwise determined from the URL
@@ -53,6 +56,7 @@ export function triggerDownloadUrl(browserWindow: BrowserWindow, url: string, fi
  * Handle downloads from a browser window to:
  * - show notifications
  * - use suggested filenames
+ *
  * @param browserWindow - Browser window
  */
 export function applyDownloadHandler(browserWindow: BrowserWindow) {

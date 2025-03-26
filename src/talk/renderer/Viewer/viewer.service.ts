@@ -10,6 +10,7 @@ export async function fetchFileContent(filename: string, format: 'text'): Promis
 export async function fetchFileContent(filename: string, format: 'binary'): Promise<Blob>
 /**
  * Fetch file content
+ *
  * @param filename - Path to user's file, e.g. '/Talk/file.txt'
  * @param format - Format of the file content to be returned. 'binary' is returned as Blob
  */

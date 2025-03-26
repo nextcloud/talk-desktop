@@ -22,6 +22,7 @@ const isReady = ref(false)
 
 /**
  * Get the stream for the media source
+ *
  * @param mediaSourceId - The media source ID
  */
 function getStreamForMediaSource(mediaSourceId: ScreensharingSourceId) {
@@ -96,6 +97,7 @@ onBeforeUnmount(() => {
 
 /**
  * Handle the loadedmetadata event of the video element
+ *
  * @param event - The event
  */
 function onLoadedMetadata(event: Event) {

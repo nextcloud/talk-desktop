@@ -12,6 +12,7 @@ import ViewerHandlerText from './ViewerHandlerText.vue'
 
 /**
  * Create and mount Viewer instance with similar to original OCA.Viewer interface
+ *
  * @return {object}
  */
 export function createViewer() {

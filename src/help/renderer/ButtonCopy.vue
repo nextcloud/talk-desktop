@@ -10,7 +10,6 @@ export default {
 </script>
 
 <script setup lang="ts">
-/* eslint-disable import/first */
 import { ref } from 'vue'
 import IconCheck from 'vue-material-design-icons/Check.vue'
 import IconCopy from 'vue-material-design-icons/ContentCopy.vue'

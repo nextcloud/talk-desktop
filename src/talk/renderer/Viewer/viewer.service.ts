@@ -4,7 +4,7 @@
  */
 
 import { davGetClient, davRemoteURL, davRootPath } from '@nextcloud/files'
-import type { FileStat } from 'webdav' // eslint-disable-line n/no-extraneous-import -- not exported from @nextcloud/files
+import type { FileStat } from 'webdav'
 
 export async function fetchFileContent(filename: string, format: 'text'): Promise<string>
 export async function fetchFileContent(filename: string, format: 'binary'): Promise<Blob>

@@ -42,6 +42,8 @@ const wrapLabel = computed(() => format.value === 'md' ? t('talk_desktop', 'Wrap
 
 const justCopied = ref(false)
 
+const { content, loading, error } = useFileContent(toRef(() => props.file.filename), 'text')
+
 /**
  * Copy the content of the file to the clipboard
  */
@@ -52,8 +54,6 @@ function copy() {
 		justCopied.value = false
 	}, 2000)
 }
-
-const { content, loading, error } = useFileContent(toRef(() => props.file.filename), 'text')
 </script>
 
 <template>
@@ -199,7 +199,7 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 .viewer-text__content--md :deep(ul) {
 	/* The default value is too small and doesnt fit the marker */
 	/* TODO: fix in upstream */
-	padding-left: 1.2em !important;
+	padding-inline-start: 1.2em !important;
 }
 
 .viewer-text__content--md.viewer-text__content--wrap :deep(pre) {

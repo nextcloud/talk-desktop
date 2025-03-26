@@ -7,7 +7,7 @@
 import type { Component } from 'vue'
 
 withDefaults(defineProps<{
-	tag: string | Component
+	tag?: string | Component
 }>(), {
 	tag: 'button',
 })
@@ -54,7 +54,7 @@ export default {
 	display: block;
 	min-height: var(--default-clickable-area);
 	padding: .5em var(--menu-item-gap);
-	text-align: left;
+	text-align: start;
 	font-weight: normal;
 	width: 100%;
 	/* Override default global button styles */

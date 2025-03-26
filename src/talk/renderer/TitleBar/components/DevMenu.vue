@@ -40,7 +40,7 @@ async function triggerNotification() {
 	const n = new Notification('Notification title', {
 		// FIXME: type appData
 		lang: (appData.userMetadata as unknown as { locale: string }).locale,
-		body: 'Notification body: ' + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+		body: 'Notification body: Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		tag: Math.random().toString(36).slice(2),
 		silent: true,
 	})

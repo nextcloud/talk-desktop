@@ -9,7 +9,7 @@ import { computed } from 'vue'
 import { appData } from '../../../../app/AppData.js'
 
 const props = withDefaults(defineProps<{
-	size: number | string
+	size?: number | string
 }>(), {
 	size: 20,
 })

@@ -12,7 +12,9 @@ let isAppQuitting = false
 /**
  * Allow quitting the app if requested. It minimizes to a tray otherwise.
  */
-app.on('before-quit', () => { isAppQuitting = true })
+app.on('before-quit', () => {
+	isAppQuitting = true
+})
 
 /**
  * Setup tray with an icon that provides a context menu.
@@ -42,7 +44,7 @@ function setupTray(browserWindow) {
 		}
 	})
 
-	browserWindow.on('closed', (event) => {
+	browserWindow.on('closed', () => {
 		tray.destroy()
 	})
 

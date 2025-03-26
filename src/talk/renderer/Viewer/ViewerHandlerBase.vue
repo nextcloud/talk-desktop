@@ -17,7 +17,7 @@ const props = defineProps({
 		default: false,
 	},
 	error: {
-		type: [String, Boolean],
+		type: [Boolean, String],
 		required: false,
 		default: false,
 	},

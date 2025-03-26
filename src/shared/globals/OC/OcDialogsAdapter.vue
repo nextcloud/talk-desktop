@@ -174,7 +174,8 @@ defineExpose({
 
 <template>
 	<div>
-		<NcDialog v-for="dialog in dialogs"
+		<NcDialog
+			v-for="dialog in dialogs"
 			:key="dialog.id"
 			:name="dialog.name"
 			:message="dialog.message"

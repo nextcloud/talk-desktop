@@ -64,7 +64,8 @@ function dismiss() {
 <template>
 	<div class="callbox">
 		<div class="callbox__info">
-			<NcAvatar class="callbox__avatar"
+			<NcAvatar
+				class="callbox__avatar"
 				:url="avatar"
 				:size="AVATAR_SIZE" />
 			<div class="callbox__text">
@@ -75,7 +76,8 @@ function dismiss() {
 					{{ t('talk_desktop', 'Incoming call') }}
 				</div>
 			</div>
-			<NcButton class="callbox__quit"
+			<NcButton
+				class="callbox__quit"
 				:aria-label="t('talk_desktop', 'Close')"
 				type="tertiary-no-background"
 				size="small"
@@ -87,7 +89,8 @@ function dismiss() {
 		</div>
 
 		<div class="callbox__actions">
-			<NcButton type="error"
+			<NcButton
+				type="error"
 				alignment="center"
 				wide
 				@click="dismiss">
@@ -96,7 +99,8 @@ function dismiss() {
 				</template>
 				{{ t('talk_desktop', 'Dismiss') }}
 			</NcButton>
-			<NcButton type="success"
+			<NcButton
+				type="success"
 				alignment="center"
 				wide
 				@click="join">

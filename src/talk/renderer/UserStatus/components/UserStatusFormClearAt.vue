@@ -71,7 +71,8 @@ function handleSelected(option: typeof clearAtOptions[number]) {
 <template>
 	<div class="user-status-form-clear-at">
 		<label for="user-status-form-clear-at-input">{{ t('talk_desktop', 'Clear after') }}</label>
-		<NcSelect class="user-status-form-clear-at__select"
+		<NcSelect
+			class="user-status-form-clear-at__select"
 			label-outside
 			input-id="user-status-form-clear-at-input"
 			:searchable="false"

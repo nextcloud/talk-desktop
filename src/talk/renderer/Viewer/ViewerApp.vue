@@ -49,7 +49,8 @@ defineExpose({
 </script>
 
 <template>
-	<NcModal v-if="file"
+	<NcModal
+		v-if="file"
 		id="viewer"
 		:show.sync="isOpen"
 		class="viewer-modal"
@@ -58,7 +59,8 @@ defineExpose({
 		size="full"
 		:close-button-contained="false"
 		@close="close">
-		<component :is="viewComponent"
+		<component
+			:is="viewComponent"
 			v-if="viewComponent"
 			:file="file" />
 

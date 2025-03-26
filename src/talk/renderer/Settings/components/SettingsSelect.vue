@@ -42,7 +42,8 @@ export default {
 		</template>
 
 		<template #default="{ inputId }">
-			<NcSelect v-model="model"
+			<NcSelect
+				v-model="model"
 				class="settings-select"
 				:options="options"
 				:disabled="disabled"

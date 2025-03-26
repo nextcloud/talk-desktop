@@ -25,18 +25,21 @@ const emit = defineEmits<{
 
 <template>
 	<label :key="source.id" class="capture-source">
-		<input :id="source.id"
+		<input
+			:id="source.id"
 			class="capture-source__input"
 			type="radio"
 			:value="source.id"
 			:checked="selected"
 			@change="emit('select')">
 
-		<DesktopMediaSourcePreviewLive v-if="live"
+		<DesktopMediaSourcePreviewLive
+			v-if="live"
 			class="capture-source__preview"
 			:media-source-id="source.id"
 			@suspend="emit('suspend')" />
-		<img v-else-if="source.thumbnail"
+		<img
+			v-else-if="source.thumbnail"
 			alt=""
 			:src="source.thumbnail"
 			class="capture-source__preview">
@@ -45,7 +48,8 @@ const emit = defineEmits<{
 		</span>
 
 		<span class="capture-source__caption">
-			<img v-if="source.icon"
+			<img
+				v-if="source.icon"
 				alt=""
 				:src="source.icon"
 				class="capture-source__caption-icon">

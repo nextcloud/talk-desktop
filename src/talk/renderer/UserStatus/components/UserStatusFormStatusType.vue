@@ -20,7 +20,8 @@ const emit = defineEmits<{
 
 <template>
 	<div class="user-status-form-status">
-		<NcButton v-for="option in availableUserStatusStatusTypes"
+		<NcButton
+			v-for="option in availableUserStatusStatusTypes"
 			:key="option"
 			type="tertiary"
 			alignment="start"

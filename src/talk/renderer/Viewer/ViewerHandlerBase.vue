@@ -36,7 +36,8 @@ const readyToShow = computed(() => !props.loading && !props.error)
 
 <template>
 	<div class="viewer-wrapper">
-		<NcEmptyContent v-if="loading"
+		<NcEmptyContent
+			v-if="loading"
 			:name="t('talk_desktop', 'Loading …')"
 			class="viewer-wrapper__empty-content delayed-appear"
 			data-theme-dark>
@@ -45,7 +46,8 @@ const readyToShow = computed(() => !props.loading && !props.error)
 			</template>
 		</NcEmptyContent>
 
-		<NcEmptyContent v-else-if="error"
+		<NcEmptyContent
+			v-else-if="error"
 			:name="t('talk_desktop', 'Could not load the file')"
 			:description="typeof error === 'string' ? error : undefined"
 			class="viewer-wrapper__empty-content"

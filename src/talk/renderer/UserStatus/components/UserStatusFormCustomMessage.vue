@@ -42,7 +42,8 @@ const id = Math.random().toString(36).slice(2, 8)
 			</NcButton>
 		</NcEmojiPicker>
 
-		<NcTextField :label="t('talk_desktop', 'Status message')"
+		<NcTextField
+			:label="t('talk_desktop', 'Status message')"
 			maxlength="80"
 			:disabled="disabled"
 			:model-value="message ?? ''"

@@ -21,7 +21,8 @@ const emit = defineEmits<{
 </script>
 
 <template>
-	<NcButton type="tertiary"
+	<NcButton
+		type="tertiary"
 		alignment="start"
 		wide
 		:pressed="pressed"

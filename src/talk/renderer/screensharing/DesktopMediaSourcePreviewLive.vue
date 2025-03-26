@@ -116,7 +116,8 @@ function onSuspend() {
 
 <template>
 	<div class="live-preview">
-		<video v-show="isReady"
+		<video
+			v-show="isReady"
 			ref="videoElement"
 			class="live-preview__video"
 			muted

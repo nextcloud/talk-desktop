@@ -20,7 +20,8 @@ const src = computed(() => generateUserFileDavUrl(props.file.filename))
 
 <template>
 	<ViewerHandlerMedia v-slot="{ mediaClass, handleLoadEnd }">
-		<video class="viewer-video"
+		<video
+			class="viewer-video"
 			:class="mediaClass"
 			:src="src"
 			controls

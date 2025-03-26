@@ -151,7 +151,8 @@ async function login() {
 					<h2 class="login-box__header">
 						{{ t('talk_desktop', 'Log in to Nextcloud') }}
 					</h2>
-					<NcTextField v-model="rawServerUrl"
+					<NcTextField
+						v-model="rawServerUrl"
 						:label="t('talk_desktop', 'Nextcloud server address')"
 						label-visible
 						placeholder="https://try.nextcloud.com"
@@ -159,7 +160,8 @@ async function login() {
 						:success="state === 'success'"
 						:error="state === 'error'"
 						:helper-text="stateText" />
-					<NcButton v-if="state !== 'loading'"
+					<NcButton
+						v-if="state !== 'loading'"
 						class="submit-button"
 						type="primary"
 						native-type="submit"
@@ -169,7 +171,8 @@ async function login() {
 						</template>
 						{{ t('talk_desktop', 'Log in') }}
 					</NcButton>
-					<NcButton v-else-if="state ==='loading'"
+					<NcButton
+						v-else-if="state === 'loading'"
 						class="submit-button"
 						type="primary"
 						native-type="submit"

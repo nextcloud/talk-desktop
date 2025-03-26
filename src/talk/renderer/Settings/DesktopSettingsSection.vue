@@ -125,7 +125,8 @@ function relaunch() {
 		<NcNoteCard v-if="isRelaunchRequired" type="info" class="relaunch-require-note-card">
 			<div class="relaunch-require-note-card__content">
 				<span>{{ t('talk_desktop', 'Some changes require a relaunch to take effect') }}</span>
-				<NcButton type="primary"
+				<NcButton
+					type="primary"
 					size="small"
 					class="relaunch-require-note-card__button"
 					@click="relaunch">
@@ -169,7 +170,8 @@ function relaunch() {
 							<IconMinus :size="20" />
 						</template>
 					</NcButton>
-					<NcTextField :id="inputId"
+					<NcTextField
+						:id="inputId"
 						class="zoom-input"
 						:aria-describedby="descriptionId"
 						label-outside
@@ -215,7 +217,8 @@ function relaunch() {
 				{{ t('talk_desktop', 'Also repeat call notification on a secondary speaker') }}
 			</NcCheckboxRadioSwitch>
 
-			<SettingsSelect v-if="secondarySpeaker"
+			<SettingsSelect
+				v-if="secondarySpeaker"
 				v-model="secondarySpeakerDeviceOption"
 				:options="secondarySpeakerOptions"
 				:disabled="secondarySpeakerOptions.length === 1"

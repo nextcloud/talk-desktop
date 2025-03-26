@@ -32,30 +32,30 @@ function getStreamForMediaSource(mediaSourceId: ScreensharingSourceId) {
 	// "entire-desktop:0:0" is a custom sourceId for this specific case
 	const constraints = mediaSourceId === 'entire-desktop:0:0'
 		? {
-			audio: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
+				audio: {
+					mandatory: {
+						chromeMediaSource: 'desktop',
+					},
 				},
-			},
-			video: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
-					maxWidth: MAX_PREVIEW_SIZE,
-					maxHeight: MAX_PREVIEW_SIZE,
+				video: {
+					mandatory: {
+						chromeMediaSource: 'desktop',
+						maxWidth: MAX_PREVIEW_SIZE,
+						maxHeight: MAX_PREVIEW_SIZE,
+					},
 				},
-			},
-		}
+			}
 		: {
-			audio: false,
-			video: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
-					chromeMediaSourceId: mediaSourceId,
-					maxWidth: MAX_PREVIEW_SIZE,
-					maxHeight: MAX_PREVIEW_SIZE,
+				audio: false,
+				video: {
+					mandatory: {
+						chromeMediaSource: 'desktop',
+						chromeMediaSourceId: mediaSourceId,
+						maxWidth: MAX_PREVIEW_SIZE,
+						maxHeight: MAX_PREVIEW_SIZE,
+					},
 				},
-			},
-		}
+			}
 
 	// @ts-expect-error Each browser has a different API, the current object is compatible with Chromium
 	return navigator.mediaDevices.getUserMedia(constraints)

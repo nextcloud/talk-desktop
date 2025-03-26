@@ -142,9 +142,7 @@ export function createNotificationStore() {
 		}
 
 		const sound = new Howl({
-			src: [
-				generateFilePath('notifications', 'img', 'notification.ogg'),
-			],
+			src: [generateFilePath('notifications', 'img', 'notification.ogg')],
 			volume: 0.5,
 		})
 		sound.play()

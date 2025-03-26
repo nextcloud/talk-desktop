@@ -130,16 +130,18 @@ function confirm(text, title, callback, modal) {
 function confirmDestructive(text, title, buttons, callback, modal) {
 	return new Promise((resolve) => {
 		const theButtons = (typeof buttons === 'object' && buttons.type === 70)
-			? (callback) => [{
-				label: buttons.cancel || t('talk_desktop', 'No'),
-				callback: () => callback?.(false),
-			},
-			{
-				label: buttons.confirm || t('talk_desktop', 'Yes'),
-				callback: () => callback?.(true),
-				type: 'error',
-				// classes: buttons.confirmClasses,
-			}]
+			? (callback) => [
+					{
+						label: buttons.cancel || t('talk_desktop', 'No'),
+						callback: () => callback?.(false),
+					},
+					{
+						label: buttons.confirm || t('talk_desktop', 'Yes'),
+						callback: () => callback?.(true),
+						type: 'error',
+						// classes: buttons.confirmClasses,
+					},
+				]
 			: Buttons[OcDialogButtonsENUM[buttons]]
 
 		addDialog({

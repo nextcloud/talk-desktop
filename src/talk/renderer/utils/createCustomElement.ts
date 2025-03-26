@@ -35,7 +35,6 @@ export function createCustomElement(name: string, component: Component): CustomE
 			this.appendChild(this.rootElement)
 			this.vm.$mount(this.rootElement)
 		}
-
 	}
 
 	window.customElements.define(CustomElement.tagName, CustomElement)

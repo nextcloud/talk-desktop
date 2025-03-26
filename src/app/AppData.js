@@ -16,7 +16,6 @@
  */
 
 export class AppData {
-
 	serverUrl = null
 	userMetadata = null
 	/**
@@ -139,7 +138,6 @@ export class AppData {
 		})
 		return this
 	}
-
 }
 
 /**

@@ -66,7 +66,7 @@ async function login() {
 	// Check if valid URL
 	try {
 		// new URL will throw an exception on invalid URL
-		// eslint-disable-next-line no-new
+
 		new URL(serverUrl.value)
 	} catch {
 		return setError(t('talk_desktop', 'Invalid server address'))
@@ -103,8 +103,7 @@ async function login() {
 	}
 	if (parseInt(talkCapabilities.version.split('.')[0]) < MIN_REQUIRED_TALK_VERSION) {
 		// TODO: use semver package and check not only major version?
-		return setError(createVersionError('Nextcloud Talk', MIN_REQUIRED_TALK_VERSION, talkCapabilities.version,
-		))
+		return setError(createVersionError('Nextcloud Talk', MIN_REQUIRED_TALK_VERSION, talkCapabilities.version))
 	}
 
 	// Login with web view

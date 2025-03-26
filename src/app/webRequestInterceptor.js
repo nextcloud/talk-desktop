@@ -71,30 +71,34 @@ function enableWebRequestInterceptor(serverUrl, {
 	const ALLOWED_ORIGIN = [process.env.NODE_ENV === 'production' ? 'file://' : `${DEV_SERVER_ORIGIN}`]
 	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE, PROPFIND, MKCOL, SEARCH, REPORT'] // Includes WebDAV
 	const ALLOWED_CREDENTIALS_TRUE = ['true']
-	const ALLOWED_HEADERS = [[
+	const ALLOWED_HEADERS = [
+		[
 		// Common
-		'Authorization',
-		'Content-Type',
-		'If-None-Match',
-		// WebDAV
-		'Depth',
-		// Nextcloud
-		'requesttoken',
-		'OCS-APIRequest',
-		'X-OC-MTIME',
-		'X-Requested-With',
-	].join(', ')]
-	const EXPOSED_HEADERS = [[
+			'Authorization',
+			'Content-Type',
+			'If-None-Match',
+			// WebDAV
+			'Depth',
+			// Nextcloud
+			'requesttoken',
+			'OCS-APIRequest',
+			'X-OC-MTIME',
+			'X-Requested-With',
+		].join(', '),
+	]
+	const EXPOSED_HEADERS = [
+		[
 		// Common headers
-		'ETag',
-		// Nextcloud Talk custom Response Headers
-		'x-nextcloud-talk-modified-before',
-		'x-nextcloud-talk-hash',
-		'x-nextcloud-has-user-statuses',
-		'x-chat-last-given',
-		'x-chat-last-common-read',
+			'ETag',
+			// Nextcloud Talk custom Response Headers
+			'x-nextcloud-talk-modified-before',
+			'x-nextcloud-talk-hash',
+			'x-nextcloud-has-user-statuses',
+			'x-chat-last-given',
+			'x-chat-last-common-read',
 		// TODO: should we add any WebDAV headers?
-	].join(', ')]
+		].join(', '),
+	]
 
 	/**
 	 * @param {import('electron').OnHeadersReceivedListenerDetails} details - OnHeadersReceivedListenerDetails

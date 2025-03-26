@@ -190,7 +190,7 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
 		throw new Error('The application config is not initialized yet')
 	}
 
-	const config = Object.assign({}, defaultAppConfig, appConfig)
+	const config = { ...defaultAppConfig, ...appConfig }
 
 	if (key) {
 		return config[key]

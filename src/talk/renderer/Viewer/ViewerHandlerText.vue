@@ -113,10 +113,12 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 						:aria-label="t('talk_desktop', 'Read-only text file content')"
 						class="viewer-text__content"
 						:class="[
-							`viewer-text__content--${format}`, {
+							`viewer-text__content--${format}`,
+							{
 								'viewer-text__content--compact': layout === 'compact',
 								'viewer-text__content--wrap': wrap,
-							}]"
+							},
+						]"
 						contenteditable
 						spellcheck="false"
 						@beforeinput.prevent>

@@ -9,8 +9,8 @@ import os from 'node:os'
  * "process.platform", but with simplified to 'win32'|'darwin'|'linux'
  */
 export const platform = (process.platform === 'win32' && 'win32')
-		|| (process.platform === 'darwin' && 'darwin')
-		|| 'linux'
+	|| (process.platform === 'darwin' && 'darwin')
+	|| 'linux'
 
 /**
  * A string representing OS version

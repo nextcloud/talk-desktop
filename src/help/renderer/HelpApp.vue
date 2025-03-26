@@ -75,7 +75,10 @@ function close() {
 					class="help__report no-drag"
 					:text="report"
 					use-extended-markdown
-					:markdown-css-classes="{ h3: 'help__report-h3', h4: 'help__report-h4' }" />
+					:markdown-css-classes="{
+						h3: 'help__report-h3',
+						h4: 'help__report-h4',
+					}" />
 
 				<div class="help__report-actions">
 					<ButtonCopy type="tertiary" :content="report">

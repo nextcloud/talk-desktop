@@ -22,40 +22,42 @@ const emit = defineEmits<{
 	(event: 'update:clearAt', value: number | null): void
 }>()
 
-const clearAtOptions = [{
-	label: t('talk_desktop', 'Don\'t clear'),
-	clearAt: null,
-}, {
-	label: formatDuration(1800 * 1000), // 30 minutes
-	clearAt: {
-		type: 'period',
-		time: 1800,
+const clearAtOptions = [
+	{
+		label: t('talk_desktop', 'Don\'t clear'),
+		clearAt: null,
+	}, {
+		label: formatDuration(1800 * 1000), // 30 minutes
+		clearAt: {
+			type: 'period',
+			time: 1800,
+		},
+	}, {
+		label: formatDuration(3600 * 1000), // 1 hour
+		clearAt: {
+			type: 'period',
+			time: 3600,
+		},
+	}, {
+		label: formatDuration(14400 * 1000), // 4 hours
+		clearAt: {
+			type: 'period',
+			time: 14400,
+		},
+	}, {
+		label: t('talk_desktop', 'Today'),
+		clearAt: {
+			type: 'end-of',
+			time: 'day',
+		},
+	}, {
+		label: t('talk_desktop', 'This week'),
+		clearAt: {
+			type: 'end-of',
+			time: 'week',
+		},
 	},
-}, {
-	label: formatDuration(3600 * 1000), // 1 hour
-	clearAt: {
-		type: 'period',
-		time: 3600,
-	},
-}, {
-	label: formatDuration(14400 * 1000), // 4 hours
-	clearAt: {
-		type: 'period',
-		time: 14400,
-	},
-}, {
-	label: t('talk_desktop', 'Today'),
-	clearAt: {
-		type: 'end-of',
-		time: 'day',
-	},
-}, {
-	label: t('talk_desktop', 'This week'),
-	clearAt: {
-		type: 'end-of',
-		time: 'week',
-	},
-}] as const
+] as const
 
 const clearAtAsLabel = computed(() => clearAtToLabel(props.clearAt))
 

@@ -33,7 +33,6 @@ export function isExternalLink(url: string) {
 	return !isInternalLink(url)
 }
 
-// eslint-disable-next-line prefer-regex-literals
 const talkPathRe = new RegExp('^/apps/spreed(?:/(?:not-found|forbidden|duplicate-session))?|/call/[^/]+$')
 
 /**

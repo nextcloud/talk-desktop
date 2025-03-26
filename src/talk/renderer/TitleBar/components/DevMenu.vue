@@ -40,7 +40,7 @@ async function triggerNotification() {
 	const n = new Notification('Notification title', {
 		// FIXME: type appData
 		lang: (appData.userMetadata as unknown as { locale: string }).locale,
-		body: 'Notification body: ' + 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+		body: 'Notification body: Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		tag: Math.random().toString(36).slice(2),
 		silent: true,
 	})
@@ -105,7 +105,8 @@ async function openChromeWebRtcInternals() {
 </script>
 
 <template>
-	<NcActions aria-label="Dev Menu"
+	<NcActions
+		aria-label="Dev Menu"
 		type="tertiary-no-background"
 		container="body"
 		force-menu>

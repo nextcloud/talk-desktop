@@ -23,6 +23,7 @@ const link = computed(() => file.value && generateUrl(`/f/${file.value.fileid}`)
 
 /**
  * Open the viewer modal
+ *
  * @param {object} options - Options
  * @param {object} options.fileInfo - File info
  * @param {Function} options.onClose - Callback called then the modal is closed
@@ -49,7 +50,8 @@ defineExpose({
 </script>
 
 <template>
-	<NcModal v-if="file"
+	<NcModal
+		v-if="file"
 		id="viewer"
 		:show.sync="isOpen"
 		class="viewer-modal"
@@ -58,7 +60,8 @@ defineExpose({
 		size="full"
 		:close-button-contained="false"
 		@close="close">
-		<component :is="viewComponent"
+		<component
+			:is="viewComponent"
 			v-if="viewComponent"
 			:file="file" />
 

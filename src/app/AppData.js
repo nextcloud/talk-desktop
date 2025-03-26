@@ -16,7 +16,6 @@
  */
 
 export class AppData {
-
 	serverUrl = null
 	userMetadata = null
 	/**
@@ -70,13 +69,13 @@ export class AppData {
 	 */
 	toJSON() {
 		return {
-			serverUrl: appData.serverUrl,
-			userMetadata: appData.userMetadata,
-			capabilities: appData.capabilities,
-			version: appData.version,
-			credentials: appData.credentials,
-			talkHash: appData.talkHash,
-			talkHashDirty: appData.talkHashDirty,
+			serverUrl: this.serverUrl,
+			userMetadata: this.userMetadata,
+			capabilities: this.capabilities,
+			version: this.version,
+			credentials: this.credentials,
+			talkHash: this.talkHash,
+			talkHashDirty: this.talkHashDirty,
 		}
 	}
 
@@ -99,6 +98,7 @@ export class AppData {
 
 	/**
 	 * Set TalkHash and mark it as dirty if changed
+	 *
 	 * @param {string} hash new hash
 	 * @return {AppData} this
 	 */
@@ -138,7 +138,6 @@ export class AppData {
 		})
 		return this
 	}
-
 }
 
 /**

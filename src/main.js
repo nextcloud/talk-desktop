@@ -317,7 +317,7 @@ app.whenReady().then(async () => {
 		}
 	})
 
-	ipcMain.handle('talk:focus', async (event) => focusMainWindow())
+	ipcMain.handle('talk:focus', async () => focusMainWindow())
 
 	ipcMain.handle('authentication:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
 
@@ -328,7 +328,7 @@ app.whenReady().then(async () => {
 		mainWindow.once('ready-to-show', () => mainWindow.show())
 	})
 
-	ipcMain.handle('authentication:logout', async (event) => {
+	ipcMain.handle('authentication:logout', async () => {
 		if (createMainWindow === createTalkWindow) {
 			await mainWindow.webContents.session.clearStorageData()
 			const authenticationWindow = createAuthenticationWindow()

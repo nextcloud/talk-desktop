@@ -25,10 +25,9 @@ export type CallboxParams = {
 }
 
 /**
+ * Create a callbox window
  *
- * @param mainWindow
- * @param notification
- * @param params
+ * @param params - Callbox parameters
  */
 export function createCallboxWindow(params: CallboxParams) {
 	const { width: screenWidth } = screen.getPrimaryDisplay().workAreaSize

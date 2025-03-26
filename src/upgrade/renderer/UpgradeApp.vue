@@ -26,7 +26,8 @@ const browserLink = generateUrl('/apps/spreed')
 			</p>
 		</div>
 		<div class="upgrade__actions">
-			<NcButton :href="packageInfo.repository"
+			<NcButton
+				:href="packageInfo.repository"
 				target="_blank"
 				type="primary"
 				wide>
@@ -35,7 +36,8 @@ const browserLink = generateUrl('/apps/spreed')
 				</template>
 				{{ t('talk_desktop', 'Update Talk Desktop') }} ↗
 			</NcButton>
-			<NcButton :href="browserLink"
+			<NcButton
+				:href="browserLink"
 				type="secondary"
 				target="_blank"
 				wide>

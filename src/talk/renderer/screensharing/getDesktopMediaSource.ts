@@ -11,6 +11,7 @@ let appGetDesktopMediaSourceInstance: InstanceType<typeof AppGetDesktopMediaSour
 
 /**
  * Prompt user to select a desktop media source to share and return the selected sourceId or an empty string if canceled
+ *
  * @return sourceId of the selected mediaSource or an empty string if canceled
  */
 export async function getDesktopMediaSource() {

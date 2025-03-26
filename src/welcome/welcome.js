@@ -17,7 +17,7 @@ if (__CHANNEL__ !== 'stable') {
 	document.querySelector('.footer').textContent = __VERSION_TAG__
 }
 
-window.TALK_DESKTOP.getSystemInfo().then(os => {
+window.TALK_DESKTOP.getSystemInfo().then((os) => {
 	quitButton.classList.remove('hidden')
 	if (os.isMac) {
 		quitButton.classList.add('quit_mac')

@@ -20,6 +20,7 @@ export async function initAppConfig() {
 
 /**
  * Get AppConfig
+ *
  * @return - AppConfig
  */
 export function getAppConfig() {
@@ -32,6 +33,7 @@ export function getAppConfig() {
 
 /**
  * Get an application config value
+ *
  * @param key - The key of the config value
  * @return - The config value
  */

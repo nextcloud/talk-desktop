@@ -9,8 +9,8 @@ import NcButton from '@nextcloud/vue/components/NcButton'
 import { clearAtToLabel } from '../userStatus.utils.ts'
 
 withDefaults(defineProps<{
-	userStatus: PredefinedUserStatus | UserStatusBackup,
-	pressed?: boolean,
+	userStatus: PredefinedUserStatus | UserStatusBackup
+	pressed?: boolean
 }>(), {
 	pressed: false,
 })
@@ -21,7 +21,8 @@ const emit = defineEmits<{
 </script>
 
 <template>
-	<NcButton type="tertiary"
+	<NcButton
+		type="tertiary"
 		alignment="start"
 		wide
 		:pressed="pressed"

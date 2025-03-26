@@ -18,12 +18,12 @@ export function generateDiagnosisReport() {
 		},
 		server: appData.credentials
 			? {
-				channel: __CHANNEL__,
-				version: appData.version.nextcloud?.string ?? 'Not available',
-				talkVersion: appData.version.talk ?? 'Not available',
-				notifications: !!(appData.capabilities as any)?.notifications, // eslint-disable-line
-				notify_push: !!(appData.capabilities as any)?.notify_push?.type?.includes('notifications'), // eslint-disable-line
-			}
+					channel: __CHANNEL__,
+					version: appData.version.nextcloud?.string ?? 'Not available',
+					talkVersion: appData.version.talk ?? 'Not available',
+					notifications: !!(appData.capabilities as any)?.notifications, // eslint-disable-line
+					notify_push: !!(appData.capabilities as any)?.notify_push?.type?.includes('notifications'), // eslint-disable-line
+				}
 			: null,
 		platform: {
 			os: window.systemInfo.osVersion,
@@ -38,9 +38,9 @@ const table = (title: string, data: Record<string, string>) => {
 	const valueLen = Math.max(...Object.values(data).map((value) => value.length))
 	return `| ${b(title).padEnd(keyLen, ' ')} | ${''.padEnd(valueLen, ' ')} |\n`
 		+ `| ${''.padEnd(keyLen - 1, '-')}: | ${''.padEnd(valueLen, '-')} |\n`
-		+ Object.entries(data).map(([key, value]) =>
-			`| ${b(key).padEnd(keyLen, ' ')} | ${value.padEnd(valueLen, ' ')} |`,
-		).join('\n')
+		+ Object.entries(data).map(([key, value]) => (
+			`| ${b(key).padEnd(keyLen, ' ')} | ${value.padEnd(valueLen, ' ')} |`
+		)).join('\n')
 }
 
 const printBool = (value: boolean) => value ? '✅ yes' : '❌ no'
@@ -65,15 +65,15 @@ ${table('Nextcloud Talk Desktop', {
 		),
 		...(report.server
 			? {
-				'**Connected to**': '-',
-				'Nextcloud server version': report.server.version,
-				'Nextcloud Talk version': report.server.talkVersion,
-				'`notifications` app enabled': printBool(report.server.notifications),
-				'`notify_push` app enabled': printBool(report.server.notify_push),
-			}
+					'**Connected to**': '-',
+					'Nextcloud server version': report.server.version,
+					'Nextcloud Talk version': report.server.talkVersion,
+					'`notifications` app enabled': printBool(report.server.notifications),
+					'`notify_push` app enabled': printBool(report.server.notify_push),
+				}
 			: {
-				'**Connected to**': 'none',
-			}),
+					'**Connected to**': 'none',
+				}),
 	})
 }
 

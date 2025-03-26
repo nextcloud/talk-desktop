@@ -95,12 +95,14 @@ const TALK_DESKTOP = {
 	relaunchWindow: () => ipcRenderer.send('app:relaunchWindow'),
 	/**
 	 * Get an application config value by key
+	 *
 	 * @param {string} [key] - Config key
 	 * @return {Promise<Record<string, unknown> | unknown>}
 	 */
 	getAppConfig: (key) => ipcRenderer.invoke('app:config:get', key),
 	/**
 	 * Set an application config value by key
+	 *
 	 * @param {string} key - Config key
 	 * @param {any} [value] - Config value
 	 * @return {Promise<void>}
@@ -108,11 +110,13 @@ const TALK_DESKTOP = {
 	setAppConfig: (key, value) => ipcRenderer.invoke('app:config:set', key, value),
 	/**
 	 * Listen for changes in the application config
+	 *
 	 * @param {(event: import('electron').IpcRedererEvent, payload: { key: string, value: unknown, appConfig: import('./app/AppConfig.ts').AppConfig}) => void} callback - Callback
 	 */
 	onAppConfigChange: (callback) => ipcRenderer.on('app:config:change', callback),
 	/**
 	 * Trigger download of a URL
+	 *
 	 * @param {string} url - URL to download
 	 * @param {string} [filename] - Filename suggestion for the download
 	 */
@@ -123,6 +127,7 @@ const TALK_DESKTOP = {
 	toggleDevTools: () => ipcRenderer.send('app:toggleDevTools'),
 	/**
 	 * Invoke app:anything
+	 *
 	 * @param {...any} args - Arguments
 	 */
 	invokeAnything: (...args) => ipcRenderer.invoke('app:anything', ...args),
@@ -163,6 +168,7 @@ const TALK_DESKTOP = {
 	focusTalk: () => ipcRenderer.invoke('talk:focus'),
 	/**
 	 * Show the callbox window
+	 *
 	 * @param {object} params - Callbox parameters
 	 */
 	showCallbox: (params) => ipcRenderer.send('callbox:show', params),

@@ -9,6 +9,7 @@ import { useAppConfigStore } from './appConfig.store.ts'
 
 /**
  * Get an application config value
+ *
  * @param key - The key of the config value
  * @return A settable config value
  */

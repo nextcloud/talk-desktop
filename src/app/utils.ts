@@ -10,6 +10,7 @@ import packageJson from '../../package.json'
 
 /**
  * Get the scaled window size based on the current zoom factor
+ *
  * @param size - Base window size
  * @param size.width - Base window width
  * @param size.height - Base window height
@@ -39,6 +40,7 @@ export function getScaledWindowSize({ width, height }: { width: number, height: 
 
 /**
  * Get the scaled window minimum size based on the current zoom factor
+ *
  * @param minSize - Base window minimum size
  * @param minSize.minWidth - Base window minimum width
  * @param minSize.minHeight - Base window minimum height
@@ -58,6 +60,7 @@ export function getScaledWindowMinSize({ minWidth, minHeight }: { minWidth: numb
  * But it is ignored when Chromium has its own zoom state or when Zoom is 100%.
  * It only applies correctly if set after the window is ready to show.
  * See: https://github.com/electron/electron/issues/10572
+ *
  * @param window - Browser window
  */
 export function applyZoom(window: BrowserWindow) {
@@ -69,6 +72,7 @@ export function applyZoom(window: BrowserWindow) {
 
 /**
  * Build a title for the window from base (product name) and release channel
+ *
  * @param title - the title of the window
  */
 export function buildTitle(title?: string) {

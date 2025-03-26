@@ -9,7 +9,7 @@ import axios from '@nextcloud/axios'
 import { appData } from '../app/AppData.js'
 import { initGlobals } from './globals/globals.js'
 import { setupInitialState } from './initialState.service.js'
-import { initAppConfig } from './appConfig.service.ts' // eslint-disable-line import/namespace
+import { initAppConfig } from './appConfig.service.ts'
 import { TITLE_BAR_HEIGHT } from '../constants.js'
 import { refetchAppData } from '../app/appData.service.js'
 
@@ -23,7 +23,7 @@ async function tryLoadL10n(lang, resolver) {
 	try {
 		const { default: translationBundle } = await resolver(lang)
 		return translationBundle.translations
-	} catch (e) {
+	} catch {
 		if (lang.includes('_')) {
 			// Try to load locale without country code
 			return tryLoadL10n(lang.split('_')[0], resolver)
@@ -75,6 +75,7 @@ async function applyL10n() {
 
 /**
  * Apply user data to the document attributes and global variables that can be then used by @nextcloud/auth
+ *
  * @return {void}
  */
 async function applyUserData() {
@@ -97,6 +98,7 @@ async function applyUserData() {
 
 /**
  * Apply Talk Desktop specific Axios interceptors globally to use authentication for API and handle some responses on app level.
+ *
  * @return {void}
  */
 export function applyAxiosInterceptors() {

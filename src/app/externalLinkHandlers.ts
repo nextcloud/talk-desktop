@@ -17,6 +17,7 @@ import { DEV_SERVER_ORIGIN } from '../constants.js'
 
 /**
  * Check if a link is an internal application link
+ *
  * @param url - URL
  */
 export function isInternalLink(url: string) {
@@ -25,17 +26,18 @@ export function isInternalLink(url: string) {
 
 /**
  * Check if a link is external
+ *
  * @param url - URL
  */
 export function isExternalLink(url: string) {
 	return !isInternalLink(url)
 }
 
-// eslint-disable-next-line prefer-regex-literals
 const talkPathRe = new RegExp('^/apps/spreed(?:/(?:not-found|forbidden|duplicate-session))?|/call/[^/]+$')
 
 /**
  * Try to extract Talk route from the link
+ *
  * @param link - URL link
  */
 function tryExtractTalkRoute(link: string) {
@@ -60,6 +62,7 @@ function tryExtractTalkRoute(link: string) {
 
 /**
  * Apply external links handling at BrowserWindow
+ *
  * @param browserWindow - Browser window
  * @param browserWindowOptions - options for new BrowserWindow, usually based on parent options
  */
@@ -70,6 +73,7 @@ export function applyExternalLinkHandler(browserWindow: BrowserWindow, browserWi
 
 /**
  * Handle new window open
+ *
  * @param details - HandlerDetails
  * @param browserWindowOptions - Options for new BrowserWindow, usually based on parent options
  */
@@ -89,6 +93,7 @@ function windowOpenExternalLinkHandler(details: HandlerDetails, browserWindowOpt
 
 /**
  * Open external link in the default OS handler (i.e. Web-Browser) on navigate
+ *
  * @param event - Will Navigate Electron Event
  */
 async function willNavigateExternalLinkHandler(event: Event<WebContentsWillNavigateEventParams>) {

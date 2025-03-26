@@ -23,6 +23,7 @@ export const userStatusTranslations: Record<UserStatusStatusType, string> = {
 
 /**
  * Get a human-readable string for the user status
+ *
  * @param userStatus - User status
  */
 export function getVisibleUserStatus(userStatus: UserStatus) {
@@ -39,6 +40,7 @@ export function getVisibleUserStatus(userStatus: UserStatus) {
 
 /**
  * Convert predefined clearAt config into UserStatus.clearAt value
+ *
  * @param clearAt - Clear-at config
  * @return UNIX timestamp in seconds or null if not defined
  */
@@ -77,6 +79,7 @@ export function getTimestampForPredefinedClearAt(clearAt: ClearAtPredefinedConfi
 
 /**
  * Convert clearAt config to human-readable label
+ *
  * @param clearAt - clearAt config
  * @return Human-readable string
  */
@@ -110,6 +113,7 @@ export function clearAtToLabel(clearAt: ClearAtPredefinedConfig | number | null)
 
 /**
  * Convert a predefined status into a user status
+ *
  * @param predefinedStatus - Predefined status
  */
 export function convertPredefinedStatusToUserStatus(predefinedStatus: PredefinedUserStatus): Partial<UserStatus> {

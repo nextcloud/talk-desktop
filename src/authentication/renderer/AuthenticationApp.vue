@@ -49,6 +49,7 @@ function setLoading() {
 
 /**
  * Switch state to error
+ *
  * @param {string} error - Error message
  */
 function setError(error) {
@@ -65,7 +66,7 @@ async function login() {
 	// Check if valid URL
 	try {
 		// new URL will throw an exception on invalid URL
-		// eslint-disable-next-line no-new
+
 		new URL(serverUrl.value)
 	} catch {
 		return setError(t('talk_desktop', 'Invalid server address'))
@@ -102,8 +103,7 @@ async function login() {
 	}
 	if (parseInt(talkCapabilities.version.split('.')[0]) < MIN_REQUIRED_TALK_VERSION) {
 		// TODO: use semver package and check not only major version?
-		return setError(createVersionError('Nextcloud Talk', MIN_REQUIRED_TALK_VERSION, talkCapabilities.version,
-		))
+		return setError(createVersionError('Nextcloud Talk', MIN_REQUIRED_TALK_VERSION, talkCapabilities.version))
 	}
 
 	// Login with web view
@@ -151,7 +151,8 @@ async function login() {
 					<h2 class="login-box__header">
 						{{ t('talk_desktop', 'Log in to Nextcloud') }}
 					</h2>
-					<NcTextField v-model="rawServerUrl"
+					<NcTextField
+						v-model="rawServerUrl"
 						:label="t('talk_desktop', 'Nextcloud server address')"
 						label-visible
 						placeholder="https://try.nextcloud.com"
@@ -159,7 +160,8 @@ async function login() {
 						:success="state === 'success'"
 						:error="state === 'error'"
 						:helper-text="stateText" />
-					<NcButton v-if="state !== 'loading'"
+					<NcButton
+						v-if="state !== 'loading'"
 						class="submit-button"
 						type="primary"
 						native-type="submit"
@@ -169,7 +171,8 @@ async function login() {
 						</template>
 						{{ t('talk_desktop', 'Log in') }}
 					</NcButton>
-					<NcButton v-else-if="state ==='loading'"
+					<NcButton
+						v-else-if="state === 'loading'"
 						class="submit-button"
 						type="primary"
 						native-type="submit"

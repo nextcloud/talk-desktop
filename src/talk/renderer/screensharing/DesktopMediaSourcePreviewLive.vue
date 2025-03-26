@@ -22,6 +22,7 @@ const isReady = ref(false)
 
 /**
  * Get the stream for the media source
+ *
  * @param mediaSourceId - The media source ID
  */
 function getStreamForMediaSource(mediaSourceId: ScreensharingSourceId) {
@@ -31,30 +32,30 @@ function getStreamForMediaSource(mediaSourceId: ScreensharingSourceId) {
 	// "entire-desktop:0:0" is a custom sourceId for this specific case
 	const constraints = mediaSourceId === 'entire-desktop:0:0'
 		? {
-			audio: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
+				audio: {
+					mandatory: {
+						chromeMediaSource: 'desktop',
+					},
 				},
-			},
-			video: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
-					maxWidth: MAX_PREVIEW_SIZE,
-					maxHeight: MAX_PREVIEW_SIZE,
+				video: {
+					mandatory: {
+						chromeMediaSource: 'desktop',
+						maxWidth: MAX_PREVIEW_SIZE,
+						maxHeight: MAX_PREVIEW_SIZE,
+					},
 				},
-			},
-		}
+			}
 		: {
-			audio: false,
-			video: {
-				mandatory: {
-					chromeMediaSource: 'desktop',
-					chromeMediaSourceId: mediaSourceId,
-					maxWidth: MAX_PREVIEW_SIZE,
-					maxHeight: MAX_PREVIEW_SIZE,
+				audio: false,
+				video: {
+					mandatory: {
+						chromeMediaSource: 'desktop',
+						chromeMediaSourceId: mediaSourceId,
+						maxWidth: MAX_PREVIEW_SIZE,
+						maxHeight: MAX_PREVIEW_SIZE,
+					},
 				},
-			},
-		}
+			}
 
 	// @ts-expect-error Each browser has a different API, the current object is compatible with Chromium
 	return navigator.mediaDevices.getUserMedia(constraints)
@@ -96,6 +97,7 @@ onBeforeUnmount(() => {
 
 /**
  * Handle the loadedmetadata event of the video element
+ *
  * @param event - The event
  */
 function onLoadedMetadata(event: Event) {
@@ -116,7 +118,8 @@ function onSuspend() {
 
 <template>
 	<div class="live-preview">
-		<video v-show="isReady"
+		<video
+			v-show="isReady"
 			ref="videoElement"
 			class="live-preview__video"
 			muted

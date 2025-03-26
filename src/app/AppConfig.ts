@@ -154,6 +154,7 @@ async function readAppConfigFile(): Promise<Partial<AppConfig>> {
 
 /**
  * Write the application config to the config file
+ *
  * @param config - The config to write
  */
 async function writeAppConfigFile(config: Partial<AppConfig>) {
@@ -180,6 +181,7 @@ export function getAppConfig(): AppConfig
 export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig[T]
 /**
  * Get an application config value
+ *
  * @param key - The config key to get
  * @return - If key is provided, the value of the key. Otherwise, the full config
  */
@@ -188,7 +190,7 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
 		throw new Error('The application config is not initialized yet')
 	}
 
-	const config = Object.assign({}, defaultAppConfig, appConfig)
+	const config = { ...defaultAppConfig, ...appConfig }
 
 	if (key) {
 		return config[key]
@@ -199,6 +201,7 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
 
 /**
  * Set an application config value
+ *
  * @param key - Settings key to set
  * @param value - Value to set or undefined to reset to the default value
  * @return Promise<AppConfig> - The full settings after the change
@@ -229,6 +232,7 @@ export function setAppConfig<K extends AppConfigKey>(key: K, value?: AppConfig[K
 
 /**
  * Listen to application config changes
+ *
  * @param key - The config key to listen to
  * @param callback - The callback to call when the config changes
  */

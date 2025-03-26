@@ -9,6 +9,7 @@ const WINDOW_ACTIVE_EVENTS = ['mousemove', 'mousedown', 'resize', 'keydown', 'to
 
 /**
  * Hook to detect whether the user is active or away (idle)
+ *
  * @param options - Options
  * @param options.timeout - How long user is considered active, default is 1 minute
  */

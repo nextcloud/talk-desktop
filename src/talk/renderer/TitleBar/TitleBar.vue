@@ -21,7 +21,7 @@ useAppConfigStore()
 const channel = __CHANNEL__
 
 // TODO: add a proper type for userMetadata
-const user = appData.userMetadata! as { id: string; 'display-name': string }
+const user = appData.userMetadata! as { id: string, 'display-name': string }
 const OS = window.systemInfo
 
 const { isDevMode } = useDevMode()
@@ -38,7 +38,8 @@ function logout() {
 	<header class="title-bar">
 		<div class="title-bar__inner">
 			<template v-if="!OS.isMac">
-				<div class="title-bar__title"
+				<div
+					class="title-bar__title"
 					role="button"
 					tabindex="0"
 					@click="openRoot">

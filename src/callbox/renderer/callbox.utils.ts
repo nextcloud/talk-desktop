@@ -11,6 +11,7 @@ import { getAppConfigValue } from '../../shared/appConfig.service.ts'
 
 /**
  * Play ringtone
+ *
  * @return function to stop ringing
  */
 export function playRingtone() {
@@ -19,9 +20,7 @@ export function playRingtone() {
 	}
 
 	const howlPayload: HowlOptions = {
-		src: [
-			generateFilePath('notifications', 'img', 'talk.ogg'),
-		],
+		src: [generateFilePath('notifications', 'img', 'talk.ogg')],
 		html5: true, // to access HTMLAudioElement property 'sinkId'
 		volume: 0.5,
 		loop: true,

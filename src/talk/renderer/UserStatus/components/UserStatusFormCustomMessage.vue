@@ -11,9 +11,9 @@ import { translate as t } from '@nextcloud/l10n'
 import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 
 withDefaults(defineProps<{
-	icon?: string | null,
-	message?: string | null,
-	disabled?: boolean,
+	icon?: string | null
+	message?: string | null
+	disabled?: boolean
 }>(), {
 	icon: null,
 	message: null,
@@ -21,8 +21,8 @@ withDefaults(defineProps<{
 })
 
 const emit = defineEmits<{
-	(event: 'update:icon', value: string | null): void,
-	(event: 'update:message', value: string | null): void,
+	(event: 'update:icon', value: string | null): void
+	(event: 'update:message', value: string | null): void
 }>()
 
 // TODO: Vue 3 - replace with `useId`
@@ -42,7 +42,8 @@ const id = Math.random().toString(36).slice(2, 8)
 			</NcButton>
 		</NcEmojiPicker>
 
-		<NcTextField :label="t('talk_desktop', 'Status message')"
+		<NcTextField
+			:label="t('talk_desktop', 'Status message')"
 			maxlength="80"
 			:disabled="disabled"
 			:model-value="message ?? ''"

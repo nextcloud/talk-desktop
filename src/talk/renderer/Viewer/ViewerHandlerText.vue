@@ -42,6 +42,8 @@ const wrapLabel = computed(() => format.value === 'md' ? t('talk_desktop', 'Wrap
 
 const justCopied = ref(false)
 
+const { content, loading, error } = useFileContent(toRef(() => props.file.filename), 'text')
+
 /**
  * Copy the content of the file to the clipboard
  */
@@ -52,8 +54,6 @@ function copy() {
 		justCopied.value = false
 	}, 2000)
 }
-
-const { content, loading, error } = useFileContent(toRef(() => props.file.filename), 'text')
 </script>
 
 <template>
@@ -63,7 +63,8 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 				<template v-if="content">
 					<fieldset :aria-label="t('talk_desktop', 'Controls')" class="viewer-text__controls">
 						<fieldset class="viewer-text__layout-switch" :aria-label="t('talk_desktop', 'Layout')">
-							<NcCheckboxRadioSwitch v-model="layout"
+							<NcCheckboxRadioSwitch
+								v-model="layout"
 								:aria-label="t('talk_desktop', 'Compact')"
 								value="compact"
 								type="radio"
@@ -74,7 +75,8 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 									<IconFileDocumentOutline :size="20" />
 								</template>
 							</NcCheckboxRadioSwitch>
-							<NcCheckboxRadioSwitch v-model="layout"
+							<NcCheckboxRadioSwitch
+								v-model="layout"
 								:aria-label="t('talk_desktop', 'Wide')"
 								value="wide"
 								type="radio"
@@ -86,7 +88,8 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 								</template>
 							</NcCheckboxRadioSwitch>
 						</fieldset>
-						<NcButton :aria-label="wrapLabel"
+						<NcButton
+							:aria-label="wrapLabel"
 							:pressed.sync="wrap"
 							:title="wrapLabel"
 							type="tertiary">
@@ -94,7 +97,8 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 								<IconWrap :size="20" />
 							</template>
 						</NcButton>
-						<NcButton :aria-label="t('talk_desktop', 'Copy content')"
+						<NcButton
+							:aria-label="t('talk_desktop', 'Copy content')"
 							:title="t('talk_desktop', 'Copy content')"
 							type="tertiary"
 							@click="copy">
@@ -105,13 +109,16 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 						</NcButton>
 					</fieldset>
 
-					<div :aria-label="t('talk_desktop', 'Read-only text file content')"
+					<div
+						:aria-label="t('talk_desktop', 'Read-only text file content')"
 						class="viewer-text__content"
 						:class="[
-							`viewer-text__content--${format}`, {
+							`viewer-text__content--${format}`,
+							{
 								'viewer-text__content--compact': layout === 'compact',
 								'viewer-text__content--wrap': wrap,
-							}]"
+							},
+						]"
 						contenteditable
 						spellcheck="false"
 						@beforeinput.prevent>
@@ -192,7 +199,7 @@ const { content, loading, error } = useFileContent(toRef(() => props.file.filena
 .viewer-text__content--md :deep(ul) {
 	/* The default value is too small and doesnt fit the marker */
 	/* TODO: fix in upstream */
-	padding-left: 1.2em !important;
+	padding-inline-start: 1.2em !important;
 }
 
 .viewer-text__content--md.viewer-text__content--wrap :deep(pre) {

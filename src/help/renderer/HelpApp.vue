@@ -41,7 +41,8 @@ function close() {
 <template>
 	<div class="help">
 		<div class="help__title-bar" :class="{ 'help__title-bar--mac': isMac }">
-			<NcButton :aria-label="t('talk_desktop', 'Close')"
+			<NcButton
+				:aria-label="t('talk_desktop', 'Close')"
 				type="tertiary"
 				wide
 				@click="close">
@@ -53,7 +54,8 @@ function close() {
 
 		<div class="help__content">
 			<div class="help__info no-drag">
-				<img :src="TalkLogo"
+				<img
+					:src="TalkLogo"
 					width="72"
 					alt=""
 					draggable="false"
@@ -69,10 +71,14 @@ function close() {
 				</p>
 			</div>
 			<div class="help__report-wrapper">
-				<NcRichText class="help__report no-drag"
+				<NcRichText
+					class="help__report no-drag"
 					:text="report"
 					use-extended-markdown
-					:markdown-css-classes="{ h3: 'help__report-h3', h4: 'help__report-h4' }" />
+					:markdown-css-classes="{
+						h3: 'help__report-h3',
+						h4: 'help__report-h4',
+					}" />
 
 				<div class="help__report-actions">
 					<ButtonCopy type="tertiary" :content="report">

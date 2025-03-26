@@ -29,7 +29,7 @@ import { appData } from '../../../../app/AppData.js'
 
 const props = defineProps<{
 	// TODO: define a proper type for userMetadata
-	user: { id: string; 'display-name': string }
+	user: { id: string, 'display-name': string }
 }>()
 
 const emit = defineEmits<{
@@ -62,6 +62,7 @@ const popoverHideTriggers = (triggers: string[]) => [...triggers, 'click']
 
 /**
  * Handle user status type change
+ *
  * @param status - new user status
  */
 function handleUserStatusChange(status: UserStatusStatusType) {
@@ -72,7 +73,8 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 
 <template>
 	<div ref="userMenuContainer" class="user-menu">
-		<NcPopover v-if="userMenuContainer"
+		<NcPopover
+			v-if="userMenuContainer"
 			:shown.sync="isOpen"
 			:container="userMenuContainer"
 			:popper-hide-triggers="popoverHideTriggers"
@@ -81,7 +83,8 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 			<template #trigger="{ attrs }">
 				<div class="user-menu__trigger">
 					<!-- Floating-Vue doesn't support open on span[role=button] - opening manually -->
-					<NcAvatar class="user-menu__avatar"
+					<NcAvatar
+						class="user-menu__avatar"
 						:user="user.id"
 						:display-name="user['display-name']"
 						:size="32"
@@ -104,7 +107,8 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							</template>
 							{{ t('talk_desktop', 'Back') }}
 						</UiMenuItem>
-						<UiMenuItem v-for="status in availableUserStatusStatusTypes"
+						<UiMenuItem
+							v-for="status in availableUserStatusStatusTypes"
 							:key="status"
 							tag="button"
 							@click.native.stop="handleUserStatusChange(status)">
@@ -120,7 +124,8 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 					</template>
 
 					<template v-else>
-						<UiMenuItem tag="a"
+						<UiMenuItem
+							tag="a"
 							:href="userProfileLink"
 							target="_blank">
 							<strong>{{ user['display-name'] }}</strong>

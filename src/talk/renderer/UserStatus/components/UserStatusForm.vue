@@ -34,6 +34,7 @@ const isClear = computed(() => userStatus.value.status === 'online' && !userStat
 
 /**
  * Patch the user status with the new values
+ *
  * @param newUserStatus - New user status values
  */
 function patchStatus(newUserStatus: Partial<UserStatusPrivate>) {
@@ -44,6 +45,7 @@ function patchStatus(newUserStatus: Partial<UserStatusPrivate>) {
 
 /**
  * Select a predefined status
+ *
  * @param status - Predefined status to select
  */
 function selectPredefinedStatus(status: PredefinedUserStatus) {
@@ -92,7 +94,8 @@ async function revertStatus() {
 			{{ t('talk_desktop', 'Your status was set automatically') }}
 		</NcNoteCard>
 
-		<UserStatusFormCustomMessage class="user-status-form__row"
+		<UserStatusFormCustomMessage
+			class="user-status-form__row"
 			:disabled="!!backupStatus"
 			:message="userStatus.message"
 			:icon="userStatus.icon"
@@ -109,19 +112,22 @@ async function revertStatus() {
 		</h4>
 
 		<div class="user-status-form__predefined-statuses">
-			<UserStatusFormPredefinedOption v-for="status in predefinedStatuses"
+			<UserStatusFormPredefinedOption
+				v-for="status in predefinedStatuses"
 				:key="status.id"
 				:pressed="userStatus.messageId === status.id"
 				:user-status="status"
 				@click="selectPredefinedStatus(status)" />
 		</div>
 
-		<UserStatusFormClearAt class="user-status-form__row"
+		<UserStatusFormClearAt
+			class="user-status-form__row"
 			:disabled="isClear"
 			:clear-at="userStatus.clearAt"
 			@update:clearAt="patchStatus({ clearAt: $event })" />
 
-		<NcButton class="user-status-form__row"
+		<NcButton
+			class="user-status-form__row"
 			type="secondary"
 			wide
 			:disabled="!statusIsUserDefined"
@@ -130,7 +136,8 @@ async function revertStatus() {
 		</NcButton>
 
 		<div class="user-status-form__buttons">
-			<NcButton type="primary"
+			<NcButton
+				type="primary"
 				wide
 				:disabled="!isDirty"
 				@click="save">

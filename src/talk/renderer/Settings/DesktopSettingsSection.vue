@@ -84,7 +84,7 @@ const enableCallboxOption = useNcSelectModel(enableCallbox, generalNotificationO
 const secondarySpeaker = useAppConfigValue('secondarySpeaker')
 
 const EMPTY_DEVICE_OPTION = { value: null, label: t('talk_desktop', 'None') }
-const secondarySpeakerOptions = ref<NcSelectOption<string|null>[]>([])
+const secondarySpeakerOptions = ref<NcSelectOption<string | null>[]>([])
 
 const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 const secondarySpeakerDeviceOption = useNcSelectModel(secondarySpeakerDevice, secondarySpeakerOptions, EMPTY_DEVICE_OPTION)
@@ -97,8 +97,8 @@ async function initializeDevices() {
 	try {
 		stream = await navigator.mediaDevices.getUserMedia({ audio: true })
 		const deviceOptions = (await navigator.mediaDevices.enumerateDevices() ?? [])
-			.filter(device => device.kind === 'audiooutput')
-			.map(device => ({ value: device.deviceId, label: device.label }))
+			.filter((device) => device.kind === 'audiooutput')
+			.map((device) => ({ value: device.deviceId, label: device.label }))
 
 		secondarySpeakerOptions.value = [EMPTY_DEVICE_OPTION, ...deviceOptions]
 	} catch (error) {
@@ -106,7 +106,7 @@ async function initializeDevices() {
 		secondarySpeakerOptions.value = [EMPTY_DEVICE_OPTION]
 	} finally {
 		if (stream) {
-			stream.getTracks().forEach(track => track.stop())
+			stream.getTracks().forEach((track) => track.stop())
 		}
 	}
 }
@@ -125,7 +125,8 @@ function relaunch() {
 		<NcNoteCard v-if="isRelaunchRequired" type="info" class="relaunch-require-note-card">
 			<div class="relaunch-require-note-card__content">
 				<span>{{ t('talk_desktop', 'Some changes require a relaunch to take effect') }}</span>
-				<NcButton type="primary"
+				<NcButton
+					type="primary"
 					size="small"
 					class="relaunch-require-note-card__button"
 					@click="relaunch">
@@ -169,7 +170,8 @@ function relaunch() {
 							<IconMinus :size="20" />
 						</template>
 					</NcButton>
-					<NcTextField :id="inputId"
+					<NcTextField
+						:id="inputId"
 						class="zoom-input"
 						:aria-describedby="descriptionId"
 						label-outside
@@ -215,7 +217,8 @@ function relaunch() {
 				{{ t('talk_desktop', 'Also repeat call notification on a secondary speaker') }}
 			</NcCheckboxRadioSwitch>
 
-			<SettingsSelect v-if="secondarySpeaker"
+			<SettingsSelect
+				v-if="secondarySpeaker"
 				v-model="secondarySpeakerDeviceOption"
 				:options="secondarySpeakerOptions"
 				:disabled="secondarySpeakerOptions.length === 1"

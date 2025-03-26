@@ -12,6 +12,7 @@ const error = ref(false)
 
 /**
  * Handle the end of the loading process
+ *
  * @param {boolean | string} withError - Whether the loading process ended with an error
  */
 function handleLoadEnd(withError = false) {

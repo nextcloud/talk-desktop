@@ -22,13 +22,13 @@ type CallGetParticipantsForCallResponse = {
 			itemsperpage?: string
 		}
 		data: {
-			actorId: string;
-			actorType: string;
-			displayName: string;
+			actorId: string
+			actorType: string
+			displayName: string
 			/** Format: int64 */
-			lastPing: number;
-			sessionId: string;
-			token: string;
+			lastPing: number
+			sessionId: string
+			token: string
 		}[]
 	}
 }
@@ -51,6 +51,7 @@ const getSupportCallNotificationStateApi = () => appData.capabilities?.spreed?.f
 
 /**
  * Get participants of a call in a conversation
+ *
  * @param token - Conversation token
  */
 async function getCallParticipants(token: string) {
@@ -60,6 +61,7 @@ async function getCallParticipants(token: string) {
 
 /**
  * Get call notification state in a conversation
+ *
  * @param token - Conversation token
  */
 async function getCallNotificationState(token: string) {
@@ -68,6 +70,7 @@ async function getCallNotificationState(token: string) {
 
 /**
  * Check if the current user has joined the call
+ *
  * @param token - Conversation token
  * @return Promise<boolean|null> - whether participant is in the call (`null` if there is no current call)
  */
@@ -107,6 +110,7 @@ async function hasCurrentUserJoinedCall(token: string) {
 
 /**
  * Check if callbox should be rendered
+ *
  * @param token - Conversation token
  * @return Promise<boolean> - Resolved with boolean - true if the user should see the callbox, false otherwise
  */
@@ -125,6 +129,7 @@ export async function checkCurrentUserHasPendingCall(token: string): Promise<boo
 
 /**
  * Wait until the current user has joined the call
+ *
  * @param token - Conversation token
  * @param limit - The time limit in milliseconds to wait for the user to join the call, set to falsy to wait indefinitely
  * @return Promise<boolean> - Resolved with boolean - true if the user has joined the call, false if the limit has been reached

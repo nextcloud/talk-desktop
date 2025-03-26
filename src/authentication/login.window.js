@@ -22,7 +22,7 @@ const genId = () => Math.random().toString(36).slice(2, 9)
  * @return {Promise<import('./login.service.js').Credentials|Error>}
  */
 function openLoginWebView(parentWindow, serverUrl) {
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve) => {
 		const WIDTH = 750
 		const HEIGHT = 750
 		const TITLE = buildTitle('Login')
@@ -82,7 +82,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 				try {
 					const credentials = parseLoginRedirectUrl(url)
 					resolve(credentials)
-				} catch (e) {
+				} catch {
 					resolve(new Error('Unexpected server error'))
 				} finally {
 					// Anyway close the window

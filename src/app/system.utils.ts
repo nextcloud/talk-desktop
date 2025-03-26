@@ -9,11 +9,12 @@ import os from 'node:os'
  * "process.platform", but with simplified to 'win32'|'darwin'|'linux'
  */
 export const platform = (process.platform === 'win32' && 'win32')
-		|| (process.platform === 'darwin' && 'darwin')
-		|| 'linux'
+	|| (process.platform === 'darwin' && 'darwin')
+	|| 'linux'
 
 /**
  * A string representing OS version
+ *
  * @example "Linux 5.15.0-53-generic (#59-Ubuntu SMP Mon Oct 17 18:53:30 UTC 2022)"
  * @example "Darwin 22.3.0 (Darwin Kernel Version 22.3.0: Thu Jan 5 20:48:54 PST 2023; root:xnu-8792.81.2~2/RELEASE_ARM64_T6000)"
  * @example "Windows_NT 10.0.22621 (Windows 10 Pro)"
@@ -47,6 +48,7 @@ export const isWindows = os.type() === 'Windows_NT'
 
 /**
  * Is it Linux with Wayland window communication protocol?
+ *
  * @todo is it better than checking for XDG_SESSION_TYPE === 'wayland'?
  */
 export const isWayland = !!process.env.WAYLAND_DISPLAY

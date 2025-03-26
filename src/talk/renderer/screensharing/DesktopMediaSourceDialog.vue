@@ -93,6 +93,7 @@ async function requestDesktopCapturerSources() {
 
 /**
  * Handle the suspend event of the video element
+ *
  * @param source - The source that was suspended
  */
 function handleVideoSuspend(source: ScreensharingSource) {
@@ -118,14 +119,16 @@ function handleCancel() {
 </script>
 
 <template>
-	<NcDialog :name="t('talk_desktop', 'Choose what to share')"
+	<NcDialog
+		:name="t('talk_desktop', 'Choose what to share')"
 		size="large"
 		@update:open="handleCancel">
 		<div v-if="sources" class="capture-source-grid">
 			<h3 v-if="screenSources?.length && !singleSource" class="capture-source-section-heading">
 				{{ t('talk_desktop', 'Entire screens') }}
 			</h3>
-			<DesktopMediaSourcePreview v-for="source in screenSources"
+			<DesktopMediaSourcePreview
+				v-for="source in screenSources"
 				:key="source.id"
 				:source="source"
 				:live="livePreview"
@@ -136,7 +139,8 @@ function handleCancel() {
 			<h3 v-if="!singleSource && windowSources?.length" class="capture-source-section-heading">
 				{{ t('talk_desktop', 'Application windows') }}
 			</h3>
-			<DesktopMediaSourcePreview v-for="source in windowSources"
+			<DesktopMediaSourcePreview
+				v-for="source in windowSources"
 				:key="source.id"
 				:source="source"
 				:live="livePreview"
@@ -152,14 +156,16 @@ function handleCancel() {
 		</NcEmptyContent>
 
 		<template #actions>
-			<NcCheckboxRadioSwitch v-if="sources && livePreviewAvailable"
+			<NcCheckboxRadioSwitch
+				v-if="sources && livePreviewAvailable"
 				v-model="livePreview"
 				type="switch"
 				class="capture-mode-switch">
 				{{ t('talk_desktop', 'Live preview') }}
 			</NcCheckboxRadioSwitch>
 			<NcDialogButton :icon="IconCancel" :label="t('talk_desktop', 'Cancel')" @click="handleCancel" />
-			<NcDialogButton :icon="IconMonitorShare"
+			<NcDialogButton
+				:icon="IconMonitorShare"
 				:label="t('talk_desktop', 'Share screen')"
 				type="primary"
 				:disabled="!selectedSourceId"

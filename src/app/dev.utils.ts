@@ -19,6 +19,7 @@ const windows: Record<string, BrowserWindow> = {}
 
 /**
  * Open a Chrome internal page as a single window
+ *
  * @param page - Internal page to open
  */
 function openChromeInternalPage(page: 'webrtc-internals' | 'webrtc-logs') {

@@ -38,6 +38,7 @@ const dialogs = ref({})
 
 /**
  * Base function to add a dialog
+ *
  * @param {object} dialogProps - Dialog properties
  */
 function addDialog(dialogProps) {
@@ -50,6 +51,7 @@ function addDialog(dialogProps) {
 
 /**
  * Delete dialog by id
+ *
  * @param {string} id - Dialog id
  */
 function deleteDialog(id) {
@@ -58,6 +60,7 @@ function deleteDialog(id) {
 
 /**
  * displays info dialog
+ *
  * @param {string} text content of dialog
  * @param {string} title dialog title
  * @param {Function} callback which will be triggered when user presses OK
@@ -71,6 +74,7 @@ function info(text, title, callback, modal) { // eslint-disable-line @typescript
 
 /**
  * displays alert dialog
+ *
  * @param {string} text content of dialog
  * @param {string} title dialog title
  * @param {Function} callback which will be triggered when user presses OK
@@ -92,6 +96,7 @@ function alert(text, title, callback, modal) {
 
 /**
  * displays confirmation dialog
+ *
  * @param {string} text content of dialog
  * @param {string} title dialog title
  * @param {Function} callback which will be triggered when user presses OK (true or false would be passed to callback respectively)
@@ -114,6 +119,7 @@ function confirm(text, title, callback, modal) {
 
 /**
  * displays confirmation dialog
+ *
  * @param {string} text content of dialog
  * @param {string} title dialog title
  * @param {(number|{type: number, confirm: string, cancel: string, confirmClasses: string})} buttons text content of buttons
@@ -124,16 +130,18 @@ function confirm(text, title, callback, modal) {
 function confirmDestructive(text, title, buttons, callback, modal) {
 	return new Promise((resolve) => {
 		const theButtons = (typeof buttons === 'object' && buttons.type === 70)
-			? (callback) => [{
-				label: buttons.cancel || t('talk_desktop', 'No'),
-				callback: () => callback?.(false),
-			},
-			{
-				label: buttons.confirm || t('talk_desktop', 'Yes'),
-				callback: () => callback?.(true),
-				type: 'error',
-				// classes: buttons.confirmClasses,
-			}]
+			? (callback) => [
+					{
+						label: buttons.cancel || t('talk_desktop', 'No'),
+						callback: () => callback?.(false),
+					},
+					{
+						label: buttons.confirm || t('talk_desktop', 'Yes'),
+						callback: () => callback?.(true),
+						type: 'error',
+						// classes: buttons.confirmClasses,
+					},
+				]
 			: Buttons[OcDialogButtonsENUM[buttons]]
 
 		addDialog({
@@ -150,6 +158,7 @@ function confirmDestructive(text, title, buttons, callback, modal) {
 
 /**
  * displays prompt dialog
+ *
  * @param {string} text content of dialog
  * @param {string} title dialog title
  * @param {Function} callback which will be triggered when user presses OK (true or false would be passed to callback respectively)
@@ -174,7 +183,8 @@ defineExpose({
 
 <template>
 	<div>
-		<NcDialog v-for="dialog in dialogs"
+		<NcDialog
+			v-for="dialog in dialogs"
 			:key="dialog.id"
 			:name="dialog.name"
 			:message="dialog.message"

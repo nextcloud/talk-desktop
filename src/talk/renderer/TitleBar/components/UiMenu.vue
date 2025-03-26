@@ -3,9 +3,6 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
-<script setup lang="ts">
-</script>
-
 <template>
 	<nav class="menu">
 		<ul class="menu__inner">

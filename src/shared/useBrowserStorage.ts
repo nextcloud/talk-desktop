@@ -12,6 +12,7 @@ type NextcloudStorage = ReturnType<ReturnType<typeof getBuilder>['build']>
 
 /**
  * Create a reactive variable that is stored in the @nextcloud/browser-storage instance and is synced
+ *
  * @param browserStorage - @nextcloud/browser-storage instance
  * @param key - Key to store the value
  * @param defaultValue - Default value

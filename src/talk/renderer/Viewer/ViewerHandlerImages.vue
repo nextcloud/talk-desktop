@@ -20,7 +20,8 @@ const src = computed(() => generateFilePreviewUrl(props.file.fileid, props.file.
 
 <template>
 	<ViewerHandlerMedia v-slot="{ mediaClass, handleLoadEnd }">
-		<img :key="src"
+		<img
+			:key="src"
 			class="viewer-image"
 			:class="mediaClass"
 			:src="src"

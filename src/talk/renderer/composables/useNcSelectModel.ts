@@ -10,6 +10,7 @@ export type NcSelectOption<T> = { label: string, value: T }
 
 /**
  * Create a model proxy for NcSelect
+ *
  * @param modelValue - the model value to bind to
  * @param options - the list of the select options
  * @param fallback - the fallback value in case the model value is not found in the options
@@ -19,8 +20,8 @@ export function useNcSelectModel<T>(modelValue: Ref<T>, options: NcSelectOption<
 	return computed({
 		get() {
 			return fallback
-				? unref(options).find(item => item.value === modelValue.value) ?? fallback
-				: unref(options).find(item => item.value === modelValue.value)!
+				? unref(options).find((item) => item.value === modelValue.value) ?? fallback
+				: unref(options).find((item) => item.value === modelValue.value)!
 		},
 
 		set(option: NcSelectOption<T>) {

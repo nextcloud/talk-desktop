@@ -38,7 +38,7 @@
     "release:package": "npx -y zx ./scripts/prepare-release-packages.mjs",
     "generate-icons": "node ./scripts/generate-icons.js",
     "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
-    "lint": "eslint --ext .js,.vue src/ --fix",
+    "lint": "eslint src/ --fix",
     "typecheck": "vue-tsc --noEmit"
   },
   "talk": {

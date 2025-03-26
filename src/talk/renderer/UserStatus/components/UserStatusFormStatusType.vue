@@ -10,7 +10,7 @@ import { availableUserStatusStatusTypes, userStatusTranslations } from '../userS
 import type { UserStatusStatusType } from '../userStatus.types.ts'
 
 defineProps<{
-	status: UserStatusStatusType,
+	status: UserStatusStatusType
 }>()
 
 const emit = defineEmits<{

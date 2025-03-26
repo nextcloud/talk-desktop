@@ -10,9 +10,9 @@ import type { MaybeRefOrGetter } from '@vueuse/core'
 import { fetchFileContent } from './viewer.service.ts'
 
 type FileContentComposableResult<T> = {
-	content: Ref<T>,
-	loading: Ref<boolean>,
-	error: Ref<boolean | string>,
+	content: Ref<T>
+	loading: Ref<boolean>
+	error: Ref<boolean | string>
 }
 
 export function useFileContent(filename: MaybeRefOrGetter<string>, format: 'binary'): FileContentComposableResult<Blob | null>

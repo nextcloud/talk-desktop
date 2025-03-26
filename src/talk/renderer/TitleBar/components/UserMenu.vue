@@ -29,7 +29,7 @@ import { appData } from '../../../../app/AppData.js'
 
 const props = defineProps<{
 	// TODO: define a proper type for userMetadata
-	user: { id: string; 'display-name': string }
+	user: { id: string, 'display-name': string }
 }>()
 
 const emit = defineEmits<{

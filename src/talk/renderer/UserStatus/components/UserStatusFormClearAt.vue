@@ -11,8 +11,8 @@ import { clearAtToLabel, getTimestampForPredefinedClearAt } from '../userStatus.
 import { formatDuration } from '../../../../shared/datetime.utils.ts'
 
 const props = withDefaults(defineProps<{
-	clearAt?: number | null,
-	disabled?: boolean,
+	clearAt?: number | null
+	disabled?: boolean
 }>(), {
 	clearAt: null,
 	disabled: false,

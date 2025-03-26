@@ -22,13 +22,13 @@ type CallGetParticipantsForCallResponse = {
 			itemsperpage?: string
 		}
 		data: {
-			actorId: string;
-			actorType: string;
-			displayName: string;
+			actorId: string
+			actorType: string
+			displayName: string
 			/** Format: int64 */
-			lastPing: number;
-			sessionId: string;
-			token: string;
+			lastPing: number
+			sessionId: string
+			token: string
 		}[]
 	}
 }

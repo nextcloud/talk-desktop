@@ -17,16 +17,15 @@ import IconCopy from 'vue-material-design-icons/ContentCopy.vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import { t } from '@nextcloud/l10n'
 
-const props = withDefaults(
-	defineProps<{
-	text?: string,
-	content?: string,
-	getContent?: () => string,
+const props = withDefaults(defineProps<{
+	text?: string
+	content?: string
+	getContent?: () => string
 }>(), {
-		text: t('talk_desktop', 'Copy'),
-		content: undefined,
-		getContent: undefined,
-	})
+	text: t('talk_desktop', 'Copy'),
+	content: undefined,
+	getContent: undefined,
+})
 
 const DELAY = 2000
 

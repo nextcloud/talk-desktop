@@ -66,11 +66,11 @@ function passDuplicatedNavigationError(error: Error) {
 
 type TalkHashStoreAdapter = {
 	/** Set Nextcloud Talk hash */
-	setTalkHash: (hash: string) => void,
+	setTalkHash: (hash: string) => void
 	/** Listen to Nextcloud Talk update */
-	onUpdate: (callback: (hash: string) => void) => void,
+	onUpdate: (callback: (hash: string) => void) => void
 	/** Listen to Nextcloud Talk hash set dirty */
-	onDirty: (callback: () => void) => void,
+	onDirty: (callback: () => void) => void
 }
 
 /**

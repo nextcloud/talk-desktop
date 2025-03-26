@@ -64,7 +64,7 @@ export function formatRelativeTimeFromNow(dateOrMs: Date | number) {
  * @example 86400000 -> { value: 1, unit: 'day' }
  * @param ms - Duration in milliseconds
  */
-export function convertMsToLargestTimeUnit(ms: number): { value: number; unit: Intl.RelativeTimeFormatUnit } {
+export function convertMsToLargestTimeUnit(ms: number): { value: number, unit: Intl.RelativeTimeFormatUnit } {
 	const units = {
 		year: 0,
 		month: 0,

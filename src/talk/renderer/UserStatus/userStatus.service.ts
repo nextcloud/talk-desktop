@@ -14,11 +14,11 @@ import { generateOcsUrl } from '@nextcloud/router'
 
 // TODO: add types to @nextcloud/types or @nextcloud/axios
 type OcsResponse<T> = {
-	'meta': {
-		'status': string,
-		'statuscode': number,
-		'message': string,
-	},
+	meta: {
+		status: string
+		statuscode: number
+		message: string
+	}
 	ocs: {
 		data: T
 	}

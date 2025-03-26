@@ -21,7 +21,7 @@ useAppConfigStore()
 const channel = __CHANNEL__
 
 // TODO: add a proper type for userMetadata
-const user = appData.userMetadata! as { id: string; 'display-name': string }
+const user = appData.userMetadata! as { id: string, 'display-name': string }
 const OS = window.systemInfo
 
 const { isDevMode } = useDevMode()

@@ -84,7 +84,7 @@ const enableCallboxOption = useNcSelectModel(enableCallbox, generalNotificationO
 const secondarySpeaker = useAppConfigValue('secondarySpeaker')
 
 const EMPTY_DEVICE_OPTION = { value: null, label: t('talk_desktop', 'None') }
-const secondarySpeakerOptions = ref<NcSelectOption<string|null>[]>([])
+const secondarySpeakerOptions = ref<NcSelectOption<string | null>[]>([])
 
 const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 const secondarySpeakerDeviceOption = useNcSelectModel(secondarySpeakerDevice, secondarySpeakerOptions, EMPTY_DEVICE_OPTION)

@@ -102,7 +102,7 @@ OC.L10N.register(
     "Continue in Web-Browser" : "Continuar no navegador da Web",
     "Application" : "Aplicativo",
     "Online" : "Online",
-    "Away" : "Fora",
+    "Away" : "Ausente",
     "Do not disturb" : "Não perturbe",
     "Invisible" : "Oculto",
     "Offline" : "Desligada",

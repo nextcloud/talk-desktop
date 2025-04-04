@@ -6,7 +6,7 @@
 import type { BrowserWindow } from 'electron'
 import { screen } from 'electron'
 import { getAppConfig } from './AppConfig.ts'
-import packageJson from '../../package.json'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
 
 /**
  * Get the scaled window size based on the current zoom factor
@@ -77,8 +77,7 @@ export function applyZoom(window: BrowserWindow) {
  */
 export function buildTitle(title?: string) {
 	const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
-	const BASE_TITLE = packageJson.productName
-
+	const BASE_TITLE = BUILD_CONFIG.applicationName
 	const base = __CHANNEL__ !== 'stable' ? `${BASE_TITLE} ${capitalize(__CHANNEL__)}` : BASE_TITLE
 	return title ? `${title} - ${base}` : base
 }

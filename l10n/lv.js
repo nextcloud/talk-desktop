@@ -32,6 +32,7 @@ OC.L10N.register(
     "Loading …" : "Ielādē…",
     "Cancel" : "Atcelt",
     "Share screen" : "Koplietot ekrānu",
+    "The client version is too old and no longer supported by this server. Update is required." : "Klienta versija ir pārāk vecas, un šis serveris to vairs neatbalsta. Nepieciešama atjaunināšana.",
     "Invisible" : "Neredzama"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");

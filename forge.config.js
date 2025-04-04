@@ -36,6 +36,7 @@ const YEAR = new Date().getFullYear()
 
 /**
  * Generate the distribution name
+ *
  * @param {'darwin'|'linux'|'win32'} platform - Distribution target platform
  * @param {'arm64'|'universal'|'x64'} arch - Distribution target architecture
  * @param {string} ext - File extension
@@ -66,6 +67,7 @@ function generateDistName(platform, arch, ext) {
 
 /**
  * Move the artifact to the correct location
+ *
  * @param {string} artifactPath - The path to the distribution
  * @param {string} platform - platform
  * @param {string} arch - architecture
@@ -92,6 +94,7 @@ function fixArtifactName(artifactPath, platform, arch) {
 /**
  * Convert signWithParams string to @electron/windows-sign options
  * to fix issues of @electron/windows-sign
+ *
  * @param {string} signWithParams - @electron/windows-sign's signWithParams string
  * @return {object} - @electron/windows-sign options
  */
@@ -192,9 +195,7 @@ module.exports = {
 			// - do not use electron-forge makers
 			return makeResults.map((makeResult) => ({
 				...makeResult,
-				artifacts: makeResult.artifacts.map((artifact) =>
-					fixArtifactName(artifact, makeResult.platform, makeResult.arch),
-				),
+				artifacts: makeResult.artifacts.map((artifact) => fixArtifactName(artifact, makeResult.platform, makeResult.arch)),
 			}))
 		},
 	},
@@ -326,14 +327,18 @@ module.exports = {
 				baseVersion: '24.08',
 				// Based on https://github.com/malept/electron-installer-flatpak/blob/main/src/installer.js
 				// Available versions: https://github.com/refi64/zypak/releases
-				modules: [{
-					name: 'zypak',
-					sources: [{
-						type: 'git',
-						url: 'https://github.com/refi64/zypak',
-						tag: 'v2024.01.17',
-					}],
-				}],
+				modules: [
+					{
+						name: 'zypak',
+						sources: [
+							{
+								type: 'git',
+								url: 'https://github.com/refi64/zypak',
+								tag: 'v2024.01.17',
+							},
+						],
+					},
+				],
 				finishArgs: [
 					/**
 					 * Default Electron args

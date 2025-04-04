@@ -4,7 +4,7 @@
 -->
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import IconArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
@@ -14,11 +14,13 @@ import { getCapabilities } from '../../shared/ocs.service.js'
 import { appData } from '../../app/AppData.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
 import { refetchAppData } from '../../app/appData.service.js'
+import { BUILD_CONFIG } from '../../shared/build.config.ts'
 
 const channel = __CHANNEL__
 
-const version = window.TALK_DESKTOP.packageInfo.version
-const rawServerUrl = ref('')
+const version = __VERSION_TAG__
+const rawServerUrl = ref(BUILD_CONFIG.domain ?? '')
+const enforceDomain = Boolean(BUILD_CONFIG.domain && BUILD_CONFIG.enforceDomain)
 
 const serverUrl = computed(() => {
 	const addHTTPS = (url) => url.startsWith('http') ? url : `https://${url}`
@@ -30,6 +32,12 @@ const serverUrl = computed(() => {
 /** @type {import('vue').Ref<'idle'|'loading'|'error'|'success'>} */
 const state = ref('idle')
 const stateText = ref('')
+
+onMounted(() => {
+	if (enforceDomain) {
+		login()
+	}
+})
 
 /**
  * Switch state to success
@@ -149,14 +157,17 @@ async function login() {
 			<form @submit.prevent="login">
 				<fieldset :disabled="state === 'loading'">
 					<h2 class="login-box__header">
-						{{ t('talk_desktop', 'Log in to Nextcloud') }}
+						{{ t('talk_desktop', 'Log in to {applicationName}', { applicationName: BUILD_CONFIG.applicationName }) }}
 					</h2>
 					<NcTextField
 						v-model="rawServerUrl"
-						:label="t('talk_desktop', 'Nextcloud server address')"
-						label-visible
-						placeholder="https://try.nextcloud.com"
+						:label="!enforceDomain ? t('talk_desktop', 'Nextcloud server address') : undefined"
+						:aria-label="enforceDomain ? t('talk_desktop', 'Server address') : undefined"
+						:label-visible="!enforceDomain"
+						:input-class="{ 'login-box__server--predefined': enforceDomain }"
+						:placeholder="!enforceDomain ? 'https://try.nextcloud.com' : undefined"
 						inputmode="url"
+						:readonly="enforceDomain"
 						:success="state === 'success'"
 						:error="state === 'error'"
 						:helper-text="stateText" />
@@ -187,7 +198,7 @@ async function login() {
 		</div>
 		<div class="spacer">
 			<footer v-if="channel !== 'stable'" class="footer">
-				Nextcloud Talk Desktop {{ version }}
+				{{ BUILD_CONFIG.applicationName }} {{ version }}
 			</footer>
 		</div>
 	</div>
@@ -240,5 +251,10 @@ async function login() {
 
 .submit-button {
 	margin-top: 0.5rem;
+}
+
+:deep(.login-box__server--predefined) {
+	border-color: transparent !important;
+	background-color: transparent !important;
 }
 </style>

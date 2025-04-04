@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { whenever } from '@vueuse/core'
 import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcRichText from '@nextcloud/vue/components/NcRichText'
@@ -14,7 +15,7 @@ import { generateDiagnosisReportMD } from './diagnosis.service.ts'
 import ButtonCopy from './ButtonCopy.vue'
 import TalkLogo from '../../../img/talk-icon-rounded.svg'
 import { useDevMode } from '../../shared/useDevMode.ts'
-import { whenever } from '@vueuse/core'
+import { BUILD_CONFIG } from '../../shared/build.config.ts'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
 const isMac = window.systemInfo.isMac
@@ -60,13 +61,15 @@ function close() {
 					alt=""
 					draggable="false"
 					@click="logoClicked += 1">
-				<p><strong>{{ packageInfo.productName }}{{ isDevMode ? ' 👾' : '' }}</strong></p>
-				<p>{{ packageInfo.description }}</p>
-				<p>
-					<a class="link" href="https://nextcloud.com/privacy/" target="_blank">{{ t('talk_desktop', 'Privacy and Legal Policy') }}</a><br>
-					{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
+				<p><strong>{{ BUILD_CONFIG.applicationName }}{{ isDevMode ? ' 👾' : '' }}</strong></p>
+				<p v-if="!BUILD_CONFIG.isBranded">
+					{{ BUILD_CONFIG.description }}
 				</p>
 				<p>
+					<a class="link" :href="BUILD_CONFIG.privacyUrl" target="_blank">{{ t('talk_desktop', 'Privacy and Legal Policy') }}</a><br>
+					{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
+				</p>
+				<p v-if="!BUILD_CONFIG.isBranded">
 					<a :href="packageInfo.bugs.url" class="link" target="_blank">{{ t('talk_desktop', 'Issues') }}</a> | <a :href="packageInfo.repository" class="link" target="_blank">{{ t('talk_desktop', 'Source Code') }}</a>
 				</p>
 			</div>

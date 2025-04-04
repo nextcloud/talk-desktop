@@ -3,9 +3,11 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const path = require('path')
+const path = require('node:path')
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base.config.js')
+const { resolveConfig } = require('./build/resolveBuildConfig.js')
 
 module.exports = merge(baseConfig, {
 	entry: path.resolve(__dirname, './src/main.js'),
@@ -36,4 +38,10 @@ module.exports = merge(baseConfig, {
 			},
 		],
 	},
+
+	plugins: [
+		new webpack.DefinePlugin({
+			__BUILD_CONFIG__: JSON.stringify(resolveConfig()),
+		}),
+	],
 })

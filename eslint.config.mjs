@@ -38,6 +38,7 @@ export default [
 				__CHANNEL__: 'readonly',
 				__VERSION_TAG__: 'readonly',
 				__TALK_VERSION_TAG__: 'readonly',
+				__BUILD_CONFIG__: 'readonly',
 				// Electron
 				...globals.node,
 			},

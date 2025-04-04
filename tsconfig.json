@@ -1,6 +1,6 @@
 {
 	"extends": "@vue/tsconfig/tsconfig.json",
-	"include": ["src/**/*.ts", "src/**/*.vue"],
+	"include": ["src/**/*.ts", "src/**/*.vue", "build/BuildConfig.types.ts"],
 	"compilerOptions": {
 		"allowImportingTsExtensions": true,
 		"allowJs": true,

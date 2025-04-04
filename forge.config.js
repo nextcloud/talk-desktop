@@ -13,26 +13,14 @@ const { MakerZIP } = require('@electron-forge/maker-zip')
 const { MakerWix } = require('@electron-forge/maker-wix')
 const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
+const { resolveConfig } = require('./build/resolveBuildConfig.js')
 
 require('dotenv').config()
 
-const CONFIG = {
-	// General
-	applicationName: packageJSON.productName,
-	applicationNameSanitized: packageJSON.productName.replaceAll(' ', '.'),
-	companyName: 'Nextcloud GmbH',
-	description: packageJSON.description,
+const CONFIG = resolveConfig()
 
-	// macOS
-	appleAppBundleId: 'com.nextcloud.talk.mac',
-	// Windows
-	winSquirrelAppId: 'NextcloudTalk', // Squirrel.Windows will transform it to com.squirrel.{AppId}.{AppId}
-	winAppId: 'com.nextcloud.talk',
-	// Linux
-	linuxAppId: 'com.nextcloud.talk',
-}
-
-const YEAR = new Date().getFullYear()
+console.info('Building with a build configuration:')
+console.info(JSON.stringify(CONFIG, null, 2))
 
 /**
  * Generate the distribution name
@@ -205,7 +193,7 @@ module.exports = {
 		// Common
 		name: CONFIG.applicationName,
 		icon: path.join(__dirname, './img/icons/icon'),
-		appCopyright: `Copyright (c) ${YEAR} ${CONFIG.companyName}`,
+		appCopyright: CONFIG.copyright,
 		asar: true,
 
 		// Windows
@@ -234,7 +222,7 @@ module.exports = {
 		// Prerequisites:
 		// 1. winget install WiXToolset.WiXToolset
 		// 2. Add C:\Program Files (x86)\WiX Toolset v3.14\bin\ to PATH
-		new MakerWix({
+		CONFIG.windowsMsi && new MakerWix({
 			appUserModelId: CONFIG.winAppId,
 			description: CONFIG.description,
 			exe: `${CONFIG.applicationName}.exe`,
@@ -259,7 +247,7 @@ module.exports = {
 
 		// https://github.com/squirrel/squirrel.windows
 		// https://js.electronforge.io/interfaces/_electron_forge_maker_squirrel.InternalOptions.SquirrelWindowsOptions.html#setupExe
-		new MakerSquirrel({
+		CONFIG.windowsExe && new MakerSquirrel({
 			// App/Filenames
 			name: CONFIG.winSquirrelAppId,
 			setupExe: generateDistName('win32', 'x64', '.exe'),
@@ -286,18 +274,18 @@ module.exports = {
 		}),
 
 		// https://js.electronforge.io/interfaces/_electron_forge_maker_dmg.MakerDMGConfig.html
-		new MakerDMG({
+		CONFIG.macosDmg && new MakerDMG({
 			icon: path.join(__dirname, 'img/icons/icon.icns'),
 			background: path.join(__dirname, 'img/dmg-background.png'),
 			// https://github.com/LinusU/node-appdmg?tab=readme-ov-file#specification
 			additionalDMGOptions: {
 				// Background does not work when the title has spaces or special characters
-				title: 'NextcloudTalk',
+				title: CONFIG.applicationNameSanitized,
 			},
 		}),
 
-		// Linux
-		new MakerFlatpak({
+		// https://js.electronforge.io/classes/_electron_forge_maker_flatpak.MakerFlatpak-1.html
+		CONFIG.linuxFlatpak && new MakerFlatpak({
 			// https://js.electronforge.io/classes/_electron_forge_maker_flatpak.MakerFlatpak-1.html#config
 			options: {
 				id: CONFIG.linuxAppId,
@@ -373,8 +361,8 @@ module.exports = {
 			},
 		}),
 
-		new MakerZIP({}, ['linux']),
-	],
+		CONFIG.linuxZip && new MakerZIP({}, ['linux']),
+	].filter(Boolean),
 
 	plugins: [
 		{

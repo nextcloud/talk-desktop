@@ -1,0 +1,14 @@
+{
+	"applicationName": "Nextcloud Talk",
+	"domain": null,
+	"enforceDomain": false,
+	"brandColor": "#0082C9",
+	"brandFontColor": "#FFFFFF",
+	"helpUrl": "https://nextcloud.com/talk/",
+	"privacyUrl": "https://nextcloud.com/privacy/",
+	"windowsExe": true,
+	"windowsMsi": true,
+	"macosDmg": true,
+	"linuxFlatpak": true,
+	"linuxZip": true
+}

@@ -53,15 +53,9 @@
 		height: 100vh
 	}
 
-	.spacer {
-		flex: 1 0;
-	}
-
 	.logo {
-		background: no-repeat center url("<%= require('@talk/img/app.svg') %>");
-		background-size: contain;
-		width: 175px;
-		height: 130px;
+		width: 100%;
+		padding: 90px 50px 32px 50px
 	}
 
 	@keyframes animateCloud {
@@ -75,6 +69,8 @@
 
 	.footer {
 		margin: 16px;
+		text-align: center;
+		margin-block-start: auto;
 	}
 
 	.clouds {
@@ -119,18 +115,12 @@
 		right: 15%;
 		top: -80%;
 	}
-
-	.footer {
-		text-align: center;
-	}
 	</style>
 </head>
 <body>
 	<button class="quit hidden" aria-label="Quit" type="button"></button>
 	<div class="wrapper">
-		<div class="spacer"></div>
-		<div class="logo"></div>
-		<h1 class="header">Nextcloud Talk</h1>
+		<img class="logo" src="<%= require('../../img/talk-logo.svg') %>" alt="" />
 		<div class="clouds">
 			<div class="cloud" style="--height: 20px; animation: animateCloud 2s linear infinite;"></div>
 			<div class="cloud" style="--height: 16px; animation: animateCloud 1.5s linear infinite; top: 80px; left: 50px"></div>

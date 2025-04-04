@@ -13,6 +13,7 @@ import { useAppConfigStore } from '../Settings/appConfig.store.ts'
 import { useUserStatusHeartbeat } from '../UserStatus/useUserStatusHeartbeat.ts'
 import { openRoot } from '../TalkWrapper/talk.service.ts'
 import { useDevMode } from '../../../shared/useDevMode.ts'
+import { BUILD_CONFIG } from '../../../shared/build.config.ts'
 
 useUserStatusStore()
 useUserStatusHeartbeat()
@@ -23,6 +24,8 @@ const channel = __CHANNEL__
 // TODO: add a proper type for userMetadata
 const user = appData.userMetadata! as { id: string, 'display-name': string }
 const OS = window.systemInfo
+
+const applicationName = BUILD_CONFIG.applicationName
 
 const { isDevMode } = useDevMode()
 
@@ -43,7 +46,7 @@ function logout() {
 					role="button"
 					tabindex="0"
 					@click="openRoot">
-					Nextcloud Talk
+					{{ applicationName }}
 				</div>
 
 				<div v-if="channel !== 'stable'" class="title-bar__channel">
@@ -84,8 +87,7 @@ function logout() {
 	/* Save space for native title bar buttons */
 	/* Note: titlebar-area-x always represents left offset */
 	/* Logical properties cannot be used here */
-	margin-left: env(titlebar-area-x, 0);
-	margin-right: auto;
+	margin-inline: env(titlebar-area-x, 0) auto;
 	max-width: env(titlebar-area-width, 100%);
 	/* Inline with navigation items */
 	padding-inline-start: calc(3 * var(--default-grid-baseline));

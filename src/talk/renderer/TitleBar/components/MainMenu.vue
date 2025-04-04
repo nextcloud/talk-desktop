@@ -19,6 +19,7 @@ import NcActionSeparator from '@nextcloud/vue/components/NcActionSeparator'
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 import { getCurrentTalkRoutePath } from '../../TalkWrapper/talk.service.ts'
+import { BUILD_CONFIG } from '../../../../shared/build.config.ts'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
 
@@ -56,7 +57,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 			</template>
 			{{ t('talk_desktop', 'Force reload') }}
 		</NcActionButton>
-		<NcActionLink :href="packageInfo.bugs.create || packageInfo.bugs.url" target="_blank">
+		<NcActionLink v-if="!BUILD_CONFIG.isBranded" :href="packageInfo.bugs.create || packageInfo.bugs.url" target="_blank">
 			<template #icon>
 				<IconBug />
 			</template>

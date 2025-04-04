@@ -55,6 +55,7 @@ declare const __IS_DESKTOP__: true
 declare const __CHANNEL__: 'stable' | 'beta' | 'dev'
 declare const __VERSION_TAG__: string
 declare const __TALK_VERSION_TAG__: string
+declare const __BUILD_CONFIG__: import('../build/BuildConfig.types.ts').BuildConfig
 
 declare interface Window {
 	// Nextcloud Globals

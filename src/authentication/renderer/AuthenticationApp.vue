@@ -209,7 +209,7 @@ async function login() {
 }
 
 .logo {
-	background: no-repeat center url('~@global-styles/core/img/logo/logo.svg');
+	background: no-repeat center url('~../../../img/server-logo-plain.svg');
 	background-size: contain;
 	width: 175px;
 	height: 130px;

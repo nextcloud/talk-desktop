@@ -68,7 +68,7 @@ OC.L10N.register(
     "Predefined statuses" : "Status predefinidos",
     "Clear custom status" : "Limpar status personalizado",
     "Set user status" : "Definir status do usuário",
-    "Don't clear" : "Não limpar",
+    "Don't clear" : "Não limpe",
     "Today" : "Hoje",
     "This week" : "Esta semana",
     "Clear after" : "Limpar depois",

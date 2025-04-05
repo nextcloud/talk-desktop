@@ -4,38 +4,85 @@
   -->
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from './talk.service.ts'
 import { registerTalkDesktopSettingsSection } from '../Settings/index.ts'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { appData } from '../../../app/AppData.js'
+import unreadCountStore, { EVENTS } from '@talk/src/store/unreadCountStore'
+import { subscribe, emit as emitEvent } from '@nextcloud/event-bus'
 
 const emit = defineEmits<{
 	(event: 'ready'): void
 }>()
 
-onMounted(async () => {
-	// Importing the main Talk entry point mounts a Vue app to the #content
-	await import('@talk/src/main.js')
+// Handler for unread count updates
+let unsubscribeUnreadCount: (() => void) | null = null
 
-	// Additional integrations
-	registerTalkDesktopSettingsSection()
-	subscribeBroadcast('talk:conversation:open', ({ token, directCall }) => openConversation(token, { directCall }))
+const waitForTalkAndStore = async () => {
+	console.debug('TalkWrapper: Waiting for Talk instance and store...')
+	let attempts = 0
+	const maxAttempts = 50
+	const delay = 100
 
-	// If there is a talkHash - set it initially
-	if (appData.talkHash) {
-		setTalkHash(appData.talkHash)
+	while (attempts < maxAttempts) {
+		if (window.OCA?.Talk?.instance && window.store && window.TALK_DESKTOP) {
+			console.debug('TalkWrapper: Talk instance, store, and TALK_DESKTOP found')
+			return true
+		}
+		await new Promise(resolve => setTimeout(resolve, delay))
+		attempts++
 	}
-	// Handle Talk Hash updates
-	onTalkHashUpdate((hash: string) => {
-		appData.setTalkHash(hash).persist()
-	})
-	onTalkHashDirty(() => {
-		appData.setTalkHashDirty(true).persist()
-	})
+	throw new Error('Talk instance, store, or TALK_DESKTOP not initialized after maximum attempts')
+}
 
-	// Ready
-	emit('ready')
+onMounted(async () => {
+	try {
+		await import('@talk/src/main.js')
+		
+		registerTalkDesktopSettingsSection()
+		subscribeBroadcast('talk:conversation:open', ({ token, directCall }) => openConversation(token, { directCall }))
+
+		await waitForTalkAndStore()
+		const store = window.store
+
+		// Register store module if not already registered
+		if (!store.hasModule('unreadCount')) {
+			store.registerModule('unreadCount', unreadCountStore)
+		}
+
+		// Initialize badge handling
+		window.TALK_DESKTOP.setBadgeCount(0)
+
+		// Subscribe to unread count updates
+		unsubscribeUnreadCount = subscribe(EVENTS.UNREAD_COUNT_UPDATED, ({ unreadMessages }) => {
+			window.TALK_DESKTOP.setBadgeCount(unreadMessages || 0)
+		})
+
+		// Now trigger the initial calculation
+		store.dispatch('unreadCount/recalculateTotalUnreadCounters')
+
+		if (appData.talkHash) {
+			setTalkHash(appData.talkHash)
+		}
+		onTalkHashUpdate((hash: string) => {
+			appData.setTalkHash(hash).persist()
+		})
+		onTalkHashDirty(() => {
+			appData.setTalkHashDirty(true).persist()
+		})
+
+		emit('ready')
+	} catch (error) {
+		console.error('TalkWrapper: Error during initialization:', error)
+	}
+})
+
+// Cleanup event listeners
+onUnmounted(() => {
+	if (unsubscribeUnreadCount) {
+		unsubscribeUnreadCount()
+	}
 })
 </script>
 

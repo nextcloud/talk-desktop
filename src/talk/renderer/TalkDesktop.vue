@@ -4,11 +4,12 @@
   -->
 
 <script setup lang="ts">
-import { provide, ref } from 'vue'
+import { provide, ref, onMounted } from 'vue'
 import TitleBar from './TitleBar/TitleBar.vue'
 import TalkWrapper from './TalkWrapper/TalkWrapper.vue'
 import { createViewer } from './Viewer/Viewer.js'
 import { useNotificationsStore } from './notifications/notifications.store.js'
+import unreadCountStore from '../../../spreed/src/store/unreadCountStore.js'
 
 const isTalkInitialized = ref(false)
 provide('talk:isInitialized', isTalkInitialized)

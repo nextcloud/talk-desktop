@@ -9,6 +9,7 @@ const path = require('node:path')
 const { spawnSync } = require('node:child_process')
 const webpack = require('webpack')
 const { mergeWithRules } = require('webpack-merge')
+const { resolveConfig } = require('./build/resolveBuildConfig.js')
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 const CHANNEL = process.env.CHANNEL ?? 'dev'
@@ -60,6 +61,7 @@ function createPatcherAliases(packageName) {
 
 /**
  * Get the full version, including commit hash and branch name if not tagged
+ *
  * @example "v1.0.0-rc.2" on a directly tagged (released) commit
  * @example "v1.0.0-rc.2-481b5e1 (fix/diagnosis-report-versions)" on an untagged commit
  * @param {string} cwd - The path to the git repository
@@ -168,6 +170,7 @@ const webpackRendererConfig = mergeWithRules({
 			__VERSION_TAG__: JSON.stringify(getFullVersion()),
 			__TALK_VERSION_TAG__: JSON.stringify(getFullVersion(TALK_PATH)),
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),
+			__BUILD_CONFIG__: JSON.stringify(resolveConfig()),
 		}),
 	],
 })

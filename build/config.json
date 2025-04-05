@@ -1,0 +1,17 @@
+{
+	"applicationName": "Nextcloud Talk",
+	"companyName": "Nextcloud GmbH",
+	"copyright": "Copyright (c) {year} Nextcloud GmbH",
+	"domain": null,
+	"enforceDomain": false,
+	"brandColor": "#0082C9",
+	"brandFontColor": "#FFFFFF",
+	"helpUrl": "https://nextcloud.com/talk/",
+	"privacyUrl": "https://nextcloud.com/privacy/",
+	"hideBugReport": false,
+	"windowsExe": true,
+	"windowsMsi": true,
+	"macosDmg": true,
+	"linuxFlatpak": true,
+	"linuxZip": true
+}

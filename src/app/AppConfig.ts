@@ -107,6 +107,10 @@ export type AppConfig = {
 	 * Device ID of secondary speaker output device.
 	 */
 	secondarySpeakerDevice: string | null
+	/**
+	 * List of trusted certificate fingerprints on Linux
+	 */
+	trustedFingerprints: string[]
 }
 
 export type AppConfigKey = keyof AppConfig
@@ -125,6 +129,7 @@ const defaultAppConfig: AppConfig = {
 	enableCallbox: 'respect-dnd',
 	secondarySpeaker: false,
 	secondarySpeakerDevice: null,
+	trustedFingerprints: [],
 }
 
 /** Local cache of the config file mixed with the default values */

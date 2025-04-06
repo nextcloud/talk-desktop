@@ -218,49 +218,58 @@ app.whenReady().then(async () => {
 		}
 	})
 
+	const trustedFingerprints = getAppConfig('trustedFingerprints') ?? []
 	app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
 		event.preventDefault()
 
 		if (isLinux) {
-			return callback(process.env.NODE_ENV !== 'production')
+			if (trustedFingerprints.includes(certificate.fingerprint)) {
+				callback(true)
+			} else {
+				dialog.showMessageBox(mainWindow, {
+					type: 'warning',
+					title: 'Security Warning',
+					detail:
+						[
+							`Error: ${error}`,
+							'',
+							`Subject: ${certificate.subjectName}`,
+							'',
+							`Issuer: ${certificate.issuerName ?? 'UNKNOWN'}`,
+							`- Organisations: ${certificate.issuer.organizations.join(', ')}`,
+							`- Organisation units: ${certificate.issuer.organizationUnits.join(', ')}`,
+							`- Country: ${certificate.issuer.country}`,
+							`- State: ${certificate.issuer.state}`,
+							`- Locality: ${certificate.issuer.locality}`,
+							'',
+							`Fingerprint: ${certificate.fingerprint}`,
+							'',
+							`Valid from: ${new Date(certificate.validStart * 1_000).toLocaleDateString()}`,
+							`Valid until: ${new Date(certificate.validExpiry * 1_000).toLocaleDateString()}`,
+							'',
+							'Do you trust this certificate?',
+						].join('\n'),
+					buttons: ['Yes', 'Cancel'],
+				}).then((res) => {
+					if (res.response === 0) {
+						trustedFingerprints.push(certificate.fingerprint)
+						setAppConfig('trustedFingerprints', trustedFingerprints)
+						callback(true)
+					} else {
+						callback(false)
+					}
+				})
+			}
+		} else {
+			dialog.showCertificateTrustDialog(mainWindow, {
+				certificate,
+				message: 'Untrusted certificate',
+			}).then(() => {
+				callback(true)
+			}).catch(() => {
+				callback(false)
+			})
 		}
-
-		dialog.showCertificateTrustDialog(mainWindow, {
-			certificate,
-			message: 'Untrusted certificate',
-		}).then(() => {
-			callback(true)
-		}).catch(() => {
-			callback(false)
-		})
-
-		// TODO: showCertificateTrustDialog supports only Windows and Mac OS. Create custom window on Linux:
-		/* dialog.showMessageBox(mainWindow, {
-			type: 'warning',
-			title: 'Security Warning',
-			detail:
-				[
-					`Error: ${error}`,
-					'',
-					`Subject: ${certificate.subjectName}`,
-					'',
-					`Issuer: ${certificate.issuerName ?? 'UNKNOWN'}`,
-					`- Organisations: ${certificate.issuer.organizations.join(', ')}`,
-					`- Organisation units: ${certificate.issuer.organizationUnits.join(', ')}`,
-					`- Country: ${certificate.issuer.country}`,
-					`- State: ${certificate.issuer.state}`,
-					`- Locality: ${certificate.issuer.locality}`,
-					'',
-					`Fingerprint: ${certificate.fingerprint}`,
-					'',
-					`Valid from: ${new Date(certificate.validStart * 1_000).toLocaleDateString()}`,
-					`Valid until: ${new Date(certificate.validExpiry * 1_000).toLocaleDateString()}`,
-					'',
-					'Do you trust this certificate?',
-				].join('\n'),
-			buttons: ['Yes', 'Cancel'],
-		})
- 		*/
 	})
 
 	mainWindow = createWelcomeWindow()

@@ -218,11 +218,11 @@ app.whenReady().then(async () => {
 		}
 	})
 
-	const trustedFingerprints = getAppConfig('trustedFingerprints') ?? []
 	app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
 		event.preventDefault()
 
 		if (isLinux) {
+			const trustedFingerprints = getAppConfig('trustedFingerprints') ?? []
 			if (trustedFingerprints.includes(certificate.fingerprint)) {
 				callback(true)
 			} else {
@@ -250,10 +250,9 @@ app.whenReady().then(async () => {
 							'Do you trust this certificate?',
 						].join('\n'),
 					buttons: ['Yes', 'Cancel'],
-				}).then((res) => {
-					if (res.response === 0) {
-						trustedFingerprints.push(certificate.fingerprint)
-						setAppConfig('trustedFingerprints', trustedFingerprints)
+				}).then(({ response }) => {
+					if (response === 0) {
+						setAppConfig('trustedFingerprints', [certificate.fingerprint, ...trustedFingerprints])
 						callback(true)
 					} else {
 						callback(false)

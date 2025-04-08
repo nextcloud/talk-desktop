@@ -17,6 +17,7 @@ OC.L10N.register(
     "Menu" : "Roll",
     "Report a bug" : "Dugas ur gudenn",
     "Settings" : "Arventennoù",
+    "View profile" : "Gwelet ar profil",
     "Log out" : "Digevreañ",
     "Don't clear" : "Arabat diverkañ",
     "Today" : "Hiziv",

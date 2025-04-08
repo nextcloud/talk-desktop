@@ -128,7 +128,7 @@ async function revertStatus() {
 
 		<NcButton
 			class="user-status-form__row"
-			type="secondary"
+			variant="secondary"
 			wide
 			:disabled="!statusIsUserDefined"
 			@click="clearUserStatusCustomMessage">
@@ -137,7 +137,7 @@ async function revertStatus() {
 
 		<div class="user-status-form__buttons">
 			<NcButton
-				type="primary"
+				variant="primary"
 				wide
 				:disabled="!isDirty"
 				@click="save">

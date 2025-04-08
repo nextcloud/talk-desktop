@@ -23,7 +23,7 @@ const emit = defineEmits<{
 		<NcButton
 			v-for="option in availableUserStatusStatusTypes"
 			:key="option"
-			type="tertiary"
+			variant="tertiary"
 			alignment="start"
 			:pressed="option === status"
 			wide

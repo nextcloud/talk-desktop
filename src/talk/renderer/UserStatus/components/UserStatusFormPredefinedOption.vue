@@ -22,7 +22,7 @@ const emit = defineEmits<{
 
 <template>
 	<NcButton
-		type="tertiary"
+		variant="tertiary"
 		alignment="start"
 		wide
 		:pressed="pressed"

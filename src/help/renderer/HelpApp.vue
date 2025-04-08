@@ -43,7 +43,7 @@ function close() {
 		<div class="help__title-bar" :class="{ 'help__title-bar--mac': isMac }">
 			<NcButton
 				:aria-label="t('talk_desktop', 'Close')"
-				type="tertiary"
+				variant="tertiary"
 				wide
 				@click="close">
 				<template #icon>

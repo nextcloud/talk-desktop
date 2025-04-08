@@ -163,8 +163,8 @@ async function login() {
 					<NcButton
 						v-if="state !== 'loading'"
 						class="submit-button"
-						type="primary"
-						native-type="submit"
+						variant="primary"
+						type="submit"
 						wide>
 						<template #icon>
 							<IconArrowRight :size="20" />
@@ -174,8 +174,8 @@ async function login() {
 					<NcButton
 						v-else-if="state === 'loading'"
 						class="submit-button"
-						type="primary"
-						native-type="submit"
+						variant="primary"
+						type="submit"
 						wide>
 						<template #icon>
 							<NcLoadingIcon appearance="light" />

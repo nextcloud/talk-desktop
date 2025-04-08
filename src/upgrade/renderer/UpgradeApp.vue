@@ -29,7 +29,7 @@ const browserLink = generateUrl('/apps/spreed')
 			<NcButton
 				:href="packageInfo.repository"
 				target="_blank"
-				type="primary"
+				variant="primary"
 				wide>
 				<template #icon>
 					<IconCloudDownload :size="20" />
@@ -38,7 +38,7 @@ const browserLink = generateUrl('/apps/spreed')
 			</NcButton>
 			<NcButton
 				:href="browserLink"
-				type="secondary"
+				variant="secondary"
 				target="_blank"
 				wide>
 				<template #icon>

@@ -92,7 +92,7 @@ function copy() {
 							:aria-label="wrapLabel"
 							:pressed.sync="wrap"
 							:title="wrapLabel"
-							type="tertiary">
+							variant="tertiary">
 							<template #icon>
 								<IconWrap :size="20" />
 							</template>
@@ -100,7 +100,7 @@ function copy() {
 						<NcButton
 							:aria-label="t('talk_desktop', 'Copy content')"
 							:title="t('talk_desktop', 'Copy content')"
-							type="tertiary"
+							variant="tertiary"
 							@click="copy">
 							<template #icon>
 								<IconCheck v-if="justCopied" :size="20" />

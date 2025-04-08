@@ -165,7 +165,7 @@ function relaunch() {
 					<span v-html="zoomHint" />
 				</template>
 				<template #default="{ inputId, descriptionId }">
-					<NcButton :aria-label="t('talk_desktop', 'Zoom out')" type="tertiary" @click="zoomFactor /= ZOOM_STEP">
+					<NcButton :aria-label="t('talk_desktop', 'Zoom out')" variant="tertiary" @click="zoomFactor /= ZOOM_STEP">
 						<template #icon>
 							<IconMinus :size="20" />
 						</template>
@@ -179,7 +179,7 @@ function relaunch() {
 						:model-value="zoomFactorPercentage"
 						@change="zoomFactorPercentage = $event.target.value"
 						@blur="$event.target.value = zoomFactorPercentage" />
-					<NcButton :aria-label="t('talk_desktop', 'Zoom in')" type="tertiary" @click="zoomFactor *= ZOOM_STEP">
+					<NcButton :aria-label="t('talk_desktop', 'Zoom in')" variant="tertiary" @click="zoomFactor *= ZOOM_STEP">
 						<template #icon>
 							<IconPlus :size="20" />
 						</template>
@@ -227,7 +227,7 @@ function relaunch() {
 					<IconVolumeHigh :size="size" />
 				</template>
 				<template #action>
-					<NcButton type="tertiary" @click="initializeDevices">
+					<NcButton variant="tertiary" @click="initializeDevices">
 						<template #icon>
 							<IconRestore :size="20" />
 						</template>

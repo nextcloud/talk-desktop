@@ -79,7 +79,7 @@ function dismiss() {
 			<NcButton
 				class="callbox__quit"
 				:aria-label="t('talk_desktop', 'Close')"
-				type="tertiary-no-background"
+				variant="tertiary-no-background"
 				size="small"
 				@click="dismiss">
 				<template #icon>
@@ -90,7 +90,7 @@ function dismiss() {
 
 		<div class="callbox__actions">
 			<NcButton
-				type="error"
+				variant="error"
 				alignment="center"
 				wide
 				@click="dismiss">
@@ -100,7 +100,7 @@ function dismiss() {
 				{{ t('talk_desktop', 'Dismiss') }}
 			</NcButton>
 			<NcButton
-				type="success"
+				variant="success"
 				alignment="center"
 				wide
 				@click="join">

@@ -20,17 +20,11 @@ export default [
 		languageOptions: {
 			globals: {
 				// Electron Forge build vars
-				AUTHENTICATION_WINDOW_WEBPACK_ENTRY: 'readonly',
 				AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
 				CALLBOX_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
-				CALLBOX_WINDOW_WEBPACK_ENTRY: 'readonly',
-				TALK_WINDOW_WEBPACK_ENTRY: 'readonly',
 				TALK_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
-				HELP_WINDOW_WEBPACK_ENTRY: 'readonly',
 				HELP_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
-				UPGRADE_WINDOW_WEBPACK_ENTRY: 'readonly',
 				UPGRADE_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
-				WELCOME_WINDOW_WEBPACK_ENTRY: 'readonly',
 				WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY: 'readonly',
 				// Build constants
 				IS_DESKTOP: 'readonly',

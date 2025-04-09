@@ -6,7 +6,7 @@
 const { BrowserWindow } = require('electron')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { isMac } = require('../app/system.utils.ts')
-const { getScaledWindowSize, applyZoom } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom, getWindowUrl } = require('../app/utils.ts')
 const { getAppConfig } = require('../app/AppConfig.ts')
 
 /**
@@ -40,7 +40,7 @@ function createWelcomeWindow() {
 
 	applyZoom(window)
 
-	window.loadURL(WELCOME_WINDOW_WEBPACK_ENTRY)
+	window.loadURL(getWindowUrl('welcome_window'))
 
 	return window
 }

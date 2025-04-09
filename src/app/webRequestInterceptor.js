@@ -4,9 +4,9 @@
  */
 
 const { session } = require('electron')
-const { DEV_SERVER_ORIGIN } = require('../constants.js')
 const { osTitle } = require('./system.utils.ts')
 const packageJson = require('../../package.json')
+const { APP_ORIGIN } = require('../constants.js')
 
 const USER_AGENT = `Mozilla/5.0 (${osTitle}) Nextcloud-Talk v${packageJson.version}`
 
@@ -68,12 +68,12 @@ function enableWebRequestInterceptor(serverUrl, {
 		}
 	}
 
-	const ALLOWED_ORIGIN = [process.env.NODE_ENV === 'production' ? 'file://' : `${DEV_SERVER_ORIGIN}`]
+	const ALLOWED_ORIGIN = [APP_ORIGIN]
 	const ALLOWED_METHODS = ['GET, POST, PUT, PATCH, DELETE, PROPFIND, MKCOL, SEARCH, REPORT'] // Includes WebDAV
 	const ALLOWED_CREDENTIALS_TRUE = ['true']
 	const ALLOWED_HEADERS = [
 		[
-		// Common
+			// Common
 			'Authorization',
 			'Content-Type',
 			'If-None-Match',

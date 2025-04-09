@@ -78,17 +78,11 @@ declare interface Window {
  */
 
 // Electron Forge built constants
-declare const AUTHENTICATION_WINDOW_WEBPACK_ENTRY: string
 declare const AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY: string
 declare const CALLBOX_WINDOW_PRELOAD_WEBPACK_ENTRY: string
-declare const CALLBOX_WINDOW_WEBPACK_ENTRY: string
-declare const TALK_WINDOW_WEBPACK_ENTRY: string
 declare const TALK_WINDOW_PRELOAD_WEBPACK_ENTRY: string
-declare const HELP_WINDOW_WEBPACK_ENTRY: string
 declare const HELP_WINDOW_PRELOAD_WEBPACK_ENTRY: string
-declare const UPGRADE_WINDOW_WEBPACK_ENTRY: string
 declare const UPGRADE_WINDOW_PRELOAD_WEBPACK_ENTRY: string
-declare const WELCOME_WINDOW_WEBPACK_ENTRY: string
 declare const WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY: string
 
 declare global {

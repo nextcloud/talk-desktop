@@ -8,7 +8,7 @@ const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
-const { getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -51,7 +51,7 @@ function createAuthenticationWindow() {
 	applyContextMenu(window)
 	applyZoom(window)
 
-	window.loadURL(AUTHENTICATION_WINDOW_WEBPACK_ENTRY)
+	window.loadURL(getWindowUrl('authentication_window'))
 
 	return window
 }

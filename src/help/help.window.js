@@ -6,7 +6,7 @@
 const { BrowserWindow } = require('electron')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 
 /**
@@ -38,7 +38,7 @@ function createHelpWindow(parentWindow) {
 
 	window.removeMenu()
 
-	window.loadURL(HELP_WINDOW_WEBPACK_ENTRY)
+	window.loadURL(getWindowUrl('help_window'))
 
 	applyExternalLinkHandler(window)
 	applyContextMenu(window)

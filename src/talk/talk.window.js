@@ -12,7 +12,7 @@ const { setupTray } = require('../app/app.tray.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
-const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
+const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -77,7 +77,7 @@ function createTalkWindow() {
 
 	setupTray(window)
 
-	window.loadURL(TALK_WINDOW_WEBPACK_ENTRY + '#/apps/spreed')
+	window.loadURL(getWindowUrl('talk_window') + '#/apps/spreed')
 
 	return window
 }

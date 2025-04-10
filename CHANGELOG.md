@@ -5,6 +5,18 @@
 
 # Changelog
 
+## v1.1.6 - 2025-04-10
+
+### Fixes
+
+- File picker does not work when user never set locale [#1164](https://github.com/nextcloud/talk-desktop/pull/1164)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.0.2 in both beta and stable release channels [#1207](https://github.com/nextcloud/talk-desktop/pull/1207)
+- Update translations
+- Update dependencies
+
 ## v1.1.5 - 2025-02-24
 
 ### Fixes

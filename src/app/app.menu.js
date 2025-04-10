@@ -8,6 +8,7 @@ const { isMac } = require('./system.utils.ts')
 const packageJson = require('../../package.json')
 const { createHelpWindow } = require('../help/help.window.js')
 const { increaseZoom, decreaseZoom, setZoom } = require('./zoom.service.ts')
+const { BUILD_CONFIG } = require('../shared/build.config.ts')
 
 /**
  * Setup application menu
@@ -87,7 +88,6 @@ function setupMenu() {
 		{ role: 'front' },
 		{ type: 'separator' },
 		{ role: 'window' },
-
 	]
 
 	const windowMenuItems = [
@@ -118,9 +118,14 @@ function setupMenu() {
 					createHelpWindow(focusedWindow)
 				},
 			},
-			createLinkMenuItem('Homepage', packageJson.repository.url),
-			createLinkMenuItem('Report a bug', packageJson.bugs),
-			createLinkMenuItem('Source Code', packageJson.repository.url),
+			...(BUILD_CONFIG.isBranded
+				? []
+				: [
+						createLinkMenuItem('Homepage', packageJson.repository.url),
+						createLinkMenuItem('Report a bug', packageJson.bugs),
+						createLinkMenuItem('Source Code', packageJson.repository.url),
+					]
+			),
 			createLinkMenuItem(`License ${packageJson.license}`, 'https://www.gnu.org/licenses/agpl-3.0.txt'),
 		],
 	}

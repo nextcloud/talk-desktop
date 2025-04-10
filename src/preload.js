@@ -8,17 +8,12 @@ const {
 	ipcRenderer,
 } = require('electron')
 
-const packageJson = require('../package.json')
+const { license, bugs, repository } = require('../package.json')
 
 const packageInfo = {
-	productName: packageJson.productName,
-	version: __VERSION_TAG__,
-	talkVersion: __TALK_VERSION_TAG__,
-	description: packageJson.description,
-	bugs: packageJson.bugs,
-	license: packageJson.license,
-	author: packageJson.author,
-	repository: packageJson.repository.url,
+	license,
+	bugs,
+	repository: repository.url,
 }
 
 /**

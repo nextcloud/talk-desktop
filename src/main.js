@@ -25,6 +25,7 @@ const { applyTheme } = require('./app/theme.config.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { createCallboxWindow } = require('./callbox/callbox.window.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
+const { BUILD_CONFIG } = require('./shared/build.config.ts')
 
 /**
  * Parse command line arguments
@@ -47,10 +48,10 @@ if (isWindows && process.env.NODE_ENV === 'production') {
 	const isSquirrel = fs.existsSync(updateExePath)
 	if (isSquirrel) {
 		// Squirrel.Windows sets the AppUserModelId in the following way
-		app.setAppUserModelId('com.squirrel.NextcloudTalk.NextcloudTalk')
+		app.setAppUserModelId(`com.squirrel.${BUILD_CONFIG.applicationNameSanitized}.${BUILD_CONFIG.applicationNameSanitized}`)
 	} else {
 		// MSI installer - normal AppID
-		app.setAppUserModelId('com.nextcloud.talk')
+		app.setAppUserModelId(BUILD_CONFIG.winAppId)
 	}
 }
 
@@ -71,7 +72,7 @@ if (!app.requestSingleInstanceLock()) {
 /**
  * Schedule check for a new version available to download from GitHub
  */
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' && !BUILD_CONFIG.isBranded) {
 	setupReleaseNotificationScheduler(24 * 60)
 }
 

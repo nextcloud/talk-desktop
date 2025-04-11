@@ -9,6 +9,7 @@ import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from
 import { registerTalkDesktopSettingsSection } from '../Settings/index.ts'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { appData } from '../../../app/AppData.js'
+import { subscribe } from '@nextcloud/event-bus'
 
 const emit = defineEmits<{
 	(event: 'ready'): void
@@ -32,6 +33,10 @@ onMounted(async () => {
 	})
 	onTalkHashDirty(() => {
 		appData.setTalkHashDirty(true).persist()
+	})
+
+	subscribe('talk:unread:updated', ( eventData ) => {
+		window.TALK_DESKTOP.setBadgeCount(eventData.messages)
 	})
 
 	// Ready

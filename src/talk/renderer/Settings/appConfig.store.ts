@@ -30,12 +30,8 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 
 	const userStatusStore = useUserStatusStore()
 	watchEffect(() => {
-		const playSoundChat = appConfig.value.playSoundChat === 'respect-dnd'
-			? userStatusStore.userStatus?.status !== 'dnd'
-			: appConfig.value.playSoundChat === 'always'
-		const playSoundCall = appConfig.value.playSoundCall === 'respect-dnd'
-			? userStatusStore.userStatus?.status !== 'dnd'
-			: appConfig.value.playSoundCall === 'always'
+		const playSoundChat = appConfig.value.playSoundChat && userStatusStore.userStatus?.status !== 'dnd'
+		const playSoundCall = appConfig.value.playSoundCall && userStatusStore.userStatus?.status !== 'dnd'
 		setInitialState('notifications', 'sound_notification', playSoundChat)
 		setInitialState('notifications', 'sound_talk', playSoundCall)
 	})

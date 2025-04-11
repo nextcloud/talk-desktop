@@ -67,9 +67,8 @@ const zoomHint = t('talk_desktop', 'Zoom can be also changed by {key} or mouse w
 }, undefined, { escape: false })
 
 const generalNotificationOptions = [
-	{ label: t('talk_desktop', 'Always'), value: 'always' } as const,
-	{ label: t('talk_desktop', 'When not in "Do not disturb"'), value: 'respect-dnd' } as const,
-	{ label: t('talk_desktop', 'Never'), value: 'never' } as const,
+	{ label: t('talk_desktop', 'When not in "Do not disturb"'), value: true } as const,
+	{ label: t('talk_desktop', 'Never'), value: false } as const,
 ]
 
 const playSoundChat = useAppConfigValue('playSoundChat')

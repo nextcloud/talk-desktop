@@ -21,6 +21,7 @@ import IconMessageBadgeOutline from 'vue-material-design-icons/MessageBadgeOutli
 import IconConsole from 'vue-material-design-icons/Console.vue'
 import { appData } from '../../../../app/AppData.js'
 
+// @ts-expect-error appData is not typed yet
 const supportsTestAdminNotification = appData.capabilities?.notifications?.['admin-notifications']?.includes('ocs') && appData.userMetadata?.groups.includes('admin')
 const supportsTestPushNotification = appData.capabilities?.notifications?.['ocs-endpoints']?.includes('test-push')
 const supportsTestNotification = supportsTestPushNotification || supportsTestAdminNotification

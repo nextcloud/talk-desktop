@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Unexpected error" : "Απροσδόκητο σφάλμα",
     "Nextcloud server address" : "Διεύθυνση διακομιστή Nextcloud",
+    "Server address" : "Διεύθυνση διακομιστή",
     "Log in" : "Είσοδος",
     "Logging in …" : "Σύνδεση …",
     "Close" : "Κλείσιμο",

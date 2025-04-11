@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "սերվերի հասցեն",
     "Log in" : "Մուտք գործել",
     "Close" : "Փակել",
     "Copy" : "Պատճենել",

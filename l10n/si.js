@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "සේවාදායක ලිපිනය",
     "Log in" : "පිවිසෙන්න",
     "Logging in …" : "පිවිසෙමින් …",
     "Close" : "වසන්න",

@@ -1,5 +1,6 @@
 { "translations": {
     "Nextcloud server address" : "כתובת שרת ה־Nextcloud",
+    "Server address" : "כתובת שרת",
     "Log in" : "כניסה",
     "Logging in …" : "מתבצעת כניסה…",
     "Close" : "סגירה",

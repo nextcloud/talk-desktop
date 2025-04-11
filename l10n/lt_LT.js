@@ -7,6 +7,7 @@ OC.L10N.register(
     "Unexpected error" : "Netikėta klaida",
     "Login was successful but something went wrong." : "Prisijungimas buvo sėkmingas, bet kažkas nutiko.",
     "Nextcloud server address" : "Nextcloud serverio adresas",
+    "Server address" : "Serverio adresas",
     "Log in" : "Prisijungti",
     "Logging in …" : "Prisijungiama…",
     "Close" : "Užverti",

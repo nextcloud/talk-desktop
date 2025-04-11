@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Serweriň salgysy",
     "Log in" : "Giriň",
     "Close" : "Ýap",
     "Dismiss" : "Ýapmak.",

@@ -9,7 +9,6 @@ OC.L10N.register(
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "المطلوب {componentName} {minRequiredVersion} أو أي إصدار أحدث، لكن الإصدار المثبت هو {foundVersion} ",
     "Unexpected error" : "خطأ غير متوقع",
     "Login was successful but something went wrong." : "الدخول كان ناجحاً و لكن حدث خطأٌ ما.",
-    "Log in to Nextcloud" : "الدخول إلى نكست كلاود",
     "Nextcloud server address" : "عنوان خادم نكست كلاود",
     "Log in" : "تسجيل الدخول",
     "Logging in …" : "تسجيل الدخول …",

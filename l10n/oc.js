@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Talk pel burèu",
+    "Server address" : "Adreça del servidor",
     "Log in" : "Connexion",
     "Logging in …" : "Identificacion…",
     "Close" : "Tampar",

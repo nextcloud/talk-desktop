@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "சேவையக முகவரி",
     "Log in" : "புகுபதிகை",
     "Close" : "மூடுக",
     "Copied" : "நகலெடுக்கப்பட்டது",

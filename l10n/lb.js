@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Server-Adress",
     "Log in" : "Umellen",
     "Close" : "Zoumaachen",
     "Dismiss" : "Ofbriechen",

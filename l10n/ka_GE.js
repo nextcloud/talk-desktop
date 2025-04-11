@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Nextcloud server address" : "Nextcloud-ის სერვერის მისამართი",
+    "Server address" : "სერვერის მისამართი",
     "Log in" : "შესვლა",
     "Logging in …" : "შესვლა ...",
     "Close" : "დახურვა",

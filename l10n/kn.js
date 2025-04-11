@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "﻿ಪರಿಚಾರಕ ಗಣಕಯಂತ್ರದ ವಿಳಾಸ",
     "Close" : "ಮುಚ್ಚು",
     "Copy" : "ನಕಲಿಸಿ",
     "Ok" : "﻿ಸರಿ",

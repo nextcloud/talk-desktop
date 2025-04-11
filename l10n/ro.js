@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Adresă server",
     "Log in" : "Autentificare",
     "Logging in …" : "Se autentifică...",
     "Close" : "Închide",

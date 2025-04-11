@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Адреса на серверот",
     "Logging in …" : "Најава ...",
     "Close" : "Затвори",
     "Join call" : "Приклучи се кон повикот",

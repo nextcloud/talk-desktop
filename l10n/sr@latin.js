@@ -9,7 +9,6 @@ OC.L10N.register(
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Potrebna je {componentName} minimalne verzije {minRequiredVersion} ili novije, ali je instalirana verzija {foundVersion}",
     "Unexpected error" : "Neočekivana greška",
     "Login was successful but something went wrong." : "Uspešna prijava ali je nastala greška",
-    "Log in to Nextcloud" : "Prijavi se na Nextcloud",
     "Nextcloud server address" : "Adresa Nextcloud servera",
     "Log in" : "Prijava",
     "Logging in …" : "Prijava u toku...",

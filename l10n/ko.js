@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Nextcloud server address" : "Nextcloud 서버 주소",
+    "Server address" : "서버 주소",
     "Logging in …" : "로그인 중 …",
     "Close" : "닫기",
     "Dismiss" : "끄기",

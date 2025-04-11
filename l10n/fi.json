@@ -1,5 +1,6 @@
 { "translations": {
     "Nextcloud server address" : "Nextcloud-palvelimen osoite",
+    "Server address" : "Palvelimen osoite",
     "Log in" : "Kirjaudu sisään",
     "Logging in …" : "Kirjaudutaan sisään...",
     "Close" : "Sulje",

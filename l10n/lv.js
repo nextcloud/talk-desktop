@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Servera adrese",
     "Log in" : "Pieteikties",
     "Logging in …" : "Notiek pieteikšanās …",
     "Close" : "Aizvērt",

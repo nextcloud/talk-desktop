@@ -1,5 +1,6 @@
 { "translations": {
     "Invalid server address" : "Invalid server address",
+    "Server address" : "Server address",
     "Log in" : "Log in",
     "Logging in …" : "Logging in …",
     "Close" : "Close",

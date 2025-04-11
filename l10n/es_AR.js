@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Dirección del servidor",
     "Log in" : "Iniciar sesión",
     "Logging in …" : "Ingresando ...",
     "Close" : "Cerrar",

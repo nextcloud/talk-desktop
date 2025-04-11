@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "хүлээн авагчийн хаяг",
     "Log in" : "Нэвтрэх",
     "Logging in …" : "Нэвтэрч байна",
     "Dismiss" : "Арилгах",

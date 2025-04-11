@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Cyfeiriad gweinydd",
     "Log in" : "Mewngofnodi",
     "Close" : "Cau",
     "License" : "Trwydded",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Nextcloud server not found" : "Ez da Nextcloud zerbitzaria aurkitu",
     "Unexpected error" : "Ustekabeko errorea",
     "Nextcloud server address" : "Nextcloud zerbitzariaren helbidea",
+    "Server address" : "Zerbitzariaren helbidea",
     "Log in" : "Izena eman",
     "Logging in …" : "Saioa hasten...",
     "Close" : "Itxi",

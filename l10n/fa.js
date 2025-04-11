@@ -3,8 +3,8 @@ OC.L10N.register(
     {
     "Talk Desktop" : "Talk Desktop",
     "Unexpected error" : "Unexpected error",
-    "Log in to Nextcloud" : "ورود به سامانه",
     "Nextcloud server address" : "آدرس سرور Nextcloud",
+    "Server address" : "آدرس سرور",
     "Log in" : "ورود",
     "Logging in …" : "ورود به سیستم ...",
     "Close" : "بسته",

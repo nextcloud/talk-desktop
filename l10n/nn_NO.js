@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Nextcloud server address" : "Nextcloud server adresse",
+    "Server address" : "Server adresse",
     "Log in" : "Logg inn",
     "Close" : "Lat att",
     "Dismiss" : "Forkast",

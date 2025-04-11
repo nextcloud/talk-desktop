@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Servila adreso",
     "Log in" : "Ensaluti",
     "Logging in …" : "Ensaluti...",
     "Close" : "Malfermi",

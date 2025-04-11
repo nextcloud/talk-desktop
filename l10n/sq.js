@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Adresë serveri",
     "Log in" : "Hyni",
     "Logging in …" : "Duke u loguar ...",
     "Close" : "Mbylleni",

@@ -80,7 +80,7 @@
     "@types/howler": "^2.2.12",
     "@vercel/webpack-asset-relocator-loader": "^1.7.4",
     "@vue/tsconfig": "^0.5.1",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "electron": "^35.1.4",
     "esbuild-loader": "^4.3.0",
     "eslint": "^9.24.0",

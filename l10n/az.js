@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Server ünvanı",
     "Log in" : "Giriş",
     "Close" : "Bağla",
     "Dismiss" : "Rədd et",

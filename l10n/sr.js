@@ -9,6 +9,7 @@ OC.L10N.register(
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Потребна је {componentName} {minRequiredVersion} верзија или новија, али је инстаалирана верзија {foundVersion}",
     "Unexpected error" : "Неочекивана грешка",
     "Login was successful but something went wrong." : "Пријава је успела, али нешто није у реду.",
+    "Log in to {applicationName}" : "Пријавите се на {applicationName}",
     "Nextcloud server address" : "Адреса Некстклауд сервера",
     "Server address" : "Адреса сервера",
     "Log in" : "Пријава",

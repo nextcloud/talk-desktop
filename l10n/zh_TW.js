@@ -9,6 +9,7 @@ OC.L10N.register(
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "需要 {componentName} {minRequiredVersion} 或更新版本，但安裝了 {foundVersion}",
     "Unexpected error" : "意外錯誤",
     "Login was successful but something went wrong." : "登入成功，但出現問題……",
+    "Log in to {applicationName}" : "登入 {applicationName}",
     "Nextcloud server address" : "Nextcloud 伺服器位址",
     "Server address" : "伺服器位址",
     "Log in" : "登入",

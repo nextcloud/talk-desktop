@@ -7,6 +7,7 @@
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "{componentName} {minRequiredVersion} eller högre krävs men {foundVersion} är installerad",
     "Unexpected error" : "Oväntat fel",
     "Login was successful but something went wrong." : "Inloggningen lyckades men något gick fel.",
+    "Log in to {applicationName}" : "Logga in på {applicationName}",
     "Nextcloud server address" : "Nextcloud serveradress",
     "Server address" : "Serveradress",
     "Log in" : "Logga in",

@@ -9,6 +9,7 @@ OC.L10N.register(
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "{componentName} {minRequiredVersion} o superiore è richiesto ma {foundVersion} è installato",
     "Unexpected error" : "Errore imprevisto",
     "Login was successful but something went wrong." : "L'accesso è riuscito ma qualcosa è andato storto.",
+    "Log in to {applicationName}" : "Accedere a {applicationName}",
     "Nextcloud server address" : "Indirizzo server Nextcloud",
     "Server address" : "Indirizzo del server",
     "Log in" : "Login",

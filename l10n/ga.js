@@ -9,6 +9,7 @@ OC.L10N.register(
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Tá {componentName} {minRequiredVersion} nó níos airde ag teastáil ach tá {foundVersion} suiteáilte",
     "Unexpected error" : "Earráid gan choinne",
     "Login was successful but something went wrong." : "D’éirigh leis an logáil isteach ach chuaigh rud éigin mícheart.",
+    "Log in to {applicationName}" : "Logáil isteach go {applicationName}",
     "Nextcloud server address" : "Seoladh freastalaí Nextcloud",
     "Server address" : "Seoladh an fhreastalaí",
     "Log in" : "Logáil isteach",

@@ -164,12 +164,14 @@ export function createNotificationStore() {
 			return
 		}
 
-		const isNotificationFromPendingCall = notification.objectType === 'call'
-			&& await checkCurrentUserHasPendingCall(notification.objectId)
-
 		const enableCallboxConfig = getAppConfigValue('enableCallbox')
-		const shouldShowCallPopup = isNotificationFromPendingCall
-			&& (enableCallboxConfig === 'always' || (enableCallboxConfig === 'respect-dnd' && !userStatusStore.isDnd))
+		const callboxEnabled = enableCallboxConfig && !userStatusStore.isDnd
+		const isCallNotification = notification.objectType === 'call'
+
+		// Check for pending call only as the last check to avoid unnecessary requests
+		const shouldShowCallPopup = isCallNotification
+			&& callboxEnabled
+			&& await checkCurrentUserHasPendingCall(notification.objectId)
 
 		if (shouldShowCallPopup) {
 			const params = {

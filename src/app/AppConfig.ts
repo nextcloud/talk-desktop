@@ -78,27 +78,19 @@ export type AppConfig = {
 
 	/**
 	 * Whether to play a sound when a chat notification is received.
-	 * Same as notifications.sound_notification initial state.
-	 * - 'always': always play sound
-	 * - 'respect-dnd': play sound only if user status is not Do-Not-Disturb [default]
-	 * - 'never': disable notification sound
+	 * Default: true, but ignored on Do-Not-Disturb.
 	 */
-	playSoundChat: 'always' | 'respect-dnd' | 'never'
+	playSoundChat: boolean
 	/**
 	 * Whether to play a sound when a call notification is received.
-	 * Same as notifications.sound_talk initial state.
-	 * - 'always': always play sound
-	 * - 'respect-dnd': play sound only if user status is not Do-Not-Disturb [default]
-	 * - 'never': disable notification sound
+	 * Default: true, but ignored on Do-Not-Disturb.
 	 */
-	playSoundCall: 'always' | 'respect-dnd' | 'never'
+	playSoundCall: boolean
 	/**
 	 * Whether to show a popup when a call notification is received.
-	 * - 'always': always show the popup
-	 * - 'respect-dnd': show the popup only if user status is not Do-Not-Disturb [default]
-	 * - 'never': disable the call popup
+	 * Default: true, but ignored on Do-Not-Disturb.
 	 */
-	enableCallbox: 'always' | 'respect-dnd' | 'never'
+	enableCallbox: boolean
 	/**
 	 * Whether to play ring sound on secondary speaker when a call notification is received.
 	 */
@@ -120,9 +112,9 @@ const defaultAppConfig: AppConfig = {
 	systemTitleBar: isLinux,
 	monochromeTrayIcon: isMac,
 	zoomFactor: 1,
-	playSoundChat: 'respect-dnd',
-	playSoundCall: 'respect-dnd',
-	enableCallbox: 'respect-dnd',
+	playSoundChat: true,
+	playSoundCall: true,
+	enableCallbox: true,
 	secondarySpeaker: false,
 	secondarySpeakerDevice: null,
 }
@@ -169,10 +161,43 @@ async function writeAppConfigFile(config: Partial<AppConfig>) {
 }
 
 /**
+ * Validate the application config by removing unknown properties and properties with invalid values
+ * @param config - Config to validate
+ */
+function validateAppConfig(config: unknown): Partial<AppConfig> {
+	if (typeof config !== 'object' || config === null) {
+		return {}
+	}
+	// Remove unknown keys
+	for (const key in config) {
+		if (!(key in defaultAppConfig)) {
+			delete config[key as keyof typeof config]
+		}
+	}
+	// Validate values
+	const booleanProperties: AppConfigKey[] = ['launchAtStartup', 'systemTitleBar', 'monochromeTrayIcon', 'playSoundChat', 'playSoundCall', 'enableCallbox', 'secondarySpeaker']
+	for (const key of booleanProperties) {
+		if (typeof config[key as keyof typeof config] !== 'boolean') {
+			delete config[key as keyof typeof config]
+		}
+	}
+	if ('zoomFactor' in config && typeof config.zoomFactor !== 'number') {
+		delete config.zoomFactor
+	}
+	if ('theme' in config && !['default', 'dark', 'light'].includes(config.theme as AppConfig['theme'])) {
+		delete config.theme
+	}
+	if ('secondarySpeakerDevice' in config && typeof config.secondarySpeakerDevice !== 'string' && config.secondarySpeakerDevice !== null) {
+		delete config.secondarySpeakerDevice
+	}
+	return config
+}
+
+/**
  * Load the application config into the application memory
  */
 export async function loadAppConfig() {
-	const config = await readAppConfigFile()
+	const config = validateAppConfig(await readAppConfigFile())
 	Object.assign(appConfig, config)
 	initialized = true
 }

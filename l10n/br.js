@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "Chom-lec'h ar servijour",
     "Log in" : "Kennaskañ",
     "Logging in …" : "O kennsakañ...",
     "Close" : "Serriñ",

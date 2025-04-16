@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Server address" : "সার্ভার ঠিকানা",
     "Log in" : "প্রবেশ",
     "Close" : "বন্ধ",
     "Ok" : "তথাস্তু",

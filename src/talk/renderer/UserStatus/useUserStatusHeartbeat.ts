@@ -5,7 +5,7 @@
 
 import { onBeforeUnmount, watch } from 'vue'
 import { useUserStatusStore } from './userStatus.store.ts'
-import { useIdle } from './useIdle.ts'
+import { useIdle } from './useAppIdle.ts'
 
 /** How often to update the user status */
 const USER_STATUS_UPDATE_INTERVAL = 5 * 60 * 1000 // 5 minutes
@@ -18,7 +18,7 @@ const USER_STATUS_ACTIVE_TIMEOUT = 2 * 60 * 1000 // 2 minutes
  */
 export function useUserStatusHeartbeat() {
 	const userStatusStore = useUserStatusStore()
-	const { isIdle } = useIdle({ timeout: USER_STATUS_ACTIVE_TIMEOUT })
+	const { isIdle } = useIdle(USER_STATUS_ACTIVE_TIMEOUT)
 
 	/**
 	 * Send a heartbeat

@@ -373,8 +373,15 @@ module.exports = {
 				port: 3000, // The default for this plugin
 				loggerPort: 9005, // The default is 9000, but it conflicts with Talk API
 				devServer: {
+					// Allow using app protocol
+					allowedHosts: 'all',
 					client: {
 						overlay: false,
+						// When serving a page from a custom protocol://host
+						// WS hostname must be set explicitly
+						webSocketURL: {
+							hostname: 'localhost',
+						},
 					},
 				},
 				renderer: {

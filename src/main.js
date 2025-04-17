@@ -25,6 +25,7 @@ const { applyTheme } = require('./app/theme.config.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { createCallboxWindow } = require('./callbox/callbox.window.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
+const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
 const { BUILD_CONFIG } = require('./shared/build.config.ts')
 
 /**
@@ -135,6 +136,7 @@ app.whenReady().then(async () => {
 	await loadAppConfig()
 	applyTheme()
 	initLaunchAtStartupListener()
+	registerAppProtocolHandler()
 
 	// Open in the background if it is explicitly set, or the app was open at login on macOS
 	const openInBackground = ARGUMENTS.openInBackground || app.getLoginItemSettings().wasOpenedAtLogin

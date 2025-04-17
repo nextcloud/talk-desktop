@@ -7,6 +7,7 @@ import type { BrowserWindow } from 'electron'
 import { screen } from 'electron'
 import { getAppConfig } from './AppConfig.ts'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
+import { APP_ORIGIN } from '../constants.js'
 
 /**
  * Get the scaled window size based on the current zoom factor
@@ -80,4 +81,15 @@ export function buildTitle(title?: string) {
 	const BASE_TITLE = BUILD_CONFIG.applicationName
 	const base = __CHANNEL__ !== 'stable' ? `${BASE_TITLE} ${capitalize(__CHANNEL__)}` : BASE_TITLE
 	return title ? `${title} - ${base}` : base
+}
+
+type WindowName = 'authentication_window' | 'callbox_window' | 'help_window' | 'talk_window' | 'upgrade_window' | 'welcome_window'
+
+/**
+ * Get the URL for a window to load
+ *
+ * @param windowName - Window name
+ */
+export function getWindowUrl(windowName: WindowName) {
+	return `${APP_ORIGIN}/${windowName}/index.html`
 }

@@ -13,7 +13,7 @@ import type {
 } from 'electron'
 import { shell } from 'electron'
 import { appData } from './AppData.js'
-import { DEV_SERVER_ORIGIN } from '../constants.js'
+import { APP_ORIGIN } from '../constants.js'
 
 /**
  * Check if a link is an internal application link
@@ -21,7 +21,7 @@ import { DEV_SERVER_ORIGIN } from '../constants.js'
  * @param url - URL
  */
 export function isInternalLink(url: string) {
-	return url.startsWith('file') || (process.env.NODE_ENV !== 'production' && url.startsWith(DEV_SERVER_ORIGIN))
+	return url.startsWith(APP_ORIGIN + '/')
 }
 
 /**

@@ -7,6 +7,7 @@ import { join } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
 import { app, webContents } from 'electron'
 import { isLinux, isMac } from './system.utils.ts'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
 
@@ -70,7 +71,11 @@ export type AppConfig = {
 	// Privacy settings
 	// ----------------
 
-	// Nothing yet...
+	/**
+	 * Whether check system activity/idle when updating user status to "Online"/"Away"
+	 * Default: true
+	 */
+	enableSystemActivityStatus: boolean
 
 	// ----------------------
 	// Notifications settings
@@ -120,11 +125,17 @@ const defaultAppConfig: AppConfig = {
 	systemTitleBar: isLinux,
 	monochromeTrayIcon: isMac,
 	zoomFactor: 1,
+	enableSystemActivityStatus: true,
 	playSoundChat: 'respect-dnd',
 	playSoundCall: 'respect-dnd',
 	enableCallbox: 'respect-dnd',
 	secondarySpeaker: false,
 	secondarySpeakerDevice: null,
+}
+
+const forcedConfig: Partial<AppConfig> = {}
+if (BUILD_CONFIG.forceEnableSystemActivityStatus) {
+	forcedConfig.enableSystemActivityStatus = true
 }
 
 /** Local cache of the config file mixed with the default values */
@@ -190,7 +201,7 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
 		throw new Error('The application config is not initialized yet')
 	}
 
-	const config = { ...defaultAppConfig, ...appConfig }
+	const config = { ...defaultAppConfig, ...appConfig, ...forcedConfig }
 
 	if (key) {
 		return config[key]

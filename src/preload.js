@@ -124,6 +124,12 @@ const TALK_DESKTOP = {
 	 */
 	onIsLockedChange: (callback) => ipcRenderer.on('app:isLocked:change', callback),
 	/**
+	 * Request user gestured permission via button click
+	 *
+	 * @param {string} id - Button ID to click on
+	 */
+	requestUserGesturedPermission: (id) => ipcRenderer.send('app:requestUserGesturedPermission', id),
+	/**
 	 * Trigger download of a URL
 	 *
 	 * @param {string} url - URL to download

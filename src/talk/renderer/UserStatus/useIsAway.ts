@@ -1,0 +1,37 @@
+/*!
+ * SPDX-FileCopyrightText: 2025 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+import { computed } from 'vue'
+import { useAppIdle } from './useAppIdle.ts'
+import { useIsLocked } from './useIsLocked.ts'
+
+/**
+ * Whether the user is away or online (active)
+ *
+ * @param threshold - How long user is considered active
+ */
+export function useIsAway(threshold: number) {
+	const isAppIdle = useAppIdle(threshold)
+	const isLocked = useIsLocked()
+
+	const isOnline = computed(() => {
+		// System Locked - user is away
+		if (isLocked.value) {
+			return false
+		}
+
+		// Active in the app - definitely online
+		if (!isAppIdle.value) {
+			return true
+		}
+
+		// No sign of activity
+		return false
+	})
+
+	const isAway = computed(() => !isOnline.value)
+
+	return { isAway, isOnline }
+}

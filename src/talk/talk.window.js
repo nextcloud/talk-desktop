@@ -13,6 +13,7 @@ const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
 const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
+const { applyIsLockedChangeEvent } = require('../app/applyIsLockedChangeEvent.ts')
 
 /**
  * @return {import('electron').BrowserWindow}
@@ -74,7 +75,7 @@ function createTalkWindow() {
 	applyDownloadHandler(window)
 	applyWheelZoom(window)
 	applyZoom(window)
-
+	applyIsLockedChangeEvent(window)
 	setupTray(window)
 
 	window.loadURL(getWindowUrl('talk_window') + '#/apps/spreed')

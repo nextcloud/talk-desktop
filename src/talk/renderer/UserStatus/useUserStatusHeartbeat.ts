@@ -5,7 +5,7 @@
 
 import { onBeforeUnmount, watch } from 'vue'
 import { useUserStatusStore } from './userStatus.store.ts'
-import { useIdle } from './useAppIdle.ts'
+import { useIsAway } from './useIsAway.ts'
 
 /** How often to update the user status */
 const USER_STATUS_UPDATE_INTERVAL = 5 * 60 * 1000 // 5 minutes
@@ -18,13 +18,13 @@ const USER_STATUS_ACTIVE_TIMEOUT = 2 * 60 * 1000 // 2 minutes
  */
 export function useUserStatusHeartbeat() {
 	const userStatusStore = useUserStatusStore()
-	const { isIdle } = useIdle(USER_STATUS_ACTIVE_TIMEOUT)
+	const { isAway } = useIsAway(USER_STATUS_ACTIVE_TIMEOUT)
 
 	/**
 	 * Send a heartbeat
 	 */
 	function heartbeat() {
-		userStatusStore.updateUserStatusWithHeartbeat(isIdle.value)
+		userStatusStore.updateUserStatusWithHeartbeat(isAway.value)
 	}
 
 	let heartbeatInterval: number | undefined
@@ -37,8 +37,8 @@ export function useUserStatusHeartbeat() {
 		heartbeatInterval = setInterval(heartbeat, USER_STATUS_UPDATE_INTERVAL) as unknown as number
 	}
 
-	watch(isIdle, () => {
-		if (!isIdle.value) {
+	watch(isAway, () => {
+		if (!isAway.value) {
 			restartHeartbeat()
 		}
 	}, { immediate: true })
@@ -46,6 +46,4 @@ export function useUserStatusHeartbeat() {
 	onBeforeUnmount(() => {
 		clearInterval(heartbeatInterval)
 	})
-
-	return { isIdle }
 }

@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { onUnmounted, readonly, ref } from 'vue'
+import { onUnmounted, readonly, ref, watch } from 'vue'
 import { requestUserGesturedPermission } from '../../../shared/requestUserGesturedPermission.ts'
+import { useAppConfigValue } from '../Settings/useAppConfigValue.ts'
 
 let hasPermission = false
 
@@ -14,12 +15,21 @@ let hasPermission = false
  * @param threshold - How long user is considered idle in ms, default is 1 minute
  */
 export function useSystemIdle(threshold: number = 60_000) {
+	const enableSystemActivityStatus = useAppConfigValue('enableSystemActivityStatus')
+
 	const isIdleDetected = ref(false)
 
 	let abortController: AbortController
 	let idleDetector: IdleDetector
 
-	startIdleDetector()
+	watch(enableSystemActivityStatus, (isEnabled, wasEnabled) => {
+		if (isEnabled) {
+			startIdleDetector()
+		}
+		if (wasEnabled) {
+			stopIdleDetector()
+		}
+	}, { immediate: true })
 
 	onUnmounted(() => {
 		stopIdleDetector()

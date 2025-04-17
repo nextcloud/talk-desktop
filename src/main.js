@@ -95,6 +95,9 @@ ipcMain.on('app:relaunch', () => {
 ipcMain.handle('app:config:get', (event, key) => getAppConfig(key))
 ipcMain.handle('app:config:set', (event, key, value) => setAppConfig(key, value))
 ipcMain.handle('app:isLocked', () => powerMonitor.getSystemIdleState(1000) === 'locked')
+ipcMain.on('app:requestUserGesturedPermission', (event, id) => {
+	return event.sender.executeJavaScript(`document.getElementById('${id}')?.click()`, true)
+})
 ipcMain.on('app:toggleDevTools', (event) => event.sender.toggleDevTools())
 ipcMain.handle('app:anything', () => { /* Put any code here to run it from UI */ })
 ipcMain.on('app:openChromeWebRtcInternals', () => openChromeWebRtcInternals())

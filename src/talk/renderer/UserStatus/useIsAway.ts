@@ -5,6 +5,7 @@
 
 import { computed } from 'vue'
 import { useAppIdle } from './useAppIdle.ts'
+import { useSystemIdle } from './useSystemIdle.ts'
 import { useIsLocked } from './useIsLocked.ts'
 
 /**
@@ -14,10 +15,11 @@ import { useIsLocked } from './useIsLocked.ts'
  */
 export function useIsAway(threshold: number) {
 	const isAppIdle = useAppIdle(threshold)
+	const isSystemIdle = useSystemIdle(threshold)
 	const isLocked = useIsLocked()
 
 	const isOnline = computed(() => {
-		// System Locked - user is away
+		// System Locked - the user is away
 		if (isLocked.value) {
 			return false
 		}
@@ -27,7 +29,12 @@ export function useIsAway(threshold: number) {
 			return true
 		}
 
-		// No sign of activity
+		// Active in the system - online
+		if (!isSystemIdle.value) {
+			return true
+		}
+
+		// No sign of activity - away
 		return false
 	})
 

@@ -60,7 +60,7 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "客户端版本过低，不再受服务器支持，请更新",
     "Application" : "应用",
     "Online" : "在线",
-    "Do not disturb" : "请勿打扰",
+    "Do not disturb" : "勿扰",
     "Invisible" : "隐身",
     "Unknown status" : "未知状态",
     "You missed a call from {user}" : "您错过了来自 {user} 的一个通话",

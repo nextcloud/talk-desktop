@@ -8,12 +8,13 @@ import { onBeforeUnmount, ref } from 'vue'
 const WINDOW_ACTIVE_EVENTS = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'] as const
 
 /**
- * Hook to detect whether the user is active or away (idle)
+ * Whether user is active in the app or away:
+ * - The window is visible
+ * - The user interacted with the app (mouse, keyboard, touch) in the last X minutes
  *
- * @param options - Options
- * @param options.timeout - How long user is considered active, default is 1 minute
+ * @param threshold - How long user is considered active after interaction in ms, default is 1 minute
  */
-export function useIdle({ timeout = 1000 * 60 }) {
+export function useAppIdle(threshold: number = 60_000) {
 	const isIdle = ref(false)
 
 	let isActiveTimeout: number | undefined
@@ -33,7 +34,7 @@ export function useIdle({ timeout = 1000 * 60 }) {
 		isIdle.value = false
 		clearTimeout(isActiveTimeout)
 		// TODO: separate tsconfig for main process (Node.js Environment) and renderer process (Browser Environment)
-		isActiveTimeout = setTimeout(markInactive, timeout) as unknown as number
+		isActiveTimeout = setTimeout(markInactive, threshold) as unknown as number
 	}
 
 	/**
@@ -55,14 +56,12 @@ export function useIdle({ timeout = 1000 * 60 }) {
 	onBeforeUnmount(() => {
 		clearTimeout(isActiveTimeout)
 		for (const eventName of WINDOW_ACTIVE_EVENTS) {
-			window.removeEventListener(eventName, markActive)
+			window.removeEventListener(eventName, markActive, { capture: true })
 		}
 		document.removeEventListener('visibilitychange', handleVisibilityChange)
 	})
 
 	markActive()
 
-	return {
-		isIdle,
-	}
+	return isIdle
 }

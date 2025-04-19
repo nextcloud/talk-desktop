@@ -56,6 +56,10 @@ export default {
 		<template #action>
 			<slot name="action" />
 		</template>
+
+		<template v-if="$slots.description" #description>
+			<slot name="description" />
+		</template>
 	</SettingsFormGroup>
 </template>
 

@@ -10,6 +10,7 @@ import { storeToRefs } from 'pinia'
 import { t } from '@nextcloud/l10n'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
+import IconAccountBadge from 'vue-material-design-icons/AccountBadge.vue'
 import IconMagnify from 'vue-material-design-icons/Magnify.vue'
 import IconMinus from 'vue-material-design-icons/Minus.vue'
 import IconPlus from 'vue-material-design-icons/Plus.vue'
@@ -28,6 +29,7 @@ import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
 import { useNcSelectModel } from '../composables/useNcSelectModel.ts'
 import { ZOOM_MIN, ZOOM_MAX } from '../../../constants.js'
+import { BUILD_CONFIG } from '../../../shared/build.config.ts'
 
 const isLinux = window.systemInfo.isLinux
 
@@ -80,6 +82,14 @@ const playSoundCallOption = useNcSelectModel(playSoundCall, generalNotificationO
 
 const enableCallbox = useAppConfigValue('enableCallbox')
 const enableCallboxOption = useNcSelectModel(enableCallbox, generalNotificationOptions)
+
+const forceEnableSystemActivityStatus = BUILD_CONFIG.forceEnableSystemActivityStatus
+const enableSystemActivityStatus = useAppConfigValue('enableSystemActivityStatus')
+const enableSystemActivityStatusOptions = [
+	{ label: t('talk_desktop', 'Also from activity in the system'), value: true } as const,
+	{ label: t('talk_desktop', 'Only from activity in the app'), value: false } as const,
+]
+const enableSystemActivityStatusOption = useNcSelectModel(enableSystemActivityStatus, enableSystemActivityStatusOptions)
 
 const secondarySpeaker = useAppConfigValue('secondarySpeaker')
 
@@ -139,6 +149,19 @@ function relaunch() {
 			<NcCheckboxRadioSwitch v-model="launchAtStartup" type="switch">
 				{{ t('talk_desktop', 'Launch at startup') }}
 			</NcCheckboxRadioSwitch>
+
+			<SettingsSelect
+				v-model="enableSystemActivityStatusOption"
+				:options="enableSystemActivityStatusOptions"
+				:disabled="forceEnableSystemActivityStatus"
+				:label="t('talk_desktop', 'Set my user status to Online/Away')">
+				<template #icon="{ size }">
+					<IconAccountBadge :size="size" />
+				</template>
+				<template v-if="forceEnableSystemActivityStatus" #description>
+					{{ t('talk_desktop', 'Changing this option is disabled by administrator') }}
+				</template>
+			</SettingsSelect>
 		</SettingsSubsection>
 
 		<SettingsSubsection :name="t('talk_desktop', 'Appearance')">

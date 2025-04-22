@@ -55,13 +55,16 @@ async function loadAndRegisterL10n(app, lang, resolver) {
  * @return {Promise<void>}
  */
 async function applyL10n() {
-	const language = appData.userMetadata?.language || (await window.TALK_DESKTOP.getSystemL10n()).language
-	const locale = appData.userMetadata?.locale || (await window.TALK_DESKTOP.getSystemL10n()).locale
+	const { language: systemLanguage, locale: systemLocale } = await window.TALK_DESKTOP.getSystemL10n()
+	const language = appData.userMetadata?.language || systemLanguage
+	const locale = appData.userMetadata?.locale || systemLocale
 
-	document.documentElement.lang = language
+	const canonicalLanguage = language.replaceAll('_', '-')
+
+	document.documentElement.lang = canonicalLanguage
 	document.documentElement.dataset.locale = locale
 
-	console.log(`Using locale "${locale}" for language "${language}"`)
+	console.info(`Using locale "${locale}" for language "${language}"`)
 
 	if (language !== 'en') {
 		await Promise.all([
@@ -70,7 +73,7 @@ async function applyL10n() {
 		])
 	}
 
-	document.body.dir = isRTL(language) ? 'rtl' : 'ltr'
+	document.body.dir = isRTL(canonicalLanguage) ? 'rtl' : 'ltr'
 }
 
 /**

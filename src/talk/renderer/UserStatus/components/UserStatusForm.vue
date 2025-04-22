@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
 import type { PredefinedUserStatus, UserStatusPrivate, UserStatusBackup } from '../userStatus.types.ts'
-import { computed, ref } from 'vue'
+import { computed, onBeforeMount, ref } from 'vue'
 import { toRef } from '@vueuse/core'
 import { getCurrentUser } from '@nextcloud/auth'
 import NcButton from '@nextcloud/vue/components/NcButton'
@@ -17,6 +17,7 @@ import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
 import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import UserStatusFormPredefinedOption from './UserStatusFormPredefinedOption.vue'
 import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
+import { fetchBackupStatus } from '../userStatus.service.ts'
 import { usePredefinedStatusesStore } from '../predefinedStatuses.store.ts'
 
 const emit = defineEmits<{
@@ -25,14 +26,18 @@ const emit = defineEmits<{
 
 const userStatusStore = useUserStatusStore()
 const userStatus = ref<UserStatusPrivate>({ ...userStatusStore.userStatus! })
-const backupStatus = ref(userStatusStore.backupStatus ? { ...userStatusStore.backupStatus } : null)
+const backupStatus = ref<UserStatusBackup | null>(null)
 
 const isDirty = ref(false)
 
 const predefinedStatuses = toRef(() => usePredefinedStatusesStore().predefinedStatuses)
 
-const statusIsUserDefined = computed(() => userStatus.value.icon || userStatus.value.message)
+const statusIsUserDefined = computed(() => !backupStatus.value && (userStatus.value.icon || userStatus.value.message))
 const isClear = computed(() => userStatus.value.status === 'online' && !userStatus.value.icon && !userStatus.value.message)
+
+onBeforeMount(async () => {
+	backupStatus.value = await fetchBackupStatus(getCurrentUser()!.uid).catch(() => null)
+})
 
 /**
  * Patch the user status with the new values
@@ -41,7 +46,6 @@ const isClear = computed(() => userStatus.value.status === 'online' && !userStat
  */
 function patchStatus(newUserStatus: Partial<UserStatusPrivate>) {
 	isDirty.value = true
-	backupStatus.value = null
 	Object.assign(userStatus.value, newUserStatus)
 }
 
@@ -84,7 +88,6 @@ async function revertStatus() {
 	await userStatusStore.revertUserStatusFromBackup()
 	backupStatus.value = null
 	userStatus.value = { ...userStatusStore.userStatus! }
-	isDirty.value = true
 }
 </script>
 

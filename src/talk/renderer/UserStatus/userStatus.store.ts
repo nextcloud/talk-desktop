@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 import type {
-	UserStatusBackup,
 	UserStatusPrivate,
 	UserStatusPublic,
 } from './userStatus.types.ts'
@@ -16,7 +15,6 @@ import {
 	revertToBackupStatus,
 	heartbeatUserStatus,
 	updateUserStatus,
-	fetchBackupStatus,
 } from './userStatus.service.ts'
 
 declare module '@nextcloud/event-bus' {
@@ -59,7 +57,6 @@ function emitUserStatusUpdated(userStatus: UserStatusPublic) {
 
 export const useUserStatusStore = defineStore('userStatus', () => {
 	const userStatus = ref<UserStatusPrivate | null>(null)
-	const backupStatus = ref<UserStatusBackup | null>(null)
 
 	const isDnd = computed(() => userStatus.value?.status === 'dnd')
 
@@ -89,7 +86,6 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 	 */
 	function setUserStatus(newUserStatus: UserStatusPrivate, withEmit: boolean = true) {
 		userStatus.value = newUserStatus
-		backupStatus.value = null
 		if (withEmit) {
 			emitUserStatusUpdated(userStatus.value)
 		}
@@ -103,7 +99,6 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 	 */
 	function patchUserStatus(newUserStatus: Partial<UserStatusPrivate>, withEmit: boolean = true) {
 		Object.assign(userStatus.value!, newUserStatus)
-		backupStatus.value = null
 		if (withEmit) {
 			emitUserStatusUpdated(userStatus.value!)
 		}
@@ -131,7 +126,6 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 	async function revertUserStatusFromBackup() {
 		await revertToBackupStatus(userStatus.value!.messageId!)
 		setUserStatus(await fetchCurrentUserStatus())
-		backupStatus.value = null
 	}
 
 	/**
@@ -145,12 +139,10 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 
 		if (status) {
 			setUserStatus(status)
-			backupStatus.value = await fetchBackupStatus(getCurrentUser()!.uid).catch(() => null)
 		} else if (forceFetchStatus) {
 			// heartbeat returns the status only if it has changed
 			// Request explicitly if forced to fetch status
 			setUserStatus(await fetchCurrentUserStatus())
-			backupStatus.value = await fetchBackupStatus(getCurrentUser()!.uid).catch(() => null)
 		}
 	}
 
@@ -158,7 +150,6 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 		initPromise,
 		userStatus,
 		isDnd,
-		backupStatus,
 		saveUserStatus,
 		revertUserStatusFromBackup,
 		updateUserStatusWithHeartbeat,

@@ -4,9 +4,10 @@
 -->
 
 <script setup lang="ts">
-import type { PredefinedUserStatus, UserStatusPrivate } from '../userStatus.types.ts'
+import type { PredefinedUserStatus, UserStatusPrivate, UserStatusBackup } from '../userStatus.types.ts'
 import { computed, ref } from 'vue'
-import { storeToRefs } from 'pinia'
+import { toRef } from '@vueuse/core'
+import { getCurrentUser } from '@nextcloud/auth'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import { translate as t } from '@nextcloud/l10n'
@@ -16,6 +17,7 @@ import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
 import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import UserStatusFormPredefinedOption from './UserStatusFormPredefinedOption.vue'
 import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
+import { usePredefinedStatusesStore } from '../predefinedStatuses.store.ts'
 
 const emit = defineEmits<{
 	(event: 'submit'): void
@@ -27,7 +29,7 @@ const backupStatus = ref(userStatusStore.backupStatus ? { ...userStatusStore.bac
 
 const isDirty = ref(false)
 
-const { predefinedStatuses } = storeToRefs(userStatusStore)
+const predefinedStatuses = toRef(() => usePredefinedStatusesStore().predefinedStatuses)
 
 const statusIsUserDefined = computed(() => userStatus.value.icon || userStatus.value.message)
 const isClear = computed(() => userStatus.value.status === 'online' && !userStatus.value.icon && !userStatus.value.message)

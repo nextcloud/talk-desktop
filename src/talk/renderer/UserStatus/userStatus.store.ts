@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 import type {
-	PredefinedUserStatus,
 	UserStatusBackup,
 	UserStatusPrivate,
 	UserStatusPublic,
@@ -13,7 +12,6 @@ import { computed, ref, watch } from 'vue'
 import { emit, subscribe } from '@nextcloud/event-bus'
 import { getCurrentUser } from '@nextcloud/auth'
 import {
-	fetchAllPredefinedStatuses,
 	fetchCurrentUserStatus,
 	revertToBackupStatus,
 	heartbeatUserStatus,
@@ -45,23 +43,6 @@ function restoreUserStatus(): UserStatusPrivate | null {
 }
 
 /**
- * Cache the predefined statuses in local storage
- *
- * @param predefinedStatuses - Predefined statuses
- */
-function cachePredefinedStatuses(predefinedStatuses: PredefinedUserStatus[]) {
-	localStorage.setItem('TalkDesktop:predefinedStatuses', JSON.stringify(predefinedStatuses))
-}
-
-/**
- * Restore the predefined statuses from local storage
- */
-function restorePredefinedStatuses(): PredefinedUserStatus[] | null {
-	// @ts-expect-error - JSON parse type is invalid in lib.ts, `null` is a valid value to parse
-	return JSON.parse(localStorage.getItem('TalkDesktop:predefinedStatuses'))
-}
-
-/**
  * Emit the user status update event
  *
  * @param userStatus - User status
@@ -78,7 +59,6 @@ function emitUserStatusUpdated(userStatus: UserStatusPublic) {
 
 export const useUserStatusStore = defineStore('userStatus', () => {
 	const userStatus = ref<UserStatusPrivate | null>(null)
-	const predefinedStatuses = ref<PredefinedUserStatus[] | null>(restorePredefinedStatuses())
 	const backupStatus = ref<UserStatusBackup | null>(null)
 
 	const isDnd = computed(() => userStatus.value?.status === 'dnd')
@@ -99,9 +79,6 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 
 	const initPromise = (async () => {
 		await updateUserStatusWithHeartbeat(false, true)
-
-		predefinedStatuses.value = await fetchAllPredefinedStatuses()
-		cachePredefinedStatuses(predefinedStatuses.value)
 	})()
 
 	/**
@@ -181,7 +158,6 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 		initPromise,
 		userStatus,
 		isDnd,
-		predefinedStatuses,
 		backupStatus,
 		saveUserStatus,
 		revertUserStatusFromBackup,

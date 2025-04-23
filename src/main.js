@@ -298,8 +298,6 @@ app.whenReady().then(async () => {
 		if (appData.credentials) {
 			// User is authenticated - setup and start main window
 			enableWebRequestInterceptor(appData.serverUrl, {
-				enableCors: true,
-				enableCookies: true,
 				credentials: appData.credentials,
 			})
 			mainWindow = createTalkWindow()

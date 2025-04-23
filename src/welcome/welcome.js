@@ -30,7 +30,7 @@ initGlobals()
 applyAxiosInterceptors()
 
 if (appData.credentials) {
-	await window.TALK_DESKTOP.enableWebRequestInterceptor(appData.serverUrl, { enableCors: true, enableCookies: true, credentials: appData.credentials })
+	await window.TALK_DESKTOP.enableWebRequestInterceptor(appData.serverUrl, { credentials: appData.credentials })
 	await refetchAppDataIfDirty(appData)
 }
 

@@ -16,6 +16,7 @@ protocol.registerSchemesAsPrivileged([
 			secure: true,
 			allowServiceWorkers: true,
 			supportFetchAPI: true,
+			corsEnabled: true,
 		},
 	},
 ])
@@ -26,13 +27,14 @@ protocol.registerSchemesAsPrivileged([
 export function registerAppProtocolHandler() {
 	protocol.handle(APP_PROTOCOL, async (request) => {
 		const url = new URL(request.url)
+		const fullpath = (url.pathname + url.search + url.hash).slice(1)
 
 		// Redirect nctalk://call/{token} links to the app
 		if (url.host === 'call') {
 			return new Response(null, {
 				status: 302,
 				headers: {
-					Location: `${APP_PROTOCOL}://${APP_HOST}/talk_window/index.html#/call${url.pathname + url.search + url.hash}`,
+					Location: `${APP_PROTOCOL}://${APP_HOST}/talk_window/index.html#/call/${fullpath}`,
 				},
 			})
 		}
@@ -41,7 +43,7 @@ export function registerAppProtocolHandler() {
 		if (url.host === APP_HOST) {
 			// In development mode proxy requests to the dev server
 			if (process.env.NODE_ENV === 'development') {
-				const urlOnDevServer = new URL(url.pathname + url.search + url.hash, DEV_SERVER_ORIGIN)
+				const urlOnDevServer = new URL(fullpath, DEV_SERVER_ORIGIN)
 				return await fetch(urlOnDevServer)
 			}
 
@@ -60,6 +62,18 @@ export function registerAppProtocolHandler() {
 			// Generate file://path/to/app/file?query URL
 			const urlToFile = pathToFileURL(requestPath)
 			return net.fetch(urlToFile.toString() + url.search + url.hash)
+		}
+
+		// API reverse proxy
+		if (url.host === 'api') {
+			return net.fetch(fullpath, {
+				method: request.method,
+				headers: request.headers,
+				body: request.body,
+				credentials: 'include',
+				// @ts-expect-error Untyped custom property from Electron
+				duplex: 'half',
+			})
 		}
 
 		// Unknown host

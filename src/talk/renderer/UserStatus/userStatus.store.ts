@@ -48,9 +48,14 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 		}
 	})
 
-	const initPromise = (async () => {
+	refreshUserStatus()
+
+	/**
+	 * Fetch the current user status (Private)
+	 */
+	async function refreshUserStatus() {
 		setUserStatus(await fetchCurrentUserStatus())
-	})()
+	}
 
 	/**
 	 * Set the user status
@@ -115,9 +120,9 @@ export const useUserStatusStore = defineStore('userStatus', () => {
 	}
 
 	return {
-		initPromise,
 		userStatus,
 		isDnd,
+		refreshUserStatus,
 		saveUserStatus,
 		revertUserStatusFromBackup,
 		updateUserStatusWithHeartbeat,

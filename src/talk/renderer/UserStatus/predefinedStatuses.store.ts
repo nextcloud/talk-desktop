@@ -12,11 +12,12 @@ import { browserStorage } from '../../../shared/browserStorage.service.ts'
 export const usePredefinedStatusesStore = defineStore('predefinedStatuses', () => {
 	const predefinedStatuses = useBrowserStorage<PredefinedUserStatus[] | null>(browserStorage, 'predefinedStatuses', null)
 
-	fetchAllPredefinedStatuses().then((statuses) => {
+	const initPromise = fetchAllPredefinedStatuses().then((statuses) => {
 		predefinedStatuses.value = statuses
 	})
 
 	return {
+		initPromise,
 		predefinedStatuses,
 	}
 })

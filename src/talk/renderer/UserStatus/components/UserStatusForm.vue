@@ -5,11 +5,10 @@
 
 <script setup lang="ts">
 import type { PredefinedUserStatus, UserStatusPrivate, UserStatusBackup } from '../userStatus.types.ts'
-import { computed, onBeforeMount, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { toRef } from '@vueuse/core'
-import { getCurrentUser } from '@nextcloud/auth'
 import NcButton from '@nextcloud/vue/components/NcButton'
-import { translate as t } from '@nextcloud/l10n'
+import { t } from '@nextcloud/l10n'
 import { useUserStatusStore } from '../userStatus.store.ts'
 import UserStatusFormBackup from './UserStatusFormBackup.vue'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'
@@ -17,27 +16,26 @@ import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
 import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import UserStatusFormPredefinedOption from './UserStatusFormPredefinedOption.vue'
 import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
-import { fetchBackupStatus } from '../userStatus.service.ts'
 import { usePredefinedStatusesStore } from '../predefinedStatuses.store.ts'
 
+const props = defineProps<{
+	backupStatus: UserStatusBackup | null
+}>()
+
 const emit = defineEmits<{
+	(event: 'update:backup-status', status: string): void
 	(event: 'submit'): void
 }>()
 
 const userStatusStore = useUserStatusStore()
 const userStatus = ref<UserStatusPrivate>({ ...userStatusStore.userStatus! })
-const backupStatus = ref<UserStatusBackup | null>(null)
 
 const isDirty = ref(false)
 
 const predefinedStatuses = toRef(() => usePredefinedStatusesStore().predefinedStatuses)
 
-const statusIsUserDefined = computed(() => !backupStatus.value && (userStatus.value.icon || userStatus.value.message))
+const statusIsUserDefined = computed(() => !props.backupStatus && (userStatus.value.icon || userStatus.value.message))
 const isClear = computed(() => userStatus.value.status === 'online' && !userStatus.value.icon && !userStatus.value.message)
-
-onBeforeMount(async () => {
-	backupStatus.value = await fetchBackupStatus(getCurrentUser()!.uid).catch(() => null)
-})
 
 /**
  * Patch the user status with the new values
@@ -86,8 +84,8 @@ async function save() {
  */
 async function revertStatus() {
 	await userStatusStore.revertUserStatusFromBackup()
-	backupStatus.value = null
 	userStatus.value = { ...userStatusStore.userStatus! }
+	emit('update:backup-status', null)
 }
 </script>
 

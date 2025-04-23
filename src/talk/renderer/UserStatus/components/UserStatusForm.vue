@@ -4,32 +4,37 @@
 -->
 
 <script setup lang="ts">
-import type { PredefinedUserStatus, UserStatusPrivate } from '../userStatus.types.ts'
+import type { PredefinedUserStatus, UserStatusPrivate, UserStatusBackup } from '../userStatus.types.ts'
 import { computed, ref } from 'vue'
-import { storeToRefs } from 'pinia'
+import { toRef } from '@vueuse/core'
 import NcButton from '@nextcloud/vue/components/NcButton'
-import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
-import { translate as t } from '@nextcloud/l10n'
+import { t } from '@nextcloud/l10n'
 import { useUserStatusStore } from '../userStatus.store.ts'
+import UserStatusFormBackup from './UserStatusFormBackup.vue'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'
 import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
 import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import UserStatusFormPredefinedOption from './UserStatusFormPredefinedOption.vue'
 import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
+import { usePredefinedStatusesStore } from '../predefinedStatuses.store.ts'
+
+const props = defineProps<{
+	backupStatus: UserStatusBackup | null
+}>()
 
 const emit = defineEmits<{
+	(event: 'update:backup-status', status: string): void
 	(event: 'submit'): void
 }>()
 
 const userStatusStore = useUserStatusStore()
 const userStatus = ref<UserStatusPrivate>({ ...userStatusStore.userStatus! })
-const backupStatus = ref(userStatusStore.backupStatus ? { ...userStatusStore.backupStatus } : null)
 
 const isDirty = ref(false)
 
-const { predefinedStatuses } = storeToRefs(userStatusStore)
+const predefinedStatuses = toRef(() => usePredefinedStatusesStore().predefinedStatuses)
 
-const statusIsUserDefined = computed(() => userStatus.value.icon || userStatus.value.message)
+const statusIsUserDefined = computed(() => !props.backupStatus && (userStatus.value.icon || userStatus.value.message))
 const isClear = computed(() => userStatus.value.status === 'online' && !userStatus.value.icon && !userStatus.value.message)
 
 /**
@@ -39,7 +44,6 @@ const isClear = computed(() => userStatus.value.status === 'online' && !userStat
  */
 function patchStatus(newUserStatus: Partial<UserStatusPrivate>) {
 	isDirty.value = true
-	backupStatus.value = null
 	Object.assign(userStatus.value, newUserStatus)
 }
 
@@ -80,9 +84,8 @@ async function save() {
  */
 async function revertStatus() {
 	await userStatusStore.revertUserStatusFromBackup()
-	backupStatus.value = null
 	userStatus.value = { ...userStatusStore.userStatus! }
-	isDirty.value = true
+	emit('update:backup-status', null)
 }
 </script>
 
@@ -90,9 +93,11 @@ async function revertStatus() {
 	<div class="user-status-form">
 		<UserStatusFormStatusType class="user-status-form__row" :status="userStatus.status" @update:status="patchStatus({ status: $event })" />
 
-		<NcNoteCard v-if="backupStatus" type="info" class="user-status-form__row">
-			{{ t('talk_desktop', 'Your status was set automatically') }}
-		</NcNoteCard>
+		<UserStatusFormBackup
+			v-if="backupStatus"
+			class="user-status-form__row"
+			:user-status="backupStatus"
+			@revert="revertStatus" />
 
 		<UserStatusFormCustomMessage
 			class="user-status-form__row"
@@ -101,15 +106,6 @@ async function revertStatus() {
 			:icon="userStatus.icon"
 			@update:message="patchStatus({ message: $event })"
 			@update:icon="patchStatus({ icon: $event })" />
-
-		<template v-if="backupStatus">
-			<h4>{{ t('talk_desktop', 'Previously set status') }}</h4>
-			<UserStatusFormPredefinedOption key="previously-set" :user-status="backupStatus" @click="revertStatus" />
-		</template>
-
-		<h4 v-if="backupStatus">
-			{{ t('talk_desktop', 'Predefined statuses') }}
-		</h4>
 
 		<div class="user-status-form__predefined-statuses">
 			<UserStatusFormPredefinedOption

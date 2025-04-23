@@ -9,9 +9,9 @@ import { computed, onBeforeMount, ref } from 'vue'
 import { toRef } from '@vueuse/core'
 import { getCurrentUser } from '@nextcloud/auth'
 import NcButton from '@nextcloud/vue/components/NcButton'
-import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import { translate as t } from '@nextcloud/l10n'
 import { useUserStatusStore } from '../userStatus.store.ts'
+import UserStatusFormBackup from './UserStatusFormBackup.vue'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'
 import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
 import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
@@ -95,9 +95,11 @@ async function revertStatus() {
 	<div class="user-status-form">
 		<UserStatusFormStatusType class="user-status-form__row" :status="userStatus.status" @update:status="patchStatus({ status: $event })" />
 
-		<NcNoteCard v-if="backupStatus" type="info" class="user-status-form__row">
-			{{ t('talk_desktop', 'Your status was set automatically') }}
-		</NcNoteCard>
+		<UserStatusFormBackup
+			v-if="backupStatus"
+			class="user-status-form__row"
+			:user-status="backupStatus"
+			@revert="revertStatus" />
 
 		<UserStatusFormCustomMessage
 			class="user-status-form__row"
@@ -106,15 +108,6 @@ async function revertStatus() {
 			:icon="userStatus.icon"
 			@update:message="patchStatus({ message: $event })"
 			@update:icon="patchStatus({ icon: $event })" />
-
-		<template v-if="backupStatus">
-			<h4>{{ t('talk_desktop', 'Previously set status') }}</h4>
-			<UserStatusFormPredefinedOption key="previously-set" :user-status="backupStatus" @click="revertStatus" />
-		</template>
-
-		<h4 v-if="backupStatus">
-			{{ t('talk_desktop', 'Predefined statuses') }}
-		</h4>
 
 		<div class="user-status-form__predefined-statuses">
 			<UserStatusFormPredefinedOption

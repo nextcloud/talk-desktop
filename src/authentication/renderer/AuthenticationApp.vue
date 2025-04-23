@@ -74,7 +74,6 @@ async function login() {
 	// Check if valid URL
 	try {
 		// new URL will throw an exception on invalid URL
-
 		new URL(serverUrl.value)
 	} catch {
 		return setError(t('talk_desktop', 'Invalid server address'))
@@ -82,7 +81,7 @@ async function login() {
 
 	// Prepare to request the server
 	window.TALK_DESKTOP.disableWebRequestInterceptor()
-	window.TALK_DESKTOP.enableWebRequestInterceptor(serverUrl.value, { enableCors: true })
+	window.TALK_DESKTOP.enableWebRequestInterceptor(serverUrl.value)
 	appData.reset()
 	appData.serverUrl = serverUrl.value
 
@@ -128,7 +127,7 @@ async function login() {
 	}
 
 	// Add credentials to the request
-	window.TALK_DESKTOP.enableWebRequestInterceptor(serverUrl.value, { enableCors: true, enableCookies: true, credentials })
+	window.TALK_DESKTOP.enableWebRequestInterceptor(serverUrl.value, { credentials })
 	// Save credentials
 	appData.credentials = credentials
 

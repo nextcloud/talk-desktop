@@ -102,14 +102,6 @@ async function applyUserData() {
  * @return {void}
  */
 export function applyAxiosInterceptors() {
-	axios.interceptors.request.use((config) => {
-		// For CORS requests
-		config.withCredentials = true
-		// For OCS requests using Authentication headers
-		config.headers['OCS-APIRequest'] = 'true'
-		return config
-	}, (error) => Promise.reject(error))
-
 	// Handle 401 Unauthorized and 426 Upgrade Required responses
 	let upgradeInterceptorHasBeenTriggeredOnce = false
 	axios.interceptors.response.use((response) => response, (error) => {

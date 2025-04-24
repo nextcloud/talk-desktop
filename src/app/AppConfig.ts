@@ -209,7 +209,6 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
  *
  * @param key - Settings key to set
  * @param value - Value to set or undefined to reset to the default value
- * @return Promise<AppConfig> - The full settings after the change
  */
 export function setAppConfig<K extends AppConfigKey>(key: K, value?: AppConfig[K]) {
 	// Ignore if no change

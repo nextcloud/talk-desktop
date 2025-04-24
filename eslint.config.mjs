@@ -37,13 +37,6 @@ export default [
 				...globals.node,
 			},
 		},
-		settings: {
-			jsdoc: {
-				tagNamePreference: {
-					return: 'return', // TODO: upstream
-				},
-			},
-		},
 	},
 	// Rules and overrides
 	{
@@ -60,30 +53,9 @@ export default [
 			'@nextcloud/no-removed-apis': 'off',
 		},
 	},
-	// TODO: upstream
-	{
-		rules: {
-			'jsdoc/check-tag-names': ['error', { typed: false }], // TODO: upstream
-			'jsdoc/no-types': 'off', // TODO: upstream
-			'@stylistic/newline-per-chained-call': 'off', // TODO: upstream
-			'@stylistic/array-bracket-newline': ['error', { multiline: true }], // TODO: upstream
-			'@stylistic/array-element-newline': ['error', 'consistent'], // TODO: upstream
-			'@stylistic/object-property-newline': 'off', // TODO: upstream
-			'prefer-template': 'off', // TODO: upstream
-			'no-use-before-define': ['error', { functions: false }], // TODO: upstream
-		},
-	},
-	{
-		files: ['**/*.ts', '**/*.vue'],
-		rules: {
-			'@typescript-eslint/no-shadow': 'off', // TODO: upstream
-			'@typescript-eslint/no-use-before-define': ['error', { functions: false }], // TODO: upstream
-		},
-	},
 	{
 		files: ['**/*.vue'],
 		rules: {
-			'vue/require-prop-comment': 'off', // TODO: upstream
 		},
 	},
 	// Additional Vue rules
@@ -102,22 +74,14 @@ export default [
 			'vue/attribute-hyphenation': 'error',
 			'vue/block-order': ['error', { order: ['script', 'template', 'style'] }], // Follow new Vue standards
 			'vue/component-api-style': ['error', ['script-setup']], // Follow new Vue standards
-			'vue/component-name-in-template-casing': 'error',
 			'vue/component-options-name-casing': 'error',
 			// 'vue/custom-event-name-casing': 'error', // TODO: enable with Vue 3
 			'vue/define-emits-declaration': 'error',
-			'vue/match-component-file-name': 'error',
-			// 'vue/no-bare-strings-in-template': 'error', // TODO: Enable with l10n
-			'vue/new-line-between-multi-line-property': 'error',
 			'vue/no-duplicate-attr-inheritance': 'error',
 			'vue/no-potential-component-option-typo': 'error',
 			'vue/no-ref-object-reactivity-loss': 'error',
-			'vue/no-undef-components': 'error',
 			'vue/no-undef-properties': 'error',
-			'vue/no-unused-properties': 'error', // TODO: Experiment
-			'vue/no-useless-mustaches': 'error',
 			'vue/no-useless-v-bind': 'error',
-			'vue/padding-line-between-blocks': 'error',
 			'vue/prefer-separate-static-class': 'error',
 			'vue/prefer-true-attribute-shorthand': 'error',
 			'vue/require-name-property': 'error',

@@ -4,11 +4,11 @@
  */
 
 const { BrowserWindow } = require('electron')
-const { TITLE_BAR_HEIGHT } = require('../constants.js')
-const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
+const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
+const { TITLE_BAR_HEIGHT } = require('../constants.js')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}

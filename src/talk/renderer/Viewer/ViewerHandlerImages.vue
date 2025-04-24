@@ -5,8 +5,8 @@
 
 <script setup>
 import { computed } from 'vue'
-import { generateFilePreviewUrl } from './viewer.utils.ts'
 import ViewerHandlerMedia from './ViewerHandlerMedia.vue'
+import { generateFilePreviewUrl } from './viewer.utils.ts'
 
 const props = defineProps({
 	file: {

@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import type { ScreensharingSourceId } from './screensharing.types.ts'
+
 import { ref } from 'vue'
 import DesktopMediaSourceDialog from './DesktopMediaSourceDialog.vue'
 

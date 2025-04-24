@@ -5,8 +5,9 @@
 
 import type { Ref } from 'vue'
 import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
-import { readonly, ref, set, watch, watchEffect } from 'vue'
+
 import { defineStore } from 'pinia'
+import { readonly, ref, set, watch, watchEffect } from 'vue'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
 import { setInitialState } from '../../../shared/initialState.service.js'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'

@@ -5,15 +5,16 @@
 
 <script setup lang="ts">
 import type { UserStatusBackup } from './userStatus.types.ts'
-import NcDialog from '@nextcloud/vue/components/NcDialog'
-import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
+
 import { getCurrentUser } from '@nextcloud/auth'
 import { t } from '@nextcloud/l10n'
 import { onBeforeMount, ref } from 'vue'
-import { useUserStatusStore } from './userStatus.store.ts'
+import NcDialog from '@nextcloud/vue/components/NcDialog'
+import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import UserStatusForm from './components/UserStatusForm.vue'
 import { usePredefinedStatusesStore } from './predefinedStatuses.store.ts'
 import { fetchBackupStatus } from './userStatus.service.ts'
+import { useUserStatusStore } from './userStatus.store.ts'
 
 const emit = defineEmits<{
 	(event: 'close'): void

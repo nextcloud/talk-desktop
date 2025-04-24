@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { getCurrentUserData, getCapabilities } from '../shared/ocs.service.js'
 import packageJson from '../../package.json'
+import { getCapabilities, getCurrentUserData } from '../shared/ocs.service.js'
 
 /**
  * Re-fetch capabilities and userMetadata and update appData

@@ -4,10 +4,10 @@
  */
 
 import { BrowserWindow } from 'electron'
-import { applyExternalLinkHandler } from '../app/externalLinkHandlers.ts'
-import { getBrowserWindowIcon } from '../shared/icons.utils.js'
-import { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } from '../app/utils.ts'
 import { applyContextMenu } from '../app/applyContextMenu.js'
+import { applyExternalLinkHandler } from '../app/externalLinkHandlers.ts'
+import { applyZoom, buildTitle, getScaledWindowSize, getWindowUrl } from '../app/utils.ts'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 
 /**
  * Create the upgrade window

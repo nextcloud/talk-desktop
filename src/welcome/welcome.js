@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import '@global-styles/dist/icons.css'
-
 import { appData } from '../app/AppData.js'
 import { refetchAppDataIfDirty } from '../app/appData.service.js'
 import { initGlobals } from '../shared/globals/globals.js'
 import { applyAxiosInterceptors } from '../shared/setupWebPage.js'
+
+import '@global-styles/dist/icons.css'
 
 const quitButton = document.querySelector('.quit')
 quitButton.addEventListener('click', () => window.TALK_DESKTOP.quit())

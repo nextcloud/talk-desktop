@@ -4,19 +4,20 @@
 -->
 
 <script setup lang="ts">
-import type { PredefinedUserStatus, UserStatusPrivate, UserStatusBackup } from '../userStatus.types.ts'
-import { computed, ref } from 'vue'
-import { toRef } from '@vueuse/core'
-import NcButton from '@nextcloud/vue/components/NcButton'
+import type { PredefinedUserStatus, UserStatusBackup, UserStatusPrivate } from '../userStatus.types.ts'
+
 import { t } from '@nextcloud/l10n'
-import { useUserStatusStore } from '../userStatus.store.ts'
+import { toRef } from '@vueuse/core'
+import { computed, ref } from 'vue'
+import NcButton from '@nextcloud/vue/components/NcButton'
 import UserStatusFormBackup from './UserStatusFormBackup.vue'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'
 import UserStatusFormCustomMessage from './UserStatusFormCustomMessage.vue'
-import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import UserStatusFormPredefinedOption from './UserStatusFormPredefinedOption.vue'
-import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
+import UserStatusFormStatusType from './UserStatusFormStatusType.vue'
 import { usePredefinedStatusesStore } from '../predefinedStatuses.store.ts'
+import { useUserStatusStore } from '../userStatus.store.ts'
+import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
 
 const props = defineProps<{
 	backupStatus: UserStatusBackup | null

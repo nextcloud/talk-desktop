@@ -5,9 +5,10 @@
 
 <script setup lang="ts">
 import type { ScreensharingSource } from './screensharing.types.ts'
+
 import { t } from '@nextcloud/l10n'
-import IconMonitor from 'vue-material-design-icons/Monitor.vue'
 import IconApplicationOutline from 'vue-material-design-icons/ApplicationOutline.vue'
+import IconMonitor from 'vue-material-design-icons/Monitor.vue'
 import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
 import DesktopMediaSourcePreviewLive from './DesktopMediaSourcePreviewLive.vue'
 

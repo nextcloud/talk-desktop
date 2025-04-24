@@ -4,11 +4,11 @@
  */
 
 const { app, shell, Menu } = require('electron')
-const { isMac } = require('./system.utils.ts')
 const packageJson = require('../../package.json')
 const { createHelpWindow } = require('../help/help.window.js')
-const { increaseZoom, decreaseZoom, setZoom } = require('./zoom.service.ts')
 const { BUILD_CONFIG } = require('../shared/build.config.ts')
+const { isMac } = require('./system.utils.ts')
+const { increaseZoom, decreaseZoom, setZoom } = require('./zoom.service.ts')
 
 /**
  * Setup application menu

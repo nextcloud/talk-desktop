@@ -11,9 +11,10 @@ import type {
 	WebContentsWillNavigateEventParams,
 	WindowOpenHandlerResponse,
 } from 'electron'
+
 import { shell } from 'electron'
-import { appData } from './AppData.js'
 import { APP_ORIGIN } from '../constants.js'
+import { appData } from './AppData.js'
 
 /**
  * Check if a link is an internal application link

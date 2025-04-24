@@ -4,11 +4,11 @@
 -->
 
 <script setup lang="ts">
+import { translate as t } from '@nextcloud/l10n'
 import { computed } from 'vue'
 import NcSelect from '@nextcloud/vue/components/NcSelect'
-import { translate as t } from '@nextcloud/l10n'
-import { clearAtToLabel, getTimestampForPredefinedClearAt } from '../userStatus.utils.ts'
 import { formatDuration } from '../../../../shared/datetime.utils.ts'
+import { clearAtToLabel, getTimestampForPredefinedClearAt } from '../userStatus.utils.ts'
 
 const props = withDefaults(defineProps<{
 	clearAt?: number | null

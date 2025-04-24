@@ -5,10 +5,10 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from './talk.service.ts'
-import { registerTalkDesktopSettingsSection } from '../Settings/index.ts'
-import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { appData } from '../../../app/AppData.js'
+import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
+import { registerTalkDesktopSettingsSection } from '../Settings/index.ts'
+import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from './talk.service.ts'
 
 const emit = defineEmits<{
 	(event: 'ready'): void

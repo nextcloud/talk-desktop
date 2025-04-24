@@ -4,8 +4,9 @@
  */
 
 import type { getBuilder } from '@nextcloud/browser-storage'
-import { computed, shallowRef } from 'vue'
+
 import { useEventListener } from '@vueuse/core'
+import { computed, shallowRef } from 'vue'
 
 // TODO: Expose types from the library
 type NextcloudStorage = ReturnType<ReturnType<typeof getBuilder>['build']>

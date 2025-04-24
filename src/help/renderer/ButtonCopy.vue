@@ -10,11 +10,11 @@ export default {
 </script>
 
 <script setup lang="ts">
+import { t } from '@nextcloud/l10n'
 import { ref } from 'vue'
+import NcButton from '@nextcloud/vue/components/NcButton'
 import IconCheck from 'vue-material-design-icons/Check.vue'
 import IconCopy from 'vue-material-design-icons/ContentCopy.vue'
-import NcButton from '@nextcloud/vue/components/NcButton'
-import { t } from '@nextcloud/l10n'
 
 const props = withDefaults(defineProps<{
 	text?: string

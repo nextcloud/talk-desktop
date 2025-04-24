@@ -6,13 +6,13 @@
 /* eslint-disable jsdoc/require-jsdoc */
 
 import {
-	getRootUrl as _getRootUrl,
-	getAppRootUrl as _getAppRootUrl,
-	generateUrl as _generateUrl,
-	linkTo as _linkTo,
-	generateRemoteUrl as _generateRemoteUrl,
-	generateOcsUrl as _generateOcsUrl,
 	generateFilePath as _generateFilePath,
+	generateOcsUrl as _generateOcsUrl,
+	generateRemoteUrl as _generateRemoteUrl,
+	generateUrl as _generateUrl,
+	getAppRootUrl as _getAppRootUrl,
+	getRootUrl as _getRootUrl,
+	linkTo as _linkTo,
 } from '@desktop-modules--@nextcloud/router'
 
 // Original @nextcloud/router sometimes relies on window.location which is not correct on desktop

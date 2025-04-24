@@ -5,27 +5,28 @@
 
 <script setup lang="ts">
 import type { UserStatusStatusType } from '../../UserStatus/userStatus.types.ts'
-import { computed, ref, watch } from 'vue'
-import { storeToRefs } from 'pinia'
+
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
+import { storeToRefs } from 'pinia'
+import { computed, ref, watch } from 'vue'
 import NcAvatar from '@nextcloud/vue/components/NcAvatar'
 import NcPopover from '@nextcloud/vue/components/NcPopover'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
 import IconCheck from 'vue-material-design-icons/Check.vue'
-import IconChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import IconChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
+import IconChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
-import IconPencil from 'vue-material-design-icons/Pencil.vue'
 import IconLogout from 'vue-material-design-icons/Logout.vue'
+import IconPencil from 'vue-material-design-icons/Pencil.vue'
+import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
 import ThemeLogo from './ThemeLogo.vue'
 import UiMenu from './UiMenu.vue'
 import UiMenuItem from './UiMenuItem.vue'
 import UiMenuSeparator from './UiMenuSeparator.vue'
-import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
-import { useUserStatusStore } from '../../UserStatus/userStatus.store.ts'
-import { userStatusTranslations, availableUserStatusStatusTypes } from '../../UserStatus/userStatus.utils.ts'
 import { appData } from '../../../../app/AppData.js'
+import { useUserStatusStore } from '../../UserStatus/userStatus.store.ts'
+import { availableUserStatusStatusTypes, userStatusTranslations } from '../../UserStatus/userStatus.utils.ts'
 
 const props = defineProps<{
 	// TODO: define a proper type for userMetadata

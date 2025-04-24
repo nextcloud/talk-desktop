@@ -4,10 +4,10 @@
 -->
 
 <script setup>
-import { computed } from 'vue'
 import { toRef } from '@vueuse/core'
-import { useFileContent } from './viewer.composables.ts'
+import { computed } from 'vue'
 import ViewerHandlerBase from './ViewerHandlerBase.vue'
+import { useFileContent } from './viewer.composables.ts'
 
 const props = defineProps({
 	file: {

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { join } from 'node:path'
-import { readFile, writeFile } from 'node:fs/promises'
 import { app, webContents } from 'electron'
+import { readFile, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { isLinux, isMac } from './system.utils.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'

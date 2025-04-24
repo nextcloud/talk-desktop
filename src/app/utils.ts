@@ -4,10 +4,11 @@
  */
 
 import type { BrowserWindow } from 'electron'
+
 import { screen } from 'electron'
-import { getAppConfig } from './AppConfig.ts'
-import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { APP_ORIGIN } from '../constants.js'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
+import { getAppConfig } from './AppConfig.ts'
 
 /**
  * Get the scaled window size based on the current zoom factor

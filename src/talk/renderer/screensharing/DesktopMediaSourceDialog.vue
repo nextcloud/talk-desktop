@@ -5,16 +5,17 @@
 
 <script setup lang="ts">
 import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
-import { computed, ref, watch } from 'vue'
+
 import IconCancel from '@mdi/svg/svg/cancel.svg?raw'
 import IconMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
+import { t } from '@nextcloud/l10n'
+import { useWindowFocus } from '@vueuse/core'
+import { computed, ref, watch } from 'vue'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
 import NcDialog from '@nextcloud/vue/components/NcDialog'
 import NcDialogButton from '@nextcloud/vue/components/NcDialogButton'
 import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
-import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
-import { t } from '@nextcloud/l10n'
-import { useWindowFocus } from '@vueuse/core'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
 
 const emit = defineEmits<{

@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import type { UserStatusBackup } from '../userStatus.types.ts'
+
 import { t } from '@nextcloud/l10n'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'

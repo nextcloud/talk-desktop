@@ -4,6 +4,7 @@
  */
 
 import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
+
 import { computed } from 'vue'
 import { useAppConfigStore } from './appConfig.store.ts'
 

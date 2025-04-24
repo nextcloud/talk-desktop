@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import type { PredefinedUserStatus, UserStatusBackup } from '../userStatus.types.ts'
+
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
 import { clearAtToLabel } from '../userStatus.utils.ts'

@@ -5,8 +5,8 @@
 
 <script setup>
 import { computed } from 'vue'
-import { generateUserFileDavUrl } from './viewer.utils.ts'
 import ViewerHandlerMedia from './ViewerHandlerMedia.vue'
+import { generateUserFileDavUrl } from './viewer.utils.ts'
 
 const props = defineProps({
 	file: {

@@ -4,8 +4,8 @@
  */
 
 import { BrowserWindow } from 'electron'
+import { TITLE_BAR_HEIGHT, ZOOM_MAX, ZOOM_MIN } from '../constants.js'
 import { onAppConfigChange, setAppConfig } from './AppConfig.ts'
-import { ZOOM_MAX, ZOOM_MIN, TITLE_BAR_HEIGHT } from '../constants.js'
 
 /**
  * Electron zoom level factor. scale factor is 1.2 ** level

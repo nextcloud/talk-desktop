@@ -30,7 +30,6 @@ OC.L10N.register(
     "View profile" : "Xem hồ sơ",
     "User status" : "Trạng thái người dùng",
     "Your status was set automatically" : "Trạng thái của bạn đã được đặt tự động",
-    "Predefined statuses" : "Trạng thái được xác định trước",
     "Don't clear" : "Không xoá",
     "Today" : "Hôm nay",
     "This week" : "Tuần này",

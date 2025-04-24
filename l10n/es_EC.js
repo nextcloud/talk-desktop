@@ -37,7 +37,6 @@ OC.L10N.register(
     "Log out" : "Cerrar sesión",
     "User status" : "Estado de usuario",
     "Your status was set automatically" : "Tu estado se estableció automáticamente",
-    "Predefined statuses" : "Estados predefinidos",
     "Don't clear" : "No borrar",
     "Today" : "Hoy",
     "This week" : "Esta semana",

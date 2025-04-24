@@ -37,7 +37,6 @@ OC.L10N.register(
     "Log out" : "Odjava",
     "User status" : "Status korisnika",
     "Your status was set automatically" : "Vaš status je postavljen automatski",
-    "Predefined statuses" : "Predefinisani statusi",
     "Don't clear" : "Ne briši",
     "Today" : "Danas",
     "This week" : "Ove sedmice",

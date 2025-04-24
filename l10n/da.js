@@ -35,7 +35,6 @@ OC.L10N.register(
     "View profile" : "Vis profil",
     "User status" : "Bruger status",
     "Your status was set automatically" : "Status sat automatisk",
-    "Predefined statuses" : "Foruddefinerede status",
     "Don't clear" : "Ryd ikke",
     "Today" : "I dag",
     "This week" : "Denne uge",

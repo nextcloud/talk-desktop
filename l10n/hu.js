@@ -40,7 +40,6 @@ OC.L10N.register(
     "Log out" : "Kijelentkezés",
     "User status" : "Felhasználói állapot",
     "Your status was set automatically" : "Az állapota automatikusan lett beállítva",
-    "Predefined statuses" : "Előre meghatározott állapotok",
     "Don't clear" : "Ne törölje",
     "Today" : "Ma",
     "This week" : "Ezen a héten",

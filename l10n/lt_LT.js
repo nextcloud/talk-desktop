@@ -47,7 +47,6 @@ OC.L10N.register(
     "Log out" : "Atsijungti",
     "User status" : "Naudotojo būsena",
     "Your status was set automatically" : "Jūsų būsena buvo nustatyta automatiškai",
-    "Predefined statuses" : "Iš anksto apibrėžtos būsenos",
     "Don't clear" : "Neišvalyti",
     "Today" : "Šiandien",
     "This week" : "Šią savaitę",

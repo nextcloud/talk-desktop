@@ -48,7 +48,6 @@ OC.L10N.register(
     "Log out" : "Выйти",
     "User status" : "Статус пользователя",
     "Your status was set automatically" : "Ваш статус был установлен автоматически",
-    "Predefined statuses" : "Предопределенные статусы",
     "Today" : "Сегодня",
     "This week" : "На этой неделе",
     "Emoji for your status message" : "Эмодзи для вашего сообщения о состоянии",

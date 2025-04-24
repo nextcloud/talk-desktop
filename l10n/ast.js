@@ -38,7 +38,6 @@ OC.L10N.register(
     "Log out" : "Zarrar la sesión",
     "User status" : "Estáu del usuariu",
     "Your status was set automatically" : "L'estáu afitóse automáticamente",
-    "Predefined statuses" : "Estaos predefiníos",
     "Don't clear" : "Nun borrar",
     "Today" : "Güei",
     "This week" : "Esta selmana",

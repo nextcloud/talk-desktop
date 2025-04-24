@@ -48,7 +48,6 @@ OC.L10N.register(
     "Log out" : "Вийти",
     "User status" : "Статус користувача",
     "Your status was set automatically" : "Ваш статус встановлено автоматично",
-    "Predefined statuses" : "Попередньо визначені статуси",
     "Don't clear" : "Не очищати",
     "Today" : "Сьогодні",
     "This week" : "Цього тижня",

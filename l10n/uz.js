@@ -26,7 +26,6 @@ OC.L10N.register(
     "View profile" : "View profile",
     "User status" : "User status",
     "Your status was set automatically" : "Sizning holatingiz avtomatik ravishda o'rnatildi",
-    "Predefined statuses" : "Oldindan belgilangan holatlar",
     "Don't clear" : "Don't clear",
     "Today" : "Today",
     "This week" : "This week",

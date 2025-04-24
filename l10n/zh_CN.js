@@ -46,7 +46,6 @@ OC.L10N.register(
     "Log out" : "注销",
     "User status" : "用户状态",
     "Your status was set automatically" : "您的状态已自动设定",
-    "Predefined statuses" : "预定义的状态",
     "Today" : "今日",
     "This week" : "本周后",
     "Emoji for your status message" : "表示状态信息的表情符号",

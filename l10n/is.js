@@ -28,7 +28,6 @@ OC.L10N.register(
     "View profile" : "Skoða notandasnið",
     "User status" : "Staða notanda",
     "Your status was set automatically" : "Staðan þín var stillt sjálfvirkt",
-    "Predefined statuses" : "Forákvarðaðar stöður",
     "Don't clear" : "Ekki hreinsa",
     "Today" : "Í dag",
     "This week" : "Í þessari viku",

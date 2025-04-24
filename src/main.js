@@ -83,7 +83,7 @@ ipcMain.handle('app:getTitle', (event) => BrowserWindow.fromWebContents(event.se
 ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_') ?? 'en',
 	// Note: Linux may have C (POSIX) locale, which results in an empty preferred languages list
-	language: app.getPreferredSystemLanguages()[0]?.replace('-', '_') ?? 'en-US',
+	language: app.getPreferredSystemLanguages()[0]?.replace('-', '_') ?? 'en_US',
 }))
 ipcMain.handle('app:enableWebRequestInterceptor', (event, ...args) => enableWebRequestInterceptor(...args))
 ipcMain.handle('app:disableWebRequestInterceptor', (event, ...args) => disableWebRequestInterceptor(...args))

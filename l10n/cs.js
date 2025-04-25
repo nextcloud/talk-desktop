@@ -67,6 +67,7 @@ OC.L10N.register(
     "Clear custom status" : "Vyčistit uživatelsky určený stav",
     "Set user status" : "Nastavit stav uživatele",
     "Your status was set automatically" : "Váš stav byl nastaven automaticky",
+    "No status message" : "Žádná stavová zpráva",
     "Don't clear" : "Nečistit",
     "Today" : "Dnes",
     "This week" : "Tento týden",

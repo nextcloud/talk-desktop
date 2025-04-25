@@ -67,6 +67,7 @@ OC.L10N.register(
     "Clear custom status" : "Glan stádas saincheaptha",
     "Set user status" : "Socraigh stádas úsáideora",
     "Your status was set automatically" : "Socraíodh do stádas go huathoibríoch",
+    "No status message" : "Gan teachtaireacht stádais",
     "Don't clear" : "Ná soiléir",
     "Today" : "Inniu",
     "This week" : "An tseachtain seo",

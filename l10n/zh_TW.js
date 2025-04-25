@@ -67,6 +67,7 @@ OC.L10N.register(
     "Clear custom status" : "清除自訂狀態",
     "Set user status" : "設定使用者狀態",
     "Your status was set automatically" : "您的狀態為自動設定",
+    "No status message" : "無狀態訊息",
     "Don't clear" : "不要清空",
     "Today" : "今日",
     "This week" : "本週",

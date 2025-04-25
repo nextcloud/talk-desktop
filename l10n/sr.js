@@ -67,6 +67,7 @@ OC.L10N.register(
     "Clear custom status" : "Обриши роизвољни статус",
     "Set user status" : "Постави кориснички статус",
     "Your status was set automatically" : "Ваш статус је аутоматски постављен",
+    "No status message" : "Нема статусне поруке",
     "Don't clear" : "Не бриши",
     "Today" : "Данас",
     "This week" : "Ове недеље",

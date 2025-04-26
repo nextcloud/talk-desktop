@@ -67,6 +67,7 @@ OC.L10N.register(
     "Clear custom status" : "Togli stato personalizzato",
     "Set user status" : "Imposta lo stato dell'utente",
     "Your status was set automatically" : "Stato impostato automaticamente",
+    "No status message" : "Nessun messaggio di stato",
     "Don't clear" : "Non cancellare",
     "Today" : "Ogg",
     "This week" : "Questa settimana",

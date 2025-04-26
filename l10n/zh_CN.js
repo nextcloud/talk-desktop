@@ -28,6 +28,7 @@ OC.L10N.register(
     "Always" : "始终",
     "Never" : "永不",
     "None" : "无",
+    "Restart" : "重启",
     "General" : "常规",
     "Appearance" : "外观",
     "Theme" : "主题",

@@ -83,7 +83,7 @@
     "dotenv": "^16.5.0",
     "electron": "^35.2.0",
     "esbuild-loader": "^4.3.0",
-    "eslint": "^9.25.0",
+    "eslint": "^9.25.1",
     "globals": "^16.0.0",
     "icon-gen": "^5.0.0",
     "node-loader": "^2.1.0",

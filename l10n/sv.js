@@ -67,6 +67,7 @@ OC.L10N.register(
     "Clear custom status" : "Rensa anpassad status",
     "Set user status" : "Ange användarstatus",
     "Your status was set automatically" : "Din status ställdes in automatiskt",
+    "No status message" : "Inget statusmeddelande",
     "Don't clear" : "Rensa inte",
     "Today" : "Idag",
     "This week" : "Denna vecka",

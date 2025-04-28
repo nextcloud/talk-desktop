@@ -4,7 +4,7 @@
  */
 
 import { onBeforeUnmount, watch } from 'vue'
-import { useIdle } from './useIdle.ts'
+import { useIdle } from './composables/useAppIdle.ts'
 import { useUserStatusStore } from './userStatus.store.ts'
 
 /** How often to update the user status */

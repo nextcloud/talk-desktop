@@ -56,6 +56,32 @@ export default [
 	{
 		files: ['**/*.vue'],
 		rules: {
+			// Vue files can be both JavaScript and TypeScript
+			// Try to apply TS files only for functions with TS definitions
+			'jsdoc/no-types': [
+				'error', {
+					contexts: [
+						'FunctionDeclaration:has(TSTypeAnnotation)',
+						'FunctionExpression:has(TSTypeAnnotation)',
+						'ArrowFunctionExpression:has(TSTypeAnnotation)',
+						'MethodDefinition:has(TSTypeAnnotation)',
+					],
+				},
+			],
+			'jsdoc/require-param-type': [
+				'error', {
+					contexts: [
+						'FunctionDeclaration:not(:has(TSTypeAnnotation))',
+						'FunctionExpression:not(:has(TSTypeAnnotation))',
+						'ArrowFunctionExpression:not(:has(TSTypeAnnotation))',
+						'MethodDefinition:not(:has(TSTypeAnnotation))',
+					],
+				},
+			],
+			// Unlike params, return values are often inferred and not explicitly typed
+			'jsdoc/require-returns-type': 'off',
+			// Unfortunately, we cannot check when it is used in TS context and when not
+			'jsdoc/check-tag-names': ['error', { typed: false }],
 		},
 	},
 	// Additional Vue rules

@@ -49,8 +49,9 @@ function generateDistName(platform, arch, ext) {
 	const archTitle = archTitles[arch] ?? arch
 	const CHANNEL = process.env.CHANNEL ?? 'stable'
 	const channel = CHANNEL !== 'stable' ? CHANNEL : ''
+	const name = CONFIG.applicationName.replace(/[^a-z0-9]/gi, '.')
 
-	return [CONFIG.applicationNameSanitized, channel, platformTitle, archTitle].filter(Boolean).join('-') + ext
+	return [name, channel, platformTitle, archTitle].filter(Boolean).join('-') + ext
 }
 
 /**

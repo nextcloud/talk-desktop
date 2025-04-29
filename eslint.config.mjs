@@ -44,6 +44,13 @@ export default [
 		},
 	},
 	{
+		name: 'talk-desktop/rules/dts',
+		files: ['**/*.d.ts'],
+		rules: {
+			'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
+		},
+	},
+	{
 		// See: https://github.com/nextcloud-libraries/eslint-config/pull/995
 		name: 'talk-desktop/rules/vue-documentation-mixed',
 		files: ['**/*.vue'],

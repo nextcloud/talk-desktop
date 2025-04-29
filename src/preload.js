@@ -110,6 +110,26 @@ const TALK_DESKTOP = {
 	 */
 	onAppConfigChange: (callback) => ipcRenderer.on('app:config:change', callback),
 	/**
+	 * Whether the system is locked.
+	 * Only available on Windows and macOS.
+	 *
+	 * @return {Promise<boolean>}
+	 */
+	getIsLocked: () => ipcRenderer.invoke('app:isLocked'),
+	/**
+	 * Handle Lock/Unlock change.
+	 * Only available on Windows and macOS.
+	 *
+	 * @param {(event: import('electron').IpcRendererEvent, isLocked: boolean) => void} callback - Callback
+	 */
+	onIsLockedChange: (callback) => ipcRenderer.on('app:isLocked:change', callback),
+	/**
+	 * Request user gestured permission via button click
+	 *
+	 * @param {string} id - Button ID to click on
+	 */
+	requestUserGesturedPermission: (id) => ipcRenderer.send('app:requestUserGesturedPermission', id),
+	/**
 	 * Trigger download of a URL
 	 *
 	 * @param {string} url - URL to download

@@ -66,6 +66,11 @@ export type BuildConfigFile = {
 	 */
 	privacyUrl: string
 
+	/**
+	 * Disallow the user to disable the system activity status check
+	 */
+	forceEnableSystemActivityStatus: boolean
+
 	/****************
 	 * Distribution *
 	 ****************/

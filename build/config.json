@@ -6,6 +6,7 @@
 	"brandFontColor": "#FFFFFF",
 	"helpUrl": "https://nextcloud.com/talk/",
 	"privacyUrl": "https://nextcloud.com/privacy/",
+	"forceEnableSystemActivityStatus": false,
 	"windowsExe": true,
 	"windowsMsi": true,
 	"macosDmg": true,

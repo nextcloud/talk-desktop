@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const semver = require('semver')
 const { Notification, shell } = require('electron')
+const semver = require('semver')
 const packageJson = require('../../package.json')
 
 /**

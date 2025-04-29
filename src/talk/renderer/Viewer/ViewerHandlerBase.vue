@@ -4,8 +4,8 @@
   -->
 
 <script setup>
-import { computed } from 'vue'
 import { t } from '@nextcloud/l10n'
+import { computed } from 'vue'
 import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import IconAlertCircleOutline from 'vue-material-design-icons/AlertCircleOutline.vue'

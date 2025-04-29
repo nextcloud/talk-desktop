@@ -4,9 +4,10 @@
  */
 
 import type { HowlOptions } from 'howler'
-import { Howl } from 'howler'
-import { generateFilePath } from '@nextcloud/router'
+
 import { loadState } from '@nextcloud/initial-state'
+import { generateFilePath } from '@nextcloud/router'
+import { Howl } from 'howler'
 import { getAppConfigValue } from '../../shared/appConfig.service.ts'
 
 /**

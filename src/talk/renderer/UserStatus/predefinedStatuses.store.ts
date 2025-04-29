@@ -4,10 +4,11 @@
  */
 
 import type { PredefinedUserStatus } from './userStatus.types.ts'
+
 import { defineStore } from 'pinia'
-import { fetchAllPredefinedStatuses } from './userStatus.service.ts'
-import { useBrowserStorage } from '../../../shared/useBrowserStorage.ts'
 import { browserStorage } from '../../../shared/browserStorage.service.ts'
+import { useBrowserStorage } from '../../../shared/useBrowserStorage.ts'
+import { fetchAllPredefinedStatuses } from './userStatus.service.ts'
 
 export const usePredefinedStatusesStore = defineStore('predefinedStatuses', () => {
 	const predefinedStatuses = useBrowserStorage<PredefinedUserStatus[] | null>(browserStorage, 'predefinedStatuses', null)

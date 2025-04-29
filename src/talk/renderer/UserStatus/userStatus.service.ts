@@ -5,10 +5,11 @@
 
 import type {
 	PredefinedUserStatus,
+	UserStatusBackup,
 	UserStatusPrivate,
 	UserStatusStatusType,
-	UserStatusBackup,
 } from './userStatus.types.ts'
+
 import axios from '@nextcloud/axios'
 import { generateOcsUrl } from '@nextcloud/router'
 

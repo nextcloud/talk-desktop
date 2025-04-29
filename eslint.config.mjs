@@ -1,9 +1,7 @@
-/**
+/*!
  * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
-
-// eslint.config.js
 
 import { recommendedVue2 } from '@nextcloud/eslint-config'
 import globals from 'globals'
@@ -11,12 +9,10 @@ import globals from 'globals'
 export default [
 	// Nextcloud ESLint config
 	...recommendedVue2,
-	// Ignore Nextcloud Server styles - requested from server
+
 	{
+		name: 'talk-desktop/config',
 		ignores: ['src/shared/renderer/assets/**/*'],
-	},
-	// Configuration
-	{
 		languageOptions: {
 			globals: {
 				// Electron Forge build vars
@@ -33,91 +29,77 @@ export default [
 				__VERSION_TAG__: 'readonly',
 				__TALK_VERSION_TAG__: 'readonly',
 				__BUILD_CONFIG__: 'readonly',
-				// Electron
+				// Electron main process
 				...globals.node,
 			},
 		},
-		settings: {
-			jsdoc: {
-				tagNamePreference: {
-					return: 'return', // TODO: upstream
-				},
-			},
-		},
 	},
-	// Rules and overrides
 	{
+		name: 'talk-desktop/rules/general',
 		rules: {
-			/**
-			 * ESLint
-			 */
-			'no-console': 'off', // TODO: remove after preview
-			/**
-			 * Nextcloud
-			 */
+			'no-console': 'off',
 			// Talk Desktop doesn't use real Nextcloud server globals
 			'@nextcloud/no-deprecations': 'off',
 			'@nextcloud/no-removed-apis': 'off',
 		},
 	},
-	// TODO: upstream
 	{
+		name: 'talk-desktop/rules/dts',
+		files: ['**/*.d.ts'],
 		rules: {
-			'jsdoc/check-tag-names': ['error', { typed: false }], // TODO: upstream
-			'jsdoc/no-types': 'off', // TODO: upstream
-			'@stylistic/newline-per-chained-call': 'off', // TODO: upstream
-			'@stylistic/array-bracket-newline': ['error', { multiline: true }], // TODO: upstream
-			'@stylistic/array-element-newline': ['error', 'consistent'], // TODO: upstream
-			'@stylistic/object-property-newline': 'off', // TODO: upstream
-			'prefer-template': 'off', // TODO: upstream
-			'no-use-before-define': ['error', { functions: false }], // TODO: upstream
+			'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
 		},
 	},
 	{
-		files: ['**/*.ts', '**/*.vue'],
-		rules: {
-			'@typescript-eslint/no-shadow': 'off', // TODO: upstream
-			'@typescript-eslint/no-use-before-define': ['error', { functions: false }], // TODO: upstream
-		},
-	},
-	{
+		// See: https://github.com/nextcloud-libraries/eslint-config/pull/995
+		name: 'talk-desktop/rules/vue-documentation-mixed',
 		files: ['**/*.vue'],
 		rules: {
-			'vue/require-prop-comment': 'off', // TODO: upstream
+			// Vue files can be both JavaScript and TypeScript
+			// Try to apply TS files only for functions with TS definitions
+			'jsdoc/no-types': [
+				'error', {
+					contexts: [
+						'FunctionDeclaration:has(TSTypeAnnotation)',
+						'FunctionExpression:has(TSTypeAnnotation)',
+						'ArrowFunctionExpression:has(TSTypeAnnotation)',
+						'MethodDefinition:has(TSTypeAnnotation)',
+					],
+				},
+			],
+			'jsdoc/require-param-type': [
+				'error', {
+					contexts: [
+						'FunctionDeclaration:not(:has(TSTypeAnnotation))',
+						'FunctionExpression:not(:has(TSTypeAnnotation))',
+						'ArrowFunctionExpression:not(:has(TSTypeAnnotation))',
+						'MethodDefinition:not(:has(TSTypeAnnotation))',
+					],
+				},
+			],
+			// Unlike params, return values are often inferred and not explicitly typed
+			'jsdoc/require-returns-type': 'off',
+			// Unfortunately, we cannot check when it is used in TS context and when not
+			'jsdoc/check-tag-names': ['error', { typed: false }],
 		},
 	},
-	// Additional Vue rules
 	{
+		name: 'talk-desktop/rules/vue-strict',
 		files: ['**/*.vue'],
 		rules: {
-			/** ESLint Plugin Vue (https://eslint.vuejs.org) */
-
-			/** Vue / Priority A: Essentials */
-			// All rules enabled
 			// This rule is disabled in @nextcloud - re-enable
 			'vue/multi-word-component-names': 'error',
-			/** Vue / Priority B: Strongly Recommended */
-			/** Vue / Priority C: Recommended */
-			/** Vue / Uncategorized */
 			'vue/attribute-hyphenation': 'error',
 			'vue/block-order': ['error', { order: ['script', 'template', 'style'] }], // Follow new Vue standards
 			'vue/component-api-style': ['error', ['script-setup']], // Follow new Vue standards
-			'vue/component-name-in-template-casing': 'error',
 			'vue/component-options-name-casing': 'error',
 			// 'vue/custom-event-name-casing': 'error', // TODO: enable with Vue 3
 			'vue/define-emits-declaration': 'error',
-			'vue/match-component-file-name': 'error',
-			// 'vue/no-bare-strings-in-template': 'error', // TODO: Enable with l10n
-			'vue/new-line-between-multi-line-property': 'error',
 			'vue/no-duplicate-attr-inheritance': 'error',
 			'vue/no-potential-component-option-typo': 'error',
 			'vue/no-ref-object-reactivity-loss': 'error',
-			'vue/no-undef-components': 'error',
 			'vue/no-undef-properties': 'error',
-			'vue/no-unused-properties': 'error', // TODO: Experiment
-			'vue/no-useless-mustaches': 'error',
 			'vue/no-useless-v-bind': 'error',
-			'vue/padding-line-between-blocks': 'error',
 			'vue/prefer-separate-static-class': 'error',
 			'vue/prefer-true-attribute-shorthand': 'error',
 			'vue/require-name-property': 'error',

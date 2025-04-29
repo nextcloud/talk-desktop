@@ -4,18 +4,18 @@
 -->
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { translate as t } from '@nextcloud/l10n'
+import { useHotKey } from '@nextcloud/vue/composables/useHotKey'
 import { whenever } from '@vueuse/core'
-import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
+import { ref } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcRichText from '@nextcloud/vue/components/NcRichText'
-import { useHotKey } from '@nextcloud/vue/composables/useHotKey'
-import { translate as t } from '@nextcloud/l10n'
-import { generateDiagnosisReportMD } from './diagnosis.service.ts'
+import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import ButtonCopy from './ButtonCopy.vue'
 import TalkLogo from '../../../img/talk-icon-rounded.svg'
-import { useDevMode } from '../../shared/useDevMode.ts'
 import { BUILD_CONFIG } from '../../shared/build.config.ts'
+import { useDevMode } from '../../shared/useDevMode.ts'
+import { generateDiagnosisReportMD } from './diagnosis.service.ts'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
 const isMac = window.systemInfo.isMac

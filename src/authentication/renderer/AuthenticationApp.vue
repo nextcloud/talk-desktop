@@ -4,17 +4,17 @@
 -->
 
 <script setup>
+import { translate as t } from '@nextcloud/l10n'
 import { computed, onMounted, ref } from 'vue'
-import IconArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
-import { translate as t } from '@nextcloud/l10n'
-import { getCapabilities } from '../../shared/ocs.service.js'
+import IconArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import { appData } from '../../app/AppData.js'
-import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
 import { refetchAppData } from '../../app/appData.service.js'
+import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
 import { BUILD_CONFIG } from '../../shared/build.config.ts'
+import { getCapabilities } from '../../shared/ocs.service.js'
 
 const channel = __CHANNEL__
 

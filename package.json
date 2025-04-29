@@ -75,7 +75,7 @@
     "@electron-forge/maker-wix": "^7.8.0",
     "@electron-forge/maker-zip": "^7.8.0",
     "@electron-forge/plugin-webpack": "^7.8.0",
-    "@nextcloud/eslint-config": "^9.0.0-rc.0",
+    "@nextcloud/eslint-config": "^9.0.0-rc.1",
     "@nextcloud/webpack-vue-config": "^6.3.0",
     "@types/howler": "^2.2.12",
     "@vercel/webpack-asset-relocator-loader": "^1.7.4",

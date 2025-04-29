@@ -4,9 +4,9 @@
  */
 
 const { session } = require('electron')
-const { osTitle } = require('./system.utils.ts')
 const packageJson = require('../../package.json')
 const { APP_PROTOCOL } = require('../constants.js')
+const { osTitle } = require('./system.utils.ts')
 
 const USER_AGENT = `Mozilla/5.0 (${osTitle}) Nextcloud-Talk v${packageJson.version}`
 

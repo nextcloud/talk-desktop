@@ -5,21 +5,22 @@
 
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import { inject } from 'vue'
-import IconCog from 'vue-material-design-icons/Cog.vue'
-import IconReload from 'vue-material-design-icons/Reload.vue'
-import IconWeb from 'vue-material-design-icons/Web.vue'
-import IconBug from 'vue-material-design-icons/Bug.vue'
-import IconInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
-import IconMenu from 'vue-material-design-icons/Menu.vue'
-import NcActions from '@nextcloud/vue/components/NcActions'
-import NcActionButton from '@nextcloud/vue/components/NcActionButton'
-import NcActionLink from '@nextcloud/vue/components/NcActionLink'
-import NcActionSeparator from '@nextcloud/vue/components/NcActionSeparator'
+
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
-import { getCurrentTalkRoutePath } from '../../TalkWrapper/talk.service.ts'
+import { inject } from 'vue'
+import NcActionButton from '@nextcloud/vue/components/NcActionButton'
+import NcActionLink from '@nextcloud/vue/components/NcActionLink'
+import NcActions from '@nextcloud/vue/components/NcActions'
+import NcActionSeparator from '@nextcloud/vue/components/NcActionSeparator'
+import IconBug from 'vue-material-design-icons/Bug.vue'
+import IconCog from 'vue-material-design-icons/Cog.vue'
+import IconInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
+import IconMenu from 'vue-material-design-icons/Menu.vue'
+import IconReload from 'vue-material-design-icons/Reload.vue'
+import IconWeb from 'vue-material-design-icons/Web.vue'
 import { BUILD_CONFIG } from '../../../../shared/build.config.ts'
+import { getCurrentTalkRoutePath } from '../../TalkWrapper/talk.service.ts'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
 

@@ -4,10 +4,10 @@
  */
 
 const { BrowserWindow } = require('electron')
-const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
+const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
+const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  *

@@ -10,19 +10,19 @@
  * @todo this is mostly a copy. Should be reusing.
  */
 
-import { Howl } from 'howler'
-import { listen } from '@nextcloud/notify_push'
-import { loadState } from '@nextcloud/initial-state'
 import { emit } from '@nextcloud/event-bus'
-import { generateFilePath } from '@nextcloud/router'
+import { loadState } from '@nextcloud/initial-state'
 import { t } from '@nextcloud/l10n'
-import { getNotificationsData } from './notifications.service.js'
+import { listen } from '@nextcloud/notify_push'
+import { generateFilePath } from '@nextcloud/router'
+import { Howl } from 'howler'
 import { appData } from '../../../app/AppData.js'
-import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 import { checkCurrentUserHasPendingCall } from '../../../callbox/renderer/callbox.service.ts'
 import { getAppConfigValue } from '../../../shared/appConfig.service.ts'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { openConversation } from '../TalkWrapper/talk.service.ts'
+import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
+import { getNotificationsData } from './notifications.service.js'
 
 const isTestNotificationApp = (notificationApp) => ['admin_notification_talk', 'admin_notifications'].includes(notificationApp)
 

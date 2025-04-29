@@ -6,9 +6,9 @@
 import Vue from 'vue'
 import ViewerApp from './ViewerApp.vue'
 import ViewerHandlerImages from './ViewerHandlerImages.vue'
-import ViewerHandlerVideos from './ViewerHandlerVideos.vue'
 import ViewerHandlerPdf from './ViewerHandlerPdf.vue'
 import ViewerHandlerText from './ViewerHandlerText.vue'
+import ViewerHandlerVideos from './ViewerHandlerVideos.vue'
 
 /**
  * Create and mount Viewer instance with similar to original OCA.Viewer interface

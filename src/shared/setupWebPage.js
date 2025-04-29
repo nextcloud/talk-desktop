@@ -3,15 +3,14 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { isRTL, register } from '@nextcloud/l10n'
 import axios from '@nextcloud/axios'
-
+import { isRTL, register } from '@nextcloud/l10n'
 import { appData } from '../app/AppData.js'
+import { refetchAppData } from '../app/appData.service.js'
+import { TITLE_BAR_HEIGHT } from '../constants.js'
+import { initAppConfig } from './appConfig.service.ts'
 import { initGlobals } from './globals/globals.js'
 import { setupInitialState } from './initialState.service.js'
-import { initAppConfig } from './appConfig.service.ts'
-import { TITLE_BAR_HEIGHT } from '../constants.js'
-import { refetchAppData } from '../app/appData.service.js'
 
 /**
  * @param {string} lang - language code, TS type: `${lang}_${countryCode}`|`${lang}`

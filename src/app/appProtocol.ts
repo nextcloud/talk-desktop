@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import { app, net, protocol } from 'electron'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { app, protocol, net } from 'electron'
-import { APP_PROTOCOL, APP_HOST, DEV_SERVER_ORIGIN } from '../constants.js'
+import { APP_HOST, APP_PROTOCOL, DEV_SERVER_ORIGIN } from '../constants.js'
 
 protocol.registerSchemesAsPrivileged([
 	{

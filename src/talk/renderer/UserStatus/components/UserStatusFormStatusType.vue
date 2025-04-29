@@ -4,10 +4,11 @@
 -->
 
 <script setup lang="ts">
+import type { UserStatusStatusType } from '../userStatus.types.ts'
+
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
 import { availableUserStatusStatusTypes, userStatusTranslations } from '../userStatus.utils.ts'
-import type { UserStatusStatusType } from '../userStatus.types.ts'
 
 defineProps<{
 	status: UserStatusStatusType

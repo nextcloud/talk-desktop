@@ -4,10 +4,10 @@
  */
 
 import { BrowserWindow, screen } from 'electron'
+import { getAppConfig } from '../app/AppConfig.ts'
+import { isMac, isWindows } from '../app/system.utils.ts'
 import { applyZoom, getScaledWindowSize, getWindowUrl } from '../app/utils.ts'
 import { getBrowserWindowIcon } from '../shared/icons.utils.js'
-import { isMac, isWindows } from '../app/system.utils.ts'
-import { getAppConfig } from '../app/AppConfig.ts'
 
 export type CallboxParams = {
 	/** Conversation token */

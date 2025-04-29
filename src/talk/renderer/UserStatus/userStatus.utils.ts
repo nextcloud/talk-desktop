@@ -4,8 +4,9 @@
  */
 
 import type { ClearAtPredefinedConfig, PredefinedUserStatus, UserStatus, UserStatusStatusType } from './userStatus.types.ts'
-import { t, getFirstDay } from '@nextcloud/l10n'
-import { formatDurationFromNow, formatDuration } from '../../../shared/datetime.utils.ts'
+
+import { getFirstDay, t } from '@nextcloud/l10n'
+import { formatDuration, formatDurationFromNow } from '../../../shared/datetime.utils.ts'
 
 /**
  * List of user status types that user can set

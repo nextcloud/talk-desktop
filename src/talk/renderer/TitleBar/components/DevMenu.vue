@@ -5,20 +5,20 @@
 
 <script setup lang="ts">
 /* eslint-disable jsdoc/require-jsdoc */
+import { getCurrentUser } from '@nextcloud/auth'
 import axios from '@nextcloud/axios'
 import { generateOcsUrl, generateUrl } from '@nextcloud/router'
-import { getCurrentUser } from '@nextcloud/auth'
-import NcActions from '@nextcloud/vue/components/NcActions'
 import NcActionButton from '@nextcloud/vue/components/NcActionButton'
+import NcActions from '@nextcloud/vue/components/NcActions'
 import NcActionSeparator from '@nextcloud/vue/components/NcActionSeparator'
 import IconApplicationBracketsOutline from 'vue-material-design-icons/ApplicationBracketsOutline.vue'
 import IconCardAccountPhoneOutline from 'vue-material-design-icons/CardAccountPhoneOutline.vue'
+import IconConsole from 'vue-material-design-icons/Console.vue'
 import IconDeveloperBoard from 'vue-material-design-icons/DeveloperBoard.vue'
 import IconLan from 'vue-material-design-icons/Lan.vue'
-import IconMonitorShare from 'vue-material-design-icons/MonitorShare.vue'
 import IconMessageBadge from 'vue-material-design-icons/MessageBadge.vue'
 import IconMessageBadgeOutline from 'vue-material-design-icons/MessageBadgeOutline.vue'
-import IconConsole from 'vue-material-design-icons/Console.vue'
+import IconMonitorShare from 'vue-material-design-icons/MonitorShare.vue'
 import { appData } from '../../../../app/AppData.js'
 
 const supportsTestAdminNotification = appData.capabilities?.notifications?.['admin-notifications']?.includes('ocs') && appData.userMetadata?.groups.includes('admin')

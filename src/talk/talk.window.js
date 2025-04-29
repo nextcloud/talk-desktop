@@ -4,15 +4,15 @@
  */
 
 const { BrowserWindow } = require('electron')
-const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
+const { setupTray } = require('../app/app.tray.js')
+const { getAppConfig } = require('../app/AppConfig.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadHandler } = require('../app/downloads.ts')
-const { applyWheelZoom } = require('../app/zoom.service.ts')
-const { setupTray } = require('../app/app.tray.js')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { TITLE_BAR_HEIGHT } = require('../constants.js')
-const { getAppConfig } = require('../app/AppConfig.ts')
+const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
 const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
+const { applyWheelZoom } = require('../app/zoom.service.ts')
+const { TITLE_BAR_HEIGHT } = require('../constants.js')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}

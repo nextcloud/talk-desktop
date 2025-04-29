@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import path from 'node:path'
-import { Notification, shell } from 'electron'
 import type { BrowserWindow } from 'electron'
+
+import { Notification, shell } from 'electron'
+import path from 'node:path'
 
 /**
  * Suggested filenames for download URLs.

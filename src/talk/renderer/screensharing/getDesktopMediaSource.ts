@@ -4,7 +4,6 @@
  */
 
 import Vue from 'vue'
-
 import AppGetDesktopMediaSource from './AppGetDesktopMediaSource.vue'
 
 let appGetDesktopMediaSourceInstance: InstanceType<typeof AppGetDesktopMediaSource> | null = null

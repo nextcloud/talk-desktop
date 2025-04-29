@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import axios from '@nextcloud/axios'
+import type { AxiosError } from '@nextcloud/axios'
+
 import { getCurrentUser } from '@nextcloud/auth'
+import axios from '@nextcloud/axios'
 import { generateOcsUrl } from '@nextcloud/router'
 import { appData } from '../../app/AppData.js'
-
-import type { AxiosError } from '@nextcloud/axios'
 
 // @talk/src/types/openapi/openapi.ts/operations['call-get-peers-for-call']['responses'][200]['content']['application/json']
 // TODO: find a way to import from @talk without type errors on CI

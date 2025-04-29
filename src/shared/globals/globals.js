@@ -5,11 +5,10 @@
 
 import { loadState } from '@nextcloud/initial-state'
 import { translate, translatePlural } from '@nextcloud/l10n'
-
 import { appData } from '../../app/AppData.js'
+import { getDesktopMediaSource } from '../../talk/renderer/screensharing/screensharing.module.ts'
 import { dialogs } from './OC/dialogs.js'
 import { MimeTypeList } from './OC/mimetype.js'
-import { getDesktopMediaSource } from '../../talk/renderer/screensharing/screensharing.module.ts'
 
 let enabledAbsoluteWebroot = false
 

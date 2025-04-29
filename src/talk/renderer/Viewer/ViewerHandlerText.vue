@@ -4,21 +4,21 @@
   -->
 
 <script setup>
-import { computed, ref } from 'vue'
 import { t } from '@nextcloud/l10n'
+import { toRef } from '@vueuse/core'
+import { computed, ref } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
 import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'
 import NcRichText from '@nextcloud/vue/components/NcRichText'
-import IconContentCopy from 'vue-material-design-icons/ContentCopy.vue'
 import IconCheck from 'vue-material-design-icons/Check.vue'
+import IconContentCopy from 'vue-material-design-icons/ContentCopy.vue'
 import IconFileChartOutline from 'vue-material-design-icons/FileChartOutline.vue'
 import IconFileDocumentOutline from 'vue-material-design-icons/FileDocumentOutline.vue'
 import IconFileOutline from 'vue-material-design-icons/FileOutline.vue'
 import IconWrap from 'vue-material-design-icons/Wrap.vue'
 import ViewerHandlerBase from './ViewerHandlerBase.vue'
 import { useFileContent } from './viewer.composables.ts'
-import { toRef } from '@vueuse/core'
 
 const props = defineProps({
 	file: {

@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { davGetClient, davRemoteURL, davRootPath } from '@nextcloud/files'
 import type { FileStat } from 'webdav'
+
+import { davGetClient, davRemoteURL, davRootPath } from '@nextcloud/files'
 
 export async function fetchFileContent(filename: string, format: 'text'): Promise<string>
 export async function fetchFileContent(filename: string, format: 'binary'): Promise<Blob>

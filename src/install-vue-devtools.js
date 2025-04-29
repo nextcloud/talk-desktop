@@ -3,11 +3,10 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { resolve } = require('node:path')
-const fs = require('node:fs/promises')
 const { app, session } = require('electron')
+const fs = require('node:fs/promises')
+const { resolve } = require('node:path')
 const unzip = require('unzip-crx-3')
-
 const { VUE_DEVTOOLS_EXTENSION_ID } = require('../scripts/vue-devtools-extension-id.mjs')
 
 const vueDevtoolsPath = resolve(__dirname, require('../resources/vue-devtools.crx'))

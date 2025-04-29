@@ -4,10 +4,11 @@
   -->
 
 <script setup lang="ts">
+import type { NcSelectOption } from '../../composables/useNcSelectModel.ts'
+
 import { computed } from 'vue'
 import NcSelect from '@nextcloud/vue/components/NcSelect'
 import SettingsFormGroup from './SettingsFormGroup.vue'
-import type { NcSelectOption } from '../../composables/useNcSelectModel.ts'
 
 const props = defineProps<{
 	label: string

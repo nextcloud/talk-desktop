@@ -4,9 +4,9 @@
  */
 
 const { app, nativeTheme } = require('electron')
-const { isLinux, platform } = require('../app/system.utils.ts')
 const path = require('path')
 const { getAppConfig } = require('../app/AppConfig.ts')
+const { isLinux, platform } = require('../app/system.utils.ts')
 
 const icons = {
 	// Executable's icon is used by default

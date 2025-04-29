@@ -4,6 +4,7 @@
  */
 
 import type { Component, ComponentInstance, DefineComponent } from 'vue'
+
 import Vue from 'vue'
 
 /**

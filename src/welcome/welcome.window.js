@@ -4,10 +4,10 @@
  */
 
 const { BrowserWindow } = require('electron')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+const { getAppConfig } = require('../app/AppConfig.ts')
 const { isMac } = require('../app/system.utils.ts')
 const { getScaledWindowSize, applyZoom, getWindowUrl } = require('../app/utils.ts')
-const { getAppConfig } = require('../app/AppConfig.ts')
+const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
  * @return {import('electron').BrowserWindow}

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { join } from 'node:path'
-import { readFile, writeFile } from 'node:fs/promises'
 import { app, webContents } from 'electron'
+import { readFile, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { isLinux, isMac } from './system.utils.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
@@ -209,7 +209,6 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
  *
  * @param key - Settings key to set
  * @param value - Value to set or undefined to reset to the default value
- * @return Promise<AppConfig> - The full settings after the change
  */
 export function setAppConfig<K extends AppConfigKey>(key: K, value?: AppConfig[K]) {
 	// Ignore if no change

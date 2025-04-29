@@ -4,16 +4,16 @@
   -->
 
 <script setup lang="ts">
+import { t } from '@nextcloud/l10n'
 import { useEventListener } from '@vueuse/core'
 import NcAvatar from '@nextcloud/vue/components/NcAvatar'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import IconClose from 'vue-material-design-icons/Close.vue'
 import IconPhone from 'vue-material-design-icons/Phone.vue'
 import IconPhoneHangup from 'vue-material-design-icons/PhoneHangup.vue'
-import { t } from '@nextcloud/l10n'
+import { postBroadcast } from '../../shared/broadcast.service.ts'
 import { waitCurrentUserHasJoinedCall } from './callbox.service.ts'
 import { playRingtone } from './callbox.utils.ts'
-import { postBroadcast } from '../../shared/broadcast.service.ts'
 
 const AVATAR_SIZE = 15 * 1.5 * 2 // 2 lines
 const TIME_LIMIT = 45 * 1000

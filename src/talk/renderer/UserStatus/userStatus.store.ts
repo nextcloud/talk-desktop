@@ -3,18 +3,19 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 import type { UserStatusPrivate, UserStatusPublic } from './userStatus.types.ts'
+
+import { getCurrentUser } from '@nextcloud/auth'
+import { emit, subscribe } from '@nextcloud/event-bus'
 import { defineStore } from 'pinia'
 import { computed } from 'vue'
-import { emit, subscribe } from '@nextcloud/event-bus'
-import { getCurrentUser } from '@nextcloud/auth'
+import { browserStorage } from '../../../shared/browserStorage.service.ts'
+import { useBrowserStorage } from '../../../shared/useBrowserStorage.ts'
 import {
 	fetchCurrentUserStatus,
-	revertToBackupStatus,
 	heartbeatUserStatus,
+	revertToBackupStatus,
 	updateUserStatus,
 } from './userStatus.service.ts'
-import { useBrowserStorage } from '../../../shared/useBrowserStorage.ts'
-import { browserStorage } from '../../../shared/browserStorage.service.ts'
 
 declare module '@nextcloud/event-bus' {
 	interface NextcloudEvents {

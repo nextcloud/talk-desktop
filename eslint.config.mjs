@@ -1,9 +1,7 @@
-/**
+/*!
  * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
-
-// eslint.config.js
 
 import { recommendedVue2 } from '@nextcloud/eslint-config'
 import globals from 'globals'
@@ -11,12 +9,10 @@ import globals from 'globals'
 export default [
 	// Nextcloud ESLint config
 	...recommendedVue2,
-	// Ignore Nextcloud Server styles - requested from server
+
 	{
+		name: 'talk-desktop/config',
 		ignores: ['src/shared/renderer/assets/**/*'],
-	},
-	// Configuration
-	{
 		languageOptions: {
 			globals: {
 				// Electron Forge build vars
@@ -33,27 +29,23 @@ export default [
 				__VERSION_TAG__: 'readonly',
 				__TALK_VERSION_TAG__: 'readonly',
 				__BUILD_CONFIG__: 'readonly',
-				// Electron
+				// Electron main process
 				...globals.node,
 			},
 		},
 	},
-	// Rules and overrides
 	{
+		name: 'talk-desktop/rules/general',
 		rules: {
-			/**
-			 * ESLint
-			 */
-			'no-console': 'off', // TODO: remove after preview
-			/**
-			 * Nextcloud
-			 */
+			'no-console': 'off',
 			// Talk Desktop doesn't use real Nextcloud server globals
 			'@nextcloud/no-deprecations': 'off',
 			'@nextcloud/no-removed-apis': 'off',
 		},
 	},
 	{
+		// See: https://github.com/nextcloud-libraries/eslint-config/pull/995
+		name: 'talk-desktop/rules/vue-documentation-mixed',
 		files: ['**/*.vue'],
 		rules: {
 			// Vue files can be both JavaScript and TypeScript
@@ -84,19 +76,12 @@ export default [
 			'jsdoc/check-tag-names': ['error', { typed: false }],
 		},
 	},
-	// Additional Vue rules
 	{
+		name: 'talk-desktop/rules/vue-strict',
 		files: ['**/*.vue'],
 		rules: {
-			/** ESLint Plugin Vue (https://eslint.vuejs.org) */
-
-			/** Vue / Priority A: Essentials */
-			// All rules enabled
 			// This rule is disabled in @nextcloud - re-enable
 			'vue/multi-word-component-names': 'error',
-			/** Vue / Priority B: Strongly Recommended */
-			/** Vue / Priority C: Recommended */
-			/** Vue / Uncategorized */
 			'vue/attribute-hyphenation': 'error',
 			'vue/block-order': ['error', { order: ['script', 'template', 'style'] }], // Follow new Vue standards
 			'vue/component-api-style': ['error', ['script-setup']], // Follow new Vue standards

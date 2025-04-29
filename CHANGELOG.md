@@ -13,7 +13,7 @@
 
 ### Changes
 
-- Built-in Talk in binaries is updated to v21.0.2 in both beta and stable release channels [#1224](https://github.com/nextcloud/talk-desktop/pull/1224)
+- Built-in Talk in binaries is updated to v21.0.3 in both beta and stable release channels [#1224](https://github.com/nextcloud/talk-desktop/pull/1224)
 - Update translations
 - Update dependencies
 

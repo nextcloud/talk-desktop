@@ -94,7 +94,7 @@ export const MimeTypeList = {
 		'application/yaml': 'text/code',
 		'application/zip': 'package/x-generic',
 		database: 'file',
-		'httpd/unix-directory': 'dir',
+		'httpd/unix-directory': 'folder',
 		'text/css': 'text/code',
 		'text/csv': 'x-office/spreadsheet',
 		'text/html': 'text/code',

@@ -99,7 +99,8 @@ const webpackRendererConfig = mergeWithRules({
 	plugins: 'append',
 })(commonTalkWebpackConfig, {
 	output: {
-		assetModuleFilename: '[name][ext]?v=[contenthash]',
+		assetModuleFilename: 'talk_desktop__dist/assets/[name][ext]?v=[contenthash]',
+		chunkFilename: 'talk_desktop__dist/chunks/[name].js?v=[contenthash]',
 	},
 
 	module: {
@@ -133,7 +134,7 @@ const webpackRendererConfig = mergeWithRules({
 					options: {
 						// Some workers load .wasm resources by relative path, ignoring the bundler
 						// So workers and wasm must be in the same directory
-						filename: '[name].js?v=[contenthash]',
+						filename: 'talk_desktop__dist/assets/[name].js?v=[contenthash]',
 					},
 				},
 			},

@@ -30,7 +30,7 @@ function createHelpWindow(parentWindow) {
 		parent: parentWindow,
 		modal: true,
 		webPreferences: {
-			preload: HELP_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			preload: TALK_DESKTOP__WINDOW_HELP_PRELOAD_WEBPACK_ENTRY,
 		},
 		titleBarStyle: 'hidden',
 		icon: getBrowserWindowIcon(),
@@ -38,7 +38,7 @@ function createHelpWindow(parentWindow) {
 
 	window.removeMenu()
 
-	window.loadURL(getWindowUrl('help_window'))
+	window.loadURL(getWindowUrl('help'))
 
 	applyExternalLinkHandler(window)
 	applyContextMenu(window)

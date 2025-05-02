@@ -84,13 +84,17 @@ export function buildTitle(title?: string) {
 	return title ? `${title} - ${base}` : base
 }
 
-type WindowName = 'authentication_window' | 'callbox_window' | 'help_window' | 'talk_window' | 'upgrade_window' | 'welcome_window'
+const windows = ['authentication', 'callbox', 'help', 'talk', 'upgrade', 'welcome'] as const
 
 /**
  * Get the URL for a window to load
  *
- * @param windowName - Window name
+ * @param window - Window name
  */
-export function getWindowUrl(windowName: WindowName) {
-	return `${APP_ORIGIN}/${windowName}/index.html`
+export function getWindowUrl(window: typeof windows[]) {
+	if (!windows.includes(window)) {
+		throw new Error(`Invalid window name: ${window}`)
+	}
+
+	return `${APP_ORIGIN}/talk_desktop__window_${window}/index.html`
 }

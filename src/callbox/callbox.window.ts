@@ -57,7 +57,7 @@ export function createCallboxWindow(params: CallboxParams) {
 		type: isWindows ? 'toolbar' : isMac ? 'panel' : 'normal',
 		useContentSize: false,
 		webPreferences: {
-			preload: CALLBOX_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			preload: TALK_DESKTOP__WINDOW_CALLBOX_PRELOAD_WEBPACK_ENTRY,
 			zoomFactor: getAppConfig('zoomFactor'),
 		},
 	})
@@ -67,7 +67,7 @@ export function createCallboxWindow(params: CallboxParams) {
 
 	applyZoom(window)
 
-	window.loadURL(getWindowUrl('callbox_window') + '?' + new URLSearchParams(params))
+	window.loadURL(getWindowUrl('callbox') + '?' + new URLSearchParams(params))
 
 	window.once('ready-to-show', () => window.showInactive())
 

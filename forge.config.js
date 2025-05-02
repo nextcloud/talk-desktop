@@ -389,7 +389,7 @@ module.exports = {
 					config: './webpack.renderer.config.js',
 					entryPoints: [
 						{
-							name: 'welcome_window',
+							name: 'talk_desktop__window_welcome',
 							html: './src/welcome/welcome.html',
 							js: './src/welcome/welcome.js',
 							preload: {
@@ -397,7 +397,7 @@ module.exports = {
 							},
 						},
 						{
-							name: 'authentication_window',
+							name: 'talk_desktop__window_authentication',
 							html: './src/authentication/renderer/authentication.html',
 							js: './src/authentication/renderer/authentication.main.js',
 							preload: {
@@ -405,7 +405,7 @@ module.exports = {
 							},
 						},
 						{
-							name: 'talk_window',
+							name: 'talk_desktop__window_talk',
 							html: './src/talk/renderer/talk.html',
 							js: './src/talk/renderer/talk.main.ts',
 							preload: {
@@ -413,7 +413,7 @@ module.exports = {
 							},
 						},
 						{
-							name: 'help_window',
+							name: 'talk_desktop__window_help',
 							html: './src/help/renderer/help.html',
 							js: './src/help/renderer/help.app.js',
 							preload: {
@@ -421,7 +421,7 @@ module.exports = {
 							},
 						},
 						{
-							name: 'upgrade_window',
+							name: 'talk_desktop__window_upgrade',
 							html: './src/upgrade/renderer/upgrade.html',
 							js: './src/upgrade/renderer/upgrade.main.ts',
 							preload: {
@@ -429,7 +429,7 @@ module.exports = {
 							},
 						},
 						{
-							name: 'callbox_window',
+							name: 'talk_desktop__window_callbox',
 							html: './src/callbox/renderer/callbox.html',
 							js: './src/callbox/renderer/callbox.main.ts',
 							preload: {

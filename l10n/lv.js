@@ -32,6 +32,7 @@ OC.L10N.register(
     "Status message" : "Statusa ziņojums",
     "Open in a Web-Browser" : "Atvērt tīmekļa pārlūkā",
     "Loading …" : "Ielādē…",
+    "The file is empty" : "Datne ir tukša",
     "Cancel" : "Atcelt",
     "Share screen" : "Koplietot ekrānu",
     "The client version is too old and no longer supported by this server. Update is required." : "Klienta versija ir pārāk vecas, un šis serveris to vairs neatbalsta. Nepieciešama atjaunināšana.",

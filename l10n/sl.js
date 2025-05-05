@@ -33,6 +33,7 @@ OC.L10N.register(
     "Report a bug" : "Pošlji poročilo o hrošču",
     "Settings" : "Nastavitve",
     "About" : "O programu",
+    "Back" : "Nazaj",
     "View profile" : "Pokaži profil",
     "Log out" : "Odjava",
     "User status" : "Stanje uporabnika",

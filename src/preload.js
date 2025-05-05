@@ -136,6 +136,12 @@ const TALK_DESKTOP = {
 	 */
 	sendAppData: (appDataDto) => ipcRenderer.send('appData:receive', appDataDto),
 	/**
+	 * Get appData from main process
+	 *
+	 * @return {Promise<import('./AppData.js').appData>}
+	 */
+	getAppData: () => ipcRenderer.invoke('appData:get'),
+	/**
 	 * Open a web-view modal window with Nextcloud Server login page
 	 *
 	 * @param {string} server - Server URL
@@ -145,9 +151,10 @@ const TALK_DESKTOP = {
 	/**
 	 * Open main window after logging in
 	 *
+	 * @param {import('./AppData.js').appData} appData - AppData
 	 * @return {Promise<void>}
 	 */
-	login: () => ipcRenderer.invoke('authentication:login'),
+	login: (appData) => ipcRenderer.invoke('authentication:login', appData),
 	/**
 	 * Logout and open accounts window
 	 *

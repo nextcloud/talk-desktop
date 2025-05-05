@@ -88,7 +88,7 @@ async function login() {
 	// Check if there is Nextcloud server and get capabilities
 	let capabilitiesResponse
 	try {
-		capabilitiesResponse = await getCapabilities()
+		capabilitiesResponse = await getCapabilities(serverUrl.value)
 	} catch {
 		return setError(t('talk_desktop', 'Nextcloud server not found'))
 	}
@@ -143,7 +143,7 @@ async function login() {
 	// Yay!
 	appData.persist()
 	setSuccess()
-	await window.TALK_DESKTOP.login()
+	await window.TALK_DESKTOP.login(appData.toJSON())
 }
 </script>
 

@@ -5,8 +5,8 @@
 
 require('dotenv').config()
 
-const path = require('node:path')
 const { spawnSync } = require('node:child_process')
+const path = require('node:path')
 const webpack = require('webpack')
 const { mergeWithRules } = require('webpack-merge')
 const { resolveConfig } = require('./build/resolveBuildConfig.js')
@@ -99,21 +99,20 @@ const webpackRendererConfig = mergeWithRules({
 	plugins: 'append',
 })(commonTalkWebpackConfig, {
 	output: {
-		assetModuleFilename: '[name][ext]?v=[contenthash]',
+		assetModuleFilename: 'talk_desktop__dist/assets/[name][ext]?v=[contenthash]',
+		chunkFilename: 'talk_desktop__dist/chunks/[name].js?v=[contenthash]',
 	},
 
 	module: {
 		rules: [
-			/**
-			 * With Electron we can use the most modern features,
-			 * But with web client - we cannot.
-			 * Replace target to support Top-level await
-			 */
 			{
 				test: /\.js$/,
 				loader: 'esbuild-loader',
 				options: {
 					loader: 'js',
+					// With Electron, we can use the most modern features
+					// But with web client - we cannot
+					// Replace target to support Top-level await
 					target: 'es2022',
 				},
 			},
@@ -133,12 +132,9 @@ const webpackRendererConfig = mergeWithRules({
 				use: {
 					loader: 'worker-loader',
 					options: {
-						/**
-						 * By default, webpack loads async js to new sub-folder, same as new entrypoint.
-						 * It brakes loading wasm resources from talk's Web Worker, expecting it to be in the same path.
-						 * To fix - load worker the same way as asset/resources - to the root.
-						 */
-						filename: '[name].js?v=[contenthash]',
+						// Some workers load .wasm resources by relative path, ignoring the bundler
+						// So workers and wasm must be in the same directory
+						filename: 'talk_desktop__dist/assets/[name].js?v=[contenthash]',
 					},
 				},
 			},

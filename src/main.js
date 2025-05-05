@@ -319,6 +319,8 @@ app.whenReady().then(async () => {
 		})
 	})
 
+	ipcMain.handle('appData:get', () => appData.toJSON())
+
 	let macDockBounceId
 	ipcMain.on('talk:flashAppIcon', async (event, shouldFlash) => {
 		// MacOS has no "flashing" but "bouncing" of the dock icon
@@ -342,7 +344,8 @@ app.whenReady().then(async () => {
 
 	ipcMain.handle('authentication:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
 
-	ipcMain.handle('authentication:login', async () => {
+	ipcMain.handle('authentication:login', async (event, newAppData) => {
+		appData.fromJSON(newAppData)
 		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
@@ -351,6 +354,7 @@ app.whenReady().then(async () => {
 
 	ipcMain.handle('authentication:logout', async () => {
 		if (createMainWindow === createTalkWindow) {
+			appData.reset()
 			await mainWindow.webContents.session.clearStorageData()
 			const authenticationWindow = createAuthenticationWindow()
 			createMainWindow = createAuthenticationWindow

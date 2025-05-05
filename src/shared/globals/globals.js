@@ -10,23 +10,7 @@ import { getDesktopMediaSource } from '../../talk/renderer/screensharing/screens
 import { dialogs } from './OC/dialogs.js'
 import { MimeTypeList } from './OC/mimetype.js'
 
-let enabledAbsoluteWebroot = false
-
-/**
- * Run a function with an absolute webroot enabled to not rely on window.location
- *
- * @param {Function} func - the function to run
- * @param {...any} args - the arguments to pass to the function
- * @return {any} the result of the function's run
- */
-function runWithAbsoluteWebroot(func, ...args) {
-	enabledAbsoluteWebroot = true
-	const result = func.call(this, ...args)
-	enabledAbsoluteWebroot = false
-	return result
-}
-
-const getMaybeAbsoluteWebroot = () => enabledAbsoluteWebroot ? appData.serverUrl : new URL(appData.serverUrl).pathname
+const webroot = appData.serverUrl ? new URL(appData.serverUrl).pathname : ''
 
 const OC = {
 	// Constant from: https://github.com/nextcloud/server/blob/master/core/src/OC/constants.js
@@ -65,7 +49,7 @@ const OC = {
 	},
 
 	get webroot() {
-		return getMaybeAbsoluteWebroot()
+		return webroot
 	},
 
 	config: {
@@ -105,8 +89,6 @@ const OCA = {
 	Talk: {
 		Desktop: {
 			getDesktopMediaSource,
-			runWithAbsoluteWebroot,
-			enabledAbsoluteWebroot: false,
 		},
 	},
 }
@@ -129,7 +111,7 @@ export function initGlobals() {
 	window.OCP = OCP
 
 	Object.defineProperty(window, '_oc_webroot', {
-		get: () => getMaybeAbsoluteWebroot(),
+		get: () => webroot,
 	})
 
 	Object.defineProperty(window, '_oc_appswebroots', {

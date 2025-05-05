@@ -27,14 +27,14 @@ export function createUpgradeWindow() {
 		fullscreenable: false,
 		autoHideMenuBar: true,
 		webPreferences: {
-			preload: UPGRADE_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			preload: TALK_DESKTOP__WINDOW_UPGRADE_PRELOAD_WEBPACK_ENTRY,
 		},
 		icon: getBrowserWindowIcon(),
 	})
 
 	window.removeMenu()
 
-	window.loadURL(getWindowUrl('upgrade_window'))
+	window.loadURL(getWindowUrl('upgrade'))
 
 	applyContextMenu(window)
 	applyExternalLinkHandler(window)

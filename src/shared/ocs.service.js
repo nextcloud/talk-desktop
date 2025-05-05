@@ -12,33 +12,29 @@ import axios from '@nextcloud/axios'
 import { generateOcsUrl } from '@nextcloud/router'
 
 /**
- * @see https://docs.nextcloud.com/server/latest/developer_manual/client_apis/OCS/ocs-api-overview.html#capabilities-api
- * @return {Promise<import('axios').AxiosResponse>}
- */
-export async function getCapabilities() {
-	const response = await axios.get(generateOcsUrl('cloud/capabilities'))
-	return response.data.ocs.data
-}
-
-/**
- * Request user metadata
+ * Get Nextcloud server capabilities
  *
- * @see https://docs.nextcloud.com/server/latest/developer_manual/client_apis/OCS/ocs-api-overview.html#user-metadata
- * @param {string} userId - userid
+ * @see https://docs.nextcloud.com/server/latest/developer_manual/client_apis/OCS/ocs-api-overview.html#capabilities-api
+ * @param {string} serverUrl - Nextcloud server URL
  * @return {Promise<import('axios').AxiosResponse>}
  */
-export async function getUserMetadata({ userId }) {
-	const response = await axios.get(generateOcsUrl('cloud/users/{userId}', { userId }))
+export async function getCapabilities(serverUrl) {
+	const response = await axios.get(generateOcsUrl('cloud/capabilities', {}, { baseURL: serverUrl }), {
+		headers: {
+			'OCS-APIRequest': 'true',
+		},
+	})
 	return response.data.ocs.data
 }
 
 /**
- * Request current user
+ * Get current user metadata
  *
  * @see TODO: ADD LINKS
- * @return {Promise<*>}
+ * @param {string} serverUrl - Nextcloud server URL
+ * @return {Promise<import('axios').AxiosResponse>}
  */
-export async function getCurrentUserData() {
-	const response = await axios.get(generateOcsUrl('cloud/user'))
+export async function getCurrentUserData(serverUrl) {
+	const response = await axios.get(generateOcsUrl('cloud/user', {}, { baseURL: serverUrl }))
 	return response.data.ocs.data
 }

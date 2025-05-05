@@ -71,6 +71,11 @@ function setError(error) {
 async function login() {
 	setLoading()
 
+	// Only https:// is allowed
+	if (serverUrl.value.startsWith('http://')) {
+		return setError(t('talk_desktop', 'Connecting over http:// is not allowed'))
+	}
+
 	// Check if valid URL
 	try {
 		// new URL will throw an exception on invalid URL
@@ -81,14 +86,13 @@ async function login() {
 
 	// Prepare to request the server
 	window.TALK_DESKTOP.disableWebRequestInterceptor()
-	window.TALK_DESKTOP.enableWebRequestInterceptor(serverUrl.value)
 	appData.reset()
 	appData.serverUrl = serverUrl.value
 
 	// Check if there is Nextcloud server and get capabilities
 	let capabilitiesResponse
 	try {
-		capabilitiesResponse = await getCapabilities()
+		capabilitiesResponse = await getCapabilities(serverUrl.value)
 	} catch {
 		return setError(t('talk_desktop', 'Nextcloud server not found'))
 	}
@@ -143,7 +147,7 @@ async function login() {
 	// Yay!
 	appData.persist()
 	setSuccess()
-	await window.TALK_DESKTOP.login()
+	await window.TALK_DESKTOP.login(appData.toJSON())
 }
 </script>
 

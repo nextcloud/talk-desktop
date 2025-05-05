@@ -27,7 +27,7 @@ function createWelcomeWindow() {
 		show: false,
 		useContentSize: true,
 		webPreferences: {
-			preload: WELCOME_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			preload: TALK_DESKTOP__WINDOW_WELCOME_PRELOAD_WEBPACK_ENTRY,
 			zoomFactor,
 		},
 		icon: getBrowserWindowIcon(),
@@ -40,7 +40,7 @@ function createWelcomeWindow() {
 
 	applyZoom(window)
 
-	window.loadURL(getWindowUrl('welcome_window'))
+	window.loadURL(getWindowUrl('welcome'))
 
 	return window
 }

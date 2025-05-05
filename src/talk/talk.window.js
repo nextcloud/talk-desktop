@@ -29,7 +29,7 @@ function createTalkWindow() {
 		backgroundColor: '#00679E',
 		autoHideMenuBar: true,
 		webPreferences: {
-			preload: TALK_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			preload: TALK_DESKTOP__WINDOW_TALK_PRELOAD_WEBPACK_ENTRY,
 			zoomFactor,
 		},
 		icon: getBrowserWindowIcon(),
@@ -77,7 +77,7 @@ function createTalkWindow() {
 
 	setupTray(window)
 
-	window.loadURL(getWindowUrl('talk_window') + '#/apps/spreed')
+	window.loadURL(getWindowUrl('talk') + '#/apps/spreed')
 
 	return window
 }

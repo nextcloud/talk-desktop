@@ -27,7 +27,7 @@ function createAuthenticationWindow() {
 		fullscreenable: false,
 		autoHideMenuBar: true,
 		webPreferences: {
-			preload: AUTHENTICATION_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			preload: TALK_DESKTOP__WINDOW_AUTHENTICATION_PRELOAD_WEBPACK_ENTRY,
 		},
 		icon: getBrowserWindowIcon(),
 		titleBarStyle: getAppConfig('systemTitleBar') ? 'default' : 'hidden',
@@ -51,7 +51,7 @@ function createAuthenticationWindow() {
 	applyContextMenu(window)
 	applyZoom(window)
 
-	window.loadURL(getWindowUrl('authentication_window'))
+	window.loadURL(getWindowUrl('authentication'))
 
 	return window
 }

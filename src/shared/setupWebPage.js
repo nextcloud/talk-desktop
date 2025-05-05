@@ -216,7 +216,7 @@ function applyDownloadLinkHandler() {
  */
 export async function setupWebPage() {
 	document.title = await window.TALK_DESKTOP.getTitle()
-	appData.restore()
+	appData.fromJSON(await window.TALK_DESKTOP.getAppData())
 	await initAppConfig()
 	applyInitialState()
 	initGlobals()

@@ -5,6 +5,19 @@
 
 # Changelog
 
+## v1.1.8 - 2025-05-05
+
+### Fixes
+
+- Reduce the number of user status requests by half [#1237](https://github.com/nextcloud/talk-desktop/pull/1237)
+- Regression from the previous release causing unnecessary OPTIONS request to the server [#1236](https://github.com/nextcloud/talk-desktop/pull/1236) + [#1261](https://github.com/nextcloud/talk-desktop/pull/1261)
+- File picker does not work in some locales [#1235](https://github.com/nextcloud/talk-desktop/pull/1235)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.0.4 in both beta and stable release channels [#1246](https://github.com/nextcloud/talk-desktop/pull/1246)
+- Talk Desktop can now be installed on Windows via community supported Chocolatey package: `choco install nextcloud-talk` [#1247](https://github.com/nextcloud/talk-desktop/pull/1247)
+
 ## v1.1.7 - 2025-04-18
 
 ### Features
@@ -13,7 +26,7 @@
 
 ### Changes
 
-- Built-in Talk in binaries is updated to v21.0.2 in both beta and stable release channels [#1224](https://github.com/nextcloud/talk-desktop/pull/1224)
+- Built-in Talk in binaries is updated to v21.0.3 in both beta and stable release channels [#1224](https://github.com/nextcloud/talk-desktop/pull/1224)
 - Update translations
 - Update dependencies
 

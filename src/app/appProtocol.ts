@@ -6,17 +6,29 @@
 import { app, net, protocol } from 'electron'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { APP_HOST, APP_PROTOCOL, DEV_SERVER_ORIGIN } from '../constants.js'
+import packageJson from '../../package.json'
+import { DEV_SERVER_ORIGIN } from '../constants.js'
+import { osTitle } from './system.utils.ts'
+import { isInternalUrl } from './utils.ts'
+
+const USER_AGENT = `Mozilla/5.0 (${osTitle}) Nextcloud-Talk v${packageJson.version}`
+
+// Note: connecting to servers over http:// is not supported at the moment
+// Adding http:// support is doable
+// But it doesn't make much sense, as it is insecure and audio/video calls are not supported in the web client
 
 protocol.registerSchemesAsPrivileged([
 	{
-		scheme: APP_PROTOCOL,
+		scheme: 'https',
 		privileges: {
+			// Follow RFC 3986 URI standard (like HTTPS does)
 			standard: true,
+			// Enable API allowed only for secure contexts
 			secure: true,
-			allowServiceWorkers: true,
+			// Allow fetch from the main process
 			supportFetchAPI: true,
-			corsEnabled: true,
+			// Enable V8 code cache
+			codeCache: true,
 		},
 	},
 ])
@@ -25,33 +37,25 @@ protocol.registerSchemesAsPrivileged([
  * Register app protocol handler
  */
 export function registerAppProtocolHandler() {
-	protocol.handle(APP_PROTOCOL, async (request) => {
+	protocol.handle('https', async (request) => {
 		const url = new URL(request.url)
-		const fullpath = (url.pathname + url.search + url.hash).slice(1)
 
-		// Redirect nctalk://call/{token} links to the app
-		if (url.host === 'call') {
-			return new Response(null, {
-				status: 302,
-				headers: {
-					Location: `${APP_PROTOCOL}://${APP_HOST}/talk_window/index.html#/call/${fullpath}`,
-				},
-			})
-		}
+		// Override default Electron's User-Agent
+		// Note: it is supposed to work via webRequest.onBeforeSendHeaders (according to the Electron documentation)
+		// But for User-Agent header in net.fetch request it does not...
+		request.headers.set('User-Agent', USER_AGENT)
 
-		// Handle in-app links
-		if (url.host === APP_HOST) {
+		// Handle internal application resource
+		if (isInternalUrl(url)) {
 			// In development mode proxy requests to the dev server
 			if (process.env.NODE_ENV === 'development') {
-				const urlOnDevServer = new URL(fullpath, DEV_SERVER_ORIGIN)
-				return await fetch(urlOnDevServer)
+				return net.fetch(DEV_SERVER_ORIGIN + url.pathname + url.search + url.hash, { bypassCustomProtocolHandlers: true })
 			}
 
 			const distPath = getDistPath()
-
 			const requestPath = path.join(distPath, decodeURIComponent(url.pathname))
 
-			// Prevent accessing external files via nctalk://app/../../path/to/external/file
+			// Prevent accessing external files via https://app/../../path/to/external/file
 			// Note: it is not supposed to happen with asar package but still better to check
 			const relativePath = path.relative(distPath, requestPath)
 			if (!relativePath || relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
@@ -59,26 +63,12 @@ export function registerAppProtocolHandler() {
 				return new Response(`Cannot GET ${request.url}`, { status: 404 })
 			}
 
-			// Generate file://path/to/app/file?query URL
-			const urlToFile = pathToFileURL(requestPath)
-			return net.fetch(urlToFile.toString() + url.search + url.hash)
+			// Open file://path/to/app/file?query#hash
+			return net.fetch(pathToFileURL(requestPath).toString() + url.search + url.hash)
 		}
 
-		// API reverse proxy
-		if (url.host === 'api') {
-			return net.fetch(fullpath, {
-				method: request.method,
-				headers: request.headers,
-				body: request.body,
-				credentials: 'include',
-				// @ts-expect-error Untyped custom property from Electron
-				duplex: 'half',
-			})
-		}
-
-		// Unknown host
-		console.warn('Unknown application host:', url.host)
-		return new Response(`Cannot GET ${request.url}`, { status: 404 })
+		// Proxy the request to the original destination
+		return net.fetch(request, { bypassCustomProtocolHandlers: true })
 	})
 }
 

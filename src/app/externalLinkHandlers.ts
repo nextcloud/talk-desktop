@@ -13,26 +13,8 @@ import type {
 } from 'electron'
 
 import { shell } from 'electron'
-import { APP_ORIGIN } from '../constants.js'
 import { appData } from './AppData.js'
-
-/**
- * Check if a link is an internal application link
- *
- * @param url - URL
- */
-export function isInternalLink(url: string) {
-	return url.startsWith(APP_ORIGIN + '/')
-}
-
-/**
- * Check if a link is external
- *
- * @param url - URL
- */
-export function isExternalLink(url: string) {
-	return !isInternalLink(url)
-}
+import { isExternalUrl } from './utils.ts'
 
 const talkPathRe = new RegExp('^/apps/spreed(?:/(?:not-found|forbidden|duplicate-session))?|/call/[^/]+$')
 
@@ -80,7 +62,7 @@ export function applyExternalLinkHandler(browserWindow: BrowserWindow, browserWi
  */
 function windowOpenExternalLinkHandler(details: HandlerDetails, browserWindowOptions: BrowserWindowConstructorOptions = {}): WindowOpenHandlerResponse {
 	// Open external links in the default web-browser instead of a new app window
-	if (isExternalLink(details.url)) {
+	if (isExternalUrl(details.url)) {
 		shell.openExternal(details.url)
 		return { action: 'deny' }
 	}
@@ -101,7 +83,7 @@ async function willNavigateExternalLinkHandler(event: Event<WebContentsWillNavig
 	const { url, initiator: webFrameMain } = event
 
 	// Internal navigation - do nothing
-	if (!isExternalLink(url)) {
+	if (!isExternalUrl(url)) {
 		if (process.env.NODE_ENV === 'production') {
 			console.warn('Unexpected internal navigation to URL:', url)
 		}

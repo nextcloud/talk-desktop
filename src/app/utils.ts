@@ -9,6 +9,7 @@ import { screen } from 'electron'
 import { APP_ORIGIN } from '../constants.js'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { getAppConfig } from './AppConfig.ts'
+import { appData } from './AppData.js'
 
 /**
  * Get the scaled window size based on the current zoom factor
@@ -96,5 +97,30 @@ export function getWindowUrl(window: typeof windows[]) {
 		throw new Error(`Invalid window name: ${window}`)
 	}
 
-	return `${APP_ORIGIN}/talk_desktop__window_${window}/index.html`
+	const origin = appData.serverUrl ? new URL(appData.serverUrl).origin : APP_ORIGIN
+	return `${origin}/talk_desktop__window_${window}/index.html`
+}
+
+/**
+ * Check weather a link is an internal application link
+ *
+ * @param url - URL
+ */
+export function isInternalUrl(url: string | URL) {
+	if (typeof url === 'string') {
+		url = new URL(url)
+	}
+
+	const internalOrigin = appData.serverUrl ? new URL(appData.serverUrl).origin : APP_ORIGIN
+
+	return url.origin === internalOrigin && url.pathname.startsWith('/talk_desktop__')
+}
+
+/**
+ * Check whether a link is not an internal application link
+ *
+ * @param url - URL
+ */
+export function isExternalUrl(url: string | URL) {
+	return !isInternalUrl(url)
 }

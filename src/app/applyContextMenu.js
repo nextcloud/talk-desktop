@@ -4,7 +4,7 @@
  */
 
 const { clipboard, Menu } = require('electron')
-const { isExternalLink } = require('./externalLinkHandlers.ts')
+const { isExternalUrl } = require('./utils.ts')
 
 /**
  * Enable context menu by right click
@@ -49,7 +49,7 @@ export function applyContextMenu(browserWindow) {
 		}
 
 		// Add context actions for handling links
-		if (params.linkURL && isExternalLink(params.linkURL)) {
+		if (params.linkURL && isExternalUrl(params.linkURL)) {
 			const url = params.linkURL
 			const text = params.linkText.trim()
 			menuItems.push({

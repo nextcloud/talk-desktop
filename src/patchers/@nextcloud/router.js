@@ -5,33 +5,11 @@
 
 /* eslint-disable jsdoc/require-jsdoc */
 
-import {
-	generateFilePath as _generateFilePath,
-	generateOcsUrl as _generateOcsUrl,
-	generateRemoteUrl as _generateRemoteUrl,
-	generateUrl as _generateUrl,
-	getAppRootUrl as _getAppRootUrl,
-	getRootUrl as _getRootUrl,
-	linkTo as _linkTo,
-} from '@desktop-modules--@nextcloud/router'
+import { generateFilePath as _generateFilePath } from '@desktop-modules--@nextcloud/router'
 
-// Original @nextcloud/router sometimes relies on window.location which is not correct on desktop
-// So, some function must be re-defined or patched
+export * from '@desktop-modules--@nextcloud/router'
 
-// Works as expected originally, does not use location
-export const getRootUrl = _getRootUrl
-
-// Works fine originally with enabled absolute webroot
-export const getAppRootUrl = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_getAppRootUrl, ...args)
-export const generateUrl = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_generateUrl, ...args)
-export const linkTo = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_linkTo, ...args)
-
-// Original getBaseUrl relies on window.location, create a new one as an absolute version of getRootUrl
-export const getBaseUrl = (...args) => window.OCA.Talk.Desktop.runWithAbsoluteWebroot(_getRootUrl, ...args)
-
-// Requires changing the default options.baseUrl from original relative getBaseUrl to new absolute getBaseUrl
-export const generateRemoteUrl = (service, options = {}) => _generateRemoteUrl(service, { ...options, baseURL: options.baseURL || getBaseUrl() })
-export const generateOcsUrl = (url, params, options = {}) => _generateOcsUrl(url, params, { ...options, baseURL: options.baseURL || getBaseUrl() })
+// TODO: move this handling to the appProtocol handling, so we don't need build-time patching anymore
 
 // By default, Talk requests images and sounds as a file from server assets using generateFilePath
 // Desktop app should use path to the local file in the bundle
@@ -59,7 +37,7 @@ export function generateFilePath(app, type, file) {
 		return require(`../../../sounds/${filename}.ogg`)
 	}
 
-	return window.OCA.Talk.Desktop.runWithAbsoluteWebroot(() => _generateFilePath(app, type, file))
+	return _generateFilePath(app, type, file)
 }
 
 // Copy of original but using patched generateFilePath

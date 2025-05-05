@@ -3,9 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const APP_PROTOCOL = 'nctalk'
 const APP_HOST = 'app'
-const APP_ORIGIN = `${APP_PROTOCOL}://${APP_HOST}`
+const APP_ORIGIN = `https://${APP_HOST}`
 const DEV_SERVER_ORIGIN = 'http://localhost:3000'
 const MIN_REQUIRED_NEXTCLOUD_VERSION = 27
 const MIN_REQUIRED_TALK_VERSION = 17
@@ -15,7 +14,6 @@ const ZOOM_MIN = 0.55
 const ZOOM_MAX = 5
 
 module.exports = {
-	APP_PROTOCOL,
 	APP_HOST,
 	APP_ORIGIN,
 	DEV_SERVER_ORIGIN,

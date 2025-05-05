@@ -71,6 +71,11 @@ function setError(error) {
 async function login() {
 	setLoading()
 
+	// Only https:// is allowed
+	if (serverUrl.value.startsWith('http://')) {
+		return setError(t('talk_desktop', 'Connecting over http:// is not allowed'))
+	}
+
 	// Check if valid URL
 	try {
 		// new URL will throw an exception on invalid URL
@@ -81,7 +86,6 @@ async function login() {
 
 	// Prepare to request the server
 	window.TALK_DESKTOP.disableWebRequestInterceptor()
-	window.TALK_DESKTOP.enableWebRequestInterceptor(serverUrl.value)
 	appData.reset()
 	appData.serverUrl = serverUrl.value
 

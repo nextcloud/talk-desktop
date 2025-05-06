@@ -39,7 +39,12 @@ It can be found in the About window (open from the menu or via <kbd>F1</kbd> and
 <details>
 <summary>Client logs</summary>
 
-Press <kbd>Ctrl+Shift+I</kbd> (<kbd>Cmd+Option+C</kbd> on macOS) or use the context menu to open the developer tools, then go to the Console tab.
+Press:
+- **🪟 Windows:** <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
+- **🍎 macOS** <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>C</kbd>
+- **🐧Linux:** <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
+
+Or use the context menu to open the developer tools, then go to the Console tab.
 
 ```
 Insert error logs here.

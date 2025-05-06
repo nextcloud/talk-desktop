@@ -41,7 +41,7 @@ It can be found in the About window (open from the menu or via <kbd>F1</kbd> and
 
 Press:
 - **🪟 Windows:** <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
-- **🍎 macOS** <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>C</kbd>
+- **🍎 macOS:** <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>C</kbd>
 - **🐧Linux:** <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>
 
 Or use the context menu to open the developer tools, then go to the Console tab.

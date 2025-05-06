@@ -101,7 +101,7 @@ OC.L10N.register(
     "Update Talk Desktop" : "Atualizar o Talk Desktop",
     "Continue in Web-Browser" : "Continuar no navegador da web",
     "Application" : "Aplicativo",
-    "Online" : "Online",
+    "Online" : "On-line",
     "Away" : "Ausente",
     "Do not disturb" : "Não perturbe",
     "Invisible" : "Invisível",

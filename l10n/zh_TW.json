@@ -1,6 +1,7 @@
 { "translations": {
     "Talk Desktop" : "Talk 桌面版",
     "Logged in successfully" : "已成功登入",
+    "Connecting over http:// is not allowed" : "不允許透過 http:// 連線",
     "Invalid server address" : "無效的伺服器地址",
     "Nextcloud server not found" : "找不到 Nextcloud 伺服器",
     "Nextcloud Talk is not installed in the server" : "伺服器上未安裝 Nextcloud Talk",

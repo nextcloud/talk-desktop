@@ -1,8 +1,9 @@
 { "translations": {
     "Talk Desktop" : "Talk Töölaud",
     "Logged in successfully" : "Edukas sisselogimine",
+    "Connecting over http:// is not allowed" : "Ühenduse loomiseks pole http:// protokoll lubatud",
     "Invalid server address" : "Vigane serveri aadress",
-    "Nextcloud server not found" : "Nextcloudi serverit ei leitud",
+    "Nextcloud server not found" : "Nextcloudi serverit ei leidu",
     "Nextcloud Talk is not installed in the server" : "Nextcloud Talk ei ole serveris seadistatud",
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "{componentName} {minRequiredVersion} või kõrgem on vajalik, aga {foundVersion} on installeeritud",
     "Unexpected error" : "Tundmatu viga",

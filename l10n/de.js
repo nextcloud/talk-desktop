@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Talk Desktop" : "Talk Desktop",
     "Logged in successfully" : "Erfolgreich angemeldet",
+    "Connecting over http:// is not allowed" : "Verbinden über http:// ist unzulässig",
     "Invalid server address" : "Ungültige Serveradresse",
     "Nextcloud server not found" : "Nextcloud-Server nicht gefunden",
     "Nextcloud Talk is not installed in the server" : "Nextcloud Talk ist auf diesem Server nicht installiert",

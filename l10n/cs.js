@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Talk Desktop" : "Talk pro desktop",
     "Logged in successfully" : "Úspěšně přihlášeno",
+    "Connecting over http:// is not allowed" : "Připojování přes http:// není dovoleno",
     "Invalid server address" : "Neplatná adresa serveru",
     "Nextcloud server not found" : "Nextcloud server nenalezen",
     "Nextcloud Talk is not installed in the server" : "Na serveru není nainstalován Nextcloud Talk",

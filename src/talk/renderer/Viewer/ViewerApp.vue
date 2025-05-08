@@ -70,7 +70,7 @@ defineExpose({
 				<template #icon>
 					<IconOpenInNew :size="20" />
 				</template>
-				{{ t('talk_desktop', 'Open in a Web-Browser') }}
+				{{ t('talk_desktop', 'Open in a web browser') }}
 			</NcActionLink>
 		</template>
 	</NcModal>

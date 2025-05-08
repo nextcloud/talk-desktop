@@ -46,7 +46,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 				<template #icon>
 					<IconWeb :size="20" />
 				</template>
-				{{ t('talk_desktop', 'Open in Web-Browser') }}
+				{{ t('talk_desktop', 'Open in web browser') }}
 			</NcActionButton>
 		</template>
 

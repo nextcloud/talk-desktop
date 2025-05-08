@@ -1,6 +1,7 @@
 { "translations": {
     "Talk Desktop" : "Talk Десктоп",
     "Logged in successfully" : "Пријава је успела",
+    "Connecting over http:// is not allowed" : "Није дозвољено повезивање преко http://",
     "Invalid server address" : "Несиправна адреса сервера",
     "Nextcloud server not found" : "Није пронађен Nextcloud сервер",
     "Nextcloud Talk is not installed in the server" : "На серверу није инсталирана апликација Nextcloud Talk",

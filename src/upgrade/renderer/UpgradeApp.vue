@@ -44,7 +44,7 @@ const browserLink = generateUrl('/apps/spreed')
 				<template #icon>
 					<IconWeb :size="20" />
 				</template>
-				{{ t('talk_desktop', 'Continue in Web-Browser') }} ↗
+				{{ t('talk_desktop', 'Continue in web browser') }} ↗
 			</NcButton>
 		</div>
 	</div>

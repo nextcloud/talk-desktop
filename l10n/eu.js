@@ -34,7 +34,6 @@ OC.L10N.register(
     "Zoom in" : "Hurbildu",
     "Reset" : "Berrezarri",
     "Menu" : "Menua",
-    "Open in Web-Browser" : "Ireki web nabigatzailean",
     "Force reload" : "Behartu birkargatzea",
     "Report a bug" : "Jakinarazi errore bat",
     "Settings" : "Ezarpenak",

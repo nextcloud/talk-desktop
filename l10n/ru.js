@@ -38,7 +38,6 @@ OC.L10N.register(
     "Zoom in" : "Приблизить",
     "Reset" : "Сброс",
     "Menu" : "Меню",
-    "Open in Web-Browser" : "Открыть в веб-браузере",
     "Force reload" : "Переподключиться",
     "Report a bug" : "Сообщить об ошибке",
     "Settings" : "Настройки",

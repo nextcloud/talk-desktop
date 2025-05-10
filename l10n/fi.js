@@ -27,7 +27,6 @@ OC.L10N.register(
     "Zoom in" : "Lähennä",
     "Reset" : "Palauta",
     "Menu" : "Valikko",
-    "Open in Web-Browser" : "Avaa selaimessa",
     "Report a bug" : "Ilmoita viasta",
     "Settings" : "Asetukset",
     "About" : "Tietoja",

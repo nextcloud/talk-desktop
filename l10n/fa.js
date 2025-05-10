@@ -31,7 +31,6 @@ OC.L10N.register(
     "Zoom in" : "Zoom in",
     "Reset" : "بازنشاندن",
     "Menu" : "منو",
-    "Open in Web-Browser" : "Open in Web-Browser",
     "Force reload" : "Force reload",
     "Report a bug" : "گزارش یک خطا",
     "Settings" : "تنظیمات",

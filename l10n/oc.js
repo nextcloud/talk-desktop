@@ -22,7 +22,6 @@ OC.L10N.register(
     "Theme" : "Tèma",
     "Reset" : "Reïnicializar",
     "Menu" : "Menú",
-    "Open in Web-Browser" : "Dobrir dins lo navegador",
     "Force reload" : "Forçar lo recargament",
     "Report a bug" : "Raportar un bug",
     "Settings" : "Paramètres",

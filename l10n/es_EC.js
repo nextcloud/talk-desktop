@@ -28,7 +28,6 @@ OC.L10N.register(
     "Zoom in" : "Acerca",
     "Reset" : "Restablecer",
     "Menu" : "Menú",
-    "Open in Web-Browser" : "Abrir en navegador web",
     "Force reload" : "Forzar recarga",
     "Report a bug" : "Reporta un detalle",
     "Settings" : "Ajustes",

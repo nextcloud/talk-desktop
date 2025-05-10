@@ -49,7 +49,6 @@ OC.L10N.register(
     "Share screen" : "Del skærm",
     "Preview is not available" : "Forhåndsvisning er ikke tilgængelig",
     "Update Talk Desktop" : "Opdater Snak desktop",
-    "Continue in Web-Browser" : "Fortsæt i webbrowser",
     "Application" : "Applikation",
     "Online" : "Online",
     "Away" : "Ikke tilstede",

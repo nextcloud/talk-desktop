@@ -30,7 +30,6 @@ OC.L10N.register(
     "Zoom in" : "Nagyítás",
     "Reset" : "Alaphelyzetbe állítás",
     "Menu" : "Menü",
-    "Open in Web-Browser" : "Megnyitás böngészőben",
     "Force reload" : "Kényszerített újratöltés",
     "Report a bug" : "Hiba bejelentése",
     "Settings" : "Beállítások",

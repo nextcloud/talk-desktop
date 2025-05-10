@@ -10,7 +10,25 @@ import { getDesktopMediaSource } from '../../talk/renderer/screensharing/screens
 import { dialogs } from './OC/dialogs.js'
 import { MimeTypeList } from './OC/mimetype.js'
 
-const webroot = appData.serverUrl ? new URL(appData.serverUrl).pathname : ''
+let webroot
+/**
+ * Compute and cache webroot value based on server URL
+ *
+ * @return {string} webroot value
+ */
+function getWebroot() {
+	if (webroot !== undefined) {
+		return webroot
+	}
+
+	try {
+		webroot = appData.serverUrl ? new URL(appData.serverUrl).pathname.replace(/\/$/, '') : ''
+	} catch (error) {
+		console.error('Failed to parse server URL:', error)
+		webroot = ''
+	}
+	return webroot
+}
 
 const OC = {
 	// Constant from: https://github.com/nextcloud/server/blob/master/core/src/OC/constants.js
@@ -49,7 +67,7 @@ const OC = {
 	},
 
 	get webroot() {
-		return webroot
+		return getWebroot()
 	},
 
 	config: {
@@ -111,7 +129,7 @@ export function initGlobals() {
 	window.OCP = OCP
 
 	Object.defineProperty(window, '_oc_webroot', {
-		get: () => webroot,
+		get: () => getWebroot(),
 	})
 
 	Object.defineProperty(window, '_oc_appswebroots', {

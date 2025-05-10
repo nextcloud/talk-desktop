@@ -85,7 +85,7 @@
     "electron": "^35.2.1",
     "esbuild-loader": "^4.3.0",
     "eslint": "^9.26.0",
-    "globals": "^16.0.0",
+    "globals": "^16.1.0",
     "icon-gen": "^5.0.0",
     "node-loader": "^2.1.0",
     "regenerator-runtime": "^0.14.1",

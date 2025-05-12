@@ -1,13 +1,9 @@
 ### ☑️ Resolves
 
-* Issue #…
+- Fix: #…
 
 ### 🖼️ Screenshots
 
 🏚️ Before | 🏡 After
 ---|---
 B | A
-
-### 🚧 Tasks
-
-- [ ] ...

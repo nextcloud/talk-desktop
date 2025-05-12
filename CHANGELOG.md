@@ -5,6 +5,17 @@
 
 # Changelog
 
+## v1.1.9 - 2025-05-12
+
+### Fixes
+
+- Regression breaking connection to Nextcloud server with non-empty base URL [#1263](https://github.com/nextcloud/talk-desktop/issues/1263)
+
+### Changes
+
+- Update translations
+- Update dependencies
+
 ## v1.1.8 - 2025-05-05
 
 ### Fixes

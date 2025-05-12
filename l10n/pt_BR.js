@@ -16,7 +16,7 @@ OC.L10N.register(
     "Logging in …" : "Entrando …",
     "Incoming call" : "Chamada recebida",
     "Close" : "Fechar",
-    "Dismiss" : "Rejeitar",
+    "Dismiss" : "Dispensar",
     "Join call" : "Entrar na chamada",
     "Copy" : "Copiar",
     "Copied" : "Copiado",

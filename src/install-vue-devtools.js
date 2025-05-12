@@ -34,7 +34,7 @@ async function isDirectoryExists(path) {
  * @return {Promise<void>}
  */
 async function installVueDevtools() {
-	if (session.defaultSession.getExtension(VUE_DEVTOOLS_EXTENSION_ID)) {
+	if (session.defaultSession.extensions.getExtension(VUE_DEVTOOLS_EXTENSION_ID)) {
 		console.log('Vue Devtools extension has already been installed')
 		return
 	}
@@ -48,7 +48,7 @@ async function installVueDevtools() {
 		console.log('Vue Devtools extension is unpacked')
 	}
 
-	await session.defaultSession.loadExtension(extensionDir)
+	await session.defaultSession.extensions.loadExtension(extensionDir)
 
 	console.log('Vue Devtools extension is installed')
 }

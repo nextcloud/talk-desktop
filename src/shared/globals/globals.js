@@ -10,7 +10,7 @@ import { getDesktopMediaSource } from '../../talk/renderer/screensharing/screens
 import { dialogs } from './OC/dialogs.js'
 import { MimeTypeList } from './OC/mimetype.js'
 
-const webroot = appData.serverUrl ? new URL(appData.serverUrl).pathname : ''
+let webroot = ''
 
 const OC = {
 	// Constant from: https://github.com/nextcloud/server/blob/master/core/src/OC/constants.js
@@ -109,6 +109,8 @@ export function initGlobals() {
 	window.OC = OC
 	window.OCA = OCA
 	window.OCP = OCP
+
+	webroot = appData.serverUrl ? new URL(appData.serverUrl).pathname.replace(/\/$/, '') : ''
 
 	Object.defineProperty(window, '_oc_webroot', {
 		get: () => webroot,

@@ -36,6 +36,14 @@ const ARGUMENTS = {
 	openInBackground: process.argv.includes('--background'),
 }
 
+// Electron 36 with Chromium 136 is not compatible with GNOME due to GTK3 with GTK4 mixing
+// Workaround: force GTK3
+// - https://github.com/electron/electron/issues/46538
+// - https://chromium-review.googlesource.com/c/chromium/src/+/6310469
+if (isLinux) {
+	app.commandLine.appendSwitch('gtk-version', '3')
+}
+
 /**
  * On production use executable name as application name to allow several independent application instances.
  * On development use "Nextcloud Talk (dev)" instead of the default "electron".

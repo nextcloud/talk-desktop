@@ -11,7 +11,6 @@ import { appData } from '../../../app/AppData.js'
 import { BUILD_CONFIG } from '../../../shared/build.config.ts'
 import { useDevMode } from '../../../shared/useDevMode.ts'
 import { useAppConfigStore } from '../Settings/appConfig.store.ts'
-import { openRoot } from '../TalkWrapper/talk.service.ts'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 import { useUserStatusHeartbeat } from '../UserStatus/useUserStatusHeartbeat.ts'
 
@@ -41,11 +40,7 @@ function logout() {
 	<header class="title-bar">
 		<div class="title-bar__inner">
 			<template v-if="!OS.isMac">
-				<div
-					class="title-bar__title"
-					role="button"
-					tabindex="0"
-					@click="openRoot">
+				<div class="title-bar__title">
 					{{ applicationName }}
 				</div>
 

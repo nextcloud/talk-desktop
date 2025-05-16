@@ -5,6 +5,16 @@
 
 # Changelog
 
+## v1.2.1-beta - 2025-05-16
+
+### Fixes
+
+- Crash with GTK version error on Linux with GNOME [#1290](https://github.com/nextcloud/talk-desktop/pull/1290)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.1.0-rc.2 in the beta release channel [#1298](https://github.com/nextcloud/talk-desktop/pull/1298)
+
 ## v1.2.0-beta - 2025-05-12
 
 ### Changes

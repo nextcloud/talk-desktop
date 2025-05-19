@@ -74,6 +74,7 @@ OC.L10N.register(
     "Clear after" : "Vyčistit po uplynutí",
     "Emoji for your status message" : "Emotikona pro vaší stavovou zprávu",
     "Status message" : "Stavová zpráva",
+    "Open in a web browser" : "Otevřít ve webovém prohlížeči",
     "Loading …" : "Načítání…",
     "Could not load the file" : "Soubor se nepodařilo načíst",
     "Wrap content in code blocks" : "Zalamovat obsah v citacích",

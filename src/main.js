@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow } = require('electron')
+const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow, session } = require('electron')
 const { spawn } = require('node:child_process')
 const fs = require('node:fs')
 const path = require('node:path')
@@ -230,6 +230,15 @@ app.whenReady().then(async () => {
 		}
 	})
 
+	// Allow requests to a server with accepted untrusted certificate
+	// Note: the result of this verification is cached by domain in Electron
+	// There is no way to clean the cache except by restarting the app
+	session.defaultSession.setCertificateVerifyProc(async (request, callback) => {
+		const isAccepted = request.errorCode === 0 || await promptCertificateTrust(mainWindow, request)
+		callback(isAccepted ? 0 : -3)
+	})
+
+	// Allow web-view with accepted untrusted certificate (Login Flow)
 	app.on('certificate-error', async (event, webContents, url, error, certificate, callback) => {
 		event.preventDefault()
 

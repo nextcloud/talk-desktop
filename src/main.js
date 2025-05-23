@@ -11,6 +11,7 @@ const { setupMenu } = require('./app/app.menu.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
 const { appData } = require('./app/AppData.js')
 const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
+const { promptCertificateTrust } = require('./app/certificate.service.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
@@ -229,59 +230,12 @@ app.whenReady().then(async () => {
 		}
 	})
 
-	/** To store pending "trust certificate" dialogs on Linux */
-	const openMessageBoxes = new Map()
-	app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
+	app.on('certificate-error', async (event, webContents, url, error, certificate, callback) => {
 		event.preventDefault()
 
 		if (isLinux) {
-			const trustedFingerprints = getAppConfig('trustedFingerprints') ?? []
-			if (trustedFingerprints.includes(certificate.fingerprint)) {
-				callback(true)
-			} else {
-				let messageBox = null
-				if (openMessageBoxes.has(certificate.fingerprint)) {
-					messageBox = openMessageBoxes.get(certificate.fingerprint)
-				} else {
-					messageBox = dialog.showMessageBox(mainWindow, {
-						type: 'warning',
-						title: 'Security Warning',
-						detail:
-							[
-								`Error: ${error}`,
-								'',
-								`Subject: ${certificate.subjectName}`,
-								'',
-								`Issuer: ${certificate.issuerName ?? 'UNKNOWN'}`,
-								`- Organisations: ${certificate.issuer.organizations.join(', ')}`,
-								`- Organisation units: ${certificate.issuer.organizationUnits.join(', ')}`,
-								`- Country: ${certificate.issuer.country}`,
-								`- State: ${certificate.issuer.state}`,
-								`- Locality: ${certificate.issuer.locality}`,
-								'',
-								`Fingerprint: ${certificate.fingerprint}`,
-								'',
-								`Valid from: ${new Date(certificate.validStart * 1_000).toLocaleDateString()}`,
-								`Valid until: ${new Date(certificate.validExpiry * 1_000).toLocaleDateString()}`,
-								'',
-								'Do you trust this certificate?',
-							].join('\n'),
-						buttons: ['Yes', 'Cancel'],
-					})
-					openMessageBoxes.set(certificate.fingerprint, messageBox)
-				}
-				messageBox.then(({ response }) => {
-					const isFirst = openMessageBoxes.delete(certificate.fingerprint)
-					if (response === 0) {
-						if (isFirst) {
-							setAppConfig('trustedFingerprints', [certificate.fingerprint, ...trustedFingerprints])
-						}
-						callback(true)
-					} else {
-						callback(false)
-					}
-				})
-			}
+			const isAccepted = await promptCertificateTrust(mainWindow, { hostname: new URL(url).hostname, certificate, verificationResult: error })
+			callback(isAccepted)
 		} else {
 			dialog.showCertificateTrustDialog(mainWindow, {
 				certificate,

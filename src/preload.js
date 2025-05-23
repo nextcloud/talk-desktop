@@ -185,6 +185,12 @@ const TALK_DESKTOP = {
 	 * @return {Promise<void>}
 	 */
 	showUpgrade: () => ipcRenderer.invoke('upgrade:show'),
+	/**
+	 * Accept (or reject) untrusted certificate
+	 *
+	 * @param {boolean} isAccepted - Is the certificate accepted as trusted
+	 */
+	acceptCertificate: (isAccepted) => ipcRenderer.send('certificate:accept', isAccepted),
 }
 
 // Set global window.TALK_DESKTOP

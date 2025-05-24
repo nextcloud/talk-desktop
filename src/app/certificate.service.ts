@@ -27,7 +27,7 @@ export async function promptCertificateTrust(window: BrowserWindow, certificate:
 	const trustedFingerprints = getAppConfig('trustedFingerprints')
 
 	// Already accepted
-	if (getAppConfig('trustedFingerprints').includes(certificate.fingerprint)) {
+	if (trustedFingerprints.includes(certificate.fingerprint)) {
 		return true
 	}
 

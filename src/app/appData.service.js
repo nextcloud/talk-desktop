@@ -33,18 +33,12 @@ export async function refetchAppData(appData, persist = false) {
 }
 
 /**
- * If talk hash is dirty, re-fetch capabilities and userMetadata and update appData
+ * Re-fetch capabilities and userMetadata with retry and update appData
  *
  * @param {import('./AppData.js').appData} appData appData
  * @return {Promise<void>}
- * @throws {Error}
  */
-export async function refetchAppDataIfDirty(appData) {
-	// Re-fetch on dirty Talk hash and any desktop client upgrade
-	if (!appData.talkHashDirty && packageJson.version === appData.version.desktop) {
-		return
-	}
-
+export async function refetchAppDataWithRetry(appData) {
 	await new Promise((resolve) => {
 		/**
 		 * Try to re-fetch appData

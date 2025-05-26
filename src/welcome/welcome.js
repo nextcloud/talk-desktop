@@ -4,7 +4,7 @@
  */
 
 import { appData } from '../app/AppData.js'
-import { refetchAppDataIfDirty } from '../app/appData.service.js'
+import { refetchAppDataWithRetry } from '../app/appData.service.js'
 import { initGlobals } from '../shared/globals/globals.js'
 import { applyAxiosInterceptors } from '../shared/setupWebPage.js'
 
@@ -31,7 +31,7 @@ applyAxiosInterceptors()
 
 if (appData.credentials) {
 	await window.TALK_DESKTOP.enableWebRequestInterceptor(appData.serverUrl, { credentials: appData.credentials })
-	await refetchAppDataIfDirty(appData)
+	await refetchAppDataWithRetry(appData)
 }
 
 window.TALK_DESKTOP.sendAppData(appData.toJSON())

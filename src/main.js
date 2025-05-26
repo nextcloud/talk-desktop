@@ -11,7 +11,7 @@ const { setupMenu } = require('./app/app.menu.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
 const { appData } = require('./app/AppData.js')
 const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
-const { promptCertificateTrust } = require('./app/certificate.service.ts')
+const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
@@ -349,6 +349,8 @@ app.whenReady().then(async () => {
 	})
 
 	ipcMain.on('app:downloadURL', (event, url, filename) => triggerDownloadUrl(mainWindow, url, filename))
+
+	ipcMain.handle('certificate:verify', (event, url) => verifyCertificate(mainWindow, url))
 
 	// Click on the dock icon on macOS
 	app.on('activate', () => {

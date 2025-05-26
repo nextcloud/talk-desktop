@@ -84,6 +84,11 @@ async function login() {
 		return setError(t('talk_desktop', 'Invalid server address'))
 	}
 
+	// Check the certificate before actually sending a request
+	if (!await window.TALK_DESKTOP.verifyCertificate(serverUrl.value)) {
+		return setError(t('talk_desktop', 'SSL certificate error'))
+	}
+
 	// Prepare to request the server
 	window.TALK_DESKTOP.disableWebRequestInterceptor()
 	appData.reset()

@@ -13,7 +13,7 @@ OC.L10N.register(
     "No" : "Nē",
     "Yes" : "Jā",
     "None" : "Nav",
-    "General" : "Vispārīgs",
+    "General" : "Vispārīgi",
     "Appearance" : "Izskats",
     "Theme" : "Izskats",
     "Reset" : "Atiestatīt",
@@ -34,6 +34,7 @@ OC.L10N.register(
     "Cancel" : "Atcelt",
     "Share screen" : "Koplietot ekrānu",
     "The client version is too old and no longer supported by this server. Update is required." : "Klienta versija ir pārāk vecas, un šis serveris to vairs neatbalsta. Nepieciešama atjaunināšana.",
+    "Application" : "Lietotne",
     "Invisible" : "Neredzama"
 },
 "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);");

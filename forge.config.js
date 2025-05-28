@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const path = require('node:path')
-const fs = require('node:fs')
-const semver = require('semver')
-const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerDMG } = require('@electron-forge/maker-dmg')
 const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
-const { MakerZIP } = require('@electron-forge/maker-zip')
+const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerWix } = require('@electron-forge/maker-wix')
+const { MakerZIP } = require('@electron-forge/maker-zip')
+const fs = require('node:fs')
+const path = require('node:path')
+const semver = require('semver')
+const { resolveConfig } = require('./build/resolveBuildConfig.js')
 const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
-const { resolveConfig } = require('./build/resolveBuildConfig.js')
 
 require('dotenv').config()
 
@@ -432,6 +432,14 @@ module.exports = {
 							name: 'talk_desktop__window_callbox',
 							html: './src/callbox/renderer/callbox.html',
 							js: './src/callbox/renderer/callbox.main.ts',
+							preload: {
+								js: './src/preload.js',
+							},
+						},
+						{
+							name: 'talk_desktop__window_certificate',
+							html: './src/certificate/renderer/certificate.html',
+							js: './src/certificate/renderer/certificate.main.ts',
 							preload: {
 								js: './src/preload.js',
 							},

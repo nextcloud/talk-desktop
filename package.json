@@ -65,6 +65,7 @@
     "semver": "^7.7.2",
     "unzip-crx-3": "^0.2.0",
     "vue": "^2.7.16",
+    "vue-frag": "^1.4.3",
     "vue-material-design-icons": "^5.3.1"
   },
   "devDependencies": {

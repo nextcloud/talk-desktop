@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow } = require('electron')
+const { app, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow, session } = require('electron')
 const { spawn } = require('node:child_process')
 const fs = require('node:fs')
 const path = require('node:path')
@@ -11,6 +11,7 @@ const { setupMenu } = require('./app/app.menu.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
 const { appData } = require('./app/AppData.js')
 const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
+const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
@@ -229,69 +230,19 @@ app.whenReady().then(async () => {
 		}
 	})
 
-	/** To store pending "trust certificate" dialogs on Linux */
-	const openMessageBoxes = new Map()
-	app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
-		event.preventDefault()
+	// Allow requests to a server with accepted untrusted certificate
+	// Note: the result of this verification is cached by domain in Electron
+	// There is no way to clean the cache except by restarting the app
+	session.defaultSession.setCertificateVerifyProc(async (request, callback) => {
+		const isAccepted = request.errorCode === 0 || await promptCertificateTrust(mainWindow, request)
+		callback(isAccepted ? 0 : -3)
+	})
 
-		if (isLinux) {
-			const trustedFingerprints = getAppConfig('trustedFingerprints') ?? []
-			if (trustedFingerprints.includes(certificate.fingerprint)) {
-				callback(true)
-			} else {
-				let messageBox = null
-				if (openMessageBoxes.has(certificate.fingerprint)) {
-					messageBox = openMessageBoxes.get(certificate.fingerprint)
-				} else {
-					messageBox = dialog.showMessageBox(mainWindow, {
-						type: 'warning',
-						title: 'Security Warning',
-						detail:
-							[
-								`Error: ${error}`,
-								'',
-								`Subject: ${certificate.subjectName}`,
-								'',
-								`Issuer: ${certificate.issuerName ?? 'UNKNOWN'}`,
-								`- Organisations: ${certificate.issuer.organizations.join(', ')}`,
-								`- Organisation units: ${certificate.issuer.organizationUnits.join(', ')}`,
-								`- Country: ${certificate.issuer.country}`,
-								`- State: ${certificate.issuer.state}`,
-								`- Locality: ${certificate.issuer.locality}`,
-								'',
-								`Fingerprint: ${certificate.fingerprint}`,
-								'',
-								`Valid from: ${new Date(certificate.validStart * 1_000).toLocaleDateString()}`,
-								`Valid until: ${new Date(certificate.validExpiry * 1_000).toLocaleDateString()}`,
-								'',
-								'Do you trust this certificate?',
-							].join('\n'),
-						buttons: ['Yes', 'Cancel'],
-					})
-					openMessageBoxes.set(certificate.fingerprint, messageBox)
-				}
-				messageBox.then(({ response }) => {
-					const isFirst = openMessageBoxes.delete(certificate.fingerprint)
-					if (response === 0) {
-						if (isFirst) {
-							setAppConfig('trustedFingerprints', [certificate.fingerprint, ...trustedFingerprints])
-						}
-						callback(true)
-					} else {
-						callback(false)
-					}
-				})
-			}
-		} else {
-			dialog.showCertificateTrustDialog(mainWindow, {
-				certificate,
-				message: 'Untrusted certificate',
-			}).then(() => {
-				callback(true)
-			}).catch(() => {
-				callback(false)
-			})
-		}
+	// Allow web-view with accepted untrusted certificate (Login Flow)
+	app.on('certificate-error', async (event, webContents, url, error, certificate, callback) => {
+		event.preventDefault()
+		const isAccepted = await promptCertificateTrust(mainWindow, { hostname: new URL(url).hostname, certificate, verificationResult: error })
+		callback(isAccepted)
 	})
 
 	mainWindow = createWelcomeWindow()
@@ -398,6 +349,8 @@ app.whenReady().then(async () => {
 	})
 
 	ipcMain.on('app:downloadURL', (event, url, filename) => triggerDownloadUrl(mainWindow, url, filename))
+
+	ipcMain.handle('certificate:verify', (event, url) => verifyCertificate(mainWindow, url))
 
 	// Click on the dock icon on macOS
 	app.on('activate', () => {

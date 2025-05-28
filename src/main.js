@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, dialog, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow, session } = require('electron')
+const { app, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow, session } = require('electron')
 const { spawn } = require('node:child_process')
 const fs = require('node:fs')
 const path = require('node:path')
@@ -241,20 +241,8 @@ app.whenReady().then(async () => {
 	// Allow web-view with accepted untrusted certificate (Login Flow)
 	app.on('certificate-error', async (event, webContents, url, error, certificate, callback) => {
 		event.preventDefault()
-
-		if (isLinux) {
-			const isAccepted = await promptCertificateTrust(mainWindow, { hostname: new URL(url).hostname, certificate, verificationResult: error })
-			callback(isAccepted)
-		} else {
-			dialog.showCertificateTrustDialog(mainWindow, {
-				certificate,
-				message: 'Untrusted certificate',
-			}).then(() => {
-				callback(true)
-			}).catch(() => {
-				callback(false)
-			})
-		}
+		const isAccepted = await promptCertificateTrust(mainWindow, { hostname: new URL(url).hostname, certificate, verificationResult: error })
+		callback(isAccepted)
 	})
 
 	mainWindow = createWelcomeWindow()

@@ -109,6 +109,12 @@ const TALK_DESKTOP = {
 	 */
 	onAppConfigChange: (callback) => ipcRenderer.on('app:config:change', callback),
 	/**
+	 * Grant a permission requiring a user gesture
+	 *
+	 * @param {string} id - Button ID to click on
+	 */
+	grantUserGesturedPermission: (id) => ipcRenderer.send('app:grantUserGesturedPermission', id),
+	/**
 	 * Trigger download of a URL
 	 *
 	 * @param {string} url - URL to download

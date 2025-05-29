@@ -5,7 +5,7 @@
 
 import { createSharedComposable } from '@vueuse/core'
 import { onBeforeUnmount, watch } from 'vue'
-import { useAppIdle } from './composables/useAppIdle.ts'
+import { useIsAway } from './composables/useIsAway.ts'
 import { useUserStatusStore } from './userStatus.store.ts'
 
 // General notes:
@@ -30,7 +30,7 @@ const AWAY_THRESHOLD = 2 * 60 * 1000 // 2 minutes
  */
 export const useHeartbeat = createSharedComposable(() => {
 	const userStatusStore = useUserStatusStore()
-	const isAway = useAppIdle(AWAY_THRESHOLD)
+	const isAway = useIsAway(AWAY_THRESHOLD)
 
 	let heartbeatTimeout: number | undefined
 

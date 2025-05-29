@@ -42,7 +42,7 @@
   },
   "talk": {
     "stable": "v21.0.4",
-    "beta": "v21.1.0-rc.2",
+    "beta": "v21.1.0-rc.4",
     "dev": "main"
   },
   "dependencies": {

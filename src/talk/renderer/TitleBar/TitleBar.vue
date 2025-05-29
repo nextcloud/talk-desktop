@@ -11,8 +11,8 @@ import { appData } from '../../../app/AppData.js'
 import { BUILD_CONFIG } from '../../../shared/build.config.ts'
 import { useDevMode } from '../../../shared/useDevMode.ts'
 import { useAppConfigStore } from '../Settings/appConfig.store.ts'
+import { useUserStatusHeartbeat } from '../UserStatus/useHeartbeat.ts'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
-import { useUserStatusHeartbeat } from '../UserStatus/useUserStatusHeartbeat.ts'
 
 useUserStatusStore()
 useUserStatusHeartbeat()

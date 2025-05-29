@@ -3,6 +3,8 @@
     "Log in" : "Нэвтрэх",
     "Logging in …" : "Нэвтэрч байна",
     "Dismiss" : "Арилгах",
+    "Advanced" : "нарийвчилсан",
+    "Cancel" : "Цуцлах",
     "Copy" : "хуулах",
     "License" : "Тусгай зөвшөөрөл",
     "Ok" : "За",
@@ -14,7 +16,6 @@
     "Back" : "Буцах",
     "Today" : "өнөөдөр",
     "This week" : "7 хоног",
-    "Cancel" : "Цуцлах",
     "Invisible" : "Үл харагдах"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

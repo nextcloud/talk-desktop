@@ -8,6 +8,10 @@ OC.L10N.register(
     "Close" : "Zatvori",
     "Dismiss" : "Odpusti",
     "Join call" : "Pridruži se pozivu",
+    "Advanced" : "Napredno",
+    "Proceed" : "Nastavi",
+    "Cancel" : "Odustani",
+    "Valid until" : "Vrijedi do",
     "Copy" : "Kopirajte",
     "License" : "Licenca",
     "Issues" : "Poteškoće",
@@ -33,7 +37,6 @@ OC.L10N.register(
     "Log out" : "Odjavite se",
     "User status" : "Status korisnika",
     "Loading …" : "Učitavanje…",
-    "Cancel" : "Odustani",
     "Share screen" : "Dijeli zaslon",
     "You missed a call from {user}" : "Propustili ste poziv od {user}",
     "You missed a group call in {call}" : "Propustili ste grupni poziv u {call}"

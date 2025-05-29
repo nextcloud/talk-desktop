@@ -8,6 +8,7 @@ OC.L10N.register(
     "Close" : "Cerrar",
     "Dismiss" : "Descartar",
     "Join call" : "Unirse a la llamada",
+    "Valid until" : "Válido hasta",
     "License" : "Licencia",
     "Issues" : "Temas",
     "Yes" : "Si",

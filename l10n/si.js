@@ -5,6 +5,8 @@ OC.L10N.register(
     "Log in" : "පිවිසෙන්න",
     "Logging in …" : "පිවිසෙමින් …",
     "Close" : "වසන්න",
+    "Cancel" : "අවලංගු",
+    "Country" : "රට",
     "License" : "බලපත්‍රය",
     "No" : "නැහැ",
     "Dark" : "අඳුරු",
@@ -15,7 +17,6 @@ OC.L10N.register(
     "Back" : "ආපසු",
     "Log out" : "නික්මෙන්න",
     "Today" : "අද",
-    "This week" : "මෙම සතිය",
-    "Cancel" : "අවලංගු"
+    "This week" : "මෙම සතිය"
 },
 "nplurals=2; plural=(n != 1);");

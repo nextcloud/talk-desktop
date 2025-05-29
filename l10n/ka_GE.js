@@ -8,6 +8,9 @@ OC.L10N.register(
     "Close" : "დახურვა",
     "Dismiss" : "დათხოვნა",
     "Join call" : "შეუერთდით ზარს",
+    "Advanced" : "მოწინავე",
+    "Cancel" : "გაუქმება",
+    "Valid until" : "ვარგისია",
     "License" : "ლიცენზია",
     "Issues" : "პრობლემები",
     "Ok" : "კარგი",
@@ -24,7 +27,6 @@ OC.L10N.register(
     "Log out" : "გამოსვლა",
     "Today" : "დღეს",
     "This week" : "ამ კვირაში",
-    "Cancel" : "გაუქმება",
     "Share screen" : "ეკრანის გაზიარება",
     "Invisible" : "უჩინარი"
 },

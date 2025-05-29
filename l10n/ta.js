@@ -4,6 +4,9 @@ OC.L10N.register(
     "Server address" : "சேவையக முகவரி",
     "Log in" : "புகுபதிகை",
     "Close" : "மூடுக",
+    "Advanced" : "உயர்ந்த",
+    "Cancel" : "ரத்து செய்",
+    "Country" : "நாடு",
     "Copied" : "நகலெடுக்கப்பட்டது",
     "Ok" : "Ok",
     "No" : "இல்லை",
@@ -12,7 +15,6 @@ OC.L10N.register(
     "General" : "பொதுவான",
     "Settings" : "அமைப்புகள்",
     "Back" : "பின்னுக்கு",
-    "Today" : "இன்று",
-    "Cancel" : "ரத்து செய்"
+    "Today" : "இன்று"
 },
 "nplurals=2; plural=(n != 1);");

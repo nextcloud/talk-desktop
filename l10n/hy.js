@@ -4,6 +4,7 @@ OC.L10N.register(
     "Server address" : "սերվերի հասցեն",
     "Log in" : "Մուտք գործել",
     "Close" : "Փակել",
+    "Cancel" : "չեղարկել",
     "Copy" : "Պատճենել",
     "License" : "լիցենզիա",
     "Issues" : "հայց",
@@ -15,7 +16,6 @@ OC.L10N.register(
     "Settings" : "Կարգավորումներ",
     "About" : "Մասին",
     "Today" : "Այսօր",
-    "This week" : "այս շաբաթ",
-    "Cancel" : "չեղարկել"
+    "This week" : "այս շաբաթ"
 },
 "nplurals=2; plural=(n != 1);");

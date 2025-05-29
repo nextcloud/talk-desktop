@@ -5,6 +5,8 @@ OC.L10N.register(
     "Logging in …" : "Tuqqna...",
     "Close" : "Mdel",
     "Dismiss" : "Agi",
+    "Advanced" : "Talqayt",
+    "Proceed" : "Kemmel",
     "Copy" : "Nɣel",
     "License" : "Licence",
     "No" : "Uhu",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Log in" : "Logg inn",
     "Close" : "Lat att",
     "Dismiss" : "Forkast",
+    "Advanced" : "Avansert",
     "Copy" : "Kopier",
     "License" : "Lisens",
     "Ok" : "Greitt",

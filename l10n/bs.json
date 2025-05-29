@@ -2,12 +2,12 @@
     "Server address" : "Adresa servera",
     "Log in" : "Prijava",
     "Close" : "Zatvori",
+    "Cancel" : "Odustani",
     "Ok" : "Ok",
     "No" : "Ne",
     "Yes" : "Da",
     "None" : "Ništa",
     "Settings" : "Podešavanje",
-    "Today" : "Danas",
-    "Cancel" : "Odustani"
+    "Today" : "Danas"
 },"pluralForm" :"nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 }

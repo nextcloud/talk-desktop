@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Aperir session",
     "Close" : "Clauder",
     "Dismiss" : "Dimitter",
+    "Valid until" : "Valide usque",
     "Never" : "Nunquam",
     "None" : "Nulle",
     "General" : "General",

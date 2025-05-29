@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Umellen",
     "Close" : "Zoumaachen",
     "Dismiss" : "Ofbriechen",
+    "Advanced" : "Erweidert",
     "Copy" : "Kopieren",
     "Ok" : "OK",
     "No" : "Nee",

@@ -4,6 +4,8 @@ OC.L10N.register(
     "Server address" : "អាសយដ្ឋាន​ម៉ាស៊ីន​បម្រើ",
     "Log in" : "ចូល",
     "Close" : "បិទ",
+    "Advanced" : "កម្រិត​ខ្ពស់",
+    "Cancel" : "លើកលែង",
     "Ok" : "ព្រម",
     "No" : "ទេ",
     "Yes" : "បាទ ឬចាស",
@@ -13,7 +15,6 @@ OC.L10N.register(
     "None" : "គ្មាន",
     "General" : "ទូទៅ",
     "Settings" : "ការកំណត់",
-    "Today" : "ថ្ងៃ​នេះ",
-    "Cancel" : "លើកលែង"
+    "Today" : "ថ្ងៃ​នេះ"
 },
 "nplurals=1; plural=0;");

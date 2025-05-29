@@ -6,6 +6,7 @@ OC.L10N.register(
     "Logging in …" : "Ensaluti...",
     "Close" : "Malfermi",
     "Dismiss" : "Preterpasi",
+    "Valid until" : "Valida ĝis",
     "License" : "Permesilo",
     "Ok" : "Bone",
     "No" : "Ne",

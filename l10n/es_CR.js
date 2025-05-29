@@ -7,6 +7,7 @@ OC.L10N.register(
     "Logging in …" : "Iniciando sesión ...",
     "Dismiss" : "Descartar",
     "Join call" : "Unirse a la llamada",
+    "Valid until" : "Válido hasta",
     "License" : "Licencia",
     "Issues" : "Temas",
     "Ok" : "Ok",

@@ -4,6 +4,7 @@ OC.L10N.register(
     "Server address" : "সার্ভার ঠিকানা",
     "Log in" : "প্রবেশ",
     "Close" : "বন্ধ",
+    "Cancel" : "বাতিল করুন",
     "Ok" : "তথাস্তু",
     "No" : "না",
     "Yes" : "হ্যাঁ",
@@ -14,7 +15,6 @@ OC.L10N.register(
     "General" : "সাধারণ",
     "Reset" : "পূণঃনির্ধানণ",
     "Settings" : "সেটিংস",
-    "Today" : "আজ",
-    "Cancel" : "বাতিল করুন"
+    "Today" : "আজ"
 },
 "nplurals=2; plural=(n != 1);");

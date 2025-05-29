@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Log in" : "لاگ ان",
     "Close" : "بند ",
+    "Advanced" : "ایڈوانسڈ",
     "Ok" : "اوکے",
     "No" : "نہیں",
     "Yes" : "ہاں",

@@ -2,6 +2,7 @@
     "Server address" : "սերվերի հասցեն",
     "Log in" : "Մուտք գործել",
     "Close" : "Փակել",
+    "Cancel" : "չեղարկել",
     "Copy" : "Պատճենել",
     "License" : "լիցենզիա",
     "Issues" : "հայց",
@@ -13,7 +14,6 @@
     "Settings" : "Կարգավորումներ",
     "About" : "Մասին",
     "Today" : "Այսօր",
-    "This week" : "այս շաբաթ",
-    "Cancel" : "չեղարկել"
+    "This week" : "այս շաբաթ"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

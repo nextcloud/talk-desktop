@@ -6,6 +6,9 @@ OC.L10N.register(
     "Logging in …" : "Log masuk...",
     "Close" : "Tutup",
     "Dismiss" : "Batal",
+    "Advanced" : "Lanjutan",
+    "Cancel" : "Batal",
+    "Valid until" : "Berlaku sampai",
     "Copy" : "Salin",
     "Copied" : "Tersalin",
     "License" : "Lisensi",
@@ -32,7 +35,6 @@ OC.L10N.register(
     "This week" : "Pekan ini",
     "Status message" : "Pesan status",
     "Loading …" : "Memuat …",
-    "Cancel" : "Batal",
     "Away" : "Jauh",
     "Do not disturb" : "Jangan diganggu",
     "Invisible" : "Tersembunyi"

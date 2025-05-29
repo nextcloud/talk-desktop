@@ -6,6 +6,9 @@ OC.L10N.register(
     "Logging in …" : "Duke u loguar ...",
     "Close" : "Mbylleni",
     "Dismiss" : "Hiq",
+    "Advanced" : "Të avancuara",
+    "Cancel" : "Anuloje",
+    "Valid until" : "E vlefshme deri më",
     "Copy" : "Kopjoni",
     "License" : "Liçenca",
     "Issues" : "Çështjet",
@@ -26,7 +29,6 @@ OC.L10N.register(
     "Log out" : "Shkyçu",
     "Today" : "Sot",
     "This week" : "Këtë javë",
-    "Cancel" : "Anuloje",
     "Share screen" : "Ndaje ekranin",
     "Invisible" : "I padukshëm"
 },

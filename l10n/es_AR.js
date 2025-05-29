@@ -6,6 +6,8 @@ OC.L10N.register(
     "Logging in …" : "Ingresando ...",
     "Close" : "Cerrar",
     "Dismiss" : "Despedir",
+    "Advanced" : "Avanzado",
+    "Valid until" : "Válido hasta",
     "Copy" : "Copiar",
     "License" : "Licencia",
     "Issues" : "Temas",

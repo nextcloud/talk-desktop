@@ -5,6 +5,8 @@ OC.L10N.register(
     "Log in" : "Нэвтрэх",
     "Logging in …" : "Нэвтэрч байна",
     "Dismiss" : "Арилгах",
+    "Advanced" : "нарийвчилсан",
+    "Cancel" : "Цуцлах",
     "Copy" : "хуулах",
     "License" : "Тусгай зөвшөөрөл",
     "Ok" : "За",
@@ -16,7 +18,6 @@ OC.L10N.register(
     "Back" : "Буцах",
     "Today" : "өнөөдөр",
     "This week" : "7 хоног",
-    "Cancel" : "Цуцлах",
     "Invisible" : "Үл харагдах"
 },
 "nplurals=2; plural=(n != 1);");

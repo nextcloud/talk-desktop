@@ -5,6 +5,21 @@
 
 # Changelog
 
+## v1.2.2-beta - 2025-05-30
+
+### Added
+
+- Online/Away status update on system level activity change and locked screen [#1222](https://github.com/nextcloud/talk-desktop/pull/1222)
+
+### Fixes
+
+- Untrusted certificate support on all platforms [#1308](https://github.com/nextcloud/talk-desktop/pull/1308)
+- Some settings and user data are only updated after re-login [#1312](https://github.com/nextcloud/talk-desktop/pull/1312)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.1.0-rc.4 in the beta release channel [#1316](https://github.com/nextcloud/talk-desktop/pull/1316)
+
 ## v1.2.1-beta - 2025-05-16
 
 ### Fixes

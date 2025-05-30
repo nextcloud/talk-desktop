@@ -19,6 +19,7 @@ OC.L10N.register(
     "Close" : "Close",
     "Dismiss" : "Dismiss",
     "Join call" : "Join call",
+    "Advanced" : "Advanced",
     "Proceed" : "Proceed",
     "Cancel" : "Cancel",
     "Valid until" : "Valid until",

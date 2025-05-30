@@ -7,6 +7,7 @@ OC.L10N.register(
     "Close" : "Serriñ",
     "Dismiss" : "Disteurel",
     "Join call" : "Mont er gemenadenn",
+    "Advanced" : "Araokadennet",
     "Cancel" : "Nullañ",
     "Valid until" : "Gwir betek",
     "License" : "Aotre",

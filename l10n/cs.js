@@ -19,6 +19,7 @@ OC.L10N.register(
     "Close" : "Zavřít",
     "Dismiss" : "Zahodit",
     "Join call" : "Připojit se k hovoru",
+    "Advanced" : "Pokročilé",
     "Proceed" : "Pokračovat",
     "Cancel" : "Storno",
     "Valid until" : "Platný do",

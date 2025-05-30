@@ -8,6 +8,7 @@ OC.L10N.register(
     "Close" : "Luk",
     "Dismiss" : "Afvis",
     "Join call" : "Deltag i opkaldet",
+    "Advanced" : "Avanceret",
     "Proceed" : "Fortsæt",
     "Cancel" : "Annuller",
     "Valid until" : "Gyldig indtil",

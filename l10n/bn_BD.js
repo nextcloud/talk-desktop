@@ -4,6 +4,7 @@ OC.L10N.register(
     "Server address" : "সার্ভার ঠিকানা",
     "Log in" : "প্রবেশ",
     "Close" : "বন্ধ",
+    "Advanced" : "সুচারু",
     "Cancel" : "বাতিল করুন",
     "Ok" : "তথাস্তু",
     "No" : "না",

@@ -4,6 +4,8 @@ OC.L10N.register(
     "Log in" : "Teken Aan",
     "Logging in …" : "Meld tans aan …",
     "Dismiss" : "Ontslaan",
+    "Advanced" : "Gevorderd",
+    "Valid until" : "Geldig tot",
     "License" : "Lisensie",
     "None" : "Geen",
     "Reset" : "Herstel",

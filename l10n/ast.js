@@ -11,6 +11,7 @@ OC.L10N.register(
     "Dismiss" : "Escartar",
     "Join call" : " Xunise a la llamada",
     "Cancel" : "Encaboxar",
+    "Country" : "País",
     "Copy" : "Copiar",
     "Copied" : "Copióse",
     "License" : "Llicencia",

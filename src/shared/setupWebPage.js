@@ -138,6 +138,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			grid_videos_limit_enforced: false, // TODO: Missed in Capabilities. Is it a problem?
 			federation_enabled: capabilities?.spreed?.config?.federation?.enabled,
 			start_conversations: capabilities?.spreed?.config?.conversations?.['can-create'],
+			calendar_enabled: capabilities?.dav?.calendar_enabled !== false, // if undefined, assume as the calendar is enabled
 			circles_enabled: capabilities?.circles !== undefined,
 			guests_accounts_enabled: true, // TODO: Missed in Capabilities. It is a problem
 			read_status_privacy: capabilities?.spreed?.config?.chat?.['read-privacy'],

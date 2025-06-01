@@ -34,11 +34,11 @@ All binaries and `beta` releases are available on [Nextcloud Releases](https://g
 | **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk`      | ![WinGet Package Version](https://img.shields.io/winget/v/Nextcloud.Talk?style=flat)      |
 | **🪟 Windows** | [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/) | `winget install Nextcloud.Talk.Beta` | ![WinGet Package Version](https://img.shields.io/winget/v/Nextcloud.Talk.Beta?style=flat) |                                                                                     |
 
-
 #### Community supported packages
 
 | Platform       | Package manager                                           | Command                        | Status                                                                                       |
 |----------------|-----------------------------------------------------------|--------------------------------|----------------------------------------------------------------------------------------------|
+| **🍎 macOS** | [Homebrew](https://formulae.brew.sh/cask/nextcloud-talk#default) | `brew install --cask nextcloud-talk` | ![Homebrew Package](https://img.shields.io/homebrew/cask/v/nextcloud-talk?style=flat) | 
 | **🪟 Windows** | [Chocolatey Community](https://community.chocolatey.org/) | `choco install nextcloud-talk` | ![Chocolatey Package Version](https://img.shields.io/chocolatey/v/nextcloud-talk?style=flat) |
 
 ## 🏗️ Prerequisites

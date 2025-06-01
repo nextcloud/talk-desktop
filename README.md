@@ -38,7 +38,7 @@ All binaries and `beta` releases are available on [Nextcloud Releases](https://g
 
 | Platform       | Package manager                                           | Command                        | Status                                                                                       |
 |----------------|-----------------------------------------------------------|--------------------------------|----------------------------------------------------------------------------------------------|
-| **🍎 macOS** | [Homebrew](https://formulae.brew.sh/cask/nextcloud-talk#default) | `brew install --cask nextcloud-talk` | ![Homebrew Package](https://img.shields.io/homebrew/cask/v/nextcloud-talk) | 
+| **🍎 macOS** | [Homebrew](https://formulae.brew.sh/cask/nextcloud-talk#default) | `brew install --cask nextcloud-talk` | ![Homebrew Package](https://img.shields.io/homebrew/cask/v/nextcloud-talk?style=flat) | 
 | **🪟 Windows** | [Chocolatey Community](https://community.chocolatey.org/) | `choco install nextcloud-talk` | ![Chocolatey Package Version](https://img.shields.io/chocolatey/v/nextcloud-talk?style=flat) |
 
 ## 🏗️ Prerequisites

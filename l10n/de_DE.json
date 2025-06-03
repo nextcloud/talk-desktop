@@ -23,7 +23,7 @@
     "Advanced" : "Erweitert",
     "This server could not prove that it is {url}." : "Dieser Server konnte nicht beweisen, dass es sich um {url} handelt.",
     "It has untrusted SSL certificate. This might be caused by an attacker intercepting your connection or server misconfiguration." : "Das SSL-Zertifikat ist nicht vertrauenswürdig. Die Ursache kann ein Angreifer sein, der Ihre Verbindung abfängt, oder eine falsche Serverkonfiguration.",
-    "Proceed" : "Fortsetzen",
+    "Proceed" : "Fortfahren",
     "View certificate" : "Zertifikat anzeigen",
     "Cancel" : "Abbrechen",
     "Certificate details" : "Zertifikatsdetails",

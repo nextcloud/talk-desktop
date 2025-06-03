@@ -23,7 +23,7 @@ OC.L10N.register(
     "Warning: potential security risk" : "Warnung: potenzielles Sicherheitsrisiko",
     "Connection to {url} is not private." : "Die Verbindung zu {url} ist nicht privat.",
     "Advanced" : "Fortgeschritten",
-    "This server could not prove that it is {url}." : "Dieser Server konnte nicht beweisen, dass es sich um {url} handelt.",
+    "This server could not prove that it is {url}." : "Dieser Server konnte nicht belegen, dass es sich um {url} handelt.",
     "It has untrusted SSL certificate. This might be caused by an attacker intercepting your connection or server misconfiguration." : "Das SSL-Zertifikat ist nicht vertrauenswürdig. Die Ursache kann ein Angreifer sein, der deine Verbindung abfängt, oder eine falsche Serverkonfiguration.",
     "Proceed" : "Fortsetzen",
     "View certificate" : "Zertifikat anzeigen",

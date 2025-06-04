@@ -7,6 +7,7 @@ OC.L10N.register(
     "Server address" : "Naslov strežnika",
     "Log in" : "Prijava",
     "Logging in …" : "Poteka prijavljanje ...",
+    "Incoming call" : "Dohodni klic",
     "Close" : "Zapri",
     "Dismiss" : "Prekliči",
     "Join call" : "Pridruži se klicu",

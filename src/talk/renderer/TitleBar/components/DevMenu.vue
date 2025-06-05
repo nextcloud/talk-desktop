@@ -34,7 +34,6 @@ async function triggerScreenSharing() {
 }
 
 async function triggerNotification() {
-	window.TALK_DESKTOP.setBadgeCount()
 	window.TALK_DESKTOP.flashAppIcon(true)
 
 	const n = new Notification('Notification title', {

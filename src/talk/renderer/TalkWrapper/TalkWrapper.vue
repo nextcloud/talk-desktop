@@ -9,6 +9,7 @@ import { appData } from '../../../app/AppData.js'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { registerTalkDesktopSettingsSection } from '../Settings/index.ts'
 import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from './talk.service.ts'
+import { useBadgeCountIntegration } from './useBadgeCountIntegration.ts'
 
 const emit = defineEmits<{
 	(event: 'ready'): void
@@ -21,6 +22,7 @@ onMounted(async () => {
 	// Additional integrations
 	registerTalkDesktopSettingsSection()
 	subscribeBroadcast('talk:conversation:open', ({ token, directCall }) => openConversation(token, { directCall }))
+	useBadgeCountIntegration()
 
 	// If there is a talkHash - set it initially
 	if (appData.talkHash) {

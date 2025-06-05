@@ -318,6 +318,7 @@ app.whenReady().then(async () => {
 		if (createMainWindow === createTalkWindow) {
 			appData.reset()
 			await mainWindow.webContents.session.clearStorageData()
+			app.setBadgeCount(0)
 			const authenticationWindow = createAuthenticationWindow()
 			createMainWindow = createAuthenticationWindow
 			authenticationWindow.once('ready-to-show', () => authenticationWindow.show())

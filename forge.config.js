@@ -349,6 +349,8 @@ module.exports = {
 					'--share=network',
 					// System notifications with libnotify
 					'--talk-name=org.freedesktop.Notifications',
+					// Ubuntu integration (dock badge counter - LauncherEntry)
+					'--talk-name=com.canonical.Unity',
 
 					/**
 					 * Additional args

@@ -5,6 +5,16 @@
 
 # Changelog
 
+## v1.2.3 - 2025-06-05
+
+### Added
+
+- Taskbar icon badge counter [#1326](https://github.com/nextcloud/talk-desktop/pull/1326)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.1.0 in both beta and stable release channels [#1327](https://github.com/nextcloud/talk-desktop/pull/1327)
+
 ## v1.2.2-beta - 2025-05-30
 
 ### Added

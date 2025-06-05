@@ -7,6 +7,7 @@ OC.L10N.register(
     "Close" : "Malfermi",
     "Dismiss" : "Preterpasi",
     "Advanced" : "Progresinta",
+    "Cancel" : "Cancel",
     "Valid until" : "Valida ĝis",
     "License" : "Permesilo",
     "Ok" : "Bone",

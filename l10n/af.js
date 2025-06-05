@@ -5,6 +5,7 @@ OC.L10N.register(
     "Logging in …" : "Meld tans aan …",
     "Dismiss" : "Ontslaan",
     "Advanced" : "Gevorderd",
+    "Cancel" : "Cancel",
     "Valid until" : "Geldig tot",
     "License" : "Lisensie",
     "None" : "Geen",

@@ -4,6 +4,7 @@ OC.L10N.register(
     "Log in" : "لاگ ان",
     "Close" : "بند ",
     "Advanced" : "ایڈوانسڈ",
+    "Cancel" : "Cancel",
     "Ok" : "اوکے",
     "No" : "نہیں",
     "Yes" : "ہاں",

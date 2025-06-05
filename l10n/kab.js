@@ -7,6 +7,7 @@ OC.L10N.register(
     "Dismiss" : "Agi",
     "Advanced" : "Talqayt",
     "Proceed" : "Kemmel",
+    "Cancel" : "Cancel",
     "Copy" : "Nɣel",
     "License" : "Licence",
     "No" : "Uhu",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Close" : "Bağla",
     "Dismiss" : "Rədd et",
     "Advanced" : "İrəliləmiş",
+    "Cancel" : "Cancel",
     "Valid until" : "Vaxtadək keçərlidir",
     "Copy" : "Kopyala",
     "License" : "Lisenziya",

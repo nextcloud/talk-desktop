@@ -6,6 +6,7 @@ OC.L10N.register(
     "Close" : "Zoumaachen",
     "Dismiss" : "Ofbriechen",
     "Advanced" : "Erweidert",
+    "Cancel" : "Cancel",
     "Copy" : "Kopieren",
     "Ok" : "OK",
     "No" : "Nee",

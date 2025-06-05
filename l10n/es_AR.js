@@ -7,6 +7,7 @@ OC.L10N.register(
     "Close" : "Cerrar",
     "Dismiss" : "Despedir",
     "Advanced" : "Avanzado",
+    "Cancel" : "Cancel",
     "Valid until" : "Válido hasta",
     "Copy" : "Copiar",
     "License" : "Licencia",

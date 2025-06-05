@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Mewngofnodi",
     "Close" : "Cau",
     "Advanced" : "Uwch",
+    "Cancel" : "Cancel",
     "License" : "Trwydded",
     "Issues" : "Materion",
     "Ok" : "Iawn",

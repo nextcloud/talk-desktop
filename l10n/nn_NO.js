@@ -7,6 +7,7 @@ OC.L10N.register(
     "Close" : "Lat att",
     "Dismiss" : "Forkast",
     "Advanced" : "Avansert",
+    "Cancel" : "Cancel",
     "Copy" : "Kopier",
     "License" : "Lisens",
     "Ok" : "Greitt",

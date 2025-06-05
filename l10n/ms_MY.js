@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in" : "Log masuk",
     "Close" : "Tutup",
     "Advanced" : "Maju",
+    "Cancel" : "Cancel",
     "Ok" : "Ok",
     "No" : "Tidak",
     "Yes" : "Ya",

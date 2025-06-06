@@ -42,7 +42,7 @@ OC.L10N.register(
     "General" : "Algemeen",
     "Appearance" : "Uiterlijk",
     "Theme" : "Thema",
-    "Use monochrome tray icon" : "Gebruik monochroom systeemvakpictogram",
+    "Use monochrome tray icon" : "Monochroom systeemvakpictogram gebruiken",
     "Use system title bar" : "Gebruik systeem titelbalk",
     "Zoom" : "Zoom",
     "Zoom out" : "Uitzoomen",

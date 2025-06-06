@@ -18,6 +18,7 @@ OC.L10N.register(
     "Close" : "Cerrar",
     "Dismiss" : "Descartar",
     "Join call" : "Unirse a la llamada",
+    "Advanced" : "Avanzado",
     "Proceed" : "Proceder",
     "Cancel" : "Cancelar",
     "Valid until" : "Válido hasta",

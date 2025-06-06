@@ -10,6 +10,7 @@ OC.L10N.register(
     "Close" : "Κλείσιμο",
     "Dismiss" : "Αποδέσμευση",
     "Join call" : "Συμμετοχή σε κλήση",
+    "Advanced" : "Για προχωρημένους",
     "Cancel" : "Ακύρωση",
     "Valid until" : "Έγκυρο έως",
     "Copy" : "Αντιγραφή",

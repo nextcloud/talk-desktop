@@ -1,0 +1,12 @@
+{ "translations": {
+    "Close" : "Funga",
+    "Proceed" : "Endelea",
+    "Cancel" : "Cancel",
+    "Copy" : "Nakili",
+    "No" : "Hapana",
+    "Yes" : "Ndiyo",
+    "Settings" : "Mipangilio",
+    "Back" : "Rudi",
+    "Today" : "Leo"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

@@ -66,7 +66,7 @@ ${table('Nextcloud Talk Desktop', {
 		...(report.server
 			? {
 					'**Connected to**': '-',
-					'Nextcloud server version': report.server.version,
+					'Nextcloud version': report.server.version,
 					'Nextcloud Talk version': report.server.talkVersion,
 					'`notifications` app enabled': printBool(report.server.notifications),
 					'`notify_push` app enabled': printBool(report.server.notify_push),

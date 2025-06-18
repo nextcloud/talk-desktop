@@ -15,6 +15,7 @@ OC.L10N.register(
     "Ok" : "Labi",
     "No" : "Nē",
     "Yes" : "Jā",
+    "Never" : "Nekad",
     "None" : "Nav",
     "General" : "Vispārīgi",
     "Appearance" : "Izskats",

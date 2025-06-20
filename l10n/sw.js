@@ -1,6 +1,9 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Log in to {applicationName}" : "Ingia kwa {applicationName}",
+    "Log in" : "Ingia",
+    "Logging in …" : "Inaingia",
     "Close" : "Funga",
     "Proceed" : "Endelea",
     "Cancel" : "Cancel",
@@ -9,6 +12,7 @@ OC.L10N.register(
     "Yes" : "Ndiyo",
     "Settings" : "Mipangilio",
     "Back" : "Rudi",
-    "Today" : "Leo"
+    "Today" : "Leo",
+    "Invisible" : "Haionekani"
 },
 "nplurals=2; plural=(n != 1);");

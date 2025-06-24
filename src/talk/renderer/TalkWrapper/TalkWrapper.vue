@@ -12,7 +12,7 @@ import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from
 import { useBadgeCountIntegration } from './useBadgeCountIntegration.ts'
 
 const emit = defineEmits<{
-	(event: 'ready'): void
+	ready: []
 }>()
 
 onMounted(async () => {

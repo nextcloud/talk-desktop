@@ -3,28 +3,19 @@
   - SPDX-License-Identifier: AGPL-3.0-or-later
   -->
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T">
 import type { NcSelectOption } from '../../composables/useNcSelectModel.ts'
 
-import { computed } from 'vue'
 import NcSelect from '@nextcloud/vue/components/NcSelect'
 import SettingsFormGroup from './SettingsFormGroup.vue'
 
-const props = defineProps<{
+const model = defineModel<NcSelectOption<T>>({ required: true })
+
+defineProps<{
 	label: string
-	options: NcSelectOption<unknown>[]
-	modelValue: NcSelectOption<unknown>
+	options: NcSelectOption<T>[]
 	disabled?: boolean
 }>()
-
-const emit = defineEmits<{
-	(event: 'update:modelValue', value: NcSelectOption<unknown>): void
-}>()
-
-const model = computed({
-	get: () => props.modelValue,
-	set: (value: NcSelectOption<unknown>) => emit('update:modelValue', value),
-})
 </script>
 
 <template>

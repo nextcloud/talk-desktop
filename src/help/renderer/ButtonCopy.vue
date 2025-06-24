@@ -14,15 +14,15 @@ defineOptions({
 	inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<{
+const {
+	text = t('talk_desktop', 'Copy'),
+	content = undefined,
+	getContent = undefined,
+} = defineProps<{
 	text?: string
 	content?: string
 	getContent?: () => string
-}>(), {
-	text: t('talk_desktop', 'Copy'),
-	content: undefined,
-	getContent: undefined,
-})
+}>()
 
 const DELAY = 2000
 
@@ -37,12 +37,12 @@ async function copy() {
 	}
 
 	try {
-		const content = props.getContent?.() || props.content
-		if (!content) {
+		const contentToCopy = getContent?.() || content
+		if (!contentToCopy) {
 			console.warn('No content to copy')
 			return
 		}
-		await navigator.clipboard.writeText(content)
+		await navigator.clipboard.writeText(contentToCopy)
 
 		copied.value = true
 		setTimeout(() => {
@@ -55,7 +55,7 @@ async function copy() {
 </script>
 
 <template>
-	<NcButton v-bind="$attrs" @click="copy">
+	<NcButton @click="copy">
 		<template #icon>
 			<IconCheck v-if="copied" :size="20" />
 			<slot v-else name="icon" :size="20">

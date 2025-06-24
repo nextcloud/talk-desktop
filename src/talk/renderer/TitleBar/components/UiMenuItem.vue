@@ -10,11 +10,9 @@ defineOptions({
 	inheritAttrs: false,
 })
 
-withDefaults(defineProps<{
+const { tag = 'button' as string | Component } = defineProps<{
 	tag?: string | Component
-}>(), {
-	tag: 'button',
-})
+}>()
 </script>
 
 <template>

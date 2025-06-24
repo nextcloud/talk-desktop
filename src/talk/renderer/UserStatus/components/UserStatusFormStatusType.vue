@@ -10,13 +10,7 @@ import NcButton from '@nextcloud/vue/components/NcButton'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
 import { availableUserStatusStatusTypes, userStatusTranslations } from '../userStatus.utils.ts'
 
-defineProps<{
-	status: UserStatusStatusType
-}>()
-
-const emit = defineEmits<{
-	(event: 'update:status', value: UserStatusStatusType): void
-}>()
+const status = defineModel<UserStatusStatusType>('status', { required: true })
 </script>
 
 <template>
@@ -28,7 +22,7 @@ const emit = defineEmits<{
 			alignment="start"
 			:pressed="option === status"
 			wide
-			@click="emit('update:status', option)">
+			@click="status = option">
 			<template #icon>
 				<NcUserStatusIcon :status="option" />
 			</template>

@@ -14,7 +14,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-	(event: 'suspend'): void
+	suspend: []
 }>()
 
 const videoElement = ref<HTMLVideoElement | null>(null)

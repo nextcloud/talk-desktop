@@ -34,7 +34,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-	(event: 'logout'): void
+	logout: []
 }>()
 
 const userStatusStore = useUserStatusStore()

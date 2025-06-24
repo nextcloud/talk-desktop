@@ -27,15 +27,6 @@ const model = computed({
 })
 </script>
 
-<script lang="ts">
-export default {
-	model: {
-		prop: 'modelValue',
-		event: 'update:modelValue',
-	},
-}
-</script>
-
 <template>
 	<SettingsFormGroup :label="label">
 		<template #icon="{ size }">

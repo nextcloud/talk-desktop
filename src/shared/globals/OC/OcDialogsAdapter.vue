@@ -5,7 +5,7 @@
 
 <script setup>
 import { translate as t } from '@nextcloud/l10n'
-import { del, ref, set } from 'vue'
+import { ref } from 'vue'
 import NcDialog from '@nextcloud/vue/components/NcDialog'
 
 const Buttons = {
@@ -43,10 +43,10 @@ const dialogs = ref({})
  */
 function addDialog(dialogProps) {
 	const id = Math.random().toString(36).slice(2, 7)
-	set(dialogs.value, id, {
+	dialogs.value[id] = {
 		id,
 		...dialogProps,
-	})
+	}
 }
 
 /**
@@ -55,7 +55,7 @@ function addDialog(dialogProps) {
  * @param {string} id - Dialog id
  */
 function deleteDialog(id) {
-	del(dialogs.value, id)
+	delete dialogs.value[id]
 }
 
 /**

@@ -76,7 +76,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 	<div ref="userMenuContainer" class="user-menu">
 		<NcPopover
 			v-if="userMenuContainer"
-			:shown.sync="isOpen"
+			v-model:shown="isOpen"
 			:container="userMenuContainer"
 			:popper-hide-triggers="popoverHideTriggers"
 			:triggers="[]"
@@ -94,16 +94,16 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 						v-bind="attrs"
 						tabindex="0"
 						role="button"
-						@click.native="isOpen = !isOpen"
-						@keydown.space.native="isOpen = !isOpen"
-						@keydown.enter.native="isOpen = !isOpen" />
+						@click="isOpen = !isOpen"
+						@keydown.space="isOpen = !isOpen"
+						@keydown.enter="isOpen = !isOpen" />
 				</div>
 			</template>
 
 			<template #default>
 				<UiMenu aria-label="Settings menu" class="user-menu__menu">
 					<template v-if="userStatusSubMenuOpen">
-						<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = false">
+						<UiMenuItem tag="button" @click.stop="userStatusSubMenuOpen = false">
 							<template #icon>
 								<IconChevronLeft :size="20" />
 							</template>
@@ -113,7 +113,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							v-for="status in availableUserStatusStatusTypes"
 							:key="status"
 							tag="button"
-							@click.native.stop="handleUserStatusChange(status)">
+							@click.stop="handleUserStatusChange(status)">
 							<template #icon>
 								<NcUserStatusIcon :status="status" />
 							</template>
@@ -151,7 +151,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 						<UiMenuSeparator />
 
 						<template v-if="userStatus">
-							<UiMenuItem tag="button" @click.native.stop="userStatusSubMenuOpen = true">
+							<UiMenuItem tag="button" @click.stop="userStatusSubMenuOpen = true">
 								<template #icon>
 									<NcUserStatusIcon :status="userStatus.status" />
 								</template>
@@ -160,7 +160,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 									<IconChevronRight :size="20" />
 								</template>
 							</UiMenuItem>
-							<UiMenuItem key="custom-status" tag="button" @click.native="isUserStatusDialogOpen = true">
+							<UiMenuItem key="custom-status" tag="button" @click="isUserStatusDialogOpen = true">
 								<template #icon>
 									<span v-if="userStatus.icon" style="font-size: 20px">
 										{{ userStatus.icon }}
@@ -176,7 +176,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							<UiMenuSeparator />
 						</template>
 
-						<UiMenuItem tag="button" @click.native="emit('logout')">
+						<UiMenuItem tag="button" @click="emit('logout')">
 							<template #icon>
 								<IconLogout :size="20" />
 							</template>

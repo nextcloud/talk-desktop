@@ -6,17 +6,15 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 
+defineOptions({
+	inheritAttrs: false,
+})
+
 withDefaults(defineProps<{
 	tag?: string | Component
 }>(), {
 	tag: 'button',
 })
-</script>
-
-<script lang="ts">
-export default {
-	inheritAttrs: false,
-}
 </script>
 
 <template>

@@ -11,7 +11,10 @@ import NcActionLink from '@nextcloud/vue/components/NcActionLink'
 import NcModal from '@nextcloud/vue/components/NcModal'
 import IconOpenInNew from 'vue-material-design-icons/OpenInNew.vue'
 
-const noop = () => {}
+/**
+ * Noop
+ */
+function noop() {}
 
 const isOpen = ref(false)
 const onClose = ref(noop)
@@ -53,7 +56,7 @@ defineExpose({
 	<NcModal
 		v-if="file"
 		id="viewer"
-		:show.sync="isOpen"
+		v-model:show="isOpen"
 		class="viewer-modal"
 		:class="{ 'viewer-modal--open': isOpen }"
 		:name="file.basename"

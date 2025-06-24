@@ -89,8 +89,8 @@ function copy() {
 							</NcCheckboxRadioSwitch>
 						</fieldset>
 						<NcButton
+							v-model:pressed="wrap"
 							:aria-label="wrapLabel"
-							:pressed.sync="wrap"
 							:title="wrapLabel"
 							variant="tertiary">
 							<template #icon>

@@ -33,7 +33,13 @@ export function generateDiagnosisReport() {
 
 const b = (str: string) => `**${str}**`
 
-const table = (title: string, data: Record<string, string>) => {
+/**
+ * Generate MD table
+ *
+ * @param title - Table title
+ * @param data - Table data
+ */
+function table(title: string, data: Record<string, string>) {
 	const keyLen = Math.max(...Object.keys(data).map((key) => key.length + 4))
 	const valueLen = Math.max(...Object.values(data).map((value) => value.length))
 	return `| ${b(title).padEnd(keyLen, ' ')} | ${''.padEnd(valueLen, ' ')} |\n`

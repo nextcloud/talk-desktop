@@ -22,7 +22,7 @@ const BrowserStorage = getBuilder('notifications').clearOnLogout().persist().bui
  * @param {object} notification - Notification object
  * @return {*}
  */
-const remapAttributes = (notification) => {
+function remapAttributes(notification) {
 	notification.notificationId = notification.notification_id
 	notification.objectId = notification.object_id
 	notification.objectType = notification.object_type
@@ -40,7 +40,7 @@ const remapAttributes = (notification) => {
  * @param {string} lastETag - last known ETag
  * @return {Promise<void>}
  */
-const refreshData = async (lastETag) => {
+async function refreshData(lastETag) {
 	let requestConfig = {}
 	if (lastETag) {
 		requestConfig = {

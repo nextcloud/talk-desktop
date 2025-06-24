@@ -4,8 +4,6 @@
   -->
 
 <script setup lang="ts">
-import { Fragment } from 'vue-frag'
-
 defineProps<{
 	term?: string
 	value?: string
@@ -13,18 +11,16 @@ defineProps<{
 </script>
 
 <template>
-	<Fragment>
-		<dt class="certificate-info-property__dt">
-			<slot name="term">
-				{{ term }}
-			</slot>
-		</dt>
-		<dd class="certificate-info-property__dd">
-			<slot>
-				{{ value }}
-			</slot>
-		</dd>
-	</Fragment>
+	<dt class="certificate-info-property__dt">
+		<slot name="term">
+			{{ term }}
+		</slot>
+	</dt>
+	<dd class="certificate-info-property__dd">
+		<slot>
+			{{ value }}
+		</slot>
+	</dd>
 </template>
 
 <style scoped>

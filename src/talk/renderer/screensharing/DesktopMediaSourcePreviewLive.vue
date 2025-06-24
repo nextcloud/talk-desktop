@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import type { ScreensharingSourceId } from './screensharing.types.ts'
 
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 
 const props = defineProps<{
@@ -17,7 +17,7 @@ const emit = defineEmits<{
 	suspend: []
 }>()
 
-const videoElement = ref<HTMLVideoElement | null>(null)
+const videoElement = useTemplateRef('videoElement')
 let stream: MediaStream | null = null
 const isReady = ref(false)
 

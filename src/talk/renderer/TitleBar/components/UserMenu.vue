@@ -9,7 +9,7 @@ import type { UserStatusStatusType } from '../../UserStatus/userStatus.types.ts'
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 import { storeToRefs } from 'pinia'
-import { computed, ref, watch } from 'vue'
+import { computed, ref, useTemplateRef, watch } from 'vue'
 import NcAvatar from '@nextcloud/vue/components/NcAvatar'
 import NcPopover from '@nextcloud/vue/components/NcPopover'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
@@ -44,7 +44,7 @@ const serverUrlShort = serverUrl.replace(/^https?:\/\//, '')
 const theming = appData.capabilities.theming
 
 const isOpen = ref(false)
-const userMenuContainer = ref<HTMLElement | null>(null)
+const userMenuContainer = useTemplateRef('userMenuContainer')
 const isUserStatusDialogOpen = ref(false)
 const userStatusSubMenuOpen = ref(false)
 

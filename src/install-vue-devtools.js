@@ -7,7 +7,6 @@ const { app, session } = require('electron')
 const fs = require('node:fs/promises')
 const { resolve } = require('node:path')
 const unzip = require('unzip-crx-3')
-const { VUE_DEVTOOLS_EXTENSION_ID } = require('../scripts/vue-devtools-extension-id.mjs')
 
 const vueDevtoolsPath = resolve(__dirname, require('../resources/vue-devtools.crx'))
 /**
@@ -34,23 +33,22 @@ async function isDirectoryExists(path) {
  * @return {Promise<void>}
  */
 async function installVueDevtools() {
-	if (session.defaultSession.extensions.getExtension(VUE_DEVTOOLS_EXTENSION_ID)) {
-		console.log('Vue Devtools extension has already been installed')
-		return
-	}
-
 	const extensionDir = resolve(app.getPath('userData'), 'extensions', 'vuejs-devtools')
 
-	// TODO: add version check to enable vue-devtools updating
-	const isExtensionUnpacked = await isDirectoryExists(extensionDir)
-	if (!isExtensionUnpacked) {
+	try {
+		// Check if there is uncleaned unpacked extensions from the previous installation
+		if (await isDirectoryExists(extensionDir)) {
+			await fs.rm(extensionDir, { recursive: true })
+		}
+
+		await fs.mkdir(extensionDir)
 		await unzip(vueDevtoolsPath, extensionDir)
-		console.log('Vue Devtools extension is unpacked')
+		await session.defaultSession.extensions.loadExtension(extensionDir)
+
+		console.log('Vue Devtools extension is installed')
+	} catch (error) {
+		console.error('Could not install Vue Devtools', error)
 	}
-
-	await session.defaultSession.extensions.loadExtension(extensionDir)
-
-	console.log('Vue Devtools extension is installed')
 }
 
 module.exports = {

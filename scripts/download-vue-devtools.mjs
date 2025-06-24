@@ -6,7 +6,7 @@
 import { createWriteStream } from 'node:fs'
 import { pipeline } from 'node:stream/promises'
 
-import { VUE_DEVTOOLS_EXTENSION_ID } from './vue-devtools-extension-id.mjs'
+const VUE_DEVTOOLS_EXTENSION_ID = 'nhdogjmejiglipccpnnnanhbledajbpd'
 
 // TODO: while this is fine to have not exact version here, it's better to get the current version of built-in Chromium in the current version of Electron
 const CHROMIUM_VERSION = '122.0.6261.39'
@@ -15,6 +15,7 @@ const getChromiumExtensionUrl = (extensionId) => `https://clients2.google.com/se
 
 /**
  * Download Chrome extension by extension ID
+ *
  * @param {string} extensionId - Chrome extension ID
  * @param {module:fs.PathLike} outputPath - Path to save the extension
  */

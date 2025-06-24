@@ -154,8 +154,6 @@ app.whenReady().then(async () => {
 	const openInBackground = ARGUMENTS.openInBackground || app.getLoginItemSettings().wasOpenedAtLogin
 
 	try {
-		// Note: legacy Vue devtools warns with "ExtensionLoadWarning: Manifest version 2 is deprecated, and support will be removed in 2024."
-		// This is fine and works. New Vue devtools does not support Vue 2.
 		await installVueDevtools()
 	} catch (error) {
 		console.log('Unable to install Vue Devtools')

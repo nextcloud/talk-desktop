@@ -7,8 +7,7 @@
 import type { PredefinedUserStatus, UserStatusBackup, UserStatusPrivate } from '../userStatus.types.ts'
 
 import { t } from '@nextcloud/l10n'
-import { toRef } from '@vueuse/core'
-import { computed, ref } from 'vue'
+import { computed, ref, toRef } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import UserStatusFormBackup from './UserStatusFormBackup.vue'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'

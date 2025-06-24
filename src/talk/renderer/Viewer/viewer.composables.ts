@@ -3,11 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import type { MaybeRefOrGetter } from '@vueuse/core'
-import type { Ref } from 'vue'
+import type { MaybeRefOrGetter, Ref } from 'vue'
 
-import { toValue } from '@vueuse/core'
-import { ref, watchEffect } from 'vue'
+import { ref, toValue, watchEffect } from 'vue'
 import { fetchFileContent } from './viewer.service.ts'
 
 type FileContentComposableResult<T> = {

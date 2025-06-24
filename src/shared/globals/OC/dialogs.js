@@ -10,7 +10,7 @@ let ocDialogsAdapter = null
 document.addEventListener('DOMContentLoaded', async () => {
 	const { default: OcDialogsAdapter } = await import('./OcDialogsAdapter.vue')
 
-	const container = document.body.appendChild(document.createElement('oc-dialog-wrapper'))
+	const container = document.body.appendChild(document.createElement('div'))
 
 	ocDialogsAdapter = createApp(OcDialogsAdapter).mount(container)
 })

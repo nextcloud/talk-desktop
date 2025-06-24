@@ -14,6 +14,6 @@ export function registerTalkDesktopSettingsSection() {
 	window.OCA.Talk.Settings.registerSection({
 		id: 'talk-desktop-settings-application',
 		name: t('talk_desktop', 'Application'),
-		element: createCustomElement('talk-desktop-settings-application', DesktopSettingsSection).tagName,
+		element: createCustomElement('talk-desktop-settings-application', DesktopSettingsSection),
 	})
 }

@@ -23,7 +23,7 @@ declare module '*.svg?raw' {
 
 declare module 'vue-material-design-icons/*.vue' {
 	import type { Component } from 'vue'
-	const component: Component<Record<string, never>, Record<string, never>, Record<string, never>, { size: number }, Record<string, never>>
+	const component: Component<{ size: number }, Record<string, never>, Record<string, never>, Record<string, never>, Record<string, never>>
 	export default component
 }
 

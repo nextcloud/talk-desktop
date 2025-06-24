@@ -83,7 +83,7 @@ function dismiss() {
 				size="small"
 				@click="dismiss">
 				<template #icon>
-					<IconClose />
+					<IconClose :size="20" />
 				</template>
 			</NcButton>
 		</div>

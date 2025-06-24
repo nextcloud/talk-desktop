@@ -59,7 +59,7 @@ async function copy() {
 <template>
 	<NcButton v-bind="$attrs" @click="copy">
 		<template #icon>
-			<IconCheck v-if="copied" />
+			<IconCheck v-if="copied" :size="20" />
 			<slot v-else name="icon" :size="20">
 				<IconCopy :size="20" />
 			</slot>

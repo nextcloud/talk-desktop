@@ -48,7 +48,7 @@ function close() {
 				wide
 				@click="close">
 				<template #icon>
-					<IconWindowClose />
+					<IconWindowClose :size="20" />
 				</template>
 			</NcButton>
 		</div>

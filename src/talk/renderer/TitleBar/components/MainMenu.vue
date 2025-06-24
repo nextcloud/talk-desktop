@@ -60,7 +60,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 		</NcActionButton>
 		<NcActionLink v-if="!BUILD_CONFIG.isBranded" :href="packageInfo.bugs.create || packageInfo.bugs.url" target="_blank">
 			<template #icon>
-				<IconBug />
+				<IconBug :size="20" />
 			</template>
 			{{ t('talk_desktop', 'Report a bug') }}
 		</NcActionLink>

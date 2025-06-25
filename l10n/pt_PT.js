@@ -25,6 +25,8 @@ OC.L10N.register(
     "General" : "Geral",
     "Theme" : "Tema",
     "Zoom" : "Zoom",
+    "Zoom out" : "Zoom out",
+    "Zoom in" : "Zoom in",
     "Reset" : "Reiniciar",
     "Menu" : "Menu",
     "Report a bug" : "Reportar um erro",

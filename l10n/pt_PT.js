@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Log in to {applicationName}" : "Inicie sessão em {applicationName}",
     "Server address" : "Endereço do servidor",
     "Log in" : "Iniciar sessão",
     "Logging in …" : "A entrar...",

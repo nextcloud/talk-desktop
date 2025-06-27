@@ -19,9 +19,7 @@ window.OCA.Viewer = createViewer()
 </script>
 
 <template>
-	<div id="app">
-		<div id="skip-actions" />
-		<TitleBar id="header" />
-		<TalkWrapper @ready="isTalkInitialized = true" />
-	</div>
+	<div id="skip-actions" />
+	<TitleBar id="header" />
+	<TalkWrapper @ready="isTalkInitialized = true" />
 </template>

@@ -127,7 +127,7 @@ function relaunch() {
 			<div class="relaunch-require-note-card__content">
 				<span>{{ t('talk_desktop', 'Some changes require a relaunch to take effect') }}</span>
 				<NcButton
-					type="primary"
+					variant="primary"
 					size="small"
 					class="relaunch-require-note-card__button"
 					@click="relaunch">

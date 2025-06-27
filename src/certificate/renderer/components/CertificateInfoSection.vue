@@ -4,26 +4,22 @@
   -->
 
 <script setup lang="ts">
-import { Fragment } from 'vue-frag'
-
 defineProps<{
 	title?: string
 }>()
 </script>
 
 <template>
-	<Fragment>
-		<dt class="certificate-info__section-dt">
-			<slot name="title">
-				{{ title }}
-			</slot>
-		</dt>
-		<dd class="certificate-info__section-dd">
-			<dl class="certificate-info-properties" :title="title">
-				<slot />
-			</dl>
-		</dd>
-	</Fragment>
+	<dt class="certificate-info__section-dt">
+		<slot name="title">
+			{{ title }}
+		</slot>
+	</dt>
+	<dd class="certificate-info__section-dd">
+		<dl class="certificate-info-properties" :title="title">
+			<slot />
+		</dl>
+	</dd>
 </template>
 
 <style scoped>

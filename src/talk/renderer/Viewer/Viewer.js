@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import Vue from 'vue'
+import { createApp } from 'vue'
 import ViewerApp from './ViewerApp.vue'
 import ViewerHandlerImages from './ViewerHandlerImages.vue'
 import ViewerHandlerPdf from './ViewerHandlerPdf.vue'
@@ -103,7 +103,7 @@ export function createViewer() {
 	}
 
 	const container = document.body.appendChild(document.createElement('div'))
-	Viewer.instance = new Vue(ViewerApp).$mount(container)
+	Viewer.instance = createApp(ViewerApp).mount(container)
 
 	return Viewer
 }

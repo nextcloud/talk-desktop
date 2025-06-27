@@ -121,7 +121,7 @@ async function revertStatus() {
 			class="user-status-form__row"
 			:disabled="isClear"
 			:clear-at="userStatus.clearAt"
-			@update:clearAt="patchStatus({ clearAt: $event })" />
+			@update:clear-at="patchStatus({ clearAt: $event })" />
 
 		<NcButton
 			class="user-status-form__row"

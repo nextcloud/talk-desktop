@@ -168,7 +168,7 @@ function handleCancel() {
 			<NcDialogButton
 				:icon="IconMonitorShare"
 				:label="t('talk_desktop', 'Share screen')"
-				type="primary"
+				variant="primary"
 				:disabled="!selectedSourceId"
 				@click="handleSubmit" />
 		</template>

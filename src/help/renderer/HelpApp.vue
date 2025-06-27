@@ -48,7 +48,7 @@ function close() {
 				wide
 				@click="close">
 				<template #icon>
-					<IconWindowClose />
+					<IconWindowClose :size="20" />
 				</template>
 			</NcButton>
 		</div>
@@ -107,7 +107,7 @@ function close() {
 .help {
 	--spacing-4: calc(4 * var(--default-grid-baseline));
 	app-region: drag;
-	height: 100%;
+	height: 100vh;
 	padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) 0;
 	display: flex;
 	flex-direction: column;

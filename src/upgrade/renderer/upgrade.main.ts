@@ -3,14 +3,13 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import Vue from 'vue'
+import { createApp } from 'vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
 import '../../shared/assets/global.styles.css'
 
 await setupWebPage()
 
-const { default: Upgrade } = await import('./UpgradeApp.vue')
+const { default: UpgradeApp } = await import('./UpgradeApp.vue')
 
-const UpgradeApp = Vue.extend(Upgrade)
-new UpgradeApp().$mount('#app')
+createApp(UpgradeApp).mount('#app')

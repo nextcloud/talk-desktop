@@ -65,7 +65,7 @@ const browserLink = generateUrl('/apps/spreed')
 	align-items: stretch;
 	text-align: center;
 	gap: var(--upgrade-spacing);
-	height: 100%;
+	height: 100vh;
 	background: var(--color-main-background);
 	padding: var(--upgrade-spacing);
 }

@@ -44,7 +44,7 @@ async function loadBackupStatus() {
 
 <template>
 	<NcDialog :name="t('talk_desktop', 'User status')" size="small" @closing="emit('close')">
-		<UserStatusForm v-if="isReady" :backup-status.sync="backupStatus" @submit="emit('close')" />
+		<UserStatusForm v-if="isReady" v-model:backup-status="backupStatus" @submit="emit('close')" />
 		<NcLoadingIcon v-else :size="48" style="height: 480px /* Approx. size of the form */" />
 	</NcDialog>
 </template>

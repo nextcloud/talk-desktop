@@ -10,15 +10,13 @@ import NcButton from '@nextcloud/vue/components/NcButton'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
 import { clearAtToLabel } from '../userStatus.utils.ts'
 
-withDefaults(defineProps<{
+const { userStatus, pressed = false } = defineProps<{
 	userStatus: PredefinedUserStatus | UserStatusBackup
 	pressed?: boolean
-}>(), {
-	pressed: false,
-})
+}>()
 
 const emit = defineEmits<{
-	(event: 'click'): void
+	click: []
 }>()
 </script>
 

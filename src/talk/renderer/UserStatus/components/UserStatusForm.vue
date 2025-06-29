@@ -7,8 +7,7 @@
 import type { PredefinedUserStatus, UserStatusBackup, UserStatusPrivate } from '../userStatus.types.ts'
 
 import { t } from '@nextcloud/l10n'
-import { toRef } from '@vueuse/core'
-import { computed, ref } from 'vue'
+import { computed, ref, toRef } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import UserStatusFormBackup from './UserStatusFormBackup.vue'
 import UserStatusFormClearAt from './UserStatusFormClearAt.vue'
@@ -19,13 +18,10 @@ import { usePredefinedStatusesStore } from '../predefinedStatuses.store.ts'
 import { useUserStatusStore } from '../userStatus.store.ts'
 import { convertPredefinedStatusToUserStatus } from '../userStatus.utils.ts'
 
-const props = defineProps<{
-	backupStatus: UserStatusBackup | null
-}>()
+const backupStatus = defineModel<UserStatusBackup | null>('backupStatus', { required: true })
 
 const emit = defineEmits<{
-	(event: 'update:backup-status', status: string): void
-	(event: 'submit'): void
+	submit: []
 }>()
 
 const userStatusStore = useUserStatusStore()
@@ -35,7 +31,7 @@ const isDirty = ref(false)
 
 const predefinedStatuses = toRef(() => usePredefinedStatusesStore().predefinedStatuses)
 
-const statusIsUserDefined = computed(() => !props.backupStatus && (userStatus.value.icon || userStatus.value.message))
+const statusIsUserDefined = computed(() => !backupStatus.value && (userStatus.value.icon || userStatus.value.message))
 const isClear = computed(() => userStatus.value.status === 'online' && !userStatus.value.icon && !userStatus.value.message)
 
 /**
@@ -86,7 +82,7 @@ async function save() {
 async function revertStatus() {
 	await userStatusStore.revertUserStatusFromBackup()
 	userStatus.value = { ...userStatusStore.userStatus! }
-	emit('update:backup-status', null)
+	backupStatus.value = null
 }
 </script>
 

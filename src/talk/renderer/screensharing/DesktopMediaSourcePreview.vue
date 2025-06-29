@@ -19,8 +19,8 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-	(event: 'select'): void
-	(event: 'suspend'): void
+	select: []
+	suspend: []
 }>()
 </script>
 

@@ -9,18 +9,16 @@ import type { CSSProperties } from 'vue'
 import { computed } from 'vue'
 import { appData } from '../../../../app/AppData.js'
 
-const props = withDefaults(defineProps<{
+const { size = 20 as number | string } = defineProps<{
 	size?: number | string
-}>(), {
-	size: 20,
-})
+}>()
 
 const theming = appData.capabilities.theming
 const logoUrl = theming.logo
 const primaryColor = theming.color
 
 const cssVars = computed<CSSProperties>(() => ({
-	'--ThemeLogo-size': typeof props.size === 'number' ? `${props.size}px` : props.size,
+	'--ThemeLogo-size': typeof size === 'number' ? `${size}px` : size,
 	'--ThemeLogo-background-color': primaryColor,
 }))
 </script>

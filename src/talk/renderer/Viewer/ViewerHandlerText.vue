@@ -5,8 +5,7 @@
 
 <script setup>
 import { t } from '@nextcloud/l10n'
-import { toRef } from '@vueuse/core'
-import { computed, ref } from 'vue'
+import { computed, ref, toRef } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/components/NcCheckboxRadioSwitch'
 import NcEmptyContent from '@nextcloud/vue/components/NcEmptyContent'

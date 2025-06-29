@@ -19,8 +19,8 @@ import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
 
 const emit = defineEmits<{
-	(event: 'submit', sourceId: ScreensharingSourceId): void
-	(event: 'cancel'): void
+	submit: [ScreensharingSourceId]
+	cancel: []
 }>()
 
 const livePreview = ref(false)

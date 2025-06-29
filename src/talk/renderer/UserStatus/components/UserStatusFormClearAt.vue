@@ -10,16 +10,10 @@ import NcSelect from '@nextcloud/vue/components/NcSelect'
 import { formatDuration } from '../../../../shared/datetime.utils.ts'
 import { clearAtToLabel, getTimestampForPredefinedClearAt } from '../userStatus.utils.ts'
 
-const props = withDefaults(defineProps<{
-	clearAt?: number | null
-	disabled?: boolean
-}>(), {
-	clearAt: null,
-	disabled: false,
-})
+const clearAt = defineModel<number | null>('clearAt', { default: null })
 
-const emit = defineEmits<{
-	(event: 'update:clearAt', value: number | null): void
+const { disabled = false } = defineProps<{
+	disabled?: boolean
 }>()
 
 const clearAtOptions = [
@@ -59,7 +53,7 @@ const clearAtOptions = [
 	},
 ] as const
 
-const clearAtAsLabel = computed(() => clearAtToLabel(props.clearAt))
+const clearAtAsLabel = computed(() => clearAtToLabel(clearAt.value))
 
 /**
  * Handle the selected option
@@ -67,7 +61,7 @@ const clearAtAsLabel = computed(() => clearAtToLabel(props.clearAt))
  * @param option - selected option
  */
 function handleSelected(option: typeof clearAtOptions[number]) {
-	emit('update:clearAt', getTimestampForPredefinedClearAt(option.clearAt))
+	clearAt.value = getTimestampForPredefinedClearAt(option.clearAt)
 }
 </script>
 

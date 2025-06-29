@@ -17,7 +17,7 @@ import { fetchBackupStatus } from './userStatus.service.ts'
 import { useUserStatusStore } from './userStatus.store.ts'
 
 const emit = defineEmits<{
-	(event: 'close'): void
+	close: []
 }>()
 
 const isReady = ref(false)

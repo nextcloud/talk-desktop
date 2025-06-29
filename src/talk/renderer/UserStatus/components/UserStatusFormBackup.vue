@@ -16,7 +16,7 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-	(event: 'revert'): void
+	revert: []
 }>()
 </script>
 

@@ -4,8 +4,7 @@
 -->
 
 <script setup>
-import { toRef } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, toRef } from 'vue'
 import ViewerHandlerBase from './ViewerHandlerBase.vue'
 import { useFileContent } from './viewer.composables.ts'
 

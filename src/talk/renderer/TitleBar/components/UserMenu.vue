@@ -19,6 +19,7 @@ import IconChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 import IconLogout from 'vue-material-design-icons/Logout.vue'
 import IconPencil from 'vue-material-design-icons/Pencil.vue'
+import IconPower from 'vue-material-design-icons/Power.vue'
 import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
 import ThemeLogo from './ThemeLogo.vue'
 import UiMenu from './UiMenu.vue'
@@ -52,6 +53,7 @@ watch(isOpen, () => {
 const userProfileLink = generateUrl('/u/{userid}', { userid: user.id })
 
 const logout = window.TALK_DESKTOP.logout
+const quit = window.TALK_DESKTOP.quit
 
 /**
  * Handle user status type change
@@ -173,6 +175,15 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 								<IconLogout :size="20" />
 							</template>
 							{{ t('talk_desktop', 'Log out') }}
+						</UiMenuItem>
+
+						<UiMenuSeparator />
+
+						<UiMenuItem tag="button" @click="quit">
+							<template #icon>
+								<IconPower :size="20" />
+							</template>
+							{{ t('talk_desktop', 'Quit') }}
 						</UiMenuItem>
 					</template>
 				</UiMenu>

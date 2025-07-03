@@ -18,7 +18,7 @@ import IconChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
 import IconChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 import IconLogout from 'vue-material-design-icons/Logout.vue'
-import IconPencil from 'vue-material-design-icons/Pencil.vue'
+import IconPencilOutline from 'vue-material-design-icons/PencilOutline.vue'
 import IconPower from 'vue-material-design-icons/Power.vue'
 import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
 import ThemeLogo from './ThemeLogo.vue'
@@ -163,7 +163,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 								</template>
 								{{ userStatus.message || t('talk_desktop', 'Set custom status') }}
 								<template v-if="userStatus.message" #action-icon>
-									<IconPencil :size="20" />
+									<IconPencilOutline :size="20" />
 								</template>
 							</UiMenuItem>
 

@@ -9,7 +9,7 @@ import type { UserStatusStatusType } from '../../UserStatus/userStatus.types.ts'
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 import { storeToRefs } from 'pinia'
-import { computed, ref, useTemplateRef, watch } from 'vue'
+import { ref, useTemplateRef, watch } from 'vue'
 import NcAvatar from '@nextcloud/vue/components/NcAvatar'
 import NcPopover from '@nextcloud/vue/components/NcPopover'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
@@ -28,14 +28,8 @@ import { appData } from '../../../../app/AppData.js'
 import { useUserStatusStore } from '../../UserStatus/userStatus.store.ts'
 import { availableUserStatusStatusTypes, userStatusTranslations } from '../../UserStatus/userStatus.utils.ts'
 
-const props = defineProps<{
-	// TODO: define a proper type for userMetadata
-	user: { id: string, 'display-name': string }
-}>()
-
-const emit = defineEmits<{
-	logout: []
-}>()
+// TODO: define a proper type for userMetadata
+const user = appData.userMetadata! as { id: string, 'display-name': string }
 
 const userStatusStore = useUserStatusStore()
 const { userStatus } = storeToRefs(userStatusStore)
@@ -55,8 +49,9 @@ watch(isOpen, () => {
 	}
 })
 
-const userProfileLink = computed(() => generateUrl('/u/{userid}', { userid: props.user.id }))
+const userProfileLink = generateUrl('/u/{userid}', { userid: user.id })
 
+const logout = window.TALK_DESKTOP.logout
 
 /**
  * Handle user status type change
@@ -173,7 +168,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							<UiMenuSeparator />
 						</template>
 
-						<UiMenuItem tag="button" @click="emit('logout')">
+						<UiMenuItem tag="button" @click="logout">
 							<template #icon>
 								<IconLogout :size="20" />
 							</template>

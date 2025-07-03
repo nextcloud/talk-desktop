@@ -57,9 +57,6 @@ watch(isOpen, () => {
 
 const userProfileLink = computed(() => generateUrl('/u/{userid}', { userid: props.user.id }))
 
-// Vue 2 doesn't allow using types in templates
-// TODO: Vue 3: return back to template
-const popoverHideTriggers = (triggers: string[]) => [...triggers, 'click']
 
 /**
  * Handle user status type change
@@ -78,7 +75,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 			v-if="userMenuContainer"
 			v-model:shown="isOpen"
 			:container="userMenuContainer"
-			:popper-hide-triggers="popoverHideTriggers"
+			:popper-hide-triggers="(triggers: string[]) => [...triggers, 'click']"
 			:triggers="[]"
 			no-auto-focus>
 			<template #trigger="{ attrs }">

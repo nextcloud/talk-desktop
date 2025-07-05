@@ -16,7 +16,7 @@ const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
-const { systemInfo, isLinux, isMac, isWindows } = require('./app/system.utils.ts')
+const { systemInfo, isLinux, isMac, isWindows, isSameExecution } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
 const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
@@ -205,9 +205,7 @@ app.whenReady().then(async () => {
 	 * Instead of creating a new app instance - focus existence one
 	 */
 	app.on('second-instance', (event, argv, cwd) => {
-		// Instead of creating a new application instance - focus the current window
-		const secondInstanceExecPath = path.isAbsolute(argv[0]) ? argv[0] : path.resolve(cwd, argv[0])
-		if (process.execPath === secondInstanceExecPath) {
+		if (isSameExecution(argv[0], cwd)) {
 			focusMainWindow()
 			return
 		}

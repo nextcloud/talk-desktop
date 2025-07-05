@@ -4,6 +4,8 @@
  */
 
 import os from 'node:os'
+import path from 'node:path'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
 
 /**
  * "process.platform", but with simplified to 'win32'|'darwin'|'linux'
@@ -54,6 +56,17 @@ export const isWindows = os.type() === 'Windows_NT'
 export const isWayland = !!process.env.WAYLAND_DISPLAY
 
 /**
+ * Is the app running inside Flatpak sandbox?
+ * TODO: check if it is reliable. Alternative: check for /.flatpak_info existence
+ */
+export const isFlatpak = process.env.FLATPAK_ID === BUILD_CONFIG.linuxAppId
+
+/**
+ * Is the app running inside any supported Linux sandbox
+ */
+export const isSandboxed = isFlatpak
+
+/**
  * System information with OS, platform, and installation details
  */
 export const systemInfo = {
@@ -61,7 +74,29 @@ export const systemInfo = {
 	isMac,
 	isWindows,
 	isWayland,
+	isFlatpak,
+	isSandboxed,
 	osVersion,
 	platform,
 	execPath: process.execPath,
+}
+
+/**
+ * Check whether application execution is the same as the current by the execution path
+ *
+ * @param argv0 - argv0 of the executable run
+ * @param cwd - Current working directory of the executable run
+ */
+export function isSameExecution(argv0: string, cwd: string) {
+	// The full path may not be correct inside a sandbox
+	// But there could not be other installation in the same sandbox
+	// As a workaround - check only the executable name but not the full path
+	if (isSandboxed) {
+		return path.basename(argv0) === path.basename(process.execPath)
+	}
+
+	// Depending on the OS, argv0 could be an absolute path or relative to the cwd
+	const execPath = path.isAbsolute(argv0) ? argv0 : path.resolve(cwd, argv0)
+
+	return execPath === process.execPath
 }

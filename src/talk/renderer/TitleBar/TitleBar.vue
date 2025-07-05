@@ -7,7 +7,6 @@
 import DevMenu from './components/DevMenu.vue'
 import MainMenu from './components/MainMenu.vue'
 import UserMenu from './components/UserMenu.vue'
-import { appData } from '../../../app/AppData.js'
 import { BUILD_CONFIG } from '../../../shared/build.config.ts'
 import { useDevMode } from '../../../shared/useDevMode.ts'
 import { useAppConfigStore } from '../Settings/appConfig.store.ts'
@@ -20,20 +19,11 @@ useAppConfigStore()
 
 const channel = __CHANNEL__
 
-// TODO: add a proper type for userMetadata
-const user = appData.userMetadata! as { id: string, 'display-name': string }
 const OS = window.systemInfo
 
 const applicationName = BUILD_CONFIG.applicationName
 
 const { isDevMode } = useDevMode()
-
-/**
- * Logout in Talk Desktop
- */
-function logout() {
-	window.TALK_DESKTOP.logout()
-}
 </script>
 
 <template>
@@ -60,7 +50,7 @@ function logout() {
 			</div>
 
 			<div class="title-bar__item">
-				<UserMenu :user="user" @logout="logout" />
+				<UserMenu />
 			</div>
 		</div>
 	</header>

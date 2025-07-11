@@ -5,6 +5,20 @@
 
 # Changelog
 
+## v1.2.4 - 2025-07-11
+
+### Added
+
+- Quit button in the user menu [#1356](https://github.com/nextcloud/talk-desktop/pull/1356)
+
+### Fixes
+
+- Re-opening application while running in background is broken on Linux in Flatpak [#1358](https://github.com/nextcloud/talk-desktop/pull/1358)
+ 
+### Changes
+
+- Built-in Talk in binaries is updated to v21.1.1 in both beta and stable release channels [#1365](https://github.com/nextcloud/talk-desktop/pull/1365)
+
 ## v1.2.3 - 2025-06-05
 
 ### Added

@@ -9,8 +9,8 @@ import { useEventListener } from '@vueuse/core'
 import NcAvatar from '@nextcloud/vue/components/NcAvatar'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import IconClose from 'vue-material-design-icons/Close.vue'
-import IconPhone from 'vue-material-design-icons/Phone.vue'
-import IconPhoneHangup from 'vue-material-design-icons/PhoneHangup.vue'
+import IconPhoneHangupOutline from 'vue-material-design-icons/PhoneHangupOutline.vue'
+import IconPhoneOutline from 'vue-material-design-icons/PhoneOutline.vue'
 import { postBroadcast } from '../../shared/broadcast.service.ts'
 import { waitCurrentUserHasJoinedCall } from './callbox.service.ts'
 import { playRingtone } from './callbox.utils.ts'
@@ -95,7 +95,7 @@ function dismiss() {
 				wide
 				@click="dismiss">
 				<template #icon>
-					<IconPhoneHangup :size="20" />
+					<IconPhoneHangupOutline :size="20" />
 				</template>
 				{{ t('talk_desktop', 'Dismiss') }}
 			</NcButton>
@@ -105,7 +105,7 @@ function dismiss() {
 				wide
 				@click="join">
 				<template #icon>
-					<IconPhone :size="20" />
+					<IconPhoneOutline :size="20" />
 				</template>
 				{{ t('talk_desktop', 'Join call') }}
 			</NcButton>

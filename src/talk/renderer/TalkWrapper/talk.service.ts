@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import type { Router } from 'vue-router'
+
 import { isNavigationFailure, NavigationFailureType } from '@talk/node_modules/vue-router'
 import { useTalkHashStore } from '@talk/src/stores/talkHash.js'
 
@@ -19,7 +21,7 @@ function getTalkInstance() {
 /**
  * Get the Talk router
  */
-function getTalkRouter() {
+function getTalkRouter(): Router {
 	return getTalkInstance().$router
 }
 
@@ -27,8 +29,7 @@ function getTalkRouter() {
  * Get the current Talk route path
  */
 export function getCurrentTalkRoutePath() {
-	// TODO: add Vue 3 compatibility
-	return getTalkRouter().currentRoute.fullPath
+	return getTalkRouter().currentRoute.value.fullPath
 }
 
 /**

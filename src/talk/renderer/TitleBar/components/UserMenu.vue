@@ -9,7 +9,7 @@ import type { UserStatusStatusType } from '../../UserStatus/userStatus.types.ts'
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 import { storeToRefs } from 'pinia'
-import { computed, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import NcAvatar from '@nextcloud/vue/components/NcAvatar'
 import NcPopover from '@nextcloud/vue/components/NcPopover'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
@@ -19,6 +19,7 @@ import IconChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 import IconLogout from 'vue-material-design-icons/Logout.vue'
 import IconPencil from 'vue-material-design-icons/Pencil.vue'
+import IconPower from 'vue-material-design-icons/Power.vue'
 import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
 import ThemeLogo from './ThemeLogo.vue'
 import UiMenu from './UiMenu.vue'
@@ -28,14 +29,8 @@ import { appData } from '../../../../app/AppData.js'
 import { useUserStatusStore } from '../../UserStatus/userStatus.store.ts'
 import { availableUserStatusStatusTypes, userStatusTranslations } from '../../UserStatus/userStatus.utils.ts'
 
-const props = defineProps<{
-	// TODO: define a proper type for userMetadata
-	user: { id: string, 'display-name': string }
-}>()
-
-const emit = defineEmits<{
-	(event: 'logout'): void
-}>()
+// TODO: define a proper type for userMetadata
+const user = appData.userMetadata! as { id: string, 'display-name': string }
 
 const userStatusStore = useUserStatusStore()
 const { userStatus } = storeToRefs(userStatusStore)
@@ -55,7 +50,10 @@ watch(isOpen, () => {
 	}
 })
 
-const userProfileLink = computed(() => generateUrl('/u/{userid}', { userid: props.user.id }))
+const userProfileLink = generateUrl('/u/{userid}', { userid: user.id })
+
+const logout = window.TALK_DESKTOP.logout
+const quit = window.TALK_DESKTOP.quit
 
 // Vue 2 doesn't allow using types in templates
 // TODO: Vue 3: return back to template
@@ -176,11 +174,20 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							<UiMenuSeparator />
 						</template>
 
-						<UiMenuItem tag="button" @click.native="emit('logout')">
+						<UiMenuItem tag="button" @click="logout">
 							<template #icon>
 								<IconLogout :size="20" />
 							</template>
 							{{ t('talk_desktop', 'Log out') }}
+						</UiMenuItem>
+
+						<UiMenuSeparator />
+
+						<UiMenuItem tag="button" @click="quit">
+							<template #icon>
+								<IconPower :size="20" />
+							</template>
+							{{ t('talk_desktop', 'Quit') }}
 						</UiMenuItem>
 					</template>
 				</UiMenu>

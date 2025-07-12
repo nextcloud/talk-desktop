@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "Visa profil",
     "Set custom status" : "Ange anpassad status",
     "Log out" : "Logga ut",
+    "Quit" : "Avsluta",
     "User status" : "Användarstatus",
     "Clear custom status" : "Rensa anpassad status",
     "Set user status" : "Ange användarstatus",

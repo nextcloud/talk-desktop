@@ -34,6 +34,7 @@ OC.L10N.register(
     "Back" : "Back",
     "View profile" : "View profile",
     "Log out" : "Log out",
+    "Quit" : "Quit",
     "Don't clear" : "Don't clear",
     "Today" : "დღეს",
     "This week" : "This week",

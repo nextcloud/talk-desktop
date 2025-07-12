@@ -23,6 +23,7 @@ OC.L10N.register(
     "Settings" : "Ajustes",
     "Back" : "Volver",
     "Log out" : "Cerrar sesión",
+    "Quit" : "Salir",
     "Don't clear" : "No vaciar",
     "Today" : "Hoy",
     "This week" : "Esta semana",

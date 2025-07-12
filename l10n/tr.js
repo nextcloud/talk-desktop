@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "Profili görüntüle",
     "Set custom status" : "Özel durumu ayarla",
     "Log out" : "Oturumu kapat",
+    "Quit" : "Çıkış",
     "User status" : "Kullanıcı durumu",
     "Clear custom status" : "Özel durumu kaldır",
     "Set user status" : "Kullanıcı durumunu ayarla",

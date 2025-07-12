@@ -32,6 +32,7 @@ OC.L10N.register(
     "About" : "אודות",
     "Back" : "אחורה",
     "Log out" : "התנתק",
+    "Quit" : "יציאה",
     "User status" : "מצב משתמש",
     "Don't clear" : "לא לפנות",
     "Today" : "היום",

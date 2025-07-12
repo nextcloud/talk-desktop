@@ -63,6 +63,7 @@ OC.L10N.register(
     "View profile" : "Zobraziť profil",
     "Set custom status" : "Nastaviť vlastný status",
     "Log out" : "Odhlásiť sa",
+    "Quit" : "Koniec",
     "User status" : "Stav užívateľa",
     "Clear custom status" : "Vymazať vlastný status",
     "Set user status" : "Nastaviť status užívateľa",

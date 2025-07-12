@@ -17,6 +17,7 @@ OC.L10N.register(
     "General" : "Cyffredinol",
     "Settings" : "Gosodiadau",
     "About" : "Ynglyn â",
+    "Quit" : "Gadael",
     "Today" : "Heddiw",
     "This week" : "Wythnos yma"
 },

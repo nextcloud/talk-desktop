@@ -28,6 +28,7 @@ OC.L10N.register(
     "View profile" : "Skatīt profilu",
     "Set custom status" : "Iestatīt pielāgotu stāvokli",
     "Log out" : "Izrakstīties",
+    "Quit" : "Iziet",
     "Clear custom status" : "Notīrīt pielāgotu stāvokli",
     "Set user status" : "Iestatīt lietotāja stāvokli",
     "Your status was set automatically" : "Stāvoklis tika automātiski iestatīts",

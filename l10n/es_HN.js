@@ -24,6 +24,7 @@ OC.L10N.register(
     "Settings" : "Configuraciones ",
     "About" : "Acerca de",
     "Log out" : "Salir",
+    "Quit" : "Salir",
     "Today" : "Hoy",
     "This week" : "Esta semana",
     "Status message" : "Mensaje de estado",

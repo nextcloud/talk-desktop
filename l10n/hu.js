@@ -40,6 +40,7 @@ OC.L10N.register(
     "Back" : "Vissza",
     "View profile" : "Profil megtekintése",
     "Log out" : "Kijelentkezés",
+    "Quit" : "Kilépés",
     "User status" : "Felhasználói állapot",
     "Your status was set automatically" : "Az állapota automatikusan lett beállítva",
     "Don't clear" : "Ne törölje",

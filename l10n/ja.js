@@ -35,6 +35,7 @@ OC.L10N.register(
     "About" : "詳細",
     "Back" : "戻る",
     "View profile" : "プロフィールを表示",
+    "Quit" : "終了",
     "User status" : "ユーザーステータス",
     "Your status was set automatically" : "あなたのステータスは自動的に設定されました",
     "Today" : "今日",

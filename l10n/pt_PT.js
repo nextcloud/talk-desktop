@@ -36,6 +36,7 @@ OC.L10N.register(
     "Back" : "Voltar",
     "View profile" : "Visualizar perfil",
     "Log out" : "Sair",
+    "Quit" : "Sair",
     "User status" : "Estado do utilizador",
     "Don't clear" : "Não limpar",
     "Today" : "Hoje",

@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "檢視個人檔案",
     "Set custom status" : "設定自訂狀態",
     "Log out" : "登出",
+    "Quit" : "離開",
     "User status" : "使用者狀態",
     "Clear custom status" : "清除自訂狀態",
     "Set user status" : "設定使用者狀態",

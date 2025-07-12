@@ -27,6 +27,7 @@ OC.L10N.register(
     "About" : "Rreth",
     "Back" : "Mbrapsht",
     "Log out" : "Shkyçu",
+    "Quit" : "Dilni",
     "Today" : "Sot",
     "This week" : "Këtë javë",
     "Share screen" : "Ndaje ekranin",

@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "Féach ar phróifíl",
     "Set custom status" : "Socraigh stádas saincheaptha",
     "Log out" : "Logáil Amach",
+    "Quit" : "Scoir",
     "User status" : "Stádas úsáideora",
     "Clear custom status" : "Glan stádas saincheaptha",
     "Set user status" : "Socraigh stádas úsáideora",

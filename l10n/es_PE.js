@@ -25,6 +25,7 @@ OC.L10N.register(
     "Settings" : "Ajustes",
     "About" : "Acerca de",
     "Log out" : "Cerrar sesión",
+    "Quit" : "Salir",
     "Today" : "Hoy",
     "This week" : "Esta semana",
     "Share screen" : "Compartir la pantalla",

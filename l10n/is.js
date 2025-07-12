@@ -30,6 +30,7 @@ OC.L10N.register(
     "About" : "Um",
     "Back" : "Til baka",
     "View profile" : "Skoða notandasnið",
+    "Quit" : "Hætta",
     "User status" : "Staða notanda",
     "Your status was set automatically" : "Staðan þín var stillt sjálfvirkt",
     "Don't clear" : "Ekki hreinsa",

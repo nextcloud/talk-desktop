@@ -16,6 +16,7 @@ OC.L10N.register(
     "About" : "පිළිබඳ",
     "Back" : "ආපසු",
     "Log out" : "නික්මෙන්න",
+    "Quit" : "ඉවත් වන්න",
     "Today" : "අද",
     "This week" : "මෙම සතිය"
 },

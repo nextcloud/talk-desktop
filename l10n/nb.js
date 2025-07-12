@@ -49,6 +49,7 @@ OC.L10N.register(
     "View profile" : "Vis profil",
     "Set custom status" : "Velg tilpasset status",
     "Log out" : "Logg av",
+    "Quit" : "Avslutt",
     "User status" : "Brukerstatus",
     "Clear custom status" : "Fjern tilpasset status",
     "Set user status" : "Angi brukerstatus",

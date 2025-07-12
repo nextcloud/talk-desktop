@@ -30,6 +30,7 @@ OC.L10N.register(
     "About" : "A prepaus",
     "View profile" : "Veire perfil",
     "Log out" : "Se desconnectar",
+    "Quit" : "Quitar",
     "User status" : "Estat utilizaire",
     "Don't clear" : "Escafar pas",
     "Today" : "Uèi",

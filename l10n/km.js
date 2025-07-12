@@ -15,6 +15,7 @@ OC.L10N.register(
     "None" : "គ្មាន",
     "General" : "ទូទៅ",
     "Settings" : "ការកំណត់",
+    "Quit" : "ចាក់ចេញ",
     "Today" : "ថ្ងៃ​នេះ"
 },
 "nplurals=1; plural=0;");

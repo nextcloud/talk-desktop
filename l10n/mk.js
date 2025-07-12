@@ -28,6 +28,7 @@ OC.L10N.register(
     "Back" : "Назад",
     "View profile" : "Прегледај профил",
     "Set custom status" : "Постави сопствен статус",
+    "Quit" : "Прекини",
     "User status" : "Статус на корисникот",
     "Clear custom status" : "Тргни го сопствениот статус",
     "Don't clear" : "Не го тргај",

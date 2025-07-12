@@ -47,6 +47,7 @@ OC.L10N.register(
     "Back" : "Atgal",
     "View profile" : "Rodyti profilį",
     "Log out" : "Atsijungti",
+    "Quit" : "Išeiti",
     "User status" : "Naudotojo būsena",
     "Your status was set automatically" : "Jūsų būsena buvo nustatyta automatiškai",
     "Don't clear" : "Neišvalyti",

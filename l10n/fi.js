@@ -38,6 +38,7 @@ OC.L10N.register(
     "View profile" : "Näytä profiili",
     "Set custom status" : "Aseta mukautettu tilatieto",
     "Log out" : "Kirjaudu ulos",
+    "Quit" : "Lopeta",
     "User status" : "Käyttäjän tilatieto",
     "Clear custom status" : "Tyhjennä mukautettu tilatieto",
     "Your status was set automatically" : "Tilatietosi asetettiin automaattisesti",

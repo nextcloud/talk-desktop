@@ -34,6 +34,7 @@ OC.L10N.register(
     "About" : "Despre",
     "Back" : "Înapoi",
     "View profile" : "Vezi profilul",
+    "Quit" : "Renunță",
     "User status" : "Statusul utilizatorului",
     "Your status was set automatically" : "Statusul a fost setat automat",
     "Today" : "Azi",

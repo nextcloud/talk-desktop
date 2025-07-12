@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "Открыть профиль",
     "Set custom status" : "Установить статус",
     "Log out" : "Выйти",
+    "Quit" : "Выйти",
     "User status" : "Статус пользователя",
     "Clear custom status" : "Удалить свой статус",
     "Set user status" : "Установить статус",

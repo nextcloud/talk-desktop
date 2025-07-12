@@ -30,6 +30,7 @@ OC.L10N.register(
     "About" : "Tentang",
     "View profile" : "Tampilkan profil",
     "Log out" : "Keluar",
+    "Quit" : "Keluar",
     "Don't clear" : "Jangan dihapus",
     "Today" : "Hari ini",
     "This week" : "Pekan ini",

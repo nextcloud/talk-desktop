@@ -41,6 +41,7 @@ OC.L10N.register(
     "Back" : "Nazaj",
     "View profile" : "Pokaži profil",
     "Log out" : "Odjava",
+    "Quit" : "Končaj",
     "User status" : "Stanje uporabnika",
     "Clear custom status" : "Počisti stanje po meri",
     "Set user status" : "Nastavi stanje uporabnika",

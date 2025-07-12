@@ -15,6 +15,7 @@ OC.L10N.register(
     "General" : "பொதுவான",
     "Settings" : "அமைப்புகள்",
     "Back" : "பின்னுக்கு",
+    "Quit" : "விலகுக",
     "Today" : "இன்று"
 },
 "nplurals=2; plural=(n != 1);");

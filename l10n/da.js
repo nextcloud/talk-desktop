@@ -37,6 +37,7 @@ OC.L10N.register(
     "About" : "Om",
     "Back" : "Tilbage",
     "View profile" : "Vis profil",
+    "Quit" : "Afslut",
     "User status" : "Bruger status",
     "Your status was set automatically" : "Status sat automatisk",
     "Don't clear" : "Ryd ikke",

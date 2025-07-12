@@ -37,6 +37,7 @@ OC.L10N.register(
     "About" : "Acerca",
     "View profile" : "Ver perfil",
     "Log out" : "Cerrar sesión",
+    "Quit" : "Salir",
     "User status" : "Estado de usuario",
     "Your status was set automatically" : "Tu estado se estableció automáticamente",
     "Don't clear" : "No borrar",

@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "Vaata profiili",
     "Set custom status" : "Määra endaloodud olek",
     "Log out" : "Logi välja",
+    "Quit" : "Lõpeta",
     "User status" : "Kasutaja olek",
     "Clear custom status" : "Eemalda endaloodud olek",
     "Set user status" : "Määra kasutaja olek",

@@ -17,6 +17,7 @@ OC.L10N.register(
     "Menu" : "Menü",
     "Report a bug" : "E Feeler melden",
     "Settings" : "Astellungen",
+    "Quit" : "Erausgoen",
     "Today" : "Haut",
     "Away" : "ewech"
 },

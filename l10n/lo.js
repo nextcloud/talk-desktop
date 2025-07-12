@@ -17,6 +17,7 @@ OC.L10N.register(
     "Settings" : "ການຕັ້ງຄ່າ",
     "About" : "ກ່ຽວກັບ",
     "Log out" : "ອອກຈາກລະບົບ",
+    "Quit" : "ຢຸດ",
     "Don't clear" : "ບໍ່ຈະແຈ້ງ",
     "Today" : "ມື້ນີ້",
     "This week" : "ທິດນີ້",

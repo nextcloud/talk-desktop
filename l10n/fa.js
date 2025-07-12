@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "مشاهدهٔ نمایه",
     "Set custom status" : "تنظیم وضعیت سفارشی",
     "Log out" : "خروج",
+    "Quit" : "خروج",
     "User status" : "وضعیت کاربر",
     "Clear custom status" : "پاک کردن وضعیت سفارشی",
     "Set user status" : "تنظیم وضعیت کاربر",

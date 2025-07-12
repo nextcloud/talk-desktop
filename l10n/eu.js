@@ -45,6 +45,7 @@ OC.L10N.register(
     "Back" : "Itzuli",
     "View profile" : "Ikusi profila",
     "Log out" : "Saioa itxi",
+    "Quit" : "Irten",
     "User status" : "Erabiltzaile-egoera",
     "Set user status" : "Ezarri erabiltzailearen egoera",
     "Your status was set automatically" : "Zure egoera automatikoki ezarriko dira",

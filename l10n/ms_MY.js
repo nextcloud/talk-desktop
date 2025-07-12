@@ -11,6 +11,7 @@ OC.L10N.register(
     "Yes" : "Ya",
     "General" : "Umum",
     "Settings" : "Tetapan",
+    "Quit" : "Berhenti",
     "Today" : "Hari ini"
 },
 "nplurals=1; plural=0;");

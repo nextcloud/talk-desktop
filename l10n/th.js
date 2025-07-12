@@ -29,6 +29,7 @@ OC.L10N.register(
     "Report a bug" : "รายงานข้อผิดพลาด",
     "Settings" : "การตั้งค่า",
     "About" : "เกี่ยวกับ",
+    "Quit" : "ออก",
     "User status" : "สถานะผู้ใช้",
     "Don't clear" : "ไม่ต้องล้าง",
     "Today" : "วันนี้",

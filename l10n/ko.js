@@ -35,6 +35,7 @@ OC.L10N.register(
     "Back" : "뒤로",
     "View profile" : "프로필 보기",
     "Log out" : "로그아웃",
+    "Quit" : "끝내기",
     "User status" : "사용자 상태",
     "Today" : "오늘",
     "Loading …" : "불러오는 중 ...",

@@ -32,6 +32,7 @@ OC.L10N.register(
     "About" : "Giới thiệu",
     "Back" : "Trở lại",
     "View profile" : "Xem hồ sơ",
+    "Quit" : "Thoát",
     "User status" : "Trạng thái người dùng",
     "Your status was set automatically" : "Trạng thái của bạn đã được đặt tự động",
     "Don't clear" : "Không xoá",

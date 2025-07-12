@@ -66,6 +66,7 @@ OC.L10N.register(
     "View profile" : "Ver perfil",
     "Set custom status" : "Configurar estado personalizado",
     "Log out" : "Cerrar sesión",
+    "Quit" : "Salir",
     "User status" : "Estado del usuario",
     "Clear custom status" : "Eliminar estado personalizado",
     "Set user status" : "Establecer el estado del usuario",

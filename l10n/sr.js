@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "Погледај профил",
     "Set custom status" : "Изаберите произвољни опсег",
     "Log out" : "Одјави се",
+    "Quit" : "Напусти",
     "User status" : "Корисников статус",
     "Clear custom status" : "Обриши роизвољни статус",
     "Set user status" : "Постави кориснички статус",

@@ -35,6 +35,7 @@ OC.L10N.register(
     "About" : "Informacije",
     "View profile" : "Prikaži profil",
     "Log out" : "Odjavite se",
+    "Quit" : "Zatvori",
     "User status" : "Status korisnika",
     "Loading …" : "Učitavanje…",
     "Share screen" : "Dijeli zaslon",

@@ -42,6 +42,7 @@ OC.L10N.register(
     "Back" : "Επιστροφή",
     "View profile" : "Προβολή προφίλ",
     "Log out" : "Έξοδος",
+    "Quit" : "Έξοδος",
     "User status" : "Κατάσταση χρήστη",
     "Today" : "Σήμερα",
     "Loading …" : "Φόρτωση…",

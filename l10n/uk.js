@@ -49,6 +49,7 @@ OC.L10N.register(
     "Back" : "Назад",
     "View profile" : "Перегляд профілю",
     "Log out" : "Вийти",
+    "Quit" : "Вийти",
     "User status" : "Статус користувача",
     "Your status was set automatically" : "Ваш статус встановлено автоматично",
     "Don't clear" : "Не очищати",

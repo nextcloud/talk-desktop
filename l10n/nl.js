@@ -61,6 +61,7 @@ OC.L10N.register(
     "View profile" : "Bekijk profiel",
     "Set custom status" : "Custom status instellen",
     "Log out" : "Afmelden",
+    "Quit" : "Afsluiten",
     "User status" : "Gebruikersstatus",
     "Clear custom status" : "Verwijder custom status",
     "Set user status" : "Gebruikersstatus instellen",

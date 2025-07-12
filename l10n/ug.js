@@ -55,6 +55,7 @@ OC.L10N.register(
     "View profile" : "ئارخىپنى كۆرۈڭ",
     "Set custom status" : "ئىختىيارى ھالەت بەلگىلەڭ",
     "Log out" : "چېكىنىش",
+    "Quit" : "چېكىن",
     "User status" : "ئىشلەتكۈچى ھالىتى",
     "Clear custom status" : "ئىختىيارى ھالەتنى تازىلاڭ",
     "Set user status" : "ئىشلەتكۈچى ھالىتىنى بەلگىلەڭ",

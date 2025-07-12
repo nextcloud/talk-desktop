@@ -22,6 +22,7 @@ OC.L10N.register(
     "About" : "Γef",
     "Back" : "Retour",
     "Log out" : "Senser",
+    "Quit" : "Quitter",
     "Don't clear" : "Ur seffeḍ ara",
     "Today" : "Ass-a",
     "This week" : "Dduṛt agi",

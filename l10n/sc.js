@@ -35,6 +35,7 @@ OC.L10N.register(
     "Back" : "In segus",
     "View profile" : "Ammustra su profilu",
     "Log out" : "Essi·nche",
+    "Quit" : "Essi·nche",
     "User status" : "Istadu de s'utente",
     "Don't clear" : "Non nche ddu lìmpies",
     "Today" : "Oe ",

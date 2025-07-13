@@ -19,9 +19,8 @@ import { getBrowserWindowIcon } from '../shared/icons.utils.js'
  * @return Whether user accept the certificate
  */
 export function showCertificateTrustDialog(parentWindow: BrowserWindow, details: UntrustedCertificateDetails) {
-	const TITLE = buildTitle('Security warning')
 	const window = new BrowserWindow({
-		title: TITLE,
+		title: buildTitle(),
 		...getScaledWindowSize({
 			width: 600,
 			height: 600,

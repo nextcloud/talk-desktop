@@ -13,9 +13,8 @@ import { getBrowserWindowIcon } from '../shared/icons.utils.js'
  * Create the upgrade window
  */
 export function createUpgradeWindow() {
-	const TITLE = buildTitle('Upgrade required')
 	const window = new BrowserWindow({
-		title: TITLE,
+		title: buildTitle(),
 		...getScaledWindowSize({
 			width: 350,
 			height: 300,

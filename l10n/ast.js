@@ -38,6 +38,7 @@ OC.L10N.register(
     "Back" : "Atrás",
     "View profile" : "Ver el perfil",
     "Log out" : "Zarrar la sesión",
+    "Quit" : "Colar",
     "User status" : "Estáu del usuariu",
     "Your status was set automatically" : "L'estáu afitóse automáticamente",
     "Don't clear" : "Nun borrar",

@@ -16,7 +16,7 @@ const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 function createAuthenticationWindow() {
 	const zoomFactor = getAppConfig('zoomFactor')
 	const window = new BrowserWindow({
-		title: buildTitle('Authentication'),
+		title: buildTitle(),
 		...getScaledWindowSize({
 			width: 450,
 			height: 500,

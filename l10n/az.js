@@ -24,6 +24,7 @@ OC.L10N.register(
     "Report a bug" : "Səhv haqqında bildir",
     "Settings" : "Quraşdırmalar",
     "Back" : "Geri",
+    "Quit" : "Çıx",
     "Today" : "Bu gün",
     "Invisible" : "Görünməz"
 },

@@ -65,6 +65,7 @@ OC.L10N.register(
     "View profile" : "عرض الملف الشخصي",
     "Set custom status" : "تعيين حالة مخصصة",
     "Log out" : "خروج",
+    "Quit" : "خروج",
     "User status" : "حالة العضو",
     "Clear custom status" : "محو حالة مخصصة",
     "Set user status" : "تعيين حالة المستخدم",

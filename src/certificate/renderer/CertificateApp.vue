@@ -100,7 +100,7 @@ const isAdvanced = ref(false)
 	flex-direction: column;
 	align-items: stretch;
 	gap: calc(4 * var(--default-grid-baseline));
-	height: 100%;
+	height: 100vh;
 	padding: calc(4 * var(--default-grid-baseline));
 	background: var(--color-main-background);
 }

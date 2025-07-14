@@ -8,7 +8,7 @@ const os = require('node:os')
 const { getAppConfig } = require('../app/AppConfig.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { osTitle } = require('../app/system.utils.ts')
-const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle } = require('../app/utils.ts')
+const { getScaledWindowMinSize, getScaledWindowSize, applyZoom } = require('../app/utils.ts')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { parseLoginRedirectUrl } = require('./login.service.js')
 
@@ -25,12 +25,10 @@ function openLoginWebView(parentWindow, serverUrl) {
 	return new Promise((resolve) => {
 		const WIDTH = 750
 		const HEIGHT = 750
-		const TITLE = buildTitle('Login')
 
 		const zoomFactor = getAppConfig('zoomFactor')
 
 		const window = new BrowserWindow({
-			title: TITLE,
 			...getScaledWindowSize({
 				width: WIDTH,
 				height: HEIGHT,
@@ -66,12 +64,11 @@ function openLoginWebView(parentWindow, serverUrl) {
 		})
 
 		window.webContents.on('did-start-loading', () => {
-			window.setTitle(`${TITLE} [Loading...]`)
+			window.setTitle('[Loading...]')
 			window.setProgressBar(2, { mode: 'indeterminate' })
 		})
 
 		window.webContents.on('did-stop-loading', () => {
-			window.setTitle(TITLE)
 			window.setProgressBar(-1)
 		})
 

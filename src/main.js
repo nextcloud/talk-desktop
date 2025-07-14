@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, ipcMain, desktopCapturer, systemPreferences, shell, BrowserWindow, session } = require('electron')
+const { app, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
 const { spawn } = require('node:child_process')
 const fs = require('node:fs')
 const path = require('node:path')
@@ -18,6 +18,7 @@ const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotifi
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { systemInfo, isLinux, isMac, isWindows, isSameExecution } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
+const { buildTitle } = require('./app/utils.ts')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
 const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
 const { openLoginWebView } = require('./authentication/login.window.js')
@@ -88,7 +89,7 @@ if (process.env.NODE_ENV === 'production' && !BUILD_CONFIG.isBranded) {
 
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getSystemInfo', () => systemInfo)
-ipcMain.handle('app:getTitle', (event) => BrowserWindow.fromWebContents(event.sender).title || app.getName())
+ipcMain.handle('app:buildTitle', (event, title) => buildTitle(title))
 ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_') ?? 'en',
 	// Note: Linux may have C (POSIX) locale, which results in an empty preferred languages list

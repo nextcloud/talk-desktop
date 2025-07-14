@@ -27,11 +27,12 @@ const TALK_DESKTOP = {
 	 */
 	packageInfo,
 	/**
-	 * Get the current window title
+	 * Build a title for the window from base (product name) and release channel
 	 *
-	 * @return {Promise<string>}
+	 * @param {string} [title] - Window title if any
+	 * @return {Promise<string>} - Full window title with base and release channel
 	 */
-	getTitle: () => ipcRenderer.invoke('app:getTitle'),
+	buildTitle: (title) => ipcRenderer.invoke('app:buildTitle', title),
 	/**
 	 * Quit the application
 	 */

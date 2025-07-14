@@ -13,8 +13,8 @@ import NcActionButton from '@nextcloud/vue/components/NcActionButton'
 import NcActionLink from '@nextcloud/vue/components/NcActionLink'
 import NcActions from '@nextcloud/vue/components/NcActions'
 import NcActionSeparator from '@nextcloud/vue/components/NcActionSeparator'
-import IconBug from 'vue-material-design-icons/Bug.vue'
-import IconCog from 'vue-material-design-icons/Cog.vue'
+import IconBugOutline from 'vue-material-design-icons/BugOutline.vue'
+import IconCogOutline from 'vue-material-design-icons/CogOutline.vue'
 import IconInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
 import IconMenu from 'vue-material-design-icons/Menu.vue'
 import IconReload from 'vue-material-design-icons/Reload.vue'
@@ -60,7 +60,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 		</NcActionButton>
 		<NcActionLink v-if="!BUILD_CONFIG.isBranded" :href="packageInfo.bugs.create || packageInfo.bugs.url" target="_blank">
 			<template #icon>
-				<IconBug :size="20" />
+				<IconBugOutline :size="20" />
 			</template>
 			{{ t('talk_desktop', 'Report a bug') }}
 		</NcActionLink>
@@ -69,7 +69,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 
 		<NcActionButton close-after-click @click="openSettings">
 			<template #icon>
-				<IconCog :size="20" />
+				<IconCogOutline :size="20" />
 			</template>
 			{{ t('talk_desktop', 'Settings') }}
 		</NcActionButton>

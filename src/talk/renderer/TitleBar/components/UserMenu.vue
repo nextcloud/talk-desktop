@@ -174,7 +174,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							<UiMenuSeparator />
 						</template>
 
-						<UiMenuItem tag="button" @click="logout">
+						<UiMenuItem tag="button" @click.native="logout">
 							<template #icon>
 								<IconLogout :size="20" />
 							</template>
@@ -183,7 +183,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 
 						<UiMenuSeparator />
 
-						<UiMenuItem tag="button" @click="quit">
+						<UiMenuItem tag="button" @click.native="quit">
 							<template #icon>
 								<IconPower :size="20" />
 							</template>

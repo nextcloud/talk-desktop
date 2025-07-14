@@ -213,18 +213,21 @@ function applyDownloadLinkHandler() {
 
 /**
  * Make all required initial setup for the web page for authorized user: server-rendered data, globals and ect.
+ *
+ * @param {() => string} [title] - Getter for a custom title
  */
-export async function setupWebPage() {
-	document.title = await window.TALK_DESKTOP.getTitle()
+export async function setupWebPage({
+	title,
+} = {}) {
 	appData.fromJSON(await window.TALK_DESKTOP.getAppData())
 	await initAppConfig()
+	await applyL10n()
+	document.title = await window.TALK_DESKTOP.buildTitle(title?.())
 	applyInitialState()
 	initGlobals()
-	window.systemInfo = await window.TALK_DESKTOP.getSystemInfo()
 	applyUserData()
 	applyHeaderHeight()
 	applyAxiosInterceptors()
-	await applyL10n()
 	applyDownloadLinkHandler()
 
 	// Re-fetch appData if dirty
@@ -239,4 +242,6 @@ export async function setupWebPage() {
 		// Re-apply initial state after re-fetch
 		applyInitialState()
 	}
+
+	window.systemInfo = await window.TALK_DESKTOP.getSystemInfo()
 }

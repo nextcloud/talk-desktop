@@ -15,9 +15,8 @@ const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
  * @return {import('electron').BrowserWindow}
  */
 function createHelpWindow(parentWindow) {
-	const TITLE = buildTitle('About')
 	const window = new BrowserWindow({
-		title: TITLE,
+		title: buildTitle(),
 		...getScaledWindowSize({
 			width: 1024,
 			height: 720,

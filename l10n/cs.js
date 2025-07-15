@@ -123,6 +123,8 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "Verze klienta je příliš stará a už nepodporovaná tímto serverem. Je třeba ho zaktualizovat.",
     "Update Talk Desktop" : "Zaktualizovat Talk pro počítač",
     "Continue in web browser" : "Pokračovat ve webovém prohlížeči",
+    "Authentication" : "Ověřování se",
+    "Security warning" : "Varování ohledně zabezpečení",
     "Application" : "Aplikace",
     "Online" : "Online",
     "Away" : "Pryč",

@@ -35,6 +35,8 @@ OC.L10N.register(
     "Today" : "วันนี้",
     "This week" : "สัปดาห์นี้",
     "Status message" : "ข้อความสถานะ",
+    "Authentication" : "การตรวจสอบสิทธิ์",
+    "Security warning" : "คำเตือนความปลอดภัย",
     "Online" : "ออนไลน์",
     "Away" : "ไม่อยู่",
     "Invisible" : "มองไม่เห็น",

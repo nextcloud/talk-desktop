@@ -40,6 +40,8 @@ OC.L10N.register(
     "This week" : "This week",
     "Status message" : "Status message",
     "Loading …" : "Loading …",
+    "Authentication" : "Authentication",
+    "Security warning" : "Security warning",
     "Application" : "Application",
     "Online" : "Online",
     "Away" : "Away",

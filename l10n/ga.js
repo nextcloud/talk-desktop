@@ -123,6 +123,8 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "Tá leagan an chliaint ró-shean agus ní thacaíonn an freastalaí seo leis a thuilleadh. Tá nuashonrú ag teastáil.",
     "Update Talk Desktop" : "Nuashonraigh Deasc Caint",
     "Continue in web browser" : "Lean ar aghaidh sa bhrabhsálaí gréasáin",
+    "Authentication" : "Fíordheimhniú",
+    "Security warning" : "Rabhadh slándála",
     "Application" : "Iarratas",
     "Online" : "Ar líne",
     "Away" : "Amach",

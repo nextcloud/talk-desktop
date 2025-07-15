@@ -27,6 +27,7 @@ OC.L10N.register(
     "Today" : "Ass-a",
     "This week" : "Dduṛt agi",
     "Loading …" : "Asali ...",
+    "Security warning" : "Alγu n tγellist",
     "Away" : "Akin",
     "Invisible" : "Ur d-ittban ara"
 },

@@ -42,6 +42,8 @@ OC.L10N.register(
     "Status message" : "Thông báo trạng thái",
     "Loading …" : "Đang tải …",
     "Share screen" : "Chia sẽ màn hình",
+    "Authentication" : "Xác thực",
+    "Security warning" : "Cảnh báo bảo mật",
     "Online" : "Trực tuyến",
     "Away" : "Tạm vắng",
     "Do not disturb" : "Đừng làm phiền",

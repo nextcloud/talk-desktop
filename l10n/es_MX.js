@@ -41,6 +41,8 @@ OC.L10N.register(
     "Loading …" : "Cargando …",
     "Layout" : "Disposición",
     "Share screen" : "Compartir la pantalla",
+    "Authentication" : "Autenticación",
+    "Security warning" : "Advertencia de seguridad",
     "Application" : "Aplicación",
     "Online" : "En línea",
     "Away" : "Ausente",

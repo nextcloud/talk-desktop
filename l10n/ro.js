@@ -40,6 +40,8 @@ OC.L10N.register(
     "Today" : "Azi",
     "This week" : "Săptămâna asta",
     "Emoji for your status message" : "Emoji pentru mesajul de status",
+    "Authentication" : "Autentificare",
+    "Security warning" : "Alertă de securitate",
     "Away" : "Departe",
     "Offline" : "Offline",
     "You missed a call from {user}" : "Ați pierdut un apel de la {user}",

@@ -84,6 +84,8 @@ OC.L10N.register(
     "Share screen" : "ئېكراننى ھەمبەھىرلەش",
     "Upgrade required" : "يېڭىلاش تەلەپ قىلىنىدۇ",
     "The client version is too old and no longer supported by this server. Update is required." : "خېرىدار نۇسخىسى بەك كونا ، ئەمدى بۇ مۇلازىمېتىر قوللىمايدۇ. يېڭىلاش تەلەپ قىلىنىدۇ.",
+    "Authentication" : "دەلىللەش",
+    "Security warning" : "بىخەتەرلىك ئاگاھلاندۇرۇشى",
     "Application" : "ئىلتىماس",
     "Online" : "توردا",
     "Away" : "يىراق",

@@ -122,6 +122,8 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "Toleo la mteja ni la zamani sana na halitumiki tena na seva hii. Usasishaji unahitajika.",
     "Update Talk Desktop" : "Sasisha Desktop ya Talk",
     "Continue in web browser" : "Endelea katika kivinjari cha wavuti",
+    "Authentication" : "Uthibitisho",
+    "Security warning" : "Onyo la usalama",
     "Application" : "Ombi",
     "Online" : "Mtandaoni",
     "Away" : "Mbali",

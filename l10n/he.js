@@ -40,6 +40,8 @@ OC.L10N.register(
     "Status message" : "הודעת מצב",
     "Loading …" : "בטעינה…",
     "Share screen" : "שיתוף המסך",
+    "Authentication" : "אימות",
+    "Security warning" : "אזהרת אבטחה",
     "Online" : "מקוון",
     "Away" : "לא פה",
     "Invisible" : "נסתרת",

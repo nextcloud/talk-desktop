@@ -100,6 +100,8 @@ OC.L10N.register(
     "Upgrade required" : "Se requiere actualización",
     "The client version is too old and no longer supported by this server. Update is required." : "Esta versión del cliente es muy antigua y no está soportada por este servidor. Se requiere una actualización.",
     "Update Talk Desktop" : "Actualizar Talk Desktop",
+    "Authentication" : "Autenticación",
+    "Security warning" : "Advertencia de seguridad",
     "Application" : "Aplicación",
     "Online" : "En línea",
     "Away" : "Ausente",

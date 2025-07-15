@@ -61,6 +61,8 @@ OC.L10N.register(
     "Wide" : "Zabala",
     "Share screen" : "Partekatu pantaila",
     "Upgrade required" : "Bertsio-berritzea beharrezkoa",
+    "Authentication" : "Autentifikazioa",
+    "Security warning" : "Segurtasun abisua",
     "Application" : "Aplikazioa",
     "Online" : "Linean",
     "Away" : "Kanpoan",

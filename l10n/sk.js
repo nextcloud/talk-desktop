@@ -96,6 +96,8 @@ OC.L10N.register(
     "Preview is not available" : "Náhľad nie je dostupný",
     "Upgrade required" : "Vyžaduje sa aktualizácia",
     "The client version is too old and no longer supported by this server. Update is required." : "Verzia klienta je príliš stará a tento server ju už nepodporuje. Vyžaduje sa aktualizácia.",
+    "Authentication" : "Autentifikácia",
+    "Security warning" : "Bezpečnostné varovanie",
     "Application" : "Aplikácia",
     "Online" : "Pripojený",
     "Away" : "Preč",

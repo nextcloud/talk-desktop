@@ -36,6 +36,8 @@ OC.L10N.register(
     "This week" : "Pekan ini",
     "Status message" : "Pesan status",
     "Loading …" : "Memuat …",
+    "Authentication" : "Otentikasi",
+    "Security warning" : "Peringatan keamanan",
     "Online" : "Online",
     "Away" : "Jauh",
     "Do not disturb" : "Jangan diganggu",

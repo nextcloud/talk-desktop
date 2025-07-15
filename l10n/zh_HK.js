@@ -123,6 +123,8 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "客戶端版本太舊了，此伺服器不再支援。需要更新。",
     "Update Talk Desktop" : "更新 Talk 桌面版",
     "Continue in web browser" : "在網頁瀏覽器中繼續",
+    "Authentication" : "驗證",
+    "Security warning" : "安全性警示",
     "Application" : "應用程式",
     "Online" : "在線",
     "Away" : "離開",

@@ -42,6 +42,8 @@ OC.L10N.register(
     "Today" : "Hoje",
     "This week" : "Esta semana",
     "Status message" : "Mensagem de estado",
+    "Authentication" : "Autenticação",
+    "Security warning" : "Aviso de segurança",
     "Online" : "On-line",
     "Away" : "Ausente",
     "Do not disturb" : "Não incomodar",

@@ -123,6 +123,8 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "Kasutajaliidese versioon on vananenud ja ei ole toetatud. Uuendus on vajalik.",
     "Update Talk Desktop" : "Uuenda Talk Töölaud",
     "Continue in web browser" : "Jätka veebibrauseris",
+    "Authentication" : "Autentimine",
+    "Security warning" : "Turvahoiatus",
     "Application" : "Rakendus",
     "Online" : "Võrgus",
     "Away" : "Eemal",

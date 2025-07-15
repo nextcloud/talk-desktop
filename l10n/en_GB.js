@@ -123,6 +123,8 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "The client version is too old and no longer supported by this server. Update is required.",
     "Update Talk Desktop" : "Update Talk Desktop",
     "Continue in web browser" : "Continue in web browser",
+    "Authentication" : "Authentication",
+    "Security warning" : "Security warning",
     "Application" : "Application",
     "Online" : "Online",
     "Away" : "Away",

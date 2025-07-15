@@ -29,6 +29,8 @@ OC.L10N.register(
     "Today" : "დღეს",
     "This week" : "ამ კვირაში",
     "Share screen" : "ეკრანის გაზიარება",
+    "Authentication" : "აუტენტიფიკაცია",
+    "Security warning" : "გაფრთხილება უსაფრთხოების შესახებ",
     "Invisible" : "უჩინარი"
 },
 "nplurals=2; plural=(n!=1);");

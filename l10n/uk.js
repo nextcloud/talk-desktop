@@ -61,6 +61,8 @@ OC.L10N.register(
     "Layout" : "Подання",
     "Upgrade required" : "Потрібне оновлення",
     "The client version is too old and no longer supported by this server. Update is required." : "Клієнтська версія дуже застаріла та більше не підтримується сервером. Потрібне оновлення.",
+    "Authentication" : "Автентифікація",
+    "Security warning" : "Попередження безпеки",
     "Application" : "Застосунок",
     "Online" : "Онлайн",
     "Away" : "Немає поряд",

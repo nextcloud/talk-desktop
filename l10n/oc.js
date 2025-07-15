@@ -37,6 +37,8 @@ OC.L10N.register(
     "This week" : "Aquesta setmana",
     "Status message" : "Messatge d’estat",
     "Loading …" : "Cargament…",
+    "Authentication" : "Autentificacion",
+    "Security warning" : "Avertiment de seguretat",
     "Online" : "En linha",
     "Away" : "Absent",
     "Do not disturb" : "Me desturbes pas",

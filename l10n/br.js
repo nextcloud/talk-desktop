@@ -23,6 +23,7 @@ OC.L10N.register(
     "Settings" : "Arventennoù",
     "View profile" : "Gwelet ar profil",
     "Log out" : "Digevreañ",
+    "Quit" : "Kuitaat",
     "Don't clear" : "Arabat diverkañ",
     "Today" : "Hiziv",
     "This week" : "Er sizhun-mañ",

@@ -48,6 +48,8 @@ OC.L10N.register(
     "Emoji for your status message" : "Emoji tilaviestiisi",
     "Loading …" : "Ladataan…",
     "Share screen" : "Jaa näyttö",
+    "Authentication" : "Tunnistautuminen",
+    "Security warning" : "Turvallisuusvaroitus",
     "Application" : "Sovellus",
     "Online" : "Online",
     "Offline" : "Poissa",

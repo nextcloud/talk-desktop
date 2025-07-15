@@ -41,6 +41,8 @@ OC.L10N.register(
     "Loading …" : "Hleð inn …",
     "Layout" : "Framsetning",
     "Share screen" : "Deila skjá",
+    "Authentication" : "Auðkenning",
+    "Security warning" : "Öryggisviðvörun",
     "Application" : "Forrit",
     "Online" : "Á netinu",
     "Away" : "Fjarverandi",

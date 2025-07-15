@@ -16,6 +16,7 @@ OC.L10N.register(
     "Settings" : "Configurationes",
     "Today" : "Hodie",
     "This week" : "Iste septimana",
+    "Authentication" : "Authentication",
     "Invisible" : "Invisibile"
 },
 "nplurals=2; plural=(n != 1);");

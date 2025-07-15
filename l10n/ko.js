@@ -40,6 +40,8 @@ OC.L10N.register(
     "Today" : "오늘",
     "Loading …" : "불러오는 중 ...",
     "Share screen" : "화면 공유",
+    "Authentication" : "인증",
+    "Security warning" : "보안 경고",
     "Application" : "애플리케이션",
     "Away" : "자리비움",
     "Do not disturb" : "방해 없음",

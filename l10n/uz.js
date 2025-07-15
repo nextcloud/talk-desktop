@@ -33,6 +33,8 @@ OC.L10N.register(
     "This week" : "This week",
     "Emoji for your status message" : "Xabar holati uchun emoji",
     "Status message" : "Status message",
+    "Authentication" : "Autentifikatsiya",
+    "Security warning" : "Xavfsizlik haqida ogohlantirish",
     "Online" : "Online",
     "Away" : "Away",
     "Do not disturb" : "Do not disturb",

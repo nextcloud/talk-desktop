@@ -123,6 +123,8 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "İstemci sürümü çok eski ve artık bu sunucu tarafından desteklenmiyor. Güncellenmesi gerekli.",
     "Update Talk Desktop" : "Konuş bilgisayar uygulamasını güncelle",
     "Continue in web browser" : "Tarayıcı ile ilerle",
+    "Authentication" : "Kimlik doğrulama",
+    "Security warning" : "Güvenlik uyarısı",
     "Application" : "Uygulama",
     "Online" : "Çevrim içi",
     "Away" : "Uzakta",

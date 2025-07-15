@@ -40,6 +40,8 @@ OC.L10N.register(
     "The file is empty" : "Datne ir tukša",
     "Share screen" : "Koplietot ekrānu",
     "The client version is too old and no longer supported by this server. Update is required." : "Klienta versija ir pārāk vecas, un šis serveris to vairs neatbalsta. Nepieciešama atjaunināšana.",
+    "Authentication" : "Autentifikācija",
+    "Security warning" : "Drošības brīdinājums",
     "Application" : "Lietotne",
     "Invisible" : "Neredzama"
 },

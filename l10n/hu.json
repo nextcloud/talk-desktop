@@ -50,6 +50,8 @@
     "Share screen" : "Képernyő megosztása",
     "Upgrade required" : "Frissítés szükséges",
     "The client version is too old and no longer supported by this server. Update is required." : "Az alkalmazás túl régi, és már nem támogatja ez a kiszolgáló. Frissítse.",
+    "Authentication" : "Hitelesítés",
+    "Security warning" : "Biztonsági figyelmeztetés",
     "Application" : "Alkalmazás",
     "Online" : "Elérhető",
     "Do not disturb" : "Ne zavarjanak",

@@ -22,6 +22,7 @@ OC.L10N.register(
     "Today" : "ມື້ນີ້",
     "This week" : "ທິດນີ້",
     "Status message" : "ສະຖານະຂໍ້ຄວາມ",
+    "Security warning" : "ຄໍາເຕືອນດ້ານຄວາມປອດໄພ",
     "Online" : "ອອນລາຍ",
     "Away" : "ອອກໄປ",
     "Do not disturb" : "ຫ້າມລົບກວນ",

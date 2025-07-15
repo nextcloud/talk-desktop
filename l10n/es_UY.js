@@ -27,6 +27,8 @@ OC.L10N.register(
     "Today" : "Hoy",
     "This week" : "Esta semana",
     "Share screen" : "Compartir la pantalla",
+    "Authentication" : "Autenticación",
+    "Security warning" : "Advertencia de seguridad",
     "Away" : "Ausente",
     "Invisible" : "Invisible"
 },

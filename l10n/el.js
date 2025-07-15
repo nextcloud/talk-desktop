@@ -47,6 +47,8 @@ OC.L10N.register(
     "Today" : "Σήμερα",
     "Loading …" : "Φόρτωση…",
     "Share screen" : "Διαμοιρασμός οθόνης",
+    "Authentication" : "Πιστοποίηση",
+    "Security warning" : "Προειδοποίηση ασφαλείας",
     "Application" : "Εφαρμογή",
     "Away" : "Λείπω",
     "Invisible" : "Αόρατο",

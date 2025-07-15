@@ -88,6 +88,8 @@ OC.L10N.register(
     "Share screen" : "Scherm delen",
     "Upgrade required" : "Upgrade vereist",
     "The client version is too old and no longer supported by this server. Update is required." : "De cliëntversie is te oud en wordt niet langer ondersteund door de huidige server. Update is vereist.",
+    "Authentication" : "Authenticatie",
+    "Security warning" : "Beveiligingswaarschuwing",
     "Application" : "Applicatie",
     "Online" : "Online",
     "Away" : "Afwezig",

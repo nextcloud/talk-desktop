@@ -31,6 +31,8 @@ OC.L10N.register(
     "Today" : "Sot",
     "This week" : "Këtë javë",
     "Share screen" : "Ndaje ekranin",
+    "Authentication" : "Mirëfilltësim",
+    "Security warning" : "Sinjalizim sigurie",
     "Invisible" : "I padukshëm"
 },
 "nplurals=2; plural=(n != 1);");

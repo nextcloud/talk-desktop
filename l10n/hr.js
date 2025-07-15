@@ -39,6 +39,8 @@ OC.L10N.register(
     "User status" : "Status korisnika",
     "Loading …" : "Učitavanje…",
     "Share screen" : "Dijeli zaslon",
+    "Authentication" : "Autentifikacija",
+    "Security warning" : "Sigurnosno upozorenje",
     "You missed a call from {user}" : "Propustili ste poziv od {user}",
     "You missed a group call in {call}" : "Propustili ste grupni poziv u {call}"
 },

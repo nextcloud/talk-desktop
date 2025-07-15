@@ -29,6 +29,8 @@ OC.L10N.register(
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
     "Loading …" : "Ŝargado...",
+    "Authentication" : "Aŭtentigo",
+    "Security warning" : "Sekureca averto",
     "Invisible" : "Nevidebla"
 },
 "nplurals=2; plural=(n != 1);");

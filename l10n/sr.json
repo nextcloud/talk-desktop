@@ -121,6 +121,8 @@
     "The client version is too old and no longer supported by this server. Update is required." : "Верзија клијента је врло стара и овај сервер је не подржава. Неопходно је ажурирање.",
     "Update Talk Desktop" : "Ажурирај Talk Desktop",
     "Continue in web browser" : "Настави у веб прегледачу",
+    "Authentication" : "Провера идентитета",
+    "Security warning" : "Безбедносно упозорење",
     "Application" : "Апликација",
     "Online" : "На мрежи",
     "Away" : "Одсутан",

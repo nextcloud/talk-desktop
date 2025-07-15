@@ -41,6 +41,8 @@ OC.L10N.register(
     "Today" : "Oe ",
     "Status message" : "Messàgiu de istadu",
     "Loading …" : "Carrigamentu …",
+    "Authentication" : "Autenticatzione",
+    "Security warning" : "Avisu de seguresa",
     "Away" : "Ausente",
     "Do not disturb" : "No istorbes",
     "Invisible" : "Invisìbile",

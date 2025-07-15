@@ -53,6 +53,8 @@ OC.L10N.register(
     "Emoji for your status message" : "Izrazne ikone za stanje sporočila",
     "Loading …" : "Poteka nalaganje …",
     "Share screen" : "Pokaži zaslon",
+    "Authentication" : "Overitev",
+    "Security warning" : "Varnostno opozorilo",
     "Application" : "Program",
     "Online" : "Trenutno na spletu",
     "Away" : "Ne spremljam",

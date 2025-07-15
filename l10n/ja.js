@@ -44,6 +44,8 @@ OC.L10N.register(
     "Loading …" : "読み込み中…",
     "Layout" : "レーアウト",
     "Share screen" : "画面共有",
+    "Authentication" : "認証",
+    "Security warning" : "セキュリティ警告",
     "Application" : "アプリケーション",
     "Do not disturb" : "取り込み中",
     "Invisible" : "ステータスを隠す",

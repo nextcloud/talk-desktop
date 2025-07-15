@@ -16,6 +16,8 @@
     "Settings" : "Innstillingar",
     "Quit" : "Avslutt",
     "Today" : "I dag",
+    "Authentication" : "Godkjenning",
+    "Security warning" : "Tryggingsåtvaring",
     "Away" : "Borte",
     "Invisible" : "Usynleg"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

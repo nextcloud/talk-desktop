@@ -62,6 +62,8 @@ OC.L10N.register(
     "The file is empty" : "Failas yra tuščias",
     "Share screen" : "Bendrinti ekraną",
     "Preview is not available" : "Peržiūra neprieinama",
+    "Authentication" : "Tapatybės nustatymas",
+    "Security warning" : "Saugumo įspėjimas",
     "Away" : "Atsitraukęs",
     "Do not disturb" : "Netrukdyti",
     "Invisible" : "Nematomas",

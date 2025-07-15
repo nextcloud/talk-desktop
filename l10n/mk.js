@@ -36,6 +36,8 @@ OC.L10N.register(
     "This week" : "Оваа недела",
     "Status message" : "Статус порака",
     "Share screen" : "Сподели екран",
+    "Authentication" : "Автентикација",
+    "Security warning" : "Безбедносно предупредување",
     "Online" : "Присутен",
     "Away" : "Далеку",
     "Invisible" : "Невидлив",

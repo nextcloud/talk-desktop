@@ -69,6 +69,8 @@ OC.L10N.register(
     "Share screen" : "Del skjerm",
     "Upgrade required" : "Oppgradering kreves",
     "The client version is too old and no longer supported by this server. Update is required." : "Klientversjonen er for gammel og støttes ikke lenger av denne serveren. Oppdatering er nødvendig.",
+    "Authentication" : "Autentisering",
+    "Security warning" : "Sikkerhetsadvarsel",
     "Application" : "Applikasjon",
     "Online" : "Pålogget",
     "Away" : "Borte",

@@ -58,7 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "Когда не в режиме «Не беспокоить»",
     "Never" : "Никогда",
     "None" : "Отсутствует",
-    "Some changes require a relaunch to take effect" : "Некоторые изменения требует перезапуска приложения",
+    "Some changes require a relaunch to take effect" : "Некоторые изменения требуют перезапуск приложения",
     "Restart" : "Перезапуск",
     "General" : "Основные",
     "Launch at startup" : "Запускать при входе в систему",

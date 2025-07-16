@@ -48,6 +48,8 @@ OC.L10N.register(
     "Status message" : "Mensaxe del estáu",
     "Loading …" : "Cargando…",
     "Share screen" : "Compartir pantalla",
+    "Authentication" : "Autenticación",
+    "Security warning" : "Alvertencia de seguranza",
     "Application" : "Aplicación",
     "Online" : "En llinia",
     "Away" : "Ausente",

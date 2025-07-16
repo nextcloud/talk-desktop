@@ -18,6 +18,7 @@ OC.L10N.register(
     "User status" : "Gebruikerstatus",
     "Don't clear" : "Moenie wis nie",
     "This week" : "Vandeesweek",
+    "Security warning" : "Sekuriteitswaarskuwing",
     "Invisible" : "Onsigbaar"
 },
 "nplurals=2; plural=(n != 1);");

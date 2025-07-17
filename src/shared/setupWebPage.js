@@ -168,8 +168,8 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 		core: {
 			capabilities,
 			config: {
-				version: '25.0.2.3', // TODO: Find in Capabilities
-				versionstring: '25.0.2', // TODO: Find in Capabilities
+				version: appData.version.nextcloud?.string ?? '25.0.2.3',
+				versionstring: appData.version.nextcloud?.string ?? '25.0.2',
 				modRewriteWorking: false, // Forced to false. Is it used?
 			},
 		},

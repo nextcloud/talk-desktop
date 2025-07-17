@@ -2,9 +2,25 @@ version: 2
 updates:
 - package-ecosystem: npm
   directory: "/"
+  commit-message:
+    prefix: "chore"
+    include: "scope"
+  versioning-strategy: "increase"
   schedule:
     interval: weekly
     day: saturday
     time: "03:00"
     timezone: Europe/Berlin
-  open-pull-requests-limit: 10
+
+- package-ecosystem: npm
+  target-branch: stable1
+  directory: "/"
+  commit-message:
+    prefix: "chore"
+    include: "scope"
+  versioning-strategy: "increase"
+  schedule:
+    interval: weekly
+    day: saturday
+    time: "03:00"
+    timezone: Europe/Berlin

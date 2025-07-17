@@ -24,7 +24,9 @@ OC.L10N.register(
     "Report a bug" : "Səhv haqqında bildir",
     "Settings" : "Quraşdırmalar",
     "Back" : "Geri",
+    "Quit" : "Çıx",
     "Today" : "Bu gün",
+    "Authentication" : "Autentifikasiya",
     "Invisible" : "Görünməz"
 },
 "nplurals=2; plural=(n != 1);");

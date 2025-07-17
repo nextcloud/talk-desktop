@@ -19,6 +19,7 @@ OC.L10N.register(
     "About" : "Mu dhèidhinn",
     "Back" : "Air ais",
     "Log out" : "Clàraich a-mach",
+    "Quit" : "Fàg an-seo",
     "Don't clear" : "Na falamhaich",
     "Today" : "An-diugh",
     "This week" : "An t-seachdain seo",

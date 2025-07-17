@@ -16,6 +16,7 @@ OC.L10N.register(
     "General" : "সাধারণ",
     "Reset" : "পূণঃনির্ধানণ",
     "Settings" : "সেটিংস",
+    "Quit" : "বন্ধ",
     "Today" : "আজ"
 },
 "nplurals=2; plural=(n != 1);");

@@ -14,9 +14,11 @@ OC.L10N.register(
     "Settings" : "Instellings",
     "About" : "Aangaande",
     "Log out" : "Teken af",
+    "Quit" : "Sluit af",
     "User status" : "Gebruikerstatus",
     "Don't clear" : "Moenie wis nie",
     "This week" : "Vandeesweek",
+    "Security warning" : "Sekuriteitswaarskuwing",
     "Invisible" : "Onsigbaar"
 },
 "nplurals=2; plural=(n != 1);");

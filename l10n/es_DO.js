@@ -24,10 +24,13 @@ OC.L10N.register(
     "Settings" : "Configuraciones ",
     "About" : "Acerca",
     "Log out" : "Cerrar sesión",
+    "Quit" : "Salir",
     "Today" : "Hoy",
     "This week" : "Esta semana",
     "Status message" : "Mensaje de estado",
     "Share screen" : "Compartir la pantalla",
+    "Authentication" : "Autenticación",
+    "Security warning" : "Advertencia de seguridad",
     "Away" : "Lejos",
     "Invisible" : "Invisible"
 },

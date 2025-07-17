@@ -22,10 +22,12 @@ OC.L10N.register(
     "About" : "Γef",
     "Back" : "Retour",
     "Log out" : "Senser",
+    "Quit" : "Quitter",
     "Don't clear" : "Ur seffeḍ ara",
     "Today" : "Ass-a",
     "This week" : "Dduṛt agi",
     "Loading …" : "Asali ...",
+    "Security warning" : "Alγu n tγellist",
     "Away" : "Akin",
     "Invisible" : "Ur d-ittban ara"
 },

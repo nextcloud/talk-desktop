@@ -16,6 +16,7 @@ OC.L10N.register(
     "Reset" : "тохируулах",
     "Settings" : "Тохиргоо",
     "Back" : "Буцах",
+    "Quit" : "Гарах",
     "Today" : "өнөөдөр",
     "This week" : "7 хоног",
     "Invisible" : "Үл харагдах"

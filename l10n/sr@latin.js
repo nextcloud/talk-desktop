@@ -36,6 +36,7 @@ OC.L10N.register(
     "About" : "O programu",
     "View profile" : "Vidi profil",
     "Log out" : "Odjava",
+    "Quit" : "Napusti",
     "User status" : "Status korisnika",
     "Your status was set automatically" : "Vaš status je postavljen automatski",
     "Don't clear" : "Ne briši",

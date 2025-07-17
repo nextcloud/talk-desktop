@@ -19,6 +19,7 @@ OC.L10N.register(
     "About" : "Hakynda",
     "Back" : "Yzyna",
     "Log out" : "Hasapdan çykmak",
+    "Quit" : "Çykmak, taşlamak",
     "Don't clear" : "Arassalama",
     "Today" : "Şu gün",
     "This week" : "Bu hepdede",

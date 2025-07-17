@@ -16,7 +16,10 @@ OC.L10N.register(
     "Appearance" : "Utsjånad",
     "Report a bug" : "Rapporter feil",
     "Settings" : "Innstillingar",
+    "Quit" : "Avslutt",
     "Today" : "I dag",
+    "Authentication" : "Godkjenning",
+    "Security warning" : "Tryggingsåtvaring",
     "Away" : "Borte",
     "Invisible" : "Usynleg"
 },

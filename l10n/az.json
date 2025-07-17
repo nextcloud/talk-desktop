@@ -22,7 +22,9 @@
     "Report a bug" : "Səhv haqqında bildir",
     "Settings" : "Quraşdırmalar",
     "Back" : "Geri",
+    "Quit" : "Çıx",
     "Today" : "Bu gün",
+    "Authentication" : "Autentifikasiya",
     "Invisible" : "Görünməz"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

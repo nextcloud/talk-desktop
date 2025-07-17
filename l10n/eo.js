@@ -24,10 +24,13 @@ OC.L10N.register(
     "Report a bug" : "Raporti problemon",
     "Settings" : "Agordoj",
     "View profile" : "Vidi profilon",
+    "Quit" : "Forlasi",
     "Today" : "Hodiaŭ",
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
     "Loading …" : "Ŝargado...",
+    "Authentication" : "Aŭtentigo",
+    "Security warning" : "Sekureca averto",
     "Invisible" : "Nevidebla"
 },
 "nplurals=2; plural=(n != 1);");

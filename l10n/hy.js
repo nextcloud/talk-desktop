@@ -16,6 +16,7 @@ OC.L10N.register(
     "Settings" : "Կարգավորումներ",
     "About" : "Մասին",
     "Today" : "Այսօր",
-    "This week" : "այս շաբաթ"
+    "This week" : "այս շաբաթ",
+    "Security warning" : "Անվտանգության զգուշացում"
 },
 "nplurals=2; plural=(n != 1);");

@@ -5,6 +5,17 @@
 
 # Changelog
 
+## v1.2.5 - 2025-07-17
+
+### Fixes
+
+- Logout and Quit buttons do nothing [#1378](https://github.com/nextcloud/talk-desktop/pull/1378)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.1.2 in both beta and stable release channels [#1384](https://github.com/nextcloud/talk-desktop/pull/1384)
+- Electron is updated to 37, including Chromium 138 [#1382](https://github.com/nextcloud/talk-desktop/pull/1382)
+
 ## v1.2.4 - 2025-07-11
 
 ### Added

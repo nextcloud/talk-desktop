@@ -6,6 +6,7 @@ OC.L10N.register(
     "Close" : "Затвори",
     "Join call" : "Приклучи се кон повикот",
     "Advanced" : "Напредно",
+    "Proceed" : "Продолжи",
     "Cancel" : "Откажи",
     "Valid until" : "Валиден до",
     "License" : "Лиценца",

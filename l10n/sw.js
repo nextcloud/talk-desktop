@@ -86,6 +86,7 @@ OC.L10N.register(
     "View profile" : "Angalia wasifu",
     "Set custom status" : "Pangilia hadhi maalum",
     "Log out" : "Ondoka",
+    "Quit" : "Acha",
     "User status" : "Hadhi ya mtumiaji",
     "Clear custom status" : "Futa hadhi maalum",
     "Set user status" : "Pangilia hadhi ya mtumiaji",

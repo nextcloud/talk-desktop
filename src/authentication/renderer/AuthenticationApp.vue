@@ -10,6 +10,7 @@ import NcButton from '@nextcloud/vue/components/NcButton'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
 import IconArrowRight from 'vue-material-design-icons/ArrowRight.vue'
+import AppWindow from '../../shared/components/AppWindow.vue'
 import { appData } from '../../app/AppData.js'
 import { refetchAppData } from '../../app/appData.service.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
@@ -157,7 +158,7 @@ async function login() {
 </script>
 
 <template>
-	<div class="wrapper">
+	<AppWindow class="wrapper">
 		<div class="spacer">
 			<div class="logo" />
 		</div>
@@ -209,12 +210,11 @@ async function login() {
 				{{ BUILD_CONFIG.applicationName }} {{ version }}
 			</footer>
 		</div>
-	</div>
+	</AppWindow>
 </template>
 
 <style scoped>
 .wrapper {
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

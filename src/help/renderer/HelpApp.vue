@@ -11,6 +11,7 @@ import { ref } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcRichText from '@nextcloud/vue/components/NcRichText'
 import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
+import AppWindow from '../../shared/components/AppWindow.vue'
 import ButtonCopy from './ButtonCopy.vue'
 import TalkLogo from '../../../img/talk-icon-rounded.svg'
 import { BUILD_CONFIG } from '../../shared/build.config.ts'
@@ -40,7 +41,7 @@ function close() {
 </script>
 
 <template>
-	<div class="help">
+	<AppWindow class="help">
 		<div class="help__title-bar" :class="{ 'help__title-bar--mac': isMac }">
 			<NcButton
 				:aria-label="t('talk_desktop', 'Close')"
@@ -90,14 +91,8 @@ function close() {
 				</div>
 			</div>
 		</div>
-	</div>
+	</AppWindow>
 </template>
-
-<style>
-* {
-	box-sizing: border-box;
-}
-</style>
 
 <style scoped>
 .no-drag {
@@ -107,7 +102,6 @@ function close() {
 .help {
 	--spacing-4: calc(4 * var(--default-grid-baseline));
 	app-region: drag;
-	height: 100vh;
 	padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) 0;
 	display: flex;
 	flex-direction: column;

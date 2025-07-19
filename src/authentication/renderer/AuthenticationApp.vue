@@ -158,7 +158,7 @@ async function login() {
 </script>
 
 <template>
-	<AppWindow class="wrapper">
+	<AppWindow :title="t('talk_desktop', 'Authentication')" class="wrapper">
 		<div class="spacer">
 			<div class="logo" />
 		</div>

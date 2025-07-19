@@ -41,7 +41,7 @@ function close() {
 </script>
 
 <template>
-	<AppWindow class="help">
+	<AppWindow :title="t('talk_desktop', 'About')" class="help">
 		<div class="help__title-bar" :class="{ 'help__title-bar--mac': isMac }">
 			<NcButton
 				:aria-label="t('talk_desktop', 'Close')"

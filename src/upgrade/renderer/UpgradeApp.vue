@@ -17,7 +17,7 @@ const browserLink = generateUrl('/apps/spreed')
 </script>
 
 <template>
-	<AppWindow class="upgrade">
+	<AppWindow :title="t('talk_desktop', 'Upgrade required')" class="upgrade">
 		<div class="upgrade__content">
 			<h2 class="upgrade__heading">
 				{{ t('talk_desktop', 'Upgrade required') }}

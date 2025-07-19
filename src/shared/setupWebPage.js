@@ -213,16 +213,11 @@ function applyDownloadLinkHandler() {
 
 /**
  * Make all required initial setup for the web page for authorized user: server-rendered data, globals and ect.
- *
- * @param {() => string} [title] - Getter for a custom title
  */
-export async function setupWebPage({
-	title,
-} = {}) {
+export async function setupWebPage() {
 	appData.fromJSON(await window.TALK_DESKTOP.getAppData())
 	await initAppConfig()
 	await applyL10n()
-	document.title = await window.TALK_DESKTOP.buildTitle(title?.())
 	applyInitialState()
 	initGlobals()
 	applyUserData()

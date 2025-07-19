@@ -30,7 +30,7 @@ const isAdvanced = ref(false)
 </script>
 
 <template>
-	<AppWindow class="certificate">
+	<AppWindow :title="t('talk_desktop', 'Security warning')" class="certificate">
 		<h2 class="certificate__heading">
 			{{ t('talk_desktop', 'Warning: potential security risk') }}
 		</h2>

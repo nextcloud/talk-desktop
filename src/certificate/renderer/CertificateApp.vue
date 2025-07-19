@@ -13,6 +13,7 @@ import NcButton from '@nextcloud/vue/components/NcButton'
 import NcNoteCard from '@nextcloud/vue/components/NcNoteCard'
 import IconAlert from 'vue-material-design-icons/Alert.vue'
 import IconShieldOffOutline from 'vue-material-design-icons/ShieldOffOutline.vue'
+import AppWindow from '../../shared/components/AppWindow.vue'
 import CertificateInfo from './components/CertificateInfo.vue'
 
 useHotKey('Escape', () => window.close())
@@ -29,7 +30,7 @@ const isAdvanced = ref(false)
 </script>
 
 <template>
-	<div class="certificate">
+	<AppWindow class="certificate">
 		<h2 class="certificate__heading">
 			{{ t('talk_desktop', 'Warning: potential security risk') }}
 		</h2>
@@ -85,14 +86,8 @@ const isAdvanced = ref(false)
 				{{ t('talk_desktop', 'Cancel') }}
 			</NcButton>
 		</div>
-	</div>
+	</AppWindow>
 </template>
-
-<style>
-* {
-	box-sizing: border-box;
-}
-</style>
 
 <style scoped>
 .certificate {
@@ -100,7 +95,6 @@ const isAdvanced = ref(false)
 	flex-direction: column;
 	align-items: stretch;
 	gap: calc(4 * var(--default-grid-baseline));
-	height: 100%;
 	padding: calc(4 * var(--default-grid-baseline));
 	background: var(--color-main-background);
 }

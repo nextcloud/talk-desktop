@@ -11,6 +11,7 @@ import NcButton from '@nextcloud/vue/components/NcButton'
 import IconClose from 'vue-material-design-icons/Close.vue'
 import IconPhone from 'vue-material-design-icons/Phone.vue'
 import IconPhoneHangup from 'vue-material-design-icons/PhoneHangup.vue'
+import AppWindow from '../../shared/components/AppWindow.vue'
 import { postBroadcast } from '../../shared/broadcast.service.ts'
 import { waitCurrentUserHasJoinedCall } from './callbox.service.ts'
 import { playRingtone } from './callbox.utils.ts'
@@ -62,7 +63,7 @@ function dismiss() {
 </script>
 
 <template>
-	<div class="callbox">
+	<AppWindow class="callbox">
 		<div class="callbox__info">
 			<NcAvatar
 				class="callbox__avatar"
@@ -110,14 +111,8 @@ function dismiss() {
 				{{ t('talk_desktop', 'Join call') }}
 			</NcButton>
 		</div>
-	</div>
+	</AppWindow>
 </template>
-
-<style>
-* {
-	box-sizing: border-box;
-}
-</style>
 
 <style scoped>
 .callbox {
@@ -127,7 +122,6 @@ function dismiss() {
 	flex-direction: column;
 	gap: var(--gap);
 	padding: var(--gap);
-	height: 100vh;
 	user-select: none;
 	backdrop-filter: blur(12px);
 	background: rgba(0, 0, 0, .2);

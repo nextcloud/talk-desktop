@@ -36,6 +36,7 @@ OC.L10N.register(
     "Today" : "Денес",
     "This week" : "Оваа недела",
     "Status message" : "Статус порака",
+    "Layout" : "Распоред",
     "Share screen" : "Сподели екран",
     "Authentication" : "Автентикација",
     "Security warning" : "Безбедносно предупредување",

@@ -25,6 +25,7 @@ OC.L10N.register(
     "About" : "Acerca",
     "Log out" : "Cerrar sesión",
     "Quit" : "Salir",
+    "Don't clear" : "No limpiar",
     "Today" : "Hoy",
     "This week" : "Esta semana",
     "Status message" : "Mensaje de estado",
@@ -32,6 +33,7 @@ OC.L10N.register(
     "Authentication" : "Autenticación",
     "Security warning" : "Advertencia de seguridad",
     "Away" : "Ausente",
+    "Do not disturb" : "No molestar",
     "Invisible" : "Invisible"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

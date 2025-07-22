@@ -1,4 +1,5 @@
 { "translations": {
+    "Log in to {applicationName}" : "Pieteikteis {applicationName}",
     "Server address" : "Servera adrese",
     "Log in" : "Pieteikties",
     "Logging in …" : "Notiek pieteikšanās …",

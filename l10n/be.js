@@ -1,6 +1,9 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Log in" : "Увайсці",
+    "Logging in …" : "Уваход …",
+    "Close" : "Закрыць",
     "Cancel" : "Скасаваць",
     "Copy" : "Капіяваць",
     "Ok" : "ОК",

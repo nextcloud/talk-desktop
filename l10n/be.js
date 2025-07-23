@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Log in to {applicationName}" : "Увайсці ў {applicationName}",
     "Log in" : "Увайсці",
     "Logging in …" : "Уваход …",
     "Close" : "Закрыць",
@@ -9,8 +10,11 @@ OC.L10N.register(
     "Ok" : "ОК",
     "No" : "Не",
     "Yes" : "Так",
+    "Never" : "Ніколі",
+    "Reset" : "Скінуць",
     "Settings" : "Налады",
     "Back" : "Назад",
-    "Today" : "Сёння"
+    "Today" : "Сёння",
+    "Authentication" : "Аўтэнтыфікацыя"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

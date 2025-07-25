@@ -9,6 +9,7 @@ import { generateUrl } from '@nextcloud/router'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import IconCloudDownloadOutline from 'vue-material-design-icons/CloudDownloadOutline.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
+import AppWindow from '../../shared/components/AppWindow.vue'
 
 const packageInfo = window.TALK_DESKTOP.packageInfo
 
@@ -16,7 +17,7 @@ const browserLink = generateUrl('/apps/spreed')
 </script>
 
 <template>
-	<div class="upgrade">
+	<AppWindow :title="t('talk_desktop', 'Upgrade required')" class="upgrade">
 		<div class="upgrade__content">
 			<h2 class="upgrade__heading">
 				{{ t('talk_desktop', 'Upgrade required') }}
@@ -47,15 +48,8 @@ const browserLink = generateUrl('/apps/spreed')
 				{{ t('talk_desktop', 'Continue in web browser') }} ↗
 			</NcButton>
 		</div>
-	</div>
+	</AppWindow>
 </template>
-
-<style>
-* {
-	box-sizing: border-box;
-	user-select: none;
-}
-</style>
 
 <style scoped>
 .upgrade {
@@ -65,9 +59,9 @@ const browserLink = generateUrl('/apps/spreed')
 	align-items: stretch;
 	text-align: center;
 	gap: var(--upgrade-spacing);
-	height: 100vh;
 	background: var(--color-main-background);
 	padding: var(--upgrade-spacing);
+	user-select: none;
 }
 
 .upgrade__content {

@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import { provide, ref } from 'vue'
+import AppWindow from '../../shared/components/AppWindow.vue'
 import TalkWrapper from './TalkWrapper/TalkWrapper.vue'
 import TitleBar from './TitleBar/TitleBar.vue'
 import { useNotificationsStore } from './notifications/notifications.store.js'
@@ -19,7 +20,9 @@ window.OCA.Viewer = createViewer()
 </script>
 
 <template>
-	<div id="skip-actions" />
-	<TitleBar id="header" />
-	<TalkWrapper @ready="isTalkInitialized = true" />
+	<AppWindow>
+		<div id="skip-actions" />
+		<TitleBar id="header" />
+		<TalkWrapper @ready="isTalkInitialized = true" />
+	</AppWindow>
 </template>

@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Authentication",
     "Server address" : "Adresse de servitor",
     "Log in" : "Aperir session",
     "Close" : "Clauder",
@@ -16,7 +17,6 @@ OC.L10N.register(
     "Settings" : "Configurationes",
     "Today" : "Hodie",
     "This week" : "Iste septimana",
-    "Authentication" : "Authentication",
     "Invisible" : "Invisibile"
 },
 "nplurals=2; plural=(n != 1);");

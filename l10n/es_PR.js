@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Autenticación",
     "Nextcloud server address" : "Dirección del servidor de Nextcloud",
     "Server address" : "Dirección del servidor",
     "Log in" : "Ingresar",
@@ -8,9 +9,11 @@ OC.L10N.register(
     "Close" : "Cerrar",
     "Dismiss" : "Descartar",
     "Join call" : "Unirse a la llamada",
+    "Security warning" : "Advertencia de seguridad",
     "Advanced" : "Avanzado",
     "Cancel" : "Cancel",
     "Valid until" : "Válido hasta",
+    "About" : "Acerca de",
     "License" : "Licencia",
     "Issues" : "Temas",
     "Ok" : "Ok",
@@ -23,14 +26,11 @@ OC.L10N.register(
     "Menu" : "Menú",
     "Report a bug" : "Reporta un detalle",
     "Settings" : "Configuraciones ",
-    "About" : "Acerca de",
     "Log out" : "Cerrar sesión",
     "Quit" : "Salir",
     "Today" : "Hoy",
     "This week" : "Esta semana",
     "Share screen" : "Compartir la pantalla",
-    "Authentication" : "Autenticación",
-    "Security warning" : "Advertencia de seguridad",
     "Invisible" : "Invisible"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

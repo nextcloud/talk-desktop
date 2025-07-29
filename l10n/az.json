@@ -1,4 +1,5 @@
 { "translations": {
+    "Authentication" : "Autentifikasiya",
     "Server address" : "Server ünvanı",
     "Log in" : "Giriş",
     "Close" : "Bağla",
@@ -24,7 +25,6 @@
     "Back" : "Geri",
     "Quit" : "Çıx",
     "Today" : "Bu gün",
-    "Authentication" : "Autentifikasiya",
     "Invisible" : "Görünməz"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

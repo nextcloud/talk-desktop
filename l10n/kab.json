@@ -3,10 +3,12 @@
     "Logging in …" : "Tuqqna...",
     "Close" : "Mdel",
     "Dismiss" : "Agi",
+    "Security warning" : "Alγu n tγellist",
     "Advanced" : "Talqayt",
     "Proceed" : "Kemmel",
     "Cancel" : "Cancel",
     "Copy" : "Nɣel",
+    "About" : "Γef",
     "License" : "Licence",
     "No" : "Uhu",
     "Yes" : "Oui",
@@ -17,7 +19,6 @@
     "Appearance" : "Apparence",
     "Theme" : "Asentel",
     "Settings" : "Iɣewwaṛen",
-    "About" : "Γef",
     "Back" : "Retour",
     "Log out" : "Senser",
     "Quit" : "Quitter",
@@ -25,7 +26,6 @@
     "Today" : "Ass-a",
     "This week" : "Dduṛt agi",
     "Loading …" : "Asali ...",
-    "Security warning" : "Alγu n tγellist",
     "Away" : "Akin",
     "Invisible" : "Ur d-ittban ara"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

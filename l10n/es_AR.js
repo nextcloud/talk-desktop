@@ -1,11 +1,13 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Autenticación",
     "Server address" : "Dirección del servidor",
     "Log in" : "Iniciar sesión",
     "Logging in …" : "Ingresando ...",
     "Close" : "Cerrar",
     "Dismiss" : "Despedir",
+    "Security warning" : "Advertencia de seguridad",
     "Advanced" : "Avanzado",
     "Cancel" : "Cancel",
     "Valid until" : "Válido hasta",
@@ -29,8 +31,6 @@ OC.L10N.register(
     "This week" : "Esta semana",
     "Status message" : "Mensaje de estado",
     "Share screen" : "Compartir la pantalla",
-    "Authentication" : "Autenticación",
-    "Security warning" : "Advertencia de seguridad",
     "Online" : "En línea",
     "Away" : "Lejos",
     "Do not disturb" : "No molestar",

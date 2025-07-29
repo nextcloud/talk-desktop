@@ -2,21 +2,21 @@
     "Log in" : "Teken Aan",
     "Logging in …" : "Meld tans aan …",
     "Dismiss" : "Ontslaan",
+    "Security warning" : "Sekuriteitswaarskuwing",
     "Advanced" : "Gevorderd",
     "Cancel" : "Cancel",
     "Valid until" : "Geldig tot",
+    "About" : "Aangaande",
     "License" : "Lisensie",
     "None" : "Geen",
     "Reset" : "Herstel",
     "Menu" : "Kieslys",
     "Settings" : "Instellings",
-    "About" : "Aangaande",
     "Log out" : "Teken af",
     "Quit" : "Sluit af",
     "User status" : "Gebruikerstatus",
     "Don't clear" : "Moenie wis nie",
     "This week" : "Vandeesweek",
-    "Security warning" : "Sekuriteitswaarskuwing",
     "Invisible" : "Onsigbaar"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

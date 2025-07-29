@@ -6,6 +6,7 @@ OC.L10N.register(
     "Close" : "Cau",
     "Advanced" : "Uwch",
     "Cancel" : "Cancel",
+    "About" : "Ynglyn â",
     "License" : "Trwydded",
     "Issues" : "Materion",
     "Ok" : "Iawn",
@@ -16,7 +17,6 @@ OC.L10N.register(
     "None" : "Dim",
     "General" : "Cyffredinol",
     "Settings" : "Gosodiadau",
-    "About" : "Ynglyn â",
     "Quit" : "Gadael",
     "Today" : "Heddiw",
     "This week" : "Wythnos yma"

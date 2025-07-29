@@ -1,11 +1,13 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Aŭtentigo",
     "Server address" : "Servila adreso",
     "Log in" : "Ensaluti",
     "Logging in …" : "Ensaluti...",
     "Close" : "Malfermi",
     "Dismiss" : "Preterpasi",
+    "Security warning" : "Sekureca averto",
     "Advanced" : "Progresinta",
     "Cancel" : "Cancel",
     "Valid until" : "Valida ĝis",
@@ -29,8 +31,6 @@ OC.L10N.register(
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
     "Loading …" : "Ŝargado...",
-    "Authentication" : "Aŭtentigo",
-    "Security warning" : "Sekureca averto",
     "Invisible" : "Nevidebla"
 },
 "nplurals=2; plural=(n != 1);");

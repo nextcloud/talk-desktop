@@ -54,7 +54,7 @@ export const useHeartbeat = createSharedComposable(() => {
 		}
 		await heartbeat()
 		// TODO: fix when main and renderer process have separate tsconfig
-		heartbeatTimeout = setTimeout(heartbeat, HEARTBEAT_INTERVAL) as unknown as number
+		heartbeatTimeout = setTimeout(restartHeartbeat, HEARTBEAT_INTERVAL) as unknown as number
 	}
 
 	// Restart heartbeat to immediately notify server on state change

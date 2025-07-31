@@ -37,7 +37,7 @@ export const useHeartbeat = createSharedComposable(() => {
 	/**
 	 * Send a heartbeat
 	 */
-	async function heartbeat() {
+	async function sendHeartbeat() {
 		try {
 			await userStatusStore.updateUserStatusWithHeartbeat(isAway.value)
 		} catch (error) {
@@ -46,13 +46,13 @@ export const useHeartbeat = createSharedComposable(() => {
 	}
 
 	/**
-	 * Start heartbeat interval
+	 * (Re)start heartbeat interval
 	 */
 	async function restartHeartbeat() {
 		if (heartbeatTimeout) {
 			clearTimeout(heartbeatTimeout)
 		}
-		await heartbeat()
+		await sendHeartbeat()
 		// TODO: fix when main and renderer process have separate tsconfig
 		heartbeatTimeout = setTimeout(restartHeartbeat, HEARTBEAT_INTERVAL) as unknown as number
 	}

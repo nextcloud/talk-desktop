@@ -1,12 +1,14 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "인증",
     "Nextcloud server address" : "Nextcloud 서버 주소",
     "Server address" : "서버 주소",
     "Logging in …" : "로그인 중 …",
     "Close" : "닫기",
     "Dismiss" : "끄기",
     "Join call" : "통화 참가하기",
+    "Security warning" : "보안 경고",
     "Advanced" : "고급",
     "Proceed" : "진행",
     "Cancel" : "취소",
@@ -40,8 +42,6 @@ OC.L10N.register(
     "Today" : "오늘",
     "Loading …" : "불러오는 중 ...",
     "Share screen" : "화면 공유",
-    "Authentication" : "인증",
-    "Security warning" : "보안 경고",
     "Application" : "애플리케이션",
     "Away" : "자리비움",
     "Do not disturb" : "방해 없음",

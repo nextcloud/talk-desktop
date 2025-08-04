@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Autentifikasiya",
     "Server address" : "Server ünvanı",
     "Log in" : "Giriş",
     "Close" : "Bağla",
@@ -26,7 +27,6 @@ OC.L10N.register(
     "Back" : "Geri",
     "Quit" : "Çıx",
     "Today" : "Bu gün",
-    "Authentication" : "Autentifikasiya",
     "Invisible" : "Görünməz"
 },
 "nplurals=2; plural=(n != 1);");

@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "აუტენტიფიკაცია",
     "Nextcloud server address" : "Nextcloud-ის სერვერის მისამართი",
     "Server address" : "სერვერის მისამართი",
     "Log in" : "შესვლა",
@@ -8,9 +9,11 @@ OC.L10N.register(
     "Close" : "დახურვა",
     "Dismiss" : "დათხოვნა",
     "Join call" : "შეუერთდით ზარს",
+    "Security warning" : "გაფრთხილება უსაფრთხოების შესახებ",
     "Advanced" : "მოწინავე",
     "Cancel" : "გაუქმება",
     "Valid until" : "ვარგისია",
+    "About" : "ჩვენს შესახებ",
     "License" : "ლიცენზია",
     "Issues" : "პრობლემები",
     "Ok" : "კარგი",
@@ -23,14 +26,11 @@ OC.L10N.register(
     "Menu" : "მენიუ",
     "Report a bug" : "განაცხადეთ შეცდომის შესახებ",
     "Settings" : "პარამეტრები",
-    "About" : "ჩვენს შესახებ",
     "Log out" : "გამოსვლა",
     "Quit" : "გამოსვლა",
     "Today" : "დღეს",
     "This week" : "ამ კვირაში",
     "Share screen" : "ეკრანის გაზიარება",
-    "Authentication" : "აუტენტიფიკაცია",
-    "Security warning" : "გაფრთხილება უსაფრთხოების შესახებ",
     "Invisible" : "უჩინარი"
 },
 "nplurals=2; plural=(n!=1);");

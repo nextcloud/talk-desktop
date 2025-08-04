@@ -1,12 +1,15 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Autentifikācija",
+    "Log in to {applicationName}" : "Pieteikteis {applicationName}",
     "Server address" : "Servera adrese",
     "Log in" : "Pieteikties",
     "Logging in …" : "Notiek pieteikšanās …",
     "Close" : "Aizvērt",
     "Dismiss" : "Atmest",
     "Join call" : "Pievienoties zvanam",
+    "Security warning" : "Drošības brīdinājums",
     "Advanced" : "Paplašināti",
     "Cancel" : "Atcelt",
     "Valid until" : "Derīgs līdz",
@@ -40,8 +43,6 @@ OC.L10N.register(
     "The file is empty" : "Datne ir tukša",
     "Share screen" : "Koplietot ekrānu",
     "The client version is too old and no longer supported by this server. Update is required." : "Klienta versija ir pārāk vecas, un šis serveris to vairs neatbalsta. Nepieciešama atjaunināšana.",
-    "Authentication" : "Autentifikācija",
-    "Security warning" : "Drošības brīdinājums",
     "Application" : "Lietotne",
     "Invisible" : "Neredzama"
 },

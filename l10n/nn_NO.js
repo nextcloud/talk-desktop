@@ -1,11 +1,13 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Godkjenning",
     "Nextcloud server address" : "Nextcloud server adresse",
     "Server address" : "Server adresse",
     "Log in" : "Logg inn",
     "Close" : "Lat att",
     "Dismiss" : "Forkast",
+    "Security warning" : "Tryggingsåtvaring",
     "Advanced" : "Avansert",
     "Cancel" : "Cancel",
     "Copy" : "Kopier",
@@ -18,8 +20,6 @@ OC.L10N.register(
     "Settings" : "Innstillingar",
     "Quit" : "Avslutt",
     "Today" : "I dag",
-    "Authentication" : "Godkjenning",
-    "Security warning" : "Tryggingsåtvaring",
     "Away" : "Borte",
     "Invisible" : "Usynleg"
 },

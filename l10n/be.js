@@ -6,6 +6,7 @@ OC.L10N.register(
     "Log in" : "Увайсці",
     "Logging in …" : "Уваход …",
     "Close" : "Закрыць",
+    "Dismiss" : "Адхіліць",
     "Cancel" : "Скасаваць",
     "Copy" : "Капіяваць",
     "Ok" : "ОК",

@@ -13,6 +13,7 @@ OC.L10N.register(
     "No" : "Не",
     "Yes" : "Так",
     "Never" : "Ніколі",
+    "None" : "Няма",
     "Reset" : "Скінуць",
     "Settings" : "Налады",
     "Back" : "Назад",

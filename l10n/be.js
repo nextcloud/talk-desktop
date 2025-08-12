@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Authentication" : "Аўтэнтыфікацыя",
     "Log in to {applicationName}" : "Увайсці ў {applicationName}",
+    "Server address" : "Адрас сервера",
     "Log in" : "Увайсці",
     "Logging in …" : "Уваход …",
     "Close" : "Закрыць",

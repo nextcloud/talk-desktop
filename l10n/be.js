@@ -15,6 +15,8 @@ OC.L10N.register(
     "Yes" : "Так",
     "Never" : "Ніколі",
     "None" : "Няма",
+    "General" : "Агульныя",
+    "Appearance" : "Знешні выгляд",
     "Reset" : "Скінуць",
     "Settings" : "Налады",
     "Back" : "Назад",

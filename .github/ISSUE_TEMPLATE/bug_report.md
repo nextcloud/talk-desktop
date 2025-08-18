@@ -19,6 +19,11 @@ labels: 0. Needs triage, bug
 2.
 3.
 
+<!---
+Have you tried to reproduce the issue in Talk web-page as well?
+If that is the case, open an issue in app repository instead: https://github.com/nextcloud/spreed/issues/new/choose
+-->
+
 ### Expected behaviour
 Tell us what should happen
 

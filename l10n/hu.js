@@ -13,6 +13,7 @@ OC.L10N.register(
     "Join call" : "Csatlakozás a híváshoz",
     "Security warning" : "Biztonsági figyelmeztetés",
     "Advanced" : "Speciális",
+    "Proceed" : "Folytatás",
     "Cancel" : "Mégse",
     "Valid until" : "Érvényes",
     "Copy" : "Másolás",

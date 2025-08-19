@@ -20,6 +20,7 @@ OC.L10N.register(
     "Reset" : "Скінуць",
     "Settings" : "Налады",
     "Back" : "Назад",
+    "Log out" : "Выйсці",
     "Today" : "Сёння",
     "Loading …" : "Загрузка …"
 },

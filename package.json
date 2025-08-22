@@ -80,7 +80,7 @@
     "@nextcloud/webpack-vue-config": "^6.3.0",
     "@total-typescript/ts-reset": "^0.6.1",
     "@types/howler": "^2.2.12",
-    "@vercel/webpack-asset-relocator-loader": "^1.7.4",
+    "@vercel/webpack-asset-relocator-loader": "^1.10.0",
     "@vue/tsconfig": "^0.5.1",
     "dotenv": "^16.5.0",
     "electron": "^36.5.0",

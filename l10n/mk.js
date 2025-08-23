@@ -12,6 +12,7 @@ OC.L10N.register(
     "Proceed" : "Продолжи",
     "Cancel" : "Откажи",
     "Valid until" : "Валиден до",
+    "Copy" : "Копирај",
     "About" : "За",
     "License" : "Лиценца",
     "Ok" : "Во ред",

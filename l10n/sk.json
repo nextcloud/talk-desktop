@@ -1,9 +1,9 @@
 { "translations": {
-    "Talk Desktop" : "Talk /Rozhovor/ pre PC",
+    "Talk Desktop" : "Talk pre PC",
     "Logged in successfully" : "Úspešne ste sa prihlásili",
     "Invalid server address" : "Neplatná adresa servera",
     "Nextcloud server not found" : "Nextcloud server sa nenašiel",
-    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk /Rozhovor/ nie je nainštalovaný na serveri",
+    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk nie je nainštalovaný na serveri",
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "Vyžaduje sa {componentName} {minRequiredVersion} alebo vyššia, ale je nainštalovaná {foundVersion}",
     "Unexpected error" : "Neočakávaná chyba",
     "Login was successful but something went wrong." : "Prihlásenie bolo úspešné, ale niečo sa pokazilo.",

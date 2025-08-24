@@ -35,7 +35,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 <template>
 	<NcActions
 		:aria-label="t('talk_desktop', 'Menu')"
-		type="tertiary-no-background"
+		variant="tertiary-no-background"
 		container="body">
 		<template #icon>
 			<IconMenu :size="20" fill-color="var(--color-header-contrast)" />

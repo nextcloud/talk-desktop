@@ -38,7 +38,7 @@ const readyToShow = computed(() => !props.loading && !props.error)
 	<div class="viewer-wrapper">
 		<NcEmptyContent
 			v-if="loading"
-			:name="t('talk_desktop', 'Loading …')"
+			:name="t('talk_desktop', 'Loading …')"
 			class="viewer-wrapper__empty-content delayed-appear"
 			data-theme-dark>
 			<template #icon>

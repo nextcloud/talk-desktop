@@ -93,7 +93,7 @@
     "regenerator-runtime": "^0.14.1",
     "typescript": "^5.9.2",
     "vue-tsc": "^2.2.12",
-    "webpack": "^5.100.2",
+    "webpack": "^5.101.3",
     "webpack-merge": "^6.0.1",
     "worker-loader": "^3.0.8",
     "zx": "^8.7.1"

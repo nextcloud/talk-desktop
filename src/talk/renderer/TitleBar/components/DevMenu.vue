@@ -106,7 +106,7 @@ async function openChromeWebRtcInternals() {
 <template>
 	<NcActions
 		aria-label="Dev Menu"
-		type="tertiary-no-background"
+		variant="tertiary-no-background"
 		container="body"
 		force-menu>
 		<template #icon>

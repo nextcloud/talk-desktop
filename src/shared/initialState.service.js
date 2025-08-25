@@ -9,16 +9,18 @@
  * @param {string} str - source string
  * @return {string} - string with escaped unicode characters
  */
-const escapeUnicode = (str) => str.split('').map((char) => {
-	const codePoint = char.codePointAt(0)
-	if (codePoint <= 0x7F) {
-		return char
-	} else if (codePoint <= 0xFFFF) {
-		return '\\u' + codePoint.toString(16).padStart(4, '0')
-	} else {
-		return '\\u{' + codePoint.toString(16) + '}'
-	}
-}).join('')
+function escapeUnicode(str) {
+	return str.split('').map((char) => {
+		const codePoint = char.codePointAt(0)
+		if (codePoint <= 0x7F) {
+			return char
+		} else if (codePoint <= 0xFFFF) {
+			return '\\u' + codePoint.toString(16).padStart(4, '0')
+		} else {
+			return '\\u{' + codePoint.toString(16) + '}'
+		}
+	}).join('')
+}
 
 /**
  * Find or create and add to body if not exists a container for initial state input elements

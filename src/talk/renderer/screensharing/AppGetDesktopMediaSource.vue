@@ -13,7 +13,10 @@ const showDialog = ref<boolean>(false)
 
 let promiseWithResolvers: PromiseWithResolvers<{ sourceId: ScreensharingSourceId | '' }> | null = null
 
-const handlePrompt = (sourceId: ScreensharingSourceId | '') => {
+/**
+ * @param sourceId - Selected screensharing sourceID
+ */
+function handlePrompt(sourceId: ScreensharingSourceId | '') {
 	promiseWithResolvers!.resolve({ sourceId })
 	promiseWithResolvers = null
 	showDialog.value = false

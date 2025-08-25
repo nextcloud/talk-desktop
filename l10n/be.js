@@ -8,6 +8,7 @@ OC.L10N.register(
     "Logging in …" : "Уваход …",
     "Close" : "Закрыць",
     "Dismiss" : "Адхіліць",
+    "Security warning" : "Папярэджанне бяспекі",
     "Cancel" : "Скасаваць",
     "Copy" : "Капіяваць",
     "License" : "Ліцэнзія",

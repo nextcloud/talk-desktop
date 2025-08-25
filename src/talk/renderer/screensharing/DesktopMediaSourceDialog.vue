@@ -150,7 +150,7 @@ function handleCancel() {
 				@suspend="handleVideoSuspend(source)" />
 		</div>
 
-		<NcEmptyContent v-else :name="t('talk_desktop', 'Loading …')">
+		<NcEmptyContent v-else :name="t('talk_desktop', 'Loading …')">
 			<template #icon>
 				<NcLoadingIcon />
 			</template>
@@ -168,7 +168,7 @@ function handleCancel() {
 			<NcDialogButton
 				:icon="IconMonitorShare"
 				:label="t('talk_desktop', 'Share screen')"
-				type="primary"
+				variant="primary"
 				:disabled="!selectedSourceId"
 				@click="handleSubmit" />
 		</template>

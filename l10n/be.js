@@ -5,7 +5,6 @@ OC.L10N.register(
     "Log in to {applicationName}" : "Увайсці ў {applicationName}",
     "Server address" : "Адрас сервера",
     "Log in" : "Увайсці",
-    "Logging in …" : "Уваход …",
     "Close" : "Закрыць",
     "Dismiss" : "Адхіліць",
     "Security warning" : "Папярэджанне бяспекі",
@@ -24,8 +23,8 @@ OC.L10N.register(
     "Settings" : "Налады",
     "Back" : "Назад",
     "Log out" : "Выйсці",
+    "Don't clear" : "Не ачышчаць",
     "Today" : "Сёння",
-    "Loading …" : "Загрузка …",
     "Online" : "У сетцы",
     "Offline" : "Па-за сеткай"
 },

@@ -4,7 +4,6 @@ OC.L10N.register(
     "Authentication" : "Autentificare",
     "Server address" : "Adresă server",
     "Log in" : "Autentificare",
-    "Logging in …" : "Se autentifică...",
     "Close" : "Închide",
     "Dismiss" : "Elimină",
     "Join call" : "Participați la videoconferință",

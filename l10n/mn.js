@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Server address" : "хүлээн авагчийн хаяг",
     "Log in" : "Нэвтрэх",
-    "Logging in …" : "Нэвтэрч байна",
     "Dismiss" : "Арилгах",
     "Advanced" : "нарийвчилсан",
     "Cancel" : "Цуцлах",

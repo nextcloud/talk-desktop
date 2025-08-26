@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Server address" : "Chom-lec'h ar servijour",
     "Log in" : "Kennaskañ",
-    "Logging in …" : "O kennsakañ...",
     "Close" : "Serriñ",
     "Dismiss" : "Disteurel",
     "Join call" : "Mont er gemenadenn",

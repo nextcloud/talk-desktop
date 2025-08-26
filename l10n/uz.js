@@ -5,7 +5,6 @@ OC.L10N.register(
     "Authentication" : "Autentifikatsiya",
     "Server address" : "Server manzili",
     "Log in" : "Kirish",
-    "Logging in …" : "Kirilmoqda …",
     "Incoming call" : "Kiruvchi qo'ng'iroq",
     "Close" : "Yopish",
     "Dismiss" : "Dismiss",

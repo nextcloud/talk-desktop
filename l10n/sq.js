@@ -4,7 +4,6 @@ OC.L10N.register(
     "Authentication" : "Mirëfilltësim",
     "Server address" : "Adresë serveri",
     "Log in" : "Hyni",
-    "Logging in …" : "Duke u loguar ...",
     "Close" : "Mbylleni",
     "Dismiss" : "Hiq",
     "Security warning" : "Sinjalizim sigurie",

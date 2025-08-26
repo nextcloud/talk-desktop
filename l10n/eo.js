@@ -4,7 +4,6 @@ OC.L10N.register(
     "Authentication" : "Aŭtentigo",
     "Server address" : "Servila adreso",
     "Log in" : "Ensaluti",
-    "Logging in …" : "Ensaluti...",
     "Close" : "Malfermi",
     "Dismiss" : "Preterpasi",
     "Security warning" : "Sekureca averto",
@@ -30,7 +29,6 @@ OC.L10N.register(
     "Today" : "Hodiaŭ",
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
-    "Loading …" : "Ŝargado...",
     "Invisible" : "Nevidebla"
 },
 "nplurals=2; plural=(n != 1);");

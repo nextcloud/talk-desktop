@@ -2,7 +2,6 @@
     "Authentication" : "Aŭtentigo",
     "Server address" : "Servila adreso",
     "Log in" : "Ensaluti",
-    "Logging in …" : "Ensaluti...",
     "Close" : "Malfermi",
     "Dismiss" : "Preterpasi",
     "Security warning" : "Sekureca averto",
@@ -28,7 +27,6 @@
     "Today" : "Hodiaŭ",
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
-    "Loading …" : "Ŝargado...",
     "Invisible" : "Nevidebla"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

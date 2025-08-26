@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Qqen",
-    "Logging in …" : "Tuqqna...",
     "Close" : "Mdel",
     "Dismiss" : "Agi",
     "Security warning" : "Alγu n tγellist",
@@ -27,7 +26,6 @@ OC.L10N.register(
     "Don't clear" : "Ur seffeḍ ara",
     "Today" : "Ass-a",
     "This week" : "Dduṛt agi",
-    "Loading …" : "Asali ...",
     "Away" : "Akin",
     "Invisible" : "Ur d-ittban ara"
 },

@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "ເຂົ້າລະບົບ",
-    "Logging in …" : "ກຳລັງໂຫຼດ",
     "Close" : "ປິດ",
     "Dismiss" : "ຍົກເລີກ",
     "Security warning" : "ຄໍາເຕືອນດ້ານຄວາມປອດໄພ",

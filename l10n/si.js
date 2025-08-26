@@ -4,7 +4,6 @@ OC.L10N.register(
     "Authentication" : "සත්‍යාපනය",
     "Server address" : "සේවාදායක ලිපිනය",
     "Log in" : "පිවිසෙන්න",
-    "Logging in …" : "පිවිසෙමින් …",
     "Close" : "වසන්න",
     "Security warning" : "ආරක්ෂක අනතුරු ඇඟවීම",
     "Cancel" : "අවලංගු",

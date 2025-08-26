@@ -5,7 +5,6 @@ OC.L10N.register(
     "Nextcloud server address" : "Adresa Nextcloudovog poslužitelja",
     "Server address" : "Adresa poslužitelja",
     "Log in" : "Prijavite se",
-    "Logging in …" : "Prijavljivanje...",
     "Close" : "Zatvori",
     "Dismiss" : "Odpusti",
     "Join call" : "Pridruži se pozivu",
@@ -39,7 +38,6 @@ OC.L10N.register(
     "Log out" : "Odjavite se",
     "Quit" : "Zatvori",
     "User status" : "Status korisnika",
-    "Loading …" : "Učitavanje…",
     "Share screen" : "Dijeli zaslon",
     "You missed a call from {user}" : "Propustili ste poziv od {user}",
     "You missed a group call in {call}" : "Propustili ste grupni poziv u {call}"

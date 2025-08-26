@@ -5,7 +5,6 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud-ის სერვერის მისამართი",
     "Server address" : "სერვერის მისამართი",
     "Log in" : "შესვლა",
-    "Logging in …" : "შესვლა ...",
     "Close" : "დახურვა",
     "Dismiss" : "დათხოვნა",
     "Join call" : "შეუერთდით ზარს",

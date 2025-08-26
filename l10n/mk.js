@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Authentication" : "Автентикација",
     "Server address" : "Адреса на серверот",
-    "Logging in …" : "Најава ...",
     "Close" : "Затвори",
     "Dismiss" : "Отфрли",
     "Join call" : "Приклучи се кон повикот",
@@ -40,7 +39,6 @@ OC.L10N.register(
     "Today" : "Денес",
     "This week" : "Оваа недела",
     "Status message" : "Статус порака",
-    "Loading …" : "Се вчитува…",
     "Layout" : "Распоред",
     "Share screen" : "Сподели екран",
     "Online" : "Присутен",

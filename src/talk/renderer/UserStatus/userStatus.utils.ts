@@ -6,17 +6,20 @@
 import type { ClearAtPredefinedConfig, PredefinedUserStatus, UserStatus, UserStatusStatusType } from './userStatus.types.ts'
 
 import { getFirstDay, t } from '@nextcloud/l10n'
+import { appData } from '../../../app/AppData.js'
 import { formatDuration, formatDurationFromNow } from '../../../shared/datetime.utils.ts'
 
 /**
  * List of user status types that user can set
  */
-export const availableUserStatusStatusTypes: UserStatusStatusType[] = ['online', 'away', 'dnd', 'invisible']
+export const availableUserStatusStatusTypes: UserStatusStatusType[] = (appData.capabilities as unknown)?.user_status?.supports_busy
+	? ['online', 'away', 'busy', 'dnd', 'invisible']
+	: ['online', 'away', 'dnd', 'invisible']
 
 export const userStatusTranslations: Record<UserStatusStatusType, string> = {
 	online: t('talk_desktop', 'Online'),
 	away: t('talk_desktop', 'Away'),
-	busy: t('talk_desktop', 'Away'),
+	busy: t('talk_desktop', 'Busy'),
 	dnd: t('talk_desktop', 'Do not disturb'),
 	invisible: t('talk_desktop', 'Invisible'),
 	offline: t('talk_desktop', 'Offline'),

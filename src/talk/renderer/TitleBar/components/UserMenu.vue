@@ -84,6 +84,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 						:preloaded-user-status="userStatus"
 						:display-name="user['display-name']"
 						:size="32"
+						disable-menu
 						disable-tooltip
 						v-bind="attrs"
 						tabindex="0"

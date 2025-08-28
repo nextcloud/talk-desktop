@@ -110,7 +110,7 @@ OC.L10N.register(
     "Compact" : "Dar",
     "Wide" : "Geniş",
     "Copy content" : "İçeriği kopyala",
-    "Read-only text file content" : "Salt okunur metin dosyası içeriği",
+    "Read-only text file content" : "Salt okunur yazı dosyası içeriği",
     "The file is empty" : "Dosya boş",
     "Selected screen or window" : "Seçilmiş ekran ya da pencere",
     "Audio + All screens" : "Ses + Tüm ekranlar",

@@ -126,6 +126,7 @@ OC.L10N.register(
     "Application" : "Applikation",
     "Online" : "Online",
     "Away" : "Borta",
+    "Busy" : "Upptagen",
     "Do not disturb" : "Stör ej",
     "Invisible" : "Osynlig",
     "Offline" : "Frånkopplad",

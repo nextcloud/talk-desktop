@@ -42,6 +42,7 @@ OC.L10N.register(
     "Share screen" : "שיתוף המסך",
     "Online" : "מקוון",
     "Away" : "לא פה",
+    "Busy" : "עסוק",
     "Invisible" : "נסתרת",
     "Offline" : "בלתי מקוון",
     "You missed a call from {user}" : "החמצת שיחה עם {user}"

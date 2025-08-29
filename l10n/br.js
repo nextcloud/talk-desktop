@@ -29,6 +29,7 @@ OC.L10N.register(
     "This week" : "Er sizhun-mañ",
     "Share screen" : "Rannañ ar skramm",
     "Away" : "Pell",
+    "Busy" : "O labourat",
     "Do not disturb" : "Na rannit ket",
     "Invisible" : "Diwelus",
     "You missed a call from {user}" : "C'hwitet o peus ur gemenadenn eus {user}",

@@ -126,6 +126,7 @@ OC.L10N.register(
     "Application" : "Апликација",
     "Online" : "На мрежи",
     "Away" : "Одсутан",
+    "Busy" : "Заузет",
     "Do not disturb" : "Не узнемиравај",
     "Invisible" : "Невидљива",
     "Offline" : "Ван мреже",

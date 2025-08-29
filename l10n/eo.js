@@ -29,6 +29,7 @@ OC.L10N.register(
     "Today" : "Hodiaŭ",
     "This week" : "Ĉi semajno",
     "Status message" : "Stato-mesaĝo",
+    "Busy" : "Okupita",
     "Invisible" : "Nevidebla"
 },
 "nplurals=2; plural=(n != 1);");

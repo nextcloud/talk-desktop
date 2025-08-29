@@ -72,6 +72,7 @@ OC.L10N.register(
     "Application" : "Applikasjon",
     "Online" : "Pålogget",
     "Away" : "Borte",
+    "Busy" : "Opptatt",
     "Do not disturb" : "Ikke forstyrr",
     "Invisible" : "Usynlig",
     "Offline" : "Frakoblet",

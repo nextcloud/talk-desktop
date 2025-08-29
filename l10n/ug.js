@@ -87,6 +87,7 @@ OC.L10N.register(
     "Application" : "ئىلتىماس",
     "Online" : "توردا",
     "Away" : "يىراق",
+    "Busy" : "ئالدىراش",
     "Do not disturb" : "ئاۋارە قىلماڭ",
     "Invisible" : "كۆرۈنمەيدۇ",
     "Offline" : "تورسىز",

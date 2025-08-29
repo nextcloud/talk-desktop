@@ -42,6 +42,7 @@ OC.L10N.register(
     "Today" : "Oe ",
     "Status message" : "Messàgiu de istadu",
     "Away" : "Ausente",
+    "Busy" : "Impinnadu",
     "Do not disturb" : "No istorbes",
     "Invisible" : "Invisìbile",
     "You missed a call from {user}" : "As pèrdidu una mutida dae {user}",

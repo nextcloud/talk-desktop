@@ -45,6 +45,7 @@ OC.L10N.register(
     "Status message" : "Mensagem de estado",
     "Online" : "On-line",
     "Away" : "Ausente",
+    "Busy" : "Ocupado",
     "Do not disturb" : "Não incomodar",
     "Invisible" : "Invisível "
 },

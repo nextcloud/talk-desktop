@@ -38,6 +38,7 @@ OC.L10N.register(
     "Status message" : "Pesan status",
     "Online" : "Online",
     "Away" : "Jauh",
+    "Busy" : "Sibuk",
     "Do not disturb" : "Jangan diganggu",
     "Invisible" : "Tersembunyi"
 },

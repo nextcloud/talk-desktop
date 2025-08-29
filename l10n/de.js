@@ -128,6 +128,7 @@ OC.L10N.register(
     "Application" : "Anwendung",
     "Online" : "Online",
     "Away" : "Abwesend",
+    "Busy" : "Beschäftigt",
     "Do not disturb" : "Bitte nicht stören",
     "Invisible" : "Unsichtbar",
     "Offline" : "Offline",

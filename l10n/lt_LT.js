@@ -63,6 +63,7 @@ OC.L10N.register(
     "Share screen" : "Bendrinti ekraną",
     "Preview is not available" : "Peržiūra neprieinama",
     "Away" : "Atsitraukęs",
+    "Busy" : "Užimtas laikas",
     "Do not disturb" : "Netrukdyti",
     "Invisible" : "Nematomas",
     "Unknown status" : "Nežinoma būsena",

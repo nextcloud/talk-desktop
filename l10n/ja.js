@@ -45,6 +45,7 @@ OC.L10N.register(
     "Layout" : "レーアウト",
     "Share screen" : "画面共有",
     "Application" : "アプリケーション",
+    "Busy" : "ビジー",
     "Do not disturb" : "取り込み中",
     "Invisible" : "ステータスを隠す",
     "Unknown status" : "不明なステータス",

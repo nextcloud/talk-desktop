@@ -148,6 +148,13 @@ export type BuildConfigInferred = {
 	winSquirrelAppId: string
 
 	/**
+	 * WiX MSI's UPGRADE_CODE, GUID.
+	 * Must persist between installations (versions) but be different for different branded versions.
+	 * See: https://docs.firegiant.com/wix3/xsd/wix/product/ (Attributes | UpgradeCode)
+	 */
+	winUpgradeCode: string
+
+	/**
 	 * Copyright string.
 	 * Used in metadata. Cannot be empty.
 	 * Copyright (c) {year} Nextcloud GmbH

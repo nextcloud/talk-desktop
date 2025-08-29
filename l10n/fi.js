@@ -50,6 +50,7 @@ OC.L10N.register(
     "Share screen" : "Jaa näyttö",
     "Application" : "Sovellus",
     "Online" : "Online",
+    "Busy" : "Varattu",
     "Offline" : "Poissa",
     "You missed a call from {user}" : "Sinulta jäi vastaamatta puhelu käyttäjältä {user}"
 },

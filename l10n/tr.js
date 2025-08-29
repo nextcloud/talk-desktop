@@ -128,6 +128,7 @@ OC.L10N.register(
     "Application" : "Uygulama",
     "Online" : "Çevrim içi",
     "Away" : "Uzakta",
+    "Busy" : "Meşgul",
     "Do not disturb" : "Rahatsız etmeyin",
     "Invisible" : "Görünmez",
     "Offline" : "Çevrim dışı",

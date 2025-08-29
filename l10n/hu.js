@@ -55,6 +55,7 @@ OC.L10N.register(
     "The client version is too old and no longer supported by this server. Update is required." : "Az alkalmazás túl régi, és már nem támogatja ez a kiszolgáló. Frissítse.",
     "Application" : "Alkalmazás",
     "Online" : "Elérhető",
+    "Busy" : "Foglalt",
     "Do not disturb" : "Ne zavarjanak",
     "Invisible" : "Láthatatlan",
     "Offline" : "Nincs kapcsolat",

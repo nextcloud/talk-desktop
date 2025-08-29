@@ -126,6 +126,7 @@ OC.L10N.register(
     "Application" : "Aplikace",
     "Online" : "Online",
     "Away" : "Pryč",
+    "Busy" : "Zaneprázdněn(a)",
     "Do not disturb" : "Nerušit",
     "Invisible" : "Neviditelný",
     "Offline" : "Bez připojení",

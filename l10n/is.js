@@ -44,6 +44,7 @@ OC.L10N.register(
     "Application" : "Forrit",
     "Online" : "Á netinu",
     "Away" : "Fjarverandi",
+    "Busy" : "Upptekinn",
     "Do not disturb" : "Ónáðið ekki",
     "Invisible" : "Ósýnilegt",
     "Offline" : "Ótengdur neti"

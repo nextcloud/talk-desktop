@@ -126,6 +126,7 @@ OC.L10N.register(
     "Application" : "Ombi",
     "Online" : "Mtandaoni",
     "Away" : "Mbali",
+    "Busy" : "Bize",
     "Do not disturb" : "Acha kusumbua",
     "Invisible" : "Haionekani",
     "Offline" : "Nje ya mtandao",

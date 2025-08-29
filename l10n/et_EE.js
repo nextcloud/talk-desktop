@@ -128,6 +128,7 @@ OC.L10N.register(
     "Application" : "Rakendus",
     "Online" : "Võrgus",
     "Away" : "Eemal",
+    "Busy" : "Hõivatud",
     "Do not disturb" : "Ära sega",
     "Invisible" : "Nähtamatu",
     "Offline" : "Pole võrgus",

@@ -128,6 +128,7 @@ OC.L10N.register(
     "Application" : "Iarratas",
     "Online" : "Ar líne",
     "Away" : "Amach",
+    "Busy" : "Gnóthach",
     "Do not disturb" : "Ná cur as",
     "Invisible" : "Dofheicthe",
     "Offline" : "As líne",

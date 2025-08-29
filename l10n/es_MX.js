@@ -44,6 +44,7 @@ OC.L10N.register(
     "Application" : "Aplicación",
     "Online" : "En línea",
     "Away" : "Ausente",
+    "Busy" : "Ocupado",
     "Do not disturb" : "No molestar",
     "Invisible" : "Invisible"
 },

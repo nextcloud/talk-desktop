@@ -49,6 +49,7 @@ OC.L10N.register(
     "Application" : "Приложение",
     "Online" : "На линия /онлайн/",
     "Away" : "Винаги",
+    "Busy" : "Зает",
     "Do not disturb" : "Не безпокой",
     "You missed a call from {user}" : "Пропуснахте обаждане от {user}",
     "You missed a group call in {call}" : "Пропуснахте групово обаждане в {call}"

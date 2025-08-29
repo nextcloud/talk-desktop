@@ -43,6 +43,7 @@ OC.L10N.register(
     "Share screen" : "Сподели екран",
     "Online" : "Присутен",
     "Away" : "Далеку",
+    "Busy" : "Зафатен",
     "Invisible" : "Невидлив",
     "You missed a call from {user}" : "Имате пропуштен повик од {user}",
     "You missed a group call in {call}" : "Имате пропуштен групен повик во {call}"

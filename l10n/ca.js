@@ -57,6 +57,7 @@ OC.L10N.register(
     "Share screen" : "Comparteix la pantalla",
     "Application" : "Aplicació",
     "Online" : "En línia",
+    "Busy" : "Ocupat",
     "Unknown status" : "Estat desconegut",
     "You missed a call from {user}" : "Teniu una trucada perduda de {user}",
     "You missed a group call in {call}" : "Teniu una trucada de grup perduda a {call}"

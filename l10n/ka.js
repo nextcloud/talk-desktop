@@ -43,6 +43,7 @@ OC.L10N.register(
     "Application" : "Application",
     "Online" : "Online",
     "Away" : "Away",
+    "Busy" : "Busy",
     "Do not disturb" : "Do not disturb",
     "Invisible" : "Invisible",
     "You missed a call from {user}" : "You missed a call from {user}",

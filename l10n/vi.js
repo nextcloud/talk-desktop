@@ -44,6 +44,7 @@ OC.L10N.register(
     "Share screen" : "Chia sẽ màn hình",
     "Online" : "Trực tuyến",
     "Away" : "Tạm vắng",
+    "Busy" : "Bận",
     "Do not disturb" : "Đừng làm phiền",
     "Invisible" : "Vô hình",
     "Offline" : "Ngoại tuyến",

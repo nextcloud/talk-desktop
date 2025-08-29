@@ -49,6 +49,7 @@ OC.L10N.register(
     "Share screen" : "Διαμοιρασμός οθόνης",
     "Application" : "Εφαρμογή",
     "Away" : "Λείπω",
+    "Busy" : "Απασχολημένος",
     "Invisible" : "Αόρατο",
     "Unknown status" : "Άγνωστη κατάσταση",
     "You missed a call from {user}" : "Αναπάντητη κλήση από τον {user}",

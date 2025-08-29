@@ -128,6 +128,7 @@ OC.L10N.register(
     "Application" : "應用程式",
     "Online" : "在線",
     "Away" : "離開",
+    "Busy" : "忙碌",
     "Do not disturb" : "請勿打擾",
     "Invisible" : "隱藏",
     "Offline" : "離線",

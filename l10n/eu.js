@@ -64,6 +64,7 @@ OC.L10N.register(
     "Application" : "Aplikazioa",
     "Online" : "Linean",
     "Away" : "Kanpoan",
+    "Busy" : "Lanpetua",
     "Do not disturb" : "Ez molestatu",
     "Invisible" : "Ikusezina",
     "Offline" : "Lineaz kanpo",

@@ -39,6 +39,7 @@ OC.L10N.register(
     "Status message" : "Status message",
     "Online" : "Online",
     "Away" : "Away",
+    "Busy" : "Band",
     "Do not disturb" : "Do not disturb",
     "Invisible" : "Invisible",
     "Offline" : "Offline"

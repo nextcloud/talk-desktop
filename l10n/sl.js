@@ -56,6 +56,7 @@ OC.L10N.register(
     "Application" : "Program",
     "Online" : "Trenutno na spletu",
     "Away" : "Ne spremljam",
+    "Busy" : "Zasedeno",
     "Do not disturb" : "Ne moti",
     "Invisible" : "Drugim nevidno",
     "Offline" : "Brez povezave",

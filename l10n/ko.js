@@ -43,6 +43,7 @@ OC.L10N.register(
     "Share screen" : "화면 공유",
     "Application" : "애플리케이션",
     "Away" : "자리비움",
+    "Busy" : "바쁨",
     "Do not disturb" : "방해 없음",
     "Invisible" : "숨겨짐",
     "Unknown status" : "알 수 없는 상태",

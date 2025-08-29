@@ -6,6 +6,10 @@
 const path = require('node:path')
 const fs = require('node:fs')
 const defaultConfig = require('./config.json')
+const { UUIDv5 } = require('./UUIDv5.js')
+
+// DO NOT CHANGE
+const TALK_DESKTOP_UUID = '007a0d7d-9595-41d2-b5aa-740a5a63e38a'
 
 /**
  * Resolve the build configuration
@@ -55,6 +59,7 @@ function resolveBuildConfig(customConfigPath = process.env.CUSTOM_CONFIG) {
 		copyright: 'Copyright (c) {year} Nextcloud GmbH'.replace('{year}', new Date().getFullYear()),
 		applicationNameSanitized,
 		winSquirrelAppId: applicationNameSanitized, // Special case for Squirrel.Windows
+		winUpgradeCode: UUIDv5(`${appIdHost}.talk`, TALK_DESKTOP_UUID),
 	}
 }
 

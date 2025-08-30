@@ -102,6 +102,7 @@ OC.L10N.register(
     "Application" : "تطبيق",
     "Online" : "متصل على الخط",
     "Away" : "بالخارج",
+    "Busy" : "مشغول",
     "Do not disturb" : "الرجاء عدم الإزعاج",
     "Invisible" : "غير مرئي",
     "Offline" : "بدون اتصالٍ",

@@ -239,4 +239,7 @@ export async function setupWebPage() {
 	}
 
 	window.systemInfo = await window.TALK_DESKTOP.getSystemInfo()
+
+	// Notify that the webpage setup is finished
+	document.dispatchEvent(new CustomEvent('TalkWebPageSetupDone'))
 }

@@ -7,7 +7,7 @@ import Vue from 'vue'
 
 let ocDialogsAdapter = null
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('TalkWebPageSetupDone', async () => {
 	const { default: OcDialogsAdapter } = await import('./OcDialogsAdapter.vue')
 
 	const container = document.body.appendChild(document.createElement('oc-dialog-wrapper'))

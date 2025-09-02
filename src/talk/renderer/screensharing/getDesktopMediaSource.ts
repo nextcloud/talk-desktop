@@ -4,7 +4,6 @@
  */
 
 import { createApp } from 'vue'
-import AppGetDesktopMediaSource from './AppGetDesktopMediaSource.vue'
 
 let appGetDesktopMediaSourceInstance: InstanceType<typeof AppGetDesktopMediaSource> | null = null
 
@@ -15,6 +14,7 @@ let appGetDesktopMediaSourceInstance: InstanceType<typeof AppGetDesktopMediaSour
  */
 export async function getDesktopMediaSource() {
 	if (!appGetDesktopMediaSourceInstance) {
+		const { default: AppGetDesktopMediaSource } = await import('./AppGetDesktopMediaSource.vue')
 		const container = document.body.appendChild(document.createElement('div'))
 		appGetDesktopMediaSourceInstance = createApp(AppGetDesktopMediaSource).mount(container) as InstanceType<typeof AppGetDesktopMediaSource>
 	}

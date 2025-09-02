@@ -5,6 +5,18 @@
 
 # Changelog
 
+## v1.2.6 - 2025-09-02
+
+### Fixes
+
+- MSI installer installs update as a new app [#1435](https://github.com/nextcloud/talk-desktop/pull/1435)
+- User Status is set to offline when (in)activity is not changing [#1405](https://github.com/nextcloud/talk-desktop/pull/1405)
+- Missing localization in some places [#1391](https://github.com/nextcloud/talk-desktop/pull/1391) 
+
+### Changes
+
+- Built-in Talk in binaries is updated to v21.1.4 in the stable release channel [#1445](https://github.com/nextcloud/talk-desktop/pull/1445)
+
 ## v1.2.5 - 2025-07-17
 
 ### Fixes

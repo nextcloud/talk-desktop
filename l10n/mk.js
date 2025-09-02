@@ -15,6 +15,8 @@ OC.L10N.register(
     "About" : "За",
     "License" : "Лиценца",
     "Ok" : "Во ред",
+    "No" : "Не",
+    "Yes" : "Да",
     "Light" : "Светла",
     "Dark" : "Темна",
     "Always" : "Секогаш",

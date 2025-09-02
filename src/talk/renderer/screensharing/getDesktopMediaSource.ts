@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import type AppGetDesktopMediaSource from './AppGetDesktopMediaSource.vue'
+
 import Vue from 'vue'
 
 let appGetDesktopMediaSourceInstance: InstanceType<typeof AppGetDesktopMediaSource> | null = null

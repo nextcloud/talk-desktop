@@ -29,6 +29,7 @@ OC.L10N.register(
     "Back" : "Назад",
     "View profile" : "Праглядзець профіль",
     "Log out" : "Выйсці",
+    "Quit" : "Выйсці",
     "Don't clear" : "Не ачышчаць",
     "Today" : "Сёння",
     "Loading …" : "Загрузка …",

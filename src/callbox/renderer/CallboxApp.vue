@@ -114,6 +114,23 @@ function dismiss() {
 	</AppWindow>
 </template>
 
+<style>
+:root {
+	--join-call-background-color: var(--color-border-success);
+	--join-call-border-color: var(--color-success-text);
+}
+
+[data-theme-dark] {
+	--join-call-border-color: var(--color-success-hover);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--join-call-border-color: var(--color-success-hover);
+	}
+}
+</style>
+
 <style scoped>
 .callbox {
 	--height: calc(var(--default-clickable-area) * 2 + var(--default-grid-baseline) * 2 * 3);
@@ -127,6 +144,22 @@ function dismiss() {
 	background: rgba(0, 0, 0, .2);
 	color: var(--color-background-plain-text);
 	-webkit-app-region: drag;
+
+	/* FIXME: hotfix for the broken success/danger buttons on the dark theme */
+	.button-vue--success {
+		border-color: var(--join-call-border-color);
+		background-color: var(--join-call-background-color);
+		color: var(--color-primary-element-text);
+
+		&:hover:not(:disabled) {
+			background-color: var(--join-call-border-color) !important;
+		}
+	}
+
+	.button-vue--error {
+		background-color: #FF3333; /* Nextcloud 31 --color-error */
+		color: var(--color-primary-text);
+	}
 }
 
 .callbox button {

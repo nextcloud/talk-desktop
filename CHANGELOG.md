@@ -5,6 +5,14 @@
 
 # Changelog
 
+## v2.0.0-beta - 2025-09-04
+
+### Changes
+
+- Built-in Talk in binaries is updated to v22.0.0-rc.1 in the beta release channel [#1452](https://github.com/nextcloud/talk-desktop/pull/1452)
+- Built-in styles were updated to Nextcloud v32.0.0rc1 styles [#1451](https://github.com/nextcloud/talk-desktop/pull/1451)
+- Talk Desktop is migrated Vue 3 and can no longer use built-in Talk below v22 with Vue 2 [#680](https://github.com/nextcloud/talk-desktop/pull/680), [#1422](https://github.com/nextcloud/talk-desktop/pull/1422)
+
 ## v1.2.6 - 2025-09-02
 
 ### Fixes

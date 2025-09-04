@@ -58,6 +58,7 @@ const { isDevMode } = useDevMode()
 
 <style scoped>
 .title-bar {
+	display: flex;
 	height: var(--header-height);
 	margin-bottom: calc(-1 * var(--header-height));
 	box-sizing: border-box;
@@ -66,6 +67,7 @@ const { isDevMode } = useDevMode()
 }
 
 .title-bar__inner {
+	flex: 1;
 	display: flex;
 	align-items: center;
 	height: 100%;

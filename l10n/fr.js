@@ -92,7 +92,7 @@ OC.L10N.register(
     "User status" : "Statut utilisateur",
     "Clear custom status" : "Effacer le statut personnalisé",
     "Set user status" : "Définir le statut de l'utilisateur",
-    "Your status was set automatically" : "Votre état a été automatiquement défini",
+    "Your status was set automatically" : "Votre statut a été automatiquement défini",
     "No status message" : "Pas de message de statut",
     "Don't clear" : "Ne pas effacer",
     "Today" : "Aujourd’hui",
@@ -132,7 +132,7 @@ OC.L10N.register(
     "Do not disturb" : "Ne pas déranger",
     "Invisible" : "Invisible",
     "Offline" : "Hors-ligne",
-    "Unknown status" : "État inconnu",
+    "Unknown status" : "Statut inconnu",
     "You missed a call from {user}" : "Vous avez manqué l'appel de {user}",
     "You missed a group call in {call}" : "Vous avez manqué l'appel de groupe {call}"
 },

@@ -5,6 +5,7 @@
 
 require('dotenv').config()
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { spawnSync } = require('node:child_process')
 const path = require('node:path')
 const webpack = require('webpack')
@@ -106,6 +107,14 @@ const webpackRendererConfig = mergeWithRules({
 	module: {
 		rules: [
 			{
+				test: /\.css$/,
+				use: [MiniCssExtractPlugin.loader, 'css-loader'],
+			},
+			{
+				test: /\.scss$/,
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+			},
+			{
 				test: /\.js$/,
 				loader: 'esbuild-loader',
 				options: {
@@ -167,6 +176,12 @@ const webpackRendererConfig = mergeWithRules({
 			__TALK_VERSION_TAG__: JSON.stringify(getFullVersion(TALK_PATH)),
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),
 			__BUILD_CONFIG__: JSON.stringify(resolveConfig()),
+		}),
+
+		new MiniCssExtractPlugin({
+			filename: 'talk_desktop__dist/assets/[name].css',
+			chunkFilename: 'talk_desktop__dist/chunks/[name].css',
+			ignoreOrder: true,
 		}),
 	],
 })

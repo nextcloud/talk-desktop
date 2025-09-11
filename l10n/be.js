@@ -1,6 +1,14 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Talk Desktop" : "Talk Desktop",
+    "Logged in successfully" : "Паспяховы ўваход",
+    "Connecting over http:// is not allowed" : "Злучэнне праз http:// забаронена",
+    "Invalid server address" : "Памылковы адрас сервера",
+    "SSL certificate error" : "Памылка SSL-сертыфіката",
+    "Nextcloud server not found" : "Сервер Nextcloud не знойдзены",
+    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk не ўсталявана на серверы",
+    "Unexpected error" : "Нечаканая памылка",
     "Authentication" : "Аўтэнтыфікацыя",
     "Log in to {applicationName}" : "Увайсці ў {applicationName}",
     "Server address" : "Адрас сервера",
@@ -11,7 +19,7 @@ OC.L10N.register(
     "Security warning" : "Папярэджанне бяспекі",
     "Cancel" : "Скасаваць",
     "Copy" : "Капіяваць",
-    "About" : "Аб гэтым",
+    "About" : "Аб праграме",
     "License" : "Ліцэнзія",
     "Issues" : "Праблемы",
     "Ok" : "ОК",
@@ -32,7 +40,7 @@ OC.L10N.register(
     "Log out" : "Выйсці",
     "Quit" : "Выйсці",
     "User status" : "Статус карыстальніка",
-    "Your status was set automatically" : "Твой статус будзе усталяваны аўтаматычна",
+    "Your status was set automatically" : "Ваш статус будзе зададзены аўтаматычна",
     "Don't clear" : "Не ачышчаць",
     "Today" : "Сёння",
     "This week" : "На гэтым тыдні",
@@ -40,10 +48,11 @@ OC.L10N.register(
     "Status message" : "Паведамленне статусу",
     "Loading …" : "Загрузка …",
     "Online" : "У сетцы",
-    "Away" : "Адышоўшы",
+    "Away" : "Адышоў",
     "Busy" : "Заняты",
     "Do not disturb" : "Не турбаваць",
     "Invisible" : "Нябачны",
-    "Offline" : "Па-за сеткай"
+    "Offline" : "Па-за сеткай",
+    "You missed a call from {user}" : "Вы прапусцілі выклік ад {user}"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

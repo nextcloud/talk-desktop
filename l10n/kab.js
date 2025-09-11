@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Log in to {applicationName}" : "Yuqqna ar {applicationName}",
     "Log in" : "Qqen",
     "Close" : "Mdel",
     "Dismiss" : "Agi",

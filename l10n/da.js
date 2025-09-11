@@ -52,7 +52,7 @@ OC.L10N.register(
     "Live preview" : "Live forhåndsvisning",
     "Share screen" : "Del skærm",
     "Preview is not available" : "Forhåndsvisning er ikke tilgængelig",
-    "Update Talk Desktop" : "Opdater Snak desktop",
+    "Update Talk Desktop" : "Opdatér Snak Desktop",
     "Application" : "Applikation",
     "Online" : "Online",
     "Away" : "Ikke tilstede",

@@ -34,3 +34,12 @@ out/
 # IDE
 .vscode/
 .idea/
+
+# AI
+.aider.conf.yml
+.claude/
+.cursor/
+.cursorrules
+.copilot/
+.gemini/
+opencode.json

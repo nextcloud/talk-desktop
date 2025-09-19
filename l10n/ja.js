@@ -45,9 +45,11 @@ OC.L10N.register(
     "Layout" : "レーアウト",
     "Share screen" : "画面共有",
     "Application" : "アプリケーション",
+    "Away" : "不在",
     "Busy" : "ビジー",
     "Do not disturb" : "取り込み中",
     "Invisible" : "ステータスを隠す",
+    "Offline" : "オフライン",
     "Unknown status" : "不明なステータス",
     "You missed a call from {user}" : "{user}からの着信に応答できませんでした。",
     "You missed a group call in {call}" : "{user}からのグループ着信に応答できませんでした。"

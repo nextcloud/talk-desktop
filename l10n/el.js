@@ -12,6 +12,7 @@ OC.L10N.register(
     "Join call" : "Συμμετοχή σε κλήση",
     "Security warning" : "Προειδοποίηση ασφαλείας",
     "Advanced" : "Για προχωρημένους",
+    "Proceed" : "Συνέχεια",
     "Cancel" : "Ακύρωση",
     "Valid until" : "Έγκυρο έως",
     "Copy" : "Αντιγραφή",

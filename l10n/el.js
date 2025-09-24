@@ -49,6 +49,8 @@ OC.L10N.register(
     "Your status was set automatically" : "Η κατάστασή σας ορίστηκε αυτόματα",
     "Today" : "Σήμερα",
     "Emoji for your status message" : "Emoji για το μήνυμα κατάστασής σας",
+    "Layout" : "Διάταξη",
+    "Compact" : "Συμπαγής",
     "Share screen" : "Διαμοιρασμός οθόνης",
     "Application" : "Εφαρμογή",
     "Away" : "Λείπω",

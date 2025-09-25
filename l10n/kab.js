@@ -27,7 +27,10 @@ OC.L10N.register(
     "Don't clear" : "Ur seffeḍ ara",
     "Today" : "Ass-a",
     "This week" : "Dduṛt agi",
+    "Online" : "D uqqin",
     "Away" : "Akin",
-    "Invisible" : "Ur d-ittban ara"
+    "Busy" : "Ur yestuf ara",
+    "Invisible" : "Ur d-ittban ara",
+    "Offline" : "D aruqqin"
 },
 "nplurals=2; plural=(n != 1);");

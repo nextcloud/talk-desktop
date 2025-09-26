@@ -29,6 +29,8 @@ protocol.registerSchemesAsPrivileged([
 			supportFetchAPI: true,
 			// Enable V8 code cache
 			codeCache: true,
+			// Enable registration as stream protocol. Required for playing video streams and downloading large files.
+			stream: true,
 		},
 	},
 ])

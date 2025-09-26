@@ -60,6 +60,7 @@ OC.L10N.register(
     "Do not disturb" : "Forstyr ikke",
     "Invisible" : "Usynlig",
     "Offline" : "Offline",
+    "Unknown status" : "Ukendt status",
     "You missed a call from {user}" : "Du missede et opkald fra {user}",
     "You missed a group call in {call}" : "Du missede en gruppesamtale i {call}"
 },

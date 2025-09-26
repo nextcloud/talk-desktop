@@ -5,7 +5,20 @@
 
 # Changelog
 
+## v2.0.2 - 2025-09-27
+
+### Fixes
+
+- Experimental fix for video streams [#1478](https://github.com/nextcloud/talk-desktop/pull/1478)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v22.0.0 in both beta and stable release channels [#1480](https://github.com/nextcloud/talk-desktop/pull/1480)
+
+
 ## v2.0.1-beta - 2025-09-12
+
+### Changes
 
 - Built-in Talk in binaries is updated to v22.0.0-rc.2 in the beta release channel [#1465](https://github.com/nextcloud/talk-desktop/pull/1465)
 

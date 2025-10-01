@@ -47,6 +47,7 @@ OC.L10N.register(
     "Emoji for your status message" : "Emoji til din statusbesked",
     "Status message" : "Statusbesked",
     "Loading …" : "Indlæser …",
+    "Layout" : "Layout",
     "Compact" : "Kompakt",
     "Entire screens" : "Fuldskærm",
     "Application windows" : "Applikationsvinduer",

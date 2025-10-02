@@ -21,11 +21,13 @@ All binaries and `beta` releases are available on [Nextcloud Releases](https://g
 
 | Platform (arch)          | Distribution type                                                                                                           | Download link                                                                                                                                        |
 |--------------------------|-----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **🐧 Linux** (x64)       | [Flatpak](https://flatpak.org) single file (recommended)                                                                    | [Nextcloud.Talk-linux-x64.flatpak](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.flatpak)     |
+| **🐧 Linux** (x64)       | [Flatpak](https://flatpak.org) single file (recommended), see note below                                                    | [Nextcloud.Talk-linux-x64.flatpak](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.flatpak)     |
 | **🐧 Linux** (x64)       | ZIP archive                                                                                                                 | [Nextcloud.Talk-linux-x64.zip](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-linux-x64.zip)             |
 | **🍎 macOS** (Universal) | Disc Image                                                                                                                  | [Nextcloud.Talk-macos-universal.dmg](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-macos-universal.dmg) |
 | **🪟 Windows** (x64)     | Non-admin single-user one-click installer (recommended)                                                                     | [Nextcloud.Talk-windows-x64.exe](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.exe)         |
 | **🪟 Windows** (x64)     | [MSI](https://github.com/electron-userland/electron-wix-msi/blob/master/guides/enduser.md) (for administrated environments) | [Nextcloud.Talk-windows-x64.msi](https://github.com/nextcloud-releases/talk-desktop/releases/latest/download/Nextcloud.Talk-windows-x64.msi)         |
+
+Installation of flatpak on Linux: Ensure you have Flatpak installed on your system. Then, use the command `flatpak install <path-to-flatpakref-file>` in the terminal, replacing `<path-to-flatpakref-file>` with the actual path to your Flatpak file.
 
 ### via Package manager
 

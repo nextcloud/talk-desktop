@@ -61,7 +61,7 @@ defineExpose({
 		:class="{ 'viewer-modal--open': isOpen }"
 		:name="file.basename"
 		size="full"
-		:close-button-contained="false"
+		close-button-outside
 		dark
 		@close="close">
 		<component

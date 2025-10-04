@@ -13,6 +13,7 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud server adres",
     "Server address" : "Serveradres",
     "Log in" : "Aanmelden",
+    "Logging in …" : "Aanmelden ...",
     "Incoming call" : "Inkomend gesprek",
     "Close" : "Sluit",
     "Dismiss" : "Wissen",

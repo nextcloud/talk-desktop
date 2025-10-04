@@ -41,6 +41,7 @@ OC.L10N.register(
     "Today" : "Денес",
     "This week" : "Оваа недела",
     "Status message" : "Статус порака",
+    "Loading …" : "Се вчитува …",
     "Layout" : "Распоред",
     "Share screen" : "Сподели екран",
     "Online" : "Присутен",

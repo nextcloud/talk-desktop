@@ -5,6 +5,7 @@ OC.L10N.register(
     "Nextcloud server address" : "Vistfang Nextcloud-þjóns",
     "Server address" : "Vistfang miðlara",
     "Log in" : "Skrá inn",
+    "Logging in …" : "Skrái inn …",
     "Close" : "Loka",
     "Dismiss" : "Hafna",
     "Join call" : "Taka þátt í símtali",

@@ -58,6 +58,7 @@ OC.L10N.register(
     "This week" : "本周后",
     "Emoji for your status message" : "状态消息的表情符号",
     "Status message" : "状态消息",
+    "Loading …" : "正在加载 …",
     "Layout" : "布局",
     "Compact" : "紧凑",
     "Share screen" : "共享屏幕",

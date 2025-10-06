@@ -6,6 +6,7 @@ OC.L10N.register(
     "Nextcloud server address" : "Διεύθυνση διακομιστή Nextcloud",
     "Server address" : "Διεύθυνση διακομιστή",
     "Log in" : "Είσοδος",
+    "Logging in …" : "Πραγματοποιείται είσοδος …",
     "Incoming call" : "Εισερχόμενη κλήση",
     "Close" : "Κλείσιμο",
     "Dismiss" : "Αποδέσμευση",

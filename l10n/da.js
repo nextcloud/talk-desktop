@@ -5,6 +5,7 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud Serveradresse ",
     "Server address" : "Serveradresse",
     "Log in" : "Log ind",
+    "Logging in …" : "Logger på ...",
     "Close" : "Luk",
     "Dismiss" : "Afvis",
     "Join call" : "Deltag i opkaldet",

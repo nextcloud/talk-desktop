@@ -14,7 +14,7 @@ OC.L10N.register(
     "Proceed" : "Fortsæt",
     "Cancel" : "Annuller",
     "Valid until" : "Gyldig indtil",
-    "Copy" : "Kopier",
+    "Copy" : "Kopiér",
     "Copied" : "Kopieret",
     "About" : "Om",
     "License" : "Licens",

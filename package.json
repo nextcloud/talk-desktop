@@ -36,6 +36,7 @@
     "package:windows:exe": "electron-forge make --skip-package --platform=win32 --targets=squirrel",
     "package:windows:msi": "electron-forge make --skip-package --platform=win32 --targets=wix",
     "release:package": "npx -y zx ./scripts/prepare-release-packages.mjs",
+    "post-release:milestones": "npx -y zx ./scripts/post-release-milestones.mjs",
     "generate-icons": "node ./scripts/generate-icons.js",
     "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
     "lint": "eslint src/ --fix",

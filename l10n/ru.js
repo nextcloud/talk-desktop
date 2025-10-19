@@ -98,7 +98,7 @@ OC.L10N.register(
     "This week" : "На этой неделе",
     "Clear after" : "Очистить через",
     "Emoji for your status message" : "Эмодзи для вашего статуса",
-    "Status message" : "Сообщение о статусе",
+    "Status message" : "Описание статуса",
     "Open in a web browser" : "Открыть в браузере",
     "Could not load the file" : "Не удалось загрузить файл",
     "Wrap content in code blocks" : "Переносить текст в блоках кода",

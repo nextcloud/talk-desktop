@@ -15,7 +15,7 @@ OC.L10N.register(
     "Logging in …" : "正在登录 …",
     "Incoming call" : "来电",
     "Close" : "关闭",
-    "Dismiss" : "忽略",
+    "Dismiss" : "关闭",
     "Join call" : "加入通话",
     "Security warning" : "安全警告",
     "Advanced" : "高级",

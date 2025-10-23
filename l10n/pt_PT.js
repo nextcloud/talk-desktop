@@ -5,6 +5,7 @@ OC.L10N.register(
     "Log in to {applicationName}" : "Inicie sessão em {applicationName}",
     "Server address" : "Endereço do servidor",
     "Log in" : "Iniciar sessão",
+    "Logging in …" : "A iniciar a sessão...",
     "Close" : "Fechar",
     "Dismiss" : "Dispensar",
     "Join call" : "Juntar-se à chamada",

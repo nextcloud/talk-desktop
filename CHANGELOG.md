@@ -5,6 +5,16 @@
 
 # Changelog
 
+## v2.0.3 - 2025-10-27
+
+### Fixes
+
+- Wrong buttons position and color in Viewer [#1487](https://github.com/nextcloud/talk-desktop/pull/1487)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v22.0.2 in both beta and stable release channels [#1510](https://github.com/nextcloud/talk-desktop/pull/1510)
+
 ## v2.0.2 - 2025-09-27
 
 ### Fixes
@@ -14,7 +24,6 @@
 ### Changes
 
 - Built-in Talk in binaries is updated to v22.0.0 in both beta and stable release channels [#1480](https://github.com/nextcloud/talk-desktop/pull/1480)
-
 
 ## v2.0.1-beta - 2025-09-12
 

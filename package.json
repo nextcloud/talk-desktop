@@ -92,7 +92,7 @@
     "node-loader": "^2.1.0",
     "regenerator-runtime": "^0.14.1",
     "typescript": "^5.9.2",
-    "vue-tsc": "^3.0.8",
+    "vue-tsc": "^3.1.1",
     "webpack": "^5.102.0",
     "webpack-merge": "^6.0.1",
     "worker-loader": "^3.0.8",

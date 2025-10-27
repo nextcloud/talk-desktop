@@ -69,10 +69,10 @@
     "vue-material-design-icons": "^5.3.1"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^7.9.0",
+    "@electron-forge/cli": "^7.10.2",
     "@electron-forge/maker-dmg": "^7.10.2",
-    "@electron-forge/maker-flatpak": "^7.9.0",
-    "@electron-forge/maker-squirrel": "^7.9.0",
+    "@electron-forge/maker-flatpak": "^7.10.2",
+    "@electron-forge/maker-squirrel": "^7.10.2",
     "@electron-forge/maker-wix": "^7.10.2",
     "@electron-forge/maker-zip": "^7.10.2",
     "@electron-forge/plugin-webpack": "^7.10.2",

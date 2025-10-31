@@ -37,6 +37,7 @@ OC.L10N.register(
     "Force reload" : "Принудително повторно зареждане",
     "Report a bug" : "Докладване за грешка",
     "Settings" : "Настройки",
+    "Back" : "Назад",
     "View profile" : "Преглед на профил",
     "Log out" : "Изход",
     "Quit" : "Изход",

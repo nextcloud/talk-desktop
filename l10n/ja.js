@@ -6,6 +6,7 @@ OC.L10N.register(
     "Server address" : "サーバーアドレス",
     "Log in" : "ログイン",
     "Logging in …" : "ログイン中...",
+    "Incoming call" : "着信",
     "Close" : "閉じる",
     "Dismiss" : "閉じる",
     "Join call" : "通話開始",

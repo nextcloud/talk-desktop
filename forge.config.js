@@ -8,6 +8,7 @@ const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
 const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerWix } = require('@electron-forge/maker-wix')
 const { MakerZIP } = require('@electron-forge/maker-zip')
+const cheerio = require('cheerio')
 const fs = require('node:fs')
 const path = require('node:path')
 const semver = require('semver')
@@ -245,6 +246,49 @@ module.exports = {
 				},
 			},
 			windowsSign: hasWindowsSign && signWithParamsToWindowsSignOptions(process.env.WINDOWS_SIGN_PARAMS),
+			// A firewall exception must be added for the "C:/Program Files/Nextcloud Talk/app-version/Nextcloud Talk.exe".
+			// Otherwise, a user is prompt to do it on the first call after every upgrade,
+			// And it is only possible from an admin user
+			// WiX Docs: https://docs.firegiant.com/wix3/xsd/firewall/firewallexception/
+			// Unfortunately there is no way to specify the FirewallException via electron-wix-msi options
+			// And there is no way to provide a custom MSICreator class to the @electron-forge/maker-wix
+			// The only option is to override the instance method.
+			// See also:
+			// - https://github.com/electron-userland/electron-wix-msi/blob/master/src/creator.ts#L330
+			// - https://js.electronforge.io/interfaces/_electron_forge_maker_wix.MakerWixConfig.html#beforeCreate
+			// For testing (pwsh):
+			// (Get-NetFirewallRule -DisplayName "Nextcloud Talk" | Get-NetFirewallApplicationFilter).Program
+			extensions: ['WixFirewallExtension'],
+			async beforeCreate(creator) {
+				const originalCreateWxs = creator.createWxs.bind(creator)
+				creator.createWxs = async function() {
+					const wxs = await originalCreateWxs()
+
+					const $ = cheerio.load(wxs.wxsContent, { xmlMode: true })
+
+					$('Wix').attr('xmlns:firewall', 'http://schemas.microsoft.com/wix/FirewallExtension')
+
+					// <Directory Name="app-{version}> -> <Component> -> <File Name="Nextcloud Talk.exe>
+					// Represents: C:/Program Files/Nextcloud Talk/app-{version}/Nextcloud Talk.exe
+					const $executableFile = $(`Directory[Name^="app-"] > Component > File[Name="${CONFIG.applicationName}.exe"]`)
+					$('<firewall:FirewallException></firewall:FirewallException>').attr({
+						Id: $executableFile.attr('Id') + '_firewall_exception',
+						Name: CONFIG.applicationName,
+						Description: CONFIG.description,
+						Scope: 'any',
+						IgnoreFailure: 'yes',
+					}).appendTo($executableFile)
+
+					// The file must be re-saved
+					const wxsContent = $.xml()
+					fs.writeFileSync(wxs.wxsFile, wxsContent, 'utf8')
+
+					return {
+						...wxs,
+						wxsContent,
+					}
+				}
+			},
 		}),
 
 		// https://github.com/squirrel/squirrel.windows

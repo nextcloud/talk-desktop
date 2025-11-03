@@ -84,7 +84,7 @@
     "@vue/tsconfig": "^0.8.1",
     "cheerio": "^1.1.2",
     "dotenv": "^17.2.3",
-    "electron": "^38.4.0",
+    "electron": "^39.0.0",
     "esbuild-loader": "^4.4.0",
     "eslint": "^9.39.0",
     "globals": "^16.4.0",

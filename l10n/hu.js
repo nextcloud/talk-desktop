@@ -52,6 +52,7 @@ OC.L10N.register(
     "This week" : "Ezen a héten",
     "Emoji for your status message" : "Emodzsi az állapotüzenetéhez",
     "Status message" : "Állapotüzenet",
+    "Loading …" : "Betöltés…",
     "Share screen" : "Képernyő megosztása",
     "Upgrade required" : "Frissítés szükséges",
     "The client version is too old and no longer supported by this server. Update is required." : "Az alkalmazás túl régi, és már nem támogatja ez a kiszolgáló. Frissítse.",

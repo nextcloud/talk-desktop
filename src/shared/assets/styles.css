@@ -19,3 +19,24 @@ body /* Theming overrides */{
 	--body-container-margin: 0px !important;
 	--body-container-radius: 0 !important;
 }
+
+/* TODO: fix upstream */
+kbd {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: var(--default-clickable-area);
+	height: var(--default-clickable-area);
+	padding-inline: calc(2 * var(--default-grid-baseline)) calc(2 * var(--default-grid-baseline));
+	border: 2px solid var(--color-primary-element-light);
+	border-block-end-width: 4px;
+	border-radius: var(--border-radius-element);
+	box-shadow: none; /* Override server <kbd> styles */
+	font-family: var(--font-family); /* Design decision: looks better with the default font instead of mono */
+	line-height: 1;
+	white-space: nowrap;
+}
+
+kbd + kbd {
+	margin-inline-start: calc(1 * var(--default-grid-baseline));
+}

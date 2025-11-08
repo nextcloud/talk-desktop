@@ -11,6 +11,7 @@ OC.L10N.register(
     "Join call" : "Присъединяване към обаждането",
     "Security warning" : "Предупреждение за сигурност",
     "Advanced" : "Допълнителни",
+    "Proceed" : "Продължете",
     "Cancel" : "Отказ",
     "Valid until" : "Валиден до",
     "Copy" : "Копие",

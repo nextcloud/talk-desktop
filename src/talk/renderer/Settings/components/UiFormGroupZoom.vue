@@ -12,7 +12,6 @@ import NcFormGroup from '@nextcloud/vue/components/NcFormGroup'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
 import IconMinus from 'vue-material-design-icons/Minus.vue'
 import IconPlus from 'vue-material-design-icons/Plus.vue'
-import IconRestore from 'vue-material-design-icons/Restore.vue'
 
 /** Zoom factor ~0.5..4 */
 const modelValue = defineModel<number>({ required: true })
@@ -27,7 +26,7 @@ const zoomHint = t('talk_desktop', 'Zoom can be also changed by {key} or mouse w
 
 const MIN_STEP = -6
 const MAX_STEP = 17
-const STEPS = Array.from(Array(MAX_STEP - MIN_STEP), (_, i) => i + MIN_STEP)
+const STEPS = Array.from(Array(MAX_STEP - MIN_STEP + 1), (_, i) => i + MIN_STEP)
 const ZOOM_STEP = 1.2
 const STEP_FACTOR = ZOOM_STEP ** 0.5
 const stepToFactor = (step: number) => STEP_FACTOR ** step
@@ -35,16 +34,7 @@ const factorToStep = (factor: number) => Math.log(factor) / Math.log(STEP_FACTOR
 const ZOOM_MIN = stepToFactor(MIN_STEP)
 const ZOOM_MAX = stepToFactor(MAX_STEP)
 
-const showInput = ref(false)
-const inputInstance = useTemplateRef('input')
-/** Zoom factor in % and limits */
-const inputValue = computed({
-	get: () => Math.round(modelValue.value * 100),
-	set: (value: number) => {
-		modelValue.value = isFinite(value) ? Math.min(Math.max(value / 100, ZOOM_MIN), ZOOM_MAX) : 1
-	},
-})
-
+/** Zoom factor ~0.5..4 on the range, separate from modelValue to not change the zoom during mouse moving */
 const rangeValue = ref(0)
 watch(modelValue, () => {
 	rangeValue.value = factorToStep(modelValue.value)
@@ -64,6 +54,19 @@ function onRangeChange(newValue: number) {
 	}
 }
 
+const showInput = ref(false)
+const inputInstance = useTemplateRef('input')
+/** Zoom factor in % and limits */
+const inputValue = computed({
+	get: () => {
+		console.log(isRangeMouseSliding.value, modelValue.value, rangeValue.value, Math.round(stepToFactor(rangeValue.value) * 100))
+		return !isRangeMouseSliding.value ? Math.round(modelValue.value * 100) : Math.round(stepToFactor(rangeValue.value) * 100)
+	},
+	set: (value: number) => {
+		modelValue.value = isFinite(value) ? Math.min(Math.max(value / 100, ZOOM_MIN), ZOOM_MAX) : 1
+	},
+})
+
 /**
  * Switch to input
  */
@@ -81,70 +84,66 @@ async function onShowInput() {
 			<span v-html="zoomHint" />
 		</template>
 
-		<NcFormBox v-slot="{ itemClass }">
-			<NcFormBox class="zoom-box__row" row>
-				<NcButton
-					:aria-label="t('talk_desktop', 'Zoom out')"
-					class="zoom-box__start-start"
-					variant="secondary"
-					style="flex: 0 1"
-					@click="modelValue /= ZOOM_STEP">
-					<template #icon>
-						<IconMinus :size="20" />
-					</template>
-				</NcButton>
-
-				<input
-					:aria-label="t('talk_desktop', 'Zoom')"
-					class="zoom-box__range"
-					type="range"
-					:min="MIN_STEP"
-					:max="MAX_STEP"
-					step="1"
-					:list="stepsDatalistId"
-					:value="rangeValue"
-					@change="onRangeChange(($event.target as HTMLInputElement).valueAsNumber)"
-					@mousedown="isRangeMouseSliding = true"
-					@mouseup="isRangeMouseSliding = false">
-				<datalist :id="stepsDatalistId">
-					<option v-for="step in STEPS" :key="step" :value="step" />
-				</datalist>
-
-				<NcButton
-					v-if="!showInput"
-					class="zoom-box__edit-button"
-					:aria-description="t('talk_desktop', 'Edit zoom')"
-					variant="tertiary"
-					@click="onShowInput">
-					{{ inputValue }}%
-				</NcButton>
-				<NcTextField
-					v-else
-					ref="input"
-					:aria-label="t('talk_desktop', 'Zoom')"
-					inputmode="number"
-					class="zoom-box__edit"
-					:model-value="inputValue"
-					@change="inputValue = $event.target.value /* TODO: add lazy modifier support */"
-					@blur="showInput = false" />
-
-				<NcButton
-					:aria-label="t('talk_desktop', 'Zoom in')"
-					class="zoom-box__start-end"
-					variant="secondary"
-					@click="modelValue *= ZOOM_STEP">
-					<template #icon>
-						<IconPlus :size="20" />
-					</template>
-				</NcButton>
-			</NcFormBox>
-
-			<NcButton :class="itemClass" wide @click="modelValue = 1">
-				<template #icon>
-					<IconRestore :size="20" />
-				</template>
+		<NcFormBox v-slot="{ itemClass }" class="zoom-box__row" row>
+			<NcButton
+				:class="itemClass"
+				variant="tertiary"
+				wide
+				@click="modelValue = 1">
 				{{ t('talk_desktop', 'Reset') }}
 			</NcButton>
+
+			<NcButton
+				:aria-label="t('talk_desktop', 'Zoom out')"
+				:class="itemClass"
+				@click="modelValue /= STEP_FACTOR">
+				<template #icon>
+					<IconMinus :size="20" />
+				</template>
+			</NcButton>
+
+			<input
+				v-model="rangeValue"
+				:aria-label="t('talk_desktop', 'Zoom')"
+				class="zoom-box__range"
+				type="range"
+				:min="MIN_STEP"
+				:max="MAX_STEP"
+				step="1"
+				:list="stepsDatalistId"
+				@change="onRangeChange(($event.target as HTMLInputElement).valueAsNumber)"
+				@mousedown="isRangeMouseSliding = true"
+				@mouseup="isRangeMouseSliding = false">
+			<datalist :id="stepsDatalistId">
+				<option v-for="step in STEPS" :key="step" :value="step" />
+			</datalist>
+
+			<NcButton
+				:aria-label="t('talk_desktop', 'Zoom in')"
+				:class="itemClass"
+				@click="modelValue *= STEP_FACTOR">
+				<template #icon>
+					<IconPlus :size="20" />
+				</template>
+			</NcButton>
+
+			<NcButton
+				v-if="!showInput"
+				class="zoom-box__edit-button"
+				:aria-description="t('talk_desktop', 'Edit zoom')"
+				variant="tertiary"
+				@click="onShowInput">
+				{{ inputValue }}%
+			</NcButton>
+			<NcTextField
+				v-else
+				ref="input"
+				:aria-label="t('talk_desktop', 'Zoom')"
+				inputmode="number"
+				class="zoom-box__edit"
+				:model-value="inputValue"
+				@change="inputValue = $event.target.value /* TODO: add lazy modifier support */"
+				@blur="showInput = false" />
 		</NcFormBox>
 	</NcFormGroup>
 </template>
@@ -174,31 +173,18 @@ async function onShowInput() {
 }
 
 .zoom-box__row > * {
-	flex: 0 0;
+	flex: 0 0 fit-content;
 }
 
 .zoom-box__range {
 	flex: 1 0;
 	margin: 0;
 	height: var(--default-clickable-area);
+	accent-color: var(--color-primary-element);
 }
 
 .zoom-box__edit,
 .zoom-box__edit-button {
 	flex-basis: 75px;
-}
-
-.zoom-box__start-start {
-	border-start-start-radius: var(--border-radius-element) !important;
-	border-start-end-radius: var(--border-radius-small) !important;
-	border-end-start-radius: var(--border-radius-small) !important;
-	border-end-end-radius: var(--border-radius-small) !important;
-}
-
-.zoom-box__start-end {
-	border-start-start-radius: var(--border-radius-small) !important;
-	border-start-end-radius: var(--border-radius-element) !important;
-	border-end-start-radius: var(--border-radius-small) !important;
-	border-end-end-radius: var(--border-radius-small) !important;
 }
 </style>

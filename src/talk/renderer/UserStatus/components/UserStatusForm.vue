@@ -98,7 +98,6 @@ async function revertStatus() {
 
 		<UserStatusFormCustomMessage
 			class="user-status-form__row"
-			:disabled="!!backupStatus"
 			:message="userStatus.message"
 			:icon="userStatus.icon"
 			@update:message="patchStatus({ message: $event })"

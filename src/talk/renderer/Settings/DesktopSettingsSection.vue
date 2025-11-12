@@ -79,7 +79,7 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 
 		<UiFormGroupZoom v-model="zoomFactor" />
 
-		<NcFormGroup :label="t('talk_desktop', 'Notifications and sounds')">
+		<NcFormGroup :label="t('talk_desktop', 'Notifications & Sounds')">
 			<NcFormBox>
 				<UiFormBoxSelectNative v-model="playSoundChat" :label="t('talk_desktop', 'Play chat notification sound')" :options="notificationLevelOptions" />
 				<UiFormBoxSelectNative v-model="playSoundCall" :label="t('talk_desktop', 'Play call notification sound')" :options="notificationLevelOptions" />
@@ -88,9 +88,8 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 
 			<NcFormBox>
 				<NcFormBoxSwitch v-model="secondarySpeaker" :label="t('talk_desktop', 'Also repeat call notification on a secondary speaker')" />
+				<UiFormBoxAudioOutput v-if="secondarySpeaker" v-model="secondarySpeakerDevice" :label="t('talk_desktop', 'Secondary speaker')" />
 			</NcFormBox>
-
-			<UiFormBoxAudioOutput v-if="secondarySpeaker" v-model="secondarySpeakerDevice" :label="t('talk_desktop', 'Secondary speaker')" />
 		</NcFormGroup>
 	</div>
 </template>

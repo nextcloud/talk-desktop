@@ -12,6 +12,7 @@ import NcFormGroup from '@nextcloud/vue/components/NcFormGroup'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
 import IconMinus from 'vue-material-design-icons/Minus.vue'
 import IconPlus from 'vue-material-design-icons/Plus.vue'
+import UiFormBoxSplitButton from './UiFormBoxSplitButton.vue'
 
 /** Zoom factor ~0.5..4 */
 const modelValue = defineModel<number>({ required: true })
@@ -84,23 +85,10 @@ async function onShowInput() {
 			<span v-html="zoomHint" />
 		</template>
 
-		<NcFormBox v-slot="{ itemClass }" class="zoom-box__row" row>
-			<NcButton
-				:class="itemClass"
-				variant="tertiary"
-				wide
-				@click="modelValue = 1">
+		<NcFormBox class="zoom-box__row" row>
+			<UiFormBoxSplitButton @click="modelValue = 1">
 				{{ t('talk_desktop', 'Reset') }}
-			</NcButton>
-
-			<NcButton
-				:aria-label="t('talk_desktop', 'Zoom out')"
-				:class="itemClass"
-				@click="modelValue /= STEP_FACTOR">
-				<template #icon>
-					<IconMinus :size="20" />
-				</template>
-			</NcButton>
+			</UiFormBoxSplitButton>
 
 			<input
 				v-model="rangeValue"
@@ -118,18 +106,15 @@ async function onShowInput() {
 				<option v-for="step in STEPS" :key="step" :value="step" />
 			</datalist>
 
-			<NcButton
-				:aria-label="t('talk_desktop', 'Zoom in')"
-				:class="itemClass"
-				@click="modelValue *= STEP_FACTOR">
+			<UiFormBoxSplitButton :label="t('talk_desktop', 'Zoom out')" hide-label @click="modelValue /= STEP_FACTOR">
 				<template #icon>
-					<IconPlus :size="20" />
+					<IconMinus :size="20" />
 				</template>
-			</NcButton>
+			</UiFormBoxSplitButton>
 
 			<NcButton
 				v-if="!showInput"
-				class="zoom-box__edit-button"
+				class="form-box-split-button zoom-box__edit-button"
 				:aria-description="t('talk_desktop', 'Edit zoom')"
 				variant="tertiary"
 				@click="onShowInput">
@@ -141,9 +126,16 @@ async function onShowInput() {
 				:aria-label="t('talk_desktop', 'Zoom')"
 				inputmode="number"
 				class="zoom-box__edit"
+				input-class="zoom-box__edit-input"
 				:model-value="inputValue"
 				@change="inputValue = $event.target.value /* TODO: add lazy modifier support */"
 				@blur="showInput = false" />
+
+			<UiFormBoxSplitButton :label="t('talk_desktop', 'Zoom in')" hide-label @click="modelValue *= STEP_FACTOR">
+				<template #icon>
+					<IconPlus :size="20" />
+				</template>
+			</UiFormBoxSplitButton>
 		</NcFormBox>
 	</NcFormGroup>
 </template>
@@ -165,26 +157,27 @@ async function onShowInput() {
 		font-family: var(--font-family); /* Design decision: looks better with the default font instead of mono */
 		line-height: 1;
 		white-space: nowrap;
-
-		& + :deep(.kbd) {
-			margin-inline-start: calc(1 * var(--default-grid-baseline));
-		}
 	}
-}
 
-.zoom-box__row > * {
-	flex: 0 0 fit-content;
+	:deep(.kbd + .kbd) {
+		margin-inline-start: calc(1 * var(--default-grid-baseline));
+	}
 }
 
 .zoom-box__range {
 	flex: 1 0;
-	margin: 0;
-	height: var(--default-clickable-area);
+	margin-block: 0;
+	margin-inline: var(--default-grid-baseline);
 	accent-color: var(--color-primary-element);
 }
 
 .zoom-box__edit,
 .zoom-box__edit-button {
-	flex-basis: 75px;
+	width: 75px;
+}
+
+.zoom-box__edit {
+	display: flex;
+	align-items: center;
 }
 </style>

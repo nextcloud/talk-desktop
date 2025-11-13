@@ -8,6 +8,7 @@ import type { Ref } from 'vue'
 
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
+import { spawnDialog } from '@nextcloud/vue/functions/dialog'
 import { inject } from 'vue'
 import NcActionButton from '@nextcloud/vue/components/NcActionButton'
 import NcActionLink from '@nextcloud/vue/components/NcActionLink'
@@ -16,9 +17,11 @@ import NcActionSeparator from '@nextcloud/vue/components/NcActionSeparator'
 import IconBugOutline from 'vue-material-design-icons/BugOutline.vue'
 import IconCogOutline from 'vue-material-design-icons/CogOutline.vue'
 import IconInformationOutline from 'vue-material-design-icons/InformationOutline.vue'
+import IconLink from 'vue-material-design-icons/Link.vue'
 import IconMenu from 'vue-material-design-icons/Menu.vue'
 import IconReload from 'vue-material-design-icons/Reload.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
+import OpenConversationLinkDialog from './OpenConversationLinkDialog.vue'
 import { BUILD_CONFIG } from '../../../../shared/build.config.ts'
 import { getCurrentTalkRoutePath } from '../../TalkWrapper/talk.service.ts'
 
@@ -30,6 +33,8 @@ const showHelp = () => window.TALK_DESKTOP.showHelp()
 const reload = () => window.location.reload()
 const openSettings = () => window.OCA.Talk.Settings.open()
 const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_blank')
+
+const joinByLink = () => spawnDialog(OpenConversationLinkDialog)
 </script>
 
 <template>
@@ -42,23 +47,33 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 		</template>
 
 		<template v-if="isTalkInitialized">
-			<NcActionButton @click="openInWeb">
+			<NcActionButton close-after-click @click="openInWeb">
 				<template #icon>
 					<IconWeb :size="20" />
 				</template>
 				{{ t('talk_desktop', 'Open in web browser') }}
 			</NcActionButton>
+			<NcActionButton close-after-click @click="joinByLink">
+				<template #icon>
+					<IconLink :size="20" />
+				</template>
+				{{ t('talk_desktop', 'Join by link') }}
+			</NcActionButton>
 		</template>
 
 		<NcActionSeparator />
 
-		<NcActionButton @click="reload">
+		<NcActionButton close-after-click @click="reload">
 			<template #icon>
 				<IconReload :size="20" />
 			</template>
 			{{ t('talk_desktop', 'Force reload') }}
 		</NcActionButton>
-		<NcActionLink v-if="!BUILD_CONFIG.isBranded" :href="packageInfo.bugs.create || packageInfo.bugs.url" target="_blank">
+		<NcActionLink
+			v-if="!BUILD_CONFIG.isBranded"
+			:href="packageInfo.bugs.create || packageInfo.bugs.url"
+			target="_blank"
+			close-after-click>
 			<template #icon>
 				<IconBugOutline :size="20" />
 			</template>
@@ -73,7 +88,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 			</template>
 			{{ t('talk_desktop', 'Settings') }}
 		</NcActionButton>
-		<NcActionButton @click="showHelp">
+		<NcActionButton close-after-click @click="showHelp">
 			<template #icon>
 				<IconInformationOutline :size="20" />
 			</template>

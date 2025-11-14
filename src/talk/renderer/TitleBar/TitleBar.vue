@@ -62,7 +62,7 @@ const { isDevMode } = useDevMode()
 	height: var(--header-height);
 	margin-bottom: calc(-1 * var(--header-height));
 	box-sizing: border-box;
-	color: var(--color-header-contrast);
+	color: var(--color-background-plain-text);
 	user-select: none;
 }
 

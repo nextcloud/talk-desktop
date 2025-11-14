@@ -1,0 +1,21 @@
+/*!
+ * SPDX-FileCopyrightText: 2025 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+@import './global.styles.css';
+
+* {
+	box-sizing: border-box;
+}
+
+:focus-visible {
+	outline-color: var(--color-main-text);
+}
+
+:root /* The base variables calculation */,
+body /* Theming overrides */{
+	/* It is IMPORTANT to set value in "px" for further calculations */
+	--body-container-margin: 0px !important;
+	--body-container-radius: 0 !important;
+}

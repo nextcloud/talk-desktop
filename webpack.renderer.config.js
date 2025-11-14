@@ -189,6 +189,12 @@ const webpackRendererConfig = {
 		minimizer: [
 			new EsbuildPlugin({
 				target: 'es2022',
+				// Those files have global variable defined via `var` in non module scope used later in other modules,
+				// Which is broken by any minification
+				exclude: [
+					/\/vision_wasm_internal\.js/,
+					/\/vision_wasm_nosimd_internal\.js/,
+				],
 			}),
 		],
 	},

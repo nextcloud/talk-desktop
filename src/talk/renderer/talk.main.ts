@@ -11,7 +11,6 @@ import '@talk/src/icons.css'
 import './assets/styles.css'
 import './assets/overrides.css'
 
-// Initially open the Welcome page, if not specified
 await setupWebPage()
 
 await createTalkDesktopApp()

@@ -102,7 +102,7 @@ export function getWindowUrl(window: typeof windows[number]) {
 }
 
 /**
- * Check weather a link is an internal application link
+ * Check whether a link is an internal application link
  *
  * @param url - URL
  */
@@ -123,4 +123,13 @@ export function isInternalUrl(url: string | URL) {
  */
 export function isExternalUrl(url: string | URL) {
 	return !isInternalUrl(url)
+}
+
+/**
+ * Check whether a link is an external link but current server internal link
+ *
+ * @param url - URL
+ */
+export function isCurrentServerUrl(url: string) {
+	return appData.serverUrl && url.startsWith(appData.serverUrl)
 }

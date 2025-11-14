@@ -3,18 +3,14 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import type {
-	BrowserWindow,
-	BrowserWindowConstructorOptions,
-	Event,
-	HandlerDetails,
-	WebContentsWillNavigateEventParams,
-	WindowOpenHandlerResponse,
-} from 'electron'
+import type { BrowserWindow, BrowserWindowConstructorOptions, Event, HandlerDetails, WebContentsWillNavigateEventParams, WindowOpenHandlerResponse } from 'electron'
 
-import { shell } from 'electron'
+import { ipcMain, shell } from 'electron'
+import { randomUUID } from 'node:crypto'
+import { bugs } from '../../package.json' with { type: 'application/json' }
+import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { appData } from './AppData.js'
-import { isExternalUrl } from './utils.ts'
+import { isCurrentServerUrl, isExternalUrl } from './utils.ts'
 
 const talkPathRe = new RegExp('^/apps/spreed(?:/(?:not-found|forbidden|duplicate-session))?|/call/[^/]+$')
 
@@ -50,20 +46,21 @@ function tryExtractTalkRoute(link: string) {
  * @param browserWindowOptions - options for new BrowserWindow, usually based on parent options
  */
 export function applyExternalLinkHandler(browserWindow: BrowserWindow, browserWindowOptions: Partial<BrowserWindowConstructorOptions> = {}) {
-	browserWindow.webContents.on('will-navigate', willNavigateExternalLinkHandler)
-	browserWindow.webContents.setWindowOpenHandler((details) => windowOpenExternalLinkHandler(details, browserWindowOptions))
+	browserWindow.webContents.on('will-navigate', (event) => willNavigateExternalLinkHandler(event, browserWindow))
+	browserWindow.webContents.setWindowOpenHandler((details) => windowOpenExternalLinkHandler(details, browserWindow, browserWindowOptions))
 }
 
 /**
  * Handle new window open
  *
  * @param details - HandlerDetails
+ * @param browserWindow - Browser Window
  * @param browserWindowOptions - Options for new BrowserWindow, usually based on parent options
  */
-function windowOpenExternalLinkHandler(details: HandlerDetails, browserWindowOptions: BrowserWindowConstructorOptions = {}): WindowOpenHandlerResponse {
+function windowOpenExternalLinkHandler(details: HandlerDetails, browserWindow: BrowserWindow, browserWindowOptions: BrowserWindowConstructorOptions): WindowOpenHandlerResponse {
 	// Open external links in the default web-browser instead of a new app window
 	if (isExternalUrl(details.url)) {
-		shell.openExternal(details.url)
+		openExternalLinkWithPrompt(browserWindow, details.url)
 		return { action: 'deny' }
 	}
 	// Open apps link as a new window
@@ -78,8 +75,9 @@ function windowOpenExternalLinkHandler(details: HandlerDetails, browserWindowOpt
  * Open external link in the default OS handler (i.e. Web-Browser) on navigate
  *
  * @param event - Will Navigate Electron Event
+ * @param browserWindow - Browser Window
  */
-async function willNavigateExternalLinkHandler(event: Event<WebContentsWillNavigateEventParams>) {
+async function willNavigateExternalLinkHandler(event: Event<WebContentsWillNavigateEventParams>, browserWindow: BrowserWindow): Promise<void> {
 	const { url, initiator: webFrameMain } = event
 
 	// Internal navigation - do nothing
@@ -103,5 +101,42 @@ async function willNavigateExternalLinkHandler(event: Event<WebContentsWillNavig
 	}
 
 	// External link - open in the default browser
-	await shell.openExternal(url)
+	openExternalLinkWithPrompt(browserWindow, url)
+}
+
+/**
+ * Open an external link on a web-browser only after accepting by the user
+ *
+ * @param browserWindow - Browser Window
+ * @param url - URL to open
+ */
+async function openExternalLinkWithPrompt(browserWindow: BrowserWindow, url: string) {
+	// TODO: allow users to save trusted hosts?
+	const BYPASS_LIST = [
+		BUILD_CONFIG.helpUrl,
+		BUILD_CONFIG.privacyUrl,
+		bugs.create || bugs.url,
+	]
+
+	if (BYPASS_LIST.includes(url) || isCurrentServerUrl(url)) {
+		return openLinkInWebBrowser(url)
+	}
+
+	const requestUUID = randomUUID()
+	browserWindow.webContents.send('talk:openExternalLink:prompt', { url, requestUUID })
+	ipcMain.once(`talk:openExternalLink:resolve:${requestUUID}`, (event, isAccepted: boolean) => {
+		if (isAccepted) {
+			openLinkInWebBrowser(url)
+		}
+	})
+}
+
+/**
+ * Open a link directly in the default web-browser.
+ * Use `openExternalLinkWithPrompt` if opening must go throw user's approval
+ *
+ * @param url - URL
+ */
+function openLinkInWebBrowser(url: string) {
+	return shell.openExternal(url)
 }

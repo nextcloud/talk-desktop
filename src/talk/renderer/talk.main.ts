@@ -10,7 +10,6 @@ import '../../shared/assets/global.styles.css'
 import '@talk/src/icons.css'
 import './assets/styles.css'
 import './assets/overrides.css'
-import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 
 // Initially open the Welcome page, if not specified
 await setupWebPage()

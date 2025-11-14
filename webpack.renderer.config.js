@@ -5,12 +5,15 @@
 
 require('dotenv').config()
 
+const { EsbuildPlugin } = require('esbuild-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 const { spawnSync } = require('node:child_process')
 const path = require('node:path')
+const { VueLoaderPlugin } = require('vue-loader')
 const webpack = require('webpack')
-const { mergeWithRules } = require('webpack-merge')
 const { resolveConfig } = require('./build/resolveBuildConfig.js')
+const { getAppInfo } = require('./scripts/utils/appinfo.utils.cjs')
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 const CHANNEL = process.env.CHANNEL ?? 'dev'
@@ -21,12 +24,9 @@ const CHANNEL = process.env.CHANNEL ?? 'dev'
  * To keep values correct - set implicitly.
  */
 const talkPackage = require(`${TALK_PATH}/package.json`)
+
 process.env.npm_package_name = talkPackage.name
 process.env.npm_package_version = talkPackage.version
-
-const nextcloudWebpackConfig = require('@nextcloud/webpack-vue-config')
-const commonTalkWebpackConfig = require(`${TALK_PATH}/webpack.common.config`)
-const { getAppInfo } = require('./scripts/utils/appinfo.utils.cjs')
 
 const MAX_NEXTCLOUD_VERSION = getAppInfo(TALK_PATH).maxVersion
 const NEXTCLOUD_MASTER_VERSION = 33
@@ -45,12 +45,16 @@ function createPatcherAliases(packageName) {
 	let talkModulePath = false
 	try {
 		talkModulePath = require.resolve(packageName, { paths: [TALK_PATH] })
-	} catch {}
+	} catch {
+		// Ignore
+	}
 
 	let desktopModulePath = false
 	try {
 		desktopModulePath = require.resolve(packageName)
-	} catch {}
+	} catch {
+		// Ignore
+	}
 
 	// webpack.resolve.aliases
 	return {
@@ -88,17 +92,10 @@ function getFullVersion(cwd = __dirname) {
 	return `v${packageVersion}-${hash} (${branch})`
 }
 
-const webpackRendererConfig = mergeWithRules({
-	module: {
-		rules: {
-			test: 'match',
-			use: 'replace',
-			loader: 'replace',
-			options: 'replace',
-		},
-	},
-	plugins: 'append',
-})(commonTalkWebpackConfig, {
+const appName = process.env.npm_package_name
+const appVersion = process.env.npm_package_version
+
+const webpackRendererConfig = {
 	output: {
 		assetModuleFilename: 'talk_desktop__dist/assets/[name][ext]?v=[contenthash]',
 		chunkFilename: 'talk_desktop__dist/chunks/[name].js?v=[contenthash]',
@@ -106,6 +103,29 @@ const webpackRendererConfig = mergeWithRules({
 
 	module: {
 		rules: [
+			// @nextcloud/webpack-vue-config default rules
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+			},
+			{
+				test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf)$/,
+				type: 'asset/inline',
+			},
+			// Talk specific rules
+			{
+				test: /\.wasm$/i,
+				type: 'asset/resource',
+			},
+			{
+				test: /\.tflite$/i,
+				type: 'asset/resource',
+			},
+			{
+				resourceQuery: /raw/,
+				type: 'asset/source',
+			},
+			// Talk Desktop specific rules
 			{
 				test: /\.css$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader'],
@@ -115,7 +135,7 @@ const webpackRendererConfig = mergeWithRules({
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
 			},
 			{
-				test: /\.js$/,
+				test: /\.(js|mjs)$/,
 				loader: 'esbuild-loader',
 				options: {
 					loader: 'js',
@@ -165,12 +185,36 @@ const webpackRendererConfig = mergeWithRules({
 		},
 	},
 
+	optimization: {
+		minimizer: [
+			new EsbuildPlugin({
+				target: 'es2022',
+				// Those files have global variable defined via `var` in non module scope used later in other modules,
+				// Which is broken by any minification
+				exclude: [
+					/\/vision_wasm_internal\.js/,
+					/\/vision_wasm_nosimd_internal\.js/,
+				],
+			}),
+		],
+	},
+
 	plugins: [
-		// TODO: Figure out, why plugins (VueLoaderPlugin) cannot be reused in spreed/webpack.common.config.js
-		...nextcloudWebpackConfig.plugins,
+		new VueLoaderPlugin(),
+
+		// Make sure we auto-inject node polyfills on demand
+		// https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed
+		new NodePolyfillPlugin({
+			additionalAliases: ['process'],
+		}),
 
 		new webpack.DefinePlugin({
+			// Common @nextcloud/webpack-vue-config
+			appName: JSON.stringify(appName),
+			appVersion: JSON.stringify(appVersion),
+			// Talk Desktop built-time constants
 			IS_DESKTOP: true,
+			__IS_DESKTOP__: true,
 			__CHANNEL__: JSON.stringify(CHANNEL),
 			__VERSION_TAG__: JSON.stringify(getFullVersion()),
 			__TALK_VERSION_TAG__: JSON.stringify(getFullVersion(TALK_PATH)),
@@ -184,6 +228,6 @@ const webpackRendererConfig = mergeWithRules({
 			ignoreOrder: true,
 		}),
 	],
-})
+}
 
 module.exports = webpackRendererConfig

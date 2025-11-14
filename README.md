@@ -76,8 +76,8 @@ However, using portable `zip` distribution, you can have several Nextcloud Talk 
    - **No `nextcloud/spreed` is cloned?**\
      Clone it and install dependencies:
 	   ```sh
-	   # Clone Talk to the repository root
-	   git clone https://github.com/nextcloud/spreed
+	   # Clone Talk to the repository root (currently branch stable32)
+	   git clone --branch stable32 https://github.com/nextcloud/spreed
      
 	   # Install dependencies
 	   npm ci --prefix=spreed

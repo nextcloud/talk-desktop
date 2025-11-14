@@ -12,7 +12,6 @@ import './assets/styles.css'
 import './assets/overrides.css'
 import 'regenerator-runtime' // TODO: Why isn't it added on bundling
 
-// Initially open the Welcome page, if not specified
 await setupWebPage()
 
 await createTalkDesktopApp()

@@ -9,6 +9,7 @@ import AppWindow from '../../shared/components/AppWindow.vue'
 import TalkWrapper from './TalkWrapper/TalkWrapper.vue'
 import TitleBar from './TitleBar/TitleBar.vue'
 import { useNotificationsStore } from './notifications/notifications.store.js'
+import { handleOpenExternalLinkPrompt } from './TalkDesktop/handleOpenExternalLinkPrompt.ts'
 import { createViewer } from './Viewer/Viewer.js'
 
 const isTalkInitialized = ref(false)
@@ -17,6 +18,8 @@ provide('talk:isInitialized', isTalkInitialized)
 useNotificationsStore()
 
 window.OCA.Viewer = createViewer()
+
+handleOpenExternalLinkPrompt()
 </script>
 
 <template>

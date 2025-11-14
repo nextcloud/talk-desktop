@@ -205,6 +205,20 @@ const TALK_DESKTOP = {
 	 * @return {Promise<boolean>}
 	 */
 	verifyCertificate: (url) => ipcRenderer.invoke('certificate:verify', url),
+	/**
+	 * Listen for openExternalLink prompt
+	 *
+	 * @param {(event: import('electron').IpcRedererEvent, payload: { requestUUID: string, url: string }) => void} callback - Callback
+	 * @return {Electron.IpcRenderer}
+	 */
+	onOpenExternalLinkPrompt: (callback) => ipcRenderer.on('talk:openExternalLink:prompt', callback),
+	/**
+	 * Resolve opening external link prompt
+	 *
+	 * @param {string} requestUUID - UUID
+	 * @param {boolean} result - Prompt result
+	 */
+	resolveOpenExternalLinkPrompt: (requestUUID, result) => ipcRenderer.send(`talk:openExternalLink:resolve:${requestUUID}`, result),
 }
 
 // Set global window.TALK_DESKTOP

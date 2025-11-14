@@ -38,7 +38,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 		variant="tertiary-no-background"
 		container="body">
 		<template #icon>
-			<IconMenu :size="20" fill-color="var(--color-header-contrast)" />
+			<IconMenu :size="20" fill-color="var(--color-background-plain-text)" />
 		</template>
 
 		<template v-if="isTalkInitialized">

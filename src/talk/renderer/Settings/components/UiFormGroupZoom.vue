@@ -12,6 +12,7 @@ import NcFormGroup from '@nextcloud/vue/components/NcFormGroup'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
 import IconMinus from 'vue-material-design-icons/Minus.vue'
 import IconPlus from 'vue-material-design-icons/Plus.vue'
+import IconRestore from 'vue-material-design-icons/Restore.vue'
 import UiFormBoxSplitButton from './UiFormBoxSplitButton.vue'
 
 /** Zoom factor ~0.5..4 */
@@ -86,8 +87,10 @@ async function onShowInput() {
 		</template>
 
 		<NcFormBox class="zoom-box__row" row>
-			<UiFormBoxSplitButton @click="modelValue = 1">
-				{{ t('talk_desktop', 'Reset') }}
+			<UiFormBoxSplitButton :label="t('talk_desktop', 'Reset')" hide-label @click="modelValue = 1">
+				<template #icon>
+					<IconRestore :size="20" />
+				</template>
 			</UiFormBoxSplitButton>
 
 			<input

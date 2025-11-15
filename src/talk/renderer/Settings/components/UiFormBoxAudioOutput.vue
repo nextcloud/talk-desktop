@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { t } from '@nextcloud/l10n'
 import NcFormBox from '@nextcloud/vue/components/NcFormBox'
-import IconRestore from 'vue-material-design-icons/Restore.vue'
+import IconReload from 'vue-material-design-icons/Reload.vue'
 import UiFormBoxSelectNative from './UiFormBoxSelectNative.vue'
 import UiFormBoxSplitButton from './UiFormBoxSplitButton.vue'
 import { useAudioDevicesList } from './useAudioDevicesList.ts'
@@ -34,7 +34,7 @@ const { devices, reloadDevices } = useAudioDevicesList()
 			hide-label
 			@click="reloadDevices">
 			<template #icon>
-				<IconRestore :size="20" />
+				<IconReload :size="20" />
 			</template>
 		</UiFormBoxSplitButton>
 	</NcFormBox>

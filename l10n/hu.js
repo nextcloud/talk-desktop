@@ -7,6 +7,7 @@ OC.L10N.register(
     "Authentication" : "Hitelesítés",
     "Nextcloud server address" : "Nextcloud kiszolgáló címe",
     "Server address" : "Kiszolgáló címe",
+    "Log in" : "Bejelentkezés",
     "Logging in …" : "Bejelentkezés…",
     "Incoming call" : "Bejövő hívás",
     "Close" : "Bezárás",

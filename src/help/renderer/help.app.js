@@ -6,7 +6,7 @@
 import { createApp } from 'vue'
 import { setupWebPage } from '../../shared/setupWebPage.js'
 
-import '../../shared/assets/global.styles.css'
+import '../../shared/assets/styles.css'
 import './help.styles.css'
 
 await setupWebPage()

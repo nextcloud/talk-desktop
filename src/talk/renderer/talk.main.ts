@@ -6,12 +6,10 @@
 import { setupWebPage } from '../../shared/setupWebPage.js'
 import { createTalkDesktopApp } from './TalkDesktop.app.ts'
 
-import '../../shared/assets/global.styles.css'
+import '../../shared/assets/styles.css'
 import '@talk/src/icons.css'
-import './assets/styles.css'
-import './assets/overrides.css'
+import './talk.styles.css'
 
-// Initially open the Welcome page, if not specified
 await setupWebPage()
 
 await createTalkDesktopApp()

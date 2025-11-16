@@ -1,4 +1,4 @@
-/**
+/*!
  * SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
@@ -6,13 +6,6 @@
 /*
  * Overrides default Nextcloud styles
  */
-
-:root,
-body {
-	/* It is IMPORTANT to set "px" here, not just "0" */
-	--body-container-margin: 0px !important;
-	--body-container-radius: 0 !important;
-}
 
 #content {
 	margin-top: var(--header-height) !important;

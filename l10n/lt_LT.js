@@ -17,6 +17,7 @@ OC.L10N.register(
     "Advanced" : "Išplėstiniai",
     "Cancel" : "Atsisakyti",
     "Valid until" : "Galioja iki",
+    "Fingerprint" : "Kontrolinis kodas",
     "Copy" : "Kopijuoti",
     "Copied" : "Nukopijuota",
     "About" : "Apie",

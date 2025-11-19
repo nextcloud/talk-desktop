@@ -194,8 +194,8 @@ function applyInitialState() {
  * Set CSS variable for --header-height
  */
 function applyHeaderHeight() {
-	document.body.style.setProperty('--header-height', `${TITLE_BAR_HEIGHT}px`, 'important')
-	document.documentElement.style.setProperty('--header-height', `${TITLE_BAR_HEIGHT}px`, 'important')
+	document.body.style.setProperty('--header-height', `${TITLE_BAR_HEIGHT}px`)
+	document.documentElement.style.setProperty('--header-height', `${TITLE_BAR_HEIGHT}px`)
 }
 
 /**

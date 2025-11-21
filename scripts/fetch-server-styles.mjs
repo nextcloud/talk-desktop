@@ -5,6 +5,7 @@
 
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { resolveConfig } from '../build/resolveBuildConfig.js'
 import { createReuseToml, filterReuseAnnotationsFiles, parseDep5, parseReuseToml } from './utils/reuse.utils.mjs'
 
 import 'zx/globals'
@@ -21,6 +22,8 @@ $.quiet = false
 
 // Disable SSL verification to access Nextcloud server in nextcloud-easy-test container
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
+const BUILD_CONFIG = resolveConfig()
 
 if (!VERSION) {
 	await echo('You must provide a version/branch as an argument.')
@@ -81,6 +84,7 @@ await spinner(`[2/4] Preparing output directory ${OUTPUT}`, async () => {
 
 await spinner('[3/4] Copying styles...', async () => {
 	try {
+		await $`docker exec -u www-data ${CONTAINER_NAME} php occ config:app:set theming primary_color --value="${BUILD_CONFIG.primaryColor}"`
 		await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/core/img/ ${OUTPUT}/core/`
 		await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/core/css/server.css ${OUTPUT}/core/css/`
 		await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/dist/icons.css ${OUTPUT}/dist/`

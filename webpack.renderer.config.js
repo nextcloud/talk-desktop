@@ -95,6 +95,18 @@ function getFullVersion(cwd = __dirname) {
 const appName = process.env.npm_package_name
 const appVersion = process.env.npm_package_version
 
+const cssLoaderWithModules = {
+	loader: 'css-loader',
+	options: {
+		modules: {
+			namedExport: false,
+			// Same as in Vite
+			localIdentName: '_[local]_[hash:base64:5]',
+			exportLocalsConvention: 'asIs',
+		},
+	},
+}
+
 const webpackRendererConfig = {
 	output: {
 		assetModuleFilename: 'talk_desktop__dist/assets/[name][ext]?v=[contenthash]',
@@ -128,11 +140,21 @@ const webpackRendererConfig = {
 			// Talk Desktop specific rules
 			{
 				test: /\.css$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader'],
+				oneOf: [{
+					resourceQuery: /module/,
+					use: [MiniCssExtractPlugin.loader, cssLoaderWithModules, 'sass-loader'],
+				}, {
+					use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+				}],
 			},
 			{
 				test: /\.scss$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+				oneOf: [{
+					resourceQuery: /module/,
+					use: [MiniCssExtractPlugin.loader, cssLoaderWithModules, 'sass-loader'],
+				}, {
+					use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+				}],
 			},
 			{
 				test: /\.(js|mjs)$/,

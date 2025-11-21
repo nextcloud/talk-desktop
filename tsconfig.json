@@ -13,12 +13,4 @@
 			"@talk/*": ["spreed/*"],
 		},
 	},
-	"vueCompilerOptions": {
-		"target": 2.7,
-		"experimentalModelPropName": {
-			"modelValue": {
-				"SettingsSelect": true,
-			},
-		},
-	},
 }

@@ -84,7 +84,9 @@ await spinner(`[2/4] Preparing output directory ${OUTPUT}`, async () => {
 
 await spinner('[3/4] Copying styles...', async () => {
 	try {
-		await $`docker exec -u www-data ${CONTAINER_NAME} php occ config:app:set theming primary_color --value="${BUILD_CONFIG.primaryColor}"`
+		await $`docker exec -u www-data ${CONTAINER_NAME} php /var/www/nextcloud/occ config:app:set theming primary_color --value="${BUILD_CONFIG.brandColor}"`
+		await $`docker exec -u www-data ${CONTAINER_NAME} php /var/www/nextcloud/occ config:app:set theming background_color --value="${BUILD_CONFIG.brandColor}"`
+		await $`docker exec -u www-data ${CONTAINER_NAME} php /var/www/nextcloud/occ config:app:set theming backgroundMime --value="backgroundColor"`
 		await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/core/img/ ${OUTPUT}/core/`
 		await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/core/css/server.css ${OUTPUT}/core/css/`
 		await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/dist/icons.css ${OUTPUT}/dist/`
@@ -97,10 +99,10 @@ await spinner('[3/4] Copying styles...', async () => {
 			.then((css) => writeFile(output, fixThemePaths(css)))
 
 		await fetchCssToFile(`https://localhost:${PORT}/apps/theming/css/default.css`, join(OUTPUT, '/apps/theming/css/default.css'))
-		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/light.css?plain=0&v=1`, join(OUTPUT, '/apps/theming/theme/light.css'))
-		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/light.css?plain=1&v=2`, join(OUTPUT, '/apps/theming/theme/light.plain.css'))
-		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/dark.css?plain=0&v=1`, join(OUTPUT, '/apps/theming/theme/dark.css'))
-		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/dark.css?plain=1&v=2`, join(OUTPUT, '/apps/theming/theme/dark.plain.css'))
+		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/light.css?plain=0&v=3`, join(OUTPUT, '/apps/theming/theme/light.css'))
+		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/light.css?plain=1&v=4`, join(OUTPUT, '/apps/theming/theme/light.plain.css'))
+		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/dark.css?plain=0&v=5`, join(OUTPUT, '/apps/theming/theme/dark.css'))
+		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/dark.css?plain=1&v=6`, join(OUTPUT, '/apps/theming/theme/dark.plain.css'))
 
 		let reuse
 		const result = await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/.reuse/dep5 ${OUTPUT}/.reuse/dep5`.quiet().nothrow()
@@ -135,5 +137,5 @@ await spinner('[3/4] Copying styles...', async () => {
 })
 
 await spinner('[4/4] Removing container...', async () => {
-	await $`docker rm --force ${CONTAINER_NAME}`
+	// await $`docker rm --force ${CONTAINER_NAME}`
 })

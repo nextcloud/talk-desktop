@@ -15,11 +15,9 @@ OC.L10N.register(
     "License" : "Licencia",
     "Issues" : "Temas",
     "Ok" : "Ok",
-    "Dark" : "Oscuro",
     "Never" : "Nunca",
-    "None" : "Ninguno",
-    "General" : "General",
     "Theme" : "Tema",
+    "Dark" : "Oscuro",
     "Reset" : "Restablecer",
     "Menu" : "Menú",
     "Report a bug" : "Reporta un detalle",
@@ -29,6 +27,7 @@ OC.L10N.register(
     "Today" : "Hoy",
     "This week" : "Esta semana",
     "Share screen" : "Compartir la pantalla",
+    "None" : "Ninguno",
     "Invisible" : "Invisible"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

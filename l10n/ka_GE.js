@@ -18,8 +18,6 @@ OC.L10N.register(
     "Ok" : "კარგი",
     "Yes" : "დიახ",
     "Never" : "არასდროს",
-    "None" : "არც ერთი",
-    "General" : "ზოგადი",
     "Theme" : "ვიზუალური თემა",
     "Reset" : "საწყის მდოგმარეობაში დაბრუნება",
     "Menu" : "მენიუ",
@@ -30,6 +28,7 @@ OC.L10N.register(
     "Today" : "დღეს",
     "This week" : "ამ კვირაში",
     "Share screen" : "ეკრანის გაზიარება",
+    "None" : "არც ერთი",
     "Invisible" : "უჩინარი"
 },
 "nplurals=2; plural=(n!=1);");

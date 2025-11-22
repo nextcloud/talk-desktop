@@ -14,12 +14,10 @@ OC.L10N.register(
     "Ok" : "Oldu",
     "No" : "Xeyir",
     "Yes" : "Bəli",
-    "Light" : "İşıqlı",
-    "Dark" : "Qaranlıq",
     "Always" : "Həmişə",
     "Never" : "Heç vaxt",
-    "None" : "Heç bir",
-    "General" : "Ümumi",
+    "Light" : "İşıqlı",
+    "Dark" : "Qaranlıq",
     "Reset" : "Sıfırla",
     "Menu" : "Menyu",
     "Report a bug" : "Səhv haqqında bildir",
@@ -27,6 +25,7 @@ OC.L10N.register(
     "Back" : "Geri",
     "Quit" : "Çıx",
     "Today" : "Bu gün",
+    "None" : "Heç bir",
     "Invisible" : "Görünməz"
 },
 "nplurals=2; plural=(n != 1);");

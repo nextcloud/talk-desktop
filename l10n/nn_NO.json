@@ -11,13 +11,12 @@
     "Copy" : "Kopier",
     "License" : "Lisens",
     "Ok" : "Greitt",
-    "None" : "Ingen",
-    "General" : "Generelt",
     "Appearance" : "Utsjånad",
     "Report a bug" : "Rapporter feil",
     "Settings" : "Innstillingar",
     "Quit" : "Avslutt",
     "Today" : "I dag",
+    "None" : "Ingen",
     "Away" : "Borte",
     "Invisible" : "Usynleg"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"

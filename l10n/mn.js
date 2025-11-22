@@ -10,14 +10,13 @@ OC.L10N.register(
     "License" : "Тусгай зөвшөөрөл",
     "Ok" : "За",
     "Never" : "хэзээч",
-    "None" : "юу ч үгүй",
-    "General" : "ерөнхий",
     "Reset" : "тохируулах",
     "Settings" : "Тохиргоо",
     "Back" : "Буцах",
     "Quit" : "Гарах",
     "Today" : "өнөөдөр",
     "This week" : "7 хоног",
+    "None" : "юу ч үгүй",
     "Invisible" : "Үл харагдах"
 },
 "nplurals=2; plural=(n != 1);");

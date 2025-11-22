@@ -8,9 +8,9 @@ OC.L10N.register(
     "Ok" : "﻿ಸರಿ",
     "No" : "﻿ಇಲ್ಲ",
     "Yes" : "﻿ಹೌದು",
-    "None" : "﻿ಯಾವುದೂ ಇಲ್ಲ",
     "Reset" : "ಮರುಹೊಂದಿಸಿ",
     "Settings" : "ಆಯ್ಕೆ",
-    "Today" : "Today"
+    "Today" : "Today",
+    "None" : "﻿ಯಾವುದೂ ಇಲ್ಲ"
 },
 "nplurals=2; plural=(n > 1);");

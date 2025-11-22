@@ -9,7 +9,6 @@ OC.L10N.register(
     "Valid until" : "Geldig tot",
     "About" : "Aangaande",
     "License" : "Lisensie",
-    "None" : "Geen",
     "Reset" : "Herstel",
     "Menu" : "Kieslys",
     "Settings" : "Instellings",
@@ -18,6 +17,7 @@ OC.L10N.register(
     "User status" : "Gebruikerstatus",
     "Don't clear" : "Moenie wis nie",
     "This week" : "Vandeesweek",
+    "None" : "Geen",
     "Invisible" : "Onsigbaar"
 },
 "nplurals=2; plural=(n != 1);");

@@ -7,9 +7,9 @@ OC.L10N.register(
     "No" : "No",
     "Yes" : "Si",
     "Never" : "Nunca",
-    "None" : "Denguno",
     "Settings" : "Configuración",
     "Back" : "Ta zaga",
-    "Today" : "Hue"
+    "Today" : "Hue",
+    "None" : "Denguno"
 },
 "nplurals=2; plural=(n != 1);");

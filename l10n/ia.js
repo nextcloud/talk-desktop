@@ -9,14 +9,13 @@ OC.L10N.register(
     "Cancel" : "Cancel",
     "Valid until" : "Valide usque",
     "Never" : "Nunquam",
-    "None" : "Nulle",
-    "General" : "General",
     "Reset" : "Re-fixar",
     "Menu" : "Menu",
     "Report a bug" : "Reportar un defecto",
     "Settings" : "Configurationes",
     "Today" : "Hodie",
     "This week" : "Iste septimana",
+    "None" : "Nulle",
     "Invisible" : "Invisibile"
 },
 "nplurals=2; plural=(n != 1);");

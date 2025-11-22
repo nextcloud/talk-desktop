@@ -11,14 +11,13 @@ OC.L10N.register(
     "Ok" : "OK",
     "No" : "Nee",
     "Yes" : "Jo",
-    "None" : "Keng",
-    "General" : "Allgemeng",
     "Reset" : "Zeréck setzen",
     "Menu" : "Menü",
     "Report a bug" : "E Feeler melden",
     "Settings" : "Astellungen",
     "Quit" : "Erausgoen",
     "Today" : "Haut",
+    "None" : "Keng",
     "Away" : "ewech"
 },
 "nplurals=2; plural=(n != 1);");

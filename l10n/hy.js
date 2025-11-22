@@ -14,7 +14,6 @@ OC.L10N.register(
     "No" : "Ոչ",
     "Yes" : "Այո",
     "Never" : "Երբեք",
-    "General" : "Ընդհանուր",
     "Settings" : "Կարգավորումներ",
     "Today" : "Այսօր",
     "This week" : "այս շաբաթ"

@@ -7,13 +7,13 @@
     "Ok" : "ព្រម",
     "No" : "ទេ",
     "Yes" : "បាទ ឬចាស",
+    "Always" : "រាល់ពេល",
     "Light" : "ភ្លឺt",
     "Dark" : "ងងឹត",
-    "Always" : "រាល់ពេល",
-    "None" : "គ្មាន",
-    "General" : "ទូទៅ",
+    "Reload" : "ផ្ទុកឡើងវិញ",
     "Settings" : "ការកំណត់",
     "Quit" : "ចាក់ចេញ",
-    "Today" : "ថ្ងៃ​នេះ"
+    "Today" : "ថ្ងៃ​នេះ",
+    "None" : "គ្មាន"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

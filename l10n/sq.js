@@ -16,12 +16,11 @@ OC.L10N.register(
     "Issues" : "Çështjet",
     "Ok" : "Në rregull",
     "Yes" : "Po",
-    "Light" : "E çelët",
     "Always" : "Përherë",
     "Never" : "Kurrë",
-    "None" : "Asnjë",
-    "General" : "Të përgjithshme",
     "Theme" : "Shabllon",
+    "Light" : "E çelët",
+    "Reload" : "Ringarkoje",
     "Reset" : "Rivendos",
     "Menu" : "Menu",
     "Report a bug" : "Njoftoni një të metë",
@@ -32,6 +31,7 @@ OC.L10N.register(
     "Today" : "Sot",
     "This week" : "Këtë javë",
     "Share screen" : "Ndaje ekranin",
+    "None" : "Asnjë",
     "Invisible" : "I padukshëm"
 },
 "nplurals=2; plural=(n != 1);");

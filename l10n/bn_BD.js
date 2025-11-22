@@ -9,14 +9,13 @@ OC.L10N.register(
     "Ok" : "তথাস্তু",
     "No" : "না",
     "Yes" : "হ্যাঁ",
+    "Always" : "সর্বদা",
     "Light" : "হাল্কা",
     "Dark" : "গাঢ়",
-    "Always" : "সর্বদা",
-    "None" : "কোনটিই নয়",
-    "General" : "সাধারণ",
     "Reset" : "পূণঃনির্ধানণ",
     "Settings" : "সেটিংস",
     "Quit" : "বন্ধ",
-    "Today" : "আজ"
+    "Today" : "আজ",
+    "None" : "কোনটিই নয়"
 },
 "nplurals=2; plural=(n != 1);");

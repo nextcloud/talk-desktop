@@ -18,6 +18,7 @@ OC.L10N.register(
     "Never" : "Heç vaxt",
     "Light" : "İşıqlı",
     "Dark" : "Qaranlıq",
+    "Reload" : "Yenidən yüklə",
     "Reset" : "Sıfırla",
     "Menu" : "Menyu",
     "Report a bug" : "Səhv haqqında bildir",

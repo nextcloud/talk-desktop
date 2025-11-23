@@ -27,6 +27,7 @@ OC.L10N.register(
     "Light" : "Claridá",
     "Dark" : "Escuridá",
     "Appearance" : "Aspeutu",
+    "Reload" : "Volver cargar",
     "Zoom" : "Zoom",
     "Zoom out" : "Alloñar",
     "Zoom in" : "Averar",

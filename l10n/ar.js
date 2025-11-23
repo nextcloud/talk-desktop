@@ -50,6 +50,7 @@ OC.L10N.register(
     "Secondary speaker" : "مكبر صوت ثانٍ",
     "Some changes require a relaunch to take effect" : "بعض التغيرات تحتاج إلى إعادة التشغيل ليظهر تأثيرها",
     "Restart" : "إعادة التشغيل",
+    "Reload" : "إعادة تحميل",
     "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "يمكن أيضاً تغيير التكبير و التصغير عن طريق {key} أو عجلة الفارة. إعادة الضبط بواسطة {resetKey}",
     "Zoom" : "تكبير zoom",
     "Zoom out" : "تصغير",

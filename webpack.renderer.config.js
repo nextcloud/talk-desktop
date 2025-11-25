@@ -63,17 +63,24 @@ function createPatcherAliases(packageName) {
  * @return {string} - The described version
  */
 function getFullVersion(cwd = __dirname) {
-	// Current commit tag if any or an empty string, e.g. "v21.0.0-dev.0"
-	const gitVersion = spawnSync('git', ['tag', '--points-at', 'HEAD'], { cwd }).stdout.toString().trim()
+	// Currently specified version from the package.json, e.g. "21.0.0-dev.0"
+	const packageVersion = require(`${cwd}/package.json`).version
 
-	// The repository is directly on the released commit
-	// It supposed to be equal to the package version
+	if (CHANNEL === 'stable') {
+		return `v${packageVersion}`
+	}
+
+	// Current commit tag if any or an empty string, e.g. "v21.0.0-dev.0"
+	// Only when the repository is directly on the released (tagged) commit
+	const gitVersion = spawnSync('git', ['tag', '--points-at', 'HEAD'], { cwd }).stdout.toString().trim()
 	if (gitVersion) {
+		if (gitVersion !== `v${packageVersion}`) {
+			throw new Error(`Git tag version "${gitVersion}" is different from the package version "${packageVersion}". Likely release process went wrong...`)
+		}
+		// Dev channel build directly on the released (tagged) commit
 		return gitVersion
 	}
 
-	// Currently specified version from the package.json, e.g. "21.0.0-dev.0"
-	const packageVersion = require(`${cwd}/package.json`).version
 	// Commit hash, e.g. "85d5a6722"
 	const hash = spawnSync('git', ['rev-parse', '--short', 'HEAD'], { cwd }).stdout.toString().trim()
 	// Branch name, e.g. "fix/diagnosis-report-versions" or "HEAD" if detached

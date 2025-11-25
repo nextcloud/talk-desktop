@@ -5,6 +5,23 @@
 
 # Changelog
 
+## v2.0.4 - 2025-11-25
+
+### Fixes
+
+- Windows/MSI: add Firewall exception during install [#1518](https://github.com/nextcloud/talk-desktop/pull/1518)
+- Linux: downgrade to Electron v38.1.2 due to issues on Wayland [#1526](https://github.com/nextcloud/talk-desktop/pull/1526)
+- macOS: use new Nextcloud 32 background on the DMG installer [#1539](https://github.com/nextcloud/talk-desktop/pull/1539)
+- Allow overwriting the user status like in the web without having to restore first [#1536](https://github.com/nextcloud/talk-desktop/pull/1536)
+- Remove the title bar in fullscreen mode [#1553](https://github.com/nextcloud/talk-desktop/pull/1553)
+- Adjust settings to the new design [#1530](https://github.com/nextcloud/talk-desktop/pull/1530)
+- "Check devices" cannot be open from the main menu settings [#1560](https://github.com/nextcloud/talk-desktop/pull/1560)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v22.0.4 in both beta and stable release channels [#1561](https://github.com/nextcloud/talk-desktop/pull/1561)
+- Make bundling compatible with Talk 23 again [#1544](https://github.com/nextcloud/talk-desktop/pull/1544)
+
 ## v2.0.3 - 2025-10-27
 
 ### Fixes

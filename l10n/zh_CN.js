@@ -58,6 +58,7 @@ OC.L10N.register(
     "This week" : "本周后",
     "Emoji for your status message" : "状态消息的表情符号",
     "Status message" : "状态消息",
+    "Controls" : "控制",
     "Layout" : "布局",
     "Compact" : "紧凑",
     "Share screen" : "共享屏幕",
@@ -69,6 +70,7 @@ OC.L10N.register(
     "Busy" : "忙碌",
     "Do not disturb" : "勿扰",
     "Invisible" : "隐身",
+    "Offline" : "离线",
     "Unknown status" : "未知状态",
     "You missed a call from {user}" : "您错过了来自 {user} 的一个通话",
     "You missed a group call in {call}" : "您在 {call} 中错过了一个组通话"

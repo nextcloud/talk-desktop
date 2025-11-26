@@ -12,6 +12,7 @@ OC.L10N.register(
     "Always" : "সর্বদা",
     "Light" : "হাল্কা",
     "Dark" : "গাঢ়",
+    "Reload" : "পূনরায় লোড কর",
     "Reset" : "পূণঃনির্ধানণ",
     "Settings" : "সেটিংস",
     "Quit" : "বন্ধ",

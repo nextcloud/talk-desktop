@@ -34,6 +34,7 @@ OC.L10N.register(
     "Force reload" : "Forzar recarga",
     "Report a bug" : "Reporta un detalle",
     "Settings" : "Ajustes",
+    "Back" : "Regresar",
     "View profile" : "Ver perfil",
     "Log out" : "Cerrar sesión",
     "Quit" : "Salir",

@@ -16,6 +16,7 @@ OC.L10N.register(
     "Theme" : "Tem",
     "Light" : "Lugernus",
     "Dark" : "Teñval",
+    "Reload" : "Adkargañ",
     "Menu" : "Roll",
     "Report a bug" : "Dugas ur gudenn",
     "Settings" : "Arventennoù",

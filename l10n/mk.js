@@ -47,6 +47,7 @@ OC.L10N.register(
     "Online" : "Присутен",
     "Away" : "Далеку",
     "Busy" : "Зафатен",
+    "Do not disturb" : "Не вознемирувај",
     "Invisible" : "Невидлив",
     "You missed a call from {user}" : "Имате пропуштен повик од {user}",
     "You missed a group call in {call}" : "Имате пропуштен групен повик во {call}"

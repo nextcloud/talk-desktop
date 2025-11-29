@@ -91,7 +91,7 @@
     "icon-gen": "^5.0.0",
     "mini-css-extract-plugin": "^2.9.4",
     "node-loader": "^2.1.0",
-    "node-polyfill-webpack-plugin": "4.0.0",
+    "node-polyfill-webpack-plugin": "4.1.0",
     "sass": "^1.94.2",
     "sass-loader": "^16.0.6",
     "typescript": "^5.9.3",

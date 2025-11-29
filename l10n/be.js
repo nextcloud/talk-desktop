@@ -74,7 +74,7 @@ OC.L10N.register(
     "Restart" : "Перазапусціць",
     "Loading …" : "Загрузка …",
     "Reload" : "Перазагрузіць",
-    "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Маштаб таксама можна змяніць з дапамогай {key} або кола мышы. Скінуць - з дапамогай {resetKey}",
+    "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Маштаб таксама можна змяніць з дапамогай {key} або кола мышы. Скінуць — з дапамогай {resetKey}",
     "Zoom" : "Маштаб",
     "Zoom out" : "Паменшыць",
     "Zoom in" : "Павялічыць",

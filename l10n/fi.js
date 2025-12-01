@@ -5,6 +5,7 @@ OC.L10N.register(
     "Nextcloud server address" : "Nextcloud-palvelimen osoite",
     "Server address" : "Palvelimen osoite",
     "Log in" : "Kirjaudu sisään",
+    "Logging in …" : "Kirjaudutaan …",
     "Close" : "Sulje",
     "Dismiss" : "Hylkää",
     "Join call" : "Liity puheluun",
@@ -53,6 +54,7 @@ OC.L10N.register(
     "Application" : "Sovellus",
     "Online" : "Online",
     "Busy" : "Varattu",
+    "Do not disturb" : "Älä häiritse",
     "Offline" : "Poissa",
     "You missed a call from {user}" : "Sinulta jäi vastaamatta puhelu käyttäjältä {user}"
 },

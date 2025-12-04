@@ -98,7 +98,7 @@ OC.L10N.register(
     "This week" : "Cette semaine",
     "Clear after" : "Effacer après",
     "Emoji for your status message" : "Emoji pour votre message de statut",
-    "Status message" : "Message d'état",
+    "Status message" : "Message de statut",
     "Open in a web browser" : "Ouvrir dans un navigateur",
     "Could not load the file" : "Impossible de charger le fichier",
     "Wrap content in code blocks" : "Encapsuler le contenu dans des blocs de code",

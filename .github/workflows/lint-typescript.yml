@@ -4,7 +4,9 @@
 
 name: Lint TypeScript
 
-on: pull_request
+# FIXME: temporary disable typecheck, until we can perform typecheck without checking Talk
+on:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,8 +17,6 @@ concurrency:
 
 jobs:
   changes:
-    # FIXME: temporary disable typecheck, until we can perform typecheck without checking Talk
-    if: false
     runs-on: ubuntu-latest-low
     permissions:
       contents: read
@@ -69,10 +69,7 @@ jobs:
     permissions:
       contents: none
     runs-on: ubuntu-latest-low
-    needs: [changes, typecheck]
-
-    # FIXME: temporary disable typecheck, until we can perform typecheck without checking Talk
-    if: false
+    needs: [changes, typecheck] 
 
     name: typecheck
 

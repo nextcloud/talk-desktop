@@ -39,7 +39,7 @@
     "generate-icons": "node ./scripts/generate-icons.js",
     "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
     "lint": "eslint src/ --fix",
-    "typecheck": "vue-tsc --noEmit"
+    "ts:check": "vue-tsc --noEmit"
   },
   "talk": {
     "stable": "v22.0.4",

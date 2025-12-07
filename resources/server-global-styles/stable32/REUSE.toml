@@ -112,7 +112,7 @@ SPDX-FileCopyrightText = "2016 Andrew Nayenko <relan@airpost.net>"
 SPDX-License-Identifier = "CC-BY-SA-3.0 OR GPL-3.0-or-later"
 
 [[annotations]]
-path = ["apps/theming/theme/light.css","apps/theming/theme/dark.css","apps/theming/theme/light.plain.css","apps/theming/theme/dark.plain.css"]
+path = ["apps/theming/theme/light.css","apps/theming/theme/light.plain.css","apps/theming/theme/dark.css","apps/theming/theme/dark.plain.css","apps/theming/theme/light-highcontrast.css","apps/theming/theme/light-highcontrast.plain.css","apps/theming/theme/dark-highcontrast.css","apps/theming/theme/dark-highcontrast.plain.css","apps/theming/theme/opendyslexic.css"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"

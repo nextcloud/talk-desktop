@@ -22,12 +22,6 @@ SPDX-FileCopyrightText = "2016-2024 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = "dist/icons.css"
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
-SPDX-License-Identifier = "AGPL-3.0-or-later"
-
-[[annotations]]
 path = "core/img/filetypes/package-x-generic.svg"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2016 Nextcloud GmbH and Nextcloud contributors"
@@ -70,25 +64,25 @@ SPDX-FileCopyrightText = "2016-2024 Collabora Ltd."
 SPDX-License-Identifier = "LicenseRef-CollaboraTrademarks"
 
 [[annotations]]
-path = ["core/img/x.svg","core/img/twitter.svg","core/img/actions/twitter.svg"]
+path = ["core/img/x.svg","core/img/x-dark.svg","core/img/x-light.svg","core/img/twitter.svg","core/img/actions/twitter.svg"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "X Corp."
 SPDX-License-Identifier = "LicenseRef-XTrademarks"
 
 [[annotations]]
-path = ["core/img/bluesky.svg","core/img/actions/bluesky.svg"]
+path = ["core/img/bluesky.svg","core/img/bluesky-light.svg","core/img/actions/bluesky.svg"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2012-2024 Fonticons, Inc."
 SPDX-License-Identifier = "CC-BY-4.0"
 
 [[annotations]]
-path = "core/img/facebook.svg"
+path = ["core/img/facebook.svg","core/img/facebook-light.svg"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2024 Meta"
 SPDX-License-Identifier = "LicenseRef-FacebookTrademarks"
 
 [[annotations]]
-path = ["core/img/mastodon.svg","core/img/actions/mastodon.svg"]
+path = ["core/img/mastodon.svg","core/img/mastodon-light.svg","core/img/actions/mastodon.svg"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2024 Mastodon gGmbH"
 SPDX-License-Identifier = "LicenseRef-MastodonTrademarks"
@@ -112,7 +106,7 @@ SPDX-FileCopyrightText = "2016 Andrew Nayenko <relan@airpost.net>"
 SPDX-License-Identifier = "CC-BY-SA-3.0 OR GPL-3.0-or-later"
 
 [[annotations]]
-path = ["apps/theming/theme/light.css","apps/theming/theme/dark.css","apps/theming/theme/light.plain.css","apps/theming/theme/dark.plain.css"]
+path = ["apps/theming/theme/light.css","apps/theming/theme/light.plain.css","apps/theming/theme/dark.css","apps/theming/theme/dark.plain.css","apps/theming/theme/light-highcontrast.css","apps/theming/theme/light-highcontrast.plain.css","apps/theming/theme/dark-highcontrast.css","apps/theming/theme/dark-highcontrast.plain.css","apps/theming/theme/opendyslexic.css"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"

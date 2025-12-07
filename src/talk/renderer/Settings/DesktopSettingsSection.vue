@@ -27,6 +27,9 @@ const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
 const launchAtStartup = useAppConfigValue('launchAtStartup')
 const theme = useAppConfigValue('theme')
+const forceHighContrast = useAppConfigValue('forceHighContrast')
+const dyslexicFont = useAppConfigValue('dyslexicFont')
+
 const systemTitleBar = useAppConfigValue('systemTitleBar')
 const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
 const zoomFactor = useAppConfigValue('zoomFactor')
@@ -69,6 +72,19 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 				</template>
 			</NcRadioGroupButton>
 		</NcRadioGroup>
+
+		<NcFormGroup :label="t('talk_desktop', 'Accessibility')">
+			<NcFormBox>
+				<NcFormBoxSwitch
+					v-model="forceHighContrast"
+					:label="t('talk_desktop', 'Force high-contrast theme')"
+					:description="t('talk_desktop', 'By default defined by system settings')" />
+				<NcFormBoxSwitch
+					v-model="dyslexicFont"
+					:label="t('talk_desktop', 'Dyslexia font')"
+					:description="t('talk_desktop', 'OpenDyslexic is a free typeface/font designed to mitigate some of the common reading errors caused by dyslexia')" />
+			</NcFormBox>
+		</NcFormGroup>
 
 		<NcFormGroup :label="t('talk_desktop', 'Appearance')">
 			<NcFormBox>

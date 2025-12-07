@@ -6,10 +6,12 @@
 import type { Ref } from 'vue'
 import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
 
+import { usePreferredDark } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { readonly, ref, watch, watchEffect } from 'vue'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
 import { setInitialState } from '../../../shared/initialState.service.js'
+import { applyBodyThemeAttrs } from '../../../shared/theme.utils.ts'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 
 export const useAppConfigStore = defineStore('appConfig', () => {
@@ -39,6 +41,16 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 			: appConfig.value.playSoundCall === 'always'
 		setInitialState('notifications', 'sound_notification', playSoundChat)
 		setInitialState('notifications', 'sound_talk', playSoundCall)
+	})
+
+	const isPreferredDark = usePreferredDark()
+	watchEffect(() => {
+		applyBodyThemeAttrs({
+			theme: appConfig.value.theme,
+			highcontrast: appConfig.value.forceHighContrast,
+			opendyslexic: appConfig.value.dyslexicFont,
+			isPreferredDark: isPreferredDark.value,
+		})
 	})
 
 	/**

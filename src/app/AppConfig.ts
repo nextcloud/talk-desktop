@@ -51,6 +51,16 @@ export type AppConfig = {
 	 */
 	theme: 'default' | 'dark' | 'light'
 	/**
+	 * Whether to force high contrast theme for better accessibility.
+	 * Default: false (use system settings for prefer more contrast)
+	 */
+	forceHighContrast: boolean
+	/**
+	 * Whether to use the OpenDyslexic font for better readability and accessibility.
+	 * Default: false
+	 */
+	dyslexicFont: boolean
+	/**
 	 * Whether to use a custom title bar or the system default.
 	 * Default: true on Linux, false otherwise.
 	 */
@@ -121,6 +131,8 @@ export type AppConfigKey = keyof AppConfig
 const defaultAppConfig: AppConfig = {
 	launchAtStartup: false,
 	theme: 'default',
+	forceHighContrast: false,
+	dyslexicFont: false,
 	systemTitleBar: isLinux,
 	monochromeTrayIcon: isMac,
 	zoomFactor: 1,

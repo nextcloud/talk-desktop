@@ -11,6 +11,14 @@
 @import '@global-styles/apps/theming/theme/light.plain.css' (prefers-color-scheme: light);
 @import '@global-styles/apps/theming/theme/dark.plain.css' (prefers-color-scheme: dark);
 
+@import '@global-styles/apps/theming/theme/light-highcontrast.plain.css' ((prefers-color-scheme: light) and (prefers-contrast: more));
+@import '@global-styles/apps/theming/theme/dark-highcontrast.plain.css' ((prefers-color-scheme: dark) and (prefers-contrast: more));
+
 /* Theme styles for explicit set themes */
 @import '@global-styles/apps/theming/theme/light.css';
 @import '@global-styles/apps/theming/theme/dark.css';
+
+@import '@global-styles/apps/theming/theme/light-highcontrast.css';
+@import '@global-styles/apps/theming/theme/dark-highcontrast.css';
+
+@import '@global-styles/apps/theming/theme/opendyslexic.css';

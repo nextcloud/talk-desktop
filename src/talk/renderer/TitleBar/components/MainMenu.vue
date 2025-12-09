@@ -71,7 +71,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 			<template #icon>
 				<IconCogOutline :size="20" />
 			</template>
-			{{ t('talk_desktop', 'Settings') }}
+			{{ t('talk_desktop', 'App settings') }}
 		</NcActionButton>
 		<NcActionButton @click="showHelp">
 			<template #icon>

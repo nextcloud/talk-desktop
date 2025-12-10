@@ -32,7 +32,7 @@ OC.L10N.register(
     "Reset" : "Resetiraj",
     "Menu" : "Izbornik",
     "Report a bug" : "Prijavi pogrešku",
-    "Settings" : "Postavke",
+    "App settings" : "Postavke aplikacije",
     "View profile" : "Prikaži profil",
     "Log out" : "Odjavite se",
     "Quit" : "Zatvori",

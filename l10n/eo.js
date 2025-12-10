@@ -22,7 +22,6 @@ OC.L10N.register(
     "Reload" : "Reŝargi",
     "Reset" : "Restarigi",
     "Report a bug" : "Raporti problemon",
-    "Settings" : "Agordoj",
     "View profile" : "Vidi profilon",
     "Quit" : "Forlasi",
     "Today" : "Hodiaŭ",

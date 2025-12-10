@@ -30,7 +30,7 @@ OC.L10N.register(
     "Reset" : "Reset",
     "Menu" : "Menu",
     "Report a bug" : "Report a bug",
-    "Settings" : "Settings",
+    "App settings" : "App settings",
     "Back" : "Back",
     "View profile" : "View profile",
     "Log out" : "Log out",

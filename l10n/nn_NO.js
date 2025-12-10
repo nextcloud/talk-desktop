@@ -15,7 +15,6 @@ OC.L10N.register(
     "Ok" : "Greitt",
     "Appearance" : "Utsjånad",
     "Report a bug" : "Rapporter feil",
-    "Settings" : "Innstillingar",
     "Quit" : "Avslutt",
     "Today" : "I dag",
     "None" : "Ingen",

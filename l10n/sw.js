@@ -82,7 +82,7 @@ OC.L10N.register(
     "Open in web browser" : "Fungua katika kivinjari",
     "Force reload" : "Taarifa na sauti",
     "Report a bug" : "Ripoti hitilafu",
-    "Settings" : "Mipangilio",
+    "App settings" : "Mipangilio ya programu",
     "Back" : "Rudi",
     "View profile" : "Angalia wasifu",
     "Set custom status" : "Pangilia hadhi maalum",

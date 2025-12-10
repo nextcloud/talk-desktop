@@ -81,7 +81,7 @@ OC.L10N.register(
     "Open in web browser" : "باز کردن در مرورگر وب",
     "Force reload" : "بارگذاری مجدد اجباری",
     "Report a bug" : "گزارش یک اشکال",
-    "Settings" : "تنظیمات",
+    "App settings" : "App settings",
     "Back" : "بازگشت",
     "View profile" : "مشاهدهٔ نمایه",
     "Set custom status" : "تنظیم وضعیت سفارشی",

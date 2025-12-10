@@ -21,7 +21,6 @@ OC.L10N.register(
     "Reset" : "Restablecer",
     "Menu" : "Menú",
     "Report a bug" : "Reporta un detalle",
-    "Settings" : "Configuraciones ",
     "Log out" : "Cerrar sesión",
     "Quit" : "Salir",
     "Today" : "Hoy",

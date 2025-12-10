@@ -19,7 +19,6 @@ OC.L10N.register(
     "Light" : "Aceɛlal",
     "Dark" : "Ubrik",
     "Appearance" : "Apparence",
-    "Settings" : "Iɣewwaṛen",
     "Back" : "Retour",
     "Log out" : "Senser",
     "Quit" : "Quitter",

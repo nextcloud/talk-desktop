@@ -12,7 +12,6 @@ OC.L10N.register(
     "Reset" : "Re-fixar",
     "Menu" : "Menu",
     "Report a bug" : "Reportar un defecto",
-    "Settings" : "Configurationes",
     "Today" : "Hodie",
     "This week" : "Iste septimana",
     "None" : "Nulle",

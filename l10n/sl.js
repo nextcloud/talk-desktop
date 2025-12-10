@@ -37,7 +37,7 @@ OC.L10N.register(
     "Reset" : "Ponastavi",
     "Menu" : "Meni",
     "Report a bug" : "Pošlji poročilo o hrošču",
-    "Settings" : "Nastavitve",
+    "App settings" : "Nastavitve programa",
     "Back" : "Nazaj",
     "View profile" : "Pokaži profil",
     "Log out" : "Odjava",

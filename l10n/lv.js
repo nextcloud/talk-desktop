@@ -25,7 +25,7 @@ OC.L10N.register(
     "Menu" : "Izvēlne",
     "Open in web browser" : "Atvērt tīmekļa pārlūkā",
     "Report a bug" : "Ziņot par kļūdu",
-    "Settings" : "Iestatījumi",
+    "App settings" : "Lietotnes iestatījumi",
     "View profile" : "Skatīt profilu",
     "Set custom status" : "Iestatīt pielāgotu stāvokli",
     "Log out" : "Izrakstīties",

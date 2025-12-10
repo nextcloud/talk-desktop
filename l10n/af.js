@@ -11,7 +11,6 @@ OC.L10N.register(
     "License" : "Lisensie",
     "Reset" : "Herstel",
     "Menu" : "Kieslys",
-    "Settings" : "Instellings",
     "Log out" : "Teken af",
     "Quit" : "Sluit af",
     "User status" : "Gebruikerstatus",

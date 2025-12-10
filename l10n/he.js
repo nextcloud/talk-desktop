@@ -29,7 +29,6 @@ OC.L10N.register(
     "Reset" : "איפוס",
     "Menu" : "תפריט",
     "Report a bug" : "דיווח על באג",
-    "Settings" : "הגדרות",
     "Back" : "אחורה",
     "Log out" : "התנתק",
     "Quit" : "יציאה",

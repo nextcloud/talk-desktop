@@ -32,7 +32,6 @@ OC.L10N.register(
     "Reload" : "Ponovo učitaj",
     "Force reload" : "Forsiraj ponovno učitavanje",
     "Report a bug" : "Prijavi grešku",
-    "Settings" : "Поставке",
     "View profile" : "Vidi profil",
     "Log out" : "Odjava",
     "Quit" : "Napusti",

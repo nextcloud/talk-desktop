@@ -38,7 +38,6 @@ OC.L10N.register(
     "Menu" : "Menú",
     "Force reload" : "Força tornar a carregar",
     "Report a bug" : "Informa d'un error",
-    "Settings" : "Paràmetres",
     "Back" : "Torna",
     "View profile" : "Visualitza el perfil",
     "Set custom status" : "Definir l'estat personalitzat",

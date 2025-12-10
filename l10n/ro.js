@@ -31,7 +31,6 @@ OC.L10N.register(
     "Reset" : "Resetare",
     "Menu" : "Meniu",
     "Report a bug" : "Raportează un defect",
-    "Settings" : "Setări",
     "Back" : "Înapoi",
     "View profile" : "Vezi profilul",
     "Quit" : "Renunță",

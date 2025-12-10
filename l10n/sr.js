@@ -82,7 +82,7 @@ OC.L10N.register(
     "Open in web browser" : "Отвори у веб прегледачу",
     "Force reload" : "Форсирај поновно учитавање",
     "Report a bug" : "Пријави грешку",
-    "Settings" : "Поставке",
+    "App settings" : "Подешавања апликације",
     "Back" : "Назад",
     "View profile" : "Погледај профил",
     "Set custom status" : "Изаберите произвољни опсег",

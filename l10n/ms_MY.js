@@ -9,7 +9,6 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Tidak",
     "Yes" : "Ya",
-    "Settings" : "Tetapan",
     "Quit" : "Berhenti",
     "Today" : "Hari ini"
 },

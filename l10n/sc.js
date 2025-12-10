@@ -32,7 +32,7 @@ OC.L10N.register(
     "Menu" : "Menu",
     "Force reload" : "Fortza sa càrriga",
     "Report a bug" : "Report a bug",
-    "Settings" : "Cunfiguratzione",
+    "App settings" : "Cunfiguratzione de s'aplicatzione",
     "Back" : "In segus",
     "View profile" : "Ammustra su profilu",
     "Log out" : "Essi·nche",

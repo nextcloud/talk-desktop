@@ -26,7 +26,6 @@ OC.L10N.register(
     "Appearance" : "Tashqi ko'rinish",
     "Reload" : "Qayta yuklash",
     "Reset" : "Qayta tiklash",
-    "Settings" : "Sozlamalar",
     "Back" : "Orqaga",
     "View profile" : "View profile",
     "User status" : "User status",

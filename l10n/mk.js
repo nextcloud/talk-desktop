@@ -30,7 +30,6 @@ OC.L10N.register(
     "Zoom in" : "Зумирај",
     "Reset" : "Ресетирање",
     "Report a bug" : "Пријави грешка",
-    "Settings" : "Параметри",
     "Back" : "Назад",
     "View profile" : "Прегледај профил",
     "Set custom status" : "Постави сопствен статус",

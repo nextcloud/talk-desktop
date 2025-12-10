@@ -14,7 +14,6 @@ OC.L10N.register(
     "Theme" : "Ùrlar dorcha",
     "Light" : "Soilleir",
     "Dark" : "Dorcha",
-    "Settings" : "Roghainnean",
     "Back" : "Air ais",
     "Log out" : "Clàraich a-mach",
     "Quit" : "Fàg an-seo",

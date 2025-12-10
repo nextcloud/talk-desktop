@@ -14,7 +14,6 @@ OC.L10N.register(
     "Dark" : "গাঢ়",
     "Reload" : "পূনরায় লোড কর",
     "Reset" : "পূণঃনির্ধানণ",
-    "Settings" : "সেটিংস",
     "Quit" : "বন্ধ",
     "Today" : "আজ",
     "None" : "কোনটিই নয়"

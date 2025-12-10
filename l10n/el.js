@@ -82,7 +82,7 @@ OC.L10N.register(
     "Open in web browser" : "Άνοιγμα σε πρόγραμμα περιήγησης ιστού",
     "Force reload" : "Επιβολή επαναφόρτωσης",
     "Report a bug" : "Αναφορά σφάλματος",
-    "Settings" : "Ρυθμίσεις",
+    "App settings" : "Ρυθμίσεις εφαρμογής",
     "Back" : "Επιστροφή",
     "View profile" : "Προβολή προφίλ",
     "Set custom status" : "Ορισμός προσαρμοσμένης κατάστασης",

@@ -10,7 +10,6 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Ne",
     "Yes" : "Da",
-    "Settings" : "Podešavanje",
     "Today" : "Danas",
     "None" : "Ništa",
     "Busy" : "Zauzet"

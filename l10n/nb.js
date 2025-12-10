@@ -44,7 +44,7 @@ OC.L10N.register(
     "Menu" : "Meny",
     "Force reload" : "Tving lasting inn på nytt",
     "Report a bug" : "Rapporter en feil",
-    "Settings" : "Innstillinger",
+    "App settings" : "App-innstillinger",
     "Back" : "Tilbake",
     "View profile" : "Vis profil",
     "Set custom status" : "Velg tilpasset status",

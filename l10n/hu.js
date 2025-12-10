@@ -41,7 +41,7 @@ OC.L10N.register(
     "Menu" : "Menü",
     "Force reload" : "Kényszerített újratöltés",
     "Report a bug" : "Hiba bejelentése",
-    "Settings" : "Beállítások",
+    "App settings" : "Alkalmazásbeállítások",
     "Back" : "Vissza",
     "View profile" : "Profil megtekintése",
     "Log out" : "Kijelentkezés",

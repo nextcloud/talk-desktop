@@ -84,7 +84,7 @@ OC.L10N.register(
     "Open in web browser" : "Öppna i webbläsare",
     "Force reload" : "Tvinga omladdning",
     "Report a bug" : "Rapportera ett problem",
-    "Settings" : "Inställningar",
+    "App settings" : "Appinställningar",
     "Back" : "Tillbaka",
     "View profile" : "Visa profil",
     "Set custom status" : "Ange anpassad status",

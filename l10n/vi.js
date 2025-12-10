@@ -29,7 +29,6 @@ OC.L10N.register(
     "Reload" : "Tải lại",
     "Reset" : "Đặt lại",
     "Report a bug" : "Báo cáo lỗi",
-    "Settings" : "Cài đặt",
     "Back" : "Trở lại",
     "View profile" : "Xem hồ sơ",
     "Quit" : "Thoát",

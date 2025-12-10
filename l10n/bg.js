@@ -36,7 +36,7 @@ OC.L10N.register(
     "Menu" : "Меню",
     "Force reload" : "Принудително повторно зареждане",
     "Report a bug" : "Докладване за грешка",
-    "Settings" : "Настройки",
+    "App settings" : "Настройки на приложението",
     "Back" : "Назад",
     "View profile" : "Преглед на профил",
     "Log out" : "Изход",

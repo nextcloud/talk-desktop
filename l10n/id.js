@@ -27,7 +27,6 @@ OC.L10N.register(
     "Reset" : "Setel ulang",
     "Menu" : "Menu",
     "Report a bug" : "Laporkan kerusakan",
-    "Settings" : "Setelan",
     "View profile" : "Tampilkan profil",
     "Log out" : "Keluar",
     "Quit" : "Keluar",

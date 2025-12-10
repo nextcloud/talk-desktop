@@ -84,7 +84,7 @@ OC.L10N.register(
     "Open in web browser" : "Open in web browser",
     "Force reload" : "Force reload",
     "Report a bug" : "Report a bug",
-    "Settings" : "Settings",
+    "App settings" : "App settings",
     "Back" : "Back",
     "View profile" : "View profile",
     "Set custom status" : "Set custom status",

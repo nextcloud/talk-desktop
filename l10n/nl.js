@@ -56,7 +56,7 @@ OC.L10N.register(
     "Menu" : "Menu",
     "Force reload" : "Herladen forceren",
     "Report a bug" : "Rapporteer een fout",
-    "Settings" : "Instellingen",
+    "App settings" : "App instellingen",
     "Back" : "Terug",
     "View profile" : "Bekijk profiel",
     "Set custom status" : "Custom status instellen",

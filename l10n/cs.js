@@ -84,7 +84,7 @@ OC.L10N.register(
     "Open in web browser" : "Otevřít ve webovém prohlížeči",
     "Force reload" : "Vynutit opětovné načtení",
     "Report a bug" : "Nahlásit chybu",
-    "Settings" : "Nastavení",
+    "App settings" : "Nastavení aplikace",
     "Back" : "Zpět",
     "View profile" : "Zobrazit profil ",
     "Set custom status" : "Nastavit uživatelsky určený stav",

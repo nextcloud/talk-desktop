@@ -82,7 +82,7 @@ OC.L10N.register(
     "Open in web browser" : "Otvoriť vo webovom prehliadači",
     "Force reload" : "Vynútiť opätovné načítanie",
     "Report a bug" : "Nahlásiť chybu",
-    "Settings" : "Nastavenia",
+    "App settings" : "Nastavenia Aplikácie",
     "Back" : "Späť",
     "View profile" : "Zobraziť profil",
     "Set custom status" : "Nastaviť vlastný status",

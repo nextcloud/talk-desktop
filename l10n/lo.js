@@ -39,7 +39,7 @@ OC.L10N.register(
     "Zoom in" : "ຊູມເຂົ້າ",
     "Reset" : "ຕັ້ງຄ່າໃໝ່",
     "Report a bug" : "Report a bug",
-    "Settings" : "ການຕັ້ງຄ່າ",
+    "App settings" : "App settings",
     "Back" : "ກັບຄືນ",
     "View profile" : "View profile",
     "Log out" : "ອອກຈາກລະບົບ",

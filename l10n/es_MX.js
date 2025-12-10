@@ -26,7 +26,6 @@ OC.L10N.register(
     "Reset" : "Reiniciar",
     "Menu" : "Menú",
     "Report a bug" : "Reporta un detalle",
-    "Settings" : "Ajustes",
     "Back" : "Atrás",
     "View profile" : "Ver perfil",
     "Log out" : "Cerrar sesión",

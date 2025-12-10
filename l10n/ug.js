@@ -82,7 +82,7 @@ OC.L10N.register(
     "Open in web browser" : "تورتۇرادا ئاچ",
     "Force reload" : "قايتا يۈكلەش",
     "Report a bug" : "خاتالىق مەلۇم قىلىڭ",
-    "Settings" : "تەڭشەكلەر",
+    "App settings" : "ئەپ تەڭشىكى",
     "Back" : "قايتىش",
     "View profile" : "ئارخىپنى كۆرۈڭ",
     "Set custom status" : "ئىختىيارى ھالەت بەلگىلەڭ",

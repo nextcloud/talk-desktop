@@ -22,7 +22,6 @@ OC.L10N.register(
     "Reset" : "Sıfırla",
     "Menu" : "Menyu",
     "Report a bug" : "Səhv haqqında bildir",
-    "Settings" : "Quraşdırmalar",
     "Back" : "Geri",
     "Quit" : "Çıx",
     "Today" : "Bu gün",

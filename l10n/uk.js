@@ -81,7 +81,7 @@ OC.L10N.register(
     "Open in web browser" : "Відкрити у веб-браузері",
     "Force reload" : "Примусово перезавантажити",
     "Report a bug" : "Повідомити про помилку",
-    "Settings" : "Налаштування",
+    "App settings" : "Налаштування програми",
     "Back" : "Назад",
     "View profile" : "Перегляд профілю",
     "Set custom status" : "Встановити користувацький статус",

@@ -59,7 +59,6 @@ OC.L10N.register(
     "Menu" : "القائمة ",
     "Force reload" : "إفرِض إعادة التحميل",
     "Report a bug" : "الإبلاغ عن خطإٍ",
-    "Settings" : "الإعدادات",
     "Back" : "عودة",
     "View profile" : "عرض الملف الشخصي",
     "Set custom status" : "تعيين حالة مخصصة",

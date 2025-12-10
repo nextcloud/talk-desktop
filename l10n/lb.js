@@ -14,7 +14,6 @@ OC.L10N.register(
     "Reset" : "Zeréck setzen",
     "Menu" : "Menü",
     "Report a bug" : "E Feeler melden",
-    "Settings" : "Astellungen",
     "Quit" : "Erausgoen",
     "Today" : "Haut",
     "None" : "Keng",

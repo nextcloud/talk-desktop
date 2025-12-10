@@ -13,7 +13,6 @@ OC.L10N.register(
     "Light" : "ភ្លឺt",
     "Dark" : "ងងឹត",
     "Reload" : "ផ្ទុកឡើងវិញ",
-    "Settings" : "ការកំណត់",
     "Quit" : "ចាក់ចេញ",
     "Today" : "ថ្ងៃ​នេះ",
     "None" : "គ្មាន"

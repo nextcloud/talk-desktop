@@ -9,7 +9,6 @@ OC.L10N.register(
     "No" : "نہیں",
     "Yes" : "ہاں",
     "Reset" : "ری سیٹ",
-    "Settings" : "سیٹینگز",
     "Today" : "آج"
 },
 "nplurals=2; plural=(n != 1);");

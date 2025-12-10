@@ -9,7 +9,6 @@ OC.L10N.register(
     "No" : "﻿ಇಲ್ಲ",
     "Yes" : "﻿ಹೌದು",
     "Reset" : "ಮರುಹೊಂದಿಸಿ",
-    "Settings" : "ಆಯ್ಕೆ",
     "Today" : "Today",
     "None" : "﻿ಯಾವುದೂ ಇಲ್ಲ"
 },

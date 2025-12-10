@@ -41,7 +41,7 @@ OC.L10N.register(
     "Reset" : "リセット",
     "Menu" : "メニュー",
     "Report a bug" : "不具合を報告",
-    "Settings" : "設定",
+    "App settings" : "アプリ設定",
     "Back" : "戻る",
     "View profile" : "プロフィールを表示",
     "Quit" : "終了",

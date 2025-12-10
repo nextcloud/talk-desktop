@@ -31,7 +31,6 @@ OC.L10N.register(
     "Reset" : "초기화",
     "Menu" : "메뉴",
     "Report a bug" : "버그 보고",
-    "Settings" : "설정",
     "Back" : "뒤로",
     "View profile" : "프로필 보기",
     "Log out" : "로그아웃",

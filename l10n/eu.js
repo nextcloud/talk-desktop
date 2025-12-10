@@ -41,7 +41,7 @@ OC.L10N.register(
     "Menu" : "Menua",
     "Force reload" : "Behartu birkargatzea",
     "Report a bug" : "Jakinarazi errore bat",
-    "Settings" : "Ezarpenak",
+    "App settings" : "Aplikazioaren ezarpenak",
     "Back" : "Itzuli",
     "View profile" : "Ikusi profila",
     "Log out" : "Saioa itxi",

@@ -35,7 +35,7 @@ OC.L10N.register(
     "Reset" : "Palauta",
     "Menu" : "Valikko",
     "Report a bug" : "Ilmoita viasta",
-    "Settings" : "Asetukset",
+    "App settings" : "Sovelluksen asetukset",
     "Back" : "Takaisin",
     "View profile" : "Näytä profiili",
     "Set custom status" : "Aseta mukautettu tilatieto",

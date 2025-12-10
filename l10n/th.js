@@ -28,7 +28,6 @@ OC.L10N.register(
     "Reset" : "รีเซ็ต",
     "Menu" : "เมนู",
     "Report a bug" : "รายงานข้อผิดพลาด",
-    "Settings" : "การตั้งค่า",
     "Quit" : "ออก",
     "User status" : "สถานะผู้ใช้",
     "Don't clear" : "ไม่ต้องล้าง",

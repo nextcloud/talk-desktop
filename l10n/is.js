@@ -28,7 +28,7 @@ OC.L10N.register(
     "Reset" : "Endurstilla",
     "Menu" : "Valmynd",
     "Report a bug" : "Tilkynna um villu",
-    "Settings" : "Stillingar",
+    "App settings" : "Stillingar forrits",
     "Back" : "Til baka",
     "View profile" : "Skoða notandasnið",
     "Quit" : "Hætta",

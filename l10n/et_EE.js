@@ -84,7 +84,7 @@ OC.L10N.register(
     "Open in web browser" : "Ava veebibrauseris",
     "Force reload" : "Laadi sundkorras uuesti",
     "Report a bug" : "Teata veast",
-    "Settings" : "Seaded",
+    "App settings" : "Rakenduse seadistused",
     "Back" : "Tagasi",
     "View profile" : "Vaata profiili",
     "Set custom status" : "Määra endaloodud olek",

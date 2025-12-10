@@ -19,7 +19,6 @@ OC.L10N.register(
     "Reload" : "Adkargañ",
     "Menu" : "Roll",
     "Report a bug" : "Dugas ur gudenn",
-    "Settings" : "Arventennoù",
     "View profile" : "Gwelet ar profil",
     "Log out" : "Digevreañ",
     "Quit" : "Kuitaat",

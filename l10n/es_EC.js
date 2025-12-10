@@ -33,7 +33,7 @@ OC.L10N.register(
     "Menu" : "Menú",
     "Force reload" : "Forzar recarga",
     "Report a bug" : "Reporta un detalle",
-    "Settings" : "Ajustes",
+    "App settings" : "Configuraciones de la aplicación",
     "Back" : "Regresar",
     "View profile" : "Ver perfil",
     "Log out" : "Cerrar sesión",

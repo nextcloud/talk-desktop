@@ -27,7 +27,7 @@ OC.L10N.register(
     "Menu" : "Menú",
     "Force reload" : "Forçar lo recargament",
     "Report a bug" : "Raportar un bug",
-    "Settings" : "Paramètres",
+    "App settings" : "Paramètres d’aplicacion",
     "View profile" : "Veire perfil",
     "Log out" : "Se desconnectar",
     "Quit" : "Quitar",

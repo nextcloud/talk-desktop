@@ -34,7 +34,6 @@ OC.L10N.register(
     "Reset" : "Reafitar",
     "Menu" : "Menú",
     "Report a bug" : "Informar d'un fallju",
-    "Settings" : "Configuración",
     "Back" : "Atrás",
     "View profile" : "Ver el perfil",
     "Log out" : "Zarrar la sesión",

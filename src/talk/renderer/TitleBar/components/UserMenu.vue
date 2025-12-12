@@ -8,8 +8,9 @@ import type { UserStatusStatusType } from '../../UserStatus/userStatus.types.ts'
 
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
+import { spawnDialog } from '@nextcloud/vue/functions/dialog'
 import { storeToRefs } from 'pinia'
-import { ref, useTemplateRef, watch } from 'vue'
+import { ref, watch } from 'vue'
 import NcAvatar from '@nextcloud/vue/components/NcAvatar'
 import NcPopover from '@nextcloud/vue/components/NcPopover'
 import NcUserStatusIcon from '@nextcloud/vue/components/NcUserStatusIcon'
@@ -39,8 +40,6 @@ const serverUrlShort = serverUrl.replace(/^https?:\/\//, '')
 const theming = appData.capabilities.theming
 
 const isOpen = ref(false)
-const userMenuContainer = useTemplateRef('userMenuContainer')
-const isUserStatusDialogOpen = ref(false)
 const userStatusSubMenuOpen = ref(false)
 
 // Close the submenu before opening the menu
@@ -64,135 +63,136 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 	userStatusStore.saveUserStatus({ ...userStatus.value!, status })
 	userStatusSubMenuOpen.value = false
 }
+
+/**
+ * Open the user status dialog
+ */
+function openUserStatusDialog() {
+	spawnDialog(UserStatusDialog)
+}
 </script>
 
 <template>
-	<div ref="userMenuContainer" class="user-menu">
-		<NcPopover
-			v-if="userMenuContainer"
-			v-model:shown="isOpen"
-			:container="userMenuContainer"
-			:popper-hide-triggers="(triggers: string[]) => [...triggers, 'click']"
-			:triggers="[]"
-			no-auto-focus>
-			<template #trigger="{ attrs }">
-				<div class="user-menu__trigger">
-					<!-- Floating-Vue doesn't support open on span[role=button] - opening manually -->
-					<NcAvatar
-						class="user-menu__avatar"
-						:user="user.id"
-						:preloaded-user-status="userStatus"
-						:display-name="user['display-name']"
-						:size="32"
-						disable-menu
-						disable-tooltip
-						v-bind="attrs"
-						tabindex="0"
-						role="button"
-						@click="isOpen = !isOpen"
-						@keydown.space="isOpen = !isOpen"
-						@keydown.enter="isOpen = !isOpen" />
-				</div>
-			</template>
+	<NcPopover
+		v-model:shown="isOpen"
+		:popper-hide-triggers="(triggers: string[]) => [...triggers, 'click']"
+		:triggers="[]"
+		no-auto-focus>
+		<template #trigger="{ attrs }">
+			<div class="user-menu__trigger">
+				<!-- Floating-Vue doesn't support open on span[role=button] - opening manually -->
+				<NcAvatar
+					class="user-menu__avatar"
+					:user="user.id"
+					:preloaded-user-status="userStatus"
+					:display-name="user['display-name']"
+					:size="32"
+					disable-menu
+					disable-tooltip
+					v-bind="attrs"
+					tabindex="0"
+					role="button"
+					@click="isOpen = !isOpen"
+					@keydown.space="isOpen = !isOpen"
+					@keydown.enter="isOpen = !isOpen" />
+			</div>
+		</template>
 
-			<template #default>
-				<UiMenu aria-label="Settings menu" class="user-menu__menu">
-					<template v-if="userStatusSubMenuOpen">
-						<UiMenuItem tag="button" @click.stop="userStatusSubMenuOpen = false">
-							<template #icon>
-								<IconChevronLeft :size="20" />
-							</template>
-							{{ t('talk_desktop', 'Back') }}
-						</UiMenuItem>
-						<UiMenuItem
-							v-for="status in availableUserStatusStatusTypes"
-							:key="status"
-							tag="button"
-							@click.stop="handleUserStatusChange(status)">
-							<template #icon>
-								<NcUserStatusIcon :status="status" />
-							</template>
-							{{ userStatusTranslations[status] }}
-							<!-- @vue-expect-error This menu can only be open from a button with v-if="userStatus", but in Vue 2 we cannot add type assertion -->
-							<template v-if="status === userStatus.status" #action-icon>
-								<IconCheck :size="20" />
-							</template>
-						</UiMenuItem>
-					</template>
-
-					<template v-else>
-						<UiMenuItem
-							tag="a"
-							:href="userProfileLink"
-							target="_blank">
-							<strong>{{ user['display-name'] }}</strong>
-							<div>
-								{{ t('talk_desktop', 'View profile') }}
-							</div>
-						</UiMenuItem>
-
-						<UiMenuSeparator />
-
-						<UiMenuItem tag="a" :href="serverUrl" target="_blank">
-							<template #icon>
-								<ThemeLogo :size="24" />
-							</template>
-							<span class="user-menu__server">
-								<span>{{ theming.name }}</span>
-								<em>{{ serverUrlShort }}</em>
-							</span>
-						</UiMenuItem>
-
-						<UiMenuSeparator />
-
-						<template v-if="userStatus">
-							<UiMenuItem tag="button" @click.stop="userStatusSubMenuOpen = true">
-								<template #icon>
-									<NcUserStatusIcon :status="userStatus.status" />
-								</template>
-								{{ userStatusTranslations[userStatus.status] }}
-								<template #action-icon>
-									<IconChevronRight :size="20" />
-								</template>
-							</UiMenuItem>
-							<UiMenuItem key="custom-status" tag="button" @click="isUserStatusDialogOpen = true">
-								<template #icon>
-									<span v-if="userStatus.icon" style="font-size: 20px">
-										{{ userStatus.icon }}
-									</span>
-									<IconEmoticonOutline v-else :size="20" />
-								</template>
-								{{ userStatus.message || t('talk_desktop', 'Set custom status') }}
-								<template v-if="userStatus.message" #action-icon>
-									<IconPencilOutline :size="20" />
-								</template>
-							</UiMenuItem>
-
-							<UiMenuSeparator />
+		<template #default>
+			<UiMenu aria-label="Settings menu" class="user-menu__menu">
+				<template v-if="userStatusSubMenuOpen">
+					<UiMenuItem tag="button" @click.stop="userStatusSubMenuOpen = false">
+						<template #icon>
+							<IconChevronLeft :size="20" />
 						</template>
+						{{ t('talk_desktop', 'Back') }}
+					</UiMenuItem>
+					<UiMenuItem
+						v-for="status in availableUserStatusStatusTypes"
+						:key="status"
+						tag="button"
+						@click.stop="handleUserStatusChange(status)">
+						<template #icon>
+							<NcUserStatusIcon :status="status" />
+						</template>
+						{{ userStatusTranslations[status] }}
+						<!-- @vue-expect-error This menu can only be open from a button with v-if="userStatus", but in Vue 2 we cannot add type assertion -->
+						<template v-if="status === userStatus.status" #action-icon>
+							<IconCheck :size="20" />
+						</template>
+					</UiMenuItem>
+				</template>
 
-						<UiMenuItem tag="button" @click="logout">
+				<template v-else>
+					<UiMenuItem
+						tag="a"
+						:href="userProfileLink"
+						target="_blank">
+						<strong>{{ user['display-name'] }}</strong>
+						<div>
+							{{ t('talk_desktop', 'View profile') }}
+						</div>
+					</UiMenuItem>
+
+					<UiMenuSeparator />
+
+					<UiMenuItem tag="a" :href="serverUrl" target="_blank">
+						<template #icon>
+							<ThemeLogo :size="24" />
+						</template>
+						<span class="user-menu__server">
+							<span>{{ theming.name }}</span>
+							<em>{{ serverUrlShort }}</em>
+						</span>
+					</UiMenuItem>
+
+					<UiMenuSeparator />
+
+					<template v-if="userStatus">
+						<UiMenuItem tag="button" @click.stop="userStatusSubMenuOpen = true">
 							<template #icon>
-								<IconLogout :size="20" />
+								<NcUserStatusIcon :status="userStatus.status" />
 							</template>
-							{{ t('talk_desktop', 'Log out') }}
+							{{ userStatusTranslations[userStatus.status] }}
+							<template #action-icon>
+								<IconChevronRight :size="20" />
+							</template>
+						</UiMenuItem>
+						<UiMenuItem key="custom-status" tag="button" @click="openUserStatusDialog">
+							<template #icon>
+								<span v-if="userStatus.icon" style="font-size: 20px">
+									{{ userStatus.icon }}
+								</span>
+								<IconEmoticonOutline v-else :size="20" />
+							</template>
+							{{ userStatus.message || t('talk_desktop', 'Set custom status') }}
+							<template v-if="userStatus.message" #action-icon>
+								<IconPencilOutline :size="20" />
+							</template>
 						</UiMenuItem>
 
 						<UiMenuSeparator />
-
-						<UiMenuItem tag="button" @click="quit">
-							<template #icon>
-								<IconPower :size="20" />
-							</template>
-							{{ t('talk_desktop', 'Quit') }}
-						</UiMenuItem>
 					</template>
-				</UiMenu>
-			</template>
-		</NcPopover>
 
-		<UserStatusDialog v-if="isUserStatusDialogOpen" @close="isUserStatusDialogOpen = false" />
-	</div>
+					<UiMenuItem tag="button" @click="logout">
+						<template #icon>
+							<IconLogout :size="20" />
+						</template>
+						{{ t('talk_desktop', 'Log out') }}
+					</UiMenuItem>
+
+					<UiMenuSeparator />
+
+					<UiMenuItem tag="button" @click="quit">
+						<template #icon>
+							<IconPower :size="20" />
+						</template>
+						{{ t('talk_desktop', 'Quit') }}
+					</UiMenuItem>
+				</template>
+			</UiMenu>
+		</template>
+	</NcPopover>
 </template>
 
 <style scoped>

@@ -58,6 +58,7 @@ function resolveBuildConfig(customConfigPath = process.env.CUSTOM_CONFIG) {
 		companyName: 'Nextcloud GmbH',
 		copyright: 'Copyright (c) {year} Nextcloud GmbH'.replace('{year}', new Date().getFullYear()),
 		applicationNameSanitized,
+		isPlainBackground: config.backgroundColor !== defaultConfig.backgroundColor,
 		winSquirrelAppId: applicationNameSanitized, // Special case for Squirrel.Windows
 		winUpgradeCode: UUIDv5(`${appIdHost}.talk`, TALK_DESKTOP_UUID),
 	}

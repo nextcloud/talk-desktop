@@ -1,0 +1,16 @@
+{
+	"applicationName": "Sermo Desktop",
+	"domain": "https://sermo.nextcloud.com",
+	"enforceDomain": false,
+	"brandColor": "#7F5700",
+	"brandFontColor": "#FFFFFF",
+	"primaryColor": "#7F5700",
+	"backgroundColor": "#C78A19",
+	"helpUrl": "https://nextcloud.com/talk/",
+	"privacyUrl": "https://nextcloud.com/privacy/",
+	"windowsExe": true,
+	"windowsMsi": true,
+	"macosDmg": true,
+	"linuxFlatpak": true,
+	"linuxZip": true
+}

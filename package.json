@@ -42,8 +42,8 @@
     "ts:check": "vue-tsc --noEmit"
   },
   "talk": {
-    "stable": "v22.0.4",
-    "beta": "v22.0.4",
+    "stable": "v22.0.5",
+    "beta": "v22.0.5",
     "dev": "main"
   },
   "dependencies": {

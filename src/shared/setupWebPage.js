@@ -186,7 +186,7 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 				auto_logout: false, // Unused
 				loglevel: 0, // MISSED
 				lost_password_link: null, // Unused
-				modRewriteWorking: capabilities['mod-rewrite-working'],
+				modRewriteWorking: capabilities?.['mod-rewrite-working'],
 				no_unsupported_browser_warning: true,
 				// session_keepalive - MISSED, used in notifications and user_status heartbeat
 				// session_lifetime - MISSED, used in session heartbeat

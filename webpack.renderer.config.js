@@ -18,16 +18,6 @@ const { getAppInfo } = require('./scripts/utils/appinfo.utils.cjs')
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 const CHANNEL = process.env.CHANNEL ?? 'dev'
 
-/**
- * appName and appVersion constants are set by process.env.npm_package_* in @nextcloud/webpack-vue-config.
- * During build in this project, env variables will be different and constants will be incorrect.
- * To keep values correct - set implicitly.
- */
-const talkPackage = require(`${TALK_PATH}/package.json`)
-
-process.env.npm_package_name = talkPackage.name
-process.env.npm_package_version = talkPackage.version
-
 const MAX_NEXTCLOUD_VERSION = getAppInfo(TALK_PATH).maxVersion
 const NEXTCLOUD_MASTER_VERSION = 33
 

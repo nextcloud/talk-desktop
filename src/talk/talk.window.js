@@ -12,6 +12,7 @@ const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
 const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
 const { applyWheelZoom } = require('../app/zoom.service.ts')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
+const { BUILD_CONFIG } = require('../shared/build.config.ts')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
@@ -26,7 +27,7 @@ function createTalkWindow() {
 			minWidth: 600,
 			minHeight: 400,
 		}),
-		backgroundColor: '#00679E',
+		backgroundColor: BUILD_CONFIG.backgroundColor,
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: TALK_DESKTOP__WINDOW_TALK_PRELOAD_WEBPACK_ENTRY,
@@ -35,7 +36,7 @@ function createTalkWindow() {
 		icon: getBrowserWindowIcon(),
 		titleBarStyle: getAppConfig('systemTitleBar') ? 'default' : 'hidden',
 		titleBarOverlay: {
-			color: '#00679E00', // Transparent
+			color: '#00000000', // Transparent
 			symbolColor: '#FFFFFF', // White
 			height: Math.round(TITLE_BAR_HEIGHT * zoomFactor),
 		},

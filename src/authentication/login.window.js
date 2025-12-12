@@ -9,6 +9,7 @@ const { getAppConfig } = require('../app/AppConfig.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { osTitle } = require('../app/system.utils.ts')
 const { getScaledWindowMinSize, getScaledWindowSize, applyZoom } = require('../app/utils.ts')
+const { BUILD_CONFIG } = require('../shared/build.config.ts')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 const { parseLoginRedirectUrl } = require('./login.service.js')
 
@@ -37,6 +38,7 @@ function openLoginWebView(parentWindow, serverUrl) {
 				width: WIDTH,
 				height: HEIGHT,
 			}),
+			backgroundColor: BUILD_CONFIG.backgroundColor,
 			useContentSize: true,
 			resizable: true,
 			center: true,

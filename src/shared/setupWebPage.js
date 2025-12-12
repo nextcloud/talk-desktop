@@ -9,6 +9,7 @@ import { appData } from '../app/AppData.js'
 import { refetchAppData } from '../app/appData.service.js'
 import { TITLE_BAR_HEIGHT } from '../constants.js'
 import { initAppConfig } from './appConfig.service.ts'
+import { BUILD_CONFIG } from './build.config.ts'
 import { initGlobals } from './globals/globals.js'
 import { setupInitialState } from './initialState.service.js'
 
@@ -128,56 +129,100 @@ export function applyAxiosInterceptors() {
  * @return {object}
  */
 function getInitialStateFromCapabilities(capabilities, userMetadata) {
+	/*
+		// Converting web-page values to an object:
+		[...document.getElementById('initial-state-container').children].map((input) => {
+			const [, app, key] = input.id.slice('#initial-state'.length).match(/(.*?)-(.*)/)
+			return { app, key, value: OCP.InitialState.loadState(app, key) }
+		}).reduce((acc, { app, key, value }) => ((acc[app] ??= {})[key] = value, acc), {})
+	*/
+
+	// TODO: make sure all use initial state is covered and there is no MISSED values
+	// TODO: when possible, migrate Initial State to capabilities
 	return {
-		// Todo check all used loadState for spreed
 		spreed: {
 			call_enabled: capabilities?.spreed?.config?.call?.enabled,
-			signaling_mode: 'external', // TODO: Missed in Capabilities. Is it a problem?
-			sip_dialin_info: undefined, // TODO: Missed in Capabilities. Is it a problem?
-			grid_videos_limit: 19, // TODO: Missed in Capabilities. Is it a problem?
-			grid_videos_limit_enforced: false, // TODO: Missed in Capabilities. Is it a problem?
+			signaling_mode: 'external', // MISSED
+			sip_dialin_info: '', // MISSED
+			grid_videos_limit: 19, // MISSED
+			grid_videos_limit_enforced: false, // MISSED
 			federation_enabled: capabilities?.spreed?.config?.federation?.enabled,
+			// default_permissions - MISSED (!)
 			start_conversations: capabilities?.spreed?.config?.conversations?.['can-create'],
 			circles_enabled: capabilities?.circles !== undefined,
-			guests_accounts_enabled: true, // TODO: Missed in Capabilities. It is a problem
+			guests_accounts_enabled: true, // MISSED
 			read_status_privacy: capabilities?.spreed?.config?.chat?.['read-privacy'],
 			typing_privacy: capabilities?.spreed?.config?.chat?.['typing-privacy'],
-			play_sounds: true, // Consider playing sound enabled by default on desktop until we have settings
-			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
-			attachment_folder_free_space: userMetadata?.quota?.free ?? 0, // TODO: Is User's Quota free equal to attachment_folder_free_space
-			enable_matterbridge: false, // TODO: Missed in Capabilities. Is it a problem?
+			play_sounds: true, // MISSED
+			force_enable_blur_filter: 'yes', // Unused
 			user_group_ids: userMetadata?.groups,
-		},
-		theming: {
-			background: capabilities?.theming?.background,
-			themingDefaultBackground: '',
-			data: {
-				name: capabilities?.theming?.name,
-				url: capabilities?.theming?.url,
-				slogan: capabilities?.theming?.slogan,
-				color: capabilities?.theming?.color,
-				defaultColor: '#00679E', // TODO: Find in Capabilities
-				imprintUrl: '', // TODO: Find in Capabilities
-				privacyUrl: '', // TODO: Find in Capabilities
-				inverted: false, // TODO: Find in Capabilities
-				cacheBuster: undefined, // TODO: Find in Capabilities
-				enabledThemes: ['light'], // TODO: Find in Capabilities
-			},
-			shortcutsDisabled: false, // TODO: Find in Capabilities
+			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
+			attachment_folder_free_space: userMetadata?.quota?.free ?? 0,
+			enable_matterbridge: false, // MISSED
 		},
 		core: {
-			capabilities,
+			// reference-provider-list - MISSED
+			// reference-provider-timestamps - MISSED
+			'active-app': 'spreed',
+			// Originally for Web UI header menu, but used for getting localized app name in libraries
+			apps: [{
+				id: 'spreed',
+				name: BUILD_CONFIG.applicationName,
+				href: '/talk_desktop__window_talk/index.html',
+				icon: new URL('../../img/talk-icon-plain-dark.svg', import.meta.url).href,
+				order: -5,
+				type: 'link',
+				active: true,
+				unread: 0,
+				classes: '',
+				app: 'spreed',
+				default: true,
+			}],
+			settingsNavEntries: [], // Unused
+			projects_enabled: false, // MISSED
 			config: {
+				// blacklist_files_regex - MISSED, used in @nextcloud/dialog via _oc_config, deprecated
+				forbidden_filename_characters: capabilities?.files?.forbidden_filename_characters,
+				auto_logout: false, // Unused
+				loglevel: 0, // MISSED
+				lost_password_link: null, // Unused
+				modRewriteWorking: capabilities['mod-rewrite-working'],
+				no_unsupported_browser_warning: true,
+				// session_keepalive - MISSED, used in notifications and user_status heartbeat
+				// session_lifetime - MISSED, used in session heartbeat
+				// sharing.maxAutocompleteResults - Unused
+				// sharing.minSearchStringLength - Unused
 				version: appData.version.nextcloud?.string ?? '25.0.2.3',
 				versionstring: appData.version.nextcloud?.string ?? '25.0.2',
-				modRewriteWorking: false, // Forced to false. Is it used?
+				'enable_non-accessible_features': true, // Unused
 			},
+			capabilities,
+			versionHash: '', // Unused
+		},
+		theming: {
+			data: {
+				name: capabilities?.theming?.name,
+				slogan: capabilities?.theming?.slogan,
+				url: capabilities?.theming?.url,
+				imprintUrl: '', // Unused
+				privacyUrl: BUILD_CONFIG.privacyUrl,
+				primaryColor: '#00679e',
+				backgroundColor: '#00679e',
+				defaultPrimaryColor: '#00679e',
+				defaultBackgroundColor: '#00679e',
+				inverted: false, // Unused
+				cacheBuster: undefined, // Unused
+				enabledThemes: ['default'],
+				color: '#00679e',
+			},
+			shortcutsDisabled: false, // MISSED
 		},
 		notifications: {
-			throttled_push_notifications: false, // TODO
-			sound_talk: true, // TODO
-			sound_notification: true, // TODO
+			throttled_push_notifications: false, // MISSED
+			sound_talk: true, // MISSED
+			sound_notification: true, // MISSED
 		},
+		// user_status: {} - MISSED
 	}
 }
 

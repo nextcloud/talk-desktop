@@ -129,6 +129,14 @@ export function applyAxiosInterceptors() {
  * @return {object}
  */
 function getInitialStateFromCapabilities(capabilities, userMetadata) {
+	/*
+		// Converting web-page values to an object:
+		[...document.getElementById('initial-state-container').children].map((input) => {
+			const [, app, key] = input.id.slice('#initial-state'.length).match(/(.*?)-(.*)/)
+			return { app, key, value: OCP.InitialState.loadState(app, key) }
+		}).reduce((acc, { app, key, value }) => ((acc[app] ??= {})[key] = value, acc), {})
+	*/
+
 	// TODO: make sure all use initial state is covered and there is no MISSED values
 	// TODO: when possible, migrate Initial State to capabilities
 	return {
@@ -147,28 +155,10 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			typing_privacy: capabilities?.spreed?.config?.chat?.['typing-privacy'],
 			play_sounds: true, // MISSED
 			force_enable_blur_filter: 'yes', // Unused
+			user_group_ids: userMetadata?.groups,
 			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
 			attachment_folder_free_space: userMetadata?.quota?.free ?? 0,
 			enable_matterbridge: false, // MISSED
-			user_group_ids: userMetadata?.groups,
-		},
-		theming: {
-			data: {
-				name: capabilities?.theming?.name,
-				url: capabilities?.theming?.url,
-				slogan: capabilities?.theming?.slogan,
-				color: '#00679e',
-				primaryColor: '#00679e',
-				backgroundColor: '#00679e',
-				defaultPrimaryColor: '#00679e',
-				defaultBackgroundColor: '#00679e',
-				imprintUrl: '', // Unused
-				privacyUrl: BUILD_CONFIG.privacyUrl,
-				inverted: false, // Unused
-				cacheBuster: '', // Unused
-				enabledThemes: ['default'],
-			},
-			shortcutsDisabled: false, // MISSED
 		},
 		core: {
 			// reference-provider-list - MISSED
@@ -190,13 +180,13 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			}],
 			settingsNavEntries: [], // Unused
 			projects_enabled: false, // MISSED
-			capabilities,
 			config: {
 				// blacklist_files_regex - MISSED, used in @nextcloud/dialog via _oc_config, deprecated
 				forbidden_filename_characters: capabilities?.files?.forbidden_filename_characters,
 				auto_logout: false, // Unused
 				loglevel: 0, // MISSED
-      			lost_password_link: null, // Unused
+				lost_password_link: null, // Unused
+				modRewriteWorking: capabilities['mod-rewrite-working'],
 				no_unsupported_browser_warning: true,
 				// session_keepalive - MISSED, used in notifications and user_status heartbeat
 				// session_lifetime - MISSED, used in session heartbeat
@@ -204,10 +194,28 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 				// sharing.minSearchStringLength - Unused
 				version: appData.version.nextcloud?.string ?? '25.0.2.3',
 				versionstring: appData.version.nextcloud?.string ?? '25.0.2',
-				modRewriteWorking: capabilities?.['mod-rewrite-working'],
 				'enable_non-accessible_features': true, // Unused
 			},
+			capabilities,
 			versionHash: '', // Unused
+		},
+		theming: {
+			data: {
+				name: capabilities?.theming?.name,
+				slogan: capabilities?.theming?.slogan,
+				url: capabilities?.theming?.url,
+				imprintUrl: '', // Unused
+				privacyUrl: BUILD_CONFIG.privacyUrl,
+				primaryColor: '#00679e',
+				backgroundColor: '#00679e',
+				defaultPrimaryColor: '#00679e',
+				defaultBackgroundColor: '#00679e',
+				inverted: false, // Unused
+				cacheBuster: undefined, // Unused
+				enabledThemes: ['default'],
+				color: '#00679e',
+			},
+			shortcutsDisabled: false, // MISSED
 		},
 		notifications: {
 			throttled_push_notifications: false, // MISSED

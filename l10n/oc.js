@@ -22,6 +22,8 @@ OC.L10N.register(
     "Theme" : "Tèma",
     "Light" : "Clar",
     "Dark" : "Escur",
+    "Appearance" : "Aparéncia",
+    "Loading …" : "Cargament …",
     "Reload" : "Recargar",
     "Reset" : "Reïnicializar",
     "Menu" : "Menú",

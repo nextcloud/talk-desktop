@@ -32,7 +32,7 @@ function createAuthenticationWindow() {
 		icon: getBrowserWindowIcon(),
 		titleBarStyle: getAppConfig('systemTitleBar') ? 'default' : 'hidden',
 		titleBarOverlay: {
-			color: '#00679E00', // Transparent
+			color: '#00000000', // Transparent
 			symbolColor: '#FFFFFF', // White
 			height: Math.round(TITLE_BAR_HEIGHT * zoomFactor),
 		},

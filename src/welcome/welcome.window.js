@@ -7,6 +7,7 @@ const { BrowserWindow } = require('electron')
 const { getAppConfig } = require('../app/AppConfig.ts')
 const { isMac } = require('../app/system.utils.ts')
 const { getScaledWindowSize, applyZoom, getWindowUrl } = require('../app/utils.ts')
+const { BUILD_CONFIG } = require('../shared/build.config.ts')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
@@ -19,6 +20,7 @@ function createWelcomeWindow() {
 			width: 300,
 			height: 500,
 		}, false),
+		backgroundColor: BUILD_CONFIG.backgroundColor,
 		resizable: false,
 		autoHideMenuBar: true,
 		center: true,

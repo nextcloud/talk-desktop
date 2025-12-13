@@ -206,14 +206,14 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 				url: capabilities?.theming?.url,
 				imprintUrl: '', // Unused
 				privacyUrl: BUILD_CONFIG.privacyUrl,
-				primaryColor: '#00679e',
-				backgroundColor: '#00679e',
-				defaultPrimaryColor: '#00679e',
-				defaultBackgroundColor: '#00679e',
+				primaryColor: BUILD_CONFIG.primaryColor,
+				backgroundColor: BUILD_CONFIG.backgroundColor,
+				defaultPrimaryColor: BUILD_CONFIG.primaryColor,
+				defaultBackgroundColor: BUILD_CONFIG.backgroundColor,
 				inverted: false, // Unused
 				cacheBuster: undefined, // Unused
 				enabledThemes: ['default'],
-				color: '#00679e',
+				color: BUILD_CONFIG.primaryColor,
 			},
 			shortcutsDisabled: false, // MISSED
 		},

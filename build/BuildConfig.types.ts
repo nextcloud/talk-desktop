@@ -15,13 +15,12 @@ export type BuildConfigFile = {
 	 */
 	applicationName: string
 
-
 	/**
 	 * Description.
 	 * Used in metadata and help.
 	 * Default: 'Official Desktop client for {applicationName}'
 	 */
-	description: string,
+	description: string
 
 	/**
 	 * Default: null
@@ -65,6 +64,18 @@ export type BuildConfigFile = {
 	 * Default: 'https://nextcloud.com/privacy' for app menu and Nextcloud theming settings on the help.
 	 */
 	privacyUrl: string
+
+	/**
+	 * Theming primary color
+	 * Default: '#00679e'
+	 */
+	primaryColor: string
+
+	/**
+	 * Theming background color
+	 * Default: '#00679e'
+	 */
+	backgroundColor: string
 
 	/****************
 	 * Distribution *
@@ -138,6 +149,14 @@ export type BuildConfigInferred = {
 	 * Application name without non-alphanumeral characters
 	 */
 	applicationNameSanitized: string
+
+	/**
+	 * Whether to have theming backgroundMime='backgroundColor' (plain background color instead of an image).
+	 * Currently true whenever backgroundColor is different from the default.
+	 * Might change in the future if more flexibility is needed.
+	 * Default: false
+	 */
+	isPlainBackground: boolean
 
 	/**
 	 * Windows.Squirrel AppUserModelId suffix for Windows.

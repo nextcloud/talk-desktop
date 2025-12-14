@@ -71,6 +71,7 @@ OC.L10N.register(
     "Secondary speaker" : "Другий спікер",
     "Some changes require a relaunch to take effect" : "Деякі зміни потребують перезапуску, щоб набути чинності",
     "Restart" : "Перезавантажити",
+    "Loading …" : "Завантаження …",
     "Reload" : "Перезавантажити",
     "Zoom can be also changed by {key} or mouse wheel. Reset by {resetKey}" : "Збільшення/зменшення також можна змінити за допомогою {key} або коліщатка миші. Скинути налаштування за допомогою {resetKey}",
     "Zoom" : "Масштаб",

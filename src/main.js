@@ -14,7 +14,7 @@ const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
 const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
-const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
+const { setupReleaseNotificationScheduler, registerUpdateIpcHandlers } = require('./app/githubReleaseNotification.service.js')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { systemInfo, isLinux, isMac, isWindows, isSameExecution } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
@@ -150,6 +150,7 @@ app.whenReady().then(async () => {
 	applyTheme()
 	initLaunchAtStartupListener()
 	registerAppProtocolHandler()
+	registerUpdateIpcHandlers()
 
 	// Open in the background if it is explicitly set, or the app was open at login on macOS
 	const openInBackground = ARGUMENTS.openInBackground || app.getLoginItemSettings().wasOpenedAtLogin

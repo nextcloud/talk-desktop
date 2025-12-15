@@ -1,4 +1,4 @@
-/*
+/*!
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
@@ -22,77 +22,6 @@
  * @property {ReuseProlog} prolog
  * @property {ReuseAnnotation[]} annotations
  */
-
-/**
- * Parse .dep5 content into Reuse object
- *
- * @param {string} dep5 - .dep5 file content
- * @return {Reuse} - Parsed Reuse object
- */
-export function parseDep5(dep5) {
-	const [prolog, ...annotations] = dep5.split(/\n{2,}/m)
-	return {
-		prolog: parseDep5Prolog(prolog),
-		annotations: annotations.map((annotation) => parseDep5Annotation(annotation)),
-	}
-}
-
-/**
- * Parse dep5 prolog content
- *
- * @param {string} prologContent - .dep5 prolog strong content
- * @return {ReuseProlog} - Parsed prolog
- */
-function parseDep5Prolog(prologContent) {
-	const tags = prologContent.split('\n')
-	const nameTag = tags.find((line) => line.startsWith('Upstream-Name: '))
-	const supplierTag = tags.find((line) => line.startsWith('Upstream-Contact: '))
-	const downloadLocationTag = tags.find((line) => line.startsWith('Source: '))
-
-	return {
-		name: nameTag.slice('Upstream-Name: '.length),
-		supplier: supplierTag.slice('Upstream-Contact: '.length),
-		downloadLocation: downloadLocationTag.slice('Source: '.length),
-	}
-}
-
-// /**
-//  *
-//  * @param {string} prologContent - .dep5 prolog strong content
-//  * @return {ReuseProlog} - Parsed prolog
-//  */
-// function parseReuseTomlProlog(prologContent) {
-// 	const tags = prologContent.split('\n')
-// 	const nameTag = tags.find((line) => line.startsWith('Upstream-Name: '))
-// 	const supplierTag = tags.find((line) => line.startsWith('Upstream-Contact: '))
-// 	const downloadLocationTag = tags.find((line) => line.startsWith('Source: '))
-//
-// 	return {
-// 		name: nameTag.slice('Upstream-Name: '.length),
-// 		supplier: supplierTag.slice('Upstream-Contact: '.length),
-// 		downloadLocation: downloadLocationTag.slice('Source: '.length),
-// 	}
-// }
-
-/**
- * Parse dep5 annotation content
- *
- * @param {string} annotationContent - Annotation content
- * @return {ReuseAnnotation} - Parsed annotation
- */
-function parseDep5Annotation(annotationContent) {
-	const tags = annotationContent.split('\n')
-
-	const filesTag = tags.find((line) => line.startsWith('Files: '))
-	const copyrightTag = tags.find((line) => line.startsWith('Copyright: '))
-	const licenseTag = tags.find((line) => line.startsWith('License: '))
-
-	return {
-		files: filesTag.slice('Files: '.length).split(/\s+/),
-		copyright: copyrightTag.slice('Copyright: '.length),
-		license: licenseTag.slice('License: '.length),
-	}
-}
 
 /**
  * Parse a single object block in .toml

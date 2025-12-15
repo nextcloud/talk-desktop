@@ -1,4 +1,4 @@
-/**
+/*!
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
@@ -7,7 +7,7 @@
 
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { createReuseToml, filterReuseAnnotationsFiles, parseDep5, parseReuseToml } from './utils/reuse.utils.mjs'
+import { createReuseToml, filterReuseAnnotationsFiles, parseReuseToml } from './utils/reuse.utils.mjs'
 
 import 'zx/globals'
 
@@ -100,20 +100,14 @@ await spinner('[3/4] Copying styles...', async () => {
 		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/dark.css?plain=0&v=1`, join(OUTPUT, '/apps/theming/theme/dark.css'))
 		await fetchCssToFile(`https://localhost:${PORT}/index.php/apps/theming/theme/dark.css?plain=1&v=2`, join(OUTPUT, '/apps/theming/theme/dark.plain.css'))
 
-		let reuse
-		const result = await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/.reuse/dep5 ${OUTPUT}/.reuse/dep5`.quiet().nothrow()
-		if (result.exitCode === 0) {
-			const dep5 = await readFile(join(OUTPUT, '/.reuse/dep5'), 'utf-8')
-			reuse = parseDep5(dep5)
-		} else {
-			const result = await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/REUSE.toml ${OUTPUT}/REUSE.toml`.quiet().nothrow()
-			if (result.exitCode === 0) {
-				const reuseToml = await readFile(join(OUTPUT, 'REUSE.toml'), 'utf-8')
-				reuse = parseReuseToml(reuseToml)
-			} else {
-				console.error('Server has no .dep and REUSE.toml or something went wrong...')
-			}
+		const result = await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/REUSE.toml ${OUTPUT}/REUSE.toml`.quiet().nothrow()
+		if (result.exitCode) {
+			console.warn('This server version has no REUSE.toml.')
+			console.warn('Skipping REUSE.toml generation...')
+			return
 		}
+
+		const reuse = parseReuseToml(await readFile(join(OUTPUT, 'REUSE.toml'), 'utf-8'))
 
 		// Fetched assets
 		reuse.annotations = filterReuseAnnotationsFiles(reuse.annotations, (file) => file.startsWith('core/img') || file.startsWith('apps/theming/img/'))
@@ -132,7 +126,6 @@ await spinner('[3/4] Copying styles...', async () => {
 			license: 'AGPL-3.0-or-later',
 		})
 		await writeFile(join(OUTPUT, 'REUSE.toml'), createReuseToml(reuse), 'utf-8')
-		await rm(join(OUTPUT, '/.reuse'), { recursive: true })
 	} catch (e) {
 		await echo('Something went wrong:', e.stderr ?? e)
 		await cleanUpDir()

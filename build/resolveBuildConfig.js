@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const path = require('node:path')
 const fs = require('node:fs')
 const defaultConfig = require('./config.json')
 const { UUIDv5 } = require('./UUIDv5.js')
@@ -22,7 +21,7 @@ function resolveBuildConfig(customConfigPath = process.env.CUSTOM_CONFIG) {
 	const customConfig = customConfigPath ? JSON.parse(fs.readFileSync(customConfigPath, 'utf-8')) : {}
 
 	// Remove all undefined values
-	// TODO: check if undefiend values can be empty strings or only null
+	// TODO: check if undefined values can be empty strings or only null
 	for (const key in customConfig) {
 		if (customConfig[key] === null) {
 			delete customConfig[key]
@@ -43,6 +42,8 @@ function resolveBuildConfig(customConfigPath = process.env.CUSTOM_CONFIG) {
 		? new URL(config.domain).host.split('.').reverse().join('.')
 		: 'com.nextcloud'
 
+	const isBranded = Boolean(customConfigPath)
+
 	return {
 		// Default inferred values - can be overridden by the custom config
 		appleAppBundleId: `${appIdHost}.talk.mac`,
@@ -54,9 +55,9 @@ function resolveBuildConfig(customConfigPath = process.env.CUSTOM_CONFIG) {
 		...config,
 
 		// Inferred values, cannot be overridden by the custom config
-		isBranded: Boolean(customConfigPath),
-		companyName: 'Nextcloud GmbH',
-		copyright: 'Copyright (c) {year} Nextcloud GmbH'.replace('{year}', new Date().getFullYear()),
+		isBranded,
+		companyName: isBranded ? config.applicationName : 'Nextcloud GmbH',
+		copyright: (isBranded ? 'Copyright (c) {year}' : 'Copyright (c) {year} Nextcloud GmbH').replace('{year}', new Date().getFullYear()),
 		applicationNameSanitized,
 		winSquirrelAppId: applicationNameSanitized, // Special case for Squirrel.Windows
 		winUpgradeCode: UUIDv5(`${appIdHost}.talk`, TALK_DESKTOP_UUID),

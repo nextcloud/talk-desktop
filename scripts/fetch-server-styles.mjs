@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+/// <reference types="zx" />
+
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { createReuseToml, filterReuseAnnotationsFiles, parseDep5, parseReuseToml } from './utils/reuse.utils.mjs'

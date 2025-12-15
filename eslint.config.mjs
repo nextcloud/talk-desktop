@@ -85,6 +85,14 @@ export default [
 		},
 	},
 	{
+		name: 'talk-desktop/rules/zx-scripts',
+		files: ['scripts/**/*.mjs'],
+		rules: {
+			// Let TypeScript handle undefined variables instead of ESLint
+			'no-undef': 'off',
+		},
+	},
+	{
 		name: 'talk-desktop/rules/vue-strict',
 		files: ['**/*.vue'],
 		rules: {

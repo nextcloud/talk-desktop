@@ -7,6 +7,7 @@
 
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { resolveConfig } from '../build/resolveBuildConfig.js'
 import { createReuseToml, filterReuseAnnotationsFiles, parseReuseToml } from './utils/reuse.utils.mjs'
 
 import 'zx/globals'
@@ -59,7 +60,12 @@ async function isContainerReady() {
 
 const isNotContainerReady = async () => !(await isContainerReady())
 
+const BUILD_CONFIG = resolveConfig()
+
 echo`Fetching server styles for ${VERSION}`
+if (BUILD_CONFIG.isBranded) {
+	echo`Theme: primaryColor=${BUILD_CONFIG.primaryColor}, backgroundColor=${BUILD_CONFIG.backgroundColor}, (${BUILD_CONFIG.isPlainBackground ? 'plain color' : 'image'}) background`
+}
 
 await spinner('[1/5] Preparing container...', async () => {
 	const isNotRunningContainer = (await $`docker inspect -f "{{.State.Running}}" ${CONTAINER_NAME}`.nothrow().quiet()).stdout.trim() !== 'true'
@@ -88,6 +94,14 @@ await spinner(`[2/5] Preparing output directory ${OUTPUT}`, async () => {
 })
 
 await spinner('[3/5] Getting and processing styles...', async () => {
+	await $`docker exec -u www-data ${CONTAINER_NAME} php /var/www/nextcloud/occ theming:config primary_color ${BUILD_CONFIG.primaryColor}`
+	await $`docker exec -u www-data ${CONTAINER_NAME} php /var/www/nextcloud/occ theming:config background_color ${BUILD_CONFIG.backgroundColor}`
+	if (BUILD_CONFIG.isPlainBackground) {
+		await $`docker exec -u www-data ${CONTAINER_NAME} php /var/www/nextcloud/occ theming:config background backgroundColor`
+	} else {
+		await $`docker exec -u www-data ${CONTAINER_NAME} php /var/www/nextcloud/occ theming:config background --reset`
+	}
+
 	await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/core/img/ ${OUTPUT}/core/`
 	await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/core/css/server.css ${OUTPUT}/core/css/`
 	await $`docker cp ${CONTAINER_NAME}:/var/www/nextcloud/dist/icons.css ${OUTPUT}/dist/`

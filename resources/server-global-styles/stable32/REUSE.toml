@@ -22,12 +22,6 @@ SPDX-FileCopyrightText = "2016-2024 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"
 
 [[annotations]]
-path = "dist/icons.css"
-precedence = "aggregate"
-SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
-SPDX-License-Identifier = "AGPL-3.0-or-later"
-
-[[annotations]]
 path = "core/img/filetypes/package-x-generic.svg"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2016 Nextcloud GmbH and Nextcloud contributors"
@@ -112,7 +106,7 @@ SPDX-FileCopyrightText = "2016 Andrew Nayenko <relan@airpost.net>"
 SPDX-License-Identifier = "CC-BY-SA-3.0 OR GPL-3.0-or-later"
 
 [[annotations]]
-path = ["apps/theming/theme/light.css","apps/theming/theme/dark.css","apps/theming/theme/light.plain.css","apps/theming/theme/dark.plain.css"]
+path = ["dist/icons.css","apps/theming/theme/light.css","apps/theming/theme/dark.css","apps/theming/theme/light.plain.css","apps/theming/theme/dark.plain.css"]
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2022 Nextcloud GmbH and Nextcloud contributors"
+SPDX-FileCopyrightText = "2025 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"

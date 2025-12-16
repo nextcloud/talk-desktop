@@ -195,11 +195,11 @@ const TALK_DESKTOP = {
 	/**
 	 * Listen for push notifications about new releases
 	 *
-	 * @param {(data:{available:boolean,tag:string|null,url:string|null}) => void} callback
+	 * @param {() => void} callback - Callback
 	 * @return {() => void} unsubscribe
 	 */
 	onNewVersion: (callback) => {
-		const handler = (event, data) => callback(data)
+		const handler = () => callback()
 		ipcRenderer.on('github-release:new-version', handler)
 		return () => ipcRenderer.removeListener('github-release:new-version', handler)
 	},

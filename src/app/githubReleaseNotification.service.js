@@ -146,7 +146,9 @@ function stopReleaseNotificationScheduler() {
  * Register IPC handlers used by renderers
  */
 function registerUpdateIpcHandlers() {
-	if (!ipcMain) return
+	if (!ipcMain) {
+		return
+	}
 	ipcMain.handle('github-release:check', async () => {
 		try {
 			const result = await checkForNewVersion({ })

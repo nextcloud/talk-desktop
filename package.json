@@ -3,7 +3,7 @@
   "name": "talk-desktop",
   "productName": "Nextcloud Talk",
   "desktopName": "com.nextcloud.talk.desktop",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "bugs": {
     "url": "https://github.com/nextcloud/talk-desktop/issues",
     "create": "https://github.com/nextcloud/talk-desktop/issues/new/choose"

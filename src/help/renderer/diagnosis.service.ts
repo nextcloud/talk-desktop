@@ -1,4 +1,4 @@
-/*
+/*!
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
@@ -57,7 +57,7 @@ const printBool = (value: boolean) => value ? '✅ yes' : '❌ no'
 export function generateDiagnosisReportMD() {
 	const report = generateDiagnosisReport()
 
-	return `### Diagnosis report
+	return `# Diagnosis report
 
 ${table('Nextcloud Talk Desktop', {
 		Version: report.talkDesktop.version,
@@ -83,7 +83,7 @@ ${table('Nextcloud Talk Desktop', {
 	})
 }
 
-#### Application config
+## Application config
 
 \`\`\`json
 ${JSON.stringify(getAppConfig(), null, 2)}

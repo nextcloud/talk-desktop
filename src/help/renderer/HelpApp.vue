@@ -10,7 +10,6 @@ import { whenever } from '@vueuse/core'
 import { ref } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcRichText from '@nextcloud/vue/components/NcRichText'
-import IconWindowClose from 'vue-material-design-icons/WindowClose.vue'
 import AppWindow from '../../shared/components/AppWindow.vue'
 import ButtonCopy from './ButtonCopy.vue'
 import TalkLogo from '../../../img/talk-icon-rounded.svg'
@@ -22,6 +21,7 @@ const packageInfo = window.TALK_DESKTOP.packageInfo
 const isMac = window.systemInfo.isMac
 
 const report = generateDiagnosisReportMD()
+const reportToCopy = '### Diagnosis report\n' + report
 
 useHotKey('Escape', close)
 
@@ -31,9 +31,6 @@ whenever(() => logoClicked.value === 5, () => {
 	isDevMode.value = !isDevMode.value
 	logoClicked.value = 0
 })
-
-// Reduce heading levels for GitHub
-const reportToCopy = report.replaceAll('# ', '### ')
 
 /**
  * Close the window
@@ -45,122 +42,124 @@ function close() {
 
 <template>
 	<AppWindow :title="t('talk_desktop', 'About')" class="help">
-		<div class="help__title-bar" :class="{ 'help__title-bar--mac': isMac }">
-			<NcButton
-				:aria-label="t('talk_desktop', 'Close')"
-				variant="tertiary"
-				wide
-				@click="close">
-				<template #icon>
-					<IconWindowClose :size="20" />
-				</template>
-			</NcButton>
-		</div>
-
 		<div class="help__content">
-			<div class="help__info no-drag">
-				<img
-					:src="TalkLogo"
-					width="72"
-					alt=""
-					draggable="false"
-					@click="logoClicked += 1">
-				<p><strong>{{ BUILD_CONFIG.applicationName }}{{ isDevMode ? ' 👾' : '' }}</strong></p>
-				<p v-if="!BUILD_CONFIG.isBranded">
-					{{ BUILD_CONFIG.description }}
-				</p>
-				<p>
-					<a class="link" :href="BUILD_CONFIG.privacyUrl" target="_blank">{{ t('talk_desktop', 'Privacy and Legal Policy') }}</a><br>
-					{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
-				</p>
-				<p v-if="!BUILD_CONFIG.isBranded">
-					<a :href="packageInfo.bugs.url" class="link" target="_blank">{{ t('talk_desktop', 'Issues') }}</a> | <a :href="packageInfo.repository" class="link" target="_blank">{{ t('talk_desktop', 'Source Code') }}</a>
-				</p>
+			<div class="help__info-col">
+				<h2>{{ t('talk_desktop', 'About') }}</h2>
+				<div class="help__info">
+					<img
+						:src="TalkLogo"
+						width="72"
+						alt=""
+						draggable="false"
+						@click="logoClicked += 1">
+					<p><strong>{{ BUILD_CONFIG.applicationName }}{{ isDevMode ? ' 👾' : '' }}</strong></p>
+					<p v-if="!BUILD_CONFIG.isBranded">
+						{{ BUILD_CONFIG.description }}
+					</p>
+					<p>
+						<a class="link" :href="BUILD_CONFIG.privacyUrl" target="_blank">{{ t('talk_desktop', 'Privacy and Legal Policy') }}</a><br>
+						{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
+					</p>
+					<p v-if="!BUILD_CONFIG.isBranded">
+						<a :href="packageInfo.bugs.url" class="link" target="_blank">{{ t('talk_desktop', 'Issues') }}</a> | <a :href="packageInfo.repository" class="link" target="_blank">{{ t('talk_desktop', 'Source Code') }}</a>
+					</p>
+				</div>
 			</div>
-			<div class="help__report-wrapper">
-				<NcRichText
-					class="help__report no-drag"
-					:text="report"
-					use-extended-markdown
-					:markdown-css-classes="{
-						h3: 'help__report-h3',
-						h4: 'help__report-h4',
-					}" />
-
-				<div class="help__report-actions">
-					<ButtonCopy type="tertiary" :content="reportToCopy">
+			<div class="help__report-col">
+				<div class="help__report-heading-bar">
+					<h2>{{ t('talk_desktop', 'Diagnosis report') }}</h2>
+					<ButtonCopy :content="reportToCopy" variant="tertiary">
 						{{ t('talk_desktop', 'Copy report') }}
 					</ButtonCopy>
 				</div>
+				<NcRichText class="help__report" :text="report" use-extended-markdown />
 			</div>
+		</div>
+		<div v-if="isMac" class="help__button-bar">
+			<NcButton variant="tertiary" @click="close">
+				{{ t('talk_desktop', 'Done') }}
+			</NcButton>
 		</div>
 	</AppWindow>
 </template>
 
 <style scoped>
-.no-drag {
-	-webkit-app-region: no-drag;
-}
-
 .help {
-	--spacing-4: calc(4 * var(--default-grid-baseline));
-	-webkit-app-region: drag;
-	padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) 0;
+	padding-block: calc(4 * var(--default-grid-baseline));
+	padding-inline: calc(4 * var(--default-grid-baseline));
 	display: flex;
 	flex-direction: column;
-	gap: var(--spacing-4);
-	position: relative;
+	gap: calc(4 * var(--default-grid-baseline));
+	user-select: none;
+	-webkit-app-region: drag;
+}
+
+.help__content {
+	flex: 1 0;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: calc(8 * var(--default-grid-baseline));
+	height: 0;
+}
+
+.help h2 {
+	margin-block: 0;
+	font-size: 22px;
+}
+
+.help .link {
+	text-decoration: underline;
 }
 
 .help button {
 	-webkit-app-region: no-drag;
 }
 
-.help__title-bar {
+.help__info-col {
+	flex: 0 0 fit-content;
 	display: flex;
-	justify-content: flex-end;
-	&.help__title-bar--mac {
-		justify-content: flex-start;
-	}
-}
-
-.help__content {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	height: 0;
-	flex: 1 0;
+	flex-direction: column;
+	gap: calc(4 * var(--default-grid-baseline));
+	padding-inline-start: calc(4 * var(--default-grid-baseline));
 }
 
 .help__info {
-	flex: 1 0 auto;
-	padding: 0 calc(16 * var(--default-grid-baseline));
-	text-align: center;
+	user-select: text;
+	-webkit-app-region: no-drag;
 }
 
 .help__info p {
 	margin: 0.5em 0;
 }
 
-.help__report-wrapper {
+.help__report-col {
 	display: flex;
 	flex-direction: column;
-	gap: calc(2 * var(--default-grid-baseline));
-	flex: 0 1 auto;
+	gap: calc(4 * var(--default-grid-baseline));
+	flex: 1 0;
+	width: 0;
 	height: 100%;
+}
+
+.help__report-heading-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .help__report {
 	background-color: var(--color-main-background);
 	border-radius: var(--border-radius-small);
-	padding: calc(var(--default-grid-baseline) * 2);
+	padding: calc(var(--default-grid-baseline) * 4);
 	flex: 1 1 auto;
 	overflow: auto;
 	font-size: 13px;
+	user-select: text;
+	-webkit-app-region: no-drag;
 }
 
-.help__report :deep(h4),
-.help__report :deep(h5) {
+.help__report :deep(h6) {
 	font-weight: 500;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
@@ -188,12 +187,8 @@ function close() {
 	background-color: var(--color-main-background) !important;
 }
 
-.help__report-actions {
+.help__button-bar {
 	display: flex;
-	justify-content: space-around;
-}
-
-.help .link {
-	text-decoration: underline;
+	justify-content: flex-end;
 }
 </style>

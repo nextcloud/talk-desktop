@@ -52,7 +52,7 @@ function table(data: string[][]) {
 	// Apply replacements and align column widths
 	const formattedRows = rows.map((row) => (
 		row.map((cell, col) => cell!
-			.replace('{line}', '–'.repeat(colWidths[col]! - (cell.length - '{line}'.length)))
+			.replace(/^{line}$/, '–'.repeat(colWidths[col]!))
 			.padEnd(colWidths[col]!, ' '))
 	))
 
@@ -69,15 +69,14 @@ const printBool = (value: boolean) => value ? '✅ yes' : '❌ no'
 export function generateDiagnosisReportMD() {
 	const report = generateDiagnosisReport()
 
-	return `# Diagnosis report
-
+	return `
 ${table([
-	['{line} Application', '{line}'],
+	['APPLICATION', '{line}'],
 	['Version', report.talkDesktop.version],
 	['Built-in Talk version', report.talkDesktop.builtInTalkVersion],
 	['Release channel', __CHANNEL__],
 
-	['{line} System', '{line}'],
+	['SYSTEM', '{line}'],
 	['Operating system', report.platform.os],
 	['Executable path', report.talkDesktop.execPath],
 	...(window.systemInfo.isLinux
@@ -88,16 +87,16 @@ ${table([
 
 	...(report.server
 		? [
-				['{line} Server', '{line}'],
+				['SERVER', '{line}'],
 				['Server version', `v${report.server.version}`],
 				['`talk` app', `v${report.server.talkVersion}`],
 				['`notifications` app', report.server.notifications ? '✅ Enabled' : '⚠️ Not available'],
 				['`notify_push` app', report.server.notify_push ? '✅ Enabled' : '⚠️ Not available'],
 			]
-		: [['{line} Server', 'Not connected']]),
+		: [['SERVER', 'Not connected']]),
 ])}
 
-## Application config
+#### Application config
 
 \`\`\`json
 ${JSON.stringify(getAppConfig(), null, 2)}

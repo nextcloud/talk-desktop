@@ -23,6 +23,7 @@ function createHelpWindow(parentWindow) {
 		}),
 		show: false,
 		maximizable: false,
+		minimizable: false,
 		resizable: false,
 		fullscreenable: false,
 		autoHideMenuBar: true,
@@ -31,7 +32,6 @@ function createHelpWindow(parentWindow) {
 		webPreferences: {
 			preload: TALK_DESKTOP__WINDOW_HELP_PRELOAD_WEBPACK_ENTRY,
 		},
-		titleBarStyle: 'hidden',
 		icon: getBrowserWindowIcon(),
 	})
 

@@ -170,7 +170,7 @@ async function login() {
 					</h2>
 					<NcTextField
 						v-model="rawServerUrl"
-						:label="!enforceDomain ? t('talk_desktop', 'Nextcloud server address') : undefined"
+						:label="!enforceDomain ? t('talk_desktop', 'Server address') : undefined"
 						:aria-label="enforceDomain ? t('talk_desktop', 'Server address') : undefined"
 						:label-visible="!enforceDomain"
 						:input-class="{ 'login-box__server--predefined': enforceDomain }"
@@ -219,7 +219,7 @@ async function login() {
 	flex-direction: column;
 	align-items: center;
 	user-select: none;
-	app-region: drag;
+	-webkit-app-region: drag;
 }
 
 .spacer {
@@ -248,7 +248,7 @@ async function login() {
 	border-radius: var(--border-radius-large);
 	box-shadow: 0 0 10px var(--color-box-shadow);
 	width: 300px;
-	app-region: no-drag;
+	-webkit-app-region: no-drag;
 }
 
 .login-box__header {

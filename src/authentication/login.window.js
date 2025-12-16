@@ -56,9 +56,10 @@ function openLoginWebView(parentWindow, serverUrl) {
 		window.removeMenu()
 
 		window.loadURL(`${serverUrl}/index.php/login/flow`, {
-			// This header value is used as an application name on the Login page
-			// Use BASE_TITLE instead of the USER_AGENT as User-Agent header
-			userAgent: `${os.hostname()} (Talk Desktop Client - ${osTitle})`,
+			// User-Agent header is used as the app name, device and session
+			// On the login flow page and then on the Personal settings / Security / Devices & Sessions
+			// Format used by all the clients: {HostUsername} ({ApplicationName} - {OS})
+			userAgent: `${os.hostname()} (${BUILD_CONFIG.applicationName} - ${osTitle})`,
 			extraHeaders: [
 				'OCS-APIRequest: true',
 				`Accept-Language: ${app.getPreferredSystemLanguages().join(',')}`,

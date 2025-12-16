@@ -5,6 +5,23 @@
 
 # Changelog
 
+## v2.0.5 - 2025-12-16
+
+### Features
+
+- Add custom theming to the build config [#1583](https://github.com/nextcloud/talk-desktop/pull/1583)
+
+### Fixes
+
+- Incorrect application name and application version in the settings dialog footer [#1577](https://github.com/nextcloud/talk-desktop/pull/1577), [#1578](https://github.com/nextcloud/talk-desktop/pull/1578)
+- Incorrect application name during the login flow [#1594](https://github.com/nextcloud/talk-desktop/pull/1594)
+- Adjust the help window layout to the new Markdown rendering and minor diagnosis report adjustments [#1595](https://github.com/nextcloud/talk-desktop/pull/1595)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v22.0.6 in both beta and stable release channels [#1590](https://github.com/nextcloud/talk-desktop/pull/1590)
+- Fix `scripts/fetch-server-styles` for `server@master` [#1591](https://github.com/nextcloud/talk-desktop/pull/1591)
+
 ## v2.0.4 - 2025-11-25
 
 ### Fixes

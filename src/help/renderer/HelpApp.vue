@@ -32,6 +32,9 @@ whenever(() => logoClicked.value === 5, () => {
 	logoClicked.value = 0
 })
 
+// Reduce heading levels for GitHub
+const reportToCopy = report.replaceAll('# ', '### ')
+
 /**
  * Close the window
  */
@@ -85,7 +88,7 @@ function close() {
 					}" />
 
 				<div class="help__report-actions">
-					<ButtonCopy type="tertiary" :content="report">
+					<ButtonCopy type="tertiary" :content="reportToCopy">
 						{{ t('talk_desktop', 'Copy report') }}
 					</ButtonCopy>
 				</div>
@@ -96,12 +99,12 @@ function close() {
 
 <style scoped>
 .no-drag {
-	app-region: no-drag;
+	-webkit-app-region: no-drag;
 }
 
 .help {
 	--spacing-4: calc(4 * var(--default-grid-baseline));
-	app-region: drag;
+	-webkit-app-region: drag;
 	padding: var(--spacing-4) var(--spacing-4) var(--spacing-4) 0;
 	display: flex;
 	flex-direction: column;
@@ -110,7 +113,7 @@ function close() {
 }
 
 .help button {
-	app-region: no-drag;
+	-webkit-app-region: no-drag;
 }
 
 .help__title-bar {
@@ -156,9 +159,8 @@ function close() {
 	font-size: 13px;
 }
 
-.help__report :deep(h3),
-.help__report :deep(h4) {
-	font-size: 1.4em;
+.help__report :deep(h4),
+.help__report :deep(h5) {
 	font-weight: 500;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
@@ -179,9 +181,10 @@ function close() {
 .help__report :deep(th),
 .help__report :deep(td) {
 	border-color: var(--color-border) !important;
+	background-color: var(--color-main-background) !important;
 }
 
-.help__report :deep(pre) {
+.help__report :deep(.rich-text__code-block) {
 	background-color: var(--color-main-background) !important;
 }
 

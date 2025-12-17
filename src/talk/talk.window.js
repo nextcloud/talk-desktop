@@ -36,7 +36,7 @@ function createTalkWindow() {
 		icon: getBrowserWindowIcon(),
 		titleBarStyle: getAppConfig('systemTitleBar') ? 'default' : 'hidden',
 		titleBarOverlay: {
-			color: '#00000000', // Transparent
+			color: '#FFFFFF00',
 			symbolColor: '#FFFFFF', // White
 			height: Math.round(TITLE_BAR_HEIGHT * zoomFactor),
 		},

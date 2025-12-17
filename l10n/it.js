@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "L'accesso è riuscito ma qualcosa è andato storto.",
     "Authentication" : "Autenticazione",
     "Log in to {applicationName}" : "Accedere a {applicationName}",
-    "Nextcloud server address" : "Indirizzo server Nextcloud",
     "Server address" : "Indirizzo del server",
     "Log in" : "Login",
     "Logging in …" : "Accesso in corso ...",

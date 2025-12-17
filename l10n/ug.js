@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "كىرىش مۇۋەپپەقىيەتلىك بولدى ، ئەمما خاتالىق كۆرۈلدى.",
     "Authentication" : "دەلىللەش",
     "Log in to {applicationName}" : "{applicationName} غا كىرىش",
-    "Nextcloud server address" : "Nextcloud مۇلازىمېتىر ئادرېسى",
     "Server address" : "مۇلازىمېتىر ئادرېسى",
     "Log in" : "كىرىڭ",
     "Logging in …" : "كىرىۋاتىدۇ ...",

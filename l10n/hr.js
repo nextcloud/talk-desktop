@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Authentication" : "Autentifikacija",
-    "Nextcloud server address" : "Adresa Nextcloudovog poslužitelja",
     "Server address" : "Adresa poslužitelja",
     "Log in" : "Prijavite se",
     "Close" : "Zatvori",

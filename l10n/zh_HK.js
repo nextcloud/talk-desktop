@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "登入成功，但出現問題。",
     "Authentication" : "驗證",
     "Log in to {applicationName}" : "登入 {applicationName}",
-    "Nextcloud server address" : "Nextcloud 伺服器位址",
     "Server address" : "伺服器地址",
     "Log in" : "登入",
     "Logging in …" : "正在登入 …",

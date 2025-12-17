@@ -10,7 +10,6 @@ OC.L10N.register(
     "Unexpected error" : "Onverwachte fout",
     "Login was successful but something went wrong." : "Aanmelding was succesvol maar er ging iets fout.",
     "Authentication" : "Authenticatie",
-    "Nextcloud server address" : "Nextcloud server adres",
     "Server address" : "Serveradres",
     "Log in" : "Aanmelden",
     "Logging in …" : "Aanmelden ...",

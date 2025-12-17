@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "Пријава је успела, али нешто није у реду.",
     "Authentication" : "Провера идентитета",
     "Log in to {applicationName}" : "Пријавите се на {applicationName}",
-    "Nextcloud server address" : "Адреса Некстклауд сервера",
     "Server address" : "Адреса сервера",
     "Log in" : "Пријава",
     "Logging in …" : "Пријављивање …",

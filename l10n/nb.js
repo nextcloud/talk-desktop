@@ -10,7 +10,6 @@ OC.L10N.register(
     "Unexpected error" : "Uventet feil",
     "Login was successful but something went wrong." : "Påloggingen var vellykket, men noe gikk galt.",
     "Authentication" : "Autentisering",
-    "Nextcloud server address" : "Serveradresse for Nextcloud",
     "Server address" : "Serveradresse",
     "Log in" : "Logg inn",
     "Close" : "Lukk",

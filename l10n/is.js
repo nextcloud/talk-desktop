@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Authentication" : "Auðkenning",
-    "Nextcloud server address" : "Vistfang Nextcloud-þjóns",
     "Server address" : "Vistfang miðlara",
     "Log in" : "Skrá inn",
     "Logging in …" : "Skrái inn …",

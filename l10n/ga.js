@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "D’éirigh leis an logáil isteach ach chuaigh rud éigin mícheart.",
     "Authentication" : "Fíordheimhniú",
     "Log in to {applicationName}" : "Logáil isteach go {applicationName}",
-    "Nextcloud server address" : "Seoladh freastalaí Nextcloud",
     "Server address" : "Seoladh an fhreastalaí",
     "Log in" : "Logáil isteach",
     "Logging in …" : "Ag logáil isteach …",

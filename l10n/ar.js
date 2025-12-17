@@ -10,7 +10,6 @@ OC.L10N.register(
     "Unexpected error" : "خطأ غير متوقع",
     "Login was successful but something went wrong." : "الدخول كان ناجحاً و لكن حدث خطأٌ ما.",
     "Authentication" : "مصادقة",
-    "Nextcloud server address" : "عنوان خادم نكست كلاود",
     "Server address" : "عنوان الخادم",
     "Log in" : "تسجيل الدخول",
     "Incoming call" : "مكالمة واردة",

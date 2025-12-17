@@ -7,7 +7,6 @@
     "{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed" : "需要 {componentName} {minRequiredVersion} 或更高版本，但安装的是 {foundVersion}",
     "Unexpected error" : "意外错误",
     "Authentication" : "身份验证",
-    "Nextcloud server address" : "Nextcloud 服务器地址",
     "Server address" : "服务器地址",
     "Log in" : "登录",
     "Logging in …" : "正在登录 …",

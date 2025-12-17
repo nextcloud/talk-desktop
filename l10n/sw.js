@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "Uingiaji ulikamilika lakini kitu fulani hakikuwa sawa",
     "Authentication" : "Uthibitisho",
     "Log in to {applicationName}" : "Ingia kwa {applicationName}",
-    "Nextcloud server address" : "Anwani ya seva ya Nextcloud",
     "Server address" : "Anwani ya seva",
     "Log in" : "Ingia",
     "Logging in …" : "Inaingia  …",

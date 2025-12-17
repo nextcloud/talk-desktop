@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "Oturum açıldı ancak bir sorun çıktı.",
     "Authentication" : "Kimlik doğrulama",
     "Log in to {applicationName}" : "{applicationName} oturumu aç",
-    "Nextcloud server address" : "Nextcloud sunucu adresi",
     "Server address" : "Sunucu adresi",
     "Log in" : "Oturum aç",
     "Logging in …" : "Oturum açılıyor…",

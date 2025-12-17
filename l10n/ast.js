@@ -4,7 +4,6 @@ OC.L10N.register(
     "Invalid server address" : "La direición del sirvidor ye inválida",
     "Unexpected error" : "Error inesperáu",
     "Authentication" : "Autenticación",
-    "Nextcloud server address" : "Direición de sirvidor de Nextcloud",
     "Server address" : "Direición del sirvidor",
     "Log in" : "Aniciar la sesión",
     "Close" : "Zarrar",

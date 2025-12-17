@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Authentication" : "Tunnistautuminen",
-    "Nextcloud server address" : "Nextcloud-palvelimen osoite",
     "Server address" : "Palvelimen osoite",
     "Log in" : "Kirjaudu sisään",
     "Logging in …" : "Kirjaudutaan …",

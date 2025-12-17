@@ -4,7 +4,6 @@ OC.L10N.register(
     "Invalid server address" : "neveljaven naslov strežnika",
     "Unexpected error" : "Nepričakovana napaka",
     "Authentication" : "Overitev",
-    "Nextcloud server address" : "Naslov strežnika Nextcloud",
     "Server address" : "Naslov strežnika",
     "Log in" : "Prijava",
     "Incoming call" : "Dohodni klic",

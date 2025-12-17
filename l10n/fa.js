@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "ورود موفقیت‌آمیز بود اما مشکلی پیش آمد.",
     "Authentication" : "احراز هویت",
     "Log in to {applicationName}" : "ورود به {applicationName}",
-    "Nextcloud server address" : "آدرس سرور نکست‌کلود",
     "Server address" : "آدرس سرور",
     "Log in" : "ورود",
     "Incoming call" : "تماس ورودی",

@@ -1,6 +1,5 @@
 { "translations": {
     "Authentication" : "Autenticación",
-    "Nextcloud server address" : "Dirección del servidor de Nextcloud",
     "Server address" : "Dirección del servidor",
     "Log in" : "Ingresar",
     "Close" : "Cerrar",

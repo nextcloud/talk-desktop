@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Authentication" : "Autenticación",
-    "Nextcloud server address" : "Dirección del servidor de Nextcloud",
     "Server address" : "Dirección del servidor",
     "Log in" : "Ingresar",
     "Dismiss" : "Descartar",

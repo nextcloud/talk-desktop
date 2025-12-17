@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "Sisselogimine õnnestus, aga midagi läks valesti.",
     "Authentication" : "Autentimine",
     "Log in to {applicationName}" : "Logi sisse: {applicationName}",
-    "Nextcloud server address" : "Nextcloudi serveri aadress",
     "Server address" : "Serveri aadress",
     "Log in" : "Logi sisse",
     "Logging in …" : "Sisselogimisel...",

@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Authentication" : "การตรวจสอบสิทธิ์",
-    "Nextcloud server address" : "ไอพีแอดเดรสเซิร์ฟเวอร์ Nextcloud",
     "Server address" : "ที่อยู่เซิร์ฟเวอร์",
     "Log in" : "เข้าสู่ระบบ",
     "Close" : "ปิด",

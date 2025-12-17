@@ -5,7 +5,6 @@ OC.L10N.register(
     "Invalid server address" : "Érvénytelen szervercím",
     "Unexpected error" : "Váratlan hiba",
     "Authentication" : "Hitelesítés",
-    "Nextcloud server address" : "Nextcloud kiszolgáló címe",
     "Server address" : "Kiszolgáló címe",
     "Log in" : "Bejelentkezés",
     "Logging in …" : "Bejelentkezés…",

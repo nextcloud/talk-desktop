@@ -2,7 +2,6 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Authentication" : "Godkendelse",
-    "Nextcloud server address" : "Nextcloud Serveradresse ",
     "Server address" : "Serveradresse",
     "Log in" : "Log ind",
     "Logging in …" : "Logger på ...",

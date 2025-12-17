@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "Η σύνδεση ήταν επιτυχής αλλά κάτι πήγε στραβά.",
     "Authentication" : "Πιστοποίηση",
     "Log in to {applicationName}" : "Σύνδεση στο {applicationName}",
-    "Nextcloud server address" : "Διεύθυνση διακομιστή Nextcloud",
     "Server address" : "Διεύθυνση διακομιστή",
     "Log in" : "Είσοδος",
     "Logging in …" : "Πραγματοποιείται είσοδος …",

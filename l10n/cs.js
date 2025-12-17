@@ -13,7 +13,6 @@ OC.L10N.register(
     "Login was successful but something went wrong." : "Přihlášení bylo úspěšné ale něco se pokazilo.",
     "Authentication" : "Ověřování se",
     "Log in to {applicationName}" : "Přihlásit se do {applicationName}",
-    "Nextcloud server address" : "Adresa Nextcloud serveru",
     "Server address" : "Adresa serveru",
     "Log in" : "Přihlásit se",
     "Logging in …" : "Přihlašování …",

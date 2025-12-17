@@ -11,7 +11,6 @@
     "Login was successful but something went wrong." : "Inloggningen lyckades men något gick fel.",
     "Authentication" : "Autentisering",
     "Log in to {applicationName}" : "Logga in på {applicationName}",
-    "Nextcloud server address" : "Nextcloud serveradress",
     "Server address" : "Serveradress",
     "Log in" : "Logga in",
     "Logging in …" : "Loggar in …",

@@ -110,7 +110,7 @@ async function openChromeWebRtcInternals() {
 		container="body"
 		force-menu>
 		<template #icon>
-			<IconDeveloperBoard :size="20" fill-color="var(--color-header-contrast)" />
+			<IconDeveloperBoard :size="20" fill-color="var(--color-background-plain-text)" />
 		</template>
 
 		<NcActionButton @click="openDevTools">

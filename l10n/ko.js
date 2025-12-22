@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Authentication" : "인증",
     "Server address" : "서버 주소",
+    "Logging in …" : "로그인 중  …",
     "Close" : "닫기",
     "Dismiss" : "끄기",
     "Join call" : "통화 참가하기",
@@ -40,6 +41,7 @@ OC.L10N.register(
     "Share screen" : "화면 공유",
     "None" : "없음",
     "Application" : "애플리케이션",
+    "Online" : "온라인",
     "Away" : "자리비움",
     "Busy" : "바쁨",
     "Do not disturb" : "방해 없음",

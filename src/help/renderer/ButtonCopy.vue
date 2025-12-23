@@ -10,10 +10,6 @@ import NcButton from '@nextcloud/vue/components/NcButton'
 import IconCheck from 'vue-material-design-icons/Check.vue'
 import IconCopy from 'vue-material-design-icons/ContentCopy.vue'
 
-defineOptions({
-	inheritAttrs: false,
-})
-
 const {
 	text = t('talk_desktop', 'Copy'),
 	content = undefined,

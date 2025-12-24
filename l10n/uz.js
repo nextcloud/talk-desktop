@@ -15,6 +15,7 @@ OC.L10N.register(
     "About" : "About",
     "License" : "Litsenziya",
     "Issues" : "Muammolar",
+    "Done" : "Bajarildi",
     "Ok" : "Yaxshi",
     "No" : "No",
     "Yes" : "Yes",

@@ -14,6 +14,7 @@ OC.L10N.register(
     "Valid until" : "Derīgs līdz",
     "Copy" : "Kopēt",
     "License" : "Licence",
+    "Done" : "Pabeigts",
     "Ok" : "Labi",
     "No" : "Nē",
     "Yes" : "Jā",

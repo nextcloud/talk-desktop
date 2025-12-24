@@ -20,6 +20,7 @@ OC.L10N.register(
     "About" : "O programu",
     "License" : "Dovoljenje",
     "Issues" : "Odzivi",
+    "Done" : "Končano",
     "Ok" : "Sprejemljivo",
     "No" : "Ne",
     "Yes" : "Da",

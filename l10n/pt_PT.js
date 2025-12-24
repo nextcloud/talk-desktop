@@ -18,6 +18,7 @@ OC.L10N.register(
     "About" : "Sobre",
     "License" : "Licença",
     "Issues" : "Problemas",
+    "Done" : "Concluído",
     "Ok" : "CONFIRMAR",
     "No" : "Não",
     "Yes" : "Sim",

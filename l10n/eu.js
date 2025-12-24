@@ -22,6 +22,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Pribatutasuna eta legedi politika",
     "License" : "Lizentzia",
     "Issues" : "Arazoak",
+    "Done" : "Egina",
     "Ok" : "Ados",
     "No" : "Ez",
     "Yes" : "Bai",

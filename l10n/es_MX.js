@@ -17,6 +17,7 @@ OC.L10N.register(
     "About" : "Acerca",
     "License" : "Licencia",
     "Issues" : "Temas",
+    "Done" : "Terminado",
     "Dark" : "Oscuro",
     "Appearance" : "Apariencia",
     "Reload" : "Recargar",

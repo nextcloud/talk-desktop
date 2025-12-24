@@ -17,6 +17,7 @@ OC.L10N.register(
     "About" : "Giới thiệu",
     "License" : "Giấy phép",
     "Issues" : "Vấn đề",
+    "Done" : "Hoàn tất",
     "Ok" : "Đồng ý",
     "No" : "Không",
     "Yes" : "Có",

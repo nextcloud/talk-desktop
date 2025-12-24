@@ -26,6 +26,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Personvern og juridiske retningslinjer",
     "License" : "Lisens",
     "Issues" : "Problemer",
+    "Done" : "Ferdig",
     "Ok" : "Ok",
     "No" : "Nei",
     "Yes" : "Ja",

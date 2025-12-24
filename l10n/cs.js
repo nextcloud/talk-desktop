@@ -49,6 +49,7 @@ OC.L10N.register(
     "License" : "Licence",
     "Issues" : "Problémy",
     "Copy report" : "Zkopírovat výkaz",
+    "Done" : "Dokončeno",
     "Ok" : "OK",
     "No" : "Ne",
     "Yes" : "Ano",

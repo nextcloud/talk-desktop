@@ -23,6 +23,7 @@ OC.L10N.register(
     "About" : "ກ່ຽວກັບ",
     "License" : "ໃບອະນຸຍາດ",
     "Issues" : "Issues",
+    "Done" : "ສະຖານະ",
     "Ok" : "ຕົກລົງ",
     "No" : "ບໍ່",
     "Yes" : "ແມ່ນ",

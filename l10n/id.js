@@ -15,6 +15,7 @@ OC.L10N.register(
     "About" : "Tentang",
     "License" : "Lisensi",
     "Issues" : "Isu",
+    "Done" : "Selesai",
     "Ok" : "Oke",
     "Never" : "Tidak pernah",
     "Theme" : "Tema",

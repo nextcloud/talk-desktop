@@ -17,6 +17,7 @@ OC.L10N.register(
     "About" : "Um",
     "License" : "Notkunarleyfi",
     "Issues" : "Vandamál",
+    "Done" : "Lokið",
     "Ok" : "Í lagi",
     "Never" : "Aldrei",
     "Appearance" : "Útlit",

@@ -49,6 +49,7 @@ OC.L10N.register(
     "License" : "Leseni",
     "Issues" : "Masuala",
     "Copy report" : "Nakala ya ripoti",
+    "Done" : "Imefanyika",
     "Ok" : "Sawa",
     "No" : "Hapana",
     "Yes" : "Ndiyo",

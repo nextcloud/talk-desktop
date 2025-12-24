@@ -48,6 +48,7 @@ OC.L10N.register(
     "License" : "مجوز",
     "Issues" : "مشکلات",
     "Copy report" : "کپی گزارش",
+    "Done" : "Done",
     "Ok" : "باشه",
     "No" : "خیر",
     "Yes" : "بله",

@@ -21,6 +21,7 @@ OC.L10N.register(
     "About" : "Névjegy",
     "License" : "Licenc",
     "Issues" : "Hibajegyek",
+    "Done" : "Kész",
     "Ok" : "Rendben",
     "No" : "Nem",
     "Yes" : "Igen",

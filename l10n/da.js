@@ -18,6 +18,7 @@ OC.L10N.register(
     "About" : "Om",
     "License" : "Licens",
     "Issues" : "Problemer",
+    "Done" : "Færdig",
     "Ok" : "OK",
     "No" : "Nej",
     "Yes" : "Ja",

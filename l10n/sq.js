@@ -14,6 +14,7 @@ OC.L10N.register(
     "About" : "Rreth",
     "License" : "Liçenca",
     "Issues" : "Çështjet",
+    "Done" : "U bë",
     "Ok" : "Në rregull",
     "Yes" : "Po",
     "Always" : "Përherë",

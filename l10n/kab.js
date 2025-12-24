@@ -12,6 +12,7 @@ OC.L10N.register(
     "Copy" : "Nɣel",
     "About" : "Γef",
     "License" : "Licence",
+    "Done" : "Immed",
     "Ok" : "Ih",
     "No" : "Uhu",
     "Yes" : "Ih",

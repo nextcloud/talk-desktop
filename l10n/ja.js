@@ -23,6 +23,7 @@ OC.L10N.register(
     "About" : "詳細",
     "License" : "利用許諾",
     "Issues" : "問題",
+    "Done" : "完了",
     "Ok" : "OK",
     "No" : "いいえ",
     "Yes" : "はい",

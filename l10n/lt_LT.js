@@ -22,6 +22,7 @@ OC.L10N.register(
     "About" : "Apie",
     "License" : "Licencija",
     "Issues" : "Problemos",
+    "Done" : "Atlikta",
     "Ok" : "Gerai",
     "No" : "Ne",
     "Yes" : "Taip",

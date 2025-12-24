@@ -18,6 +18,7 @@ OC.L10N.register(
     "About" : "About",
     "License" : "License",
     "Issues" : "Issues",
+    "Done" : "დასრულდა",
     "Ok" : "Ok",
     "No" : "No",
     "Yes" : "Yes",

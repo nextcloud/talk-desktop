@@ -11,6 +11,7 @@ OC.L10N.register(
     "Cancel" : "Nullañ",
     "Valid until" : "Gwir betek",
     "License" : "Aotre",
+    "Done" : "Graet",
     "No" : "Nann",
     "Never" : "James",
     "Theme" : "Tem",

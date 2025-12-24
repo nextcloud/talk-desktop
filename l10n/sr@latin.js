@@ -19,6 +19,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Privatnost i pravna politika",
     "License" : "Licenca",
     "Issues" : "Problemi",
+    "Done" : "Gotovo",
     "Ok" : "Ok",
     "No" : "Ne",
     "Yes" : "Da",

@@ -49,6 +49,7 @@ OC.L10N.register(
     "License" : "授權",
     "Issues" : "問題",
     "Copy report" : "複製報告",
+    "Done" : "完成",
     "Ok" : "Ok",
     "No" : "否",
     "Yes" : "是",

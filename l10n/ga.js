@@ -49,6 +49,7 @@ OC.L10N.register(
     "License" : "Ceadúnas",
     "Issues" : "Saincheisteanna",
     "Copy report" : "Cóipeáil tuairisc",
+    "Done" : "Déanta",
     "Ok" : "Ceart go leor",
     "No" : "Níl",
     "Yes" : "Tá",

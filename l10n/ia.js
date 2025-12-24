@@ -8,6 +8,7 @@ OC.L10N.register(
     "Dismiss" : "Dimitter",
     "Cancel" : "Cancel",
     "Valid until" : "Valide usque",
+    "Done" : "Preste",
     "Never" : "Nunquam",
     "Reset" : "Re-fixar",
     "Menu" : "Menu",

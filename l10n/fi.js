@@ -20,6 +20,7 @@ OC.L10N.register(
     "About" : "Tietoja",
     "License" : "Lisenssi",
     "Issues" : "Ongelmat",
+    "Done" : "Valmis",
     "Ok" : "Ok",
     "No" : "Ei",
     "Yes" : "Kyllä",

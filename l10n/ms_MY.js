@@ -6,6 +6,7 @@ OC.L10N.register(
     "Close" : "Tutup",
     "Advanced" : "Maju",
     "Cancel" : "Cancel",
+    "Done" : "Selesai",
     "Ok" : "Ok",
     "No" : "Tidak",
     "Yes" : "Ya",

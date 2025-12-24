@@ -16,6 +16,7 @@ OC.L10N.register(
     "About" : "Despre",
     "License" : "Licență",
     "Issues" : "Probleme",
+    "Done" : "Realizat",
     "Ok" : "Ok",
     "No" : "Nu",
     "Yes" : "Da",

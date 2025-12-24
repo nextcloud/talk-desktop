@@ -49,6 +49,7 @@ OC.L10N.register(
     "License" : "Licencja",
     "Issues" : "Problemy",
     "Copy report" : "Kopiuj raport",
+    "Done" : "Gotowe",
     "Ok" : "OK",
     "No" : "Nie",
     "Yes" : "Tak",

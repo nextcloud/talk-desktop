@@ -11,6 +11,7 @@ OC.L10N.register(
     "Cancel" : "Cancel",
     "Valid until" : "Valida ĝis",
     "License" : "Permesilo",
+    "Done" : "Farita",
     "Ok" : "Bone",
     "No" : "Ne",
     "Yes" : "Jes",

@@ -49,6 +49,7 @@ OC.L10N.register(
     "License" : "Litsents",
     "Issues" : "Veahaldus",
     "Copy report" : "Kopeeri aruanne",
+    "Done" : "Valmis",
     "Ok" : "Sobib",
     "No" : "Ei",
     "Yes" : "Jah",

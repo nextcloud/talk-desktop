@@ -49,6 +49,7 @@ OC.L10N.register(
     "License" : "Lisans",
     "Issues" : "Sorunlar",
     "Copy report" : "Bildirimi kopyala",
+    "Done" : "Tamam",
     "Ok" : "Tamam",
     "No" : "Hayır",
     "Yes" : "Evet",

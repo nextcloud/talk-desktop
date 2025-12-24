@@ -8,6 +8,7 @@ OC.L10N.register(
     "Cancel" : "ரத்து செய்",
     "Country" : "நாடு",
     "Copied" : "நகலெடுக்கப்பட்டது",
+    "Done" : "Done",
     "Ok" : "Ok",
     "No" : "இல்லை",
     "Yes" : "ஆம்",

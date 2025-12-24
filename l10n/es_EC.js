@@ -18,6 +18,7 @@ OC.L10N.register(
     "About" : "Acerca",
     "License" : "Licencia",
     "Issues" : "Temas",
+    "Done" : "Hecho",
     "Ok" : "Ok",
     "Never" : "Nunca",
     "Theme" : "Tema",

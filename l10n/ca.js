@@ -21,6 +21,7 @@ OC.L10N.register(
     "About" : "Quant a",
     "License" : "Llicència",
     "Issues" : "Errors",
+    "Done" : "Fet",
     "Ok" : "D'acord",
     "No" : "No",
     "Yes" : "Sí",

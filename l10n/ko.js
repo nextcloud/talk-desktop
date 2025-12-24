@@ -15,6 +15,7 @@ OC.L10N.register(
     "Copy" : "복사",
     "License" : "라이선스",
     "Issues" : "문제점",
+    "Done" : "완료",
     "Ok" : "확인",
     "No" : "아니오",
     "Yes" : "예",

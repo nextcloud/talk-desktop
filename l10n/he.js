@@ -16,6 +16,7 @@ OC.L10N.register(
     "About" : "אודות",
     "License" : "רישיון",
     "Issues" : "תקלות",
+    "Done" : "הסתיים",
     "Ok" : "אישור",
     "Never" : "מעולם לא",
     "Theme" : "ערכת עיצוב",

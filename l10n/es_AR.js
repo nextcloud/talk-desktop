@@ -13,6 +13,7 @@ OC.L10N.register(
     "Copy" : "Copiar",
     "License" : "Licencia",
     "Issues" : "Temas",
+    "Done" : "Terminado",
     "Yes" : "Sí",
     "Never" : "Nunca",
     "Dark" : "Oscuro",

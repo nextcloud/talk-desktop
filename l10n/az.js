@@ -11,6 +11,7 @@ OC.L10N.register(
     "Valid until" : "Vaxtadək keçərlidir",
     "Copy" : "Kopyala",
     "License" : "Lisenziya",
+    "Done" : "Edildi",
     "Ok" : "Oldu",
     "No" : "Xeyir",
     "Yes" : "Bəli",

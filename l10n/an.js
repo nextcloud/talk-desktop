@@ -4,6 +4,7 @@ OC.L10N.register(
     "Log in" : "Iniciar sesión",
     "Close" : "Zarrar",
     "Cancel" : "Cancelar",
+    "Done" : "Feito",
     "No" : "No",
     "Yes" : "Si",
     "Never" : "Nunca",

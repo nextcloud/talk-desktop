@@ -48,6 +48,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Polasaí Príobháideachta agus Dlí",
     "License" : "Ceadúnas",
     "Issues" : "Saincheisteanna",
+    "Diagnosis report" : "Tuarascáil diagnóis",
     "Copy report" : "Cóipeáil tuairisc",
     "Done" : "Déanta",
     "Ok" : "Ceart go leor",

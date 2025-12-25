@@ -48,6 +48,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Gizlilik ve Yasal İlkeler",
     "License" : "Lisans",
     "Issues" : "Sorunlar",
+    "Diagnosis report" : "Tanılama raporu",
     "Copy report" : "Bildirimi kopyala",
     "Done" : "Tamam",
     "Ok" : "Tamam",

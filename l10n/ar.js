@@ -28,6 +28,7 @@ OC.L10N.register(
     "License" : "الرخصة",
     "Issues" : "مشاكل",
     "Copy report" : "نسخ التقرير",
+    "Done" : "تمّ",
     "Ok" : "موافق",
     "No" : "لا",
     "Yes" : "نعم",

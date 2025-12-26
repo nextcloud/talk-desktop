@@ -48,6 +48,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Privaatsus ja põhimõtted",
     "License" : "Litsents",
     "Issues" : "Veahaldus",
+    "Diagnosis report" : "Veaotsingu aruanne",
     "Copy report" : "Kopeeri aruanne",
     "Done" : "Valmis",
     "Ok" : "Sobib",

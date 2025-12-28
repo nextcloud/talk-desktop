@@ -48,6 +48,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Privacy and Legal Policy",
     "License" : "License",
     "Issues" : "Issues",
+    "Diagnosis report" : "Diagnosis report",
     "Copy report" : "Copy report",
     "Done" : "Done",
     "Ok" : "OK",

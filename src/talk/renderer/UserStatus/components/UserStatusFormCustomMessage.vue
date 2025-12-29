@@ -37,7 +37,7 @@ const { disabled = false } = defineProps<{
 			maxlength="80"
 			:disabled="disabled"
 			:model-value="message ?? ''"
-			@update:model-value="message = $event" />
+			@update:model-value="message = ($event as string)" />
 	</div>
 </template>
 

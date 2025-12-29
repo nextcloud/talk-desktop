@@ -21,7 +21,7 @@ import IconMessageBadgeOutline from 'vue-material-design-icons/MessageBadgeOutli
 import IconMonitorShare from 'vue-material-design-icons/MonitorShare.vue'
 import { appData } from '../../../../app/AppData.js'
 
-const supportsTestAdminNotification = appData.capabilities?.notifications?.['admin-notifications']?.includes('ocs') && appData.userMetadata?.groups.includes('admin')
+const supportsTestAdminNotification = appData.capabilities?.notifications?.['admin-notifications']?.includes('ocs') && (appData.userMetadata as unknown as ({ groups: string[] } | null))?.groups.includes('admin')
 const supportsTestPushNotification = appData.capabilities?.notifications?.['ocs-endpoints']?.includes('test-push')
 const supportsTestNotification = supportsTestPushNotification || supportsTestAdminNotification
 

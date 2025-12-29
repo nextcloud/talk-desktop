@@ -85,7 +85,7 @@ function createTalkHashStoreAdapter(): TalkHashStoreAdapter {
 	let onDirty: Parameters<TalkHashStoreAdapter['onDirty']>[0]
 	let onUpdate: Parameters<TalkHashStoreAdapter['onUpdate']>[0]
 
-	talkHashStore.$onAction(({ name, after }) => {
+	talkHashStore.$onAction(({ name, after }: { name: string, after: (callback: () => void) => void }) => {
 		if (name !== 'setNextcloudTalkHash') {
 			return
 		}

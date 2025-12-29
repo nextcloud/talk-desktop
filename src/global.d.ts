@@ -21,6 +21,11 @@ declare module '*.svg?raw' {
 	export default url
 }
 
+// Ignore types from Talk:
+// No need to type check entire Talk codebase
+// And @talk path is resolved on build time which is problematic fo TS
+declare module '@talk/*'
+
 declare module 'vue-material-design-icons/*.vue' {
 	import type { Component } from 'vue'
 	const component: Component<{ size: number }, Record<string, never>, Record<string, never>, Record<string, never>, Record<string, never>>

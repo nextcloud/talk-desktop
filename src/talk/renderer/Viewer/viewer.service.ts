@@ -5,7 +5,7 @@
 
 import type { FileStat } from 'webdav'
 
-import { davGetClient, davRemoteURL, davRootPath } from '@nextcloud/files'
+import { defaultRemoteURL, defaultRootPath, getClient } from '@nextcloud/files/dav'
 
 export async function fetchFileContent(filename: string, format: 'text'): Promise<string>
 export async function fetchFileContent(filename: string, format: 'binary'): Promise<Blob>
@@ -16,7 +16,7 @@ export async function fetchFileContent(filename: string, format: 'binary'): Prom
  * @param format - Format of the file content to be returned. 'binary' is returned as Blob
  */
 export async function fetchFileContent(filename: string, format: 'text' | 'binary'): Promise<string | Blob> {
-	const webDavClient = davGetClient(davRemoteURL + davRootPath)
+	const webDavClient = getClient(defaultRemoteURL + defaultRootPath)
 
 	if (format === 'text') {
 		// Get the text file content

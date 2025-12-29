@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { davRemoteURL, davRootPath } from '@nextcloud/files'
+import { defaultRemoteURL, defaultRootPath } from '@nextcloud/files/dav'
 import { generateUrl } from '@nextcloud/router'
 
 /**
@@ -13,7 +13,7 @@ import { generateUrl } from '@nextcloud/router'
  * @return Full path to the file, e.g. 'https://nextcloud.ltd/remote.php/dav/files/username/Talk/file.txt'
  */
 export function generateUserFileDavUrl(filename: string): string {
-	return davRemoteURL + davRootPath + filename
+	return defaultRemoteURL + defaultRootPath + filename
 }
 
 /**

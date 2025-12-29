@@ -12,7 +12,7 @@ import { formatDuration, formatDurationFromNow } from '../../../shared/datetime.
 /**
  * List of user status types that user can set
  */
-export const availableUserStatusStatusTypes: UserStatusStatusType[] = (appData.capabilities as unknown)?.user_status?.supports_busy
+export const availableUserStatusStatusTypes: UserStatusStatusType[] = (appData.capabilities as { user_status?: { supports_busy?: boolean } })?.user_status?.supports_busy
 	? ['online', 'away', 'busy', 'dnd', 'invisible']
 	: ['online', 'away', 'dnd', 'invisible']
 

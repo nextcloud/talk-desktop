@@ -147,7 +147,7 @@ const appConfigChangeListeners: { [K in AppConfigKey]?: Set<(value: AppConfig[K]
 async function readAppConfigFile(): Promise<Partial<AppConfig>> {
 	try {
 		const content = await readFile(getAppConfigFilePath(), 'utf-8')
-		return JSON.parse(content)
+		return JSON.parse(content) as Partial<AppConfig>
 	} catch (error) {
 		if (error instanceof Error && 'code' in error && error.code !== 'ENOENT') {
 			console.error('Failed to read the application config file', error)

@@ -18,8 +18,8 @@ export function parseElectronCertificateFingerprint(fingerprint: string): { algo
 
 	if (isMatched) {
 		return {
-			algorithm: algorithm.toUpperCase(),
-			value: base64ToHex(value),
+			algorithm: algorithm!.toUpperCase(),
+			value: base64ToHex(value!),
 		}
 	}
 	return {

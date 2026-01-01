@@ -48,6 +48,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "隱私及法律政策",
     "License" : "授權",
     "Issues" : "問題",
+    "Diagnosis report" : "診斷報告",
     "Copy report" : "複製報告",
     "Done" : "完成",
     "Ok" : "Ok",

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Authentication" : "Autentifikazioa",
     "Server address" : "Zerbitzariaren helbidea",
     "Log in" : "Izena eman",
+    "Logging in …" : "Saioa hasten …",
     "Close" : "Itxi",
     "Dismiss" : "Ezikusi",
     "Join call" : "Batu deira",

@@ -10,6 +10,8 @@ import { once } from '../shared/utils.ts'
 import { getAppConfig, onAppConfigChange } from './AppConfig.ts'
 import { isWindows } from './system.utils.ts'
 
+onAppConfigChange('launchAtStartup', applyLaunchAtStartup)
+
 /**
  * Get executable path for Windows's stub launcher in Squirrel and WiX MSI installations
  */
@@ -40,7 +42,7 @@ const getWindowsStubExecPath = once(() => {
 /**
  * Set the application to launch at startup according to the configuration
  */
-function applyLaunchAtStartup() {
+export function applyLaunchAtStartup() {
 	// In development Electron executable is used instead which is not suitable for launch at startup
 	// This feature should only be tested in a production build and installation
 	if (process.env.NODE_ENV !== 'production') {
@@ -59,11 +61,4 @@ function applyLaunchAtStartup() {
 		],
 		path: isWindows ? getWindowsStubExecPath() : undefined,
 	})
-}
-
-/**
- * Initialize the listener for the launch at startup configuration
- */
-export function initLaunchAtStartupListener() {
-	onAppConfigChange('launchAtStartup', applyLaunchAtStartup)
 }

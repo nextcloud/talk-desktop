@@ -16,7 +16,7 @@ const { cli } = require('./app/cli.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/githubRelease.service.ts')
-const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
+const { initLaunchAtStartup } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
 const { systemInfo, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
@@ -129,7 +129,7 @@ app.whenReady().then(async () => {
 	await cli(argv)
 
 	applyTheme()
-	initLaunchAtStartupListener()
+	initLaunchAtStartup()
 	registerAppProtocolHandler()
 
 	/**

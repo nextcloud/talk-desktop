@@ -67,7 +67,8 @@ function applyLaunchAtStartup() {
 /**
  * Initialize the listener for the launch at startup configurations
  */
-export function initLaunchAtStartupListener() {
+export function initLaunchAtStartup() {
+	applyLaunchAtStartup()
 	onAppConfigChange('launchAtStartup', applyLaunchAtStartup)
 	onAppConfigChange('launchAtStartupInBackground', applyLaunchAtStartup)
 }

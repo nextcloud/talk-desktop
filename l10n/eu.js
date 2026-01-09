@@ -34,6 +34,7 @@ OC.L10N.register(
     "Dark" : "Iluna",
     "Appearance" : "Itxura",
     "Restart" : "Berrabiarazi",
+    "Loading …" : "Kargatzen …",
     "Reload" : "Birkargatu",
     "Zoom" : "Zoom",
     "Zoom out" : "Txikiagotu",

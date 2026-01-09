@@ -35,6 +35,7 @@ OC.L10N.register(
     "Appearance" : "Išvaizda",
     "Use monochrome tray icon" : "Naudoti vienspalvę dėklo piktogramą",
     "Restart" : "Paleisti iš naujo",
+    "Loading …" : "Įkeliama …",
     "Reload" : "Įkelti iš naujo",
     "Zoom" : "Mastelis",
     "Zoom out" : "Mažinti",

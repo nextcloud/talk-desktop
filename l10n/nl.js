@@ -48,6 +48,7 @@ OC.L10N.register(
     "Show call notification popup" : "Toon gesprek meldingspopup",
     "Some changes require a relaunch to take effect" : "Sommige aanpassingen vereisen een restart",
     "Restart" : "Restart",
+    "Loading …" : "Aan het laden...",
     "Reload" : "Herladen",
     "Zoom" : "Zoom",
     "Zoom out" : "Uitzoomen",

@@ -80,12 +80,6 @@ if (!app.requestSingleInstanceLock()) {
 	app.quit()
 }
 
-/**
- * Schedule check for a new version available to download from GitHub
- */
-if (process.env.NODE_ENV === 'production' && !BUILD_CONFIG.isBranded) {
-	setupReleaseNotificationScheduler(24 * 60)
-}
 
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getSystemInfo', () => systemInfo)
@@ -150,6 +144,13 @@ app.whenReady().then(async () => {
 	applyTheme()
 	initLaunchAtStartupListener()
 	registerAppProtocolHandler()
+
+	/**
+	 * Schedule check for a new version available to download from GitHub
+	 */
+	if (process.env.NODE_ENV === 'production' && !BUILD_CONFIG.isBranded) {
+		setupReleaseNotificationScheduler(24 * 60)
+	}
 
 	// Open in the background if it is explicitly set, or the app was open at login on macOS
 	const openInBackground = ARGUMENTS.openInBackground || app.getLoginItemSettings().wasOpenedAtLogin

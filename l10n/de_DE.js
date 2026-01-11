@@ -57,7 +57,7 @@ OC.L10N.register(
     "Always" : "Immer",
     "When not in \"Do not disturb\"" : "Wenn Sie nicht im \"Nicht stören\"-Modus sind",
     "Never" : "Niemals",
-    "Launch at startup" : "Beim Anmeldung starten",
+    "Launch at startup" : "Bei Anmeldung starten",
     "Theme" : "Design",
     "System default" : "Systemstandard",
     "Light" : "Hell",

@@ -44,7 +44,7 @@ defineSlots<{
 
 <style scoped>
 .form-box-split-button {
-	flex: 0 0 fit-content;
+	flex: 0 0 fit-content !important;
 }
 
 .form-box-split-button__no-gap {

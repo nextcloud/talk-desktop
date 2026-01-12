@@ -61,6 +61,7 @@ function applyLaunchAtStartup() {
 		name: app.getName(),
 		args: launchAtStartupInBackground ? ['--background'] : [],
 		path: isWindows ? getWindowsStubExecPath() : undefined,
+		// path: isWindows ? `"${getWindowsStubExecPath()}"` : undefined,
 	})
 }
 

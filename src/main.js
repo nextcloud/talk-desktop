@@ -84,7 +84,19 @@ ipcMain.on('app:grantUserGesturedPermission', (event, id) => {
 	return event.sender.executeJavaScript(`document.getElementById('${id}')?.click()`, true)
 })
 ipcMain.on('app:toggleDevTools', (event) => event.sender.toggleDevTools())
-ipcMain.handle('app:anything', () => { /* Put any code here to run it from UI */ })
+ipcMain.handle('app:anything', () => {
+	return [
+		app.getLoginItemSettings(),
+		app.getLoginItemSettings({
+			path: `"${process.execPath}"`,
+			args: ['--background'],
+		}),
+		app.getLoginItemSettings({
+			path: `"${path.resolve('C:\\Program Files\\Nextcloud Talk\\Nextcloud Talk.exe')}"`,
+			args: ['--background'],
+		}),
+	]
+})
 ipcMain.on('app:openChromeWebRtcInternals', () => openChromeWebRtcInternals())
 ipcMain.handle('app:update:check', async () => await checkForUpdate({ forceRequest: true }))
 ipcMain.handle('app:getDesktopCapturerSources', async () => {

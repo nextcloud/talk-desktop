@@ -42,7 +42,7 @@ const icons = {
 }
 
 /**
- * Get tray icon
+ * Get tray icon (relative path for webpack)
  */
 function getTrayIcon() {
 	const monochrome = getAppConfig('monochromeTrayIcon')
@@ -50,6 +50,15 @@ function getTrayIcon() {
 	const kind = monochrome ? theme : 'default'
 
 	return icons.tray[platform][kind]
+}
+
+/**
+ * Get absolute path to the tray icon for the current platform and theme
+ *
+ * @return {string} Absolute path to the tray icon
+ */
+function getTrayIconPath() {
+	return path.resolve(__dirname, getTrayIcon())
 }
 
 /**
@@ -68,5 +77,6 @@ function getBrowserWindowIcon() {
 
 module.exports = {
 	getTrayIcon,
+	getTrayIconPath,
 	getBrowserWindowIcon,
 }

@@ -187,6 +187,23 @@ const TALK_DESKTOP = {
 	 */
 	showHelp: () => ipcRenderer.invoke('help:show'),
 	/**
+	 * Check for a new GitHub release and receive info
+	 *
+	 * @return {Promise<{available:boolean,tag:string|null,url:string|null}>}
+	 */
+	checkForUpdate: () => ipcRenderer.invoke('github-release:check'),
+	/**
+	 * Listen for push notifications about new releases
+	 *
+	 * @param {() => void} callback - Callback
+	 * @return {() => void} unsubscribe
+	 */
+	onNewVersion: (callback) => {
+		const handler = () => callback()
+		ipcRenderer.on('github-release:new-version', handler)
+		return () => ipcRenderer.removeListener('github-release:new-version', handler)
+	},
+	/**
 	 * Show the upgrade window
 	 *
 	 * @return {Promise<void>}

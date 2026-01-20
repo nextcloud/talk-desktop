@@ -70,6 +70,7 @@ async function getLatestStableReleaseVersion() {
 	}
 }
 
+
 /**
  * Show native notification about the new version.
  * It opens the release page on click.
@@ -81,9 +82,11 @@ function notifyAboutNewVersion(version) {
 		title: '🎉 New version of Nextcloud Talk is available!',
 		body: `Nextcloud Talk ${version} is now available to download from the release page. Click to open the page.`,
 	})
+
 	notification.on('click', () => {
-		shell.openExternal(`https://github.com/nextcloud-releases/talk-desktop/releases/${version}`)
+		shell.openExternal(`https://github.com/nextcloud-releases/talk-desktop/releases/tag/${version}`)
 	})
+
 	notification.show()
 }
 

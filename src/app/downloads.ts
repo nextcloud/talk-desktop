@@ -54,6 +54,11 @@ export function triggerDownloadUrl(browserWindow: BrowserWindow, url: string, fi
 }
 
 /**
+ * Persistent set to store notification objects to prevent garbage collection
+ */
+const notifications: Set<Notification> = new Set()
+
+/**
  * Handle downloads from a browser window to:
  * - show notifications
  * - use suggested filenames
@@ -72,7 +77,7 @@ export function applyDownloadHandler(browserWindow: BrowserWindow) {
 		item.once('done', (event, state) => {
 			const pathToFile = item.getSavePath()
 			const { base, dir } = path.parse(pathToFile)
-			let notification
+			let notification: Notification | undefined
 
 			if (state === 'completed') {
 				notification = new Notification({
@@ -89,7 +94,13 @@ export function applyDownloadHandler(browserWindow: BrowserWindow) {
 				})
 			}
 
-			notification?.show()
+			if (notification) {
+				notifications.add(notification)
+				notification.on('close', () => {
+					notifications.delete(notification)
+				})
+				notification.show()
+			}
 		})
 	})
 }

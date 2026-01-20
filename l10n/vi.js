@@ -27,6 +27,7 @@ OC.L10N.register(
     "Light" : "Sáng",
     "Dark" : "Tối",
     "Appearance" : "Ngoại hình",
+    "Loading …" : "Đang tải …",
     "Reload" : "Tải lại",
     "Reset" : "Đặt lại",
     "Report a bug" : "Báo cáo lỗi",

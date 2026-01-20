@@ -97,7 +97,7 @@ export function applyDownloadHandler(browserWindow: BrowserWindow) {
 			if (notification) {
 				notifications.add(notification)
 				notification.on('close', () => {
-					notifications.delete(notification!)
+					notifications.delete(notification)
 				})
 				notification.show()
 			}

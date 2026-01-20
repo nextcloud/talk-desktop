@@ -70,12 +70,6 @@ async function getLatestStableReleaseVersion() {
 	}
 }
 
-/**
- * Persistent set to store notification objects to prevent garbage collection
- *
- * @type {Set<Notification>}
- */
-const notifications = new Set()
 
 /**
  * Show native notification about the new version.
@@ -89,14 +83,8 @@ function notifyAboutNewVersion(version) {
 		body: `Nextcloud Talk ${version} is now available to download from the release page. Click to open the page.`,
 	})
 
-	notifications.add(notification)
-
 	notification.on('click', () => {
 		shell.openExternal(`https://github.com/nextcloud-releases/talk-desktop/releases/tag/${version}`)
-	})
-
-	notification.on('close', () => {
-		notifications.delete(notification)
 	})
 
 	notification.show()

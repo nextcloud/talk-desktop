@@ -48,6 +48,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Integritets- och juridisk policy",
     "License" : "Licens",
     "Issues" : "Problem",
+    "Diagnosis report" : "Diagnosrapport",
     "Copy report" : "Kopiera rapport",
     "Done" : "Klar",
     "Ok" : "Ok",

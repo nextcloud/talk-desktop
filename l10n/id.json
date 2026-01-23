@@ -8,6 +8,7 @@
     "Dismiss" : "Batal",
     "Security warning" : "Peringatan keamanan",
     "Advanced" : "Lanjutan",
+    "Proceed" : "Lanjutkan",
     "Cancel" : "Batal",
     "Valid until" : "Berlaku sampai",
     "Copy" : "Salin",
@@ -36,15 +37,22 @@
     "View profile" : "Tampilkan profil",
     "Log out" : "Keluar",
     "Quit" : "Keluar",
+    "User status" : "Status pengguna",
+    "Your status was set automatically" : "Status Anda disetel secara otomatis",
     "Don't clear" : "Jangan dihapus",
     "Today" : "Hari ini",
     "This week" : "Pekan ini",
+    "Emoji for your status message" : "Emoji untuk pesan status Anda",
     "Status message" : "Pesan status",
+    "Layout" : "Tata letak",
+    "Compact" : "Ringkas",
     "None" : "Tidak ada",
     "Online" : "Online",
     "Away" : "Jauh",
     "Busy" : "Sibuk",
     "Do not disturb" : "Jangan diganggu",
-    "Invisible" : "Tersembunyi"
+    "Invisible" : "Tersembunyi",
+    "Offline" : "Luring",
+    "Unknown status" : "Status tidak dikenal"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

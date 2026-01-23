@@ -20,3 +20,9 @@
 		}
 	}
 }
+
+/* HOTFIX: prevent invalid links <a href="#"> used in NcListItem as a button from breaking routing in Vue Router 4 with Hash History
+/ TODO: fix on NcListItem side and use real buttons instead of <a href="#"> */
+a[href="#"] .button-vue__wrapper {
+	pointer-events: none;
+}

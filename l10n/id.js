@@ -49,6 +49,7 @@ OC.L10N.register(
     "Layout" : "Tata letak",
     "Compact" : "Ringkas",
     "None" : "Tidak ada",
+    "Application" : "Aplikasi",
     "Online" : "Online",
     "Away" : "Jauh",
     "Busy" : "Sibuk",

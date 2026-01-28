@@ -5,4 +5,8 @@
 
 import type { Migration } from '../migration.service.ts'
 
-export const migrations: Migration[] = []
+import { clearFlatpakFontConfigCacheMigration } from './01-clearFlatpakFontConfigCache.migration.ts'
+
+export const migrations: Migration[] = [
+	clearFlatpakFontConfigCacheMigration,
+]

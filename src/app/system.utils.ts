@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import { rm } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
@@ -99,4 +100,24 @@ export function isSameExecution(argv0: string, cwd: string) {
 	const execPath = path.isAbsolute(argv0) ? argv0 : path.resolve(cwd, argv0)
 
 	return execPath === process.execPath
+}
+
+/**
+ * Manually clear font config cache for Flatpak installations.
+ * Fixes issues with font rendering like incorrect Emoji font.
+ *
+ * @see https://github.com/nextcloud/talk-desktop/issues/1514
+ */
+export async function clearFlatpakFontConfigCache() {
+	if (!process.env.XDG_CACHE_HOME) {
+		console.error('Failed to clear font config cache: $XDG_CACHE_HOME is not defined')
+		return
+	}
+
+	try {
+		// Note: clearing with "fc-cache" command did not help with the issue (was tested with many users and colleagues)
+		await rm(path.join(process.env.XDG_CACHE_HOME, 'fontconfig'), { recursive: true, force: true })
+	} catch (error) {
+		console.error(`Failed to remove font config cache: ${(error as Error).message}`)
+	}
 }

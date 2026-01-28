@@ -32,6 +32,15 @@ function getAppConfigFilePath() {
  */
 export type AppConfig = {
 	// ----------------
+	// Internal
+	// ----------------
+
+	/**
+	 * Last application version when the app was running
+	 */
+	lastAppVersion?: string
+
+	// ----------------
 	// General settings
 	// ----------------
 

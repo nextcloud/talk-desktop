@@ -16,7 +16,8 @@ const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
-const { systemInfo, isLinux, isMac, isWindows, isSameExecution } = require('./app/system.utils.ts')
+const { runMigrations } = require('./app/migration.service.ts')
+const { systemInfo, isLinux, isMac, isWindows, isSameExecution, clearFlatpakFontConfigCache } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { buildTitle } = require('./app/utils.ts')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -80,7 +81,6 @@ if (!app.requestSingleInstanceLock()) {
 	app.quit()
 }
 
-
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getSystemInfo', () => systemInfo)
 ipcMain.handle('app:buildTitle', (event, title) => buildTitle(title))
@@ -132,6 +132,7 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 		thumbnail: source.thumbnail && !source.thumbnail.isEmpty() ? source.thumbnail.toDataURL() : null,
 	}))
 })
+ipcMain.handle('app:cleanFlatpakFontConfigCache', () => clearFlatpakFontConfigCache())
 
 /**
  * Whether the window is being relaunched.
@@ -141,6 +142,8 @@ let isInWindowRelaunch = false
 
 app.whenReady().then(async () => {
 	await loadAppConfig()
+	await runMigrations()
+
 	applyTheme()
 	initLaunchAtStartupListener()
 	registerAppProtocolHandler()

@@ -19,7 +19,7 @@ const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 const CHANNEL = process.env.CHANNEL ?? 'dev'
 
 const MAX_NEXTCLOUD_VERSION = getAppInfo(TALK_PATH).maxVersion
-const NEXTCLOUD_MASTER_VERSION = 33
+const NEXTCLOUD_MASTER_VERSION = 34
 
 /**
  * Create webpack aliases config to patch a package

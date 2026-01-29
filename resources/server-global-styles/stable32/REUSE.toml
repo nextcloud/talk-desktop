@@ -1,0 +1,112 @@
+version = 1
+SPDX-PackageName = "nextcloud"
+SPDX-PackageSupplier = "Nextcloud <info@nextcloud.com>"
+SPDX-PackageDownloadLocation = "https://github.com/nextcloud/server"
+
+[[annotations]]
+path = ["core/img/loading-dark.gif","core/img/loading-small-dark.gif","core/img/loading-small.gif","core/img/loading.gif"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016 ownCloud, Inc., 2016 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["core/img/favicon**.**","core/img/logo/logo**.**","core/img/apps/spreed.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016-2024 Nextcloud GmbH"
+SPDX-License-Identifier = "LicenseRef-NextcloudTrademarks"
+
+[[annotations]]
+path = "core/img/desktopapp.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016-2024 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "core/img/filetypes/package-x-generic.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["core/img/actions/checkbox-mixed.svg","core/img/actions/checkmark-white.svg","core/img/actions/checkbox-mark-dark.svg","core/img/actions/checkbox-mark-white.svg","core/img/actions/checkbox-mark.svg","core/img/actions/checkbox-mixed-dark.svg","core/img/actions/checkbox-mixed-white.svg","core/img/actions/checkbox-mixed.svgcore/img/actions/checkmark-white.svg","core/img/actions/checkmark.png","core/img/actions/checkmark.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2017 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["core/img/filetypes/font.svg","core/img/actions/star-rounded.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = ["apps/theming/img/accessibility-dark.svg","core/img/filetypes/application-pdf.svg","core/img/breadcrumb.svg","core/img/filetypes/application.svg","core/img/filetypes/audio.svg","core/img/filetypes/file.svg","core/img/filetypes/folder-drag-accept.svg","core/img/filetypes/folder-encrypted.svg","core/img/filetypes/folder-external.svg","core/img/filetypes/folder-public.svg","core/img/filetypes/folder-shared.svg","core/img/filetypes/folder-starred.svg","core/img/filetypes/folder.svg","core/img/filetypes/image.svg","core/img/filetypes/link.svg","core/img/filetypes/location.svg","core/img/filetypes/mindmap.svg","core/img/filetypes/text-calendar.svg","core/img/filetypes/text-code.svg","core/img/filetypes/text-vcard.svg","core/img/filetypes/text.svg","core/img/filetypes/video.svg","core/img/filetypes/x-office-document.svg","core/img/filetypes/x-office-drawing.svg","core/img/filetypes/x-office-form-template.svg","core/img/filetypes/x-office-form.svg","core/img/filetypes/x-office-presentation.svg","core/img/filetypes/x-office-spreadsheet.svg","core/img/places/calendar-dark.png","core/img/places/calendar.png","core/img/places/calendar.svg","core/img/places/contacts-dark.png","core/img/places/contacts.svg","core/img/places/default-app-icon.svg","core/img/places/files.svg","core/img/places/home.svg","core/img/places/link.svg","core/img/places/music.svg","core/img/places/picture.svg","core/img/rating/s0.svg","core/img/rating/s1.svg","core/img/rating/s10.svg","core/img/rating/s2.svg","core/img/rating/s3.svg","core/img/rating/s4.svg","core/img/rating/s5.svg","core/img/rating/s6.svg","core/img/rating/s7.svg","core/img/rating/s8.svg","core/img/rating/s9.svg","core/img/mail.svg","core/img/rss.svg","core/img/clients/desktop.svg","core/img/clients/phone.svg","core/img/clients/tablet.svg","core/img/categories/auth.svg","core/img/categories/bundles.svg","core/img/categories/customization.svg","core/img/categories/files.svg","core/img/categories/games.svg","core/img/categories/integration.svg","core/img/categories/monitoring.svg","core/img/categories/multimedia.svg","core/img/categories/office.svg","core/img/categories/organization.svg","core/img/categories/social.svg","core/img/categories/workflow.svg","core/img/apps/circles.svg","core/img/apps/notes.svg","core/img/apps/richdocuments.svg","core/img/caldav/attendees.png","core/img/caldav/attendees.svg","core/img/caldav/description.png","core/img/caldav/description.svg","core/img/caldav/link.png","core/img/caldav/link.svg","core/img/caldav/location.png","core/img/caldav/location.svg","core/img/caldav/organizer.png","core/img/caldav/organizer.svg","core/img/caldav/time.png","core/img/caldav/time.svg","core/img/caldav/title.png","core/img/caldav/title.svg","core/img/actions/add-folder-description.svg","core/img/actions/add.svg","core/img/actions/address.png","core/img/actions/address.svg","core/img/actions/alert-outline.svg","core/img/actions/arrow-left.svg","core/img/actions/arrow-right.svg","core/img/actions/audio-off.svg","core/img/actions/audio.svg","core/img/actions/caret-white.svg","core/img/actions/caret.svg","core/img/actions/change.svg","core/img/actions/clippy.svg","core/img/actions/close.svg","core/img/actions/comment.png","core/img/actions/comment.svg","core/img/actions/confirm-fade.svg","core/img/actions/confirm-white.svg","core/img/actions/confirm.svg","core/img/actions/delete.png","core/img/actions/delete.svg","core/img/actions/details.svg","core/img/actions/disabled-user.svg","core/img/actions/disabled-users.svg","core/img/actions/download.png","core/img/actions/download.svg","core/img/actions/edit.svg","core/img/actions/error-white.svg","core/img/actions/error.svg","core/img/actions/external.svg","core/img/actions/filter.svg","core/img/actions/fullscreen.svg","core/img/actions/group.svg","core/img/actions/history.png","core/img/actions/history.svg","core/img/actions/info-white.svg","core/img/actions/info.png","core/img/actions/info.svg","core/img/actions/logout.svg","core/img/actions/mail.svg","core/img/actions/menu-sidebar.svg","core/img/actions/menu.svg","core/img/actions/more-white.svg","core/img/actions/more.png","core/img/actions/more.svg","core/img/actions/password-white.svg","core/img/actions/password.png","core/img/actions/password.svg","core/img/actions/pause.svg","core/img/actions/phone.svg","core/img/actions/play-add.svg","core/img/actions/play-next.svg","core/img/actions/play-previous.svg","core/img/actions/play.svg","core/img/actions/profile.svg","core/img/actions/projects.svg","core/img/actions/public-white.svg","core/img/actions/public.svg","core/img/actions/quota.svg","core/img/actions/recent.svg","core/img/actions/rename.svg","core/img/actions/screen-off.svg","core/img/actions/screen.svg","core/img/actions/search.svg","core/img/actions/settings-dark.svg","core/img/actions/settings.svg","core/img/actions/share.png","core/img/actions/share.svg","core/img/actions/shared.svg","core/img/actions/sound-off.svg","core/img/actions/sound.svg","core/img/actions/star-dark.svg","core/img/actions/star.png","core/img/actions/star.svg","core/img/actions/starred.png","core/img/actions/starred.svg","core/img/actions/tag.png","core/img/actions/tag.svg","core/img/actions/template-add.svg","core/img/actions/timezone.svg","core/img/actions/toggle-background.svg","core/img/actions/toggle-filelist.svg","core/img/actions/toggle-pictures.svg","core/img/actions/toggle.svg","core/img/actions/triangle-e.svg","core/img/actions/triangle-n.svg","core/img/actions/triangle-s.svg","core/img/actions/unshare.svg","core/img/actions/upload.svg","core/img/actions/user-admin.svg","core/img/actions/user.svg","core/img/actions/verified.svg","core/img/actions/verify.svg","core/img/actions/verifying.svg","core/img/actions/video-off.svg","core/img/actions/video-switch.svg","core/img/actions/video.svg","core/img/actions/view-close.svg","core/img/actions/view-download.svg","core/img/actions/view-next.svg","core/img/actions/view-pause.svg","core/img/actions/view-play.svg","core/img/actions/view-previous.svg","core/img/places/contacts-dark.png","core/img/places/contacts.svg","apps/theming/img/app-dark.svg","apps/theming/img/app.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2018-2024 Google LLC"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "core/img/filetypes/whiteboard.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2019 Simran-B <https://pictogrammers.com/contributor/Simran-B/>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "core/img/actions/clippy.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2017-2024 Michael Richins"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "core/img/apps/richdocumentscode.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016-2024 Collabora Ltd."
+SPDX-License-Identifier = "LicenseRef-CollaboraTrademarks"
+
+[[annotations]]
+path = ["core/img/x.svg","core/img/twitter.svg","core/img/actions/twitter.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "X Corp."
+SPDX-License-Identifier = "LicenseRef-XTrademarks"
+
+[[annotations]]
+path = ["core/img/bluesky.svg","core/img/actions/bluesky.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2012-2024 Fonticons, Inc."
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "core/img/facebook.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 Meta"
+SPDX-License-Identifier = "LicenseRef-FacebookTrademarks"
+
+[[annotations]]
+path = ["core/img/mastodon.svg","core/img/actions/mastodon.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 Mastodon gGmbH"
+SPDX-License-Identifier = "LicenseRef-MastodonTrademarks"
+
+[[annotations]]
+path = "core/img/googleplay.png"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 Google LLC."
+SPDX-License-Identifier = "LicenseRef-GooglePlayBadge"
+
+[[annotations]]
+path = "core/img/appstore.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 Apple Inc."
+SPDX-License-Identifier = "LicenseRef-AppleAppStoreBadge"
+
+[[annotations]]
+path = "core/img/f-droid.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016 Andrew Nayenko <relan@airpost.net>"
+SPDX-License-Identifier = "CC-BY-SA-3.0 OR GPL-3.0-or-later"
+
+[[annotations]]
+path = ["dist/icons.css","apps/theming/theme/light.css","apps/theming/theme/dark.css","apps/theming/theme/light.plain.css","apps/theming/theme/dark.plain.css"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025 Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"

@@ -14,15 +14,19 @@ import NcRadioGroupButton from '@nextcloud/vue/components/NcRadioGroupButton'
 import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
 import IconWeatherNight from 'vue-material-design-icons/WeatherNight.vue'
 import IconWeatherSunny from 'vue-material-design-icons/WeatherSunny.vue'
+import DesktopSettingsSectionFlatpakFontCache from './components/DesktopSettingsSectionFlatpakFontCache.vue'
 import DesktopSettingsSectionRelaunchNote from './components/DesktopSettingsSectionRelaunchNote.vue'
 import UiFormBoxAudioOutput from './components/UiFormBoxAudioOutput.vue'
 import UiFormBoxSelectNative from './components/UiFormBoxSelectNative.vue'
 import UiFormGroupZoom from './components/UiFormGroupZoom.vue'
+import { useDevMode } from '../../../shared/useDevMode.ts'
 import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
 
 const isLinux = window.systemInfo.isLinux
+const isFlatpak = window.systemInfo.isFlatpak
 
+const { isDevMode } = useDevMode()
 const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
 const launchAtStartup = useAppConfigValue('launchAtStartup')
@@ -90,6 +94,10 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 				<NcFormBoxSwitch v-model="secondarySpeaker" :label="t('talk_desktop', 'Also repeat call notification on a secondary speaker')" />
 				<UiFormBoxAudioOutput v-if="secondarySpeaker" v-model="secondarySpeakerDevice" :label="t('talk_desktop', 'Secondary speaker')" />
 			</NcFormBox>
+		</NcFormGroup>
+
+		<NcFormGroup v-if="isDevMode && isFlatpak" :label="t('talk_desktop', 'Advanced')">
+			<DesktopSettingsSectionFlatpakFontCache />
 		</NcFormGroup>
 	</div>
 </template>

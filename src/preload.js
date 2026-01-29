@@ -81,6 +81,12 @@ const TALK_DESKTOP = {
 	 */
 	getDesktopCapturerSources: () => ipcRenderer.invoke('app:getDesktopCapturerSources'),
 	/**
+	 * Clean Flatpak font config cache
+	 *
+	 * @return {Promise<string | undefined>} - Error message if any
+	 */
+	cleanFlatpakFontConfigCache: () => ipcRenderer.invoke('app:cleanFlatpakFontConfigCache'),
+	/**
 	 * Relaunch an entire application
 	 */
 	relaunch: () => ipcRenderer.send('app:relaunch'),

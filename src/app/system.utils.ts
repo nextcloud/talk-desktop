@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import { app } from 'electron'
 import { rm } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
@@ -120,4 +121,15 @@ export async function clearFlatpakFontConfigCache() {
 	} catch (error) {
 		console.error(`Failed to remove font config cache: ${(error as Error).message}`)
 	}
+}
+
+/**
+ * Relaunch application
+ */
+export function relaunchApp() {
+	// Passing "app.relaunch({ args: process.argv.slice(1) })" is supposed to be exactly the same
+	// As the default behavior without args "app.relaunch()"
+	// Apparently, in Flatpak relaunching only works with explicitly passed args
+	app.relaunch({ args: process.argv.slice(1) })
+	app.exit(0)
 }

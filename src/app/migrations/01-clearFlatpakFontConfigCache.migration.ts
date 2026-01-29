@@ -16,6 +16,11 @@ export const clearFlatpakFontConfigCacheMigration: Migration = {
 
 	onFirstStart: true,
 
+	// Electron is already initializing at this point and there is no simple way to start it later
+	// Changing font config is too late
+	// App relaunch is required to take effect
+	requiresRelaunch: true,
+
 	validator(): boolean {
 		// Flatpak specific problem
 		return isFlatpak

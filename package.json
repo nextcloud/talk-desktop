@@ -43,7 +43,7 @@
   },
   "talk": {
     "stable": "v22.0.8",
-    "beta": "v22.0.7",
+    "beta": "v23.0.0-rc.2",
     "dev": "main"
   },
   "dependencies": {

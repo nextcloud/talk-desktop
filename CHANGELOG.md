@@ -5,6 +5,13 @@
 
 # Changelog
 
+## v2.1.0-beta - 2026-01-29
+
+### Changes
+
+- Built-in Talk in binaries is updated to v23.0.0-rc.2 in the beta release channel [#1646](https://github.com/nextcloud/talk-desktop/pull/1646)
+- Linux/Flatpak: Upgrade Flatpak runtime and SDK to v25.08 [#1599](https://github.com/nextcloud/talk-desktop/pull/1599)
+
 ## v2.0.6 - 2026-01-29
 
 ### Fixes

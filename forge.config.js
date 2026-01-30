@@ -356,9 +356,9 @@ module.exports = {
 					'VideoConference',
 				],
 				// Available versions: https://freedesktop-sdk.gitlab.io/documentation/updating-sdk/release-notes/
-				runtimeVersion: '24.08',
+				runtimeVersion: '25.08',
 				// Available versions: https://github.com/flathub/org.electronjs.Electron2.BaseApp/
-				baseVersion: '24.08',
+				baseVersion: '25.08',
 				// Based on https://github.com/malept/electron-installer-flatpak/blob/main/src/installer.js
 				// Available versions: https://github.com/refi64/zypak/releases
 				modules: [
@@ -368,7 +368,7 @@ module.exports = {
 							{
 								type: 'git',
 								url: 'https://github.com/refi64/zypak',
-								tag: 'v2024.01.17',
+								tag: 'v2025.09',
 							},
 						],
 					},

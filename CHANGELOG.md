@@ -5,6 +5,21 @@
 
 # Changelog
 
+## v2.0.6 - 2026-01-29
+
+### Fixes
+
+- Linux/Flatpak: Emoji rendering issues [#1514](https://github.com/nextcloud/talk-desktop/issues/1514)
+- Click on avatar in participants tab results in a blank view [#1630](https://github.com/nextcloud/talk-desktop/issues/1630)
+- Download complete notification click does not open download file location [#1622](https://github.com/nextcloud/talk-desktop/pull/1622)
+- Redesign help (about) window [#1607](https://github.com/nextcloud/talk-desktop/pull/1607)
+- Linux: Title bar is not transparent [#1600](https://github.com/nextcloud/talk-desktop/pull/1600)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v22.0.8 in the stable release channel [#1638](https://github.com/nextcloud/talk-desktop/pull/1638)
+- Add Nextcloud server 34 styles [#1639](https://github.com/nextcloud/talk-desktop/pull/1639)
+
 ## v2.0.5 - 2025-12-16
 
 ### Features

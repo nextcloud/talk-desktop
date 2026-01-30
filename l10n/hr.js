@@ -47,6 +47,7 @@ OC.L10N.register(
     "Emoji for your status message" : "Emoji za poruku statusa",
     "Share screen" : "Dijeli zaslon",
     "None" : "Nema",
+    "Application" : "Aplikacija",
     "Online" : "Na mreži",
     "Away" : "Odsutan",
     "Busy" : "Zauzeto",

@@ -11,6 +11,10 @@ updates:
     day: saturday
     time: "03:00"
     timezone: Europe/Berlin
+  ignore:
+    - dependency-name: "node-polyfill-webpack-plugin"
+      # ignore versions > 4.0.0
+      versions: [ "^4.1.0" ]
 
 - package-ecosystem: npm
   target-branch: stable1
@@ -24,3 +28,7 @@ updates:
     day: saturday
     time: "03:00"
     timezone: Europe/Berlin
+  ignore:
+    - dependency-name: "node-polyfill-webpack-plugin"
+      # ignore versions > 4.0.0
+      versions: [ "^4.1.0" ]

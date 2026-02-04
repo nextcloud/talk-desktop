@@ -18,6 +18,7 @@ OC.L10N.register(
     "Cancel" : "Mégse",
     "Valid until" : "Érvényes",
     "Copy" : "Másolás",
+    "Copied" : "Másolva",
     "About" : "Névjegy",
     "License" : "Licenc",
     "Issues" : "Hibajegyek",

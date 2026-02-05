@@ -2,7 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Talk Desktop" : "Настільний клієнт для Talk",
-    "Logged in successfully" : "Успішно авторизовано",
+    "Logged in successfully" : "Успішно увійшли.",
     "Connecting over http:// is not allowed" : "Підключення за адресою http:// заборонено",
     "Invalid server address" : "Недійсна адреса сервера",
     "SSL certificate error" : "Помилка сертифіката SSL",

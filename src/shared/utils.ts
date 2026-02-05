@@ -26,3 +26,16 @@ export function once<F extends (() => any) | ((...args: any[]) => void)>(func: F
 }
 
 /* eslint-enable @typescript-eslint/no-explicit-any */
+
+/**
+ * Create URL instance or return null if invalid
+ *
+ * @param url - URL string
+ */
+export function createURL(url: string) {
+	try {
+		return new URL(url)
+	} catch {
+		return null
+	}
+}

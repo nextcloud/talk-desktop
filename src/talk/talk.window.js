@@ -9,7 +9,7 @@ const { getAppConfig } = require('../app/AppConfig.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadHandler } = require('../app/downloads.ts')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
-const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
+const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle, getWindowUrl, getTitleBarSymbolColor } = require('../app/utils.ts')
 const { applyWheelZoom } = require('../app/zoom.service.ts')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { BUILD_CONFIG } = require('../shared/build.config.ts')
@@ -37,7 +37,7 @@ function createTalkWindow() {
 		titleBarStyle: getAppConfig('systemTitleBar') ? 'default' : 'hidden',
 		titleBarOverlay: {
 			color: '#FFFFFF00',
-			symbolColor: '#FFFFFF', // White
+			symbolColor: getTitleBarSymbolColor(),
 			height: Math.round(TITLE_BAR_HEIGHT * zoomFactor),
 		},
 		// Position of the top left corner of the traffic light on Mac

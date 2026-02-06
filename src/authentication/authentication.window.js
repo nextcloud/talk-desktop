@@ -6,7 +6,7 @@
 const { BrowserWindow } = require('electron')
 const { getAppConfig } = require('../app/AppConfig.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl, getTitleBarSymbolColor } = require('../app/utils.ts')
 const { TITLE_BAR_HEIGHT } = require('../constants.js')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
@@ -33,7 +33,7 @@ function createAuthenticationWindow() {
 		titleBarStyle: getAppConfig('systemTitleBar') ? 'default' : 'hidden',
 		titleBarOverlay: {
 			color: '#FFFFFF00',
-			symbolColor: '#FFFFFF', // White
+			symbolColor: getTitleBarSymbolColor(),
 			height: Math.round(TITLE_BAR_HEIGHT * zoomFactor),
 		},
 		// Position of the top left corner of the traffic light on Mac

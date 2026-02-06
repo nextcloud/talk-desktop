@@ -124,3 +124,49 @@ export function isInternalUrl(url: string | URL) {
 export function isExternalUrl(url: string | URL) {
 	return !isInternalUrl(url)
 }
+
+/**
+ * Determine title bar symbol color the same way as on the server for elements.
+ * Thus make sure title bar controls and app elements have the same color,
+ * Otherwise OS may decide to use dark symbols while Nextcloud theming decides to use light symbols on the same background
+ *
+ * @param backgroundColor - Color in hex format #RRGGBB, default is BUILD_CONFIG.backgroundColor
+ */
+export function getTitleBarSymbolColor(backgroundColor: string = BUILD_CONFIG.backgroundColor): string {
+	return invertTextColor(backgroundColor) ? '#000000' : '#FFFFFF'
+
+	/**
+	 * Calculate the Luma according to WCAG 2
+	 *
+	 * @see http://www.w3.org/TR/WCAG20/#relativeluminancedef
+	 * @param color - Color in hex format #RRGGBB
+	 */
+	function calculateLuma(color: string) {
+		const rgb = color.match(/[0-9a-f]{2}/gi)?.map((part) => parseInt(part, 16) / 255) ?? [0, 0, 0]
+		const [r, g, b] = rgb.map((part) => (part <= 0.03928) ? part / 12.92 : Math.pow((part + 0.055) / 1.055, 2.4))
+		return 0.2126 * r! + 0.7152 * g! + 0.0722 * b!
+	}
+
+	/**
+	 * Calculate the contrast between two colors according to WCAG 2
+	 *
+	 * @see http://www.w3.org/TR/WCAG20/#contrast-ratiodef
+	 * @param colorA - Color in hex format #RRGGBB
+	 * @param colorB - Color in hex format #RRGGBB
+	 */
+	function colorContrast(colorA: string, colorB: string) {
+		const lumaA = calculateLuma(colorA) + 0.05
+		const lumaB = calculateLuma(colorB) + 0.05
+		return Math.max(lumaA, lumaB) / Math.min(lumaA, lumaB)
+	}
+
+	/**
+	 * Should we invert the text on this background color?
+	 *
+	 * @see OCA\Theming\Util->invertTextColor on server
+	 * @param color - Color in hex format #RRGGBB
+	 */
+	function invertTextColor(color: string): boolean {
+		return colorContrast(color, '#ffffff') < 4.5
+	}
+}

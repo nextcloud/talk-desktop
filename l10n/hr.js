@@ -6,6 +6,7 @@ OC.L10N.register(
     "Server address" : "Adresa poslužitelja",
     "Log in" : "Prijavite se",
     "Logging in …" : "Prijavljivanje …",
+    "Incoming call" : "Dolazni poziv",
     "Close" : "Zatvori",
     "Dismiss" : "Odpusti",
     "Join call" : "Pridruži se pozivu",
@@ -53,6 +54,7 @@ OC.L10N.register(
     "Busy" : "Zauzeto",
     "Do not disturb" : "Ne ometaj",
     "Invisible" : "Nevidljiv",
+    "Offline" : "Izvan mreže",
     "You missed a call from {user}" : "Propustili ste poziv od {user}",
     "You missed a group call in {call}" : "Propustili ste grupni poziv u {call}"
 },

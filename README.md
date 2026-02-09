@@ -68,6 +68,36 @@ However, using portable `zip` distribution, you can have several Nextcloud Talk 
         └── ...
 ```
 
+## ⌨️ CLI usage
+
+### Application flags
+
+Adjust how the application runs when launching.
+
+| Flag           | Description                                                                   |
+|----------------|-------------------------------------------------------------------------------|
+| `--background` | Start minimized to the system tray without a window (used for run at startup) |
+
+### CLI commands
+
+Run a command in the app and quit without launching the entire app.
+
+#### `config`
+
+Set application configuration.
+
+| Option                     | Description                                |
+|----------------------------|--------------------------------------------|
+| `--accounts=[user@]server` | Comma-separated list of prefilled accounts |
+
+Examples:
+
+```sh
+./Nextcloud\ Talk config --accounts=cloud.company.tld
+./Nextcloud\ Talk config --accounts='Name Surname@cloud.company.tld'
+./Nextcloud\ Talk config --accounts=name@email.tld@company.tld/nextcloud
+```
+
 ## 🛠️ Development Setup
 
 1. Install dependencies

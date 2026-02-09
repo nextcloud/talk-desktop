@@ -4,6 +4,7 @@
  */
 
 const { app, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
+const { default: mri } = require('mri')
 const { spawn } = require('node:child_process')
 const path = require('node:path')
 const { setupMenu } = require('./app/app.menu.js')
@@ -11,6 +12,7 @@ const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.t
 const { appData } = require('./app/AppData.js')
 const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
 const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
+const { cli } = require('./app/cli.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/githubRelease.service.ts')
@@ -30,13 +32,7 @@ const { createTalkWindow } = require('./talk/talk.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.ts')
 const { createWelcomeWindow } = require('./welcome/welcome.window.js')
 
-/**
- * Parse command line arguments
- */
-const ARGUMENTS = {
-	// Open Talk window in the background, minimized to the system tray
-	openInBackground: process.argv.includes('--background'),
-}
+const argv = mri(process.argv.slice(app.isPackaged ? 1 : 2))
 
 // Electron 36 with Chromium 136 is not compatible with GNOME due to GTK3 with GTK4 mixing
 // Workaround: force GTK3
@@ -74,6 +70,7 @@ if (require('electron-squirrel-startup')) {
  * Only one instance is allowed at the same time
  */
 if (!app.requestSingleInstanceLock()) {
+	console.log('Another instance of the app is already running')
 	app.quit()
 }
 
@@ -137,6 +134,8 @@ app.whenReady().then(async () => {
 	await loadAppConfig()
 	await runMigrations()
 
+	await cli(argv)
+
 	applyTheme()
 	initLaunchAtStartupListener()
 	registerAppProtocolHandler()
@@ -149,7 +148,7 @@ app.whenReady().then(async () => {
 	}
 
 	// Open in the background if it is explicitly set, or the app was open at login on macOS
-	const openInBackground = ARGUMENTS.openInBackground || app.getLoginItemSettings().wasOpenedAtLogin
+	const openInBackground = argv.background || app.getLoginItemSettings().wasOpenedAtLogin
 
 	try {
 		await installVueDevtools()

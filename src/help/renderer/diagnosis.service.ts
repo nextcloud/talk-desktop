@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import type { AppConfigKey } from '../../app/AppConfig.ts'
+
 import { appData } from '../../app/AppData.js'
 import { getAppConfig } from '../../shared/appConfig.service.ts'
 
@@ -63,6 +65,10 @@ function table(data: string[][]) {
 
 const printBool = (value: boolean) => value ? '✅ yes' : '❌ no'
 
+const SENSITIVE_CONFIG_KEYS: AppConfigKey[] = ['accounts', 'trustedFingerprints']
+
+const omit = <T extends Record<string, unknown>>(obj: T, keys: (keyof T)[]) => Object.fromEntries(Object.entries(obj).filter(([key]) => !keys.includes(key as keyof T)))
+
 /**
  * Generate a diagnosis report in Markdown format
  */
@@ -99,7 +105,7 @@ ${table([
 #### Application config
 
 \`\`\`json
-${JSON.stringify(getAppConfig(), null, 2)}
+${JSON.stringify(omit(getAppConfig(), SENSITIVE_CONFIG_KEYS), null, 2)}
 \`\`\`
 `
 }

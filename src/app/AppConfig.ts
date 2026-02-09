@@ -40,6 +40,14 @@ export type AppConfig = {
 	 */
 	lastAppVersion?: string
 
+	/**
+	 * List of the accounts in the app in the {user}@{server} or {server} format,
+	 * E.g. nextcloud.tld, alice@nextcloud.tld, bob@company.tld@company.tld/nextcloud.
+	 * Currently only the first element is used for login suggestion, populated from the last used accounts or manually set.
+	 * This config is to be extended with complete multi-account support.
+	 */
+	accounts?: string[]
+
 	// ----------------
 	// General settings
 	// ----------------
@@ -128,6 +136,7 @@ export type AppConfigKey = keyof AppConfig
  * Get the default config
  */
 const defaultAppConfig: AppConfig = {
+	accounts: [],
 	launchAtStartup: false,
 	theme: 'default',
 	systemTitleBar: isLinux,

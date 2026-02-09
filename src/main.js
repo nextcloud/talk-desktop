@@ -302,7 +302,7 @@ app.whenReady().then(async () => {
 
 	ipcMain.handle('talk:focus', async () => focusMainWindow())
 
-	ipcMain.handle('authentication:openLoginWebView', async (event, serverUrl) => openLoginWebView(mainWindow, serverUrl))
+	ipcMain.handle('authentication:openLoginWebView', async (event, serverUrl, user) => openLoginWebView(mainWindow, serverUrl, user))
 
 	ipcMain.handle('authentication:login', async (event, newAppData) => {
 		appData.fromJSON(newAppData)

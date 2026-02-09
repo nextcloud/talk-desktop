@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { Notification, shell } = require('electron')
+const { BrowserWindow, ipcMain } = require('electron')
 const semver = require('semver')
 const packageJson = require('../../package.json')
 
@@ -70,36 +70,14 @@ async function getLatestStableReleaseVersion() {
 	}
 }
 
-
-/**
- * Show native notification about the new version.
- * It opens the release page on click.
- *
- * @param {string} version - New version
- */
-function notifyAboutNewVersion(version) {
-	const notification = new Notification({
-		title: '🎉 New version of Nextcloud Talk is available!',
-		body: `Nextcloud Talk ${version} is now available to download from the release page. Click to open the page.`,
-	})
-
-	notification.on('click', () => {
-		shell.openExternal(`https://github.com/nextcloud-releases/talk-desktop/releases/tag/${version}`)
-	})
-
-	notification.show()
-}
-
 /**
  * Check if there is a new Nextcloud Talk
  *
  * @param {object} options options
- * @param {boolean} [options.showNotification] Show native notification if new version is available
  * @param {boolean} [options.forceRequest] Force request even if there is a cached new version
  * @return {Promise<boolean>} true if there is a new version
  */
-async function checkForNewVersion({ showNotification = false, forceRequest = false }) {
-	// Request a new version or get cached
+async function checkForNewVersion({ forceRequest = false }) {
 	const latest = (!forceRequest && cachedNewLatestVersion) ? cachedNewLatestVersion : await getLatestReleaseVersion(__CHANNEL__ === 'beta')
 
 	// Something goes wrong... No worries, we will try again later.
@@ -107,16 +85,18 @@ async function checkForNewVersion({ showNotification = false, forceRequest = fal
 		return false
 	}
 
+	// No new version compared to the running one
 	if (semver.lte(latest, packageJson.version)) {
 		return false
 	}
 
-	// There is a new version! Now we may cache it and stop requesting a new version
+	// There is a new version! Cache it and notify renderers
 	cachedNewLatestVersion = latest
 
-	if (showNotification) {
-		notifyAboutNewVersion(latest)
-	}
+	// Send an IPC message to all renderer windows so UI can update
+	BrowserWindow.getAllWindows().forEach((window) => {
+		window.webContents.send('github-release:new-version')
+	})
 
 	return true
 }
@@ -135,10 +115,10 @@ function setupReleaseNotificationScheduler(intervalInMin = 60) {
 	if (schedulerIntervalId !== undefined) {
 		stopReleaseNotificationScheduler()
 	}
-	checkForNewVersion({ showNotification: true })
+	checkForNewVersion({ })
 	const MS_IN_MIN = 60 * 1000
 	schedulerIntervalId = setInterval(() => {
-		checkForNewVersion({ showNotification: true })
+		checkForNewVersion({ })
 	}, intervalInMin * MS_IN_MIN)
 }
 
@@ -148,11 +128,28 @@ function setupReleaseNotificationScheduler(intervalInMin = 60) {
  * @return {void}
  */
 function stopReleaseNotificationScheduler() {
-	if (schedulerIntervalId) {
+	if (schedulerIntervalId !== undefined) {
 		clearInterval(schedulerIntervalId)
+		schedulerIntervalId = undefined
 	}
+}
+
+/**
+ * Register IPC handlers used by renderers
+ */
+function registerUpdateIpcHandlers() {
+	ipcMain.handle('github-release:check', async () => {
+		try {
+			const result = await checkForNewVersion({ })
+			return { available: !!result }
+		} catch (e) {
+			console.error('github-release:check handler failed', e)
+			return { available: false }
+		}
+	})
 }
 
 module.exports = {
 	setupReleaseNotificationScheduler,
+	registerUpdateIpcHandlers,
 }

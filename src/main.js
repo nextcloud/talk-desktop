@@ -14,7 +14,7 @@ const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
 const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
-const { setupReleaseNotificationScheduler } = require('./app/githubReleaseNotification.service.js')
+const { setupReleaseNotificationScheduler, registerUpdateIpcHandlers } = require('./app/githubReleaseNotification.service.js')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
 const { systemInfo, isLinux, isMac, isWindows, isSameExecution, relaunchApp } = require('./app/system.utils.ts')
@@ -143,6 +143,7 @@ app.whenReady().then(async () => {
 	applyTheme()
 	initLaunchAtStartupListener()
 	registerAppProtocolHandler()
+	registerUpdateIpcHandlers()
 
 	/**
 	 * Schedule check for a new version available to download from GitHub

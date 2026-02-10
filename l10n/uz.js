@@ -25,6 +25,7 @@ OC.L10N.register(
     "Light" : "Nur",
     "Dark" : "Qorong'i",
     "Appearance" : "Tashqi ko'rinish",
+    "Loading …" : "Yuklanmoqda...",
     "Reload" : "Qayta yuklash",
     "Reset" : "Qayta tiklash",
     "Back" : "Orqaga",

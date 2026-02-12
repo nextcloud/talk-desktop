@@ -34,6 +34,9 @@ function resolveBuildConfig(customConfigPath = process.env.CUSTOM_CONFIG) {
 		...customConfig,
 	}
 
+	// Default an empty '' brandGradient to the brandColor
+	config.brandGradient ||= config.brandColor
+
 	// Sanitized name - application name without non-alphanumeral characters
 	const applicationNameSanitized = config.applicationName.replace(/[^a-z0-9]/gi, '')
 

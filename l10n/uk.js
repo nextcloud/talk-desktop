@@ -81,6 +81,7 @@ OC.L10N.register(
     "Menu" : "Меню",
     "Open in web browser" : "Відкрити у веб-браузері",
     "Force reload" : "Примусово перезавантажити",
+    "Update" : "Оновлювати",
     "Report a bug" : "Повідомити про помилку",
     "App settings" : "Налаштування програми",
     "Back" : "Назад",

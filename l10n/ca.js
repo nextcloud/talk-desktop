@@ -37,6 +37,7 @@ OC.L10N.register(
     "Reset" : "Reinicialitza",
     "Menu" : "Menú",
     "Force reload" : "Força tornar a carregar",
+    "Update" : "Actualitza",
     "Report a bug" : "Informa d'un error",
     "Back" : "Torna",
     "View profile" : "Visualitza el perfil",

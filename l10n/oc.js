@@ -28,6 +28,7 @@ OC.L10N.register(
     "Reset" : "Reïnicializar",
     "Menu" : "Menú",
     "Force reload" : "Forçar lo recargament",
+    "Update" : "Actualizar",
     "Report a bug" : "Raportar un bug",
     "App settings" : "Paramètres d’aplicacion",
     "View profile" : "Veire perfil",

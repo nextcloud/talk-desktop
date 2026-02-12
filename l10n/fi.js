@@ -38,6 +38,7 @@ OC.L10N.register(
     "Zoom in" : "Lähennä",
     "Reset" : "Palauta",
     "Menu" : "Valikko",
+    "Update" : "Päivitä",
     "Report a bug" : "Ilmoita viasta",
     "App settings" : "Sovelluksen asetukset",
     "Back" : "Takaisin",

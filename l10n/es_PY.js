@@ -19,6 +19,7 @@ OC.L10N.register(
     "Dark" : "Oscuro",
     "Reset" : "Restablecer",
     "Menu" : "Menú",
+    "Update" : "Actualizar",
     "Report a bug" : "Reporta un detalle",
     "Log out" : "Cerrar sesión",
     "Quit" : "Salir",

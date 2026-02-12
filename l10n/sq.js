@@ -24,6 +24,7 @@ OC.L10N.register(
     "Reload" : "Ringarkoje",
     "Reset" : "Rivendos",
     "Menu" : "Menu",
+    "Update" : "Përditëso",
     "Report a bug" : "Njoftoni një të metë",
     "Back" : "Mbrapsht",
     "Log out" : "Shkyçu",

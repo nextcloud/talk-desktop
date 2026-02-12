@@ -84,6 +84,7 @@ OC.L10N.register(
     "Menu" : "Menu",
     "Open in web browser" : "Open in web browser",
     "Force reload" : "Force reload",
+    "Update" : "Update",
     "Report a bug" : "Report a bug",
     "App settings" : "App settings",
     "Back" : "Back",

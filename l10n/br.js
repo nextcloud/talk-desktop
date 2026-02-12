@@ -19,6 +19,7 @@ OC.L10N.register(
     "Dark" : "Teñval",
     "Reload" : "Adkargañ",
     "Menu" : "Roll",
+    "Update" : "Hizivaat",
     "Report a bug" : "Dugas ur gudenn",
     "View profile" : "Gwelet ar profil",
     "Log out" : "Digevreañ",

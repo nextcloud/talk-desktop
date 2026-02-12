@@ -35,6 +35,7 @@ OC.L10N.register(
     "Zoom in" : "Zoom ind",
     "Reset" : "Nulstil",
     "Menu" : "Menu",
+    "Update" : "Opdatér",
     "Report a bug" : "Rapporter en fejl",
     "Back" : "Tilbage",
     "View profile" : "Vis profil",

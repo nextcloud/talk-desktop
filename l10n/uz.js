@@ -28,6 +28,7 @@ OC.L10N.register(
     "Loading …" : "Yuklanmoqda...",
     "Reload" : "Qayta yuklash",
     "Reset" : "Qayta tiklash",
+    "Update" : "Yangilash",
     "Back" : "Orqaga",
     "View profile" : "View profile",
     "User status" : "User status",

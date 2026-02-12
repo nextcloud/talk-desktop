@@ -31,6 +31,7 @@ OC.L10N.register(
     "Zoom in" : "Mărește",
     "Reset" : "Resetare",
     "Menu" : "Meniu",
+    "Update" : "Actualizare",
     "Report a bug" : "Raportează un defect",
     "Back" : "Înapoi",
     "View profile" : "Vezi profilul",

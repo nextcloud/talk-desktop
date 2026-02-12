@@ -12,6 +12,7 @@ OC.L10N.register(
     "Never" : "Nunquam",
     "Reset" : "Re-fixar",
     "Menu" : "Menu",
+    "Update" : "Actualisation",
     "Report a bug" : "Reportar un defecto",
     "Today" : "Hodie",
     "This week" : "Iste septimana",

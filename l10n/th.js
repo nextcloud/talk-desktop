@@ -26,6 +26,7 @@ OC.L10N.register(
     "Reload" : "โหลดใหม่",
     "Reset" : "รีเซ็ต",
     "Menu" : "เมนู",
+    "Update" : "อัปเดต",
     "Report a bug" : "รายงานข้อผิดพลาด",
     "Quit" : "ออก",
     "User status" : "สถานะผู้ใช้",

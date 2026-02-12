@@ -81,6 +81,7 @@ OC.L10N.register(
     "Menu" : "Mwongozo",
     "Open in web browser" : "Fungua katika kivinjari",
     "Force reload" : "Taarifa na sauti",
+    "Update" : "Sasisha",
     "Report a bug" : "Ripoti hitilafu",
     "App settings" : "Mipangilio ya programu",
     "Back" : "Rudi",

@@ -81,6 +81,7 @@ OC.L10N.register(
     "Menu" : "Мени",
     "Open in web browser" : "Отвори у веб прегледачу",
     "Force reload" : "Форсирај поновно учитавање",
+    "Update" : "Ажурирај",
     "Report a bug" : "Пријави грешку",
     "App settings" : "Подешавања апликације",
     "Back" : "Назад",

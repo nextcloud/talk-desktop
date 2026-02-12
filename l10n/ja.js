@@ -40,6 +40,7 @@ OC.L10N.register(
     "Zoom in" : "拡大",
     "Reset" : "リセット",
     "Menu" : "メニュー",
+    "Update" : "更新",
     "Report a bug" : "不具合を報告",
     "App settings" : "アプリ設定",
     "Back" : "戻る",

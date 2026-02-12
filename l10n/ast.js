@@ -33,6 +33,7 @@ OC.L10N.register(
     "Zoom in" : "Averar",
     "Reset" : "Reafitar",
     "Menu" : "Menú",
+    "Update" : "Anovar",
     "Report a bug" : "Informar d'un fallju",
     "Back" : "Atrás",
     "View profile" : "Ver el perfil",

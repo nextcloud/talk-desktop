@@ -84,6 +84,7 @@ OC.L10N.register(
     "Menu" : "Roghchlár",
     "Open in web browser" : "Oscail i mbrabhsálaí gréasáin",
     "Force reload" : "Fórsa athlódáil",
+    "Update" : "Nuashonrú",
     "Report a bug" : "Tuairiscigh fabht",
     "App settings" : "Socruithe aip",
     "Back" : "Ar ais",

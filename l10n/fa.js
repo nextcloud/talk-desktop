@@ -80,6 +80,7 @@ OC.L10N.register(
     "Menu" : "منو",
     "Open in web browser" : "باز کردن در مرورگر وب",
     "Force reload" : "بارگذاری مجدد اجباری",
+    "Update" : "به‌روزرسانی",
     "Report a bug" : "گزارش یک اشکال",
     "App settings" : "App settings",
     "Back" : "بازگشت",

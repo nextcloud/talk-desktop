@@ -14,6 +14,7 @@ OC.L10N.register(
     "No" : "Ոչ",
     "Yes" : "Այո",
     "Never" : "Երբեք",
+    "Update" : "Թարմացնել",
     "Today" : "Այսօր",
     "This week" : "այս շաբաթ"
 },

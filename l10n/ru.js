@@ -83,6 +83,7 @@ OC.L10N.register(
     "Menu" : "Меню",
     "Open in web browser" : "Открыть в браузере",
     "Force reload" : "Перезагрузить",
+    "Update" : "Обновление",
     "Report a bug" : "Сообщить об ошибке",
     "App settings" : "Настройки приложения",
     "Back" : "Назад",

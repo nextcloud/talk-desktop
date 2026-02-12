@@ -65,6 +65,7 @@ OC.L10N.register(
     "Menu" : "메뉴",
     "Open in web browser" : "브라우저에서 열기",
     "Force reload" : "강제 새로고침",
+    "Update" : "업데이트",
     "Report a bug" : "버그 보고",
     "App settings" : "앱 설정",
     "Back" : "뒤로",

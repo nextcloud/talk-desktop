@@ -14,6 +14,7 @@ OC.L10N.register(
     "Theme" : "Tema",
     "Light" : "Ýagtylyk",
     "Dark" : "Garaňky",
+    "Update" : "Täzelemek",
     "Back" : "Yzyna",
     "Log out" : "Hasapdan çykmak",
     "Quit" : "Çykmak, taşlamak",

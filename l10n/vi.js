@@ -30,6 +30,7 @@ OC.L10N.register(
     "Loading …" : "Đang tải …",
     "Reload" : "Tải lại",
     "Reset" : "Đặt lại",
+    "Update" : "Sửa",
     "Report a bug" : "Báo cáo lỗi",
     "Back" : "Trở lại",
     "View profile" : "Xem hồ sơ",

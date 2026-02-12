@@ -14,6 +14,7 @@ OC.L10N.register(
     "Yes" : "Ie",
     "Light" : "Golau",
     "Dark" : "Tywyll",
+    "Update" : "Diweddaru",
     "Quit" : "Gadael",
     "Today" : "Heddiw",
     "This week" : "Wythnos yma",

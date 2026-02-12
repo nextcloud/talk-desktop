@@ -56,6 +56,7 @@ OC.L10N.register(
     "Reset" : "Herstellen",
     "Menu" : "Menu",
     "Force reload" : "Herladen forceren",
+    "Update" : "Bijwerken",
     "Report a bug" : "Rapporteer een fout",
     "App settings" : "App instellingen",
     "Back" : "Terug",

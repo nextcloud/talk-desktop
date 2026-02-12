@@ -84,6 +84,7 @@ OC.L10N.register(
     "Menu" : "Nabídka",
     "Open in web browser" : "Otevřít ve webovém prohlížeči",
     "Force reload" : "Vynutit opětovné načtení",
+    "Update" : "Aktualizovat",
     "Report a bug" : "Nahlásit chybu",
     "App settings" : "Nastavení aplikace",
     "Back" : "Zpět",

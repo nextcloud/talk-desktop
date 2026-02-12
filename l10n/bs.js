@@ -10,6 +10,7 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Ne",
     "Yes" : "Da",
+    "Update" : "Ažuriraj",
     "Today" : "Danas",
     "None" : "Ništa",
     "Busy" : "Zauzet"

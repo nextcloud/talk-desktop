@@ -43,6 +43,7 @@ OC.L10N.register(
     "Reset" : "Atstatyti",
     "Menu" : "Meniu",
     "Force reload" : "Priverstinai įkelti iš naujo",
+    "Update" : "Atnaujinti",
     "Report a bug" : "Pranešti apie klaidą",
     "Back" : "Atgal",
     "View profile" : "Rodyti profilį",

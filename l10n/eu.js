@@ -42,6 +42,7 @@ OC.L10N.register(
     "Reset" : "Berrezarri",
     "Menu" : "Menua",
     "Force reload" : "Behartu birkargatzea",
+    "Update" : "Eguneratu",
     "Report a bug" : "Jakinarazi errore bat",
     "App settings" : "Aplikazioaren ezarpenak",
     "Back" : "Itzuli",

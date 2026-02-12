@@ -31,6 +31,7 @@ OC.L10N.register(
     "Reset" : "Riprìstinu",
     "Menu" : "Menu",
     "Force reload" : "Fortza sa càrriga",
+    "Update" : "Agiorna",
     "Report a bug" : "Report a bug",
     "App settings" : "Cunfiguratzione de s'aplicatzione",
     "Back" : "In segus",

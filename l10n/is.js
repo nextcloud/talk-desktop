@@ -27,6 +27,7 @@ OC.L10N.register(
     "Zoom in" : "Renna að",
     "Reset" : "Endurstilla",
     "Menu" : "Valmynd",
+    "Update" : "Uppfæra",
     "Report a bug" : "Tilkynna um villu",
     "App settings" : "Stillingar forrits",
     "Back" : "Til baka",

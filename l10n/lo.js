@@ -39,6 +39,7 @@ OC.L10N.register(
     "Zoom out" : "ຊູມອອກ",
     "Zoom in" : "ຊູມເຂົ້າ",
     "Reset" : "ຕັ້ງຄ່າໃໝ່",
+    "Update" : "ອັບເດດ",
     "Report a bug" : "Report a bug",
     "App settings" : "App settings",
     "Back" : "ກັບຄືນ",

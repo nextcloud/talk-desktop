@@ -20,6 +20,7 @@ OC.L10N.register(
     "Reload" : "Recargar",
     "Reset" : "Restablecer",
     "Menu" : "Menú",
+    "Update" : "Actualizar",
     "Report a bug" : "Reporte un tema",
     "Back" : "Volver",
     "Log out" : "Cerrar sesión",

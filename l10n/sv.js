@@ -84,6 +84,7 @@ OC.L10N.register(
     "Menu" : "Meny",
     "Open in web browser" : "Öppna i webbläsare",
     "Force reload" : "Tvinga omladdning",
+    "Update" : "Uppdatera",
     "Report a bug" : "Rapportera ett problem",
     "App settings" : "Appinställningar",
     "Back" : "Tillbaka",

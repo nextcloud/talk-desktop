@@ -36,6 +36,7 @@ OC.L10N.register(
     "Zoom in" : "Perbesar",
     "Reset" : "Setel ulang",
     "Menu" : "Menu",
+    "Update" : "Perbarui",
     "Report a bug" : "Laporkan kerusakan",
     "Back" : "Kembali",
     "View profile" : "Tampilkan profil",

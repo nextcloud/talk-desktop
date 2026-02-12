@@ -25,6 +25,7 @@ OC.L10N.register(
     "Reset" : "Atiestatīt",
     "Menu" : "Izvēlne",
     "Open in web browser" : "Atvērt tīmekļa pārlūkā",
+    "Update" : "Atjaunināt",
     "Report a bug" : "Ziņot par kļūdu",
     "App settings" : "Lietotnes iestatījumi",
     "View profile" : "Skatīt profilu",

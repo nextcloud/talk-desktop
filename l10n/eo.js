@@ -22,6 +22,7 @@ OC.L10N.register(
     "Dark" : "Malluma",
     "Reload" : "Reŝargi",
     "Reset" : "Restarigi",
+    "Update" : "Ĝisdatigi",
     "Report a bug" : "Raporti problemon",
     "View profile" : "Vidi profilon",
     "Quit" : "Forlasi",

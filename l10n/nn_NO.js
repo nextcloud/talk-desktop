@@ -13,6 +13,7 @@ OC.L10N.register(
     "License" : "Lisens",
     "Ok" : "Greitt",
     "Appearance" : "Utsjånad",
+    "Update" : "Oppdater",
     "Report a bug" : "Rapporter feil",
     "Quit" : "Avslutt",
     "Today" : "I dag",

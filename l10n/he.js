@@ -28,6 +28,7 @@ OC.L10N.register(
     "Zoom in" : "התקרבות",
     "Reset" : "איפוס",
     "Menu" : "תפריט",
+    "Update" : "עדכון",
     "Report a bug" : "דיווח על באג",
     "Back" : "אחורה",
     "Log out" : "התנתק",

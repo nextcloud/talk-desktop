@@ -13,6 +13,7 @@ OC.L10N.register(
     "Yes" : "Jo",
     "Reset" : "Zeréck setzen",
     "Menu" : "Menü",
+    "Update" : "Update",
     "Report a bug" : "E Feeler melden",
     "Quit" : "Erausgoen",
     "Today" : "Haut",

@@ -84,6 +84,7 @@ OC.L10N.register(
     "Menu" : "Menü",
     "Open in web browser" : "Tarayıcıda aç",
     "Force reload" : "Zorla yeniden yükle",
+    "Update" : "Güncelle",
     "Report a bug" : "Hata bildirin",
     "App settings" : "Uygulama ayarları",
     "Back" : "Geri",

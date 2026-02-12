@@ -30,6 +30,7 @@ OC.L10N.register(
     "Zoom" : "Zoom",
     "Reset" : "Reset",
     "Menu" : "Menu",
+    "Update" : "Update",
     "Report a bug" : "Report a bug",
     "App settings" : "App settings",
     "Back" : "Back",

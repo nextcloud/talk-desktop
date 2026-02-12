@@ -22,6 +22,7 @@ OC.L10N.register(
     "Reload" : "Yenidən yüklə",
     "Reset" : "Sıfırla",
     "Menu" : "Menyu",
+    "Update" : "Yenilənmə",
     "Report a bug" : "Səhv haqqında bildir",
     "Back" : "Geri",
     "Quit" : "Çıx",

@@ -58,6 +58,7 @@ OC.L10N.register(
     "Reset" : "إعادة تعيين",
     "Menu" : "القائمة ",
     "Force reload" : "إفرِض إعادة التحميل",
+    "Update" : "تحديث",
     "Report a bug" : "الإبلاغ عن خطإٍ",
     "App settings" : "إعدادات التطبيق",
     "Back" : "عودة",

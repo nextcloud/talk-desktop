@@ -84,6 +84,7 @@ OC.L10N.register(
     "Menu" : "Menüü",
     "Open in web browser" : "Ava veebibrauseris",
     "Force reload" : "Laadi sundkorras uuesti",
+    "Update" : "Uuenda",
     "Report a bug" : "Teata veast",
     "App settings" : "Rakenduse seadistused",
     "Back" : "Tagasi",

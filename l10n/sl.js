@@ -36,6 +36,7 @@ OC.L10N.register(
     "Zoom in" : "Približaj",
     "Reset" : "Ponastavi",
     "Menu" : "Meni",
+    "Update" : "Posodobi",
     "Report a bug" : "Pošlji poročilo o hrošču",
     "App settings" : "Nastavitve programa",
     "Back" : "Nazaj",

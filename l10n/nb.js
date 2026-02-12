@@ -43,6 +43,7 @@ OC.L10N.register(
     "Reset" : "Tilbakestill",
     "Menu" : "Meny",
     "Force reload" : "Tving lasting inn på nytt",
+    "Update" : "Oppdater",
     "Report a bug" : "Rapporter en feil",
     "App settings" : "App-innstillinger",
     "Back" : "Tilbake",

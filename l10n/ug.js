@@ -83,6 +83,7 @@ OC.L10N.register(
     "Menu" : "تىزىملىك",
     "Open in web browser" : "تورتۇرادا ئاچ",
     "Force reload" : "قايتا يۈكلەش",
+    "Update" : "يېڭىلاش",
     "Report a bug" : "خاتالىق مەلۇم قىلىڭ",
     "App settings" : "ئەپ تەڭشىكى",
     "Back" : "قايتىش",

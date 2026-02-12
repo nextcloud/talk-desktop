@@ -84,6 +84,7 @@ OC.L10N.register(
     "Menu" : "選項單",
     "Open in web browser" : "在網頁瀏覽器中打開",
     "Force reload" : "強制重新加載",
+    "Update" : "更新",
     "Report a bug" : "舉報錯誤",
     "App settings" : "應用程式設定",
     "Back" : "上星期",

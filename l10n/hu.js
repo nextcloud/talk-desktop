@@ -41,6 +41,7 @@ OC.L10N.register(
     "Reset" : "Alaphelyzetbe állítás",
     "Menu" : "Menü",
     "Force reload" : "Kényszerített újratöltés",
+    "Update" : "Frissítés",
     "Report a bug" : "Hiba bejelentése",
     "App settings" : "Alkalmazásbeállítások",
     "Back" : "Vissza",

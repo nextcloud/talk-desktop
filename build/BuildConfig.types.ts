@@ -41,13 +41,21 @@ export type BuildConfigFile = {
 
 	/**
 	 * Brand color.
-	 * NOT IMPLEMENTED
+	 * Used in icons generation, installers and the splash screen.
 	 * Default: '#0082C9'
 	 */
 	brandColor: string
 
 	/**
-	 * Brand font color.
+	 * Brand gradient color in CSS format.
+	 * Used in icons generation, installers and the splash screen.
+	 * Set to an empty string to remove the gradient.
+	 * Default: 'linear-gradient(40deg, #0082c9 0%, #1cafff 100%)'
+	 */
+	brandGradient: string
+
+	/**
+	 * Brand font color
 	 * NOT IMPLEMENTED
 	 */
 	brandFontColor: string

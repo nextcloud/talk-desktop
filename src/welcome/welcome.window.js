@@ -20,7 +20,7 @@ function createWelcomeWindow() {
 			width: 300,
 			height: 500,
 		}, false),
-		backgroundColor: BUILD_CONFIG.backgroundColor,
+		backgroundColor: BUILD_CONFIG.brandColor,
 		resizable: false,
 		autoHideMenuBar: true,
 		center: true,

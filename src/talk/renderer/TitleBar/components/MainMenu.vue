@@ -20,6 +20,7 @@ import IconInformationOutline from 'vue-material-design-icons/InformationOutline
 import IconMenu from 'vue-material-design-icons/Menu.vue'
 import IconReload from 'vue-material-design-icons/Reload.vue'
 import IconWeb from 'vue-material-design-icons/Web.vue'
+import UiDotBadge from './UiDotBadge.vue'
 import { BUILD_CONFIG } from '../../../../shared/build.config.ts'
 import { getCurrentTalkRoutePath } from '../../TalkWrapper/talk.service.ts'
 
@@ -43,7 +44,6 @@ onBeforeUnmount(() => {
 })
 
 window.TALK_DESKTOP.checkForUpdate()
-
 </script>
 
 <template>
@@ -52,7 +52,29 @@ window.TALK_DESKTOP.checkForUpdate()
 		variant="tertiary-no-background"
 		container="body">
 		<template #icon>
-			<IconMenu :size="20" fill-color="var(--color-background-plain-text)" />
+			<UiDotBadge inset-inline-end="10%" :enabled="updateAvailable">
+				<IconMenu :size="20" fill-color="var(--color-background-plain-text)" />
+			</UiDotBadge>
+		</template>
+
+		<template v-if="updateAvailable">
+			<NcActionLink
+				href="https://github.com/nextcloud/talk-desktop/releases/latest"
+				target="_blank"
+				close-after-click>
+				<template #icon>
+					<UiDotBadge
+						inset-block-start="32%"
+						inset-inline-end="22%"
+						enabled
+						no-outline>
+						<IconCloudDownloadOutline :size="20" />
+					</UiDotBadge>
+				</template>
+				{{ t('talk_desktop', 'Update') }}
+			</NcActionLink>
+
+			<NcActionSeparator />
 		</template>
 
 		<template v-if="isTalkInitialized">
@@ -62,9 +84,9 @@ window.TALK_DESKTOP.checkForUpdate()
 				</template>
 				{{ t('talk_desktop', 'Open in web browser') }}
 			</NcActionButton>
-		</template>
 
-		<NcActionSeparator />
+			<NcActionSeparator />
+		</template>
 
 		<NcActionButton @click="reload">
 			<template #icon>
@@ -72,16 +94,6 @@ window.TALK_DESKTOP.checkForUpdate()
 			</template>
 			{{ t('talk_desktop', 'Force reload') }}
 		</NcActionButton>
-		<NcActionLink
-			v-if="updateAvailable"
-			href="https://github.com/nextcloud/talk-desktop/releases/latest"
-			target="_blank"
-			close-after-click>
-			<template #icon>
-				<IconCloudDownloadOutline :size="20" />
-			</template>
-			{{ t('talk_desktop', 'Update') }}
-		</NcActionLink>
 		<NcActionLink
 			v-if="!BUILD_CONFIG.isBranded"
 			:href="packageInfo.bugs.create || packageInfo.bugs.url"

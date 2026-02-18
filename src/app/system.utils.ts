@@ -4,6 +4,7 @@
  */
 
 import { app } from 'electron'
+import { existsSync } from 'node:fs'
 import { rm } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
@@ -64,6 +65,12 @@ export const isWayland = !!process.env.WAYLAND_DISPLAY
 export const isFlatpak = process.env.FLATPAK_ID === BUILD_CONFIG.linuxAppId
 
 /**
+ * Is the app installed via Squirrel.Windows installer (not MSI installer)?
+ * Checked in a hacky way by looking for "Update.exe"
+ */
+export const isSquirrel = isWindows && existsSync(path.join(path.dirname(app.getPath('exe')), '../Update.exe'))
+
+/**
  * Is the app running inside any supported Linux sandbox
  */
 export const isSandboxed = isFlatpak
@@ -77,6 +84,7 @@ export const systemInfo = {
 	isWindows,
 	isWayland,
 	isFlatpak,
+	isSquirrel,
 	isSandboxed,
 	osVersion,
 	platform,

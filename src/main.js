@@ -5,7 +5,6 @@
 
 const { app, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
 const { spawn } = require('node:child_process')
-const fs = require('node:fs')
 const path = require('node:path')
 const { setupMenu } = require('./app/app.menu.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
@@ -17,7 +16,7 @@ const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler, registerUpdateIpcHandlers } = require('./app/githubRelease.service.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
-const { systemInfo, isLinux, isMac, isWindows, isSameExecution, relaunchApp } = require('./app/system.utils.ts')
+const { systemInfo, isLinux, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { buildTitle } = require('./app/utils.ts')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -55,9 +54,6 @@ const APP_NAME = process.env.NODE_ENV !== 'development' ? path.parse(app.getPath
 app.setName(APP_NAME)
 app.setPath('userData', path.join(app.getPath('appData'), app.getName()))
 if (isWindows && process.env.NODE_ENV === 'production') {
-	// Hacky way to detect whether the app is installed via Squirrel.Windows or MSI installer
-	const updateExePath = path.join(path.dirname(app.getPath('exe')), '../Update.exe')
-	const isSquirrel = fs.existsSync(updateExePath)
 	if (isSquirrel) {
 		// Squirrel.Windows sets the AppUserModelId in the following way
 		app.setAppUserModelId(`com.squirrel.${BUILD_CONFIG.applicationNameSanitized}.${BUILD_CONFIG.applicationNameSanitized}`)

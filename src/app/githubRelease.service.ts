@@ -1,26 +1,24 @@
-/**
+/*!
  * SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow, ipcMain } = require('electron')
-const semver = require('semver')
-const packageJson = require('../../package.json')
+import { BrowserWindow, ipcMain } from 'electron'
+import semver from 'semver'
+import { version } from '../../package.json'
 
 /**
  * Cached new version. If a new version was found we may stop requesting a new version.
- *
- * @type {string|undefined}
  */
-let cachedNewLatestVersion
+let cachedNewLatestVersion: string | undefined
 
 /**
  * Request the latest release version of Nextcloud Talk on GitHub releases
  *
- * @param {boolean} beta - Whether to use beta release channel
- * @return {Promise<string>} Version tag, for example, v1.0.2-beta
+ * @param beta - Whether to use beta release channel
+ * @return Version tag, for example, v1.0.2-beta
  */
-function getLatestReleaseVersion(beta = false) {
+function getLatestReleaseVersion(beta: boolean = false): Promise<string | null> {
 	return beta ? getLatestBetaReleaseVersion() : getLatestStableReleaseVersion()
 }
 
@@ -28,9 +26,9 @@ function getLatestReleaseVersion(beta = false) {
  * Request the latest beta release version of Nextcloud Talk on GitHub releases
  *
  * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
- * @return {Promise<string>} Version tag, for example, v1.0.2-beta
+ * @return Version tag, for example, v1.0.2-beta
  */
-async function getLatestBetaReleaseVersion() {
+async function getLatestBetaReleaseVersion(): Promise<string | null> {
 	try {
 		const response = await fetch('https://api.github.com/repos/nextcloud-releases/talk-desktop/releases', {
 			headers: {
@@ -38,22 +36,23 @@ async function getLatestBetaReleaseVersion() {
 				'X-GitHub-Api-Version': '2022-11-28',
 			},
 		})
-		const releases = await response.json()
+		const releases = await response.json() as { tag_name: string }[]
 		if (response.ok) {
 			return semver.maxSatisfying(releases.map((release) => release.tag_name), '*', { includePrerelease: true })
 		}
 	} catch (e) {
 		console.error(e)
 	}
+	return null
 }
 
 /**
  * Request the latest stable release version of Nextcloud Talk on GitHub releases
  *
  * @see https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
- * @return {Promise<string>} Version tag, for example, v1.0.2
+ * @return Version tag, for example, v1.0.2
  */
-async function getLatestStableReleaseVersion() {
+async function getLatestStableReleaseVersion(): Promise<string | null> {
 	try {
 		const response = await fetch('https://api.github.com/repos/nextcloud-releases/talk-desktop/releases/latest', {
 			headers: {
@@ -61,23 +60,24 @@ async function getLatestStableReleaseVersion() {
 				'X-GitHub-Api-Version': '2022-11-28',
 			},
 		})
-		const release = await response.json()
+		const release = await response.json() as { tag_name: string }
 		if (response.ok) {
 			return release.tag_name
 		}
 	} catch (e) {
 		console.error(e)
 	}
+	return null
 }
 
 /**
  * Check if there is a new Nextcloud Talk
  *
- * @param {object} options options
- * @param {boolean} [options.forceRequest] Force request even if there is a cached new version
- * @return {Promise<boolean>} true if there is a new version
+ * @param options - options
+ * @param options.forceRequest - Force request even if there is a cached new version
+ * @return true if there is a new version
  */
-async function checkForNewVersion({ forceRequest = false }) {
+async function checkForNewVersion({ forceRequest = false }: { forceRequest?: boolean }): Promise<boolean> {
 	const latest = (!forceRequest && cachedNewLatestVersion) ? cachedNewLatestVersion : await getLatestReleaseVersion(__CHANNEL__ === 'beta')
 
 	// Something goes wrong... No worries, we will try again later.
@@ -86,7 +86,7 @@ async function checkForNewVersion({ forceRequest = false }) {
 	}
 
 	// No new version compared to the running one
-	if (semver.lte(latest, packageJson.version)) {
+	if (semver.lte(latest, version)) {
 		return false
 	}
 
@@ -101,16 +101,14 @@ async function checkForNewVersion({ forceRequest = false }) {
 	return true
 }
 
-/** @type {number} setInterval id of the scheduler */
-let schedulerIntervalId
+let schedulerIntervalId: NodeJS.Timeout | undefined
 
 /**
  * Start scheduler with regular update checks
  *
- * @param {number} [intervalInMin] Checking an interval in minutes
- * @return {void}
+ * @param intervalInMin - Checking interval in minutes
  */
-function setupReleaseNotificationScheduler(intervalInMin = 60) {
+export function setupReleaseNotificationScheduler(intervalInMin: number = 60) {
 	// Before run the scheduler - check and stop running scheduler
 	if (schedulerIntervalId !== undefined) {
 		stopReleaseNotificationScheduler()
@@ -124,8 +122,6 @@ function setupReleaseNotificationScheduler(intervalInMin = 60) {
 
 /**
  * Stop the scheduler if any
- *
- * @return {void}
  */
 function stopReleaseNotificationScheduler() {
 	if (schedulerIntervalId !== undefined) {
@@ -137,7 +133,7 @@ function stopReleaseNotificationScheduler() {
 /**
  * Register IPC handlers used by renderers
  */
-function registerUpdateIpcHandlers() {
+export function registerUpdateIpcHandlers() {
 	ipcMain.handle('github-release:check', async () => {
 		try {
 			const result = await checkForNewVersion({ })
@@ -147,9 +143,4 @@ function registerUpdateIpcHandlers() {
 			return { available: false }
 		}
 	})
-}
-
-module.exports = {
-	setupReleaseNotificationScheduler,
-	registerUpdateIpcHandlers,
 }

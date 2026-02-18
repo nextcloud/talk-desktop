@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { BrowserWindow, ipcMain } from 'electron'
+import { BrowserWindow } from 'electron'
 import semver from 'semver'
 import { version } from '../../package.json'
 
@@ -77,7 +77,7 @@ async function getLatestStableReleaseVersion(): Promise<string | null> {
  * @param options.forceRequest - Force request even if there is a cached new version
  * @return true if there is a new version
  */
-async function checkForNewVersion({ forceRequest = false }: { forceRequest?: boolean }): Promise<boolean> {
+export async function checkForUpdate({ forceRequest = false }: { forceRequest?: boolean }): Promise<boolean> {
 	const latest = (!forceRequest && cachedNewLatestVersion) ? cachedNewLatestVersion : await getLatestReleaseVersion(__CHANNEL__ === 'beta')
 
 	// Something goes wrong... No worries, we will try again later.
@@ -95,7 +95,7 @@ async function checkForNewVersion({ forceRequest = false }: { forceRequest?: boo
 
 	// Send an IPC message to all renderer windows so UI can update
 	BrowserWindow.getAllWindows().forEach((window) => {
-		window.webContents.send('github-release:new-version')
+		window.webContents.send('app:update:available')
 	})
 
 	return true
@@ -113,10 +113,10 @@ export function setupReleaseNotificationScheduler(intervalInMin: number = 60) {
 	if (schedulerIntervalId !== undefined) {
 		stopReleaseNotificationScheduler()
 	}
-	checkForNewVersion({ })
+	checkForUpdate({ })
 	const MS_IN_MIN = 60 * 1000
 	schedulerIntervalId = setInterval(() => {
-		checkForNewVersion({ })
+		checkForUpdate({ })
 	}, intervalInMin * MS_IN_MIN)
 }
 
@@ -128,19 +128,4 @@ function stopReleaseNotificationScheduler() {
 		clearInterval(schedulerIntervalId)
 		schedulerIntervalId = undefined
 	}
-}
-
-/**
- * Register IPC handlers used by renderers
- */
-export function registerUpdateIpcHandlers() {
-	ipcMain.handle('github-release:check', async () => {
-		try {
-			const result = await checkForNewVersion({ })
-			return { available: !!result }
-		} catch (e) {
-			console.error('github-release:check handler failed', e)
-			return { available: false }
-		}
-	})
 }

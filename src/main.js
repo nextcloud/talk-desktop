@@ -13,7 +13,7 @@ const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
 const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
-const { setupReleaseNotificationScheduler, registerUpdateIpcHandlers } = require('./app/githubRelease.service.ts')
+const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/githubRelease.service.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
 const { systemInfo, isLinux, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
@@ -97,6 +97,7 @@ ipcMain.on('app:grantUserGesturedPermission', (event, id) => {
 ipcMain.on('app:toggleDevTools', (event) => event.sender.toggleDevTools())
 ipcMain.handle('app:anything', () => { /* Put any code here to run it from UI */ })
 ipcMain.on('app:openChromeWebRtcInternals', () => openChromeWebRtcInternals())
+ipcMain.handle('app:update:check', async () => await checkForUpdate({ forceRequest: true }))
 ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	// macOS 10.15 Catalina or higher requires consent for screen access
 	if (isMac && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
@@ -139,7 +140,6 @@ app.whenReady().then(async () => {
 	applyTheme()
 	initLaunchAtStartupListener()
 	registerAppProtocolHandler()
-	registerUpdateIpcHandlers()
 
 	/**
 	 * Schedule check for a new version available to download from GitHub

@@ -35,7 +35,7 @@ const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_bl
 
 const updateAvailable = ref(false)
 
-const unsubscribeNewVersion = window.TALK_DESKTOP.onNewVersion(() => {
+const unsubscribeNewVersion = window.TALK_DESKTOP.onUpdateAvailable(() => {
 	updateAvailable.value = true
 })
 

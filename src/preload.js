@@ -187,21 +187,21 @@ const TALK_DESKTOP = {
 	 */
 	showHelp: () => ipcRenderer.invoke('help:show'),
 	/**
-	 * Check for a new GitHub release and receive info
+	 * Check for a new release
 	 *
-	 * @return {Promise<{available:boolean,tag:string|null,url:string|null}>}
+	 * @return {Promise<{ available:boolean }>}
 	 */
-	checkForUpdate: () => ipcRenderer.invoke('github-release:check'),
+	checkForUpdate: () => ipcRenderer.invoke('app:update:check'),
 	/**
-	 * Listen for push notifications about new releases
+	 * Listen for new release availability event
 	 *
 	 * @param {() => void} callback - Callback
 	 * @return {() => void} unsubscribe
 	 */
-	onNewVersion: (callback) => {
+	onUpdateAvailable: (callback) => {
 		const handler = () => callback()
-		ipcRenderer.on('github-release:new-version', handler)
-		return () => ipcRenderer.removeListener('github-release:new-version', handler)
+		ipcRenderer.on('app:update:available', handler)
+		return () => ipcRenderer.removeListener('app:update:available', handler)
 	},
 	/**
 	 * Show the upgrade window

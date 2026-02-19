@@ -152,9 +152,10 @@ const TALK_DESKTOP = {
 	 * Open a web-view modal window with Nextcloud Server login page
 	 *
 	 * @param {string} server - Server URL
+	 * @param {string} [user] - Preset User ID
 	 * @return {Promise<import('./accounts/login.service.js').Credentials|Error>}
 	 */
-	openLoginWebView: (server) => ipcRenderer.invoke('authentication:openLoginWebView', server),
+	openLoginWebView: (server, user) => ipcRenderer.invoke('authentication:openLoginWebView', server, user),
 	/**
 	 * Open main window after logging in
 	 *

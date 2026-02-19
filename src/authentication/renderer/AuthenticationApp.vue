@@ -14,14 +14,24 @@ import AppWindow from '../../shared/components/AppWindow.vue'
 import { appData } from '../../app/AppData.js'
 import { refetchAppData } from '../../app/appData.service.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
+import { getAppConfigValue, setAppConfigValue } from '../../shared/appConfig.service.ts'
 import { BUILD_CONFIG } from '../../shared/build.config.ts'
 import { getCapabilities } from '../../shared/ocs.service.js'
 
 const channel = __CHANNEL__
-
 const version = __VERSION_TAG__
-const rawServerUrl = ref(BUILD_CONFIG.domain ?? '')
+
+// Pre-fill server url and the user with the last used one
+const prefilledAccount = getAppConfigValue('accounts')?.[0] ?? ''
+const atIndex = prefilledAccount.lastIndexOf('@')
+let [prefilledServer, prefilledUser] = atIndex === -1
+	? [prefilledAccount, '']
+	: [prefilledAccount.slice(atIndex + 1), prefilledAccount.slice(0, atIndex)]
+
+const rawServerUrl = ref(BUILD_CONFIG.domain ?? prefilledServer)
 const enforceDomain = Boolean(BUILD_CONFIG.domain && BUILD_CONFIG.enforceDomain)
+
+const allowReset = computed(() => !!(rawServerUrl.value && !enforceDomain))
 
 const serverUrl = computed(() => {
 	const addHTTPS = (url) => url.startsWith('http') ? url : `https://${url}`
@@ -64,6 +74,18 @@ function setLoading() {
 function setError(error) {
 	state.value = 'error'
 	stateText.value = error
+}
+
+/**
+ * Reset current server url and last used accounts
+ */
+function reset() {
+	rawServerUrl.value = ''
+	state.value = 'idle'
+	stateText.value = ''
+	prefilledServer = ''
+	prefilledUser = ''
+	setAppConfigValue('accounts', [])
 }
 
 /**
@@ -126,7 +148,7 @@ async function login() {
 	// Login with web view
 	let credentials
 	try {
-		const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(serverUrl.value)
+		const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(serverUrl.value, prefilledUser)
 		if (maybeCredentials instanceof Error) {
 			return setError(maybeCredentials.message)
 		}
@@ -152,6 +174,11 @@ async function login() {
 
 	// Yay!
 	appData.persist()
+
+	const userid = credentials.user
+	const serverUrlWithoutProtocol = serverUrl.value.replace(/^https?:\/\//, '')
+	setAppConfigValue('accounts', [`${userid}@${serverUrlWithoutProtocol}`])
+
 	setSuccess()
 	await window.TALK_DESKTOP.login(appData.toJSON())
 }
@@ -179,7 +206,10 @@ async function login() {
 						:readonly="enforceDomain"
 						:success="state === 'success'"
 						:error="state === 'error'"
-						:helper-text="stateText" />
+						:helper-text="stateText"
+						trailing-button-icon="close"
+						:show-trailing-button="allowReset"
+						@trailing-button-click="reset" />
 					<NcButton
 						v-if="state !== 'loading'"
 						class="submit-button"

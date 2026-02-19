@@ -44,3 +44,17 @@ export function getAppConfigValue<K extends AppConfigKey>(key: K) {
 
 	return appConfig[key]
 }
+
+/**
+ * Set an application config value
+ *
+ * @param key - The key of the config value
+ * @param value - The value to set
+ */
+export function setAppConfigValue<K extends AppConfigKey>(key: K, value?: AppConfig[K]) {
+	if (!appConfig) {
+		throw new Error('AppConfig is not initialized')
+	}
+
+	window.TALK_DESKTOP.setAppConfig(key, value)
+}

@@ -18,6 +18,15 @@ export const platform = (process.platform === 'win32' && 'win32')
 	|| 'linux'
 
 /**
+ * User-friendly platform title
+ */
+export const platformTitle = {
+	win32: 'Windows',
+	darwin: 'macOS',
+	linux: 'Linux',
+}[platform]
+
+/**
  * A string representing OS version
  *
  * @example "Linux 5.15.0-53-generic (#59-Ubuntu SMP Mon Oct 17 18:53:30 UTC 2022)"
@@ -90,6 +99,19 @@ export const systemInfo = {
 	platform,
 	execPath: process.execPath,
 }
+
+/**
+ * Extension of the installer likely used for the current installation.
+ * Currently it can be determined easily by the platform and some flags, but:
+ * - It may not work with custom installers, e.g., community-supported on Linux
+ * - It may not work in the future when we have the same installer for different platforms, for example, zip on all platforms
+ * TODO: Find a more reliable way to determine the installer type
+ */
+export const currentInstallerExt = isLinux
+	? (isFlatpak ? 'flatpak' : 'zip')
+	: isWindows
+		? (isSquirrel ? 'exe' : 'msi')
+		: 'dmg' // isMac
 
 /**
  * Check whether application execution is the same as the current by the execution path

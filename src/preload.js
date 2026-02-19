@@ -189,17 +189,17 @@ const TALK_DESKTOP = {
 	/**
 	 * Check for a new release
 	 *
-	 * @return {Promise<{ available:boolean }>}
+	 * @return {Promise<import('./githubRelease.service.ts').ReleaseInfo | null>}
 	 */
 	checkForUpdate: () => ipcRenderer.invoke('app:update:check'),
 	/**
 	 * Listen for new release availability event
 	 *
-	 * @param {() => void} callback - Callback
+	 * @param {(releaseInfo: import('./githubRelease.service.ts').ReleaseInfo) => void} callback - Callback
 	 * @return {() => void} unsubscribe
 	 */
 	onUpdateAvailable: (callback) => {
-		const handler = () => callback()
+		const handler = (event, releaseInfo) => callback(releaseInfo)
 		ipcRenderer.on('app:update:available', handler)
 		return () => ipcRenderer.removeListener('app:update:available', handler)
 	},

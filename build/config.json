@@ -3,6 +3,7 @@
 	"domain": null,
 	"enforceDomain": false,
 	"brandColor": "#0082C9",
+	"brandGradient": "linear-gradient(40deg, #0082c9 0%, #1cafff 100%)",
 	"brandFontColor": "#FFFFFF",
 	"helpUrl": "https://nextcloud.com/talk/",
 	"privacyUrl": "https://nextcloud.com/privacy/",

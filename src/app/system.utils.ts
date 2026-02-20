@@ -4,6 +4,7 @@
  */
 
 import { app } from 'electron'
+import { existsSync } from 'node:fs'
 import { rm } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
@@ -15,6 +16,15 @@ import { BUILD_CONFIG } from '../shared/build.config.ts'
 export const platform = (process.platform === 'win32' && 'win32')
 	|| (process.platform === 'darwin' && 'darwin')
 	|| 'linux'
+
+/**
+ * User-friendly platform title
+ */
+export const platformTitle = {
+	win32: 'Windows',
+	darwin: 'macOS',
+	linux: 'Linux',
+}[platform]
 
 /**
  * A string representing OS version
@@ -64,6 +74,12 @@ export const isWayland = !!process.env.WAYLAND_DISPLAY
 export const isFlatpak = process.env.FLATPAK_ID === BUILD_CONFIG.linuxAppId
 
 /**
+ * Is the app installed via Squirrel.Windows installer (not MSI installer)?
+ * Checked in a hacky way by looking for "Update.exe"
+ */
+export const isSquirrel = isWindows && existsSync(path.join(path.dirname(app.getPath('exe')), '../Update.exe'))
+
+/**
  * Is the app running inside any supported Linux sandbox
  */
 export const isSandboxed = isFlatpak
@@ -77,11 +93,25 @@ export const systemInfo = {
 	isWindows,
 	isWayland,
 	isFlatpak,
+	isSquirrel,
 	isSandboxed,
 	osVersion,
 	platform,
 	execPath: process.execPath,
 }
+
+/**
+ * Extension of the installer likely used for the current installation.
+ * Currently it can be determined easily by the platform and some flags, but:
+ * - It may not work with custom installers, e.g., community-supported on Linux
+ * - It may not work in the future when we have the same installer for different platforms, for example, zip on all platforms
+ * TODO: Find a more reliable way to determine the installer type
+ */
+export const currentInstallerExt = isLinux
+	? (isFlatpak ? 'flatpak' : 'zip')
+	: isWindows
+		? (isSquirrel ? 'exe' : 'msi')
+		: 'dmg' // isMac
 
 /**
  * Check whether application execution is the same as the current by the execution path

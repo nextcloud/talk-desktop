@@ -5,10 +5,11 @@
 
 <script setup lang="ts">
 import type { Ref } from 'vue'
+import type { ReleaseInfo } from '../../../../app/githubRelease.service.ts'
 
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
-import { inject, onBeforeUnmount, ref } from 'vue'
+import { inject, onBeforeMount, onBeforeUnmount, ref } from 'vue'
 import NcActionButton from '@nextcloud/vue/components/NcActionButton'
 import NcActionLink from '@nextcloud/vue/components/NcActionLink'
 import NcActions from '@nextcloud/vue/components/NcActions'
@@ -33,17 +34,17 @@ const reload = () => window.location.reload()
 const openSettings = () => window.OCA.Talk.Settings.open()
 const openInWeb = () => window.open(generateUrl(getCurrentTalkRoutePath()), '_blank')
 
-const updateAvailable = ref(false)
-
-const unsubscribeNewVersion = window.TALK_DESKTOP.onNewVersion(() => {
-	updateAvailable.value = true
+const newRelease = ref<ReleaseInfo | null>(null)
+onBeforeMount(async () => {
+	newRelease.value = await window.TALK_DESKTOP.checkForUpdate()
 })
 
+const unsubscribeNewVersion = window.TALK_DESKTOP.onUpdateAvailable((release: ReleaseInfo) => {
+	newRelease.value = release
+})
 onBeforeUnmount(() => {
 	unsubscribeNewVersion()
 })
-
-window.TALK_DESKTOP.checkForUpdate()
 </script>
 
 <template>
@@ -52,14 +53,17 @@ window.TALK_DESKTOP.checkForUpdate()
 		variant="tertiary-no-background"
 		container="body">
 		<template #icon>
-			<UiDotBadge inset-inline-end="10%" :enabled="updateAvailable">
+			<UiDotBadge inset-inline-end="10%" :enabled="!!newRelease">
 				<IconMenu :size="20" fill-color="var(--color-background-plain-text)" />
 			</UiDotBadge>
 		</template>
 
-		<template v-if="updateAvailable">
+		<template v-if="newRelease">
+			<!-- Installer may not be available if the current installer type is not supported anymore in a new version -->
+			<!-- Fallback to the release page link -->
 			<NcActionLink
-				href="https://github.com/nextcloud/talk-desktop/releases/latest"
+				:href="newRelease.installer?.downloadUrl || newRelease.url"
+				:download="newRelease.installer?.filename || undefined"
 				target="_blank"
 				close-after-click>
 				<template #icon>

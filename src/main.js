@@ -5,7 +5,6 @@
 
 const { app, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
 const { spawn } = require('node:child_process')
-const fs = require('node:fs')
 const path = require('node:path')
 const { setupMenu } = require('./app/app.menu.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
@@ -14,10 +13,10 @@ const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
 const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
 const { triggerDownloadUrl } = require('./app/downloads.ts')
-const { setupReleaseNotificationScheduler, registerUpdateIpcHandlers } = require('./app/githubReleaseNotification.service.js')
+const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/githubRelease.service.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
-const { systemInfo, isLinux, isMac, isWindows, isSameExecution, relaunchApp } = require('./app/system.utils.ts')
+const { systemInfo, isLinux, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { buildTitle } = require('./app/utils.ts')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -55,9 +54,6 @@ const APP_NAME = process.env.NODE_ENV !== 'development' ? path.parse(app.getPath
 app.setName(APP_NAME)
 app.setPath('userData', path.join(app.getPath('appData'), app.getName()))
 if (isWindows && process.env.NODE_ENV === 'production') {
-	// Hacky way to detect whether the app is installed via Squirrel.Windows or MSI installer
-	const updateExePath = path.join(path.dirname(app.getPath('exe')), '../Update.exe')
-	const isSquirrel = fs.existsSync(updateExePath)
 	if (isSquirrel) {
 		// Squirrel.Windows sets the AppUserModelId in the following way
 		app.setAppUserModelId(`com.squirrel.${BUILD_CONFIG.applicationNameSanitized}.${BUILD_CONFIG.applicationNameSanitized}`)
@@ -101,6 +97,7 @@ ipcMain.on('app:grantUserGesturedPermission', (event, id) => {
 ipcMain.on('app:toggleDevTools', (event) => event.sender.toggleDevTools())
 ipcMain.handle('app:anything', () => { /* Put any code here to run it from UI */ })
 ipcMain.on('app:openChromeWebRtcInternals', () => openChromeWebRtcInternals())
+ipcMain.handle('app:update:check', async () => await checkForUpdate({ forceRequest: true }))
 ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	// macOS 10.15 Catalina or higher requires consent for screen access
 	if (isMac && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
@@ -143,7 +140,6 @@ app.whenReady().then(async () => {
 	applyTheme()
 	initLaunchAtStartupListener()
 	registerAppProtocolHandler()
-	registerUpdateIpcHandlers()
 
 	/**
 	 * Schedule check for a new version available to download from GitHub

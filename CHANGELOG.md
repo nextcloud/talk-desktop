@@ -5,6 +5,21 @@
 
 # Changelog
 
+## v2.1.1 - 2026-02-20
+
+### Features
+
+- Prefill Server URl and user with the last used account during login [#1664](https://github.com/nextcloud/talk-desktop/pull/1664)
+- Add CLI command `./Nextcloud\ Talk config --accounts=nextcloud.domain.tld` to preset the account [#1667](https://github.com/nextcloud/talk-desktop/pull/1667)
+- Notify about the new version update availability in the main menu [#1592](https://github.com/nextcloud/talk-desktop/pull/1592), [#1663](https://github.com/nextcloud/talk-desktop/pull/1663)
+- Download the correct installer on "Update" click instead of opening the GitHub release page [#1666](https://github.com/nextcloud/talk-desktop/pull/1666)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v23.0.1 in both beta and stable release channels [#1665](https://github.com/nextcloud/talk-desktop/pull/1665)
+- Linux/Flatpak: Upgrade Flatpak runtime and SDK to v25.08 [#1599](https://github.com/nextcloud/talk-desktop/pull/1599)
+- Add `brandGradient` build config for the welcome screen [#1662](https://github.com/nextcloud/talk-desktop/pull/1662)
+
 ## v2.1.0-beta - 2026-01-29
 
 ### Changes

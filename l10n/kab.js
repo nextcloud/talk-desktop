@@ -10,6 +10,7 @@ OC.L10N.register(
     "Proceed" : "Kemmel",
     "Cancel" : "Cancel",
     "Copy" : "Nɣel",
+    "Copied" : "Yettwanɣel",
     "About" : "Γef",
     "License" : "Licence",
     "Done" : "Immed",

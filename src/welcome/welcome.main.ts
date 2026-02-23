@@ -1,4 +1,4 @@
-/**
+/*!
  * SPDX-FileCopyrightText: 2023 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
@@ -11,19 +11,19 @@ import { applyAxiosInterceptors } from '../shared/setupWebPage.js'
 
 import '@global-styles/dist/icons.css'
 
-const quitButton = document.querySelector('.quit')
+const quitButton = document.querySelector<HTMLButtonElement>('.quit')!
 quitButton.addEventListener('click', () => window.TALK_DESKTOP.quit())
 
 if (__CHANNEL__ !== 'stable') {
-	document.querySelector('.footer').textContent = __VERSION_TAG__
+	document.querySelector<HTMLDivElement>('.footer')!.textContent = __VERSION_TAG__
 }
 
-window.TALK_DESKTOP.getSystemInfo().then((os) => {
-	quitButton.classList.remove('hidden')
-	if (os.isMac) {
-		quitButton.classList.add('quit_mac')
-	}
-})
+window.TALK_DESKTOP.systemInfo = await window.TALK_DESKTOP.getSystemInfo() as { isMac: boolean }
+
+quitButton.classList.remove('hidden')
+if (window.TALK_DESKTOP.systemInfo.isMac) {
+	quitButton.classList.add('quit_mac')
+}
 
 appData.restore()
 
@@ -37,7 +37,8 @@ if (appData.credentials) {
 	// TODO: replace with a proper migration when the migration system supports it
 	await initAppConfig()
 	const accounts = getAppConfigValue('accounts')
-	if (!accounts.length) {
+	if (!accounts?.length) {
+		// @ts-expect-error - appData is not typed yet
 		await setAppConfigValue('accounts', [`${appData.credentials.user}@${appData.serverUrl.replace(/^https?:\/\//, '')}`])
 	}
 }

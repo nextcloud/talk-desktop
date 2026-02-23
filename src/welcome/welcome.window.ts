@@ -1,19 +1,19 @@
-/**
+/*!
  * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow } = require('electron')
-const { getAppConfig } = require('../app/AppConfig.ts')
-const { isMac } = require('../app/system.utils.ts')
-const { getScaledWindowSize, applyZoom, getWindowUrl } = require('../app/utils.ts')
-const { BUILD_CONFIG } = require('../shared/build.config.ts')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+import { BrowserWindow } from 'electron'
+import { getAppConfig } from '../app/AppConfig.ts'
+import { isMac } from '../app/system.utils.ts'
+import { applyZoom, getScaledWindowSize, getWindowUrl } from '../app/utils.ts'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 
 /**
- * @return {import('electron').BrowserWindow}
+ * Creates the welcome window
  */
-function createWelcomeWindow() {
+export function createWelcomeWindow() {
 	const zoomFactor = getAppConfig('zoomFactor')
 	const window = new BrowserWindow({
 		...getScaledWindowSize({
@@ -45,8 +45,4 @@ function createWelcomeWindow() {
 	window.loadURL(getWindowUrl('welcome'))
 
 	return window
-}
-
-module.exports = {
-	createWelcomeWindow,
 }

@@ -30,7 +30,7 @@ const { installVueDevtools } = require('./install-vue-devtools.js')
 const { BUILD_CONFIG } = require('./shared/build.config.ts')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.ts')
-const { createWelcomeWindow } = require('./welcome/welcome.window.js')
+const { createWelcomeWindow } = require('./welcome/welcome.window.ts')
 
 const argv = mri(process.argv.slice(app.isPackaged ? 1 : 2))
 

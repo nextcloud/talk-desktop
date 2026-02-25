@@ -19,7 +19,6 @@ const packageInfo = {
  * @global
  */
 const TALK_DESKTOP = {
-	process,
 	/**
 	 * Subset of package.json meta-data
 	 *

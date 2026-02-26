@@ -438,7 +438,7 @@ module.exports = {
 						{
 							name: 'talk_desktop__window_welcome',
 							html: './src/welcome/welcome.html',
-							js: './src/welcome/welcome.js',
+							js: './src/welcome/welcome.main.ts',
 							preload: {
 								js: './src/preload.js',
 							},

@@ -18,10 +18,10 @@ if (__CHANNEL__ !== 'stable') {
 	document.querySelector<HTMLDivElement>('.footer')!.textContent = __VERSION_TAG__
 }
 
-window.TALK_DESKTOP.systemInfo = await window.TALK_DESKTOP.getSystemInfo() as { isMac: boolean }
+window.systemInfo = await window.TALK_DESKTOP.getSystemInfo()
 
 quitButton.classList.remove('hidden')
-if (window.TALK_DESKTOP.systemInfo.isMac) {
+if (window.systemInfo.isMac) {
 	quitButton.classList.add('quit_mac')
 }
 

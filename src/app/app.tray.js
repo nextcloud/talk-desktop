@@ -35,7 +35,7 @@ function setupTray(browserWindow) {
 			role: 'quit',
 		},
 	]))
-	tray.on('click', () => browserWindow.show())
+	tray.on('click', () => browserWindow.isFocused() ? browserWindow.close() : browserWindow.show())
 
 	browserWindow.on('close', (event) => {
 		if (!isAppQuitting) {

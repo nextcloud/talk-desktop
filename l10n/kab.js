@@ -31,6 +31,7 @@ OC.L10N.register(
     "Online" : "D uqqin",
     "Away" : "Akin",
     "Busy" : "Ur yestuf ara",
+    "Do not disturb" : "Ur ttcewwil ara",
     "Invisible" : "Ur d-ittban ara",
     "Offline" : "D aruqqin"
 },

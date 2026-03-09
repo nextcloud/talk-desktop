@@ -88,7 +88,7 @@
     "electron": "38.1.2",
     "esbuild-loader": "^4.4.2",
     "eslint": "^9.39.1",
-    "globals": "^17.0.0",
+    "globals": "^17.4.0",
     "icon-gen": "^5.0.0",
     "mini-css-extract-plugin": "^2.9.4",
     "node-loader": "^2.1.0",

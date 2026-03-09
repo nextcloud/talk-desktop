@@ -97,7 +97,7 @@
     "sass-loader": "^16.0.7",
     "typescript": "^5.9.3",
     "vue-loader": "^17.4.2",
-    "vue-tsc": "^3.2.2",
+    "vue-tsc": "^3.2.5",
     "webpack": "^5.104.1",
     "webpack-merge": "^6.0.1",
     "worker-loader": "^3.0.8",

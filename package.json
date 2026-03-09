@@ -59,7 +59,7 @@
     "@nextcloud/router": "^3.1.0",
     "@nextcloud/vue": "^9.3.3",
     "@vueuse/core": "^14.2.1",
-    "core-js": "^3.47.0",
+    "core-js": "^3.48.0",
     "electron-squirrel-startup": "^1.0.1",
     "howler": "^2.2.4",
     "mri": "^1.2.0",

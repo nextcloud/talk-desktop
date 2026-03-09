@@ -66,7 +66,7 @@
     "pinia": "^3.0.4",
     "semver": "^7.7.4",
     "unzip-crx-3": "^0.2.0",
-    "vue": "^3.5.27",
+    "vue": "^3.5.30",
     "vue-material-design-icons": "^5.3.1"
   },
   "devDependencies": {

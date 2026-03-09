@@ -82,7 +82,7 @@
     "@types/howler": "^2.2.12",
     "@vercel/webpack-asset-relocator-loader": "^1.10.0",
     "@vue/tsconfig": "^0.9.0",
-    "cheerio": "^1.1.2",
+    "cheerio": "^1.2.0",
     "css-loader": "^7.1.2",
     "dotenv": "^17.2.3",
     "electron": "38.1.2",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Authentication" : "Overitev",
     "Server address" : "Naslov strežnika",
     "Log in" : "Prijava",
+    "Logging in …" : "Prijavljanje ...",
     "Incoming call" : "Dohodni klic",
     "Close" : "Zapri",
     "Dismiss" : "Prekliči",

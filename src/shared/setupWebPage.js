@@ -137,28 +137,24 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 		}).reduce((acc, { app, key, value }) => ((acc[app] ??= {})[key] = value, acc), {})
 	*/
 
-	// TODO: make sure all use initial state is covered and there is no MISSED values
-	// TODO: when possible, migrate Initial State to capabilities
 	return {
 		spreed: {
 			call_enabled: capabilities?.spreed?.config?.call?.enabled,
-			signaling_mode: 'external', // MISSED
-			sip_dialin_info: '', // MISSED
-			grid_videos_limit: 19, // MISSED
-			grid_videos_limit_enforced: false, // MISSED
+			signaling_mode: capabilities?.spreed?.config?.signaling?.mode ?? 'external',
+			grid_videos_limit: capabilities?.spreed?.config?.call?.['grid-limit'] ?? 19,
+			grid_videos_limit_enforced: capabilities?.spreed?.config?.call?.['grid-limit-enforced'] ?? false,
 			federation_enabled: capabilities?.spreed?.config?.federation?.enabled,
-			// default_permissions - MISSED (!)
+			default_permissions: capabilities?.spreed?.config?.permissions?.default ?? 502, // Attendee::PERMISSIONS_MAX_DEFAULT & ~Attendee::PERMISSIONS_LOBBY_IGNORE
 			start_conversations: capabilities?.spreed?.config?.conversations?.['can-create'],
 			circles_enabled: capabilities?.circles !== undefined,
-			guests_accounts_enabled: true, // MISSED
+			guests_accounts_enabled: !!capabilities?.guests,
 			read_status_privacy: capabilities?.spreed?.config?.chat?.['read-privacy'],
 			typing_privacy: capabilities?.spreed?.config?.chat?.['typing-privacy'],
-			play_sounds: true, // MISSED
-			force_enable_blur_filter: 'yes', // Unused
+			play_sounds: capabilities?.spreed?.config?.call?.['play-sounds'] ?? true,
 			user_group_ids: userMetadata?.groups,
 			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
 			attachment_folder_free_space: userMetadata?.quota?.free ?? 0,
-			enable_matterbridge: false, // MISSED
+			enable_matterbridge: capabilities?.spreed?.config?.chat?.['matterbridge-enabled'] ?? false,
 		},
 		core: {
 			// reference-provider-list - MISSED

@@ -19,6 +19,8 @@ OC.L10N.register(
     "Issues" : "Vandamál",
     "Done" : "Lokið",
     "Ok" : "Í lagi",
+    "No" : "Nei",
+    "Yes" : "Já",
     "Never" : "Aldrei",
     "Appearance" : "Útlit",
     "Reload" : "Endurlesa",

@@ -12,7 +12,7 @@ OC.L10N.register(
     "Unexpected error" : "Нечаканая памылка",
     "Login was successful but something went wrong." : "Уваход быў паспяховым, але нешта пайшло не так.",
     "Authentication" : "Аўтэнтыфікацыя",
-    "Log in to {applicationName}" : "Увайсці ў {applicationName}",
+    "Log in to {applicationName}" : "Уваход у {applicationName}",
     "Server address" : "Адрас сервера",
     "Log in" : "Увайсці",
     "Logging in …" : "Уваход …",

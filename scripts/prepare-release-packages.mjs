@@ -85,13 +85,13 @@ async function prepareRelease() {
 		}
 		echo`[3.2/5] Fetching Talk ${TALK_VERSION} from origin`
 		await spinner(
-			`Fetching Talk ${TALK_VERSION} from origin`,
-			() => gitSpreed(['fetch', '--no-tags', '--depth=1', 'origin', 'tag', TALK_VERSION]),
+			`Fetching Talk@${TALK_VERSION} from origin`,
+			() => gitSpreed(['fetch', '--no-tags', '--depth=1', 'origin', TALK_VERSION]),
 		)
-		echo`[3.3/5] Checkout Talk ${TALK_VERSION}`
+		echo`[3.3/5] Checkout Talk@${TALK_VERSION}`
 		await spinner(
-			`Checkout Talk ${TALK_VERSION}`,
-			() => gitSpreed(['checkout', TALK_VERSION]),
+			`Checkout Talk@${TALK_VERSION}`,
+			() => gitSpreed(['checkout', 'FETCH_HEAD']),
 		)
 	} else {
 		echo`- No Talk has been found in ${TALK_PATH}`

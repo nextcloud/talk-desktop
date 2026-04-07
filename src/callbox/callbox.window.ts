@@ -6,7 +6,7 @@
 import { BrowserWindow, screen } from 'electron'
 import { getAppConfig } from '../app/AppConfig.ts'
 import { isMac, isWindows } from '../app/system.utils.ts'
-import { applyZoom, getScaledWindowSize, getWindowUrl } from '../app/utils.ts'
+import { applyZoom, getScaledWindowSize, getWindowUrl, onReadyToShow } from '../app/utils.ts'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 
@@ -70,7 +70,7 @@ export function createCallboxWindow(params: CallboxParams) {
 
 	window.loadURL(getWindowUrl('callbox') + '?' + new URLSearchParams(params))
 
-	window.once('ready-to-show', () => window.showInactive())
+	onReadyToShow(window, () => window.showInactive())
 
 	return window
 }

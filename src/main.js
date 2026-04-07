@@ -20,7 +20,7 @@ const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts
 const { runMigrations } = require('./app/migration.service.ts')
 const { systemInfo, isLinux, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
-const { buildTitle } = require('./app/utils.ts')
+const { buildTitle, onReadyToShow } = require('./app/utils.ts')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
 const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
 const { openLoginWebView } = require('./authentication/login.window.js')
@@ -185,7 +185,7 @@ app.whenReady().then(async () => {
 		// There is no window (possible on macOS) - create
 		if (!mainWindow || mainWindow.isDestroyed()) {
 			mainWindow = createMainWindow()
-			mainWindow.once('ready-to-show', () => mainWindow.show())
+			onReadyToShow(mainWindow, () => mainWindow.show())
 			return
 		}
 
@@ -243,7 +243,7 @@ app.whenReady().then(async () => {
 
 	mainWindow = createWelcomeWindow()
 	createMainWindow = createWelcomeWindow
-	mainWindow.once('ready-to-show', () => mainWindow.show())
+	onReadyToShow(mainWindow, () => mainWindow.show())
 
 	ipcMain.once('appData:receive', async (event, newAppData) => {
 		appData.fromJSON(newAppData)
@@ -264,7 +264,7 @@ app.whenReady().then(async () => {
 			createMainWindow = createAuthenticationWindow
 		}
 
-		mainWindow.once('ready-to-show', () => {
+		onReadyToShow(mainWindow, () => {
 			// Do not show the main window if it is the Talk Window opened in the background
 			const isTalkWindow = createMainWindow === createTalkWindow
 			if (!isTalkWindow || !openInBackground) {
@@ -304,7 +304,7 @@ app.whenReady().then(async () => {
 		mainWindow.close()
 		mainWindow = createTalkWindow()
 		createMainWindow = createTalkWindow
-		mainWindow.once('ready-to-show', () => mainWindow.show())
+		onReadyToShow(mainWindow, () => mainWindow.show())
 	})
 
 	ipcMain.handle('authentication:logout', async () => {
@@ -314,7 +314,7 @@ app.whenReady().then(async () => {
 			app.setBadgeCount(0)
 			const authenticationWindow = createAuthenticationWindow()
 			createMainWindow = createAuthenticationWindow
-			authenticationWindow.once('ready-to-show', () => authenticationWindow.show())
+			onReadyToShow(authenticationWindow, () => authenticationWindow.show())
 
 			mainWindow.destroy()
 			mainWindow = authenticationWindow
@@ -341,7 +341,7 @@ app.whenReady().then(async () => {
 		isInWindowRelaunch = true
 		mainWindow.destroy()
 		mainWindow = createMainWindow()
-		mainWindow.once('ready-to-show', () => mainWindow.show())
+		onReadyToShow(mainWindow, () => mainWindow.show())
 		isInWindowRelaunch = false
 	})
 
@@ -359,7 +359,7 @@ app.whenReady().then(async () => {
 			// dock icon is clicked and there are no other windows open.
 			// See window-all-closed event handler.
 			mainWindow = createMainWindow()
-			mainWindow.once('ready-to-show', () => mainWindow.show())
+			onReadyToShow(mainWindow, () => mainWindow.show())
 		}
 	})
 })

@@ -10,6 +10,7 @@ import { APP_ORIGIN } from '../constants.js'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { getAppConfig } from './AppConfig.ts'
 import { appData } from './AppData.js'
+import { isWayland } from './system.utils.ts'
 
 /**
  * Get the scaled window size based on the current zoom factor
@@ -68,7 +69,7 @@ export function getScaledWindowMinSize({ minWidth, minHeight }: { minWidth: numb
  */
 export function applyZoom(window: BrowserWindow) {
 	const zoomFactor = getAppConfig('zoomFactor')
-	window.once('ready-to-show', () => {
+	onReadyToShow(window, () => {
 		window.webContents.setZoomFactor(zoomFactor)
 	})
 }
@@ -169,4 +170,25 @@ export function getTitleBarSymbolColor(backgroundColor: string = BUILD_CONFIG.ba
 	function invertTextColor(color: string): boolean {
 		return colorContrast(color, '#ffffff') < 4.5
 	}
+}
+
+/**
+ * Equivalent to 'ready-to-show' event, but with a workaround for Chromium + Wayland issue on some GPUs
+ *
+ * @param window - Browser window
+ * @param callback - Callback
+ */
+export function onReadyToShow(window: BrowserWindow, callback: () => void) {
+	if (!isWayland) {
+		window.once('ready-to-show', callback)
+		return
+	}
+
+	// 'ready-to-show' may not be triggered on Wayland due to GPU sync issues in Chromium on some GPUs and VMware
+	// A workaround: wait for the page load and then for a tick
+	// See: https://github.com/electron/electron/issues/48859
+	window.webContents.once('did-finish-load', async () => {
+		await window.webContents.executeJavaScript('new Promise((resolve) => setTimeout(resolve, 0))')
+		callback()
+	})
 }

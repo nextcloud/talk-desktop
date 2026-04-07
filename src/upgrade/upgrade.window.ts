@@ -6,7 +6,7 @@
 import { BrowserWindow } from 'electron'
 import { applyContextMenu } from '../app/applyContextMenu.js'
 import { applyExternalLinkHandler } from '../app/externalLinkHandlers.ts'
-import { applyZoom, buildTitle, getScaledWindowSize, getWindowUrl } from '../app/utils.ts'
+import { applyZoom, buildTitle, getScaledWindowSize, getWindowUrl, onReadyToShow } from '../app/utils.ts'
 import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 
 /**
@@ -39,9 +39,7 @@ export function createUpgradeWindow() {
 	applyExternalLinkHandler(window)
 	applyZoom(window)
 
-	window.on('ready-to-show', () => {
-		window.show()
-	})
+	onReadyToShow(window, () => window.show())
 
 	return window
 }

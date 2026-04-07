@@ -8,7 +8,7 @@ import type { UntrustedCertificateDetails } from '../app/certificate.service.ts'
 
 import { BrowserWindow, ipcMain } from 'electron'
 import { applyContextMenu } from '../app/applyContextMenu.js'
-import { applyZoom, buildTitle, getScaledWindowMinSize, getScaledWindowSize, getWindowUrl } from '../app/utils.ts'
+import { applyZoom, buildTitle, getScaledWindowMinSize, getScaledWindowSize, getWindowUrl, onReadyToShow } from '../app/utils.ts'
 import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 
 /**
@@ -46,7 +46,7 @@ export function showCertificateTrustDialog(parentWindow: BrowserWindow, details:
 	applyContextMenu(window)
 	applyZoom(window)
 	window.removeMenu()
-	window.on('ready-to-show', () => window.show())
+	onReadyToShow(window, () => window.show())
 
 	window.loadURL(getWindowUrl('certificate') + '#' + encodeURIComponent(JSON.stringify(details)))
 

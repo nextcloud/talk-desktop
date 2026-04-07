@@ -6,7 +6,7 @@
 const { BrowserWindow } = require('electron')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
-const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl } = require('../app/utils.ts')
+const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl, onReadyToShow } = require('../app/utils.ts')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
 
 /**
@@ -43,9 +43,7 @@ function createHelpWindow(parentWindow) {
 	applyContextMenu(window)
 	applyZoom(window)
 
-	window.on('ready-to-show', () => {
-		window.show()
-	})
+	onReadyToShow(window, () => window.show())
 
 	return window
 }

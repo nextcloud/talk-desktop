@@ -1,4 +1,4 @@
-/*
+/*!
  * SPDX-FileCopyrightText: 2024 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
@@ -6,7 +6,7 @@
 import { app, webContents } from 'electron'
 import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { isLinux, isMac } from './system.utils.ts'
+import { isWayland, isMac } from './system.utils.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
 
@@ -69,7 +69,8 @@ export type AppConfig = {
 	theme: 'default' | 'dark' | 'light'
 	/**
 	 * Whether to use a custom title bar or the system default.
-	 * Default: true on Linux, false otherwise.
+	 * Default: false.
+	 * Not available on Linux on Wayland
 	 */
 	systemTitleBar: boolean
 	/**
@@ -139,7 +140,7 @@ const defaultAppConfig: AppConfig = {
 	accounts: [],
 	launchAtStartup: false,
 	theme: 'default',
-	systemTitleBar: isLinux,
+	systemTitleBar: false,
 	monochromeTrayIcon: isMac,
 	zoomFactor: 1,
 	playSoundChat: 'respect-dnd',
@@ -149,6 +150,14 @@ const defaultAppConfig: AppConfig = {
 	secondarySpeakerDevice: null,
 	trustedFingerprints: [],
 }
+
+/**
+ * Forced App Config
+ */
+const forcedAppConfig: Partial<AppConfig> = Object.fromEntries(Object.entries({
+	// See: https://github.com/electron/electron/issues/49244
+	systemTitleBar: isWayland ? false : undefined
+}).filter(([, value]) => value !== undefined))
 
 /** Local cache of the config file mixed with the default values */
 const appConfig: Partial<AppConfig> = {}
@@ -213,7 +222,7 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
 		throw new Error('The application config is not initialized yet')
 	}
 
-	const config = { ...defaultAppConfig, ...appConfig }
+	const config = { ...defaultAppConfig, ...appConfig, ...forcedAppConfig }
 
 	if (key) {
 		return config[key]
@@ -238,7 +247,7 @@ export function setAppConfig<K extends AppConfigKey>(key: K, value?: AppConfig[K
 		appConfig[key] = value
 	} else {
 		delete appConfig[key]
-		value = defaultAppConfig[key]
+		value = getAppConfig(key)
 	}
 
 	for (const contents of webContents.getAllWebContents()) {

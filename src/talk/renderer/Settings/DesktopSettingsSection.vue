@@ -22,6 +22,7 @@ import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
 
 const isLinux = window.systemInfo.isLinux
+const isWayland = window.systemInfo.isWayland
 
 const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
@@ -73,7 +74,7 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 		<NcFormGroup :label="t('talk_desktop', 'Appearance')">
 			<NcFormBox>
 				<NcFormBoxSwitch v-model="monochromeTrayIcon" :label="t('talk_desktop', 'Use monochrome tray icon')" />
-				<NcFormBoxSwitch v-model="systemTitleBar" :label="t('talk_desktop', 'Use system title bar')" />
+				<NcFormBoxSwitch v-if="!isWayland" v-model="systemTitleBar" :label="t('talk_desktop', 'Use system title bar')" />
 			</NcFormBox>
 		</NcFormGroup>
 

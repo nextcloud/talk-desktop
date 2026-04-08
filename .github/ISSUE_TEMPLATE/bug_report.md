@@ -1,7 +1,8 @@
 ---
 name: 🐞 Bug report
 about: Help us to improve by reporting a bug
-labels: 0. Needs triage, bug
+labels: needs triage, bug
+type: Bug
 ---
 
 <!--- Please keep this note for other contributors -->

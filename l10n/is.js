@@ -23,6 +23,7 @@ OC.L10N.register(
     "Yes" : "Já",
     "Never" : "Aldrei",
     "Appearance" : "Útlit",
+    "Loading …" : "Hleð inn…",
     "Reload" : "Endurlesa",
     "Zoom" : "Aðdráttur",
     "Zoom out" : "Renna frá",

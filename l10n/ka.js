@@ -3,8 +3,10 @@ OC.L10N.register(
     {
     "Invalid server address" : "Invalid server address",
     "Authentication" : "Authentication",
+    "Log in to {applicationName}" : "{applicationName}-ზე შესვლა",
     "Server address" : "Server address",
     "Log in" : "Log in",
+    "Logging in …" : "შესვლა …",
     "Close" : "Close",
     "Dismiss" : "Dismiss",
     "Join call" : "Join call",

@@ -2,6 +2,7 @@
 name: 🚀 Feature request
 about: Suggest an idea for the Nextcloud Talk desktop client
 labels: needs triage, enhancement
+type: Enhancement
 ---
 
 <!--- Please keep this note for other contributors -->

@@ -1,7 +1,7 @@
 ---
 name: 🚀 Feature request
 about: Suggest an idea for the Nextcloud Talk desktop client
-labels: 0. Needs triage, enhancement
+labels: needs triage, enhancement
 ---
 
 <!--- Please keep this note for other contributors -->

@@ -431,6 +431,30 @@ module.exports = {
 					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.166:chrome/browser/ui/views/status_icons/status_icon_linux_dbus.cc;l=60
 					'--talk-name=org.kde.StatusNotifierWatcher',
 
+					// Idle Status (Web IdleDetector API, Electron powerMonitor)
+					// Electron uses Chromium API: https://github.com/electron/electron/blob/v41.2.0/shell/browser/api/electron_api_power_monitor.cc
+					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.166:ui/base/idle/idle_linux.cc;l=44-58
+					// And: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:ui/ozone/platform/wayland/host/org_gnome_mutter_idle_monitor.cc;l=27
+					'--talk-name=org.freedesktop.ScreenSaver',
+					'--talk-name=org.cinnamon.ScreenSaver',
+					'--talk-name=org.gnome.ScreenSaver',
+					'--talk-name=org.mate.ScreenSaver',
+					'--talk-name=org.xfce.ScreenSaver',
+					'--talk-name=org.gnome.Mutter.IdleMonitor',
+
+					// Web Screen Wake Lock API, Electron powerSaveBlocker
+					// Electron uses Chromium API: https://github.com/electron/electron/blob/v41.2.0/shell/browser/api/electron_api_power_save_blocker.cc#L14
+					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.166:services/device/wake_lock/power_save_blocker/power_save_blocker_linux.cc;l=62-72
+					'--talk-name=org.freedesktop.PowerManagement',
+					'--talk-name=org.gnome.SessionManager',
+
+					// In addition, Electron powerMonitor event listener uses power observer via system_bus
+					// We don't use these events, but some users reported errors missing this interface
+					// Might be used for Web IdleDetector's events (like locked) or Web Screen Wake Lock API (Inhibit) when other interfaces are not available
+					// Ref: https://github.com/nextcloud/talk-desktop/issues/1629
+					// Electron source: https://github.com/electron/electron/blob/v41.2.0/shell/browser/lib/power_observer_linux.cc
+					'--system-talk-name=org.freedesktop.login1',
+
 					// App badge counter (app.setBadgeCount) on Ubuntu
 					// Electron uses unity::SetDownloadCount: https://github.com/electron/electron/blob/v41.2.0/shell/browser/browser_linux.cc#L145-L147
 					// Which uses libunity: https://github.com/electron/electron/blob/v41.2.0/shell/browser/linux/unity_service.cc

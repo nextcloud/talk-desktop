@@ -411,9 +411,6 @@ module.exports = {
 					// It also includes required for Chromium and video processing GPU access (--device=dri)
 					'--device=all',
 
-					// Read/write home directory access
-					'--filesystem=home',
-
 					// Mouse cursor scaling on HiDPI displays under Wayland
 					// Ref: https://docs.flatpak.org/en/latest/electron.html
 					'--env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons',

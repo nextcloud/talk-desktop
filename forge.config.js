@@ -461,8 +461,10 @@ module.exports = {
 					// libunity source: https://git.launchpad.net/libunity/tree/src/unity-launcher.vala
 					'--talk-name=com.canonical.Unity',
 
+					// Uncomment if users report issues with native notifications with DBus access missing
 					// System notifications with libnotify
-					'--talk-name=org.freedesktop.Notifications',
+					// Not needed, since org.electronjs.Electron2.BaseApp@23.08 it uses a portal
+					// '--talk-name=org.freedesktop.Notifications',
 				],
 			},
 		}),

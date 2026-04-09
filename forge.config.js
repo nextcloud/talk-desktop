@@ -415,8 +415,21 @@ module.exports = {
 					// Ref: https://docs.flatpak.org/en/latest/electron.html
 					'--env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons',
 
-					// Chromium uses a socket in tmp for its singleton check
+					// Chromium uses TMPDIR for:
+					// - Single instance lock file (Electron app.requestSingleInstanceLock)
+					// - Status (system tray) icon image
+					// Preferred tmpdir location in Flatpak is ${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}
+					// Using variables in the path requires creating a wrapper launcher script
+					// A wrapper launcher is problematic with @electron-forge/maker-flatpak
+					// Temporal workaround: use /var/tmp as permanent storage on the host
+					// TODO: use flatpak builder without @electron-forge/maker-flatpak with a proper wrapper launcher script, exporting TMPDIR="${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}"
+					'--filesystem=/var/tmp',
 					'--env=TMPDIR=/var/tmp',
+
+					// Status icon (System tray)
+					// Electron uses Chromium API: https://github.com/electron/electron/blob/v41.2.0/shell/browser/ui/tray_icon_linux.cc#L8
+					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.166:chrome/browser/ui/views/status_icons/status_icon_linux_dbus.cc;l=60
+					'--talk-name=org.kde.StatusNotifierWatcher',
 
 					// App badge counter (app.setBadgeCount) on Ubuntu
 					// Electron uses unity::SetDownloadCount: https://github.com/electron/electron/blob/v41.2.0/shell/browser/browser_linux.cc#L145-L147

@@ -397,11 +397,12 @@ module.exports = {
 					// Network access
 					'--share=network',
 
-					// X Rendering
+					// IPC is required for x11 performance
 					'--share=ipc',
-					'--socket=x11',
-					// Enable screensharing access in Wayland
+
+					// Wayland rendering with x11 only as a fallback
 					'--socket=wayland',
+					'--socket=fallback-x11',
 
 					// Audio input/output
 					'--socket=pulseaudio',

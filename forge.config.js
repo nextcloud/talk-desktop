@@ -373,8 +373,28 @@ module.exports = {
 						],
 					},
 				],
+				// Useful links:
+				// - Flatpak Sandbox docs: https://docs.flatpak.org/en/latest/sandbox-permissions.html
+				// - Flatpak for Electron docs: https://docs.flatpak.org/en/latest/electron.html
+				// - Flatpak finish args reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-build-finish
+				//
+				// Most of the OS integration goes through Portals, but some features still requires specific DBus interfaces
+				// The list of additionally allowed DBus interfaces must be minimal, based on the actual needs
+				// When adding new interfaces, always add a comment with the motivation and a proof reference when possible
+				//
+				// How to find the required interfaces:
+				// - Try run without permissions and check for errors
+				// - Run with DBus logs:
+				//   flatpak run --log-session-bus --log-system-bus com.nextcloud.talk
+				// - Run with different permissions, for example:
+				//   flatpak run --talk-name=org.kde.StatusNotifierWatcher com.nextcloud.talk
+				// - Check Electron and Chromium source code
+				// - Use dbus-monitor for monitoring DBus calls, for example:
+				//   dbus-monitor --session "interface='org.kde.StatusNotifierWatcher'"
+				// - Some data can be retrieved with other events, for example, getting result with <ID> from the monitor above:
+				//   dbus-send --session --print-reply --dest=:<ID> /StatusNotifierItem org.freedesktop.DBus.Properties.GetAll string:org.kde.StatusNotifierItem
 				finishArgs: [
-					// Allow communication with network
+					// Network access
 					'--share=network',
 
 					// X Rendering
@@ -383,7 +403,7 @@ module.exports = {
 					// Enable screensharing access in Wayland
 					'--socket=wayland',
 
-					// Audio output
+					// Audio input/output
 					'--socket=pulseaudio',
 
 					// Enable webcam access
@@ -397,8 +417,12 @@ module.exports = {
 					// Chromium uses a socket in tmp for its singleton check
 					'--env=TMPDIR=/var/tmp',
 
-					// Ubuntu integration (dock badge counter - LauncherEntry)
+					// App badge counter (app.setBadgeCount) on Ubuntu
+					// Electron uses unity::SetDownloadCount: https://github.com/electron/electron/blob/v41.2.0/shell/browser/browser_linux.cc#L145-L147
+					// Which uses libunity: https://github.com/electron/electron/blob/v41.2.0/shell/browser/linux/unity_service.cc
+					// libunity source: https://git.launchpad.net/libunity/tree/src/unity-launcher.vala
 					'--talk-name=com.canonical.Unity',
+
 					// System notifications with libnotify
 					'--talk-name=org.freedesktop.Notifications',
 				],

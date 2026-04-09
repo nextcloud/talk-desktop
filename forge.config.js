@@ -406,10 +406,9 @@ module.exports = {
 					// Audio input/output
 					'--socket=pulseaudio',
 
-					// Enable webcam access
+					// All devices access - it is the only way to have webcam devices access
+					// It also includes required for Chromium and video processing GPU access (--device=dri)
 					'--device=all',
-					// OpenGL
-					'--device=dri',
 
 					// Read/write home directory access
 					'--filesystem=home',

@@ -374,37 +374,33 @@ module.exports = {
 					},
 				],
 				finishArgs: [
-					/**
-					 * Default Electron args
-					 * https://github.com/malept/electron-installer-flatpak/blob/main/src/installer.js
-					 */
-
-					// X Rendering
-					'--socket=x11',
-					'--share=ipc',
-					// OpenGL
-					'--device=dri',
-					// Audio output
-					'--socket=pulseaudio',
-					// Read/write home directory access
-					'--filesystem=home',
-					// Chromium uses a socket in tmp for its singleton check
-					'--env=TMPDIR=/var/tmp',
 					// Allow communication with network
 					'--share=network',
-					// System notifications with libnotify
-					'--talk-name=org.freedesktop.Notifications',
-					// Ubuntu integration (dock badge counter - LauncherEntry)
-					'--talk-name=com.canonical.Unity',
 
-					/**
-					 * Additional args
-					 */
+					// X Rendering
+					'--share=ipc',
+					'--socket=x11',
+					// Enable screensharing access in Wayland
+					'--socket=wayland',
+
+					// Audio output
+					'--socket=pulseaudio',
 
 					// Enable webcam access
 					'--device=all',
-					// Enable screensharing access in Wayland
-					'--socket=wayland',
+					// OpenGL
+					'--device=dri',
+
+					// Read/write home directory access
+					'--filesystem=home',
+
+					// Chromium uses a socket in tmp for its singleton check
+					'--env=TMPDIR=/var/tmp',
+
+					// Ubuntu integration (dock badge counter - LauncherEntry)
+					'--talk-name=com.canonical.Unity',
+					// System notifications with libnotify
+					'--talk-name=org.freedesktop.Notifications',
 				],
 			},
 		}),

@@ -461,6 +461,37 @@ module.exports = {
 					// libunity source: https://git.launchpad.net/libunity/tree/src/unity-launcher.vala
 					'--talk-name=com.canonical.Unity',
 
+					// Uncomment when used
+					// Safe Storage and Cookies encryption
+					// Electron uses Chromium: https://github.com/electron/electron/blob/v41.2.0/shell/browser/api/electron_api_safe_storage.cc#L7
+					// Chromium sources:
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/os_crypt_linux.cc;l=23
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/key_storage_linux.cc;l=21-26
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/libsecret_util_linux.cc;l=37
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/kwallet_dbus.cc;l=23-24
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/async/browser/freedesktop_secret_key_provider.h
+					// (org.kde.kwalletd is ignored as legacy)
+					// '--talk-name=org.freedesktop.secrets',
+					// '--talk-name=org.kde.kwalletd5',
+					// '--talk-name=org.kde.kwalletd6',
+
+					// Uncomment when needed
+					// Makes sense for video/audio files playback, but currently it is triggered for calls as well  (TODO: find out why)
+					// Media controls (MPRIS)
+					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/system_media_controls/linux/system_media_controls_linux.cc;l=107
+					// '--own-name=org.mpris.MediaPlayer2.chromium.*',
+
+					// Uncomment when used
+					// Global menu bar (macos-like app menu) on KDE/Unity
+					// Source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:chrome/browser/ui/views/frame/dbus_appmenu_registrar.cc;l=23
+					// '--talk-name=com.canonical.AppMenu.Registrar',
+
+					// Uncomment when used
+					// Web Battery Status API
+					// Source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:services/device/battery/battery_status_manager_linux-inl.h;l=9
+					// Source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:services/device/battery/battery_status_manager_linux.cc
+					// --system-talk-name=org.freedesktop.UPower
+
 					// Uncomment if users report issues with native notifications with DBus access missing
 					// System notifications with libnotify
 					// Not needed, since org.electronjs.Electron2.BaseApp@23.08 it uses a portal

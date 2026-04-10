@@ -373,38 +373,129 @@ module.exports = {
 						],
 					},
 				],
+				// Useful links:
+				// - Flatpak Sandbox docs: https://docs.flatpak.org/en/latest/sandbox-permissions.html
+				// - Flatpak for Electron docs: https://docs.flatpak.org/en/latest/electron.html
+				// - Flatpak finish args reference: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-build-finish
+				//
+				// Most of the OS integration goes through Portals, but some features still requires specific DBus interfaces
+				// The list of additionally allowed DBus interfaces must be minimal, based on the actual needs
+				// When adding new interfaces, always add a comment with the motivation and a proof reference when possible
+				//
+				// How to find the required interfaces:
+				// - Try run without permissions and check for errors
+				// - Run with DBus logs:
+				//   flatpak run --log-session-bus --log-system-bus com.nextcloud.talk
+				// - Run with different permissions, for example:
+				//   flatpak run --talk-name=org.kde.StatusNotifierWatcher com.nextcloud.talk
+				// - Check Electron and Chromium source code
+				// - Use dbus-monitor for monitoring DBus calls, for example:
+				//   dbus-monitor --session "interface='org.kde.StatusNotifierWatcher'"
+				// - Some data can be retrieved with other events, for example, getting result with <ID> from the monitor above:
+				//   dbus-send --session --print-reply --dest=:<ID> /StatusNotifierItem org.freedesktop.DBus.Properties.GetAll string:org.kde.StatusNotifierItem
 				finishArgs: [
-					/**
-					 * Default Electron args
-					 * https://github.com/malept/electron-installer-flatpak/blob/main/src/installer.js
-					 */
-
-					// X Rendering
-					'--socket=x11',
-					'--share=ipc',
-					// OpenGL
-					'--device=dri',
-					// Audio output
-					'--socket=pulseaudio',
-					// Read/write home directory access
-					'--filesystem=home',
-					// Chromium uses a socket in tmp for its singleton check
-					'--env=TMPDIR=/var/tmp',
-					// Allow communication with network
+					// Network access
 					'--share=network',
-					// System notifications with libnotify
-					'--talk-name=org.freedesktop.Notifications',
-					// Ubuntu integration (dock badge counter - LauncherEntry)
+
+					// IPC is required for x11 performance
+					'--share=ipc',
+
+					// Wayland rendering with x11 only as a fallback
+					'--socket=wayland',
+					'--socket=fallback-x11',
+
+					// Audio input/output
+					'--socket=pulseaudio',
+
+					// All devices access - it is the only way to have webcam devices access
+					// It also includes required for Chromium and video processing GPU access (--device=dri)
+					'--device=all',
+
+					// Mouse cursor scaling on HiDPI displays under Wayland
+					// Ref: https://docs.flatpak.org/en/latest/electron.html
+					'--env=XCURSOR_PATH=/run/host/user-share/icons:/run/host/share/icons',
+
+					// Chromium uses TMPDIR for:
+					// - Single instance lock file (Electron app.requestSingleInstanceLock)
+					// - Status (system tray) icon image
+					// Preferred tmpdir location in Flatpak is ${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}
+					// Using variables in the path requires creating a wrapper launcher script
+					// A wrapper launcher is problematic with @electron-forge/maker-flatpak
+					// Temporal workaround: use /var/tmp as permanent storage on the host
+					// TODO: use flatpak builder without @electron-forge/maker-flatpak with a proper wrapper launcher script, exporting TMPDIR="${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}"
+					'--filesystem=/var/tmp',
+					'--env=TMPDIR=/var/tmp',
+
+					// Status icon (System tray)
+					// Electron uses Chromium API: https://github.com/electron/electron/blob/v41.2.0/shell/browser/ui/tray_icon_linux.cc#L8
+					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.166:chrome/browser/ui/views/status_icons/status_icon_linux_dbus.cc;l=60
+					'--talk-name=org.kde.StatusNotifierWatcher',
+
+					// Idle Status (Web IdleDetector API, Electron powerMonitor)
+					// Electron uses Chromium API: https://github.com/electron/electron/blob/v41.2.0/shell/browser/api/electron_api_power_monitor.cc
+					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.166:ui/base/idle/idle_linux.cc;l=44-58
+					// And: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:ui/ozone/platform/wayland/host/org_gnome_mutter_idle_monitor.cc;l=27
+					'--talk-name=org.freedesktop.ScreenSaver',
+					'--talk-name=org.cinnamon.ScreenSaver',
+					'--talk-name=org.gnome.ScreenSaver',
+					'--talk-name=org.mate.ScreenSaver',
+					'--talk-name=org.xfce.ScreenSaver',
+					'--talk-name=org.gnome.Mutter.IdleMonitor',
+
+					// Web Screen Wake Lock API, Electron powerSaveBlocker
+					// Electron uses Chromium API: https://github.com/electron/electron/blob/v41.2.0/shell/browser/api/electron_api_power_save_blocker.cc#L14
+					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.166:services/device/wake_lock/power_save_blocker/power_save_blocker_linux.cc;l=62-72
+					'--talk-name=org.freedesktop.PowerManagement',
+					'--talk-name=org.gnome.SessionManager',
+
+					// In addition, Electron powerMonitor event listener uses power observer via system_bus
+					// We don't use these events, but some users reported errors missing this interface
+					// Might be used for Web IdleDetector's events (like locked) or Web Screen Wake Lock API (Inhibit) when other interfaces are not available
+					// Ref: https://github.com/nextcloud/talk-desktop/issues/1629
+					// Electron source: https://github.com/electron/electron/blob/v41.2.0/shell/browser/lib/power_observer_linux.cc
+					'--system-talk-name=org.freedesktop.login1',
+
+					// App badge counter (app.setBadgeCount) on Ubuntu
+					// Electron uses unity::SetDownloadCount: https://github.com/electron/electron/blob/v41.2.0/shell/browser/browser_linux.cc#L145-L147
+					// Which uses libunity: https://github.com/electron/electron/blob/v41.2.0/shell/browser/linux/unity_service.cc
+					// libunity source: https://git.launchpad.net/libunity/tree/src/unity-launcher.vala
 					'--talk-name=com.canonical.Unity',
 
-					/**
-					 * Additional args
-					 */
+					// Uncomment when used
+					// Safe Storage and Cookies encryption
+					// Electron uses Chromium: https://github.com/electron/electron/blob/v41.2.0/shell/browser/api/electron_api_safe_storage.cc#L7
+					// Chromium sources:
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/os_crypt_linux.cc;l=23
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/key_storage_linux.cc;l=21-26
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/libsecret_util_linux.cc;l=37
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/kwallet_dbus.cc;l=23-24
+					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/async/browser/freedesktop_secret_key_provider.h
+					// (org.kde.kwalletd is ignored as legacy)
+					// '--talk-name=org.freedesktop.secrets',
+					// '--talk-name=org.kde.kwalletd5',
+					// '--talk-name=org.kde.kwalletd6',
 
-					// Enable webcam access
-					'--device=all',
-					// Enable screensharing access in Wayland
-					'--socket=wayland',
+					// Uncomment when needed
+					// Makes sense for video/audio files playback, but currently it is triggered for calls as well  (TODO: find out why)
+					// Media controls (MPRIS)
+					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/system_media_controls/linux/system_media_controls_linux.cc;l=107
+					// '--own-name=org.mpris.MediaPlayer2.chromium.*',
+
+					// Uncomment when used
+					// Global menu bar (macos-like app menu) on KDE/Unity
+					// Source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:chrome/browser/ui/views/frame/dbus_appmenu_registrar.cc;l=23
+					// '--talk-name=com.canonical.AppMenu.Registrar',
+
+					// Uncomment when used
+					// Web Battery Status API
+					// Source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:services/device/battery/battery_status_manager_linux-inl.h;l=9
+					// Source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:services/device/battery/battery_status_manager_linux.cc
+					// --system-talk-name=org.freedesktop.UPower
+
+					// Uncomment if users report issues with native notifications with DBus access missing
+					// System notifications with libnotify
+					// Not needed, since org.electronjs.Electron2.BaseApp@23.08 it uses a portal
+					// '--talk-name=org.freedesktop.Notifications',
 				],
 			},
 		}),

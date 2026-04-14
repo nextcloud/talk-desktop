@@ -4,7 +4,7 @@
  */
 
 const { app, Tray, Menu } = require('electron')
-const path = require('path')
+const path = require('node:path')
 const { getTrayIcon } = require('../shared/icons.utils.js')
 
 let isAppQuitting = false

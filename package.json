@@ -48,9 +48,9 @@
   },
   "dependencies": {
     "@mdi/svg": "^7.4.47",
+    "@nextcloud/auth": "^2.5.3",
     "@nextcloud/axios": "^2.5.2",
     "@nextcloud/browser-storage": "^0.5.0",
-    "@nextcloud/capabilities": "^1.2.1",
     "@nextcloud/event-bus": "^3.3.2",
     "@nextcloud/files": "^4.0.0",
     "@nextcloud/initial-state": "^2.2.0",
@@ -67,7 +67,9 @@
     "semver": "^7.7.4",
     "unzip-crx-3": "^0.2.0",
     "vue": "^3.5.30",
-    "vue-material-design-icons": "^5.3.1"
+    "vue-material-design-icons": "^5.3.1",
+    "vue-router": "^5.0.4",
+    "webdav": "^5.9.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.11.1",

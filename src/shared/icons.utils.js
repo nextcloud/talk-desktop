@@ -4,7 +4,7 @@
  */
 
 const { app, nativeTheme } = require('electron')
-const path = require('path')
+const path = require('node:path')
 const { getAppConfig } = require('../app/AppConfig.ts')
 const { isLinux, platform } = require('../app/system.utils.ts')
 

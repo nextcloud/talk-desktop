@@ -137,28 +137,11 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 		}).reduce((acc, { app, key, value }) => ((acc[app] ??= {})[key] = value, acc), {})
 	*/
 
-	// TODO: make sure all use initial state is covered and there is no MISSED values
-	// TODO: when possible, migrate Initial State to capabilities
+	// TODO: make sure all used initial state is covered and there is no MISSED values
 	return {
 		spreed: {
-			call_enabled: capabilities?.spreed?.config?.call?.enabled,
 			signaling_mode: 'external', // MISSED
-			sip_dialin_info: '', // MISSED
-			grid_videos_limit: 19, // MISSED
-			grid_videos_limit_enforced: false, // MISSED
-			federation_enabled: capabilities?.spreed?.config?.federation?.enabled,
-			// default_permissions - MISSED (!)
-			start_conversations: capabilities?.spreed?.config?.conversations?.['can-create'],
-			circles_enabled: capabilities?.circles !== undefined,
-			guests_accounts_enabled: true, // MISSED
-			read_status_privacy: capabilities?.spreed?.config?.chat?.['read-privacy'],
-			typing_privacy: capabilities?.spreed?.config?.chat?.['typing-privacy'],
-			play_sounds: true, // MISSED
-			force_enable_blur_filter: 'yes', // Unused
 			user_group_ids: userMetadata?.groups,
-			attachment_folder: capabilities?.spreed?.config?.attachments?.folder,
-			attachment_folder_free_space: userMetadata?.quota?.free ?? 0,
-			enable_matterbridge: false, // MISSED
 		},
 		core: {
 			// reference-provider-list - MISSED

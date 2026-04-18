@@ -140,7 +140,9 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 	// TODO: make sure all used initial state is covered and there is no MISSED values
 	return {
 		spreed: {
-			signaling_mode: 'external', // MISSED
+			// Capability added in Talk v23.0.2
+			// TODO: use signaling settings as the fallback for older servers
+			signaling_mode: capabilities?.spreed?.config?.signaling?.mode ?? 'external',
 			user_group_ids: userMetadata?.groups,
 		},
 		core: {

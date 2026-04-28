@@ -11,6 +11,7 @@ OC.L10N.register(
     "Advanced" : "Avanzado",
     "Cancel" : "Cancel",
     "Valid until" : "Válido hasta",
+    "Copied" : "Copiado",
     "About" : "Acerca de",
     "License" : "Licencia",
     "Issues" : "Temas",

@@ -18,6 +18,13 @@ const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
 
 require('dotenv').config()
 
+const mri = require('mri')
+
+const SUPPORTED_ARCHS = ['x64', 'arm64', 'universal']
+const argArch = mri(process.argv).arch
+const systemArch = SUPPORTED_ARCHS.includes(process.arch) ? process.arch : 'x64'
+const TARGET_ARCH = SUPPORTED_ARCHS.includes(argArch) ? argArch : systemArch
+
 const CONFIG = resolveConfig()
 
 console.info('Building with a build configuration:')
@@ -44,7 +51,7 @@ function generateDistName(platform, arch, ext) {
 	}
 	const archTitles = {
 		x64: 'x64',
-		arm64: 'arm',
+		arm64: 'arm64',
 	}
 	const platformTitle = platformTitles[platform] ?? platform
 	const archTitle = archTitles[arch] ?? arch
@@ -232,7 +239,6 @@ module.exports = {
 			icon: path.join(__dirname, 'img/icons/icon.ico'),
 			manufacturer: CONFIG.companyName,
 			shortName: CONFIG.applicationNameSanitized,
-			arch: 'x64', // electron-wix-msi defaults to x86
 			upgradeCode: CONFIG.winUpgradeCode,
 			// Pass the version explicitly
 			// otherwise MakerWix makes versions with prerelease tags invalid semantic version
@@ -296,8 +302,8 @@ module.exports = {
 		CONFIG.windowsExe && new MakerSquirrel({
 			// App/Filenames
 			name: CONFIG.winSquirrelAppId,
-			setupExe: generateDistName('win32', 'x64', '.exe'),
-			setupMsi: generateDistName('win32', 'x64', '.msi'),
+			setupExe: generateDistName('win32', TARGET_ARCH, '.exe'),
+			setupMsi: generateDistName('win32', TARGET_ARCH, '.msi'),
 			exe: `${CONFIG.applicationName}.exe`,
 			// Covered by WiX
 			noMsi: true,

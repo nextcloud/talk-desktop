@@ -146,6 +146,7 @@ export async function clearFlatpakFontConfigCache() {
 	}
 
 	try {
+		console.debug('Clearing Flatpak font config cache...')
 		// Note: clearing with "fc-cache" command did not help with the issue (was tested with many users and colleagues)
 		await rm(path.join(process.env.XDG_CACHE_HOME, 'fontconfig'), { recursive: true, force: true })
 	} catch (error) {

@@ -100,7 +100,7 @@ onBeforeUnmount(() => {
 		</NcActionButton>
 		<NcActionLink
 			v-if="!BUILD_CONFIG.isBranded"
-			:href="packageInfo.bugs.create || packageInfo.bugs.url"
+			:href="packageInfo.bugs.create"
 			target="_blank"
 			close-after-click>
 			<template #icon>

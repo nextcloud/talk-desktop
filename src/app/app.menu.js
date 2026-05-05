@@ -122,7 +122,7 @@ function setupMenu() {
 				? []
 				: [
 						createLinkMenuItem('Homepage', packageJson.repository.url),
-						createLinkMenuItem('Report a bug', packageJson.bugs),
+						createLinkMenuItem('Report a bug', packageJson.bugs.create),
 						createLinkMenuItem('Source Code', packageJson.repository.url),
 					]
 			),

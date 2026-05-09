@@ -45,6 +45,7 @@ OC.L10N.register(
     "App settings" : "アプリ設定",
     "Back" : "戻る",
     "View profile" : "プロフィールを表示",
+    "Log out" : "ログアウト",
     "Quit" : "終了",
     "User status" : "ユーザーステータス",
     "Your status was set automatically" : "あなたのステータスは自動的に設定されました",

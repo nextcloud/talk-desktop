@@ -101,7 +101,7 @@ OC.L10N.register(
     "Today" : "Šiandien",
     "This week" : "Šią savaitę",
     "Clear after" : "Išvalyti po",
-    "Emoji for your status message" : "Jaustukai jūsų būsenos pranešimui",
+    "Emoji for your status message" : "Emociukai jūsų būsenos pranešimui",
     "Status message" : "Būsenos žinutė",
     "Open in a web browser" : "Atidaryti naršyklėje",
     "Could not load the file" : "Nepavyko įkelti failo",

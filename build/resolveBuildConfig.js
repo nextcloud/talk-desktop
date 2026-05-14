@@ -4,6 +4,7 @@
  */
 
 const fs = require('node:fs')
+const { join } = require('node:path')
 const buildConfigDefaults = require('./build.config.json')
 const { UUIDv5 } = require('./UUIDv5.js')
 
@@ -13,12 +14,15 @@ const TALK_DESKTOP_UUID = '007a0d7d-9595-41d2-b5aa-740a5a63e38a'
 /**
  * Resolve the build configuration
  *
- * @param {string} [customConfigPath] - Path to the custom configuration file
  * @return {import('./BuildConfig.types.ts').BuildConfig} - Resolved configuration object
  */
-function resolveBuildConfig(customConfigPath = process.env.CUSTOM_CONFIG) {
+function resolveBuildConfig() {
+	const buildConfigOverridesPath = join(__dirname, '../.overrides/build.config.json')
+
+	const isBranded = fs.existsSync(buildConfigOverridesPath)
+
 	/** @type {Partial<import('./BuildConfig.types.ts').BuildConfigFile>} */
-	const buildConfigOverrides = customConfigPath ? JSON.parse(fs.readFileSync(customConfigPath, 'utf-8')) : {}
+	const buildConfigOverrides = isBranded ? JSON.parse(fs.readFileSync(buildConfigOverridesPath, 'utf-8')) : {}
 
 	// Remove all undefined values
 	// TODO: check if undefined values can be empty strings or only null
@@ -44,8 +48,6 @@ function resolveBuildConfig(customConfigPath = process.env.CUSTOM_CONFIG) {
 	const appIdHost = buildConfig.domain
 		? new URL(buildConfig.domain).host.split('.').reverse().join('.')
 		: 'com.nextcloud'
-
-	const isBranded = Boolean(customConfigPath)
 
 	return {
 		// Default inferred values - can be overridden by the custom config

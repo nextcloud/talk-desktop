@@ -7,7 +7,7 @@
 
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { resolveConfig } from '../build/resolveBuildConfig.js'
+import { resolveBuildConfig } from '../build/resolveBuildConfig.js'
 import { createReuseToml, filterReuseAnnotationsFiles, parseReuseToml } from './utils/reuse.utils.mjs'
 
 import 'zx/globals'
@@ -60,7 +60,7 @@ async function isContainerReady() {
 
 const isNotContainerReady = async () => !(await isContainerReady())
 
-const BUILD_CONFIG = resolveConfig()
+const BUILD_CONFIG = resolveBuildConfig()
 
 echo`Fetching server styles for ${VERSION}`
 if (BUILD_CONFIG.isBranded) {

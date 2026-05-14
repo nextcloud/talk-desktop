@@ -61,7 +61,7 @@ SPDX-FileCopyrightText = "Nextcloud GmbH <https://nextcloud.com/trademarks/>"
 SPDX-License-Identifier = "LicenseRef-NextcloudTrademarks"
 
 [[annotations]]
-path = ["build/config.json"]
+path = ["build/build.config.json"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2025 Nextcloud GmbH and Nextcloud contributors"
 SPDX-License-Identifier = "AGPL-3.0-or-later"

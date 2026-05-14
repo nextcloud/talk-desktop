@@ -12,7 +12,7 @@ const cheerio = require('cheerio')
 const fs = require('node:fs')
 const path = require('node:path')
 const semver = require('semver')
-const { resolveConfig } = require('./build/resolveBuildConfig.js')
+const { resolveBuildConfig } = require('./build/resolveBuildConfig.js')
 const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
 
@@ -25,10 +25,10 @@ const argArch = mri(process.argv).arch
 const systemArch = SUPPORTED_ARCHS.includes(process.arch) ? process.arch : 'x64'
 const TARGET_ARCH = SUPPORTED_ARCHS.includes(argArch) ? argArch : systemArch
 
-const CONFIG = resolveConfig()
+const BUILD_CONFIG = resolveBuildConfig()
 
 console.info('Building with a build configuration:')
-console.info(JSON.stringify(CONFIG, null, 2))
+console.info(JSON.stringify(BUILD_CONFIG, null, 2))
 
 /**
  * Generate the distribution name
@@ -57,7 +57,7 @@ function generateDistName(platform, arch, ext) {
 	const archTitle = archTitles[arch] ?? arch
 	const CHANNEL = process.env.CHANNEL ?? 'stable'
 	const channel = CHANNEL !== 'stable' ? CHANNEL : ''
-	const name = CONFIG.applicationName.replace(/[^a-z0-9]/gi, '.')
+	const name = BUILD_CONFIG.applicationName.replace(/[^a-z0-9]/gi, '.')
 
 	return [name, channel, platformTitle, archTitle].filter(Boolean).join('-') + ext
 }
@@ -200,18 +200,18 @@ module.exports = {
 	// https://electron.github.io/packager/main/interfaces/Options.html
 	packagerConfig: {
 		// Common
-		name: CONFIG.applicationName,
+		name: BUILD_CONFIG.applicationName,
 		icon: path.join(__dirname, './img/icons/icon'),
-		appCopyright: CONFIG.copyright,
+		appCopyright: BUILD_CONFIG.copyright,
 		asar: true,
 
 		// Windows
 		win32metadata: {
-			CompanyName: CONFIG.companyName,
+			CompanyName: BUILD_CONFIG.companyName,
 		},
 
 		// macOS
-		appBundleId: CONFIG.appleAppBundleId,
+		appBundleId: BUILD_CONFIG.appleAppBundleId,
 		darwinDarkModeSupport: true,
 		// https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW8
 		appCategoryType: 'public.app-category.business',
@@ -231,15 +231,15 @@ module.exports = {
 		// Prerequisites:
 		// 1. winget install WiXToolset.WiXToolset
 		// 2. Add C:\Program Files (x86)\WiX Toolset v3.14\bin\ to PATH
-		CONFIG.windowsMsi && new MakerWix({
-			appUserModelId: CONFIG.winAppId,
-			description: CONFIG.description,
-			exe: `${CONFIG.applicationName}.exe`,
-			name: CONFIG.applicationName,
+		BUILD_CONFIG.windowsMsi && new MakerWix({
+			appUserModelId: BUILD_CONFIG.winAppId,
+			description: BUILD_CONFIG.description,
+			exe: `${BUILD_CONFIG.applicationName}.exe`,
+			name: BUILD_CONFIG.applicationName,
 			icon: path.join(__dirname, 'img/icons/icon.ico'),
-			manufacturer: CONFIG.companyName,
-			shortName: CONFIG.applicationNameSanitized,
-			upgradeCode: CONFIG.winUpgradeCode,
+			manufacturer: BUILD_CONFIG.companyName,
+			shortName: BUILD_CONFIG.applicationNameSanitized,
+			upgradeCode: BUILD_CONFIG.winUpgradeCode,
 			// Pass the version explicitly
 			// otherwise MakerWix makes versions with prerelease tags invalid semantic version
 			// which breaks app launch via stub executable
@@ -276,11 +276,11 @@ module.exports = {
 
 					// <Directory Name="app-{version}> -> <Component> -> <File Name="Nextcloud Talk.exe>
 					// Represents: C:/Program Files/Nextcloud Talk/app-{version}/Nextcloud Talk.exe
-					const $executableFile = $(`Directory[Name^="app-"] > Component > File[Name="${CONFIG.applicationName}.exe"]`)
+					const $executableFile = $(`Directory[Name^="app-"] > Component > File[Name="${BUILD_CONFIG.applicationName}.exe"]`)
 					$('<firewall:FirewallException></firewall:FirewallException>').attr({
 						Id: $executableFile.attr('Id') + '_firewall_exception',
-						Name: CONFIG.applicationName,
-						Description: CONFIG.description,
+						Name: BUILD_CONFIG.applicationName,
+						Description: BUILD_CONFIG.description,
 						Scope: 'any',
 						IgnoreFailure: 'yes',
 					}).appendTo($executableFile)
@@ -299,20 +299,20 @@ module.exports = {
 
 		// https://github.com/squirrel/squirrel.windows
 		// https://js.electronforge.io/interfaces/_electron_forge_maker_squirrel.InternalOptions.SquirrelWindowsOptions.html#setupExe
-		CONFIG.windowsExe && new MakerSquirrel({
+		BUILD_CONFIG.windowsExe && new MakerSquirrel({
 			// App/Filenames
-			name: CONFIG.winSquirrelAppId,
+			name: BUILD_CONFIG.winSquirrelAppId,
 			setupExe: generateDistName('win32', TARGET_ARCH, '.exe'),
 			setupMsi: generateDistName('win32', TARGET_ARCH, '.msi'),
-			exe: `${CONFIG.applicationName}.exe`,
+			exe: `${BUILD_CONFIG.applicationName}.exe`,
 			// Covered by WiX
 			noMsi: true,
 
 			// Meta
-			title: CONFIG.applicationName,
-			authors: CONFIG.companyName,
-			owners: CONFIG.companyName,
-			description: CONFIG.description,
+			title: BUILD_CONFIG.applicationName,
+			authors: BUILD_CONFIG.companyName,
+			owners: BUILD_CONFIG.companyName,
+			description: BUILD_CONFIG.description,
 
 			// Icons
 			setupIcon: path.join(__dirname, './img/icons/icon.ico'),
@@ -326,26 +326,26 @@ module.exports = {
 		}),
 
 		// https://js.electronforge.io/interfaces/_electron_forge_maker_dmg.MakerDMGConfig.html
-		CONFIG.macosDmg && new MakerDMG({
+		BUILD_CONFIG.macosDmg && new MakerDMG({
 			icon: path.join(__dirname, 'img/icons/icon.icns'),
 			background: path.join(__dirname, 'img/dmg-background.png'),
 			// https://github.com/LinusU/node-appdmg?tab=readme-ov-file#specification
 			additionalDMGOptions: {
 				// Background does not work when the title has spaces or special characters
-				title: CONFIG.applicationNameSanitized,
+				title: BUILD_CONFIG.applicationNameSanitized,
 			},
 		}),
 
 		// https://js.electronforge.io/classes/_electron_forge_maker_flatpak.MakerFlatpak-1.html
-		CONFIG.linuxFlatpak && new MakerFlatpak({
+		BUILD_CONFIG.linuxFlatpak && new MakerFlatpak({
 			// https://js.electronforge.io/classes/_electron_forge_maker_flatpak.MakerFlatpak-1.html#config
 			options: {
-				id: CONFIG.linuxAppId,
+				id: BUILD_CONFIG.linuxAppId,
 				// The default binary name in flatpak builder is packageJSON.name while the actual binary name from packager is applicationName
 				// Requires to be set explicitly
-				bin: CONFIG.applicationName,
-				productName: CONFIG.applicationName,
-				description: CONFIG.description,
+				bin: BUILD_CONFIG.applicationName,
+				productName: BUILD_CONFIG.applicationName,
+				description: BUILD_CONFIG.description,
 				genericName: 'Video and Chat Communication',
 				branch: 'stable',
 				// https://specifications.freedesktop.org/icon-theme-spec/latest/
@@ -506,7 +506,7 @@ module.exports = {
 			},
 		}),
 
-		CONFIG.linuxZip && new MakerZIP({}, ['linux']),
+		BUILD_CONFIG.linuxZip && new MakerZIP({}, ['linux']),
 	].filter(Boolean),
 
 	plugins: [

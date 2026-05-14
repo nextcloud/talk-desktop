@@ -6,8 +6,8 @@
 const path = require('node:path')
 const webpack = require('webpack')
 const { merge } = require('webpack-merge')
+const { resolveBuildConfig } = require('./build/resolveBuildConfig.js')
 const baseConfig = require('./webpack.base.config.js')
-const { resolveConfig } = require('./build/resolveBuildConfig.js')
 
 module.exports = merge(baseConfig, {
 	entry: path.resolve(__dirname, './src/main.js'),
@@ -41,7 +41,7 @@ module.exports = merge(baseConfig, {
 
 	plugins: [
 		new webpack.DefinePlugin({
-			__BUILD_CONFIG__: JSON.stringify(resolveConfig()),
+			__BUILD_CONFIG__: JSON.stringify(resolveBuildConfig()),
 		}),
 	],
 })

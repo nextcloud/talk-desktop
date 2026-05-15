@@ -9,16 +9,15 @@ const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerWix } = require('@electron-forge/maker-wix')
 const { MakerZIP } = require('@electron-forge/maker-zip')
 const cheerio = require('cheerio')
+const mri = require('mri')
 const fs = require('node:fs')
 const path = require('node:path')
 const semver = require('semver')
-const { resolveBuildConfig } = require('./build/resolveBuildConfig.js')
+const { resolveBuildConfig, resolveTalkPath } = require('./build/resolveBuildConfig.js')
 const packageJSON = require('./package.json')
 const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
 
 require('dotenv').config()
-
-const mri = require('mri')
 
 const SUPPORTED_ARCHS = ['x64', 'arm64', 'universal']
 const argArch = mri(process.argv).arch
@@ -26,6 +25,7 @@ const systemArch = SUPPORTED_ARCHS.includes(process.arch) ? process.arch : 'x64'
 const TARGET_ARCH = SUPPORTED_ARCHS.includes(argArch) ? argArch : systemArch
 
 const BUILD_CONFIG = resolveBuildConfig()
+const TALK_PATH = resolveTalkPath()
 
 console.info('Building with a build configuration:')
 console.info(JSON.stringify(BUILD_CONFIG, null, 2))
@@ -145,7 +145,6 @@ function signWithParamsToWindowsSignOptions(signWithParams) {
 const hasMacosSign = !!(process.env.APPLE_ID && process.env.APPLE_ID_PASSWORD && process.env.APPLE_TEAM_ID)
 const hasWindowsSign = !!process.env.WINDOWS_SIGN_PARAMS
 
-const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 let talkPackageJson
 
 module.exports = {

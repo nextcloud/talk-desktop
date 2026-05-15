@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const fs = require('node:fs')
-const { join } = require('node:path')
+const { existsSync, readFileSync } = require('node:fs')
+const { join, resolve } = require('node:path')
+const { getAppInfo } = require('./appinfo.utils.js')
 const buildConfigDefaults = require('./build.config.json')
 const { UUIDv5 } = require('./UUIDv5.js')
 
@@ -19,10 +20,10 @@ const TALK_DESKTOP_UUID = '007a0d7d-9595-41d2-b5aa-740a5a63e38a'
 function resolveBuildConfig() {
 	const buildConfigOverridesPath = join(__dirname, '../.overrides/build.config.json')
 
-	const isBranded = fs.existsSync(buildConfigOverridesPath)
+	const isBranded = existsSync(buildConfigOverridesPath)
 
 	/** @type {Partial<import('./BuildConfig.types.ts').BuildConfigFile>} */
-	const buildConfigOverrides = isBranded ? JSON.parse(fs.readFileSync(buildConfigOverridesPath, 'utf-8')) : {}
+	const buildConfigOverrides = isBranded ? JSON.parse(readFileSync(buildConfigOverridesPath, 'utf-8')) : {}
 
 	// Remove all undefined values
 	// TODO: check if undefined values can be empty strings or only null
@@ -71,6 +72,49 @@ function resolveBuildConfig() {
 	}
 }
 
+/**
+ * Resolve path to the build-in Talk
+ */
+function resolveTalkPath() {
+	return resolve(process.env.TALK_PATH) ?? resolve(__dirname, '../spreed')
+}
+
+/**
+ * Get the built-in Talk's Nextcloud version
+ */
+function getNextcloudVersionForTalk() {
+	return getAppInfo(resolveTalkPath()).maxVersion
+}
+
+/**
+ * Get the path to Nextcloud styles with overrides
+ */
+function resolveNextcloudStylesPath() {
+	const BUILD_CONFIG = resolveBuildConfig()
+	const version = getNextcloudVersionForTalk()
+
+	const nextcloudStylesOverridesPath = join(__dirname, `../.overrides/styles/${version}`)
+	const nextcloudStylesPath = join(__dirname, `../resources/server-global-styles/${version}`)
+
+	if (existsSync(nextcloudStylesOverridesPath)) {
+		return nextcloudStylesOverridesPath
+	}
+
+	if (BUILD_CONFIG.withThemingOverrides) {
+		throw new Error(`Build Config has custom theming, but no styles overrides found for Nextcloud ${version}.
+			If you are testing build locally, run "node scripts/override-nextcloud-styles.mjs --version ${version}".`)
+	}
+
+	if (existsSync(nextcloudStylesPath)) {
+		return nextcloudStylesPath
+	}
+
+	throw new Error(`No styles found for Nextcloud ${version}. This version is not supported.`)
+}
+
 module.exports = {
 	resolveBuildConfig,
+	resolveTalkPath,
+	getNextcloudVersionForTalk,
+	resolveNextcloudStylesPath,
 }

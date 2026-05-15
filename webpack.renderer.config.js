@@ -12,15 +12,11 @@ const { spawnSync } = require('node:child_process')
 const path = require('node:path')
 const { VueLoaderPlugin } = require('vue-loader')
 const webpack = require('webpack')
-const { resolveBuildConfig } = require('./build/resolveBuildConfig.js')
-const { getAppInfo } = require('./scripts/utils/appinfo.utils.cjs')
+const { resolveBuildConfig, resolveNextcloudStylesPath, resolveTalkPath } = require('./build/resolveBuildConfig.js')
 
 const BUILD_CONFIG = resolveBuildConfig()
-
-const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
+const TALK_PATH = resolveTalkPath()
 const CHANNEL = process.env.CHANNEL ?? 'dev'
-
-const NEXTCLOUD_VERSION_MAJOR = getAppInfo(TALK_PATH).maxVersion
 
 /**
  * Create webpack aliases config to patch a package
@@ -197,9 +193,7 @@ const webpackRendererConfig = {
 	resolve: {
 		alias: {
 			'@talk': TALK_PATH,
-			'@global-styles': BUILD_CONFIG.withThemingOverrides
-				? path.resolve(__dirname, '.overrides/styles', NEXTCLOUD_VERSION_MAJOR)
-				: path.resolve(__dirname, 'resources/server-global-styles', NEXTCLOUD_VERSION_MAJOR),
+			'@global-styles': resolveNextcloudStylesPath(),
 			// To reuse modules between Talk Desktop and Talk, otherwise Talk has its own from its node_modules
 			'@nextcloud/axios': path.resolve(__dirname, 'node_modules', '@nextcloud/axios/dist/index.js'),
 			// Patched packages

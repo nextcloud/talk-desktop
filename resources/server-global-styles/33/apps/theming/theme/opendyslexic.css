@@ -1,0 +1,15 @@
+@font-face {
+				font-family: 'OpenDyslexic';
+				font-style: normal;
+				font-weight: 400;
+				src: url('../fonts/OpenDyslexic-Regular.otf') format('opentype');
+			}@font-face {
+				font-family: 'OpenDyslexic';
+				font-style: normal;
+				font-weight: 700;
+				src: url('../fonts/OpenDyslexic-Bold.otf') format('opentype');
+			} [data-theme-opendyslexic] { --font-face:OpenDyslexic, system-ui, -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell, Ubuntu, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';  
+			
+
+			
+		 }

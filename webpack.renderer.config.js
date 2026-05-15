@@ -197,7 +197,9 @@ const webpackRendererConfig = {
 	resolve: {
 		alias: {
 			'@talk': TALK_PATH,
-			'@global-styles': path.resolve(__dirname, 'resources/server-global-styles', NEXTCLOUD_VERSION_MAJOR),
+			'@global-styles': BUILD_CONFIG.withThemingOverrides
+				? path.resolve(__dirname, '.overrides/styles', NEXTCLOUD_VERSION_MAJOR)
+				: path.resolve(__dirname, 'resources/server-global-styles', NEXTCLOUD_VERSION_MAJOR),
 			// To reuse modules between Talk Desktop and Talk, otherwise Talk has its own from its node_modules
 			'@nextcloud/axios': path.resolve(__dirname, 'node_modules', '@nextcloud/axios/dist/index.js'),
 			// Patched packages

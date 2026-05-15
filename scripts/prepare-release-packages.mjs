@@ -4,8 +4,8 @@
  */
 
 /// <reference types="zx" />
-/* eslint-disable no-undef */
 
+import { resolveBuildConfig } from '../build/resolveBuildConfig.js'
 const packageJson = require('../package.json')
 
 const TALK_PATH = './out/.temp/spreed/'
@@ -20,7 +20,6 @@ $.quiet = true
  */
 function exit(message, code) {
 	echo(message)
-	// eslint-disable-next-line n/no-process-exit
 	process.exit(code)
 }
 
@@ -116,10 +115,19 @@ async function prepareRelease() {
 		)
 	}
 
-	// Build and package
-	echo`[5/5] Packaging...`
 	$.env.TALK_PATH = TALK_PATH
 	$.env.CHANNEL = CHANNEL
+
+	// Theming overrides
+	const BUILD_CONFIG = resolveBuildConfig()
+	if (BUILD_CONFIG.withThemingOverrides) {
+		await spinner('[4.3/5] Overriding Nextcloud theming', async () => {
+			await $`node ./scripts/override-nextcloud-styles.mjs`
+		})
+	}
+
+	// Build and package
+	echo`[5/5] Packaging...`
 	argv.windows && await spinner('Package Windows', () => $`npm run build:windows && npm run package:windows`)
 	argv.linux && await spinner('Package Linux', () => $`npm run build:linux && npm run package:linux`)
 	argv.mac && await spinner('Package MacOS', () => $`npm run build:mac && npm run package:mac`)

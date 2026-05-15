@@ -65,6 +65,7 @@ function resolveBuildConfig() {
 		copyright: (isBranded ? 'Copyright (c) {year}' : 'Copyright (c) {year} Nextcloud GmbH').replace('{year}', new Date().getFullYear()),
 		applicationNameSanitized,
 		isPlainBackground: buildConfig.backgroundColor !== buildConfigDefaults.backgroundColor,
+		withThemingOverrides: buildConfig.primaryColor !== buildConfigDefaults.primaryColor || buildConfig.backgroundColor !== buildConfigDefaults.backgroundColor,
 		winSquirrelAppId: applicationNameSanitized, // Special case for Squirrel.Windows
 		winUpgradeCode: UUIDv5(`${appIdHost}.talk`, TALK_DESKTOP_UUID),
 	}

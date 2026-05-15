@@ -167,6 +167,12 @@ export type BuildConfigInferred = {
 	isPlainBackground: boolean
 
 	/**
+	 * Whether the config required theming overriding (different primary or background color)
+	 * Default: false
+	 */
+	withThemingOverrides: boolean
+
+	/**
 	 * Windows.Squirrel AppUserModelId suffix for Windows.
 	 * It must be Sanitized application name.
 	 * Squirrel then will use com.squirrel.{AppId}.{AppId} as AppUserModelId.

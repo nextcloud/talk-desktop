@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-@import './global.styles.css';
+@import '@global-styles/index.css';
 
 * {
 	box-sizing: border-box;

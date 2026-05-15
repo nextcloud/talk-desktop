@@ -1,0 +1,17 @@
+/*!
+ * SPDX-FileCopyrightText: {{year}} Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+/* :root theme styles */
+@import './apps/theming/theme/{{prefix}}light.plain.css' (prefers-color-scheme: light);
+@import './apps/theming/theme/{{prefix}}dark.plain.css' (prefers-color-scheme: dark);
+@import './apps/theming/theme/{{prefix}}light-highcontrast.plain.css' (prefers-color-scheme: light) and (prefers-contrast: more);
+@import './apps/theming/theme/{{prefix}}dark-highcontrast.plain.css' (prefers-color-scheme: dark) and (prefers-contrast: more);
+
+/* Theme styles for explicit set themes (data-theme-* attrs) */
+@import './apps/theming/theme/{{prefix}}light.css';
+@import './apps/theming/theme/{{prefix}}dark.css';
+@import './apps/theming/theme/{{prefix}}light-highcontrast.css';
+@import './apps/theming/theme/{{prefix}}dark-highcontrast.css';
+@import './apps/theming/theme/{{prefix}}opendyslexic.css';

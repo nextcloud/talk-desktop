@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "talk-desktop"
+SPDX-PackageSupplier = "Nextcloud <info@nextcloud.com>"
+SPDX-PackageDownloadLocation = "https://github.com/nextcloud/talk-desktop"
+
+[[annotations]]
+path = {{files}}
+precedence = "aggregate"
+SPDX-FileCopyrightText = "{{year}} Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"

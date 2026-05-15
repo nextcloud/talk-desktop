@@ -7,6 +7,9 @@
 # Nextcloud Talk source code
 spreed/
 
+# Overrides
+.overrides/
+
 # Logs
 logs
 *.log

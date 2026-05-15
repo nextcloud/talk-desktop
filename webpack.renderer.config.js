@@ -12,8 +12,10 @@ const { spawnSync } = require('node:child_process')
 const path = require('node:path')
 const { VueLoaderPlugin } = require('vue-loader')
 const webpack = require('webpack')
-const { resolveConfig } = require('./build/resolveBuildConfig.js')
+const { resolveBuildConfig } = require('./build/resolveBuildConfig.js')
 const { getAppInfo } = require('./scripts/utils/appinfo.utils.cjs')
+
+const BUILD_CONFIG = resolveBuildConfig()
 
 const TALK_PATH = path.resolve(__dirname, process.env.TALK_PATH ?? 'spreed')
 const CHANNEL = process.env.CHANNEL ?? 'dev'
@@ -249,7 +251,7 @@ const webpackRendererConfig = {
 			__VERSION_TAG__: JSON.stringify(getFullVersion()),
 			__TALK_VERSION_TAG__: JSON.stringify(getFullVersion(TALK_PATH)),
 			'process.env.NEXTCLOUD_DEV_SERVER_HOSTS': JSON.stringify(process.env.NEXTCLOUD_DEV_SERVER_HOSTS),
-			__BUILD_CONFIG__: JSON.stringify(resolveConfig()),
+			__BUILD_CONFIG__: JSON.stringify(BUILD_CONFIG),
 		}),
 
 		new MiniCssExtractPlugin({

@@ -8,6 +8,7 @@ import { refetchAppDataWithRetry } from '../app/appData.service.js'
 import { getAppConfigValue, initAppConfig, setAppConfigValue } from '../shared/appConfig.service.ts'
 import { initGlobals } from '../shared/globals/globals.js'
 import { applyAxiosInterceptors } from '../shared/setupWebPage.js'
+import { ensureFlatpakEmojiFontRendering } from './ensureFlatpakEmojiFontRendering.ts'
 
 import '@global-styles/dist/icons.css'
 
@@ -29,6 +30,8 @@ appData.restore()
 
 initGlobals()
 applyAxiosInterceptors()
+
+await ensureFlatpakEmojiFontRendering()
 
 if (appData.credentials) {
 	await window.TALK_DESKTOP.enableWebRequestInterceptor(appData.serverUrl, { credentials: appData.credentials })

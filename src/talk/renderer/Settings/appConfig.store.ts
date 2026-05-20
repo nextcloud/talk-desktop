@@ -9,6 +9,8 @@ import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
 import { defineStore } from 'pinia'
 import { readonly, ref, watch } from 'vue'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
+import { setTheming } from '../../../shared/theme.utils.ts'
+import { useMatchMedia } from '../../../shared/useMatchMedia.ts'
 
 export const useAppConfigStore = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
@@ -26,6 +28,15 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 			unwatchRelaunch()
 		},
 	)
+
+	const prefersDark = useMatchMedia('(prefers-color-scheme: dark)')
+	watch(() => [appConfig.value.theme, appConfig.value.highContrast, appConfig.value.dyslexicFont, prefersDark.value], () => {
+		setTheming({
+			colorScheme: appConfig.value.theme,
+			highContrast: appConfig.value.highContrast,
+			openDyslexic: appConfig.value.dyslexicFont,
+		})
+	})
 
 	/**
 	 * Get an application config value

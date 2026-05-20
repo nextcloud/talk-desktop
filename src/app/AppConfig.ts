@@ -69,10 +69,20 @@ export type AppConfig = {
 	// -------------------
 
 	/**
-	 * Application theme.
-	 * Default: 'default' to follow the system theme.
+	 * Color scheme (dark mode).
+	 * Default: 'default' to follow the system settings.
 	 */
 	theme: 'default' | 'dark' | 'light'
+	/**
+	 * Whether to follow the system settings, enable (enforce) or disable (suppress) high contrast theme.
+	 * Default: 'default'.
+	 */
+	highContrast: 'default' | 'enabled' | 'disabled'
+	/**
+	 * Whether to enable the dyslexic font (OpenDyslexic) for better readability.
+	 * Default: false
+	 */
+	dyslexicFont: boolean
 	/**
 	 * Whether to use a custom title bar or the system default.
 	 * Default: false.
@@ -147,6 +157,8 @@ const defaultAppConfig: AppConfig = {
 	launchAtStartup: false,
 	launchAtStartupInBackground: true,
 	theme: 'default',
+	highContrast: 'default',
+	dyslexicFont: false,
 	systemTitleBar: false,
 	monochromeTrayIcon: isMac,
 	zoomFactor: 1,

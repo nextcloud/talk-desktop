@@ -18,6 +18,7 @@ const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/githubRelease.service.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
+const { getPolicyConfig } = require('./app/policy.config.ts')
 const { systemInfo, isLinux, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { buildTitle, onReadyToShow } = require('./app/utils.ts')
@@ -76,6 +77,7 @@ if (!app.requestSingleInstanceLock()) {
 
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getSystemInfo', () => systemInfo)
+ipcMain.handle('app:getPolicyConfig', () => getPolicyConfig())
 ipcMain.handle('app:buildTitle', (event, title) => buildTitle(title))
 ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_') ?? 'en',

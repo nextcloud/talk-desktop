@@ -44,7 +44,12 @@ const serverUrl = computed(() => {
 const state = ref('idle')
 const stateText = ref('')
 
-onMounted(() => {
+onMounted(async () => {
+	const { serverUrl } = await window.TALK_DESKTOP.getPolicyConfig()
+	if (serverUrl) {
+		rawServerUrl.value = serverUrl
+	}
+
 	if (enforceDomain) {
 		login()
 	}

@@ -49,7 +49,7 @@
   },
   "talk": {
     "stable": "v23.0.4",
-    "beta": "v23.0.4",
+    "beta": "v24.0.0-rc.1",
     "dev": "main"
   },
   "dependencies": {

@@ -45,7 +45,7 @@ const TALK_DESKTOP = {
 	/**
 	 * Get deployment configuration from policy.
 	 *
-	 * @return {Promise<{ serverUrl?: string }>}
+	 * @return {Promise<{ serverUrl?: string, enforceServerUrl?: boolean }>}
 	 */
 	getPolicyConfig: () => ipcRenderer.invoke('app:getPolicyConfig'),
 	/**

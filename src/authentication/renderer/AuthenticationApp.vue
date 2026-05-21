@@ -29,7 +29,7 @@ let [prefilledServer, prefilledUser] = atIndex === -1
 	: [prefilledAccount.slice(atIndex + 1), prefilledAccount.slice(0, atIndex)]
 
 const rawServerUrl = ref(BUILD_CONFIG.domain ?? prefilledServer)
-const enforceDomain = Boolean(BUILD_CONFIG.domain && BUILD_CONFIG.enforceDomain)
+let enforceDomain = Boolean(BUILD_CONFIG.domain && BUILD_CONFIG.enforceDomain)
 
 const allowReset = computed(() => !!(rawServerUrl.value && !enforceDomain))
 
@@ -45,8 +45,9 @@ const state = ref('idle')
 const stateText = ref('')
 
 onMounted(async () => {
-	const { serverUrl } = await window.TALK_DESKTOP.getPolicyConfig()
+	const { serverUrl, enforceServerUrl } = await window.TALK_DESKTOP.getPolicyConfig()
 	if (serverUrl) {
+		enforceDomain ||= Boolean(enforceServerUrl)
 		rawServerUrl.value = serverUrl
 	}
 

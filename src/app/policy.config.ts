@@ -9,6 +9,7 @@ import { isMac, isWindows } from './system.utils.ts'
 
 export type PolicyConfig = {
 	serverUrl?: string
+	enforceServerUrl?: boolean
 }
 
 /**
@@ -17,7 +18,7 @@ export type PolicyConfig = {
  * @param key - Registry key
  * @param name - Value name
  */
-function getWindowsPolicyValue(key: string, name: string): string | undefined {
+function getRegistryValue(key: string, name: string): string | undefined {
 	try {
 		const stdout = execFileSync('reg', ['query', key, '/v', name], { encoding: 'utf8', windowsHide: true })
 		return stdout.match(new RegExp(`\\s${name}\\s+REG_\\w+\\s+(.+)`, 'i'))?.[1]?.trim()
@@ -27,37 +28,30 @@ function getWindowsPolicyValue(key: string, name: string): string | undefined {
 }
 
 /**
- * Get deployment configuration from Windows policy.
- */
-function getWindowsPolicyConfig(): PolicyConfig {
-	for (const key of ['HKLM\\Software\\Policies\\Nextcloud\\Talk', 'HKCU\\Software\\Policies\\Nextcloud\\Talk']) {
-		const serverUrl = getWindowsPolicyValue(key, 'ServerUrl')
-		if (serverUrl) {
-			return { serverUrl }
-		}
-	}
-
-	return {}
-}
-
-/**
- * Get deployment configuration from macOS managed preferences.
- */
-function getMacPolicyConfig(): PolicyConfig {
-	const serverUrl = systemPreferences.getUserDefault('ServerUrl', 'string')
-	return serverUrl ? { serverUrl } : {}
-}
-
-/**
  * Get deployment configuration from OS policy.
  */
 export function getPolicyConfig(): PolicyConfig {
 	if (isWindows) {
-		return getWindowsPolicyConfig()
+		for (const key of ['HKLM\\Software\\Policies\\Nextcloud\\Talk', 'HKCU\\Software\\Policies\\Nextcloud\\Talk']) {
+			const serverUrl = getRegistryValue(key, 'ServerUrl')
+			if (serverUrl) {
+				const enforceServerUrl = getRegistryValue(key, 'EnforceServerUrl')
+				return {
+					serverUrl,
+					enforceServerUrl: enforceServerUrl === '1' || enforceServerUrl === '0x1' || enforceServerUrl?.toLowerCase() === 'true',
+				}
+			}
+		}
 	}
 
 	if (isMac) {
-		return getMacPolicyConfig()
+		const serverUrl = systemPreferences.getUserDefault('ServerUrl', 'string')
+		if (serverUrl) {
+			return {
+				serverUrl,
+				enforceServerUrl: systemPreferences.getUserDefault('EnforceServerUrl', 'boolean'),
+			}
+		}
 	}
 
 	return {}

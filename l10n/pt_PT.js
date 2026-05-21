@@ -13,6 +13,8 @@ OC.L10N.register(
     "Advanced" : "Avançado",
     "Proceed" : "Prosseguir",
     "Cancel" : "Cancelar",
+    "Validity period" : "Período de validade",
+    "Valid from" : "Válido de",
     "Valid until" : "Válido até",
     "Copy" : "copiar",
     "About" : "Sobre",

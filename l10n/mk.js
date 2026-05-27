@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Authentication" : "Автентикација",
     "Server address" : "Адреса на серверот",
+    "Log in" : "Најава",
     "Logging in …" : "Најавување …",
     "Incoming call" : "Дојдовен повик",
     "Close" : "Затвори",

@@ -48,6 +48,7 @@ OC.L10N.register(
     "Privacy and Legal Policy" : "Политика конфиденциальности и правовая информация",
     "License" : "Лицензия",
     "Issues" : "Проблемы",
+    "Diagnosis report" : "Отчёт о диагностике",
     "Copy report" : "Скопировать отчёт",
     "Done" : "Выполненные",
     "Ok" : "OK",

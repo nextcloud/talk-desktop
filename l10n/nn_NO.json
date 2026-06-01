@@ -9,6 +9,7 @@
     "Cancel" : "Cancel",
     "Copy" : "Kopier",
     "License" : "Lisens",
+    "Done" : "Ferdig",
     "Ok" : "Greitt",
     "Appearance" : "Utsjånad",
     "Update" : "Oppdater",
@@ -17,6 +18,8 @@
     "Today" : "I dag",
     "None" : "Ingen",
     "Away" : "Borte",
+    "Busy" : "Opptatt",
+    "Do not disturb" : "Ikkje forstyrr",
     "Invisible" : "Usynleg"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

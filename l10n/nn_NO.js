@@ -11,6 +11,7 @@ OC.L10N.register(
     "Cancel" : "Cancel",
     "Copy" : "Kopier",
     "License" : "Lisens",
+    "Done" : "Ferdig",
     "Ok" : "Greitt",
     "Appearance" : "Utsjånad",
     "Update" : "Oppdater",
@@ -19,6 +20,8 @@ OC.L10N.register(
     "Today" : "I dag",
     "None" : "Ingen",
     "Away" : "Borte",
+    "Busy" : "Opptatt",
+    "Do not disturb" : "Ikkje forstyrr",
     "Invisible" : "Usynleg"
 },
 "nplurals=2; plural=(n != 1);");

@@ -21,10 +21,13 @@ const ZOOM_FACTOR = 3
 
 const src = computed(() => generateFilePreviewUrl(props.file.fileid, props.file.etag))
 
+const ROTATION_STEP = 90
+
 const wrapperRef = ref(null)
 const instance = ref(null)
 const scale = ref(1)
 const grabbing = ref(false)
+const rotation = ref(0)
 
 const cursorClass = computed(() => {
 	if (scale.value === 1) {
@@ -68,6 +71,16 @@ function disposePanzoom() {
 	grabbing.value = false
 }
 
+function rotateLeft() {
+	rotation.value -= ROTATION_STEP
+}
+
+function rotateRight() {
+	rotation.value += ROTATION_STEP
+}
+
+defineExpose({ rotateLeft, rotateRight })
+
 function onImageLoad(handleLoadEnd) {
 	handleLoadEnd(false)
 	initPanzoom()
@@ -94,7 +107,10 @@ function onDoubleClick(event) {
 	}
 }
 
-watch(src, disposePanzoom)
+watch(src, () => {
+	disposePanzoom()
+	rotation.value = 0
+})
 
 onBeforeUnmount(disposePanzoom)
 </script>
@@ -106,6 +122,7 @@ onBeforeUnmount(disposePanzoom)
 				<img
 					:key="src"
 					class="viewer-image"
+					:style="{ transform: `rotate(${rotation}deg)` }"
 					:src="src"
 					:alt="file.basename"
 					@load="onImageLoad(handleLoadEnd)"
@@ -133,6 +150,7 @@ onBeforeUnmount(disposePanzoom)
 .viewer-image {
 	max-width: 100%;
 	max-height: 100%;
+	transition: transform 0.3s ease;
 }
 
 .viewer-image--zoom-in {

@@ -69,6 +69,7 @@
     "electron-squirrel-startup": "^1.0.1",
     "howler": "^2.2.4",
     "mri": "^1.2.0",
+    "panzoom": "^9.4.4",
     "pinia": "^3.0.4",
     "semver": "^7.7.4",
     "unzip-crx-3": "^0.2.0",

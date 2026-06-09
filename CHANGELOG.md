@@ -5,6 +5,20 @@
 
 # Changelog
 
+## v2.2.0 - 2026-06-09
+
+### Fixes
+
+- Linux/Flatpak: status icon rendering, screen wake lock, IDLE detection access [#1713](https://github.com/nextcloud/talk-desktop/pull/1713)
+- macOS: correct "Report a bug" window menu link [#1736](https://github.com/nextcloud/talk-desktop/pull/1736)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v24.0.0 in both beta and stable release channels [#1759](https://github.com/nextcloud/talk-desktop/pull/1759)
+- Update to Electron 41 [#1709](https://github.com/nextcloud/talk-desktop/pull/1709), [#1710](https://github.com/nextcloud/talk-desktop/pull/1710)
+- Add scripts for Windows ARM build [#1725](https://github.com/nextcloud/talk-desktop/pull/1725)
+- Add initial support for `.overrides/` build customization with build config and styles [#1741](https://github.com/nextcloud/talk-desktop/pull/1741), [#1743](https://github.com/nextcloud/talk-desktop/pull/1743)
+
 ## v2.1.2 - 2026-04-02
 
 ### Changes

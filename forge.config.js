@@ -239,6 +239,7 @@ module.exports = {
 			manufacturer: BUILD_CONFIG.companyName,
 			shortName: BUILD_CONFIG.applicationNameSanitized,
 			upgradeCode: BUILD_CONFIG.winUpgradeCode,
+			arch: 'x64', // electron-wix-msi defaults to x86 and arm64 is not supported
 			// Pass the version explicitly
 			// otherwise MakerWix makes versions with prerelease tags invalid semantic version
 			// which breaks app launch via stub executable

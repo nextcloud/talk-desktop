@@ -48,8 +48,8 @@
     "ts:check": "vue-tsc --noEmit"
   },
   "talk": {
-    "stable": "v23.0.4",
-    "beta": "v24.0.0-rc.1",
+    "stable": "v24.0.0",
+    "beta": "v24.0.0",
     "dev": "main"
   },
   "dependencies": {

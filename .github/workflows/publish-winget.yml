@@ -1,0 +1,29 @@
+name: Publish to winget
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Released tag to publish'
+        required: true
+        type: string
+      release_date:
+        description: 'Release date'
+        required: true
+        type: string
+        default: '(Get-Date -Format "yyyy-MM-dd")'
+
+jobs:
+  winget:
+    name: Publish to winget
+    runs-on: windows-latest
+    steps:
+      - name: Install wingetcreate
+        run: |
+          iwr https://aka.ms/wingetcreate/latest -OutFile wingetcreate.exe
+      - name: Update manifest and publish
+        run: |
+          $githubToken = "${{ secrets.WINGET_GITHUB_TOKEN }}"
+          $url = "https://github.com/nextcloud-releases/talk-desktop/releases/download/${{ $inputs.tag_name }}/Nextcloud.Talk-windows-x64.exe"
+          $version = $inputs.tag_name.Trim("v")
+          .\wingetcreate.exe update Nextcloud.Talk --version $version --urls "$url" --release-date ${{ $inputs.release_date }} --submit --token $githubToken

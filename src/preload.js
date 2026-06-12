@@ -43,6 +43,12 @@ const TALK_DESKTOP = {
 	 */
 	getSystemInfo: () => ipcRenderer.invoke('app:getSystemInfo'),
 	/**
+	 * Get deployment configuration from policy.
+	 *
+	 * @return {Promise<{ serverUrl?: string, enforceServerUrl?: boolean }>}
+	 */
+	getPolicyConfig: () => ipcRenderer.invoke('app:getPolicyConfig'),
+	/**
 	 * Get system locale and preferred language
 	 *
 	 * @return {Promise<{ locale: string, language: string }>}

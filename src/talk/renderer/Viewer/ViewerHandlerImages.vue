@@ -68,16 +68,25 @@ function disposePanzoom() {
 	grabbing.value = false
 }
 
+/**
+ * @param {Function} handleLoadEnd - Callback to signal load completion
+ */
 function onImageLoad(handleLoadEnd) {
 	handleLoadEnd(false)
 	initPanzoom()
 }
 
+/**
+ * @param {Function} handleLoadEnd - Callback to signal load error
+ */
 function onImageError(handleLoadEnd) {
 	handleLoadEnd(true)
 	disposePanzoom()
 }
 
+/**
+ * @param {MouseEvent} event - The double-click event
+ */
 function onDoubleClick(event) {
 	if (!instance.value) {
 		return

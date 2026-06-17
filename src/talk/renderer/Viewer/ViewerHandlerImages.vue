@@ -41,7 +41,10 @@ function initPanzoom() {
 		minZoom: ZOOM_MIN,
 		maxZoom: ZOOM_MAX,
 		bounds: true,
-		boundsPadding: 0.1,
+		boundsPadding: 0,
+		beforeMouseDown() {
+			return scale.value <= ZOOM_MIN
+		},
 	})
 	instance.value.on('zoom', (pz) => {
 		const transform = pz.getTransform()
@@ -111,10 +114,11 @@ onBeforeUnmount(disposePanzoom)
 <template>
 	<ViewerHandlerMedia v-slot="{ handleLoadEnd }">
 		<div class="viewer-image-container" @dblclick.capture="onDoubleClick">
-			<div ref="wrapperRef" class="viewer-image-wrapper" :class="cursorClass">
+			<div ref="wrapperRef" class="viewer-image-wrapper">
 				<img
 					:key="src"
 					class="viewer-image"
+					:class="cursorClass"
 					:src="src"
 					:alt="file.basename"
 					@load="onImageLoad(handleLoadEnd)"

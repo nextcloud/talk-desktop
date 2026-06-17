@@ -126,6 +126,10 @@ const TALK_DESKTOP = {
 	 */
 	toggleDevTools: () => ipcRenderer.send('app:toggleDevTools'),
 	/**
+	 * Clear Flatpak fontconfig cache
+	 */
+	clearFlatpakFontConfigCache: () => ipcRenderer.send('app:clearFlatpakFontConfigCache'),
+	/**
 	 * Invoke app:anything
 	 *
 	 * @param {...any} args - Arguments

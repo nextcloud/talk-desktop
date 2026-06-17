@@ -5,7 +5,7 @@
 
 <script setup>
 import panzoom from 'panzoom'
-import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, useTemplateRef, watch } from 'vue'
 import ViewerHandlerMedia from './ViewerHandlerMedia.vue'
 import { generateFilePreviewUrl } from './viewer.utils.ts'
 
@@ -21,8 +21,8 @@ const ZOOM_FACTOR = 3
 
 const src = computed(() => generateFilePreviewUrl(props.file.fileid, props.file.etag))
 
-const wrapperRef = ref(null)
-const instance = ref(null)
+const panzoomWrapperRef = useTemplateRef('panzoomWrapper')
+let instance = null
 const scale = ref(1)
 const grabbing = ref(false)
 
@@ -34,10 +34,7 @@ const cursorClass = computed(() => {
 })
 
 function initPanzoom() {
-	if (!wrapperRef.value) {
-		return
-	}
-	instance.value = panzoom(wrapperRef.value, {
+	instance = panzoom(panzoomWrapperRef.value, {
 		minZoom: ZOOM_MIN,
 		maxZoom: ZOOM_MAX,
 		bounds: true,
@@ -46,27 +43,27 @@ function initPanzoom() {
 			return scale.value <= ZOOM_MIN
 		},
 	})
-	instance.value.on('zoom', (pz) => {
+	instance.on('zoom', (pz) => {
 		const transform = pz.getTransform()
 		scale.value = transform.scale
 		if (transform.scale <= ZOOM_MIN) {
 			pz.smoothMoveTo(0, 0)
 		}
 	})
-	instance.value.on('panstart', (pz) => {
+	instance.on('panstart', (pz) => {
 		if (pz.getTransform().scale <= ZOOM_MIN) {
 			return
 		}
 		grabbing.value = true
 	})
-	instance.value.on('panend', () => {
+	instance.on('panend', () => {
 		grabbing.value = false
 	})
 }
 
 function disposePanzoom() {
-	instance.value?.dispose()
-	instance.value = null
+	instance?.dispose()
+	instance = null
 	scale.value = 1
 	grabbing.value = false
 }
@@ -91,7 +88,7 @@ function onImageError(handleLoadEnd) {
  * @param {MouseEvent} event - The double-click event
  */
 function onDoubleClick(event) {
-	if (!instance.value) {
+	if (!instance) {
 		return
 	}
 	event.preventDefault()
@@ -100,9 +97,9 @@ function onDoubleClick(event) {
 	const x = event.clientX - rect.left
 	const y = event.clientY - rect.top
 	if (scale.value === 1) {
-		instance.value.smoothZoom(x, y, ZOOM_FACTOR)
+		instance.smoothZoom(x, y, ZOOM_FACTOR)
 	} else {
-		instance.value.smoothZoomAbs(x, y, 0)
+		instance.smoothZoomAbs(x, y, 0)
 	}
 }
 
@@ -113,8 +110,9 @@ onBeforeUnmount(disposePanzoom)
 
 <template>
 	<ViewerHandlerMedia v-slot="{ handleLoadEnd }">
+		<!-- capture phase intercepts dblclick before panzoom's own handler; stopPropagation prevents the parent viewer from closing -->
 		<div class="viewer-image-container" @dblclick.capture="onDoubleClick">
-			<div ref="wrapperRef" class="viewer-image-wrapper">
+			<div ref="panzoomWrapper" class="viewer-image-wrapper">
 				<img
 					:key="src"
 					class="viewer-image"

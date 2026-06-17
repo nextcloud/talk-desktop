@@ -7,7 +7,7 @@ import { app, webContents } from 'electron'
 import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { readManagedConfig } from './managedConfig.service.ts'
-import { isMac, isWayland } from './system.utils.ts'
+import { isMac } from './system.utils.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
 
@@ -169,8 +169,7 @@ const managedAppConfig = readManagedConfig()
  * Overrides any config value if set, including user defined.
  */
 const forcedAppConfig: Partial<AppConfig> = Object.fromEntries(Object.entries({
-	// See: https://github.com/electron/electron/issues/49244
-	systemTitleBar: isWayland ? false : undefined,
+	// Nothing at the moment
 }).filter(([, value]) => value !== undefined))
 
 /** Local cache of the config file mixed with the default values */

@@ -155,8 +155,7 @@ const defaultAppConfig: AppConfig = {
  * Forced App Config
  */
 const forcedAppConfig: Partial<AppConfig> = Object.fromEntries(Object.entries({
-	// See: https://github.com/electron/electron/issues/49244
-	systemTitleBar: isWayland ? false : undefined
+	// Nothing at the moment
 }).filter(([, value]) => value !== undefined))
 
 /** Local cache of the config file mixed with the default values */

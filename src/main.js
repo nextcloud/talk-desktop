@@ -18,7 +18,7 @@ const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/githubRelease.service.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
-const { systemInfo, isLinux, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
+const { systemInfo, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { buildTitle, onReadyToShow } = require('./app/utils.ts')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
@@ -33,14 +33,6 @@ const { createUpgradeWindow } = require('./upgrade/upgrade.window.ts')
 const { createWelcomeWindow } = require('./welcome/welcome.window.ts')
 
 const argv = mri(process.argv.slice(app.isPackaged ? 1 : 2))
-
-// Electron 36 with Chromium 136 is not compatible with GNOME due to GTK3 with GTK4 mixing
-// Workaround: force GTK3
-// - https://github.com/electron/electron/issues/46538
-// - https://chromium-review.googlesource.com/c/chromium/src/+/6310469
-if (isLinux) {
-	app.commandLine.appendSwitch('gtk-version', '3')
-}
 
 /**
  * On production use executable name as application name to allow several independent application instances.

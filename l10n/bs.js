@@ -4,6 +4,7 @@ OC.L10N.register(
     "Server address" : "Adresa servera",
     "Log in" : "Prijava",
     "Close" : "Zatvori",
+    "Dismiss" : "Dismiss",
     "Advanced" : "Napredno",
     "Cancel" : "Odustani",
     "Valid until" : "Validno do",

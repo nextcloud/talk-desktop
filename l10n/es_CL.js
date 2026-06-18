@@ -4,6 +4,7 @@ OC.L10N.register(
     "Authentication" : "Autenticación",
     "Server address" : "Dirección del servidor",
     "Log in" : "Ingresar",
+    "Close" : "Close",
     "Dismiss" : "Descartar",
     "Join call" : "Unirse a la llamada",
     "Security warning" : "Advertencia de seguridad",

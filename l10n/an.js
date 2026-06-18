@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Log in" : "Iniciar sesión",
     "Close" : "Zarrar",
+    "Dismiss" : "Dismiss",
     "Cancel" : "Cancelar",
     "Done" : "Feito",
     "No" : "No",

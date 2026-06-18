@@ -4,6 +4,7 @@ OC.L10N.register(
     "Server address" : "Cyfeiriad gweinydd",
     "Log in" : "Mewngofnodi",
     "Close" : "Cau",
+    "Dismiss" : "Dismiss",
     "Advanced" : "Uwch",
     "Cancel" : "Cancel",
     "About" : "Ynglyn â",

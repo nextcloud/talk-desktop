@@ -5,6 +5,7 @@ OC.L10N.register(
     "Server address" : "සේවාදායක ලිපිනය",
     "Log in" : "පිවිසෙන්න",
     "Close" : "වසන්න",
+    "Dismiss" : "Dismiss",
     "Security warning" : "ආරක්ෂක අනතුරු ඇඟවීම",
     "Cancel" : "අවලංගු",
     "Country" : "රට",

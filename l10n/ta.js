@@ -4,6 +4,7 @@ OC.L10N.register(
     "Server address" : "சேவையக முகவரி",
     "Log in" : "புகுபதிகை",
     "Close" : "மூடுக",
+    "Dismiss" : "Dismiss",
     "Advanced" : "உயர்ந்த",
     "Cancel" : "ரத்து செய்",
     "Country" : "நாடு",

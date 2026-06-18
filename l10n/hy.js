@@ -4,6 +4,7 @@ OC.L10N.register(
     "Server address" : "սերվերի հասցեն",
     "Log in" : "Մուտք գործել",
     "Close" : "Փակել",
+    "Dismiss" : "Dismiss",
     "Security warning" : "Անվտանգության զգուշացում",
     "Cancel" : "չեղարկել",
     "Copy" : "Պատճենել",

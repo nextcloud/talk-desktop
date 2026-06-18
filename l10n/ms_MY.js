@@ -4,6 +4,7 @@ OC.L10N.register(
     "Server address" : "Alamat pelayan",
     "Log in" : "Log masuk",
     "Close" : "Tutup",
+    "Dismiss" : "Dismiss",
     "Advanced" : "Maju",
     "Cancel" : "Cancel",
     "Done" : "Selesai",

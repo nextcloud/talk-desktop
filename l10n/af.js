@@ -2,6 +2,7 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Teken Aan",
+    "Close" : "Close",
     "Dismiss" : "Ontslaan",
     "Security warning" : "Sekuriteitswaarskuwing",
     "Advanced" : "Gevorderd",

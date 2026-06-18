@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Server address" : "﻿ಪರಿಚಾರಕ ಗಣಕಯಂತ್ರದ ವಿಳಾಸ",
     "Close" : "ಮುಚ್ಚು",
+    "Dismiss" : "Dismiss",
     "Cancel" : "Cancel",
     "Copy" : "ನಕಲಿಸಿ",
     "Ok" : "﻿ಸರಿ",

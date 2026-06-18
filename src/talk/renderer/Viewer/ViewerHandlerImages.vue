@@ -48,7 +48,7 @@ function clampToBounds() {
 	if (rect.bottom < parentRect.bottom) newY += parentRect.bottom - rect.bottom
 
 	if (newX !== x || newY !== y) {
-		instance.smoothMoveTo(newX, newY)
+		instance.moveTo(newX, newY)
 	}
 }
 
@@ -56,6 +56,9 @@ function initPanzoom() {
 	instance = panzoom(panzoomWrapperRef.value, {
 		minZoom: ZOOM_MIN,
 		maxZoom: ZOOM_MAX,
+		// Disable inertia so the image stops immediately on release,
+		// allowing clampToBounds to take effect without being overridden
+		smoothScroll: false,
 		beforeMouseDown() {
 			return scale.value <= ZOOM_MIN
 		},
@@ -74,6 +77,9 @@ function initPanzoom() {
 			return
 		}
 		grabbing.value = true
+	})
+	instance.on('pan', () => {
+		clampToBounds()
 	})
 	instance.on('panend', () => {
 		grabbing.value = false

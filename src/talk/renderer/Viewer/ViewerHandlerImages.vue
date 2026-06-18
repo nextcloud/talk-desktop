@@ -33,12 +33,29 @@ const cursorClass = computed(() => {
 	return grabbing.value ? 'viewer-image--grabbing' : 'viewer-image--grab'
 })
 
+function clampToBounds() {
+	if (!instance) return
+	const el = panzoomWrapperRef.value
+	const rect = el.getBoundingClientRect()
+	const parentRect = el.parentElement.getBoundingClientRect()
+	const { x, y } = instance.getTransform()
+
+	let newX = x
+	let newY = y
+	if (rect.left > parentRect.left) newX -= rect.left - parentRect.left
+	if (rect.right < parentRect.right) newX += parentRect.right - rect.right
+	if (rect.top > parentRect.top) newY -= rect.top - parentRect.top
+	if (rect.bottom < parentRect.bottom) newY += parentRect.bottom - rect.bottom
+
+	if (newX !== x || newY !== y) {
+		instance.smoothMoveTo(newX, newY)
+	}
+}
+
 function initPanzoom() {
 	instance = panzoom(panzoomWrapperRef.value, {
 		minZoom: ZOOM_MIN,
 		maxZoom: ZOOM_MAX,
-		bounds: true,
-		boundsPadding: 0,
 		beforeMouseDown() {
 			return scale.value <= ZOOM_MIN
 		},
@@ -48,6 +65,8 @@ function initPanzoom() {
 		scale.value = transform.scale
 		if (transform.scale <= ZOOM_MIN) {
 			pz.smoothMoveTo(0, 0)
+		} else {
+			clampToBounds()
 		}
 	})
 	instance.on('panstart', (pz) => {
@@ -58,6 +77,7 @@ function initPanzoom() {
 	})
 	instance.on('panend', () => {
 		grabbing.value = false
+		clampToBounds()
 	})
 }
 

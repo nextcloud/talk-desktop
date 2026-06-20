@@ -33,6 +33,7 @@ OC.L10N.register(
     "Light" : "明るい",
     "Dark" : "暗い",
     "Appearance" : "表示",
+    "Restart" : "再起動",
     "Loading …" : "読み込み中…",
     "Reload" : "再読み込み",
     "Zoom" : "ズーム",

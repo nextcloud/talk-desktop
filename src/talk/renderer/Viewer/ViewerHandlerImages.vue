@@ -125,7 +125,7 @@ function onDoubleClick(event) {
 	if (scale.value === 1) {
 		instance.smoothZoom(x, y, ZOOM_FACTOR)
 	} else {
-		instance.smoothZoomAbs(x, y, 0)
+		instance.smoothZoomAbs(x, y, ZOOM_MIN)
 	}
 }
 

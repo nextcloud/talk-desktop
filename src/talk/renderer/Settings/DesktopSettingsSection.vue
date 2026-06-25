@@ -27,6 +27,7 @@ const isWayland = window.systemInfo.isWayland
 const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
 const launchAtStartup = useAppConfigValue('launchAtStartup')
+const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackground')
 const theme = useAppConfigValue('theme')
 const systemTitleBar = useAppConfigValue('systemTitleBar')
 const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
@@ -51,6 +52,7 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 
 		<NcFormBox v-if="!isLinux">
 			<NcFormBoxSwitch v-model="launchAtStartup" :label="t('talk_desktop', 'Launch at startup')" />
+			<NcFormBoxSwitch v-if="launchAtStartup" v-model="launchAtStartupInBackground" :label="t('talk_desktop', 'Launch in background')" />
 		</NcFormBox>
 
 		<NcRadioGroup v-model="theme" :label="t('talk_desktop', 'Theme')">

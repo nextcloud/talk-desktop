@@ -12,25 +12,29 @@ import { getAppConfig, onAppConfigChange } from './AppConfig.ts'
 function applyLaunchAtStartup() {
 	// Do not add the app to startup in development mode
 	if (process.env.NODE_ENV !== 'production') {
+		console.warn('Launch at startup config is disabled in development mode, test and debug in the production build.')
 		return
 	}
 
 	const launchAtStartup = getAppConfig('launchAtStartup')
+	const launchAtStartupInBackground = getAppConfig('launchAtStartupInBackground')
 
-	console.log('Setting launch at startup to:', launchAtStartup)
+	console.info('Setting launch at startup to ', launchAtStartup, launchAtStartup ? (launchAtStartupInBackground ? 'in background' : 'in foreground') : '')
+
+	// Windows: registry key HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+	// macOS 13+: SMAppService (System Settings / General / Login Items)
+	// Older macOS: ~/Library/Preferences/com.apple.loginitems.plist
 	app.setLoginItemSettings({
 		openAtLogin: launchAtStartup,
 		name: app.getName(),
-		args: [
-			// Open in the background (hidden to the system tray) on Windows
-			'--background',
-		],
+		args: launchAtStartupInBackground ? ['--background'] : [],
 	})
 }
 
 /**
- * Initialize the listener for the launch at startup configuration
+ * Initialize the listener for the launch at startup configurations
  */
 export function initLaunchAtStartupListener() {
 	onAppConfigChange('launchAtStartup', applyLaunchAtStartup)
+	onAppConfigChange('launchAtStartupInBackground', applyLaunchAtStartup)
 }

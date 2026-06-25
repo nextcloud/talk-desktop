@@ -57,6 +57,11 @@ export type AppConfig = {
 	 * Default: false
 	 */
 	launchAtStartup: boolean
+	/**
+	 * Whether to launch the application at startup in background (without opening the window).
+	 * Default: true
+	 */
+	launchAtStartupInBackground: boolean
 
 	// -------------------
 	// Appearance settings
@@ -139,6 +144,7 @@ export type AppConfigKey = keyof AppConfig
 const defaultAppConfig: AppConfig = {
 	accounts: [],
 	launchAtStartup: false,
+	launchAtStartupInBackground: true,
 	theme: 'default',
 	systemTitleBar: false,
 	monochromeTrayIcon: isMac,

@@ -7,9 +7,12 @@
 import { translate as t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 import { computed, ref } from 'vue'
+import NcActionButton from '@nextcloud/vue/components/NcActionButton'
 import NcActionLink from '@nextcloud/vue/components/NcActionLink'
 import NcModal from '@nextcloud/vue/components/NcModal'
 import IconOpenInNew from 'vue-material-design-icons/OpenInNew.vue'
+import IconRotateLeft from 'vue-material-design-icons/RotateLeft.vue'
+import IconRotateRight from 'vue-material-design-icons/RotateRight.vue'
 
 /**
  * Noop
@@ -19,6 +22,7 @@ function noop() {}
 const isOpen = ref(false)
 const onClose = ref(noop)
 const file = ref(null)
+const viewerRef = ref(null)
 
 const viewComponent = computed(() => file.value && window.OCA.Viewer.availableHandlers.find((handler) => handler.mimes.includes(file.value.mime))?.component)
 
@@ -67,9 +71,22 @@ defineExpose({
 		<component
 			:is="viewComponent"
 			v-if="viewComponent"
+			ref="viewerRef"
 			:file="file" />
 
 		<template #actions>
+			<NcActionButton v-if="viewerRef?.rotateLeft" @click="viewerRef.rotateLeft()">
+				<template #icon>
+					<IconRotateLeft :size="20" />
+				</template>
+				{{ t('talk_desktop', 'Rotate left') }}
+			</NcActionButton>
+			<NcActionButton v-if="viewerRef?.rotateRight" @click="viewerRef.rotateRight()">
+				<template #icon>
+					<IconRotateRight :size="20" />
+				</template>
+				{{ t('talk_desktop', 'Rotate right') }}
+			</NcActionButton>
 			<NcActionLink :href="link">
 				<template #icon>
 					<IconOpenInNew :size="20" />

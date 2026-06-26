@@ -6,15 +6,18 @@
 <script setup lang="ts">
 import { t } from '@nextcloud/l10n'
 import { storeToRefs } from 'pinia'
+import { onMounted, ref } from 'vue'
 import NcFormBox from '@nextcloud/vue/components/NcFormBox'
 import NcFormBoxSwitch from '@nextcloud/vue/components/NcFormBoxSwitch'
 import NcFormGroup from '@nextcloud/vue/components/NcFormGroup'
 import NcRadioGroup from '@nextcloud/vue/components/NcRadioGroup'
 import NcRadioGroupButton from '@nextcloud/vue/components/NcRadioGroupButton'
+import IconPaletteOutline from 'vue-material-design-icons/PaletteOutline.vue'
 import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
 import IconWeatherNight from 'vue-material-design-icons/WeatherNight.vue'
 import IconWeatherSunny from 'vue-material-design-icons/WeatherSunny.vue'
 import DesktopSettingsSectionRelaunchNote from './components/DesktopSettingsSectionRelaunchNote.vue'
+import NcFormBoxItem from './components/NcFormBoxItem.vue'
 import UiFormBoxAudioOutput from './components/UiFormBoxAudioOutput.vue'
 import UiFormBoxSelectNative from './components/UiFormBoxSelectNative.vue'
 import UiFormGroupZoom from './components/UiFormGroupZoom.vue'
@@ -44,6 +47,11 @@ const notificationLevelOptions = [
 
 const secondarySpeaker = useAppConfigValue('secondarySpeaker')
 const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
+
+const isCustomCssApplied = ref(false)
+onMounted(async () => {
+	isCustomCssApplied.value = !!await window.TALK_DESKTOP.getCustomCss()
+})
 </script>
 
 <template>
@@ -77,6 +85,12 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 			<NcFormBox>
 				<NcFormBoxSwitch v-model="monochromeTrayIcon" :label="t('talk_desktop', 'Use monochrome tray icon')" />
 				<NcFormBoxSwitch v-if="!isWayland" v-model="systemTitleBar" :label="t('talk_desktop', 'Use system title bar')" />
+				<!-- TODO: Link to documentation when custom CSS docs are available. -->
+				<NcFormBoxItem v-if="isCustomCssApplied" tag="span" :label="t('talk_desktop', 'Custom CSS is applied')">
+					<template #icon>
+						<IconPaletteOutline :size="20" />
+					</template>
+				</NcFormBoxItem>
 			</NcFormBox>
 		</NcFormGroup>
 

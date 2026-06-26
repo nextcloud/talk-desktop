@@ -30,6 +30,7 @@ OC.L10N.register(
     "Light" : "Claro",
     "Dark" : "Escuro",
     "Appearance" : "Aspeto",
+    "Loading …" : "Carregando …",
     "Reload" : "Recarregar",
     "Zoom" : "Zoom",
     "Zoom out" : "Zoom out",

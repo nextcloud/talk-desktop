@@ -39,11 +39,13 @@ OC.L10N.register(
     "Menu" : "Menu",
     "Update" : "Atualizar",
     "Report a bug" : "Reportar um erro",
+    "App settings" : "Configurações do aplicativo",
     "Back" : "Voltar",
     "View profile" : "Visualizar perfil",
     "Log out" : "Sair",
     "Quit" : "Sair",
     "User status" : "Estado do utilizador",
+    "Your status was set automatically" : "Seu status foi definido automaticamente",
     "Don't clear" : "Não limpar",
     "Today" : "Hoje",
     "This week" : "Esta semana",
@@ -54,6 +56,7 @@ OC.L10N.register(
     "Away" : "Ausente",
     "Busy" : "Ocupado",
     "Do not disturb" : "Não incomodar",
-    "Invisible" : "Invisível "
+    "Invisible" : "Invisível ",
+    "You missed a call from {user}" : "Você perdeu uma chamada de {user}"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

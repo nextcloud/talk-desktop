@@ -58,6 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "不在「請勿打擾」狀態時",
     "Never" : "永不",
     "Launch at startup" : "在開機時啟動",
+    "Launch in background" : "在背景啟動",
     "Theme" : "佈景主題",
     "System default" : "系統預設值",
     "Light" : "淺色",

@@ -58,6 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "Wenn du nicht im \"Nicht stören\"-Modus bist",
     "Never" : "Niemals",
     "Launch at startup" : "Beim Systemstart starten",
+    "Launch in background" : "Im Hintergrund starten",
     "Theme" : "Design",
     "System default" : "Systemstandard",
     "Light" : "Hell",

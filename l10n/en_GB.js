@@ -58,6 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "When not in \"Do not disturb\"",
     "Never" : "Never",
     "Launch at startup" : "Launch at start-up",
+    "Launch in background" : "Launch in background",
     "Theme" : "Theme",
     "System default" : "System default",
     "Light" : "Light",

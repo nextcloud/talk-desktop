@@ -76,7 +76,7 @@ function resolveBuildConfig() {
  * Resolve path to the build-in Talk
  */
 function resolveTalkPath() {
-	return resolve(process.env.TALK_PATH) ?? resolve(__dirname, '../spreed')
+	return process.env.TALK_PATH ? resolve(process.env.TALK_PATH) : resolve(__dirname, '../spreed')
 }
 
 /**

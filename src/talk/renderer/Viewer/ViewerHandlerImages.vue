@@ -6,6 +6,9 @@
 <script setup>
 import panzoom from 'panzoom'
 import { computed, onBeforeUnmount, ref, useTemplateRef, watch } from 'vue'
+import { translate as t } from '@nextcloud/l10n'
+import IconRotateLeft from 'vue-material-design-icons/RotateLeft.vue'
+import IconRotateRight from 'vue-material-design-icons/RotateRight.vue'
 import ViewerHandlerMedia from './ViewerHandlerMedia.vue'
 import { generateFilePreviewUrl } from './viewer.utils.ts'
 
@@ -18,6 +21,7 @@ const props = defineProps({
 const ZOOM_MIN = 1
 const ZOOM_MAX = 8
 const ZOOM_FACTOR = 3
+const ROTATION_STEP = 90
 
 const src = computed(() => generateFilePreviewUrl(props.file.fileid, props.file.etag))
 
@@ -25,6 +29,7 @@ const panzoomWrapperRef = useTemplateRef('panzoomWrapper')
 let instance = null
 const scale = ref(1)
 const grabbing = ref(false)
+const rotation = ref(0)
 
 const cursorClass = computed(() => {
 	if (scale.value === 1) {
@@ -129,7 +134,25 @@ function onDoubleClick(event) {
 	}
 }
 
-watch(src, disposePanzoom)
+function rotateLeft() {
+	rotation.value -= ROTATION_STEP
+}
+
+function rotateRight() {
+	rotation.value += ROTATION_STEP
+}
+
+const actions = computed(() => [
+	{ key: 'rotate-left', label: t('talk_desktop', 'Rotate left'), icon: IconRotateLeft, onClick: rotateLeft },
+	{ key: 'rotate-right', label: t('talk_desktop', 'Rotate right'), icon: IconRotateRight, onClick: rotateRight },
+])
+
+defineExpose({ actions })
+
+watch(src, () => {
+	disposePanzoom()
+	rotation.value = 0
+})
 
 onBeforeUnmount(disposePanzoom)
 </script>
@@ -143,6 +166,7 @@ onBeforeUnmount(disposePanzoom)
 					:key="src"
 					class="viewer-image"
 					:class="cursorClass"
+					:style="{ transform: `rotate(${rotation}deg)` }"
 					:src="src"
 					:alt="file.basename"
 					@load="onImageLoad(handleLoadEnd)"
@@ -170,6 +194,7 @@ onBeforeUnmount(disposePanzoom)
 .viewer-image {
 	max-width: 100%;
 	max-height: 100%;
+	transition: transform 0.3s ease;
 }
 
 .viewer-image--zoom-in {

@@ -6,7 +6,7 @@
 import { app, webContents } from 'electron'
 import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { isWayland, isMac } from './system.utils.ts'
+import { isMac, isWayland } from './system.utils.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
 
@@ -162,7 +162,7 @@ const defaultAppConfig: AppConfig = {
  */
 const forcedAppConfig: Partial<AppConfig> = Object.fromEntries(Object.entries({
 	// See: https://github.com/electron/electron/issues/49244
-	systemTitleBar: isWayland ? false : undefined
+	systemTitleBar: isWayland ? false : undefined,
 }).filter(([, value]) => value !== undefined))
 
 /** Local cache of the config file mixed with the default values */

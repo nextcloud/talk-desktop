@@ -6,6 +6,7 @@
 const { app, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
 const { default: mri } = require('mri')
 const { spawn } = require('node:child_process')
+const { readFile } = require('node:fs/promises')
 const path = require('node:path')
 const { setupMenu } = require('./app/app.menu.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
@@ -80,6 +81,14 @@ ipcMain.handle('app:setBadgeCount', async (event, count) => app.setBadgeCount(co
 ipcMain.on('app:relaunch', () => relaunchApp())
 ipcMain.handle('app:config:get', (event, key) => getAppConfig(key))
 ipcMain.handle('app:config:set', (event, key, value) => setAppConfig(key, value))
+ipcMain.handle('app:custom-css:get', async () => {
+	const files = [
+		...(isWindows && process.env.ProgramData ? [path.join(process.env.ProgramData, app.getName(), 'custom.css')] : []),
+		path.join(app.getPath('userData'), 'custom.css'),
+	]
+	const styles = await Promise.all(files.map((file) => readFile(file, 'utf-8').catch(() => '')))
+	return styles.filter(Boolean).join('\n\n')
+})
 ipcMain.on('app:grantUserGesturedPermission', (event, id) => {
 	return event.sender.executeJavaScript(`document.getElementById('${id}')?.click()`, true)
 })

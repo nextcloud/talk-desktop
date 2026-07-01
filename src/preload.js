@@ -109,6 +109,12 @@ const TALK_DESKTOP = {
 	 */
 	onAppConfigChange: (callback) => ipcRenderer.on('app:config:change', callback),
 	/**
+	 * Get custom CSS loaded from fixed app data locations
+	 *
+	 * @return {Promise<string>}
+	 */
+	getCustomCss: () => ipcRenderer.invoke('app:custom-css:get'),
+	/**
 	 * Grant a permission requiring a user gesture
 	 *
 	 * @param {string} id - Button ID to click on

@@ -25,6 +25,7 @@ export async function cli(argv: Argv) {
 	} else {
 		console.log('Unknown command:', argv._.join(' '))
 		app.exit(1)
+		return
 	}
 
 	app.exit(0)
@@ -39,6 +40,7 @@ async function handleConfigCommand(argv: Argv) {
 	if (!argv.accounts) {
 		console.log('No config to set')
 		app.exit(1)
+		return
 	}
 
 	// --accounts=user@email.tld@server.tld/nextcloud,nextcloud.local
@@ -55,10 +57,12 @@ async function handleConfigCommand(argv: Argv) {
 		} catch {
 			console.error(`Invalid server: ${server}`)
 			app.exit(1)
+			return
 		}
 		if (user && (!/^[a-zA-Z0-9 _.@\-']{1,64}$/.test(user) || user !== user.trim())) {
 			console.error(`Invalid user: ${user}`)
 			app.exit(1)
+			return
 		}
 	}
 

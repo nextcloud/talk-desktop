@@ -91,7 +91,8 @@ export async function getNotificationsData(tabId, lastETag, forceRefresh, hasNot
 	const lastTab = BrowserStorage.getItem('tabId')
 	const now = Math.round(Date.now() / 1000)
 
-	if (forceRefresh
+	if (
+		forceRefresh
 		// Allow the same tab to refresh with less than the timeout,
 		|| (lastTab === tabId && lastUpdated + 25 < now)
 		// Allow the same tab to refresh with notify push,

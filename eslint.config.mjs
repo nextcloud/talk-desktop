@@ -45,46 +45,6 @@ export default [
 		},
 	},
 	{
-		name: 'talk-desktop/rules/dts',
-		files: ['**/*.d.ts'],
-		rules: {
-			'@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
-		},
-	},
-	{
-		// See: https://github.com/nextcloud-libraries/eslint-config/pull/995
-		name: 'talk-desktop/rules/vue-documentation-mixed',
-		files: ['**/*.vue'],
-		rules: {
-			// Vue files can be both JavaScript and TypeScript
-			// Try to apply TS files only for functions with TS definitions
-			'jsdoc/no-types': [
-				'error', {
-					contexts: [
-						'FunctionDeclaration:has(TSTypeAnnotation)',
-						'FunctionExpression:has(TSTypeAnnotation)',
-						'ArrowFunctionExpression:has(TSTypeAnnotation)',
-						'MethodDefinition:has(TSTypeAnnotation)',
-					],
-				},
-			],
-			'jsdoc/require-param-type': [
-				'error', {
-					contexts: [
-						'FunctionDeclaration:not(:has(TSTypeAnnotation))',
-						'FunctionExpression:not(:has(TSTypeAnnotation))',
-						'ArrowFunctionExpression:not(:has(TSTypeAnnotation))',
-						'MethodDefinition:not(:has(TSTypeAnnotation))',
-					],
-				},
-			],
-			// Unlike params, return values are often inferred and not explicitly typed
-			'jsdoc/require-returns-type': 'off',
-			// Unfortunately, we cannot check when it is used in TS context and when not
-			'jsdoc/check-tag-names': ['error', { typed: false }],
-		},
-	},
-	{
 		name: 'talk-desktop/rules/zx-scripts',
 		files: ['scripts/**/*.mjs'],
 		rules: {
@@ -101,15 +61,11 @@ export default [
 			'vue/attribute-hyphenation': 'error',
 			'vue/block-order': ['error', { order: ['script', 'template', 'style'] }], // Follow new Vue standards
 			'vue/component-api-style': ['error', ['script-setup']], // Follow new Vue standards
-			'vue/component-options-name-casing': 'error',
-			// 'vue/custom-event-name-casing': 'error', // TODO: enable with Vue 3
 			'vue/define-emits-declaration': 'error',
 			'vue/no-duplicate-attr-inheritance': 'error',
 			'vue/no-potential-component-option-typo': 'error',
 			'vue/no-ref-object-reactivity-loss': 'error',
 			'vue/no-undef-properties': 'error',
-			'vue/no-useless-v-bind': 'error',
-			'vue/prefer-separate-static-class': 'error',
 			'vue/prefer-true-attribute-shorthand': 'error',
 			'vue/require-name-property': 'error',
 		},

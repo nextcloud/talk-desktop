@@ -1,12 +1,14 @@
 {
-  "private": true,
   "name": "talk-desktop",
-  "productName": "Nextcloud Talk",
-  "desktopName": "com.nextcloud.talk.desktop",
   "version": "2.2.0",
+  "private": true,
   "bugs": {
     "url": "https://github.com/nextcloud/talk-desktop/issues",
     "create": "https://github.com/nextcloud/talk-desktop/issues/new/choose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nextcloud/talk-desktop"
   },
   "license": "AGPL-3.0-or-later",
   "author": {
@@ -14,43 +16,34 @@
     "email": "me@shgk.me"
   },
   "main": "./.webpack/main",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nextcloud/talk-desktop"
-  },
   "scripts": {
-    "start": "npm run dev",
-    "dev": "electron-forge start",
     "build": "electron-forge package",
     "build:linux": "electron-forge package --platform=linux",
     "build:mac": "electron-forge package --platform=darwin --arch=universal",
-    "build:mac:x64": "electron-forge package --platform=darwin --arch=x64",
     "build:mac:arm64": "electron-forge package --platform=darwin --arch=arm64",
+    "build:mac:x64": "electron-forge package --platform=darwin --arch=x64",
     "build:windows": "electron-forge package --platform=win32",
-    "build:windows:x64": "electron-forge package --platform=win32 --arch=x64",
     "build:windows:arm64": "electron-forge package --platform=win32 --arch=arm64",
+    "build:windows:x64": "electron-forge package --platform=win32 --arch=x64",
+    "dev": "electron-forge start",
+    "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
+    "generate-icons": "node ./scripts/generate-icons.js",
+    "lint": "eslint --fix",
     "package": "electron-forge make --skip-package",
     "package:linux": "electron-forge make --skip-package --platform=linux",
     "package:mac": "electron-forge make --skip-package --platform=darwin --arch=universal",
-    "package:mac:x64": "electron-forge make --skip-package --platform=darwin --arch=x64",
     "package:mac:arm64": "electron-forge make --skip-package --platform=darwin --arch=arm64",
+    "package:mac:x64": "electron-forge make --skip-package --platform=darwin --arch=x64",
     "package:windows": "electron-forge make --skip-package --platform=win32",
-    "package:windows:x64": "electron-forge make --skip-package --platform=win32 --arch=x64",
-    "package:windows:x64:msi": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=wix",
-    "package:windows:x64:exe": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=squirrel",
     "package:windows:arm64": "electron-forge make --skip-package --platform=win32 --arch=arm64",
-    "package:windows:arm64:msi": "electron-forge make --skip-package --platform=win32 --arch=arm64 --targets=wix",
     "package:windows:arm64:exe": "electron-forge make --skip-package --platform=win32 --arch=arm64 --targets=squirrel",
+    "package:windows:arm64:msi": "electron-forge make --skip-package --platform=win32 --arch=arm64 --targets=wix",
+    "package:windows:x64": "electron-forge make --skip-package --platform=win32 --arch=x64",
+    "package:windows:x64:exe": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=squirrel",
+    "package:windows:x64:msi": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=wix",
     "release:package": "npx -y zx ./scripts/prepare-release-packages.mjs",
-    "generate-icons": "node ./scripts/generate-icons.js",
-    "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
-    "lint": "eslint --fix",
+    "start": "npm run dev",
     "ts:check": "vue-tsc --noEmit"
-  },
-  "talk": {
-    "stable": "v24.0.1",
-    "beta": "v24.0.1",
-    "dev": "main"
   },
   "dependencies": {
     "@mdi/svg": "^7.4.47",
@@ -114,5 +107,12 @@
   "engines": {
     "node": "^24.0.0",
     "npm": "^11.3.0"
+  },
+  "desktopName": "com.nextcloud.talk.desktop",
+  "productName": "Nextcloud Talk",
+  "talk": {
+    "stable": "v24.0.1",
+    "beta": "v24.0.1",
+    "dev": "main"
   }
 }

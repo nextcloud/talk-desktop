@@ -3,14 +3,13 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const path = require('node:path')
-const fs = require('node:fs/promises')
 const icongen = require('icon-gen')
-
-/* eslint-disable jsdoc/valid-types */
+const fs = require('node:fs/promises')
+const path = require('node:path')
 
 /**
  * Generate icons from a source SVG file in a specified format and sizes
+ *
  * @param {string} source - Source SVG file path
  * @param {`${string}.${'png'|'icns'|'ico'}`} filename - Output filename with extension
  * @param {number[]} sizes - Sizes of the icons (max two sizes are allowed for PNG to have @2x file)

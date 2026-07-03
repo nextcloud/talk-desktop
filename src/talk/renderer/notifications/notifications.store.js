@@ -40,7 +40,7 @@ export function createNotificationStore() {
 		backgroundFetching: false,
 		hasNotifyPush: false,
 		shutdown: false,
-		hasThrottledPushNotifications: loadState('notifications', 'throttled_push_notifications'),
+		hasThrottledPushNotifications: false, // TODO: Add notifications/throttled_push_notifications to Capabilities
 		notifications: [],
 		lastETag: null,
 		lastTabId: null,

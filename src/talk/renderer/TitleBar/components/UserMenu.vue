@@ -114,7 +114,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							</template>
 							{{ userStatusTranslations[status] }}
 							<!-- @vue-expect-error This menu can only be open from a button with v-if="userStatus", but in Vue 2 we cannot add type assertion -->
-							<template v-if="status === userStatus.status" #action-icon>
+							<template v-if="status === userStatus.status" #actionIcon>
 								<IconCheck :size="20" />
 							</template>
 						</UiMenuItem>
@@ -151,7 +151,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 									<NcUserStatusIcon :status="userStatus.status" />
 								</template>
 								{{ userStatusTranslations[userStatus.status] }}
-								<template #action-icon>
+								<template #actionIcon>
 									<IconChevronRight :size="20" />
 								</template>
 							</UiMenuItem>
@@ -163,7 +163,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 									<IconEmoticonOutline v-else :size="20" />
 								</template>
 								{{ userStatus.message || t('talk_desktop', 'Set custom status') }}
-								<template v-if="userStatus.message" #action-icon>
+								<template v-if="userStatus.message" #actionIcon>
 									<IconPencilOutline :size="20" />
 								</template>
 							</UiMenuItem>

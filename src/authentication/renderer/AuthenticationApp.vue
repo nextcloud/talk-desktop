@@ -23,10 +23,7 @@ const version = __VERSION_TAG__
 
 // Pre-fill server url and the user with the last used one
 const prefilledAccount = getAppConfigValue('accounts')?.[0] ?? ''
-const atIndex = prefilledAccount.lastIndexOf('@')
-let [prefilledServer, prefilledUser] = atIndex === -1
-	? [prefilledAccount, '']
-	: [prefilledAccount.slice(atIndex + 1), prefilledAccount.slice(0, atIndex)]
+let prefilledServer = prefilledAccount.slice(prefilledAccount.lastIndexOf('@') + 1)
 
 const rawServerUrl = ref(BUILD_CONFIG.domain ?? prefilledServer)
 const enforceDomain = Boolean(BUILD_CONFIG.domain && BUILD_CONFIG.enforceDomain)
@@ -148,7 +145,7 @@ async function login() {
 	// Login with web view
 	let credentials
 	try {
-		const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(serverUrl.value, prefilledUser)
+		const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(serverUrl.value)
 		if (maybeCredentials instanceof Error) {
 			return setError(maybeCredentials.message)
 		}

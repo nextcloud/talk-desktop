@@ -20,10 +20,9 @@ const genId = () => Math.random().toString(36).slice(2, 9)
  *
  * @param {import('electron').BrowserWindow} parentWindow - Parent window
  * @param {string} serverUrl - Server URL
- * @param {string} [user] - Preset User ID
  * @return {Promise<import('./login.service.js').Credentials|Error>}
  */
-function openLoginWebView(parentWindow, serverUrl, user) {
+function openLoginWebView(parentWindow, serverUrl) {
 	return new Promise((resolve) => {
 		const WIDTH = 750
 		const HEIGHT = 750
@@ -56,9 +55,7 @@ function openLoginWebView(parentWindow, serverUrl, user) {
 		})
 		window.removeMenu()
 
-		// Undocumented but widely used feature
-		const presetUserQuery = user ? `?user=${encodeURIComponent(user)}` : ''
-		window.loadURL(`${serverUrl}/index.php/login/flow${presetUserQuery}`, {
+		window.loadURL(`${serverUrl}/index.php/login/flow`, {
 			// User-Agent header is used as the app name, device and session
 			// On the login flow page and then on the Personal settings / Security / Devices & Sessions
 			// Format used by all the clients: {HostUsername} ({ApplicationName} - {OS})

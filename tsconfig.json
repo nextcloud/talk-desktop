@@ -5,11 +5,10 @@
 		"allowImportingTsExtensions": true,
 		"allowJs": true,
 		"checkJs": false,
-		"baseUrl": ".",
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"strictNullChecks": true,
 		"paths": {
-			"@global-styles/*": ["resources/server-global-styles/master/*"],
+			"@global-styles/*": ["./resources/server-global-styles/master/*"],
 		},
 	},
 }

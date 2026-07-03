@@ -53,8 +53,8 @@ onBeforeUnmount(() => {
 		variant="tertiary-no-background"
 		container="body">
 		<template #icon>
-			<UiDotBadge inset-inline-end="10%" :enabled="!!newRelease">
-				<IconMenu :size="20" fill-color="var(--color-background-plain-text)" />
+			<UiDotBadge insetInlineEnd="10%" :enabled="!!newRelease">
+				<IconMenu :size="20" fillColor="var(--color-background-plain-text)" />
 			</UiDotBadge>
 		</template>
 
@@ -65,13 +65,13 @@ onBeforeUnmount(() => {
 				:href="newRelease.installer?.downloadUrl || newRelease.url"
 				:download="newRelease.installer?.filename || undefined"
 				target="_blank"
-				close-after-click>
+				closeAfterClick>
 				<template #icon>
 					<UiDotBadge
-						inset-block-start="32%"
-						inset-inline-end="22%"
+						insetBlockStart="32%"
+						insetInlineEnd="22%"
 						enabled
-						no-outline>
+						noOutline>
 						<IconCloudDownloadOutline :size="20" />
 					</UiDotBadge>
 				</template>
@@ -82,7 +82,7 @@ onBeforeUnmount(() => {
 		</template>
 
 		<template v-if="isTalkInitialized">
-			<NcActionButton close-after-click @click="openInWeb">
+			<NcActionButton closeAfterClick @click="openInWeb">
 				<template #icon>
 					<IconWeb :size="20" />
 				</template>
@@ -102,7 +102,7 @@ onBeforeUnmount(() => {
 			v-if="!BUILD_CONFIG.isBranded"
 			:href="packageInfo.bugs.create"
 			target="_blank"
-			close-after-click>
+			closeAfterClick>
 			<template #icon>
 				<IconBugOutline :size="20" />
 			</template>
@@ -111,13 +111,13 @@ onBeforeUnmount(() => {
 
 		<NcActionSeparator />
 
-		<NcActionButton close-after-click @click="openSettings">
+		<NcActionButton closeAfterClick @click="openSettings">
 			<template #icon>
 				<IconCogOutline :size="20" />
 			</template>
 			{{ t('talk_desktop', 'App settings') }}
 		</NcActionButton>
-		<NcActionButton close-after-click @click="showHelp">
+		<NcActionButton closeAfterClick @click="showHelp">
 			<template #icon>
 				<IconInformationOutline :size="20" />
 			</template>

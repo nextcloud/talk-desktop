@@ -50,7 +50,7 @@ declare module '@nextcloud/vue/composables/useHotKey' {
 			alt?: boolean
 			shift?: boolean
 			caseSensitive?: boolean
-		}
+		},
 	): () => void
 }
 

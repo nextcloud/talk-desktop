@@ -20,31 +20,36 @@ const clearAtOptions = [
 	{
 		label: t('talk_desktop', 'Don\'t clear'),
 		clearAt: null,
-	}, {
+	},
+	{
 		label: formatDuration(1800 * 1000), // 30 minutes
 		clearAt: {
 			type: 'period',
 			time: 1800,
 		},
-	}, {
+	},
+	{
 		label: formatDuration(3600 * 1000), // 1 hour
 		clearAt: {
 			type: 'period',
 			time: 3600,
 		},
-	}, {
+	},
+	{
 		label: formatDuration(14400 * 1000), // 4 hours
 		clearAt: {
 			type: 'period',
 			time: 14400,
 		},
-	}, {
+	},
+	{
 		label: t('talk_desktop', 'Today'),
 		clearAt: {
 			type: 'end-of',
 			time: 'day',
 		},
-	}, {
+	},
+	{
 		label: t('talk_desktop', 'This week'),
 		clearAt: {
 			type: 'end-of',
@@ -70,13 +75,13 @@ function handleSelected(option: typeof clearAtOptions[number]) {
 		<label for="user-status-form-clear-at-input">{{ t('talk_desktop', 'Clear after') }}</label>
 		<NcSelect
 			class="user-status-form-clear-at__select"
-			label-outside
-			input-id="user-status-form-clear-at-input"
+			labelOutside
+			inputId="user-status-form-clear-at-input"
 			:searchable="false"
 			:clearable="false"
 			placement="top"
 			:options="clearAtOptions"
-			:model-value="{ label: clearAtAsLabel }"
+			:modelValue="{ label: clearAtAsLabel }"
 			:disabled="disabled"
 			@option:selected="handleSelected" />
 	</div>

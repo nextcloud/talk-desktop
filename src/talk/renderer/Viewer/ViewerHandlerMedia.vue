@@ -23,7 +23,7 @@ function handleLoadEnd(withError = false) {
 
 <template>
 	<ViewerHandlerBase :loading="loading" :error="error" lazy>
-		<slot :handle-load-end="handleLoadEnd" media-class="viewer-media" />
+		<slot :handleLoadEnd="handleLoadEnd" mediaClass="viewer-media" />
 	</ViewerHandlerBase>
 </template>
 

@@ -72,20 +72,20 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 			v-if="userMenuContainer"
 			v-model:shown="isOpen"
 			:container="userMenuContainer"
-			:popper-hide-triggers="(triggers: string[]) => [...triggers, 'click']"
+			:popperHideTriggers="(triggers: string[]) => [...triggers, 'click']"
 			:triggers="[]"
-			no-auto-focus>
+			noAutoFocus>
 			<template #trigger="{ attrs }">
 				<div class="user-menu__trigger">
 					<!-- Floating-Vue doesn't support open on span[role=button] - opening manually -->
 					<NcAvatar
 						class="user-menu__avatar"
 						:user="user.id"
-						:preloaded-user-status="userStatus"
-						:display-name="user['display-name']"
+						:preloadedUserStatus="userStatus"
+						:displayName="user['display-name']"
 						:size="32"
-						disable-menu
-						disable-tooltip
+						disableMenu
+						disableTooltip
 						v-bind="attrs"
 						tabindex="0"
 						role="button"

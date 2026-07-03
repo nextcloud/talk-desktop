@@ -108,9 +108,9 @@ async function openChromeWebRtcInternals() {
 		aria-label="Dev Menu"
 		variant="tertiary-no-background"
 		container="body"
-		force-menu>
+		forceMenu>
 		<template #icon>
-			<IconDeveloperBoard :size="20" fill-color="var(--color-background-plain-text)" />
+			<IconDeveloperBoard :size="20" fillColor="var(--color-background-plain-text)" />
 		</template>
 
 		<NcActionButton @click="openDevTools">

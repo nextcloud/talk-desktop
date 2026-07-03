@@ -56,7 +56,7 @@ function copy() {
 </script>
 
 <template>
-	<ViewerHandlerBase :loading="loading" :error="error" :error-description="error">
+	<ViewerHandlerBase :loading="loading" :error="error" :errorDescription="error">
 		<template #default>
 			<div class="viewer-text">
 				<template v-if="content">
@@ -68,8 +68,8 @@ function copy() {
 								value="compact"
 								type="radio"
 								name="layout"
-								button-variant
-								button-variant-grouped="horizontal">
+								buttonVariant
+								buttonVariantGrouped="horizontal">
 								<template #icon>
 									<IconFileDocumentOutline :size="20" />
 								</template>
@@ -80,8 +80,8 @@ function copy() {
 								value="wide"
 								type="radio"
 								name="layout"
-								button-variant
-								button-variant-grouped="horizontal">
+								buttonVariant
+								buttonVariantGrouped="horizontal">
 								<template #icon>
 									<IconFileChartOutline :size="20" style="transform: rotate(90deg) scaleX(-1)" />
 								</template>
@@ -122,7 +122,7 @@ function copy() {
 						spellcheck="false"
 						@beforeinput.prevent>
 						<code v-if="format === 'code'">{{ content }}</code>
-						<NcRichText v-else :text="content" :use-extended-markdown="format === 'md'" />
+						<NcRichText v-else :text="content" :useExtendedMarkdown="format === 'md'" />
 					</div>
 				</template>
 

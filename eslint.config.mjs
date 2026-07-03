@@ -48,6 +48,8 @@ export default [
 			// Talk Desktop doesn't use real Nextcloud server globals
 			'@nextcloud/no-deprecated-globals': 'off',
 			'@nextcloud/no-removed-globals': 'off',
+			// https://github.com/nextcloud-libraries/eslint-config/issues/1451
+			'@nextcloud/no-deprecated-library-props': 'off',
 		},
 	},
 	{

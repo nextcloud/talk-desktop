@@ -44,7 +44,7 @@
     "release:package": "npx -y zx ./scripts/prepare-release-packages.mjs",
     "generate-icons": "node ./scripts/generate-icons.js",
     "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
-    "lint": "eslint src/ --fix",
+    "lint": "eslint --fix",
     "ts:check": "vue-tsc --noEmit"
   },
   "talk": {

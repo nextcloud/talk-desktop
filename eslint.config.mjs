@@ -11,8 +11,14 @@ export default [
 	...recommended,
 
 	{
+		name: 'talk-desktop/ignores',
+		ignores: [
+			'src/shared/renderer/assets/**/*',
+			'scripts/nextcloud-app-host/templates/**/*',
+		],
+	},
+	{
 		name: 'talk-desktop/config',
-		ignores: ['src/shared/renderer/assets/**/*'],
 		languageOptions: {
 			globals: {
 				// Electron Forge build vars

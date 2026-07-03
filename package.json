@@ -106,7 +106,7 @@
     "typescript": "^5.9.3",
     "vue-loader": "^17.4.2",
     "vue-tsc": "^3.3.6",
-    "webpack": "^5.107.2",
+    "webpack": "^5.108.3",
     "webpack-merge": "^6.0.1",
     "worker-loader": "^3.0.8",
     "zx": "^8.8.5"

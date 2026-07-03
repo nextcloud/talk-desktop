@@ -40,8 +40,8 @@ export default [
 		rules: {
 			'no-console': 'off',
 			// Talk Desktop doesn't use real Nextcloud server globals
-			'@nextcloud/no-deprecations': 'off',
-			'@nextcloud/no-removed-apis': 'off',
+			'@nextcloud/no-deprecated-globals': 'off',
+			'@nextcloud/no-removed-globals': 'off',
 		},
 	},
 	{

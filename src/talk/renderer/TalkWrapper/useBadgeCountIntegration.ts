@@ -3,103 +3,48 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import { subscribe } from '@nextcloud/event-bus'
+
+/**
+ * Unread counts published by Talk via the public `talk:unread:updated` event.
+ *
+ * Mirrors Talk's `unreadCountsMap` computed property (spreed `src/App.vue`).
+ */
+type TalkUnreadCounts = {
+	/** Number of non-archived conversations with unread messages */
+	conversations: number
+	/** Total number of unread messages */
+	messages: number
+	/** Number of conversations with an unread mention */
+	mentions: number
+	/** Number of conversations with an unread direct mention */
+	mentionsDirect: number
+}
+
+declare module '@nextcloud/event-bus' {
+	interface NextcloudEvents {
+		'talk:unread:updated': TalkUnreadCounts
+	}
+}
+
 let isInitialized = false
 
 /**
- * Set badge counter according to Talk unread counts
- * Uses Vuex store.subscribe() to listen for conversation changes (event-driven, no polling)
+ * Set the app badge counter according to Talk's unread message count.
+ *
+ * Subscribes to the public `talk:unread:updated` event emitted by Talk instead
+ * of reading Talk's internal store, so it stays decoupled from Talk's state
+ * management implementation. Talk emits the event immediately when its app is
+ * created, so this must be called before Talk is mounted to receive the initial count.
  */
 export function useBadgeCountIntegration(): void {
-	// Prevent multiple initializations
+	// Subscribe only once
 	if (isInitialized) {
 		return
 	}
 	isInitialized = true
 
-	// Wait for store to be available, then subscribe to mutations
-	const checkAndSubscribe = () => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const store = (window as any).OCA?.Talk?.instance?.$store
-		if (!store) {
-			// Store not ready yet, retry in 500ms
-			setTimeout(checkAndSubscribe, 500)
-			return
-		}
-
-		// Set initial badge count
-		const initialCount = countUnreadConversations()
-		window.TALK_DESKTOP.setBadgeCount(initialCount)
-
-		// Subscribe to store mutations - event-driven, no polling!
-		store.subscribe((mutation: { type: string }) => {
-			// Only recalculate when conversation-related mutations occur
-			if (mutation.type === 'updateUnreadMessages' ||
-				mutation.type === 'addConversation' ||
-				mutation.type === 'updateConversation' ||
-				mutation.type === 'deleteConversation') {
-				const count = countUnreadConversations()
-				window.TALK_DESKTOP.setBadgeCount(count)
-			}
-		})
-	}
-
-	checkAndSubscribe()
-}
-
-/**
- * Count conversations with unread notifications respecting notification settings
- *
- * Conversation types: 1=ONE_TO_ONE, 2=GROUP, 3=PUBLIC, 4=CHANGELOG, 5=ONE_TO_ONE_FORMER, 6=NOTE_TO_SELF
- * Notification levels: 1=Always, 2=Mention, 3=Never
- */
-function countUnreadConversations(): number {
-	try {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const conversationsList = (window as any).OCA?.Talk?.instance?.$store?.getters?.conversationsList
-		if (!conversationsList) {
-			return 0
-		}
-
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		return conversationsList.reduce((count: number, conversation: any) => {
-			// Filter out archived conversations
-			if (conversation.isArchived) {
-				return count
-			}
-
-			// Muted with "Never notify" - always skip
-			if (conversation.notificationLevel === 3) {
-				return count
-			}
-
-			// No unread messages - skip
-			if (!conversation.unreadMessages) {
-				return count
-			}
-
-			// ONE_TO_ONE or ONE_TO_ONE_FORMER - always count unread
-			if (conversation.type === 1 || conversation.type === 5) {
-				return count + 1
-			}
-
-			// NOTE_TO_SELF (type 6) - always count unread
-			if (conversation.type === 6) {
-				return count + 1
-			}
-
-			// Group conversations with "Always notify" - count all unread
-			if (conversation.notificationLevel === 1) {
-				return count + 1
-			}
-
-			// Group conversations with "Mention only" - only count if @mentioned
-			if (conversation.notificationLevel === 2 && conversation.unreadMention) {
-				return count + 1
-			}
-
-			return count
-		}, 0)
-	} catch {
-		return 0
-	}
+	subscribe('talk:unread:updated', (counts) => {
+		window.TALK_DESKTOP.setBadgeCount(counts.messages)
+	})
 }

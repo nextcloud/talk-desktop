@@ -217,11 +217,6 @@ function getInitialStateFromCapabilities(capabilities, userMetadata) {
 			},
 			shortcutsDisabled: false, // MISSED
 		},
-		notifications: {
-			throttled_push_notifications: false, // MISSED
-			sound_talk: true, // MISSED
-			sound_notification: true, // MISSED
-		},
 		// user_status: {} - MISSED
 	}
 }

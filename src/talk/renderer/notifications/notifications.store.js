@@ -11,15 +11,16 @@
  */
 
 import { emit } from '@nextcloud/event-bus'
-import { loadState } from '@nextcloud/initial-state'
 import { t } from '@nextcloud/l10n'
 import { listen } from '@nextcloud/notify_push'
 import { generateFilePath } from '@nextcloud/router'
 import { Howl } from 'howler'
+import { computed } from 'vue'
 import { appData } from '../../../app/AppData.js'
 import { checkCurrentUserHasPendingCall } from '../../../callbox/renderer/callbox.service.ts'
 import { getAppConfigValue } from '../../../shared/appConfig.service.ts'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
+import { useAppConfigValue } from '../Settings/useAppConfigValue.ts'
 import { openConversation } from '../TalkWrapper/talk.service.ts'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 import { getNotificationsData } from './notifications.service.js'
@@ -31,6 +32,10 @@ const isTestNotificationApp = (notificationApp) => ['admin_notification_talk', '
  */
 export function createNotificationStore() {
 	const userStatusStore = useUserStatusStore()
+	const playSoundChat = useAppConfigValue('playSoundChat')
+	const shouldPlaySoundChat = computed(() => playSoundChat.value === 'respect-dnd'
+		? userStatusStore.userStatus?.status !== 'dnd'
+		: playSoundChat.value === 'always')
 
 	let _oldcount = 0
 	let notificationsSet = new Set()
@@ -40,7 +45,7 @@ export function createNotificationStore() {
 		backgroundFetching: false,
 		hasNotifyPush: false,
 		shutdown: false,
-		hasThrottledPushNotifications: loadState('notifications', 'throttled_push_notifications'),
+		hasThrottledPushNotifications: false, // TODO: Add notifications/throttled_push_notifications to Capabilities
 		notifications: [],
 		lastETag: null,
 		lastTabId: null,
@@ -135,7 +140,7 @@ export function createNotificationStore() {
 	 *
 	 */
 	function playSound() {
-		if (!loadState('notifications', 'sound_notification')) {
+		if (!shouldPlaySoundChat.value) {
 			return
 		}
 

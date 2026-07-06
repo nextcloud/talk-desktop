@@ -4,11 +4,12 @@
  */
 
 import type { HowlOptions } from 'howler'
+import type { UserStatusPrivate } from '../../talk/renderer/UserStatus/userStatus.types.ts'
 
-import { loadState } from '@nextcloud/initial-state'
 import { generateFilePath } from '@nextcloud/router'
 import { Howl } from 'howler'
 import { getAppConfigValue } from '../../shared/appConfig.service.ts'
+import { browserStorage } from '../../shared/browserStorage.service.ts'
 
 /**
  * Play ringtone
@@ -16,8 +17,14 @@ import { getAppConfigValue } from '../../shared/appConfig.service.ts'
  * @return function to stop ringing
  */
 export function playRingtone() {
-	if (!loadState('notifications', 'sound_talk')) {
-		return
+	const playSoundCall = getAppConfigValue('playSoundCall')
+	const userStatus = JSON.parse(browserStorage.getItem('userStatus') ?? 'null') as UserStatusPrivate | null
+	const shouldPlaySoundCall = playSoundCall === 'respect-dnd'
+		? userStatus?.status !== 'dnd'
+		: playSoundCall === 'always'
+
+	if (!shouldPlaySoundCall) {
+		return () => {}
 	}
 
 	const howlPayload: HowlOptions = {

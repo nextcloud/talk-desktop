@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { loadState } from '@nextcloud/initial-state'
 import { translate, translatePlural } from '@nextcloud/l10n'
 import { appData } from '../../app/AppData.js'
 import { getDesktopMediaSource } from '../../talk/renderer/screensharing/screensharing.module.ts'
@@ -65,8 +64,9 @@ const OC = {
 	dialogs,
 
 	theme: {
+		// TODO: use Capabilities on spreed side
 		get productName() {
-			return loadState('theming', 'data').name
+			return appData.capabilities?.theming?.name
 		},
 	},
 

@@ -7,10 +7,8 @@ import type { Ref } from 'vue'
 import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
 
 import { defineStore } from 'pinia'
-import { readonly, ref, watch, watchEffect } from 'vue'
+import { readonly, ref, watch } from 'vue'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
-import { setInitialState } from '../../../shared/initialState.service.js'
-import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
 
 export const useAppConfigStore = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
@@ -28,18 +26,6 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 			unwatchRelaunch()
 		},
 	)
-
-	const userStatusStore = useUserStatusStore()
-	watchEffect(() => {
-		const playSoundChat = appConfig.value.playSoundChat === 'respect-dnd'
-			? userStatusStore.userStatus?.status !== 'dnd'
-			: appConfig.value.playSoundChat === 'always'
-		const playSoundCall = appConfig.value.playSoundCall === 'respect-dnd'
-			? userStatusStore.userStatus?.status !== 'dnd'
-			: appConfig.value.playSoundCall === 'always'
-		setInitialState('notifications', 'sound_notification', playSoundChat)
-		setInitialState('notifications', 'sound_talk', playSoundCall)
-	})
 
 	/**
 	 * Get an application config value

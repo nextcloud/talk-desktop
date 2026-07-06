@@ -36,8 +36,8 @@ const { disabled = false } = defineProps<{
 			:label="t('talk_desktop', 'Status message')"
 			maxlength="80"
 			:disabled="disabled"
-			:model-value="message ?? ''"
-			@update:model-value="message = ($event as string)" />
+			:modelValue="message ?? ''"
+			@update:modelValue="message = ($event as string)" />
 	</div>
 </template>
 

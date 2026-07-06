@@ -45,7 +45,7 @@ const selectedLabel = computed(() => options.find((option) => option.value === m
 		:label
 		:description="selectedLabel"
 		:disabled
-		inverted-accent
+		invertedAccent
 		@click="selectElement!.showPicker()">
 		<template #icon="{ descriptionId }">
 			<IconUnfoldMoreHorizontal :size="20" />

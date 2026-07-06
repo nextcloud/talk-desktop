@@ -33,7 +33,8 @@ export function createViewer() {
 					'image/x-xbitmap',
 				],
 				component: ViewerHandlerImages,
-			}, {
+			},
+			{
 				id: 'videos',
 				group: 'media',
 				mimes: [
@@ -47,12 +48,14 @@ export function createViewer() {
 					'video/x-matroska',
 				],
 				component: ViewerHandlerVideos,
-			}, {
+			},
+			{
 				id: 'pdf',
 				group: 'document',
 				mimes: ['application/pdf'],
 				component: ViewerHandlerPdf,
-			}, {
+			},
+			{
 				id: 'text',
 				group: 'document',
 				mimes: [
@@ -60,7 +63,8 @@ export function createViewer() {
 					'text/plain',
 				],
 				component: ViewerHandlerText,
-			}, {
+			},
+			{
 				id: 'text',
 				group: 'code',
 				mimes: [

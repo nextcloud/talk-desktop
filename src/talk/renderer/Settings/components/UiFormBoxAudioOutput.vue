@@ -32,7 +32,7 @@ const { devices, reloadDevices } = useAudioDevicesList()
 		<UiFormBoxSplitButton
 			class="audio-output__reset"
 			:label="t('talk_desktop', 'Reload')"
-			hide-label
+			hideLabel
 			@click="reloadDevices">
 			<template #icon>
 				<IconReload :size="20" />

@@ -25,8 +25,8 @@ const { tag = 'button' as string | Component } = defineProps<{
 				<span class="menu-item__text">
 					<slot />
 				</span>
-				<span v-if="$slots['action-icon']" class="menu-item__action-icon">
-					<slot name="action-icon" />
+				<span v-if="$slots.actionIcon" class="menu-item__action-icon">
+					<slot name="actionIcon" />
 				</span>
 			</span>
 		</component>

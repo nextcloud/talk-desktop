@@ -7,7 +7,7 @@ const { readFileSync } = require('node:fs')
 const { join } = require('node:path')
 
 /**
- * @typedef {Object} AppInfo
+ * @typedef {object} AppInfo
  * @property {number} minVersion
  * @property {number} maxVersion
  */

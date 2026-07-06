@@ -93,7 +93,7 @@ async function revertStatus() {
 		<UserStatusFormBackup
 			v-if="backupStatus"
 			class="user-status-form__row"
-			:user-status="backupStatus"
+			:userStatus="backupStatus"
 			@revert="revertStatus" />
 
 		<UserStatusFormCustomMessage
@@ -108,15 +108,15 @@ async function revertStatus() {
 				v-for="status in predefinedStatuses"
 				:key="status.id"
 				:pressed="userStatus.messageId === status.id"
-				:user-status="status"
+				:userStatus="status"
 				@click="selectPredefinedStatus(status)" />
 		</div>
 
 		<UserStatusFormClearAt
 			class="user-status-form__row"
 			:disabled="isClear"
-			:clear-at="userStatus.clearAt"
-			@update:clear-at="patchStatus({ clearAt: $event })" />
+			:clearAt="userStatus.clearAt"
+			@update:clearAt="patchStatus({ clearAt: $event })" />
 
 		<NcButton
 			class="user-status-form__row"

@@ -72,20 +72,20 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 			v-if="userMenuContainer"
 			v-model:shown="isOpen"
 			:container="userMenuContainer"
-			:popper-hide-triggers="(triggers: string[]) => [...triggers, 'click']"
+			:popperHideTriggers="(triggers: string[]) => [...triggers, 'click']"
 			:triggers="[]"
-			no-auto-focus>
+			noAutoFocus>
 			<template #trigger="{ attrs }">
 				<div class="user-menu__trigger">
 					<!-- Floating-Vue doesn't support open on span[role=button] - opening manually -->
 					<NcAvatar
 						class="user-menu__avatar"
 						:user="user.id"
-						:preloaded-user-status="userStatus"
-						:display-name="user['display-name']"
+						:preloadedUserStatus="userStatus"
+						:displayName="user['display-name']"
 						:size="32"
-						disable-menu
-						disable-tooltip
+						disableMenu
+						disableTooltip
 						v-bind="attrs"
 						tabindex="0"
 						role="button"
@@ -114,7 +114,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							</template>
 							{{ userStatusTranslations[status] }}
 							<!-- @vue-expect-error This menu can only be open from a button with v-if="userStatus", but in Vue 2 we cannot add type assertion -->
-							<template v-if="status === userStatus.status" #action-icon>
+							<template v-if="status === userStatus.status" #actionIcon>
 								<IconCheck :size="20" />
 							</template>
 						</UiMenuItem>
@@ -151,7 +151,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 									<NcUserStatusIcon :status="userStatus.status" />
 								</template>
 								{{ userStatusTranslations[userStatus.status] }}
-								<template #action-icon>
+								<template #actionIcon>
 									<IconChevronRight :size="20" />
 								</template>
 							</UiMenuItem>
@@ -163,7 +163,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 									<IconEmoticonOutline v-else :size="20" />
 								</template>
 								{{ userStatus.message || t('talk_desktop', 'Set custom status') }}
-								<template v-if="userStatus.message" #action-icon>
+								<template v-if="userStatus.message" #actionIcon>
 									<IconPencilOutline :size="20" />
 								</template>
 							</UiMenuItem>

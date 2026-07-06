@@ -15,6 +15,7 @@ $.quiet = true
 
 /**
  * Exit with message and code
+ *
  * @param {string} message - The error message
  * @param {number} code - The exit code
  */

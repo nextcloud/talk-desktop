@@ -72,7 +72,7 @@ function close() {
 						{{ t('talk_desktop', 'Copy report') }}
 					</ButtonCopy>
 				</div>
-				<NcRichText class="help__report" :text="report" use-extended-markdown />
+				<NcRichText class="help__report" :text="report" useExtendedMarkdown />
 			</div>
 		</div>
 		<div v-if="isMac" class="help__button-bar">

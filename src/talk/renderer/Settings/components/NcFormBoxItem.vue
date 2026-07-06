@@ -86,7 +86,7 @@ const hasDescription = () => !!description || !!slots.description
 				:class="[$style.formBoxItem__element, itemClasses]"
 				v-bind="$attrs"
 				@click="$emit('click', $event)">
-				<slot :description-id>
+				<slot :descriptionId>
 					{{ label || '⚠️ Label is missing' }}
 				</slot>
 			</component>
@@ -97,7 +97,7 @@ const hasDescription = () => !!description || !!slots.description
 			</span>
 		</span>
 		<span :class="$style.formBoxItem__icon">
-			<slot name="icon" :description-id>
+			<slot name="icon" :descriptionId>
 				⚠️ Icon is missing
 			</slot>
 		</span>

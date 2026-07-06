@@ -196,17 +196,17 @@ async function login() {
 						v-model="rawServerUrl"
 						:label="!enforceDomain ? t('talk_desktop', 'Server address') : undefined"
 						:aria-label="enforceDomain ? t('talk_desktop', 'Server address') : undefined"
-						:label-visible="!enforceDomain"
-						:input-class="{ 'login-box__server--predefined': enforceDomain }"
+						:labelVisible="!enforceDomain"
+						:inputClass="{ 'login-box__server--predefined': enforceDomain }"
 						:placeholder="!enforceDomain ? 'https://try.nextcloud.com' : undefined"
 						inputmode="url"
 						:readonly="enforceDomain"
 						:success="state === 'success'"
 						:error="state === 'error'"
-						:helper-text="stateText"
-						trailing-button-icon="close"
-						:show-trailing-button="allowReset"
-						@trailing-button-click="reset" />
+						:helperText="stateText"
+						trailingButtonIcon="close"
+						:showTrailingButton="allowReset"
+						@trailingButtonClick="reset" />
 					<NcButton
 						v-if="state !== 'loading'"
 						class="submit-button"

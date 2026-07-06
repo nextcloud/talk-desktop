@@ -85,7 +85,7 @@ async function focusEditButton() {
 		<NcFormBox class="zoom-box__row" row>
 			<UiFormBoxSplitButton
 				:label="t('talk_desktop', 'Zoom out')"
-				hide-label
+				hideLabel
 				:disabled="modelValue / STEP_FACTOR < ZOOM_MIN"
 				@click="modelValue /= STEP_FACTOR">
 				<template #icon>
@@ -95,7 +95,7 @@ async function focusEditButton() {
 
 			<UiFormBoxSplitButton
 				:label="t('talk_desktop', 'Zoom in')"
-				hide-label
+				hideLabel
 				:disabled="modelValue * STEP_FACTOR > ZOOM_MAX"
 				@click="modelValue *= STEP_FACTOR">
 				<template #icon>
@@ -113,10 +113,10 @@ async function focusEditButton() {
 				v-else
 				ref="input"
 				class="zoom-box__edit"
-				input-class="zoom-box__edit-input"
+				inputClass="zoom-box__edit-input"
 				:aria-label="t('talk_desktop', 'Zoom')"
 				inputmode="number"
-				:model-value="percentValue"
+				:modelValue="percentValue"
 				@change="percentValue = $event.target.value /* TODO: add lazy modifier support */"
 				@blur="showInput = false"
 				@keydown.enter.prevent="focusEditButton" />
@@ -125,7 +125,7 @@ async function focusEditButton() {
 				ref="editButton"
 				:aria-description="t('talk_desktop', 'Edit zoom')"
 				:class="{ 'zoom-box__edit-button--hidden': showInput }"
-				hide-label
+				hideLabel
 				@click="onShowInput">
 				<template #icon>
 					<IconPencilOutline :size="20" />

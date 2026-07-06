@@ -37,7 +37,7 @@ const emit = defineEmits<{
 		<DesktopMediaSourcePreviewLive
 			v-if="live"
 			class="capture-source__preview"
-			:media-source-id="source.id"
+			:mediaSourceId="source.id"
 			@suspend="emit('suspend')" />
 		<img
 			v-else-if="source.thumbnail"

@@ -6,6 +6,7 @@
 import { app, webContents } from 'electron'
 import { readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { readManagedConfig } from './managedConfig.service.ts'
 import { isMac, isWayland } from './system.utils.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
@@ -139,7 +140,7 @@ export type AppConfig = {
 export type AppConfigKey = keyof AppConfig
 
 /**
- * Get the default config
+ * Default App Config
  */
 const defaultAppConfig: AppConfig = {
 	accounts: [],
@@ -158,7 +159,14 @@ const defaultAppConfig: AppConfig = {
 }
 
 /**
- * Forced App Config
+ * Admin-managed App Config.
+ * Overrides the default config if set.
+ */
+const managedAppConfig = readManagedConfig()
+
+/**
+ * Forced App Config.
+ * Overrides any config value if set, including user defined.
  */
 const forcedAppConfig: Partial<AppConfig> = Object.fromEntries(Object.entries({
 	// See: https://github.com/electron/electron/issues/49244
@@ -228,7 +236,19 @@ export function getAppConfig<T extends AppConfigKey>(key?: T): AppConfig | AppCo
 		throw new Error('The application config is not initialized yet')
 	}
 
-	const config = { ...defaultAppConfig, ...appConfig, ...forcedAppConfig }
+	const config = {
+		...defaultAppConfig,
+		...managedAppConfig,
+		...appConfig,
+		// Merge accounts arrays
+		// TODO: add config merge utility when there are more mergeable config values
+		accounts: [
+			...defaultAppConfig.accounts ?? [],
+			...managedAppConfig.accounts ?? [],
+			...appConfig.accounts ?? [],
+		],
+		...forcedAppConfig,
+	}
 
 	if (key) {
 		return config[key]

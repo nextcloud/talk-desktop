@@ -14,6 +14,7 @@ import AppWindow from '../../shared/components/AppWindow.vue'
 import { appData } from '../../app/AppData.js'
 import { refetchAppData } from '../../app/appData.service.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
+import { parseAccountId } from '../../shared/accounts.utils.ts'
 import { getAppConfigValue, setAppConfigValue } from '../../shared/appConfig.service.ts'
 import { BUILD_CONFIG } from '../../shared/build.config.ts'
 import { getCapabilities } from '../../shared/ocs.service.js'
@@ -21,9 +22,8 @@ import { getCapabilities } from '../../shared/ocs.service.js'
 const channel = __CHANNEL__
 const version = __VERSION_TAG__
 
-// Pre-fill server url and the user with the last used one
-const prefilledAccount = getAppConfigValue('accounts')?.[0] ?? ''
-let prefilledServer = prefilledAccount.slice(prefilledAccount.lastIndexOf('@') + 1)
+// Pre-fill server url with the last used one or set in the config
+const prefilledServer = parseAccountId(getAppConfigValue('accounts')?.[0])?.serverUrl
 
 const rawServerUrl = ref(BUILD_CONFIG.domain ?? prefilledServer)
 const enforceDomain = Boolean(BUILD_CONFIG.domain && BUILD_CONFIG.enforceDomain)

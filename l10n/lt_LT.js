@@ -58,6 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "Kai nėra režimo „Netrukdyti“",
     "Never" : "Niekada",
     "Launch at startup" : "Paleisti startuojant",
+    "Launch in background" : "Paleisti fone",
     "Theme" : "Apipavidalinimas",
     "System default" : "Sistemos numatytasis",
     "Light" : "Šviesus",

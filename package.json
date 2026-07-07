@@ -56,6 +56,7 @@
     "@nextcloud/notify_push": "^1.4.0",
     "@nextcloud/router": "^3.1.0",
     "@nextcloud/vue": "^9.8.2",
+    "@vscode/windows-registry": "github:nextcloud-deps/vscode-windows-registry#v1.2.0-prebuild",
     "@vueuse/core": "^14.3.0",
     "core-js": "^3.49.0",
     "electron-squirrel-startup": "^1.0.1",

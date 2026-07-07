@@ -196,6 +196,11 @@ module.exports = {
 		},
 	},
 
+	rebuildConfig: {
+		// Do not rebuild any modules until explicitly specified
+		onlyModules: [],
+	},
+
 	// https://electron.github.io/packager/main/interfaces/Options.html
 	packagerConfig: {
 		// Common

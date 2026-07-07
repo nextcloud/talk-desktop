@@ -10,11 +10,11 @@ export const versionRefType = 'branch'
 /** Version major number, e.g. 34 */
 export const versionMajor = 35
 /** Version from $OC_Version, e.g. "34.0.0.5" */
-export const version = '35.0.0.0'
+export const version = '35.0.0.1'
 /** Version from $OC_VersionString, e.g. "34.0.0 RC 1" */
 export const versionString = '35.0.0 dev'
 /** Commit hash, e.g. "a1b2c3d" */
-export const versionCommitHash = '4700c85'
+export const versionCommitHash = 'ae35f81'
 
 /** Available theming configurations */
 export const themingConfigs = [{ name: '', primaryColor: '', backgroundColor: '' }]

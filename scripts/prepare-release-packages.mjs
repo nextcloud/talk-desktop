@@ -7,6 +7,7 @@
 
 import { resolveBuildConfig } from '../build/resolveBuildConfig.js'
 const packageJson = require('../package.json')
+import { overrideNextcloudStyles } from './overrideNextcloudStyles.commands.mjs'
 
 const TALK_PATH = './out/.temp/spreed/'
 const talkDotGit = `${TALK_PATH}.git`
@@ -123,7 +124,7 @@ async function prepareRelease() {
 	const BUILD_CONFIG = resolveBuildConfig()
 	if (BUILD_CONFIG.withThemingOverrides) {
 		await spinner('[4.3/5] Overriding Nextcloud theming', async () => {
-			await $`node ./scripts/override-nextcloud-styles.mjs`
+			await overrideNextcloudStyles({ verbose: true })
 		})
 	}
 

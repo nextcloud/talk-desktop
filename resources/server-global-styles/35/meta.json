@@ -1,0 +1,16 @@
+{
+  "versionRef": "master",
+  "versionRefType": "branch",
+  "versionMajor": 35,
+  "version": "35.0.0.1",
+  "versionString": "35.0.0 dev",
+  "versionCommitHash": "5ae39da",
+  "themingConfigs": [
+    {
+      "name": "",
+      "primaryColor": "",
+      "backgroundColor": "",
+      "prefix": ""
+    }
+  ]
+}

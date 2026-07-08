@@ -5,7 +5,7 @@
 
 /// <reference types="zx" />
 
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
+import { appendFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { dirname, join, relative } from 'node:path/posix'
 
 import 'zx/globals'
@@ -143,6 +143,13 @@ export async function extractNextcloudStyles({
 	// Server REUSE.toml files include much more files that are being fetched but extra entries are allowed
 	await dockerCp(CONTAINER, '/var/www/nextcloud/', 'REUSE.toml', true) // Added in Nextcloud 30
 	await dockerCp(CONTAINER, '/var/www/nextcloud/', 'apps/theming/REUSE.toml', true) // Added in Nextcloud 32
+	// Modify REUSE with the new meta.json file
+	await appendFile('REUSE.toml', `
+[[annotations]]
+path = ["meta.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "${new Date().getFullYear()} Nextcloud GmbH and Nextcloud contributors"
+SPDX-License-Identifier = "AGPL-3.0-or-later"`, 'utf-8')
 	// Additional REUSE for dynamic styles
 	await render('REUSE.template.toml', 'apps/theming/theme/REUSE.toml', {
 		files: await glob('*.css', { cwd: 'apps/theming/theme' }),
@@ -165,6 +172,7 @@ export async function extractNextcloudStyles({
 		themingConfigs,
 	}
 	await render('meta.template.js', 'meta.js', meta)
+	await writeFile('meta.json', JSON.stringify(meta, null, 2), 'utf-8')
 
 	// --- STOPPING THE SERVER --------------------------------------------------------------------------------------------
 

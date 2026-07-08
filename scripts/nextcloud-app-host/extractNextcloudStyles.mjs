@@ -33,7 +33,7 @@ export async function extractNextcloudStyles({
 	const versionRef = tag || branch
 	const versionRefType = tag ? 'tag' : 'branch'
 	const CONTAINER = `nextcloud-app-host-styles-${versionRef.replace(/[^a-z0-9-_]/ig, '_')}`
-	const THEMING_CONFIGS = themingConfigs.map((themingConfig) => ({
+	themingConfigs = themingConfigs.map((themingConfig) => ({
 		...themingConfig,
 		// Filename prefix
 		prefix: themingConfig.name ? `${themingConfig.name}.` : '',
@@ -59,13 +59,13 @@ export async function extractNextcloudStyles({
 	})
 
 	const { version, versionstring: versionString } = await $`docker exec ${CONTAINER} curl -sk https://localhost:443/status.php`.json()
-	const versionMajor = version.split('.')[0]
+	const versionMajor = +version.split('.')[0]
 	const versionCommitHash = (await $`docker exec ${CONTAINER} git -C /var/www/nextcloud rev-parse --short HEAD`.text()).trim()
 	echo(chalk.yellow(`Nextcloud Server ${versionString} is ready`))
 
 	// --- PREPARING DEST -------------------------------------------------------------------------------------------------
 
-	const OUTPUT = join(dest, versionMajor)
+	const OUTPUT = join(dest, versionMajor.toString())
 
 	await rm(OUTPUT, { recursive: true, force: true })
 	await mkdir(OUTPUT, { recursive: true })
@@ -92,7 +92,7 @@ export async function extractNextcloudStyles({
 	// To prevent server cache
 	const v = Date.now()
 
-	for (const { name, prefix, primaryColor, backgroundColor } of THEMING_CONFIGS) {
+	for (const { name, prefix, primaryColor, backgroundColor } of themingConfigs) {
 		echo(chalk.gray(`- Theming configuration "${name || 'default'}" (primaryColor=${primaryColor || 'default'}, backgroundColor=${backgroundColor || 'default'}) ...`))
 
 		// Setting theming
@@ -145,24 +145,26 @@ export async function extractNextcloudStyles({
 	await dockerCp(CONTAINER, '/var/www/nextcloud/', 'apps/theming/REUSE.toml', true) // Added in Nextcloud 32
 	// Additional REUSE for dynamic styles
 	await render('REUSE.template.toml', 'apps/theming/theme/REUSE.toml', {
-		files: JSON.stringify(await glob('*.css', { cwd: 'apps/theming/theme' })),
+		files: await glob('*.css', { cwd: 'apps/theming/theme' }),
 	})
 
 	// Re-exports entrypoints
 	await render('index.template.css', 'index.css')
 	await render('server.template.css', 'server.css')
-	await Promise.all(THEMING_CONFIGS.map(async ({ prefix }) => {
+	await Promise.all(themingConfigs.map(async ({ prefix }) => {
 		await render('theming.template.css', `${prefix}theming.css`, { prefix })
 	}))
-	await render('meta.template.js', 'meta.js', {
+	// Meta-data
+	const meta = {
 		versionRef,
 		versionRefType,
 		versionMajor,
 		version,
 		versionString,
 		versionCommitHash,
-		themingConfigs: '[' + themingConfigs.map(({ name, primaryColor, backgroundColor }) => `{ name: '${name}', primaryColor: '${primaryColor}', backgroundColor: '${backgroundColor}' }`).join(', ') + ']',
-	})
+		themingConfigs,
+	}
+	await render('meta.template.js', 'meta.js', meta)
 
 	// --- STOPPING THE SERVER --------------------------------------------------------------------------------------------
 
@@ -211,7 +213,7 @@ async function render(templateName, dist, data = {}) {
 
 	const templatePath = join(import.meta.dirname, 'templates', templateName)
 	const template = await readFile(templatePath, 'utf-8')
-	const rendered = template.replace(/\{\{(\w+)\}\}/g, (_, key) => replacements[key] || '')
+	const rendered = template.replace(/\{\{(\w+)\}\}/g, (_, key) => replacements[key] ? JSON.stringify(replacements[key]) : '')
 	await writeFile(dist, rendered, 'utf-8')
 	if ($.verbose) {
 		echo(`  ${chalk.green('render')} ${dist}`)

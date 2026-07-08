@@ -5,7 +5,6 @@
 
 /// <reference types="zx" />
 
-import { resolveBuildConfig } from '../build/resolveBuildConfig.js'
 const packageJson = require('../package.json')
 import { overrideNextcloudStyles } from './overrideNextcloudStyles.commands.mjs'
 
@@ -120,13 +119,10 @@ async function prepareRelease() {
 	$.env.TALK_PATH = TALK_PATH
 	$.env.CHANNEL = CHANNEL
 
-	// Theming overrides
-	const BUILD_CONFIG = resolveBuildConfig()
-	if (BUILD_CONFIG.withThemingOverrides) {
-		await spinner('[4.3/5] Overriding Nextcloud theming', async () => {
-			await overrideNextcloudStyles({ verbose: true })
-		})
-	}
+	// Styles override
+	await spinner('[4.3/5] Overriding Nextcloud styles', async () => {
+		await overrideNextcloudStyles({ verbose: true })
+	})
 
 	// Build and package
 	echo`[5/5] Packaging...`

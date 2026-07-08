@@ -4,8 +4,8 @@
  */
 
 import { resolve } from 'node:path'
-import { echo } from 'zx'
-import { getNextcloudVersionForTalk, resolveBuildConfig } from '../build/resolveBuildConfig.js'
+import { chalk, echo } from 'zx'
+import { getNextcloudStyles, getNextcloudVersionForTalk, resolveBuildConfig } from '../build/resolveBuildConfig.js'
 import { extractNextcloudStyles } from './nextcloud-app-host/extractNextcloudStyles.mjs'
 
 /**
@@ -18,17 +18,21 @@ import { extractNextcloudStyles } from './nextcloud-app-host/extractNextcloudSty
  */
 export async function overrideNextcloudStyles({ version = getNextcloudVersionForTalk(), keep = false, verbose = false } = {}) {
 	const BUILD_CONFIG = resolveBuildConfig()
+	const styles = getNextcloudStyles(version)
 
-	if (!BUILD_CONFIG.withThemingOverrides) {
-		echo('Theming override is not needed for the current build config')
-		process.exit(0)
+	if (!styles.overridesRequired) {
+		echo(chalk.gray('No styles overrides required: build config does not modify the default theming configurations'))
+		return
 	}
 
-	const meta = await import(`../resources/server-global-styles/${version}/meta.js`)
+	if (styles.overridesUpToDate) {
+		echo(chalk.gray('No styles overrides required: already up-to-date'))
+		return
+	}
 
 	await extractNextcloudStyles({
 		dest: resolve(import.meta.dirname, '../.overrides/styles'),
-		[meta.versionRefType]: meta.versionRef,
+		[styles.base.meta.versionRefType]: styles.base.meta.versionRef,
 		themingConfigs: [
 			{
 				name: '',

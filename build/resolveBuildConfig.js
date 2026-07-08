@@ -87,34 +87,77 @@ function getNextcloudVersionForTalk() {
 }
 
 /**
- * Get the path to Nextcloud styles with overrides
+ * Try to get the Nextcloud styles from a given directory
+ *
+ * @param {string} directory - Path to the styles directory, e.g. "resources/server-global-styles"
+ * @param {string} version - Nextcloud major version (e.g. 34)
+ * @return {{ path: string, meta: Record<string, unknown> } | null} - Styles path and meta data or null if not found
  */
-function resolveNextcloudStylesPath() {
+function tryGetNextcloudStyles(directory, version) {
+	try {
+		const stylesPath = join(directory, version.toString())
+		return {
+			path: stylesPath,
+			meta: JSON.parse(readFileSync(join(stylesPath, 'meta.json'), 'utf-8')),
+		}
+	} catch {
+		return null
+	}
+}
+
+/**
+ * Get available Nextcloud styles
+ *
+ * @param {string} version - Nextcloud major version (e.g. 34)
+ */
+function getNextcloudStyles(version = getNextcloudVersionForTalk()) {
 	const BUILD_CONFIG = resolveBuildConfig()
-	const version = getNextcloudVersionForTalk()
 
-	const nextcloudStylesOverridesPath = join(__dirname, `../.overrides/styles/${version}`)
-	const nextcloudStylesPath = join(__dirname, `../resources/server-global-styles/${version}`)
+	const base = tryGetNextcloudStyles(join(__dirname, '../resources/server-global-styles'), version)
+	const overrides = tryGetNextcloudStyles(join(__dirname, '../.overrides/styles'), version)
 
-	if (existsSync(nextcloudStylesOverridesPath)) {
-		return nextcloudStylesOverridesPath
+	if (!base) {
+		throw new Error(`Nextcloud ${version} is not supported: no styles found`)
 	}
 
-	if (BUILD_CONFIG.withThemingOverrides) {
-		throw new Error(`Build Config has custom theming, but no styles overrides found for Nextcloud ${version}.
-			If you are testing build locally, run "node scripts/override-nextcloud-styles.mjs --version ${version}".`)
+	return {
+		base,
+		overrides,
+		overridesRequired: BUILD_CONFIG.withThemingOverrides,
+		overridesUpToDate: overrides
+			// Same styles version
+			&& overrides.meta.versionCommitHash === base.meta.versionCommitHash
+			// On the same theming configuration
+			&& overrides.meta.themingConfigs[0].primaryColor === BUILD_CONFIG.primaryColor
+			&& overrides.meta.themingConfigs[0].backgroundColor === BUILD_CONFIG.backgroundColor,
+	}
+}
+
+/**
+ * Resolve path to the currently used Nextcloud styles
+ *
+ * @param {string} version - Nextcloud major version (e.g. 34)
+ */
+function resolveNextcloudStylesPath(version = getNextcloudVersionForTalk()) {
+	const styles = getNextcloudStyles(version)
+
+	if (!styles.overrides && styles.overridesRequired) {
+		throw new Error(`Nextcloud ${version} styles overrides are missing. `
+			+ `If you are testing the build locally, run "node scripts/override-nextcloud-styles.mjs --version ${version}".`)
 	}
 
-	if (existsSync(nextcloudStylesPath)) {
-		return nextcloudStylesPath
+	if (styles.overrides && !styles.overridesUpToDate) {
+		throw new Error(`Nextcloud ${version} styles overrides are not up-to-date with the current styles version or the build configuration. `
+			+ `If you are testing the build locally, run "node scripts/override-nextcloud-styles.mjs --version ${version}".`)
 	}
 
-	throw new Error(`No styles found for Nextcloud ${version}. This version is not supported.`)
+	return styles.overrides?.path ?? styles.base.path
 }
 
 module.exports = {
 	resolveBuildConfig,
 	resolveTalkPath,
 	getNextcloudVersionForTalk,
+	getNextcloudStyles,
 	resolveNextcloudStylesPath,
 }

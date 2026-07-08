@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import { systemPreferences } from 'electron'
 import { normalizeServerUrl, parseAccountId } from '../shared/accounts.utils.ts'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
-import { isWindows } from './system.utils.ts'
+import { isMac, isWindows } from './system.utils.ts'
 import { getWindowsRegistryItem } from './windows.utils.ts'
 
 type ManagedConfigKey = 'accounts' | 'serverUrl'
@@ -48,7 +49,12 @@ function readManagedConfigValue(key: ManagedConfigKey): string | undefined {
 	if (isWindows) {
 		return readWindowsManagedConfigValue(key)
 	}
-	// TODO: add macOS support
+
+	if (isMac) {
+		return readMacOsManagedConfigValue(key)
+	}
+
+	// TODO: add Linux support?
 	return undefined
 }
 
@@ -64,4 +70,21 @@ function readManagedConfigValue(key: ManagedConfigKey): string | undefined {
 function readWindowsManagedConfigValue(key: ManagedConfigKey): string | undefined {
 	return getWindowsRegistryItem('HKEY_CURRENT_USER', `Software\\Policies\\${BUILD_CONFIG.companyName}\\${BUILD_CONFIG.applicationName}`, key)
 		?? getWindowsRegistryItem('HKEY_LOCAL_MACHINE', `Software\\Policies\\${BUILD_CONFIG.companyName}\\${BUILD_CONFIG.applicationName}`, key)
+}
+
+/**
+ * Read managed configuration from macOS Managed Preferences.
+ * Electron's `systemPreferences.getUserDefault` reads NSUserDefaults,
+ * which merges configs from user configuration and /Library/Managed Preferences/,
+ * used by administrators to manage application configuration.
+ *
+ * @see https://developer.apple.com/documentation/foundation/userdefaults
+ * @param key - Configuration key
+ */
+function readMacOsManagedConfigValue(key: ManagedConfigKey): string | undefined {
+	try {
+		return systemPreferences.getUserDefault(key, 'string')
+	} catch {
+		return undefined
+	}
 }

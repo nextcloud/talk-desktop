@@ -6,7 +6,6 @@
 /// <reference types="zx" />
 
 const packageJson = require('../package.json')
-import { overrideNextcloudStyles } from './overrideNextcloudStyles.commands.mjs'
 
 const TALK_PATH = './out/.temp/spreed/'
 const talkDotGit = `${TALK_PATH}.git`
@@ -121,6 +120,7 @@ async function prepareRelease() {
 
 	// Styles override
 	await spinner('[4.3/5] Overriding Nextcloud styles', async () => {
+		const { overrideNextcloudStyles } = await import('./overrideNextcloudStyles.commands.mjs')
 		await overrideNextcloudStyles({ verbose: true })
 	})
 

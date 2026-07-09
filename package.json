@@ -108,6 +108,14 @@
     "node": "^24.0.0",
     "npm": "^11.3.0"
   },
+  "allowScripts": {
+    "github:nextcloud-deps/vscode-windows-registry": true,
+    "core-js": true,
+    "electron": true,
+    "electron-winstaller": true,
+    "esbuild": true,
+    "sharp": true
+  },
   "desktopName": "com.nextcloud.talk.desktop",
   "productName": "Nextcloud Talk",
   "talk": {

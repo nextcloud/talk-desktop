@@ -108,7 +108,7 @@ OC.L10N.register(
     "Layout" : "Подання",
     "Compact" : "Компактний",
     "Wide" : "Широкий",
-    "Copy content" : "Скопіювати вміст",
+    "Copy content" : "Копіювати вміст",
     "Read-only text file content" : "Вміст текстового файлу тільки для читання",
     "The file is empty" : "Файл порожній",
     "Selected screen or window" : "Вибраний екран або вікно",

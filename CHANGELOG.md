@@ -5,6 +5,26 @@
 
 # Changelog
 
+## v2.2.1 - 2026-07-09
+
+### Features
+
+- Add managed configuration for `serverUrl` on Windows GPO (Windows Registry Policies) and macOS (NSUserDefaults) [#1797](https://github.com/nextcloud/talk-desktop/pull/1797), [#1800](https://github.com/nextcloud/talk-desktop/pull/1800)
+- Add a config option to open the app maximized on startup instead of in background [#1780](https://github.com/nextcloud/talk-desktop/pull/1780)
+
+### Fixes
+
+- Remove the last used userid prefilling during login: it breaks completely when the userid is an email on the server-side [#1789](https://github.com/nextcloud/talk-desktop/pull/1789)
+- Linux: stop forcing GTK-3 [#1772](https://github.com/nextcloud/talk-desktop/pull/1772)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v24.0.2 in both beta and stable release channels [#1803](https://github.com/nextcloud/talk-desktop/pull/1803)
+- Add AI Policy [#1774](https://github.com/nextcloud/talk-desktop/pull/1774)
+- Fix regression on Windows MSI installer being x86 instead of x64 [#1764](https://github.com/nextcloud/talk-desktop/pull/1764)
+- Improve custom styles handling during the build [#1798](https://github.com/nextcloud/talk-desktop/pull/1798), [#1799](https://github.com/nextcloud/talk-desktop/pull/1799)
+- Maintenance: TypeScript 6 migration [#1792](https://github.com/nextcloud/talk-desktop/pull/1792), ESLint 10 migration [#1794](https://github.com/nextcloud/talk-desktop/pull/1794)
+
 ## v2.2.0 - 2026-06-09
 
 ### Fixes

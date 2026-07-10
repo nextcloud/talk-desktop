@@ -78,6 +78,7 @@
     "@electron-forge/maker-wix": "^7.11.1",
     "@electron-forge/maker-zip": "^7.11.1",
     "@electron-forge/plugin-webpack": "^7.11.1",
+    "@electron/node-gyp": "github:electron/node-gyp#06b29aafb7708acef8b3669835c8a7857ebc92d2",
     "@nextcloud/eslint-config": "^9.0.0",
     "@total-typescript/ts-reset": "^0.6.1",
     "@types/howler": "^2.2.13",
@@ -107,6 +108,14 @@
   "engines": {
     "node": "^24.0.0",
     "npm": "^11.3.0"
+  },
+  "allowScripts": {
+    "github:nextcloud-deps/vscode-windows-registry": true,
+    "core-js": true,
+    "electron": true,
+    "electron-winstaller": true,
+    "esbuild": true,
+    "sharp": true
   },
   "desktopName": "com.nextcloud.talk.desktop",
   "productName": "Nextcloud Talk",

@@ -58,6 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "Kiedy nie jest w „Nie przeszkadzać”",
     "Never" : "Nigdy",
     "Launch at startup" : "Uruchom przy starcie",
+    "Launch in background" : "Uruchamiaj w tle",
     "Theme" : "Motyw",
     "System default" : "Domyślne systemu",
     "Light" : "Jasny",

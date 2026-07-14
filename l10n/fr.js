@@ -58,6 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "Quand le mode \"ne pas déranger\" n'est pas activé",
     "Never" : "Jamais",
     "Launch at startup" : "Lancer au démarrage",
+    "Launch in background" : "Lancer en arrière-plan",
     "Theme" : "Thème",
     "System default" : " Système par défaut",
     "Light" : "Clair",

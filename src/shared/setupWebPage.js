@@ -4,7 +4,7 @@
  */
 
 import axios from '@nextcloud/axios'
-import { isRTL, register } from '@nextcloud/l10n'
+import { isRTL, register, setLanguage, setLocale } from '@nextcloud/l10n'
 import { appData } from '../app/AppData.js'
 import { refetchAppData } from '../app/appData.service.js'
 import { TITLE_BAR_HEIGHT } from '../constants.js'
@@ -61,8 +61,8 @@ async function applyL10n() {
 
 	const canonicalLanguage = language.replaceAll('_', '-')
 
-	document.documentElement.lang = canonicalLanguage
-	document.documentElement.dataset.locale = locale
+	setLanguage(canonicalLanguage)
+	setLocale(locale)
 
 	console.info(`Using locale "${locale}" for language "${language}"`)
 

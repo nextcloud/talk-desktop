@@ -110,7 +110,7 @@
     "zx": "^8.8.5"
   },
   "optionalDependencies": {
-    "@vscode/windows-registry": "github:nextcloud-deps/vscode-windows-registry#v1.2.0-prebuild"
+    "@vscode/windows-registry": "github:nextcloud-deps/vscode-windows-registry#v1.2.0-prebuild.3"
   },
   "engines": {
     "node": "^24.0.0",

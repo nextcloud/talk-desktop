@@ -3,21 +3,24 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { MakerDMG } = require('@electron-forge/maker-dmg')
-const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
-const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
-const { MakerWix } = require('@electron-forge/maker-wix')
-const { MakerZIP } = require('@electron-forge/maker-zip')
-const cheerio = require('cheerio')
-const mri = require('mri')
-const fs = require('node:fs')
-const path = require('node:path')
-const semver = require('semver')
-const { resolveBuildConfig, resolveTalkPath } = require('./build/resolveBuildConfig.js')
-const packageJSON = require('./package.json')
-const { MIN_REQUIRED_BUILT_IN_TALK_VERSION } = require('./src/constants.js')
+import { MakerDMG } from '@electron-forge/maker-dmg'
+import { MakerFlatpak } from '@electron-forge/maker-flatpak'
+import { MakerSquirrel } from '@electron-forge/maker-squirrel'
+import { MakerWix } from '@electron-forge/maker-wix'
+import { MakerZIP } from '@electron-forge/maker-zip'
+import * as cheerio from 'cheerio'
+import mri from 'mri'
+import fs from 'node:fs'
+import { createRequire } from 'node:module'
+import path from 'node:path'
+import semver from 'semver'
+import { resolveBuildConfig, resolveTalkPath } from './build/resolveBuildConfig.js'
+import packageJSON from './package.json' with { type: 'json' }
+import { MIN_REQUIRED_BUILT_IN_TALK_VERSION } from './src/constants.js'
 
-require('dotenv').config()
+import 'dotenv/config'
+
+const require = createRequire(import.meta.url)
 
 const SUPPORTED_ARCHS = ['x64', 'arm64', 'universal']
 const argArch = mri(process.argv).arch
@@ -147,7 +150,7 @@ const hasWindowsSign = !!process.env.WINDOWS_SIGN_PARAMS
 
 let talkPackageJson
 
-module.exports = {
+export default {
 	hooks: {
 		generateAssets() {
 			if (!fs.existsSync(TALK_PATH)) {
@@ -205,7 +208,7 @@ module.exports = {
 	packagerConfig: {
 		// Common
 		name: BUILD_CONFIG.applicationName,
-		icon: path.join(__dirname, './img/icons/icon'),
+		icon: path.join(import.meta.dirname, './img/icons/icon'),
 		appCopyright: BUILD_CONFIG.copyright,
 		asar: true,
 
@@ -219,7 +222,7 @@ module.exports = {
 		darwinDarkModeSupport: true,
 		// https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW8
 		appCategoryType: 'public.app-category.business',
-		extendInfo: path.join(__dirname, './resources/macos/entitlements.plist'),
+		extendInfo: path.join(import.meta.dirname, './resources/macos/entitlements.plist'),
 		osxSign: hasMacosSign && {},
 		osxNotarize: hasMacosSign && {
 			appleId: process.env.APPLE_ID,
@@ -240,7 +243,7 @@ module.exports = {
 			description: BUILD_CONFIG.description,
 			exe: `${BUILD_CONFIG.applicationName}.exe`,
 			name: BUILD_CONFIG.applicationName,
-			icon: path.join(__dirname, 'img/icons/icon.ico'),
+			icon: path.join(import.meta.dirname, 'img/icons/icon.ico'),
 			manufacturer: BUILD_CONFIG.companyName,
 			shortName: BUILD_CONFIG.applicationNameSanitized,
 			upgradeCode: BUILD_CONFIG.winUpgradeCode,
@@ -252,8 +255,8 @@ module.exports = {
 			version: packageJSON.version,
 			ui: {
 				images: {
-					background: path.join(__dirname, 'img/wix-background.bmp'),
-					banner: path.join(__dirname, 'img/wix-banner.bmp'),
+					background: path.join(import.meta.dirname, 'img/wix-background.bmp'),
+					banner: path.join(import.meta.dirname, 'img/wix-banner.bmp'),
 				},
 			},
 			windowsSign: hasWindowsSign && signWithParamsToWindowsSignOptions(process.env.WINDOWS_SIGN_PARAMS),
@@ -320,11 +323,11 @@ module.exports = {
 			description: BUILD_CONFIG.description,
 
 			// Icons
-			setupIcon: path.join(__dirname, './img/icons/icon.ico'),
+			setupIcon: path.join(import.meta.dirname, './img/icons/icon.ico'),
 			iconUrl: 'https://raw.githubusercontent.com/nextcloud/talk-desktop/refs/heads/main/img/icons/icon.ico',
 
 			// Install/Update Loading
-			loadingGif: path.join(__dirname, './img/squirrel-install-loading.gif'),
+			loadingGif: path.join(import.meta.dirname, './img/squirrel-install-loading.gif'),
 
 			// Signing
 			signWithParams: hasWindowsSign && process.env.WINDOWS_SIGN_PARAMS,
@@ -332,8 +335,8 @@ module.exports = {
 
 		// https://js.electronforge.io/interfaces/_electron_forge_maker_dmg.MakerDMGConfig.html
 		BUILD_CONFIG.macosDmg && new MakerDMG({
-			icon: path.join(__dirname, 'img/icons/icon.icns'),
-			background: path.join(__dirname, 'img/dmg-background.png'),
+			icon: path.join(import.meta.dirname, 'img/icons/icon.icns'),
+			background: path.join(import.meta.dirname, 'img/dmg-background.png'),
 			// https://github.com/LinusU/node-appdmg?tab=readme-ov-file#specification
 			additionalDMGOptions: {
 				// Background does not work when the title has spaces or special characters
@@ -355,7 +358,7 @@ module.exports = {
 				branch: 'stable',
 				// https://specifications.freedesktop.org/icon-theme-spec/latest/
 				icon: {
-					scalable: path.resolve(__dirname, 'img/talk-icon-rounded-spaced.svg'),
+					scalable: path.resolve(import.meta.dirname, 'img/talk-icon-rounded-spaced.svg'),
 				},
 				// https://specifications.freedesktop.org/menu-spec/latest/category-registry.html
 				categories: [

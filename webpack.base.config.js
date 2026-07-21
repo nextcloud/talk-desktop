@@ -2,11 +2,11 @@
  * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
-const { DefinePlugin } = require('webpack')
+import webpack from 'webpack'
 
 const CHANNEL = process.env.CHANNEL ?? 'dev'
 
-module.exports = {
+export default {
 	module: {
 		rules: [
 			{
@@ -27,7 +27,7 @@ module.exports = {
 	},
 
 	plugins: [
-		new DefinePlugin({
+		new webpack.DefinePlugin({
 			__CHANNEL__: JSON.stringify(CHANNEL),
 		}),
 	],

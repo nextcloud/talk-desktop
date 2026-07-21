@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow } = require('electron')
-const { getAppConfig } = require('../app/AppConfig.ts')
-const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl, getTitleBarSymbolColor } = require('../app/utils.ts')
-const { TITLE_BAR_HEIGHT } = require('../constants.js')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+import { BrowserWindow } from 'electron'
+import { getAppConfig } from '../app/AppConfig.ts'
+import { applyContextMenu } from '../app/applyContextMenu.js'
+import { applyZoom, buildTitle, getScaledWindowSize, getTitleBarSymbolColor, getWindowUrl } from '../app/utils.ts'
+import { TITLE_BAR_HEIGHT } from '../constants.js'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 
 /**
  * @return {import('electron').BrowserWindow}
  */
-function createAuthenticationWindow() {
+export function createAuthenticationWindow() {
 	const zoomFactor = getAppConfig('zoomFactor')
 	const window = new BrowserWindow({
 		title: buildTitle(),
@@ -54,8 +54,4 @@ function createAuthenticationWindow() {
 	window.loadURL(getWindowUrl('authentication'))
 
 	return window
-}
-
-module.exports = {
-	createAuthenticationWindow,
 }

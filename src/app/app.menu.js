@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, shell, Menu } = require('electron')
-const packageJson = require('../../package.json')
-const { createHelpWindow } = require('../help/help.window.js')
-const { BUILD_CONFIG } = require('../shared/build.config.ts')
-const { isMac } = require('./system.utils.ts')
-const { increaseZoom, decreaseZoom, setZoom } = require('./zoom.service.ts')
+import { app, Menu, shell } from 'electron'
+import packageJson from '../../package.json'
+import { createHelpWindow } from '../help/help.window.js'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
+import { isMac } from './system.utils.ts'
+import { decreaseZoom, increaseZoom, setZoom } from './zoom.service.ts'
 
 /**
  * Setup application menu
  */
-function setupMenu() {
+export function setupMenu() {
 	const macAppMenu = {
 		label: app.name,
 		submenu: [
@@ -150,8 +150,4 @@ function setupMenu() {
 
 	const menu = Menu.buildFromTemplate(template)
 	Menu.setApplicationMenu(menu)
-}
-
-module.exports = {
-	setupMenu,
 }

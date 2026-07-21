@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, Tray, Menu } = require('electron')
-const path = require('node:path')
-const { getTrayIcon } = require('../shared/icons.utils.js')
+import { app, Menu, Tray } from 'electron'
+import path from 'node:path'
+import { getTrayIcon } from '../shared/icons.utils.js'
 
 let isAppQuitting = false
 
@@ -22,8 +22,8 @@ app.on('before-quit', () => {
  * @param {import('electron').BrowserWindow} browserWindow Browser window, associated with the tray
  * @return {import('electron').Tray} Tray instance
  */
-function setupTray(browserWindow) {
-	const icon = path.resolve(__dirname, getTrayIcon())
+export function setupTray(browserWindow) {
+	const icon = path.resolve(import.meta.dirname, getTrayIcon())
 	const tray = new Tray(icon)
 	tray.setToolTip(app.name)
 	tray.setContextMenu(Menu.buildFromTemplate([
@@ -49,8 +49,4 @@ function setupTray(browserWindow) {
 	})
 
 	return tray
-}
-
-module.exports = {
-	setupTray,
 }

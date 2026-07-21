@@ -3,16 +3,13 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const {
-	contextBridge,
-	ipcRenderer,
-} = require('electron')
-const { license, bugs, repository } = require('../package.json')
+import { contextBridge, ipcRenderer } from 'electron'
+import packageJson from '../package.json' with { type: 'json' }
 
 const packageInfo = {
-	license,
-	bugs,
-	repository: repository.url,
+	license: packageJson.license,
+	bugs: packageJson.bugs,
+	repository: packageJson.repository.url,
 }
 
 /**

@@ -17,7 +17,7 @@
  * @return {Credentials} - Credentials data
  * @throws {Error} - Parsing error
  */
-function parseLoginRedirectUrl(url) {
+export function parseLoginRedirectUrl(url) {
 	// nc://login/server:URL&user:USER&password:PASSWORD
 	const re = /^nc:\/\/login\/server:(.*)&user:(.*)&password:(.*)$/
 	const parsed = url.match(re)
@@ -29,8 +29,4 @@ function parseLoginRedirectUrl(url) {
 		user: decodeURIComponent(parsed[2].replaceAll('+', ' ')),
 		password: decodeURIComponent(parsed[3].replaceAll('+', ' ')),
 	}
-}
-
-module.exports = {
-	parseLoginRedirectUrl,
 }

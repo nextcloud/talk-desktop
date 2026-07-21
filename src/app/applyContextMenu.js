@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { clipboard, Menu } = require('electron')
-const { isExternalUrl } = require('./utils.ts')
+import { clipboard, Menu } from 'electron'
+import { isExternalUrl } from './utils.ts'
 
 /**
  * Enable context menu by right click

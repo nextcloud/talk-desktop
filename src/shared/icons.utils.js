@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, nativeTheme } = require('electron')
-const path = require('node:path')
-const { getAppConfig } = require('../app/AppConfig.ts')
-const { isLinux, platform } = require('../app/system.utils.ts')
+import { app, nativeTheme } from 'electron'
+import path from 'node:path'
+import { getAppConfig } from '../app/AppConfig.ts'
+import { isLinux, platform } from '../app/system.utils.ts'
 
 const icons = {
 	// Executable's icon is used by default
@@ -44,7 +44,7 @@ const icons = {
 /**
  * Get tray icon
  */
-function getTrayIcon() {
+export function getTrayIcon() {
 	const monochrome = getAppConfig('monochromeTrayIcon')
 	const theme = nativeTheme.shouldUseDarkColors ? 'dark' : 'light'
 	const kind = monochrome ? theme : 'default'
@@ -57,16 +57,11 @@ function getTrayIcon() {
  *
  * @return {string|undefined} Path to the icon or undefined if not required on the current platform
  */
-function getBrowserWindowIcon() {
+export function getBrowserWindowIcon() {
 	if (isLinux) {
 		// https://www.electronforge.io/guides/create-and-add-icons#linux
 		return path.join(app.getAppPath(), '.webpack/main', icons.window.linux)
 	}
 
 	return undefined
-}
-
-module.exports = {
-	getTrayIcon,
-	getBrowserWindowIcon,
 }

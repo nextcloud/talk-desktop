@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow } = require('electron')
-const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
-const { getScaledWindowSize, applyZoom, buildTitle, getWindowUrl, onReadyToShow } = require('../app/utils.ts')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+import { BrowserWindow } from 'electron'
+import { applyContextMenu } from '../app/applyContextMenu.js'
+import { applyExternalLinkHandler } from '../app/externalLinkHandlers.ts'
+import { applyZoom, buildTitle, getScaledWindowSize, getWindowUrl, onReadyToShow } from '../app/utils.ts'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 
 /**
  *
  * @param {import('electron').BrowserWindow} parentWindow - main window (parent)
  * @return {import('electron').BrowserWindow}
  */
-function createHelpWindow(parentWindow) {
+export function createHelpWindow(parentWindow) {
 	const window = new BrowserWindow({
 		title: buildTitle(),
 		...getScaledWindowSize({
@@ -46,8 +46,4 @@ function createHelpWindow(parentWindow) {
 	onReadyToShow(window, () => window.show())
 
 	return window
-}
-
-module.exports = {
-	createHelpWindow,
 }

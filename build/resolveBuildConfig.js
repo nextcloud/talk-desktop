@@ -143,12 +143,12 @@ function resolveNextcloudStylesPath(version = getNextcloudVersionForTalk()) {
 
 	if (!styles.overrides && styles.overridesRequired) {
 		throw new Error(`Nextcloud ${version} styles overrides are missing. `
-			+ `If you are testing the build locally, run "node scripts/override-nextcloud-styles.mjs --version ${version}".`)
+			+ `If you are testing the build locally, run "node scripts/override-nextcloud-styles.js --version ${version}".`)
 	}
 
 	if (styles.overrides && !styles.overridesUpToDate) {
 		throw new Error(`Nextcloud ${version} styles overrides are not up-to-date with the current styles version or the build configuration. `
-			+ `If you are testing the build locally, run "node scripts/override-nextcloud-styles.mjs --version ${version}".`)
+			+ `If you are testing the build locally, run "node scripts/override-nextcloud-styles.js --version ${version}".`)
 	}
 
 	return styles.overrides?.path ?? styles.base.path

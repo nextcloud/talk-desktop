@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { semverGt } from './semver.utils.mjs'
+import { semverGt } from './semver.utils.js'
 
 if (os.platform() === 'win32') {
 	usePwsh()

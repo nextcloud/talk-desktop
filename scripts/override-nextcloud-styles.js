@@ -4,13 +4,13 @@
  */
 
 import { argv, echo } from 'zx'
-import { overrideNextcloudStyles } from './overrideNextcloudStyles.commands.mjs'
+import { overrideNextcloudStyles } from './overrideNextcloudStyles.commands.js'
 
 if (argv.help) {
 	echo`Override Nextcloud styles with the current build config
 
 	Usage:
-	  node scripts/override-nextcloud-styles.mjs [options]
+	  node scripts/override-nextcloud-styles.js [options]
 
 	Arguments:
 		--version <nextcloud-version-major> - major version of Nextcloud to override styles for (e.g. "34"), default: the current built-in Talk's Nextcloud version
@@ -19,8 +19,8 @@ if (argv.help) {
 		--verbose - show verbose output
 
 	Example:
-	  node scripts/override-nextcloud-styles.mjs
-	  node scripts/override-nextcloud-styles.mjs --version 34
+	  node scripts/override-nextcloud-styles.js
+	  node scripts/override-nextcloud-styles.js --version 34
 `
 	process.exit(0)
 }

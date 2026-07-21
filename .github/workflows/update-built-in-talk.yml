@@ -35,13 +35,13 @@ jobs:
       - name: Set up npm ${{ steps.versions.outputs.npmVersion }}
         run: npm i -g 'npm@${{ steps.versions.outputs.npmVersion }}'
 
-      - name: Run update-built-in-talk.mjs
+      - name: Run update-built-in-talk.js
         id: update
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Execute the script and capture the output
-          stdout=$(npx -y zx ./scripts/update-built-in-talk.mjs)
+          stdout=$(npx -y zx ./scripts/update-built-in-talk.js)
           # Pass the result to the next steps
           echo "stdout<<EOF" >> $GITHUB_OUTPUT
           echo "$stdout" >> $GITHUB_OUTPUT

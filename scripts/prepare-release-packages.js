@@ -120,7 +120,7 @@ async function prepareRelease() {
 
 	// Styles override
 	await spinner('[4.3/5] Overriding Nextcloud styles', async () => {
-		const { overrideNextcloudStyles } = await import('./overrideNextcloudStyles.commands.mjs')
+		const { overrideNextcloudStyles } = await import('./overrideNextcloudStyles.commands.js')
 		await overrideNextcloudStyles({ verbose: true })
 	})
 

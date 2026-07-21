@@ -27,7 +27,7 @@
     "build:windows:arm64": "electron-forge package --platform=win32 --arch=arm64",
     "build:windows:x64": "electron-forge package --platform=win32 --arch=x64",
     "dev": "electron-forge start",
-    "download-vue-devtools": "node ./scripts/download-vue-devtools.mjs",
+    "download-vue-devtools": "node ./scripts/download-vue-devtools.js",
     "generate-icons": "node ./scripts/generate-icons.js",
     "lint": "eslint --fix",
     "package": "electron-forge make --skip-package",
@@ -42,7 +42,7 @@
     "package:windows:x64": "electron-forge make --skip-package --platform=win32 --arch=x64",
     "package:windows:x64:exe": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=squirrel",
     "package:windows:x64:msi": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=wix",
-    "release:package": "npx -y zx ./scripts/prepare-release-packages.mjs",
+    "release:package": "npx -y zx ./scripts/prepare-release-packages.js",
     "start": "npm run dev",
     "ts:check": "vue-tsc --noEmit"
   },

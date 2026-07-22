@@ -29,6 +29,7 @@
     "dev": "electron-forge start",
     "download-vue-devtools": "node ./scripts/download-vue-devtools.js",
     "generate-icons": "node ./scripts/generate-icons.js",
+    "postinstall": "patch-package",
     "lint": "eslint --fix",
     "package": "electron-forge make --skip-package",
     "package:linux": "electron-forge make --skip-package --platform=linux",

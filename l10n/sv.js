@@ -58,6 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "När statusen inte är ”Stör ej”",
     "Never" : "Aldrig",
     "Launch at startup" : "Starta vid uppstart",
+    "Launch in background" : "Starta i bakgrunden",
     "Theme" : "Tema",
     "System default" : "Systemets standard",
     "Light" : "Ljust",

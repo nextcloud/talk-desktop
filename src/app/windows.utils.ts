@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { createRequire } from 'node:module'
+import { dlopen } from 'node:process'
+import { fileURLToPath } from 'node:url'
 
 export type HKEY = 'HKEY_CURRENT_USER' | 'HKEY_LOCAL_MACHINE' | 'HKEY_CLASSES_ROOT' | 'HKEY_USERS' | 'HKEY_CURRENT_CONFIG'
 
@@ -24,10 +25,9 @@ export function getWindowsRegistryItem(hive: HKEY, path: string, name: string): 
 	}
 
 	try {
-		const require = createRequire(import.meta.url)
-		const windowRegistry = require('@vscode/windows-registry/prebuilds/win32-x64/@vscode+windows-registry.node')
-
-		return windowRegistry.GetStringRegKey(hive, path, name)
+		const windowRegistry = { exports: {} }
+		dlopen(windowRegistry, fileURLToPath(new URL('@vscode/windows-registry/prebuilds/win32-x64/@vscode+windows-registry.node', import.meta.url)))
+		return windowRegistry.exports.GetStringRegKey(hive, path, name)
 	} catch (error) {
 		// 'Unable to open registry key' is expected when the registry key does not exist
 		if ((error as Error).message !== 'Unable to open registry key') {

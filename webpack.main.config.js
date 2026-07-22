@@ -30,6 +30,10 @@ export default merge(baseConfig, {
 				include: path.resolve(import.meta.dirname, './img/icons'),
 				type: 'asset/resource',
 			},
+			{
+				test: /\.node$/,
+				type: 'asset/resource',
+			},
 			// Chromium extension
 			{
 				test: /\.crx$/,

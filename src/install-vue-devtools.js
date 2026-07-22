@@ -6,9 +6,10 @@
 import { app, session } from 'electron'
 import fs from 'node:fs/promises'
 import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import unzip from 'unzip-crx-3'
 
-const vueDevtoolsPath = resolve(import.meta.dirname, require('../resources/vue-devtools.crx'))
+const vueDevtoolsPath = fileURLToPath(new URL('../resources/vue-devtools.crx', import.meta.url))
 
 /**
  * Check if a directory exists

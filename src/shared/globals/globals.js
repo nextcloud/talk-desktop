@@ -24,7 +24,7 @@ const OC = {
 	MimeType: {
 		// TODO: better to move this function from global to @nextcloud/files or @nextcloud/router
 		getIconUrl(mimeType) {
-			const defaultFileIcon = require('@global-styles/core/img/filetypes/file.svg')
+			const defaultFileIcon = new URL('@global-styles/core/img/filetypes/file.svg', import.meta.url).href
 
 			if (!mimeType) {
 				return defaultFileIcon
@@ -38,7 +38,7 @@ const OC = {
 			icon = MimeTypeList.files.includes(icon) ? icon : mimeType.split('/')[0]
 
 			try {
-				return require(`@global-styles/core/img/filetypes/${icon}.svg`)
+				return new URL(`@global-styles/core/img/filetypes/${icon}.svg`, import.meta.url)
 			} catch {
 				return defaultFileIcon
 			}

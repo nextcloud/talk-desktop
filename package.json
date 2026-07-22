@@ -15,7 +15,8 @@
     "name": "Grigorii K. Shartsev",
     "email": "me@shgk.me"
   },
-  "main": "./.webpack/main",
+  "type": "module",
+  "main": "./.webpack/main/index.js",
   "scripts": {
     "build": "electron-forge package",
     "build:linux": "electron-forge package --platform=linux",

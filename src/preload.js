@@ -74,11 +74,21 @@ const TALK_DESKTOP = {
 	 */
 	flashAppIcon: (shouldFlash) => ipcRenderer.send('talk:flashAppIcon', shouldFlash),
 	/**
-	 * Get available desktop capture sources: screens and windows
+	 * Get available desktop capture sources: screens and windows.
+	 * On Windows, the list also includes minimized windows (marked with `minimized: true`),
+	 * which Chromium omits by default.
 	 *
-	 * @return {Promise<{ id: string, name: string, icon?: string }[]|null>}
+	 * @return {Promise<{ id: string, name: string, icon?: string, minimized?: boolean }[]|null>}
 	 */
 	getDesktopCapturerSources: () => ipcRenderer.invoke('app:getDesktopCapturerSources'),
+	/**
+	 * Restore (un-minimize) a window selected for sharing and resolve the capturable sourceId.
+	 * No-op on non-Windows platforms — resolves with the original sourceId.
+	 *
+	 * @param {{ id: string }} source - The selected screensharing source
+	 * @return {Promise<{ sourceId: string }>}
+	 */
+	activateWindowForCapture: (source) => ipcRenderer.invoke('app:activateWindowForCapture', source),
 	/**
 	 * Relaunch an entire application
 	 */

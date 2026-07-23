@@ -16,6 +16,13 @@ module.exports = merge(baseConfig, {
 		assetModuleFilename: '[file]',
 	},
 
+	// koffi is a native FFI module that loads its own prebuilt .node at runtime.
+	// Keep it external so webpack does not try to bundle it — it is shipped in
+	// node_modules and unpacked from the asar archive (see forge.config.js asar.unpack).
+	externals: {
+		koffi: 'commonjs koffi',
+	},
+
 	module: {
 		rules: [
 			{

@@ -65,6 +65,7 @@
     "core-js": "^3.49.0",
     "electron-squirrel-startup": "^1.0.1",
     "howler": "^2.2.4",
+    "koffi": "^2.16.3",
     "mri": "^1.2.0",
     "pinia": "^4.0.2",
     "semver": "^7.8.5",

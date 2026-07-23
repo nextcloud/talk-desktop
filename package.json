@@ -45,6 +45,11 @@
     "start": "npm run dev",
     "ts:check": "vue-tsc --noEmit"
   },
+  "overrides": {
+    "icon-gen": {
+      "sharp": "^0.35.0"
+    }
+  },
   "dependencies": {
     "@mdi/svg": "^7.4.47",
     "@nextcloud/auth": "^2.5.3",

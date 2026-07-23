@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
+const { app, ipcMain, desktopCapturer, nativeImage, systemPreferences, shell, session } = require('electron')
 const { default: mri } = require('mri')
 const { spawn } = require('node:child_process')
 const path = require('node:path')
@@ -18,6 +18,7 @@ const { triggerDownloadUrl } = require('./app/downloads.ts')
 const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/githubRelease.service.ts')
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
+const { listNativeWindows, restoreNativeWindow } = require('./app/nativeWindows.ts')
 const { systemInfo, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
 const { applyTheme } = require('./app/theme.config.ts')
 const { buildTitle, onReadyToShow } = require('./app/utils.ts')
@@ -87,16 +88,24 @@ ipcMain.on('app:toggleDevTools', (event) => event.sender.toggleDevTools())
 ipcMain.handle('app:anything', () => { /* Put any code here to run it from UI */ })
 ipcMain.on('app:openChromeWebRtcInternals', () => openChromeWebRtcInternals())
 ipcMain.handle('app:update:check', async () => await checkForUpdate({ forceRequest: true }))
-ipcMain.handle('app:getDesktopCapturerSources', async () => {
-	// macOS 10.15 Catalina or higher requires consent for screen access
-	if (isMac && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
-		// Open System Preferences to allow screen recording
-		await shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture')
-		// We cannot detect that the user has granted access, so return no sources
-		// The user will have to try again after granting access
-		return null
-	}
+/**
+ * Extract the native window handle (HWND) encoded in an Electron window sourceId.
+ * On Windows, Electron formats window sources as `window:<HWND>:<index>`.
+ *
+ * @param {string} sourceId - Electron desktopCapturer window sourceId
+ * @return {number|null} The HWND as a number, or null if not a window source
+ */
+function parseHwndFromSourceId(sourceId) {
+	const match = /^window:(\d+):\d+$/.exec(sourceId)
+	return match ? Number(match[1]) : null
+}
 
+/**
+ * Fetch and normalize Electron desktopCapturer sources (screens + windows).
+ *
+ * @return {Promise<Array<{ id: string, name: string, icon: string|null, thumbnail: string|null }>>}
+ */
+async function fetchDesktopCapturerSources() {
 	const thumbnailWidth = 800
 
 	const sources = await desktopCapturer.getSources({
@@ -114,6 +123,117 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 		icon: source.appIcon && !source.appIcon.isEmpty() ? source.appIcon.toDataURL() : null,
 		thumbnail: source.thumbnail && !source.thumbnail.isEmpty() ? source.thumbnail.toDataURL() : null,
 	}))
+}
+
+/**
+ * Convert a native window icon (raw BGRA bitmap) into a data URL.
+ * The bitmap uses straight alpha; Electron expects premultiplied BGRA on Windows.
+ *
+ * @param {{ width: number, height: number, data: Buffer }|null} icon - Raw window icon bitmap
+ * @return {string|null}
+ */
+function windowIconToDataUrl(icon) {
+	if (!icon || !icon.width || !icon.height || !icon.data || icon.data.length !== icon.width * icon.height * 4) {
+		return null
+	}
+	try {
+		const data = Buffer.from(icon.data)
+
+		// Some legacy icons carry no alpha channel (all zero) and rely on a mask instead;
+		// treat those as fully opaque so they are not rendered invisible.
+		let hasAlpha = false
+		for (let i = 3; i < data.length; i += 4) {
+			if (data[i] !== 0) {
+				hasAlpha = true
+				break
+			}
+		}
+
+		for (let i = 0; i < data.length; i += 4) {
+			const alpha = hasAlpha ? data[i + 3] : 255
+			data[i] = Math.round((data[i] * alpha) / 255)
+			data[i + 1] = Math.round((data[i + 1] * alpha) / 255)
+			data[i + 2] = Math.round((data[i + 2] * alpha) / 255)
+			data[i + 3] = alpha
+		}
+
+		const image = nativeImage.createFromBitmap(data, { width: icon.width, height: icon.height })
+		return image.isEmpty() ? null : image.toDataURL()
+	} catch (error) {
+		console.error('[main] Failed to build window icon:', error)
+		return null
+	}
+}
+
+ipcMain.handle('app:getDesktopCapturerSources', async () => {
+	// macOS 10.15 Catalina or higher requires consent for screen access
+	if (isMac && systemPreferences.getMediaAccessStatus('screen') !== 'granted') {
+		// Open System Preferences to allow screen recording
+		await shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture')
+		// We cannot detect that the user has granted access, so return no sources
+		// The user will have to try again after granting access
+		return null
+	}
+
+	// On Windows, Chromium/WebRTC omits minimized (iconic) windows from desktopCapturer
+	// because they are not rendered and cannot produce frames. Enumerate top-level windows
+	// natively (in parallel) and add the minimized ones that are missing, so the user can
+	// pick them. They are restored on selection (see app:activateWindowForCapture).
+	// listNativeWindows() is best-effort and resolves to [] on any failure or non-Windows.
+	const [sources, nativeWindows] = await Promise.all([
+		fetchDesktopCapturerSources(),
+		listNativeWindows(),
+	])
+
+	if (nativeWindows.length > 0) {
+		const existingHwnds = new Set(sources.map((source) => parseHwndFromSourceId(source.id)).filter((hwnd) => hwnd !== null))
+		for (const nativeWindow of nativeWindows) {
+			if (nativeWindow.minimized && !existingHwnds.has(nativeWindow.hwnd)) {
+				sources.push({
+					id: `window:${nativeWindow.hwnd}:0`,
+					name: nativeWindow.title,
+					icon: windowIconToDataUrl(nativeWindow.icon),
+					thumbnail: null,
+					minimized: true,
+				})
+			}
+		}
+	}
+
+	return sources
+})
+
+/**
+ * Milliseconds to wait after restoring a window before capturing it, giving the
+ * compositor time to render the freshly un-minimized window (otherwise the first
+ * captured frames may be blank).
+ */
+const RESTORE_RENDER_DELAY_MS = 350
+
+/**
+ * Restore (un-minimize) a window selected for sharing.
+ *
+ * A minimized window produces no frames and cannot be captured by WebRTC. When the user picks
+ * one, we restore it and give the compositor a moment to render it before capturing.
+ * On Windows, Electron encodes the HWND in the window sourceId (`window:<HWND>:0`), so the id
+ * stays valid after restoring and can be returned as-is.
+ */
+ipcMain.handle('app:activateWindowForCapture', async (event, source) => {
+	if (!isWindows || !source?.id) {
+		return { sourceId: source?.id ?? '' }
+	}
+
+	const hwnd = parseHwndFromSourceId(source.id)
+	if (hwnd === null) {
+		return { sourceId: source.id }
+	}
+
+	const restored = await restoreNativeWindow(hwnd)
+	if (restored) {
+		await new Promise((resolve) => setTimeout(resolve, RESTORE_RENDER_DELAY_MS))
+	}
+
+	return { sourceId: source.id }
 })
 
 /**

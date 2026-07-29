@@ -5,6 +5,18 @@
 
 # Changelog
 
+## v2.2.2 - 2026-07-29
+
+### Fixes
+
+- App crashes on some languages [#1813](https://github.com/nextcloud/talk-desktop/pull/1813)
+- Linux/Wayland: allow switching back to the native title bar via app settings [#1773](https://github.com/nextcloud/talk-desktop/pull/1773)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v24.0.3 in both beta and stable release channels [#1834](https://github.com/nextcloud/talk-desktop/pull/1834)
+
+
 ## v2.2.1 - 2026-07-09
 
 ### Features

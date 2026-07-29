@@ -3,22 +3,22 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow } = require('electron')
-const { setupTray } = require('../app/app.tray.js')
-const { getAppConfig } = require('../app/AppConfig.ts')
-const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { applyDownloadHandler } = require('../app/downloads.ts')
-const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
-const { getScaledWindowMinSize, getScaledWindowSize, applyZoom, buildTitle, getWindowUrl, getTitleBarSymbolColor } = require('../app/utils.ts')
-const { applyWheelZoom } = require('../app/zoom.service.ts')
-const { TITLE_BAR_HEIGHT } = require('../constants.js')
-const { BUILD_CONFIG } = require('../shared/build.config.ts')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
+import { BrowserWindow } from 'electron'
+import { setupTray } from '../app/app.tray.js'
+import { getAppConfig } from '../app/AppConfig.ts'
+import { applyContextMenu } from '../app/applyContextMenu.js'
+import { applyDownloadHandler } from '../app/downloads.ts'
+import { applyExternalLinkHandler } from '../app/externalLinkHandlers.ts'
+import { applyZoom, buildTitle, getScaledWindowMinSize, getScaledWindowSize, getTitleBarSymbolColor, getWindowUrl } from '../app/utils.ts'
+import { applyWheelZoom } from '../app/zoom.service.ts'
+import { TITLE_BAR_HEIGHT } from '../constants.js'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
 
 /**
  * @return {import('electron').BrowserWindow}
  */
-function createTalkWindow() {
+export function createTalkWindow() {
 	const zoomFactor = getAppConfig('zoomFactor')
 
 	const talkWindowOptions = {
@@ -81,8 +81,4 @@ function createTalkWindow() {
 	window.loadURL(getWindowUrl('talk') + '#/apps/spreed')
 
 	return window
-}
-
-module.exports = {
-	createTalkWindow,
 }

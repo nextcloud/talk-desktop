@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const icongen = require('icon-gen')
-const fs = require('node:fs/promises')
-const path = require('node:path')
+import icongen from 'icon-gen'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 /**
  * Generate icons from a source SVG file in a specified format and sizes
@@ -55,7 +55,7 @@ async function generate(source, filename, sizes, output) {
  * @return {Promise<void>}
  */
 async function generateIcons() {
-	const output = path.join(__dirname, '../img/icons')
+	const output = path.join(import.meta.dirname, '../img/icons')
 
 	/**
 	 * Prepare output directory
@@ -68,12 +68,12 @@ async function generateIcons() {
 	 * Source icons
 	 */
 
-	const IconMain = path.join(__dirname, '../img/talk-icon-rounded.svg')
-	const IconMainSpaced = path.join(__dirname, '../img/talk-icon-rounded-spaced.svg')
-	const IconMac = path.join(__dirname, '../img/talk-icon-mac-shadow.svg')
-	const IconPlainLight = path.join(__dirname, '../img/talk-icon-plain-light.svg')
-	const IconPlainSpacedLight = path.join(__dirname, '../img/talk-icon-plain-spaced-light.svg')
-	const IconPlainSpacedDark = path.join(__dirname, '../img/talk-icon-plain-spaced-dark.svg')
+	const IconMain = path.join(import.meta.dirname, '../img/talk-icon-rounded.svg')
+	const IconMainSpaced = path.join(import.meta.dirname, '../img/talk-icon-rounded-spaced.svg')
+	const IconMac = path.join(import.meta.dirname, '../img/talk-icon-mac-shadow.svg')
+	const IconPlainLight = path.join(import.meta.dirname, '../img/talk-icon-plain-light.svg')
+	const IconPlainSpacedLight = path.join(import.meta.dirname, '../img/talk-icon-plain-spaced-light.svg')
+	const IconPlainSpacedDark = path.join(import.meta.dirname, '../img/talk-icon-plain-spaced-dark.svg')
 
 	/**
 	 * Size recommendations:

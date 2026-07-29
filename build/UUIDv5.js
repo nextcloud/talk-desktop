@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const crypto = require('node:crypto')
+import crypto from 'node:crypto'
 
 const DNS_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
 
@@ -14,7 +14,7 @@ const DNS_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8'
  * @param {string} namespace - Namespace UUID (e.g., '6ba7b810-9dad-11d1-80b4-00c04fd430c8')
  * @return {string} UUIDv5
  */
-function UUIDv5(name, namespace = DNS_NAMESPACE) {
+export function UUIDv5(name, namespace = DNS_NAMESPACE) {
 	const namespaceBytes = Buffer.from(namespace.replace(/-/g, ''), 'hex')
 
 	const hash = crypto.createHash('sha1')
@@ -36,8 +36,4 @@ function UUIDv5(name, namespace = DNS_NAMESPACE) {
 		hex.slice(16, 20),
 		hex.slice(20, 32),
 	].join('-')
-}
-
-module.exports = {
-	UUIDv5,
 }

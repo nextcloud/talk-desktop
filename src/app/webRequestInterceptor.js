@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { session } = require('electron')
+import { session } from 'electron'
 
 /**
  * Patch requests on the default session to use
@@ -12,7 +12,7 @@ const { session } = require('electron')
  * @param {object} [options] - Patching options
  * @param {import('../accounts/login.service.js').Credentials} [options.credentials] - User credentials for the Authentication header
  */
-function enableWebRequestInterceptor(serverUrl, { credentials } = {}) {
+export function enableWebRequestInterceptor(serverUrl, { credentials } = {}) {
 	// Cleanup because Electron doesn't support an interceptor update
 	disableWebRequestInterceptor()
 
@@ -38,11 +38,6 @@ function enableWebRequestInterceptor(serverUrl, { credentials } = {}) {
 /**
  * Disable any request patching on the default session
  */
-function disableWebRequestInterceptor() {
+export function disableWebRequestInterceptor() {
 	session.defaultSession.webRequest.onBeforeSendHeaders(null)
-}
-
-module.exports = {
-	enableWebRequestInterceptor,
-	disableWebRequestInterceptor,
 }

@@ -1,0 +1,128 @@
+diff --git a/node_modules/@electron-forge/plugin-webpack/dist/WebpackConfig.js b/node_modules/@electron-forge/plugin-webpack/dist/WebpackConfig.js
+index 758cdc6..6e4e760 100644
+--- a/node_modules/@electron-forge/plugin-webpack/dist/WebpackConfig.js
++++ b/node_modules/@electron-forge/plugin-webpack/dist/WebpackConfig.js
+@@ -2,7 +2,7 @@ import path from 'node:path';
+ import debug from 'debug';
+ import HtmlWebpackPlugin from 'html-webpack-plugin';
+ import webpackPkg from 'webpack';
+-const { DefinePlugin, ExternalsPlugin } = webpackPkg;
++const { BannerPlugin, DefinePlugin, ExternalsPlugin } = webpackPkg;
+ import { merge as webpackMerge } from 'webpack-merge';
+ import AssetRelocatorPatch from './util/AssetRelocatorPatch.js';
+ import processConfig from './util/processConfig.js';
+@@ -38,15 +38,17 @@ function rendererTargetToWebpackTarget(target) {
+ }
+ export default class WebpackConfigGenerator {
+     isProd;
++    isEsm;
+     pluginConfig;
+     port;
+     projectDir;
+     webpackDir;
+-    constructor(pluginConfig, projectDir, isProd, port) {
++    constructor(pluginConfig, projectDir, isProd, isEsm, port) {
+         this.pluginConfig = pluginConfig;
+         this.projectDir = projectDir;
+         this.webpackDir = path.resolve(projectDir, '.webpack');
+         this.isProd = isProd;
++        this.isEsm = isEsm;
+         this.port = port;
+         d('Config mode:', this.mode);
+     }
+@@ -72,7 +74,9 @@ export default class WebpackConfigGenerator {
+     }
+     rendererEntryPoint(entryPoint, basename) {
+         if (this.isProd) {
+-            return `\`file://$\{require('path').resolve(__dirname, '..', 'renderer', '${entryPoint.name}', '${basename}')}\``;
++						return this.isEsm
++							? `fileURLToPath(new URL('../renderer/${entryPoint.name}/${basename}', import.meta.url))`
++						  : `\`file://$\{require('path').resolve(__dirname, '..', 'renderer', '${entryPoint.name}', '${basename}')}\``;
+         }
+         const protocol = this.pluginConfig.devServer?.server === 'https' ? 'https' : 'http';
+         const baseUrl = `${protocol}://localhost:${this.port}/${entryPoint.name}`;
+@@ -85,7 +89,9 @@ export default class WebpackConfigGenerator {
+     getPreloadDefine(entryPoint) {
+         if (!isNoWindow(entryPoint)) {
+             if (this.isProd) {
+-                return `require('path').resolve(__dirname, '../renderer', '${entryPoint.name}', 'preload.js')`;
++								return this.isEsm
++									? `fileURLToPath(new URL('../renderer/${entryPoint.name}/preload.js', import.meta.url))`
++									: `\`file://$\{require('path').resolve(__dirname, '..', 'renderer', '${entryPoint.name}', 'preload.js')}\``;
+             }
+             return `'${path.resolve(this.webpackDir, 'renderer', entryPoint.name, 'preload.js').replace(/\\/g, '\\\\')}'`;
+         }
+@@ -148,9 +154,20 @@ export default class WebpackConfigGenerator {
+             output: {
+                 path: path.resolve(this.webpackDir, 'main'),
+                 filename: 'index.js',
+-                libraryTarget: 'commonjs2',
++                module: this.isEsm,
++                libraryTarget: this.isEsm ? 'module' : 'commonjs2',
+             },
+-            plugins: [new DefinePlugin(this.getDefines())],
++            experiments: {
++                outputModule: this.isEsm,
++            },
++            plugins: [
++                new DefinePlugin(this.getDefines()),
++                // Allows runtime-generated path resolve in the defines in ESM
++                this.isEsm && new BannerPlugin({
++                    banner: "import { fileURLToPath } from 'node:url';",
++                    raw: true,
++                }),
++            ].filter(Boolean),
+             node: {
+                 __dirname: false,
+                 __filename: false,
+diff --git a/node_modules/@electron-forge/plugin-webpack/dist/WebpackPlugin.js b/node_modules/@electron-forge/plugin-webpack/dist/WebpackPlugin.js
+index d538d76..b8c9337 100644
+--- a/node_modules/@electron-forge/plugin-webpack/dist/WebpackPlugin.js
++++ b/node_modules/@electron-forge/plugin-webpack/dist/WebpackPlugin.js
+@@ -22,6 +22,7 @@ const DEFAULT_LOGGER_PORT = 9000;
+ export default class WebpackPlugin extends PluginBase {
+     name = 'webpack';
+     isProd = false;
++    isEsm = undefined;
+     // The root of the Electron app
+     projectDir;
+     // Where the Webpack output is generated. Usually `$projectDir/.webpack`
+@@ -109,6 +110,7 @@ export default class WebpackPlugin extends PluginBase {
+     });
+     init = (dir) => {
+         this.setDirectories(dir);
++        this.setIsEsm();
+         d('hooking process events');
+         process.on('exit', (_code) => this.exitHandler({ cleanup: true }));
+         process.on('SIGINT', (_signal) => this.exitHandler({ exit: true }));
+@@ -117,9 +119,13 @@ export default class WebpackPlugin extends PluginBase {
+         this.projectDir = dir;
+         this.baseDir = path.resolve(dir, '.webpack');
+     };
++    setIsEsm = () => {
++        const pj = JSON.parse(fs.readFileSync(path.resolve(this.projectDir, 'package.json'), 'utf-8'));
++        this.isEsm = pj.type === 'module' || pj.main?.endsWith('.mjs');
++    };
+     get configGenerator() {
+         if (!this._configGenerator) {
+-            this._configGenerator = new WebpackConfigGenerator(this.config, this.projectDir, this.isProd, this.port);
++            this._configGenerator = new WebpackConfigGenerator(this.config, this.projectDir, this.isProd, this.isEsm, this.port);
+         }
+         return this._configGenerator;
+     }
+@@ -383,11 +389,13 @@ Your packaged app may be larger than expected if you dont ignore everything othe
+     }
+     packageAfterCopy = async (_forgeConfig, buildPath) => {
+         const pj = await readJson(path.resolve(this.projectDir, 'package.json'));
+-        if (!pj.main?.endsWith('.webpack/main')) {
++        if (!/\.webpack\/main(?:\/index\.m?js)$/.test(pj.main)) {
+             throw new Error(`Electron Forge is configured to use the Webpack plugin. The plugin expects the
+ "main" entry point in "package.json" to be ".webpack/main" (where the plugin outputs
+ the generated files). Instead, it is ${JSON.stringify(pj.main)}`);
+-        }
++        } else if (pj.exports) {
++
++				}
+         if (pj.config) {
+             delete pj.config.forge;
+         }

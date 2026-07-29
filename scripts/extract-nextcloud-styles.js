@@ -4,13 +4,13 @@
  */
 
 import { argv, echo } from 'zx'
-import { extractNextcloudStyles } from './nextcloud-app-host/extractNextcloudStyles.mjs'
+import { extractNextcloudStyles } from './nextcloud-app-host/extractNextcloudStyles.js'
 
 if (argv.help || !argv._.length) {
 	echo`Extract Nextcloud styles including theming
 
 	Usage:
-		node scripts/extract-nextcloud-styles.mjs <dest> [options]
+		node scripts/extract-nextcloud-styles.js <dest> [options]
 
 	Arguments:
 		<dest> - destination directory for the extracted styles
@@ -22,10 +22,10 @@ if (argv.help || !argv._.length) {
 		--verbose - show verbose output
 
 	Examples:
-		node scripts/extract-nextcloud-styles.mjs ./resources/server-global-styles
-		node scripts/extract-nextcloud-styles.mjs ./resources/server-global-styles --branch master
-		node scripts/extract-nextcloud-styles.mjs ./resources/server-global-styles --tag v32.0.3
-		node scripts/extract-nextcloud-styles.mjs ./resources/server-global-styles --theming "red"
+		node scripts/extract-nextcloud-styles.js ./resources/server-global-styles
+		node scripts/extract-nextcloud-styles.js./resources/server-global-styles --branch master
+		node scripts/extract-nextcloud-styles.js ./resources/server-global-styles --tag v32.0.3
+		node scripts/extract-nextcloud-styles.js ./resources/server-global-styles --theming "red"
 `
 	process.exit(0)
 }

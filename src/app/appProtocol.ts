@@ -83,11 +83,11 @@ function getDistPath() {
 		if (process.env.NODE_ENV === 'development') {
 			// In dev mode with Electron Forge + Webpack, static files might be in a different location
 			// This could be the webpack output directory or the original static folder
-			distPath = path.join(__dirname, '../../.webpack/renderer')
+			distPath = path.join(import.meta.dirname, '../../.webpack/renderer')
 		} else {
 			distPath = app.isPackaged
 				? path.join(process.resourcesPath, 'app.asar', '.webpack/renderer')
-				: path.join(__dirname, '.webpack/renderer')
+				: path.join(import.meta.dirname, '.webpack/renderer')
 		}
 	}
 

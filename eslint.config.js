@@ -55,7 +55,7 @@ export default [
 	},
 	{
 		name: 'talk-desktop/rules/zx-scripts',
-		files: ['scripts/**/*.mjs'],
+		files: ['scripts/**/*.js'],
 		rules: {
 			// Let TypeScript handle undefined variables instead of ESLint
 			'no-undef': 'off',

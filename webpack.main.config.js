@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const path = require('node:path')
-const webpack = require('webpack')
-const { merge } = require('webpack-merge')
-const { resolveBuildConfig } = require('./build/resolveBuildConfig.js')
-const baseConfig = require('./webpack.base.config.js')
+import path from 'node:path'
+import webpack from 'webpack'
+import { merge } from 'webpack-merge'
+import { resolveBuildConfig } from './build/resolveBuildConfig.js'
+import baseConfig from './webpack.base.config.js'
 
-module.exports = merge(baseConfig, {
-	entry: path.resolve(__dirname, './src/main.js'),
+export default merge(baseConfig, {
+	entry: path.resolve(import.meta.dirname, './src/main.js'),
 
 	output: {
 		assetModuleFilename: '[file]',
@@ -27,13 +27,17 @@ module.exports = merge(baseConfig, {
 			},
 			{
 				test: /\.(png|ico|icns)$/,
-				include: path.resolve(__dirname, './img/icons'),
+				include: path.resolve(import.meta.dirname, './img/icons'),
+				type: 'asset/resource',
+			},
+			{
+				test: /\.node$/,
 				type: 'asset/resource',
 			},
 			// Chromium extension
 			{
 				test: /\.crx$/,
-				include: path.resolve(__dirname, './resources'),
+				include: path.resolve(import.meta.dirname, './resources'),
 				type: 'asset/resource',
 			},
 		],

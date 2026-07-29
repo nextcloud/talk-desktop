@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { readFileSync } = require('node:fs')
-const { join } = require('node:path')
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 /**
  * @typedef {object} AppInfo
@@ -18,7 +18,7 @@ const { join } = require('node:path')
  * @param {string} dir - path to the app directory
  * @return {string} - the content of the file
  */
-function readAppInfoContent(dir) {
+export function readAppInfoContent(dir) {
 	return readFileSync(join(dir, 'appinfo/info.xml'), 'utf-8')
 }
 
@@ -28,7 +28,7 @@ function readAppInfoContent(dir) {
  * @param {string} content - the content of the appinfo/info.xml file
  * @return {AppInfo|null} - the parsed app info object
  */
-function parseAppInfo(content) {
+export function parseAppInfo(content) {
 	const versionsRE = /<nextcloud\s+min-version="(\d+)"\s+max-version="(\d+)"\s*\/>/im
 	const versions = content.match(versionsRE)
 
@@ -48,13 +48,7 @@ function parseAppInfo(content) {
  * @param {string} dir - The directory of the app with appinfo
  * @return {AppInfo|null} - The app info object
  */
-function getAppInfo(dir) {
+export function getAppInfo(dir) {
 	const content = readAppInfoContent(dir)
 	return parseAppInfo(content)
-}
-
-module.exports = {
-	readAppInfoContent,
-	parseAppInfo,
-	getAppInfo,
 }

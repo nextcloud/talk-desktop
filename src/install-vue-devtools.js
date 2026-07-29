@@ -3,12 +3,14 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, session } = require('electron')
-const fs = require('node:fs/promises')
-const { resolve } = require('node:path')
-const unzip = require('unzip-crx-3')
+import { app, session } from 'electron'
+import fs from 'node:fs/promises'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import unzip from 'unzip-crx-3'
 
-const vueDevtoolsPath = resolve(__dirname, require('../resources/vue-devtools.crx'))
+const vueDevtoolsPath = fileURLToPath(new URL('../resources/vue-devtools.crx', import.meta.url))
+
 /**
  * Check if a directory exists
  *
@@ -32,7 +34,7 @@ async function isDirectoryExists(path) {
  *
  * @return {Promise<void>}
  */
-async function installVueDevtools() {
+export async function installVueDevtools() {
 	const extensionDir = resolve(app.getPath('userData'), 'extensions', 'vuejs-devtools')
 
 	try {
@@ -49,8 +51,4 @@ async function installVueDevtools() {
 	} catch (error) {
 		console.error('Could not install Vue Devtools', error)
 	}
-}
-
-module.exports = {
-	installVueDevtools,
 }

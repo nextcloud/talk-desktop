@@ -3,34 +3,34 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { app, ipcMain, desktopCapturer, systemPreferences, shell, session } = require('electron')
-const { default: mri } = require('mri')
-const { spawn } = require('node:child_process')
-const path = require('node:path')
-const { setupMenu } = require('./app/app.menu.js')
-const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
-const { appData } = require('./app/AppData.js')
-const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
-const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
-const { cli } = require('./app/cli.ts')
-const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
-const { triggerDownloadUrl } = require('./app/downloads.ts')
-const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/githubRelease.service.ts')
-const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
-const { runMigrations } = require('./app/migration.service.ts')
-const { systemInfo, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
-const { applyTheme } = require('./app/theme.config.ts')
-const { buildTitle, onReadyToShow } = require('./app/utils.ts')
-const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
-const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
-const { openLoginWebView } = require('./authentication/login.window.js')
-const { createCallboxWindow } = require('./callbox/callbox.window.ts')
-const { createHelpWindow } = require('./help/help.window.js')
-const { installVueDevtools } = require('./install-vue-devtools.js')
-const { BUILD_CONFIG } = require('./shared/build.config.ts')
-const { createTalkWindow } = require('./talk/talk.window.js')
-const { createUpgradeWindow } = require('./upgrade/upgrade.window.ts')
-const { createWelcomeWindow } = require('./welcome/welcome.window.ts')
+import { app, desktopCapturer, ipcMain, session, shell, systemPreferences } from 'electron'
+import mri from 'mri'
+import { spawn } from 'node:child_process'
+import path from 'node:path'
+import { setupMenu } from './app/app.menu.js'
+import { getAppConfig, loadAppConfig, setAppConfig } from './app/AppConfig.ts'
+import { appData } from './app/AppData.js'
+import { registerAppProtocolHandler } from './app/appProtocol.ts'
+import { promptCertificateTrust, verifyCertificate } from './app/certificate.service.ts'
+import { cli } from './app/cli.ts'
+import { openChromeWebRtcInternals } from './app/dev.utils.ts'
+import { triggerDownloadUrl } from './app/downloads.ts'
+import { checkForUpdate, setupReleaseNotificationScheduler } from './app/githubRelease.service.ts'
+import { initLaunchAtStartupListener } from './app/launchAtStartup.config.ts'
+import { runMigrations } from './app/migration.service.ts'
+import { isMac, isSameExecution, isSquirrel, isWindows, relaunchApp, systemInfo } from './app/system.utils.ts'
+import { applyTheme } from './app/theme.config.ts'
+import { buildTitle, onReadyToShow } from './app/utils.ts'
+import { disableWebRequestInterceptor, enableWebRequestInterceptor } from './app/webRequestInterceptor.js'
+import { createAuthenticationWindow } from './authentication/authentication.window.js'
+import { openLoginWebView } from './authentication/login.window.js'
+import { createCallboxWindow } from './callbox/callbox.window.ts'
+import { createHelpWindow } from './help/help.window.js'
+import { installVueDevtools } from './install-vue-devtools.js'
+import { BUILD_CONFIG } from './shared/build.config.ts'
+import { createTalkWindow } from './talk/talk.window.js'
+import { createUpgradeWindow } from './upgrade/upgrade.window.ts'
+import { createWelcomeWindow } from './welcome/welcome.window.ts'
 
 const argv = mri(process.argv.slice(app.isPackaged ? 1 : 2))
 
@@ -54,7 +54,7 @@ if (isWindows && process.env.NODE_ENV === 'production') {
 /**
  * Handle creating/removing shortcuts on Windows when installing/uninstalling
  */
-if (require('electron-squirrel-startup')) {
+if ((await import('electron-squirrel-startup')).default) {
 	app.quit()
 }
 

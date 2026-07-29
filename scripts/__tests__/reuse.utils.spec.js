@@ -5,7 +5,7 @@
 
 import * as assert from 'node:assert'
 import { describe, it } from 'node:test'
-import { createReuseToml, parseDep5, parseReuseToml } from '../utils/reuse.utils.mjs'
+import { createReuseToml, parseDep5, parseReuseToml } from '../utils/reuse.utils.js'
 
 const dep5 = `Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: nextcloud

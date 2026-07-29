@@ -171,8 +171,8 @@ npm run generate-icons
 Talk frontend depends on the global Nextcloud server styles. To manually get them run:
 
 ```bah
-# node ./scripts/fetch-server-styles.mjs <VERSION>, for example
-node ./scripts/fetch-server-styles.mjs stable29
+# node ./scripts/fetch-server-styles.js <VERSION>, for example
+node ./scripts/fetch-server-styles.js stable29
 ```
 
 ## 📦 Packaging distributions

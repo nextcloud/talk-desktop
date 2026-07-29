@@ -3,16 +3,19 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-require('dotenv').config()
+import { EsbuildPlugin } from 'esbuild-loader'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin'
+import { spawnSync } from 'node:child_process'
+import { createRequire } from 'node:module'
+import path from 'node:path'
+import { VueLoaderPlugin } from 'vue-loader'
+import webpack from 'webpack'
+import { resolveBuildConfig, resolveNextcloudStylesPath, resolveTalkPath } from './build/resolveBuildConfig.js'
 
-const { EsbuildPlugin } = require('esbuild-loader')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
-const { spawnSync } = require('node:child_process')
-const path = require('node:path')
-const { VueLoaderPlugin } = require('vue-loader')
-const webpack = require('webpack')
-const { resolveBuildConfig, resolveNextcloudStylesPath, resolveTalkPath } = require('./build/resolveBuildConfig.js')
+import 'dotenv/config'
+
+const require = createRequire(import.meta.url)
 
 const BUILD_CONFIG = resolveBuildConfig()
 const TALK_PATH = resolveTalkPath()
@@ -45,7 +48,7 @@ function createPatcherAliases(packageName) {
 
 	// webpack.resolve.aliases
 	return {
-		[`${packageName}$`]: path.resolve(__dirname, `src/patchers/${packageName}.js`),
+		[`${packageName}$`]: path.resolve(import.meta.dirname, `src/patchers/${packageName}.js`),
 		[`@talk-modules--${packageName}$`]: talkModulePath,
 		[`@desktop-modules--${packageName}$`]: desktopModulePath,
 	}
@@ -59,7 +62,7 @@ function createPatcherAliases(packageName) {
  * @param {string} cwd - The path to the git repository
  * @return {string} - The described version
  */
-function getFullVersion(cwd = __dirname) {
+function getFullVersion(cwd = import.meta.dirname) {
 	// Currently specified version from the package.json, e.g. "21.0.0-dev.0"
 	const packageVersion = require(`${cwd}/package.json`).version
 
@@ -195,7 +198,7 @@ const webpackRendererConfig = {
 			'@talk': TALK_PATH,
 			'@global-styles': resolveNextcloudStylesPath(),
 			// To reuse modules between Talk Desktop and Talk, otherwise Talk has its own from its node_modules
-			'@nextcloud/axios': path.resolve(__dirname, 'node_modules', '@nextcloud/axios/dist/index.js'),
+			'@nextcloud/axios': path.resolve(import.meta.dirname, 'node_modules', '@nextcloud/axios/dist/index.js'),
 			// Patched packages
 			...createPatcherAliases('@nextcloud/router'),
 		},
@@ -257,4 +260,4 @@ const webpackRendererConfig = {
 	],
 }
 
-module.exports = webpackRendererConfig
+export default webpackRendererConfig

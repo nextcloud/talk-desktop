@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { semverGt } from './semver.utils.mjs'
+import { semverGt } from './semver.utils.js'
 
 if (os.platform() === 'win32') {
 	usePwsh()
@@ -13,7 +13,7 @@ if (os.platform() === 'win32') {
 await $`gh auth status`
 
 // Read the current version
-const packageJsonPath = path.join(__dirname, '../package.json')
+const packageJsonPath = path.join(import.meta.dirname, '../package.json')
 const packageJson = await fs.readJson(packageJsonPath)
 
 const currentBeta = packageJson.talk.beta

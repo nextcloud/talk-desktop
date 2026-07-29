@@ -20,21 +20,21 @@ export function generateFilePath(app, type, file) {
 	if (app === 'spreed' && type === 'img') {
 		// Implicitly keep the extension so Webpack adds only this type of files to the build using require context
 		const requiresByExt = {
-			'.svg': () => require(`@talk/img/${filename}.svg`),
-			'.png': () => require(`@talk/img/${filename}.png`),
-			'.jpg': () => require(`@talk/img/${filename}.jpg`),
-			'.jpeg': () => require(`@talk/img/${filename}.jpeg`),
-			'.webp': () => require(`@talk/img/${filename}.webp`),
-			'.gif': () => require(`@talk/img/${filename}.gif`),
+			'.svg': () => new URL(`@talk/img/${filename}.svg`, import.meta.url),
+			'.png': () => new URL(`@talk/img/${filename}.png`, import.meta.url),
+			'.jpg': () => new URL(`@talk/img/${filename}.jpg`, import.meta.url),
+			'.jpeg': () => new URL(`@talk/img/${filename}.jpeg`, import.meta.url),
+			'.webp': () => new URL(`@talk/img/${filename}.webp`, import.meta.url),
+			'.gif': () => new URL(`@talk/img/${filename}.gif`, import.meta.url),
 			// Note: spreed uses img for both images and sounds
-			'.ogg': () => require(`@talk/img/${filename}.ogg`),
+			'.ogg': () => new URL(`@talk/img/${filename}.ogg`, import.meta.url),
 		}
 		if (requiresByExt[ext]) {
 			return requiresByExt[ext]()
 		}
 	} else if (app === 'notifications' && ext === '.ogg') {
 		// For now, notifications' sounds are just a copy of the Notifications app sounds
-		return require(`../../../sounds/${filename}.ogg`)
+		return new URL(`../../../sounds/${filename}.ogg`, import.meta.url)
 	}
 
 	return _generateFilePath(app, type, file)

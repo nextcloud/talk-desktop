@@ -6,7 +6,7 @@
 import { resolve } from 'node:path'
 import { chalk, echo } from 'zx'
 import { getNextcloudStyles, getNextcloudVersionForTalk, resolveBuildConfig } from '../build/resolveBuildConfig.js'
-import { extractNextcloudStyles } from './nextcloud-app-host/extractNextcloudStyles.mjs'
+import { extractNextcloudStyles } from './nextcloud-app-host/extractNextcloudStyles.js'
 
 /**
  * Override Nextcloud styles with the current build config, if needed

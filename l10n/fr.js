@@ -50,7 +50,7 @@ OC.L10N.register(
     "Issues" : "Incidents",
     "Diagnosis report" : "Rapport de diagnostic",
     "Copy report" : "Copier le rapport",
-    "Done" : "Terminé",
+    "Done" : "Fait",
     "Ok" : "Ok",
     "No" : "Non",
     "Yes" : "Oui",

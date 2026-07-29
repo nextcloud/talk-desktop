@@ -60,7 +60,7 @@
     "@nextcloud/l10n": "^3.4.1",
     "@nextcloud/notify_push": "^1.4.0",
     "@nextcloud/router": "^3.1.0",
-    "@nextcloud/vue": "^9.8.2",
+    "@nextcloud/vue": "^9.9.0",
     "@vueuse/core": "^14.3.0",
     "core-js": "^3.49.0",
     "electron-squirrel-startup": "^1.0.1",

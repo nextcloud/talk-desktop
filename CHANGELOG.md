@@ -5,6 +5,12 @@
 
 # Changelog
 
+## v2.2.3 - 2026-07-30
+
+### Fixes
+
+- Reply quotes and file previews are visually broken [#1837](https://github.com/nextcloud/talk-desktop/pull/1837)
+
 ## v2.2.2 - 2026-07-29
 
 ### Fixes

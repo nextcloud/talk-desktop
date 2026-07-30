@@ -192,7 +192,7 @@ function disposePanzoom() {
 }
 
 /**
- * @param {Function} handleLoadEnd - Callback to signal load completion
+ * @param {(withError?: boolean) => void} handleLoadEnd - Callback to signal load completion
  */
 function onImageLoad(handleLoadEnd) {
 	handleLoadEnd(false)
@@ -201,7 +201,7 @@ function onImageLoad(handleLoadEnd) {
 }
 
 /**
- * @param {Function} handleLoadEnd - Callback to signal load error
+ * @param {(withError?: boolean) => void} handleLoadEnd - Callback to signal load error
  */
 function onImageError(handleLoadEnd) {
 	handleLoadEnd(true)

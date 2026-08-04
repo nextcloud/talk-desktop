@@ -58,7 +58,9 @@ OC.L10N.register(
     "None" : "Només una vegada",
     "Application" : "Aplicació",
     "Online" : "En línia",
+    "Away" : "Absent",
     "Busy" : "Ocupat",
+    "Do not disturb" : "No molesteu",
     "Unknown status" : "Estat desconegut",
     "You missed a call from {user}" : "Teniu una trucada perduda de {user}",
     "You missed a group call in {call}" : "Teniu una trucada de grup perduda a {call}"

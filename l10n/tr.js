@@ -58,6 +58,7 @@ OC.L10N.register(
     "When not in \"Do not disturb\"" : "\"Rahatsız etmeyin\" durumda değilken",
     "Never" : "Yok",
     "Launch at startup" : "Başlangıçta çalıştırılsın",
+    "Launch in background" : "Arka planda başlatılsın",
     "Theme" : "Tema",
     "System default" : "Sistem varsayılanı",
     "Light" : "Açık",

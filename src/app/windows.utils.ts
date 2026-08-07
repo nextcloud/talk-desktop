@@ -19,14 +19,20 @@ export function getWindowsRegistryItem(hive: HKEY, path: string, name: string): 
 		throw new Error('getWindowsRegistryItem is only available on Windows')
 	}
 
-	if (process.arch !== 'x64') {
-		throw new Error('getWindowsRegistryItem is only available on x64')
+	if (process.arch !== 'x64' && process.arch !== 'arm64') {
+		throw new Error('getWindowsRegistryItem is only available on x64 and arm64')
+	}
+
+	let windowRegistry
+	try {
+		const require = createRequire(import.meta.url)
+		windowRegistry = require(`@vscode/windows-registry/prebuilds/win32-${process.arch}/@vscode+windows-registry.node`)
+	} catch {
+		console.error('Error loading @vscode/windows-registry')
+		return undefined
 	}
 
 	try {
-		const require = createRequire(import.meta.url)
-		const windowRegistry = require('@vscode/windows-registry/prebuilds/win32-x64/@vscode+windows-registry.node')
-
 		return windowRegistry.GetStringRegKey(hive, path, name)
 	} catch (error) {
 		// 'Unable to open registry key' is expected when the registry key does not exist

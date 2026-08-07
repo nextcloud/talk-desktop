@@ -173,17 +173,6 @@ const webpackRendererConfig = {
 				},
 			},
 			{
-				test: /\.worker\.js$/,
-				use: {
-					loader: 'worker-loader',
-					options: {
-						// Some workers load .wasm resources by relative path, ignoring the bundler
-						// So workers and wasm must be in the same directory
-						filename: 'talk_desktop__dist/assets/[name].js?v=[contenthash]',
-					},
-				},
-			},
-			{
 				test: /\.ogg$/,
 				type: 'asset/resource',
 			},

@@ -93,7 +93,7 @@
     "electron": "^43.2.0",
     "esbuild-loader": "^4.5.0",
     "eslint": "^10.8.0",
-    "globals": "^17.7.0",
+    "globals": "^17.8.0",
     "icon-gen": "^5.0.0",
     "mini-css-extract-plugin": "^2.10.2",
     "node-loader": "^2.1.0",

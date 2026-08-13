@@ -40,7 +40,7 @@ OC.L10N.register(
     "Appearance" : "外观",
     "Restart" : "重启",
     "Loading …" : "正在加载 …",
-    "Reload" : "重载",
+    "Reload" : "重新加载",
     "Zoom" : "放大",
     "Zoom out" : "缩小",
     "Zoom in" : "放大",

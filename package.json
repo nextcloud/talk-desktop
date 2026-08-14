@@ -127,8 +127,8 @@
   "desktopName": "com.nextcloud.talk.desktop",
   "productName": "Nextcloud Talk",
   "talk": {
-    "stable": "v24.0.3",
-    "beta": "v24.0.3",
+    "stable": "v24.0.4",
+    "beta": "v25.0.0-alpha.1",
     "dev": "main"
   }
 }

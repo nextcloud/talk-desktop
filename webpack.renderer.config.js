@@ -115,7 +115,7 @@ const webpackRendererConfig = {
 				loader: 'vue-loader',
 			},
 			{
-				test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf)$/,
+				test: /\.(png|jpe?g|gif|webp|svg|woff2?|eot|ttf)$/,
 				type: 'asset/inline',
 			},
 			// Talk specific rules

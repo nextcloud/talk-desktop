@@ -80,6 +80,14 @@ const TALK_DESKTOP = {
 	 */
 	getDesktopCapturerSources: () => ipcRenderer.invoke('app:getDesktopCapturerSources'),
 	/**
+	 * Exclude (or restore) this window from OS screen capture while sharing a whole screen,
+	 * to prevent the Talk window from recursing into an infinite "hall of mirrors".
+	 * No effect on Linux (setContentProtection is not supported there).
+	 *
+	 * @param {boolean} active - Whether to protect the window from capture
+	 */
+	setScreenCaptureProtection: (active) => ipcRenderer.send('app:setScreenCaptureProtection', active),
+	/**
 	 * Relaunch an entire application
 	 */
 	relaunch: () => ipcRenderer.send('app:relaunch'),

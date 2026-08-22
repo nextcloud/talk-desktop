@@ -10,6 +10,7 @@ import { t } from '@nextcloud/l10n'
 import IconApplicationOutline from 'vue-material-design-icons/ApplicationOutline.vue'
 import IconMonitor from 'vue-material-design-icons/Monitor.vue'
 import IconVolumeHigh from 'vue-material-design-icons/VolumeHigh.vue'
+import IconWindowMinimize from 'vue-material-design-icons/WindowMinimize.vue'
 import DesktopMediaSourcePreviewLive from './DesktopMediaSourcePreviewLive.vue'
 
 defineProps<{
@@ -34,8 +35,9 @@ const emit = defineEmits<{
 			:checked="selected"
 			@change="emit('select')">
 
+		<!-- Minimized windows produce no frames until restored: skip the live preview entirely -->
 		<DesktopMediaSourcePreviewLive
-			v-if="live"
+			v-if="live && !source.minimized"
 			class="capture-source__preview"
 			:mediaSourceId="source.id"
 			@suspend="emit('suspend')" />
@@ -44,6 +46,15 @@ const emit = defineEmits<{
 			alt=""
 			:src="source.thumbnail"
 			class="capture-source__preview">
+		<span v-else-if="source.minimized" class="capture-source__preview capture-source__preview-unavailable capture-source__preview-minimized">
+			<img
+				v-if="source.icon"
+				alt=""
+				:src="source.icon"
+				class="capture-source__preview-minimized-icon">
+			<IconWindowMinimize v-else :size="24" />
+			{{ t('talk_desktop', 'Minimized — will be restored when shared') }}
+		</span>
 		<span v-else class="capture-source__preview capture-source__preview-unavailable">
 			{{ t('talk_desktop', 'Preview is not available') }}
 		</span>
@@ -54,6 +65,7 @@ const emit = defineEmits<{
 				alt=""
 				:src="source.icon"
 				class="capture-source__caption-icon">
+			<IconWindowMinimize v-else-if="source.minimized" :size="16" />
 			<IconVolumeHigh v-else-if="source.id.startsWith('entire-desktop:')" :size="16" />
 			<IconMonitor v-else-if="source.id.startsWith('screen:')" :size="16" />
 			<IconApplicationOutline v-else-if="source.id.startsWith('window:')" :size="16" />
@@ -94,6 +106,21 @@ const emit = defineEmits<{
 		place-content: center;
 		color: var(--color-text-maxcontrast);
 		font-size: 120%;
+	}
+
+	&__preview-minimized {
+		grid-auto-flow: row;
+		gap: var(--default-grid-baseline);
+		justify-items: center;
+		text-align: center;
+		font-size: 100%;
+		padding-inline: calc(2 * var(--default-grid-baseline));
+	}
+
+	&__preview-minimized-icon {
+		width: 48px;
+		height: 48px;
+		object-fit: contain;
 	}
 
 	&:focus,

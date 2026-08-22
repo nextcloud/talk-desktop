@@ -173,6 +173,34 @@ module.exports = {
 			}
 		},
 
+		packageAfterCopy(_forgeConfig, buildPath, _electronVersion, platform, arch) {
+			// koffi is only loaded on Windows (see src/app/nativeWindows.ts), so there is no
+			// reason to ship the native module on other platforms.
+			if (platform !== 'win32') {
+				return
+			}
+
+			// koffi (native FFI) is kept out of the webpack bundle (see webpack.main.config.js externals),
+			// so webpack does not copy it into the package. Copy it into the packaged app's node_modules
+			// so require('koffi') resolves at runtime. koffi ships a prebuilt binary for every platform
+			// under build/koffi/<platform>_<arch>/koffi.node — copy only the one we are packaging to keep
+			// the app lean. The .node is unpacked from the asar archive via packagerConfig.asar.unpack.
+			const koffiSource = path.join(__dirname, 'node_modules', 'koffi')
+			const koffiTarget = path.join(buildPath, 'node_modules', 'koffi')
+			const prebuiltsPrefix = `build${path.sep}koffi${path.sep}`
+			const keepTriplet = `${platform}_${arch}`
+			fs.cpSync(koffiSource, koffiTarget, {
+				recursive: true,
+				filter: (source) => {
+					const relative = path.relative(koffiSource, source)
+					if (relative.startsWith(prebuiltsPrefix)) {
+						return relative.slice(prebuiltsPrefix.length).split(path.sep)[0] === keepTriplet
+					}
+					return true
+				},
+			})
+		},
+
 		postStart() {
 			console.log(`Started with built-in Nextcloud Talk v${talkPackageJson.version} on path: ${TALK_PATH}`)
 		},
@@ -207,7 +235,10 @@ module.exports = {
 		name: BUILD_CONFIG.applicationName,
 		icon: path.join(__dirname, './img/icons/icon'),
 		appCopyright: BUILD_CONFIG.copyright,
-		asar: true,
+		// Unpack the koffi native FFI module (its prebuilt .node cannot run from inside the asar archive)
+		asar: {
+			unpack: '**/node_modules/koffi/**',
+		},
 
 		// Windows
 		win32metadata: {

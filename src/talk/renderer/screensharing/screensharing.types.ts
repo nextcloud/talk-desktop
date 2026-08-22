@@ -16,4 +16,10 @@ export type ScreensharingSource = {
 	 * data:image/png;base64 encoded thumbnail of the source
 	 */
 	thumbnail: string | null
+	/**
+	 * Whether the source is a minimized window (Windows only).
+	 * Minimized windows produce no frames until restored, so they have no live preview
+	 * and must be restored via activateWindowForCapture() before capturing.
+	 */
+	minimized?: boolean
 }

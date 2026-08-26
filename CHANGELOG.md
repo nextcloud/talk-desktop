@@ -5,6 +5,16 @@
 
 # Changelog
 
+## v2.3.0-beta - 2026-08-26
+
+### Fixes
+
+- Linux: tray icon is missing [#1864](https://github.com/nextcloud/talk-desktop/pull/1864)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v25.0.0-rc.1 in the beta release channel [#1873](https://github.com/nextcloud/talk-desktop/pull/1873)
+
 ## v2.2.4 - 2026-08-14
 
 ### Changes

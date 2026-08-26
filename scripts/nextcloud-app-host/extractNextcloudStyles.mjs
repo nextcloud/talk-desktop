@@ -51,16 +51,16 @@ export async function extractNextcloudStyles({
 	await spinner('Starting Nextcloud server ...', async () => {
 		const status = (await $`docker container inspect -f "{{.State.Status}}" ${CONTAINER}`.nothrow().quiet()).stdout.trim()
 		if (!status) {
-			await $`docker run -d -e SERVER_BRANCH=${versionRef} --name ${CONTAINER} ghcr.io/szaimen/nextcloud-easy-test:latest`.quiet()
+			await $`docker run -d -e BRANCH=${versionRef} --name ${CONTAINER} ghcr.io/nextcloud/continuous-integration-shallow-server:latest`.quiet()
 		} else if (status !== 'running') {
 			await $`docker start ${CONTAINER}`.quiet()
 		}
-		await retry(Infinity, '1s', async () => $`docker exec ${CONTAINER} curl -sk https://localhost:443/status.php`.quiet())
+		await retry(Infinity, '1s', async () => $`docker exec ${CONTAINER} curl -s localhost/status.php`.quiet())
 	})
 
-	const { version, versionstring: versionString } = await $`docker exec ${CONTAINER} curl -sk https://localhost:443/status.php`.json()
+	const { version, versionstring: versionString } = await $`docker exec ${CONTAINER} curl -s localhost/status.php`.json()
 	const versionMajor = +version.split('.')[0]
-	const versionCommitHash = (await $`docker exec ${CONTAINER} git -C /var/www/nextcloud rev-parse --short HEAD`.text()).trim()
+	const versionCommitHash = (await $`docker exec -u www-data ${CONTAINER} git -C /var/www/html rev-parse --short HEAD`.text()).trim()
 	echo(chalk.yellow(`Nextcloud Server ${versionString} is ready`))
 
 	// --- PREPARING DEST -------------------------------------------------------------------------------------------------
@@ -78,11 +78,11 @@ export async function extractNextcloudStyles({
 	echo(chalk.cyan('· Copying static styles ...'))
 
 	await Promise.all([
-		dockerCp(CONTAINER, '/var/www/nextcloud/', 'dist/icons.css'),
-		dockerCp(CONTAINER, '/var/www/nextcloud/', 'core/css/server.css'),
-		dockerCp(CONTAINER, '/var/www/nextcloud/', 'core/img/filetypes/'),
-		dockerCp(CONTAINER, '/var/www/nextcloud/', 'core/img/logo/'),
-		dockerCp(CONTAINER, '/var/www/nextcloud/', 'apps/theming/css/default.css'),
+		dockerCp(CONTAINER, '/var/www/html/', 'dist/icons.css'),
+		dockerCp(CONTAINER, '/var/www/html/', 'core/css/server.css'),
+		dockerCp(CONTAINER, '/var/www/html/', 'core/img/filetypes/'),
+		dockerCp(CONTAINER, '/var/www/html/', 'core/img/logo/'),
+		dockerCp(CONTAINER, '/var/www/html/', 'apps/theming/css/default.css'),
 	])
 
 	// --- GETTING DYNAMIC THEME STYLES -----------------------------------------------------------------------------------
@@ -96,33 +96,33 @@ export async function extractNextcloudStyles({
 		echo(chalk.gray(`- Theming configuration "${name || 'default'}" (primaryColor=${primaryColor || 'default'}, backgroundColor=${backgroundColor || 'default'}) ...`))
 
 		// Setting theming
-		await $`docker exec -u www-data ${CONTAINER} php /var/www/nextcloud/occ theming:config primary_color ${primaryColor || '--reset'}`
-		await $`docker exec -u www-data ${CONTAINER} php /var/www/nextcloud/occ theming:config background_color ${backgroundColor || '--reset'}`
-		await $`docker exec -u www-data ${CONTAINER} php /var/www/nextcloud/occ theming:config background ${backgroundColor ? 'backgroundColor' : '--reset'}`
+		await $`docker exec -u www-data ${CONTAINER} php /var/www/html/occ theming:config primary_color ${primaryColor || '--reset'}`
+		await $`docker exec -u www-data ${CONTAINER} php /var/www/html/occ theming:config background_color ${backgroundColor || '--reset'}`
+		await $`docker exec -u www-data ${CONTAINER} php /var/www/html/occ theming:config background ${backgroundColor ? 'backgroundColor' : '--reset'}`
 
 		// Getting the dynamic styles ...
 		await mkdir('apps/theming/theme', { recursive: true })
 		await Promise.all([
 			// ... for [data-theme-*]
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/opendyslexic.css?plain=0&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/opendyslexic.css?plain=0&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}opendyslexic.css`),
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/light.css?plain=0&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/light.css?plain=0&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}light.css`),
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/dark.css?plain=0&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/dark.css?plain=0&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}dark.css`),
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/light-highcontrast.css?plain=0&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/light-highcontrast.css?plain=0&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}light-highcontrast.css`),
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/dark-highcontrast.css?plain=0&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/dark-highcontrast.css?plain=0&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}dark-highcontrast.css`),
 
 			// ... for media queries (e.g. prefers-color-scheme, prefers-contrast)
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/light.css?plain=1&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/light.css?plain=1&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}light.plain.css`),
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/dark.css?plain=1&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/dark.css?plain=1&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}dark.plain.css`),
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/light-highcontrast.css?plain=1&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/light-highcontrast.css?plain=1&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}light-highcontrast.plain.css`),
-			$`docker exec ${CONTAINER} curl -sk ${`https://localhost:443/index.php/apps/theming/theme/dark-highcontrast.css?plain=1&v=${v}`}`
+			$`docker exec ${CONTAINER} curl -s ${`localhost/index.php/apps/theming/theme/dark-highcontrast.css?plain=1&v=${v}`}`
 				.pipe(`apps/theming/theme/${prefix}dark-highcontrast.plain.css`),
 		])
 	}
@@ -134,15 +134,15 @@ export async function extractNextcloudStyles({
 	const assets = await normalizeCssAssetUrls(cssFiles)
 
 	echo(chalk.cyan('· Extracting assets ...'))
-	await Promise.all(assets.map((asset) => dockerCp(CONTAINER, '/var/www/nextcloud/', asset)))
+	await Promise.all(assets.map((asset) => dockerCp(CONTAINER, '/var/www/html/', asset)))
 
 	// --- FINALIZING -----------------------------------------------------------------------------------------------------
 
 	echo(chalk.cyan('· Adding re-exports and REUSE.toml ...'))
 
 	// Server REUSE.toml files include much more files that are being fetched but extra entries are allowed
-	await dockerCp(CONTAINER, '/var/www/nextcloud/', 'REUSE.toml', true) // Added in Nextcloud 30
-	await dockerCp(CONTAINER, '/var/www/nextcloud/', 'apps/theming/REUSE.toml', true) // Added in Nextcloud 32
+	await dockerCp(CONTAINER, '/var/www/html/', 'REUSE.toml', true) // Added in Nextcloud 30
+	await dockerCp(CONTAINER, '/var/www/html/', 'apps/theming/REUSE.toml', true) // Added in Nextcloud 32
 	// Modify REUSE with the new meta.json file
 	await appendFile('REUSE.toml', `
 [[annotations]]

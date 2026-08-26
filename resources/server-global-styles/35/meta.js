@@ -4,17 +4,17 @@
  */
 
 /** Git ref the styles are extracted from: version tag (e.g. "v34.0.0rc1") or branch name (e.g. "master") */
-export const versionRef = "master"
+export const versionRef = "v35.0.0rc1"
 /** Version git reference type used on styles extracting: "tag" or "branch" */
-export const versionRefType = "branch"
+export const versionRefType = "tag"
 /** Version major number, e.g. 34 */
 export const versionMajor = 35
 /** Version from $OC_Version, e.g. "34.0.0.5" */
-export const version = "35.0.0.1"
+export const version = "35.0.0.6"
 /** Version from $OC_VersionString, e.g. "34.0.0 RC 1" */
-export const versionString = "35.0.0 dev"
+export const versionString = "35.0.0 RC1"
 /** Commit hash, e.g. "a1b2c3d" */
-export const versionCommitHash = "5ae39da"
+export const versionCommitHash = "a3967aff"
 
 /** Available theming configurations */
 export const themingConfigs = [{"name":"","primaryColor":"","backgroundColor":"","prefix":""}]

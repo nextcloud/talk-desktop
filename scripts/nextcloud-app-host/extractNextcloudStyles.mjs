@@ -49,6 +49,8 @@ export async function extractNextcloudStyles({
 	// --- STARTING THE SERVER --------------------------------------------------------------------------------------------
 
 	await spinner('Starting Nextcloud server ...', async () => {
+		await $`docker pull ghcr.io/nextcloud/continuous-integration-shallow-server:latest`
+
 		const status = (await $`docker container inspect -f "{{.State.Status}}" ${CONTAINER}`.nothrow().quiet()).stdout.trim()
 		if (!status) {
 			await $`docker run -d -e BRANCH=${versionRef} --name ${CONTAINER} ghcr.io/nextcloud/continuous-integration-shallow-server:latest`.quiet()

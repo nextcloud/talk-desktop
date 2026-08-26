@@ -20,8 +20,8 @@ import IconEmoticonOutline from 'vue-material-design-icons/EmoticonOutline.vue'
 import IconLogout from 'vue-material-design-icons/Logout.vue'
 import IconPencilOutline from 'vue-material-design-icons/PencilOutline.vue'
 import IconPower from 'vue-material-design-icons/Power.vue'
+import AccountFavicon from '../../../../shared/components/AccountFavicon.vue'
 import UserStatusDialog from '../../UserStatus/UserStatusDialog.vue'
-import ThemeLogo from './ThemeLogo.vue'
 import UiMenu from './UiMenu.vue'
 import UiMenuItem from './UiMenuItem.vue'
 import UiMenuSeparator from './UiMenuSeparator.vue'
@@ -145,7 +145,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 
 						<UiMenuItem tag="a" :href="serverUrl" target="_blank">
 							<template #icon>
-								<ThemeLogo :size="24" />
+								<AccountFavicon :size="20" />
 							</template>
 							<span class="user-menu__item-multiline">
 								<span>

@@ -32,6 +32,11 @@ const windowSources = computed(() => sources.value?.filter((source) => source.id
 
 const singleSource = computed(() => sources.value && sources.value.length === 1)
 
+const selectedSource = computed(() => sources.value?.find((source) => source.id === selectedSourceId.value) ?? null)
+
+// Whether we are restoring a minimized window before resolving the selection
+const activating = ref(false)
+
 // On Wayland instead of the list of all available sources,
 // the system picker is used to have a list of a single selected source.
 // Getting the stream for the selected source triggers the system picker again.
@@ -98,6 +103,10 @@ async function requestDesktopCapturerSources() {
  * @param source - The source that was suspended
  */
 function handleVideoSuspend(source: ScreensharingSource) {
+	// Minimized windows legitimately produce no frames — never remove them on suspend
+	if (source.minimized) {
+		return
+	}
 	sources.value!.splice(sources.value!.indexOf(source), 1)
 	if (selectedSourceId.value === source.id) {
 		selectedSourceId.value = null
@@ -105,9 +114,25 @@ function handleVideoSuspend(source: ScreensharingSource) {
 }
 
 /**
- * Handle the submit event of the dialog
+ * Handle the submit event of the dialog.
+ * A minimized window must be restored before it can be captured — do it here,
+ * then resolve with the reconciled (capturable) sourceId.
  */
-function handleSubmit() {
+async function handleSubmit() {
+	const source = selectedSource.value
+	if (source?.minimized) {
+		activating.value = true
+		try {
+			const { sourceId } = await window.TALK_DESKTOP.activateWindowForCapture({ id: source.id })
+			emit('submit', (sourceId || source.id) as ScreensharingSourceId)
+		} catch {
+			// Restoring failed — still resolve with the original id and let capture attempt it
+			emit('submit', source.id as ScreensharingSourceId)
+		} finally {
+			activating.value = false
+		}
+		return
+	}
 	emit('submit', selectedSourceId.value!)
 }
 
@@ -169,7 +194,7 @@ function handleCancel() {
 				:icon="IconMonitorShare"
 				:label="t('talk_desktop', 'Share screen')"
 				variant="primary"
-				:disabled="!selectedSourceId"
+				:disabled="!selectedSourceId || activating"
 				@click="handleSubmit" />
 		</template>
 	</NcDialog>

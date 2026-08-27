@@ -1,10 +1,10 @@
 {
-  "versionRef": "v34.0.1",
+  "versionRef": "v34.0.3",
   "versionRefType": "tag",
   "versionMajor": 34,
-  "version": "34.0.1.2",
-  "versionString": "34.0.1",
-  "versionCommitHash": "150f861",
+  "version": "34.0.3.2",
+  "versionString": "34.0.3",
+  "versionCommitHash": "b11c68e2",
   "themingConfigs": [
     {
       "name": "",

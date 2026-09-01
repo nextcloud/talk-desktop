@@ -12,6 +12,7 @@ OC.L10N.register(
     "Authentication" : "Autentisering",
     "Server address" : "Serveradresse",
     "Log in" : "Logg inn",
+    "Logging in …" : "Logger inn …",
     "Close" : "Lukk",
     "Dismiss" : "Avvis",
     "Join call" : "Ta del i samtale",

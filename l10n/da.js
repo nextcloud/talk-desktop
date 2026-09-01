@@ -1,6 +1,8 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Talk Desktop" : "Talk Skrivebord",
+    "Nextcloud Talk is not installed in the server" : "Nextcloud Talk er ikke installeret på denne server",
     "Authentication" : "Godkendelse",
     "Server address" : "Serveradresse",
     "Log in" : "Log ind",
@@ -26,6 +28,7 @@ OC.L10N.register(
     "Ok" : "OK",
     "No" : "Nej",
     "Yes" : "Ja",
+    "Always" : "Altid",
     "Never" : "Aldrig",
     "Theme" : "Tema",
     "Light" : "Lys",
@@ -60,7 +63,7 @@ OC.L10N.register(
     "Live preview" : "Live forhåndsvisning",
     "Share screen" : "Del skærm",
     "Preview is not available" : "Forhåndsvisning er ikke tilgængelig",
-    "Update Talk Desktop" : "Opdatér Snak Desktop",
+    "Update Talk Desktop" : "Opdatér Talk Skrivebord",
     "None" : "Ingen",
     "Application" : "Applikation",
     "Online" : "Online",

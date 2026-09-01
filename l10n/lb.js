@@ -1,16 +1,22 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Authentifikatioun",
     "Server address" : "Server-Adress",
     "Log in" : "Umellen",
     "Close" : "Zoumaachen",
     "Dismiss" : "Ofbriechen",
     "Advanced" : "Erweidert",
     "Cancel" : "Cancel",
+    "Country" : "Land",
     "Copy" : "Kopieren",
+    "Done" : "Fäerdeg",
     "Ok" : "OK",
     "No" : "Nee",
     "Yes" : "Jo",
+    "Never" : "Ni",
+    "Light" : "Hell",
+    "Dark" : "Däischter",
     "Reset" : "Zeréck setzen",
     "Menu" : "Menü",
     "Update" : "Update",
@@ -18,6 +24,10 @@ OC.L10N.register(
     "Quit" : "Erausgoen",
     "Today" : "Haut",
     "None" : "Keng",
-    "Away" : "ewech"
+    "Application" : "Applikatioun",
+    "Online" : "Online",
+    "Away" : "ewech",
+    "Invisible" : "Net siichtbar",
+    "Offline" : "Offline"
 },
 "nplurals=2; plural=(n != 1);");

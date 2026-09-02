@@ -27,7 +27,9 @@ function enableWebRequestInterceptor(serverUrl, { credentials } = {}) {
 				requestHeaders: {
 					...details.requestHeaders,
 					Origin: new URL(serverUrl).origin,
-					Authorization: `Basic ${btoa(`${credentials.user}:${credentials.password}`)}`,
+					// btoa() only handles Latin-1: it throws on characters like ş or ı and encodes ü/ö as Latin-1,
+					// while the server decodes the header as UTF-8 - see #1360
+					Authorization: `Basic ${Buffer.from(`${credentials.user}:${credentials.password}`, 'utf8').toString('base64')}`,
 					'OCS-APIRequest': 'true',
 				},
 			})

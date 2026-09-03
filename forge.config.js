@@ -5,6 +5,7 @@
 
 const { MakerDMG } = require('@electron-forge/maker-dmg')
 const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
+const { MakerMSIX } = require('@electron-forge/maker-msix')
 const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerWix } = require('@electron-forge/maker-wix')
 const { MakerZIP } = require('@electron-forge/maker-zip')
@@ -235,7 +236,11 @@ module.exports = {
 		// Prerequisites:
 		// 1. winget install WiXToolset.WiXToolset
 		// 2. Add C:\Program Files (x86)\WiX Toolset v3.14\bin\ to PATH
-		BUILD_CONFIG.windowsMsi && new MakerWix({
+		// @electron-forge/maker-wix@8.0.0-alpha.10 hardcodes an arch whitelist (x64/ia64/x86) and
+		// throws "Invalid arch" for arm64 before electron-wix-msi is ever reached. So the maker
+		// must not be included at all for arm64 builds, otherwise `make` fails outright even
+		// though other targets (e.g. Squirrel) would succeed.
+		BUILD_CONFIG.windowsMsi && TARGET_ARCH !== 'arm64' && new MakerWix({
 			appUserModelId: BUILD_CONFIG.winAppId,
 			description: BUILD_CONFIG.description,
 			exe: `${BUILD_CONFIG.applicationName}.exe`,
@@ -328,6 +333,37 @@ module.exports = {
 
 			// Signing
 			signWithParams: hasWindowsSign && process.env.WINDOWS_SIGN_PARAMS,
+		}),
+
+		// https://www.electronforge.io/config/makers/msix
+		// https://github.com/bitdisaster/electron-windows-msix
+		// @electron-forge/maker-msix is marked experimental upstream (breaking changes possible
+		// between releases). Added alongside the existing installers, not replacing them yet.
+		// See: https://github.com/nextcloud/talk-desktop/issues/1519
+		// Prerequisites: Windows 10/11 SDK installed (provides makeappx.exe/signtool.exe).
+		// Unlike MakerWix, `targetArch` is passed through by Forge itself and converted via
+		// toMsixArch(), which supports 'arm64' out of the box - no arch whitelist/exclusion needed.
+		BUILD_CONFIG.windowsMsix && new MakerMSIX({
+			// Custom tile/logo assets, see: node_modules/electron-windows-msix/static/assets
+			// for the required filenames and sizes. Falls back to generic default assets if omitted.
+			packageAssets: path.join(__dirname, 'img/icons/msix'),
+			manifestVariables: {
+				// Reverse-DNS style, no spaces - unlike applicationName (the default fallback),
+				// which contains a space and is not a valid MSIX package identity.
+				packageIdentity: BUILD_CONFIG.winAppId,
+				publisher: BUILD_CONFIG.companyName,
+				publisherDisplayName: BUILD_CONFIG.companyName,
+				packageDisplayName: BUILD_CONFIG.applicationName,
+				appDisplayName: BUILD_CONFIG.applicationName,
+				packageDescription: BUILD_CONFIG.description,
+				packageBackgroundColor: BUILD_CONFIG.backgroundColor,
+			},
+			// Signing
+			// If unset, electron-windows-msix signs with a generated dev cert - fine for a local
+			// test build, but the resulting package will not install/sideload cleanly on another
+			// machine without that dev cert being trusted. Real distribution needs a proper
+			// certificate whose Subject matches `manifestVariables.publisher` above.
+			windowsSignOptions: hasWindowsSign && signWithParamsToWindowsSignOptions(process.env.WINDOWS_SIGN_PARAMS),
 		}),
 
 		// https://js.electronforge.io/interfaces/_electron_forge_maker_dmg.MakerDMGConfig.html

@@ -77,11 +77,12 @@ export async function extractNextcloudStyles({
 
 	// --- COPYING STATIC FILES -------------------------------------------------------------------------------------------
 
-	echo(chalk.cyan('· Copying static styles ...'))
+	echo(chalk.cyan('· Copying static styles and base assets ...'))
 
 	await Promise.all([
 		dockerCp(CONTAINER, '/var/www/html/', 'dist/icons.css'),
 		dockerCp(CONTAINER, '/var/www/html/', 'core/css/server.css'),
+		dockerCp(CONTAINER, '/var/www/html/', 'core/img/favicon.ico'),
 		dockerCp(CONTAINER, '/var/www/html/', 'core/img/filetypes/'),
 		dockerCp(CONTAINER, '/var/www/html/', 'core/img/logo/'),
 		dockerCp(CONTAINER, '/var/www/html/', 'apps/theming/css/default.css'),

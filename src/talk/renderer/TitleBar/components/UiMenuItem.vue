@@ -80,5 +80,6 @@ const { tag = 'button' as string | Component } = defineProps<{
 .menu-item__text {
 	flex: 1;
 	word-break: break-word;
+	font-weight: var(--font-weight-element, normal);
 }
 </style>

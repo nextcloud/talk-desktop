@@ -125,10 +125,14 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							tag="a"
 							:href="userProfileLink"
 							target="_blank">
-							<strong>{{ user['display-name'] }}</strong>
-							<div>
-								{{ t('talk_desktop', 'View profile') }}
-							</div>
+							<span class="user-menu__item-multiline">
+								<strong class="user-menu__display-name">
+									{{ user['display-name'] }}
+								</strong>
+								<em class="user-menu__item-subtext">
+									{{ t('talk_desktop', 'View profile') }}
+								</em>
+							</span>
 						</UiMenuItem>
 
 						<UiMenuSeparator />
@@ -137,9 +141,13 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 							<template #icon>
 								<ThemeLogo :size="24" />
 							</template>
-							<span class="user-menu__server">
-								<span>{{ theming.name }}</span>
-								<em>{{ serverUrlShort }}</em>
+							<span class="user-menu__item-multiline">
+								<span>
+									{{ theming.name }}
+								</span>
+								<em class="user-menu__item-subtext">
+									{{ serverUrlShort }}
+								</em>
 							</span>
 						</UiMenuItem>
 
@@ -196,7 +204,6 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 </template>
 
 <style scoped>
-
 .user-menu :deep(.v-popper--theme-dropdown.v-popper__popper .v-popper__inner) {
 	border-radius: var(--border-radius-large);
 }
@@ -224,8 +231,16 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 	max-width: 300px;
 }
 
-.user-menu__server {
+.user-menu__item-multiline {
 	display: flex;
 	flex-direction: column;
+}
+
+.user-menu__item-subtext {
+	font-weight: normal;
+}
+
+.user-menu__display-name {
+	font-weight: var(--font-weight-element, 700);
 }
 </style>

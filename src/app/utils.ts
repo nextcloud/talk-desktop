@@ -10,7 +10,6 @@ import { APP_ORIGIN } from '../constants.js'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { getAppConfig } from './AppConfig.ts'
 import { appData } from './AppData.js'
-import { isWayland } from './system.utils.ts'
 
 /**
  * Get the scaled window size based on the current zoom factor
@@ -179,16 +178,29 @@ export function getTitleBarSymbolColor(backgroundColor: string = BUILD_CONFIG.ba
  * @param callback - Callback
  */
 export function onReadyToShow(window: BrowserWindow, callback: () => void) {
-	if (!isWayland) {
-		window.once('ready-to-show', callback)
-		return
-	}
-
-	// 'ready-to-show' may not be triggered on Wayland due to GPU sync issues in Chromium on some GPUs and VMware
-	// A workaround: wait for the page load and then for a tick
+	// 'ready-to-show' may never be emitted when the GPU process fails to initialize
+	// (seen with some GPUs and VMware on Wayland, but not tied to the platform as such),
+	// which would leave the window hidden forever.
+	// Race it against "page loaded + a tick", which is late enough not to show a blank window.
 	// See: https://github.com/electron/electron/issues/48859
-	window.webContents.once('did-finish-load', async () => {
-		await window.webContents.executeJavaScript('new Promise((resolve) => setTimeout(resolve, 0))')
+	const readyToShow = new Promise<string>((resolve) => {
+		window.once('ready-to-show', () => resolve('ready-to-show'))
+	})
+	const pageLoaded = new Promise<string>((resolve) => {
+		window.webContents.once('did-finish-load', () => {
+			window.webContents.executeJavaScript('new Promise((resolve) => setTimeout(resolve, 0))')
+				.catch(() => {}) // The window may be gone already
+				.then(() => resolve('did-finish-load'))
+		})
+	})
+
+	Promise.race([readyToShow, pageLoaded]).then((winner) => {
+		if (window.isDestroyed()) {
+			return
+		}
+		if (winner !== 'ready-to-show') {
+			console.warn('[window] "ready-to-show" was not emitted, showing the window after the page load')
+		}
 		callback()
 	})
 }

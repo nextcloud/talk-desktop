@@ -4,6 +4,7 @@
  */
 
 import { setupWebPage } from '../../shared/setupWebPage.js'
+import { setupScreenCaptureProtection } from './screensharing/screenCaptureProtection.ts'
 import { createTalkDesktopApp } from './TalkDesktop.app.ts'
 
 import '../../shared/assets/styles.css'
@@ -11,6 +12,9 @@ import '@talk/src/icons.css'
 import './talk.styles.css'
 
 await setupWebPage()
+
+// Exclude the Talk window from screen capture while sharing a whole screen (anti "hall of mirrors")
+setupScreenCaptureProtection()
 
 await createTalkDesktopApp()
 

@@ -128,7 +128,7 @@
   "productName": "Nextcloud Talk",
   "talk": {
     "stable": "v24.0.4",
-    "beta": "v25.0.0-rc.1",
+    "beta": "v25.0.0-rc.2",
     "dev": "main"
   }
 }

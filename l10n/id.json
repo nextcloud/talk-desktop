@@ -4,8 +4,10 @@
     "Server address" : "Alamat peladen",
     "Log in" : "Masuk",
     "Logging in …" : "Sedang masuk …",
+    "Incoming call" : "Panggilan masuk",
     "Close" : "Tutup",
     "Dismiss" : "Batal",
+    "Join call" : "Bergabung ke panggilan",
     "Security warning" : "Peringatan keamanan",
     "Advanced" : "Lanjutan",
     "Proceed" : "Lanjutkan",
@@ -36,6 +38,7 @@
     "Menu" : "Menu",
     "Update" : "Perbarui",
     "Report a bug" : "Laporkan kerusakan",
+    "App settings" : "Pengaturan aplikasi",
     "Back" : "Kembali",
     "View profile" : "Tampilkan profil",
     "Log out" : "Keluar",
@@ -57,6 +60,8 @@
     "Do not disturb" : "Jangan diganggu",
     "Invisible" : "Tersembunyi",
     "Offline" : "Luring",
-    "Unknown status" : "Status tidak dikenal"
+    "Unknown status" : "Status tidak dikenal",
+    "You missed a call from {user}" : "Anda melewatkan panggilan dari {user}",
+    "You missed a group call in {call}" : "Anda melewatkan panggilan grup di {call}"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

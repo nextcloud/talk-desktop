@@ -6,8 +6,10 @@ OC.L10N.register(
     "Server address" : "Alamat peladen",
     "Log in" : "Masuk",
     "Logging in …" : "Sedang masuk …",
+    "Incoming call" : "Panggilan masuk",
     "Close" : "Tutup",
     "Dismiss" : "Batal",
+    "Join call" : "Bergabung ke panggilan",
     "Security warning" : "Peringatan keamanan",
     "Advanced" : "Lanjutan",
     "Proceed" : "Lanjutkan",
@@ -38,6 +40,7 @@ OC.L10N.register(
     "Menu" : "Menu",
     "Update" : "Perbarui",
     "Report a bug" : "Laporkan kerusakan",
+    "App settings" : "Pengaturan aplikasi",
     "Back" : "Kembali",
     "View profile" : "Tampilkan profil",
     "Log out" : "Keluar",
@@ -59,6 +62,8 @@ OC.L10N.register(
     "Do not disturb" : "Jangan diganggu",
     "Invisible" : "Tersembunyi",
     "Offline" : "Luring",
-    "Unknown status" : "Status tidak dikenal"
+    "Unknown status" : "Status tidak dikenal",
+    "You missed a call from {user}" : "Anda melewatkan panggilan dari {user}",
+    "You missed a group call in {call}" : "Anda melewatkan panggilan grup di {call}"
 },
 "nplurals=1; plural=0;");

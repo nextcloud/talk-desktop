@@ -26,6 +26,7 @@ import UiMenu from './UiMenu.vue'
 import UiMenuItem from './UiMenuItem.vue'
 import UiMenuSeparator from './UiMenuSeparator.vue'
 import { appData } from '../../../../app/AppData.js'
+import { TITLE_BAR_HEIGHT } from '../../../../constants.js'
 import { useUserStatusStore } from '../../UserStatus/userStatus.store.ts'
 import { availableUserStatusStatusTypes, userStatusTranslations } from '../../UserStatus/userStatus.utils.ts'
 
@@ -55,6 +56,10 @@ const userProfileLink = generateUrl('/u/{userid}', { userid: user.id })
 const logout = window.TALK_DESKTOP.logout
 const quit = window.TALK_DESKTOP.quit
 
+const avatarSize = 32
+// Align popover with the title bar edge
+const popoverDistance = (TITLE_BAR_HEIGHT - avatarSize) / 2
+
 /**
  * Handle user status type change
  *
@@ -74,7 +79,8 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 			:container="userMenuContainer"
 			:popperHideTriggers="(triggers: string[]) => [...triggers, 'click']"
 			:triggers="[]"
-			noAutoFocus>
+			noAutoFocus
+			:distance="popoverDistance">
 			<template #trigger="{ attrs }">
 				<div class="user-menu__trigger">
 					<!-- Floating-Vue doesn't support open on span[role=button] - opening manually -->
@@ -83,7 +89,7 @@ function handleUserStatusChange(status: UserStatusStatusType) {
 						:user="user.id"
 						:preloadedUserStatus="userStatus"
 						:displayName="user['display-name']"
-						:size="32"
+						:size="avatarSize"
 						disableMenu
 						disableTooltip
 						v-bind="attrs"

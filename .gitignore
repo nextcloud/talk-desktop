@@ -9,6 +9,11 @@ spreed/
 
 # Overrides
 .overrides/
+# ...except the Xenia branding config, which this fork must ship so CI builds branded.
+# Generated style overrides stay ignored.
+!.overrides/
+.overrides/*
+!.overrides/build.config.json
 
 # Logs
 logs

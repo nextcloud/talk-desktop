@@ -124,8 +124,8 @@
     "esbuild": true,
     "sharp": true
   },
-  "desktopName": "com.nextcloud.talk.desktop",
-  "productName": "Nextcloud Talk",
+  "desktopName": "eu.xeniacloud.talk.desktop",
+  "productName": "Xenia Talk",
   "talk": {
     "stable": "v24.0.4",
     "beta": "v25.0.0-rc.2",

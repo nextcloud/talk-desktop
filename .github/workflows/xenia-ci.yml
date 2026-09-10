@@ -1,0 +1,67 @@
+name: Xenia CI (unsigned build)
+
+on:
+  push:
+    branches:
+      - xenia-rebrand
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install WiX Toolset
+        run: |
+          winget install --accept-source-agreements --accept-package-agreements WiXToolset.WiXToolset
+          echo "C:\Program Files (x86)\WiX Toolset v3.14\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Package Windows (x64)
+        run: npm run release:package -- --windows
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xenia-talk-windows
+          path: out/make/**
+          if-no-files-found: error
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Package macOS (universal, unsigned)
+        run: npm run release:package -- --mac
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xenia-talk-macos
+          path: out/make/**
+          if-no-files-found: error
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Package Linux
+        run: npm run release:package -- --linux
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xenia-talk-linux
+          path: out/make/**
+          if-no-files-found: error

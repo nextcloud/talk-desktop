@@ -36,9 +36,9 @@ const argv = mri(process.argv.slice(app.isPackaged ? 1 : 2))
 
 /**
  * On production use executable name as application name to allow several independent application instances.
- * On development use "Nextcloud Talk (dev)" instead of the default "electron".
+ * On development use "{applicationName} (dev)" instead of the default "electron".
  */
-const APP_NAME = process.env.NODE_ENV !== 'development' ? path.parse(app.getPath('exe')).name : 'Nextcloud Talk (dev)'
+const APP_NAME = process.env.NODE_ENV !== 'development' ? path.parse(app.getPath('exe')).name : `${BUILD_CONFIG.applicationName} (dev)`
 app.setName(APP_NAME)
 app.setPath('userData', path.join(app.getPath('appData'), app.getName()))
 if (isWindows && process.env.NODE_ENV === 'production') {

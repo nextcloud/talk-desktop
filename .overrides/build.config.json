@@ -1,0 +1,9 @@
+{
+	"applicationName": "Xenia Talk",
+	"description": "Independently maintained desktop client for Xenia Talk, based on Nextcloud Talk (AGPLv3). Not affiliated with or endorsed by Nextcloud GmbH.",
+	"domain": "https://xeniacloud.eu",
+	"brandColor": "#002266",
+	"brandGradient": "linear-gradient(161deg, #001233 0%, #002266 55%, #003399 100%)",
+	"helpUrl": "https://xeniacloud.eu/",
+	"privacyUrl": "https://xeniacloud.eu/privacy/"
+}

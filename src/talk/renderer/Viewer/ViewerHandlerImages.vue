@@ -4,9 +4,9 @@
 -->
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import ViewerHandlerMedia from './ViewerHandlerMedia.vue'
-import { generateFilePreviewUrl } from './viewer.utils.ts'
+import { generateFilePreviewUrl, generateUserFileDavUrl } from './viewer.utils.ts'
 
 const props = defineProps({
 	file: {
@@ -15,7 +15,30 @@ const props = defineProps({
 	},
 })
 
-const src = computed(() => generateFilePreviewUrl(props.file.fileid, props.file.etag))
+const failed = ref(false)
+
+const src = computed(() => {
+	return failed.value
+		? generateUserFileDavUrl(props.file.filename)
+		: generateFilePreviewUrl(props.file.fileid, props.file.etag)
+})
+
+watch(() => props.file, () => {
+	failed.value = false
+})
+
+/**
+ * Handle the failure of the preview image, falling back to the real file once before erroring out
+ *
+ * @param {(withError?: boolean | string) => void} handleLoadEnd - the callback handler from ViewerHandlerMedia
+ */
+function handleError(handleLoadEnd) {
+	if (!failed.value) {
+		failed.value = true
+		return
+	}
+	handleLoadEnd(true)
+}
 </script>
 
 <template>
@@ -27,6 +50,6 @@ const src = computed(() => generateFilePreviewUrl(props.file.fileid, props.file.
 			:src="src"
 			:alt="file.basename"
 			@load="handleLoadEnd(false)"
-			@error="handleLoadEnd(true)">
+			@error="handleError(handleLoadEnd)">
 	</ViewerHandlerMedia>
 </template>

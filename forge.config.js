@@ -437,6 +437,21 @@ module.exports = {
 					'--filesystem=/var/tmp',
 					'--env=TMPDIR=/var/tmp',
 
+					// File transfer (Clipboard, Drag-n-Drop) works in Flatpak via portal (org.freedesktop.portal.FileTransfer) and requires no filesystem access.
+					//
+					// As for September 2026:
+					// - It covers GTK 4, GNOME, KDE (for example, Nautilus on Ubuntu GNOME, Dolphin on Fedora KDE)
+					// - It fails on Cinnamon, MATE, XFCE, and other desktop environments on GTK 3/Qt/Rust
+					//
+					// On unsupported environments full filesystem read access with "--filesystem=host:ro" is required,
+					// Which is not acceptable for a sandboxed distribution.
+					// A special case - files dragged from the desktop, which may use DE extension rather than the file manager,
+					// Examples:
+					// - Ubuntu 26 with DING (Desktop icons NG) v49 on GTK 3 (should be fine on v50 with GTK 4)
+					//
+					// An acceptable workaround - allow read-only access to the desktop folder to cover Ubuntu as a popular distribution
+					'--filesystem=xdg-desktop:ro',
+
 					// Status icon (System tray)
 					// Electron uses Chromium API: https://github.com/electron/electron/blob/v41.2.0/shell/browser/ui/tray_icon_linux.cc#L8
 					// Chromium source: https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.166:chrome/browser/ui/views/status_icons/status_icon_linux_dbus.cc;l=60

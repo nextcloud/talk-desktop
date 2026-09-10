@@ -53,10 +53,13 @@
      id="a"><stop
        id="stop10"
        offset="0"
-       stop-color="#0082c9" /><stop
+       stop-color="#001233" /><stop
+       id="stop11"
+       offset="0.55"
+       stop-color="#002266" /><stop
        id="stop12"
        offset="1"
-       stop-color="#1cafff" /></linearGradient></defs>
+       stop-color="#003399" /></linearGradient></defs>
 <rect
    id="rect17"
    fill-rule="evenodd"

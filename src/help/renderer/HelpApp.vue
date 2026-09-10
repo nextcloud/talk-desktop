@@ -61,7 +61,12 @@ function close() {
 						{{ t('talk_desktop', 'License') }}: <a class="link" href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank">{{ packageInfo.license }}</a>
 					</p>
 					<p v-if="!BUILD_CONFIG.isBranded">
-						<a :href="packageInfo.bugs.url" class="link" target="_blank">{{ t('talk_desktop', 'Issues') }}</a> | <a :href="packageInfo.repository" class="link" target="_blank">{{ t('talk_desktop', 'Source Code') }}</a>
+						<a :href="packageInfo.bugs.url" class="link" target="_blank">{{ t('talk_desktop', 'Issues') }}</a>
+					</p>
+					<!-- AGPL-3.0 requires offering users the corresponding source of the version
+					     they run, so this stays visible on branded builds - upstream hides it. -->
+					<p>
+						<a :href="packageInfo.repository" class="link" target="_blank">{{ t('talk_desktop', 'Source Code') }}</a>
 					</p>
 				</div>
 			</div>

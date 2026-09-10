@@ -20,8 +20,15 @@
 			--arrow-size: 100px;
 
 			--border-radius: 8px; /* --border-radius-element */
-			--background-transparent: rgba(255, 255, 255, 0.6); /* --color-main-background-rgb */
+			--background-transparent: rgba(255, 255, 255, 0.78); /* --color-main-background-rgb, raised for contrast on the dark brand gradient */
 			--color-border: rgba(125, 125, 125, 0.8); /* --color-border */
+
+			/* Xenia colors */
+			--gradient-primary-background: linear-gradient(161deg, #001233 0%, #002266 55%, #003399 100%);
+
+			/* Logo lockup */
+			--logo-width: 190px;
+			--logo-top: 64px;
 		}
 
 		body {
@@ -33,9 +40,15 @@
 		.background {
 			width: 658px;
 			height: 498px;
-			background: url("../resources/server-global-styles/master/apps/theming/img/background/jo-myoung-hee-fluid.webp") no-repeat center center;
-			background-size: cover;
+			background: var(--gradient-primary-background);
 			position: absolute;
+		}
+
+		.logo {
+			position: absolute;
+			width: var(--logo-width);
+			left: calc(50% - var(--logo-width) / 2);
+			top: var(--logo-top);
 		}
 
 		.wrapper {
@@ -107,6 +120,8 @@
 </head>
 <body>
 	<div class="background">
+		<img class="logo" src="../img/talk-logo.svg" alt=""/>
+
 		<div class="wrapper">
 			<div class="box"></div>
 			<div class="arrow" style="fill: var(--background-transparent)">
@@ -117,7 +132,7 @@
 
 		<div class="icon-placeholder talk">
 			<img src="../img/talk-icon-mac-shadow.svg" alt=""/>
-			<span class="text">Nextcloud Talk</span>
+			<span class="text">Xenia Talk</span>
 		</div>
 
 		<div class="icon-placeholder apps">

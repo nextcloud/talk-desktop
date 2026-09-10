@@ -112,6 +112,18 @@ let cachedNewRelease: ReleaseInfo | null = null
  * @return true if there is a new version
  */
 export async function checkForUpdate({ forceRequest = false }: { forceRequest?: boolean } = {}): Promise<ReleaseInfo | null> {
+	// A branded build must never contact Nextcloud's release infrastructure.
+	// Upstream already gates the background scheduler on !isBranded, but the renderer
+	// calls this directly from the main menu on every mount, with no such guard - so a
+	// rebranded client still phoned home, and because upstream's asset filenames never
+	// match a branded applicationName, `installer` came back undefined and the
+	// "update available" link fell through to Nextcloud's own release page.
+	// Guarding here covers every caller, including any added later.
+	// TODO: point this at a Xenia release channel once one exists.
+	if (BUILD_CONFIG.isBranded) {
+		return null
+	}
+
 	if (cachedNewRelease && !forceRequest) {
 		return cachedNewRelease
 	}

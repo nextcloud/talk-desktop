@@ -123,9 +123,12 @@ function setupMenu() {
 				: [
 						createLinkMenuItem('Homepage', packageJson.repository.url),
 						createLinkMenuItem('Report a bug', packageJson.bugs.create),
-						createLinkMenuItem('Source Code', packageJson.repository.url),
 					]
 			),
+			// AGPL-3.0 requires that users are offered the corresponding source of the
+			// version they run, so this link must survive on branded builds too - upstream
+			// hides it along with the rest of its own links.
+			createLinkMenuItem('Source Code', packageJson.repository.url),
 			createLinkMenuItem(`License ${packageJson.license}`, 'https://www.gnu.org/licenses/agpl-3.0.txt'),
 		],
 	}

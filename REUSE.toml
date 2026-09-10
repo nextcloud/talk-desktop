@@ -32,9 +32,9 @@ SPDX-License-Identifier = "CC0-1.0"
 [[annotations]]
 path = ["img/dmg-background.png", "img/dmg-background@2x.png"]
 precedence = "aggregate"
-SPDX-FileCopyrightText = "2024 Nextcloud GmbH"
-SPDX-License-Identifier = "CC-BY-SA-4.0"
-SPDX-FileAttributionText = "Modified jenna-kim-the-globe.webp with app icon placeholders and an arrow on top to use as a background image for the macOS DMG installer"
+SPDX-FileCopyrightText = "2026 XeniaCloud"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+SPDX-FileAttributionText = "Generated from scripts/dmg-background-generator.html: Xenia brand gradient with the Xenia Talk logo lockup, app icon placeholders and an arrow on top, to use as a background image for the macOS DMG installer"
 
 [[annotations]]
 path = ["img/wix-background.bmp", "img/wix-banner.bmp"]

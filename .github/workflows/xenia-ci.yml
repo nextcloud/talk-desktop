@@ -1,0 +1,119 @@
+name: Xenia CI (unsigned build)
+
+# Verifies that the Xenia-branded Talk desktop client builds on all three desktop
+# platforms. talk-desktop is a single Electron codebase, so this one workflow serves
+# XNT-61 (Windows), XNT-62 (macOS) and XNT-63 (Linux).
+#
+# Distribution-artifact coverage differs by platform on purpose:
+#   Windows - full: MSI (WiX) + one-click EXE (Squirrel). This is XNT-61's scope.
+#   macOS   - .app bundle only. The DMG maker is broken on Node 24 (appdmg ->
+#             macos-alias calls util.isDate, removed in Node 23). Pre-existing
+#             upstream issue, not caused by the rebrand. DMG belongs to XNT-62.
+#   Linux   - .zip only. Flatpak needs flatpak-builder, eu-strip and GB-scale
+#             runtimes; that belongs to XNT-63.
+
+on:
+  push:
+    branches:
+      - xenia-rebrand
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # WiX v3 ships preinstalled on windows-latest. `winget install` exits 1 when the
+      # package is already present and has no upgrade, so only install if it is missing.
+      - name: Set up WiX Toolset
+        shell: pwsh
+        run: |
+          function Find-Wix {
+            Get-ChildItem 'C:\Program Files (x86)' -Filter 'WiX Toolset v*' -Directory -ErrorAction SilentlyContinue |
+              Sort-Object Name -Descending | Select-Object -First 1
+          }
+          $wix = Find-Wix
+          if (-not $wix) {
+            winget install --accept-source-agreements --accept-package-agreements --disable-interactivity WiXToolset.WiXToolset
+            $wix = Find-Wix
+          }
+          if (-not $wix) { throw 'WiX Toolset not found after install attempt' }
+          $bin = Join-Path $wix.FullName 'bin'
+          Write-Host "Using WiX at $bin"
+          $bin | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Package Windows (MSI + EXE)
+        run: npm run release:package -- --windows
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xenia-talk-windows
+          path: out/make/**
+          if-no-files-found: error
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch built-in Talk
+        run: |
+          TALK_VERSION=$(node -p "require('./package.json').talk.stable")
+          git clone --branch="$TALK_VERSION" --depth=1 https://github.com/nextcloud/spreed out/.temp/spreed
+          npm ci --prefix out/.temp/spreed
+
+      # Bundle only - see the DMG note in the workflow header.
+      - name: Build macOS app bundle (universal, unsigned)
+        env:
+          TALK_PATH: out/.temp/spreed
+        run: npm run build:mac
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xenia-talk-macos
+          path: out/Xenia Talk-darwin-universal/**
+          if-no-files-found: error
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch built-in Talk
+        run: |
+          TALK_VERSION=$(node -p "require('./package.json').talk.stable")
+          git clone --branch="$TALK_VERSION" --depth=1 https://github.com/nextcloud/spreed out/.temp/spreed
+          npm ci --prefix out/.temp/spreed
+
+      # Zip only - see the Flatpak note in the workflow header.
+      - name: Build and package Linux (zip only)
+        env:
+          TALK_PATH: out/.temp/spreed
+        run: |
+          npm run build:linux
+          npx electron-forge make --skip-package --platform=linux --targets=@electron-forge/maker-zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xenia-talk-linux
+          path: out/make/**
+          if-no-files-found: error

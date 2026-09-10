@@ -176,6 +176,21 @@ const webpackRendererConfig = {
 				test: /\.ogg$/,
 				type: 'asset/resource',
 			},
+			// Rebrand bundled translation catalogs (Talk's and our own) on branded builds.
+			// See build/l10n-rebrand-loader.js.
+			{
+				test: /l10n[\\/][^\\/]+\.json$/,
+				type: 'json',
+				parser: { parse: JSON.parse },
+				use: [path.resolve(__dirname, 'build/l10n-rebrand-loader.js')],
+			},
+			// Rebrand the few user-visible plain-string literals in Talk's source that never
+			// pass through t(), so the l10n patcher cannot reach them.
+			{
+				test: /\.(ts|js|vue)$/,
+				include: path.resolve(TALK_PATH, 'src'),
+				use: [path.resolve(__dirname, 'build/spreed-literal-rebrand-loader.js')],
+			},
 		],
 	},
 
@@ -187,6 +202,8 @@ const webpackRendererConfig = {
 			'@nextcloud/axios': path.resolve(__dirname, 'node_modules', '@nextcloud/axios/dist/index.js'),
 			// Patched packages
 			...createPatcherAliases('@nextcloud/router'),
+			// Strips upstream Nextcloud branding from every translated string on branded builds
+			...createPatcherAliases('@nextcloud/l10n'),
 		},
 	},
 

@@ -90,7 +90,7 @@
     "cheerio": "^1.2.0",
     "css-loader": "^7.1.5",
     "dotenv": "^17.4.2",
-    "electron": "^44.2.0",
+    "electron": "^44.3.0",
     "esbuild-loader": "^4.5.0",
     "eslint": "^10.9.1",
     "globals": "^17.11.0",

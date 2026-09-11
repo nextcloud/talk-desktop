@@ -323,8 +323,7 @@ module.exports = {
 			setupIcon: path.join(__dirname, './img/icons/icon.ico'),
 			// Must point at this fork's branded icon. Upstream's URL serves the Nextcloud
 			// icon, which Squirrel then shows in Windows "Apps & features" for a Xenia build.
-			// TODO: retarget to refs/heads/main once xenia-rebrand is merged.
-			iconUrl: 'https://raw.githubusercontent.com/Krateos-BV/talk-desktop/refs/heads/xenia-rebrand/img/icons/icon.ico',
+			iconUrl: 'https://raw.githubusercontent.com/Krateos-BV/talk-desktop/refs/heads/main/img/icons/icon.ico',
 
 			// Install/Update Loading
 			loadingGif: path.join(__dirname, './img/squirrel-install-loading.gif'),

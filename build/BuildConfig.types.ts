@@ -109,6 +109,12 @@ export type BuildConfigFile = {
 	macosDmg: boolean
 
 	/**
+	 * macOS .zip archive.
+	 * Default: true
+	 */
+	macosZip: boolean
+
+	/**
 	 * Linux Flatpak single-file installer.
 	 * Default: true
 	 */

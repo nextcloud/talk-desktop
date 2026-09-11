@@ -12,6 +12,7 @@
 	"windowsExe": true,
 	"windowsMsi": true,
 	"macosDmg": true,
+	"macosZip": true,
 	"linuxFlatpak": true,
 	"linuxZip": true
 }

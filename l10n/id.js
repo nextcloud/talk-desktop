@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Unexpected error" : "Kesalahan tidak terduga",
     "Authentication" : "Otentikasi",
     "Log in to {applicationName}" : "Masuk ke {applicationName}",
     "Server address" : "Alamat peladen",

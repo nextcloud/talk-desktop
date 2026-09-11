@@ -15,6 +15,7 @@ name: Xenia CI (unsigned build)
 on:
   push:
     branches:
+      - main
       - xenia-rebrand
   workflow_dispatch:
 

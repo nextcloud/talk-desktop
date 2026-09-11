@@ -6,9 +6,11 @@ name: Xenia CI (unsigned build)
 #
 # Distribution-artifact coverage differs by platform on purpose:
 #   Windows - full: MSI (WiX) + one-click EXE (Squirrel). This is XNT-61's scope.
-#   macOS   - .app bundle only. The DMG maker is broken on Node 24 (appdmg ->
-#             macos-alias calls util.isDate, removed in Node 23). Pre-existing
-#             upstream issue, not caused by the rebrand. DMG belongs to XNT-62.
+#   macOS   - .app bundle + .zip. The .zip is the shippable distribution artifact.
+#             The DMG maker is still broken on Node 24 (appdmg -> macos-alias calls
+#             util.isDate, removed in Node 23) - pre-existing upstream issue, not
+#             caused by the rebrand, tracked as XNT-80. The zip maker is selected
+#             explicitly with --targets=zip so that broken DMG maker is not invoked.
 #   Linux   - .zip only. Flatpak needs flatpak-builder, eu-strip and GB-scale
 #             runtimes; that belongs to XNT-63.
 
@@ -17,6 +19,7 @@ on:
     branches:
       - main
       - xenia-rebrand
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -75,16 +78,28 @@ jobs:
           git clone --branch="$TALK_VERSION" --depth=1 https://github.com/nextcloud/spreed out/.temp/spreed
           npm ci --prefix out/.temp/spreed
 
-      # Bundle only - see the DMG note in the workflow header.
       - name: Build macOS app bundle (universal, unsigned)
         env:
           TALK_PATH: out/.temp/spreed
         run: npm run build:mac
 
+      # Zips the bundle built above (--skip-package reuses it). Zip only, not DMG -
+      # see the macOS note in the workflow header.
+      - name: Make macOS .zip
+        env:
+          TALK_PATH: out/.temp/spreed
+        run: npm run package:mac:zip
+
       - uses: actions/upload-artifact@v4
         with:
           name: xenia-talk-macos
           path: out/Xenia Talk-darwin-universal/**
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xenia-talk-macos-zip
+          path: out/make/**
           if-no-files-found: error
 
   build-linux:

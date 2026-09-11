@@ -34,6 +34,7 @@
     "package:mac": "electron-forge make --skip-package --platform=darwin --arch=universal",
     "package:mac:arm64": "electron-forge make --skip-package --platform=darwin --arch=arm64",
     "package:mac:x64": "electron-forge make --skip-package --platform=darwin --arch=x64",
+    "package:mac:zip": "electron-forge make --skip-package --platform=darwin --arch=universal --targets=zip",
     "package:windows": "electron-forge make --skip-package --platform=win32",
     "package:windows:arm64": "electron-forge make --skip-package --platform=win32 --arch=arm64",
     "package:windows:arm64:exe": "electron-forge make --skip-package --platform=win32 --arch=arm64 --targets=squirrel",

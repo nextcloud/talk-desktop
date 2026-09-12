@@ -167,6 +167,31 @@ jobs:
           fi
           printf 'Flatpak artifact: %s\n' "${artifacts[@]}"
 
+      # Install the bundle we just built and read back its exported desktop entry
+      # and icon. The .flatpak looks valid either way; this is what actually proves
+      # the Xenia branding reached the artifact rather than upstream's defaults.
+      - name: Verify Xenia branding in the Flatpak
+        run: |
+          shopt -s nullglob
+          flatpak install -y --user --bundle out/make/flatpak/x86_64/*.flatpak
+          export_dir="$HOME/.local/share/flatpak/app/eu.xeniacloud.talk/current/active/export/share"
+          desktop="$export_dir/applications/eu.xeniacloud.talk.desktop"
+          echo "--- $desktop ---"
+          cat "$desktop"
+          grep -qx 'Name=Xenia Talk' "$desktop"
+          grep -qx 'Icon=eu.xeniacloud.talk' "$desktop"
+          echo "--- exported icons ---"
+          find "$export_dir/icons" -type f -print
+          find "$export_dir/icons" -type f -name 'eu.xeniacloud.talk.*' | grep -q . \
+            || { echo "::error::No Xenia icon exported by the Flatpak"; exit 1; }
+          # The description legitimately credits upstream ("based on Nextcloud Talk",
+          # AGPL attribution). Any OTHER Nextcloud string is leftover branding.
+          if grep -i nextcloud "$desktop" | grep -vi 'based on Nextcloud Talk'; then
+            echo "::error::Unexpected Nextcloud branding in the desktop entry"
+            exit 1
+          fi
+          echo 'OK: desktop entry and icon are Xenia-branded'
+
       - uses: actions/upload-artifact@v4
         with:
           name: xenia-talk-linux

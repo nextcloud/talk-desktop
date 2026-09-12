@@ -6,6 +6,7 @@
 import { BrowserWindow } from 'electron'
 import lte from 'semver/functions/lte.js'
 import rcompare from 'semver/functions/rcompare.js'
+import valid from 'semver/functions/valid.js'
 import { version } from '../../package.json'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { currentInstallerExt, isMac, platformTitle } from './system.utils.ts'
@@ -63,7 +64,7 @@ async function getLatestRelease(): Promise<{ latest?: ReleaseInfo, stable?: Rele
 
 	try {
 		// Ref: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28
-		const response = await fetch('https://api.github.com/repos/nextcloud-releases/talk-desktop/releases', {
+		const response = await fetch(`https://api.github.com/repos/${BUILD_CONFIG.updateRepository}/releases`, {
 			headers: {
 				Accept: 'application/vnd.github+json',
 				'X-GitHub-Api-Version': '2022-11-28',
@@ -81,6 +82,10 @@ async function getLatestRelease(): Promise<{ latest?: ReleaseInfo, stable?: Rele
 			const releases = (await response.json() as GitHubReleaseResponse[])
 				// GitHub releases may include drafts which haven't been actually released yet
 				.filter((release) => !release.draft)
+				// rcompare/lte throw on a tag that isn't semver, and a throw here is swallowed
+				// by the catch below - so one stray tag (say, "latest") in the release
+				// repository would silently disable update checks for every client.
+				.filter((release) => valid(release.tag_name))
 				// GitHub releases are ordered by date (ID), but we need the latest by semantic version
 				.sort((a, b) => rcompare(a.tag_name, b.tag_name))
 
@@ -112,15 +117,16 @@ let cachedNewRelease: ReleaseInfo | null = null
  * @return true if there is a new version
  */
 export async function checkForUpdate({ forceRequest = false }: { forceRequest?: boolean } = {}): Promise<ReleaseInfo | null> {
-	// A branded build must never contact Nextcloud's release infrastructure.
-	// Upstream already gates the background scheduler on !isBranded, but the renderer
-	// calls this directly from the main menu on every mount, with no such guard - so a
-	// rebranded client still phoned home, and because upstream's asset filenames never
-	// match a branded applicationName, `installer` came back undefined and the
-	// "update available" link fell through to Nextcloud's own release page.
-	// Guarding here covers every caller, including any added later.
-	// TODO: point this at a Xenia release channel once one exists.
-	if (BUILD_CONFIG.isBranded) {
+	// Every build checks its OWN release channel, configured as BUILD_CONFIG.updateRepository:
+	// upstream builds check nextcloud-releases/talk-desktop, the Xenia build checks this fork.
+	// This replaces the blanket isBranded guard added for XNT-77, which existed only because a
+	// branded build had nowhere of its own to check: it would have contacted Nextcloud's release
+	// infrastructure and, since upstream's asset filenames never match a branded applicationName,
+	// come back with `installer` undefined and an "update" link pointing at Nextcloud's own
+	// release page. A build with no release repository configured still checks nothing.
+	// Guarding here covers every caller - including the renderer's main menu, which calls this
+	// directly on every mount and never went through the scheduler's own !isBranded gate.
+	if (!BUILD_CONFIG.updateRepository) {
 		return null
 	}
 

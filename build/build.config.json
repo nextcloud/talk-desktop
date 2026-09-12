@@ -7,6 +7,7 @@
 	"brandFontColor": "#FFFFFF",
 	"helpUrl": "https://nextcloud.com/talk/",
 	"privacyUrl": "https://nextcloud.com/privacy/",
+	"updateRepository": "nextcloud-releases/talk-desktop",
 	"primaryColor": "#00679e",
 	"backgroundColor": "#00679e",
 	"windowsExe": true,

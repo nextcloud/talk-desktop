@@ -133,9 +133,12 @@ app.whenReady().then(async () => {
 	registerAppProtocolHandler()
 
 	/**
-	 * Schedule check for a new version available to download from GitHub
+	 * Schedule check for a new version available to download from GitHub.
+	 * Which repository is checked comes from BUILD_CONFIG.updateRepository, so a branded
+	 * build polls its own release channel rather than Nextcloud's. checkForUpdate() itself
+	 * no-ops when no release repository is configured, so no isBranded gate is needed here.
 	 */
-	if (process.env.NODE_ENV === 'production' && !BUILD_CONFIG.isBranded) {
+	if (process.env.NODE_ENV === 'production') {
 		setupReleaseNotificationScheduler(24 * 60)
 	}
 

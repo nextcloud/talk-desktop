@@ -5,6 +5,23 @@
 
 # Changelog
 
+## v2.3.1-beta - 2026-09-10
+
+### Fixes
+
+- Linux/Flatpak: error on drag-n-drop and clipboard file attachment (only on some distributions)  [#1903](https://github.com/nextcloud/talk-desktop/pull/1903)
+- Allow to paginate viewer media list [#1901](https://github.com/nextcloud/talk-desktop/pull/1901)
+- Fallback to an original image on a preview failure in the image viewer [#1900](https://github.com/nextcloud/talk-desktop/pull/1900)
+- Adjust title bar to the new Nextcloud design [#1888](https://github.com/nextcloud/talk-desktop/pull/1888), [#1897](https://github.com/nextcloud/talk-desktop/pull/1897)
+- Login fails with UTF-8 characters in a username from an external identity provider [#1884](https://github.com/nextcloud/talk-desktop/pull/1884)
+- No audio/video on e2ee call [#1852](https://github.com/nextcloud/talk-desktop/pull/1852)
+- Windows: crash on arm64 [#1809](https://github.com/nextcloud/talk-desktop/pull/1809)
+
+### Changes
+
+- Built-in Talk in binaries is updated to v25.0.0-rc.3 in the beta release channel [#1904](https://github.com/nextcloud/talk-desktop/pull/1904)
+- Electron is updated to 44.3.0 [#1902](https://github.com/nextcloud/talk-desktop/pull/1902)
+
 ## v2.3.0-beta - 2026-08-26
 
 ### Fixes

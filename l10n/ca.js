@@ -30,6 +30,7 @@ OC.L10N.register(
     "Light" : "Clar",
     "Dark" : "Fosc",
     "Appearance" : "Aparença",
+    "Loading …" : "S'està carregant ...",
     "Reload" : "Recarrega",
     "Zoom" : "Apropa/Allunya",
     "Zoom out" : "Allunya",

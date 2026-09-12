@@ -74,6 +74,15 @@ export type BuildConfigFile = {
 	privacyUrl: string
 
 	/**
+	 * GitHub repository ("owner/name") whose Releases are checked for application updates.
+	 * Its release assets must be named like this project's own distribution artifacts
+	 * (see generateDistName() in forge.config.js), otherwise no installer will be matched.
+	 * Set to an empty string to disable update checks entirely.
+	 * Default: 'nextcloud-releases/talk-desktop'
+	 */
+	updateRepository: string
+
+	/**
 	 * Theming primary color
 	 * Default: '#00679e'
 	 */

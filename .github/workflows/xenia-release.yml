@@ -1,0 +1,221 @@
+name: Xenia Release
+
+# Cuts a GitHub Release on this fork from a version tag, with the platform artifacts
+# attached. This is the release channel the in-app update checker polls
+# (BUILD_CONFIG.updateRepository -> Krateos-BV/talk-desktop), so the asset filenames
+# here are load-bearing: githubRelease.service.ts matches an installer by name, and a
+# release whose assets are named differently is silently useless to installed clients.
+#
+# The build jobs mirror .github/workflows/xenia-ci.yml - same platform caveats apply
+# (no DMG: XNT-80; Flatpak needs a toolchain; macOS ships the .zip). The difference is
+# CHANNEL=stable, which selects the Talk version bundled (package.json talk.stable) and
+# drops the channel infix from artifact names.
+#
+# The release is deliberately NOT marked as a prerelease: a client built with
+# CHANNEL=stable only ever considers non-prerelease releases, so flagging it would hide
+# the release from exactly the builds this workflow produces.
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+env:
+  CHANNEL: stable
+
+jobs:
+  # Fail before spending three platform builds if the tag and package.json disagree.
+  # They must match: the update checker compares the release tag against the running
+  # build's package.json version, so a mismatch either hides the release or makes every
+  # installed client believe it is permanently out of date.
+  verify-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check tag matches package.json version
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg=$(node -p "require('./package.json').version")
+          echo "tag=$tag package.json=$pkg"
+          if [ "$tag" != "$pkg" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $pkg"
+            exit 1
+          fi
+
+  build-windows:
+    needs: verify-tag
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Set up WiX Toolset
+        shell: pwsh
+        run: |
+          function Find-Wix {
+            Get-ChildItem 'C:\Program Files (x86)' -Filter 'WiX Toolset v*' -Directory -ErrorAction SilentlyContinue |
+              Sort-Object Name -Descending | Select-Object -First 1
+          }
+          $wix = Find-Wix
+          if (-not $wix) {
+            winget install --accept-source-agreements --accept-package-agreements --disable-interactivity WiXToolset.WiXToolset
+            $wix = Find-Wix
+          }
+          if (-not $wix) { throw 'WiX Toolset not found after install attempt' }
+          $bin = Join-Path $wix.FullName 'bin'
+          Write-Host "Using WiX at $bin"
+          $bin | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Package Windows (MSI + EXE)
+        run: npm run release:package -- --windows
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-windows
+          path: out/make/**
+          if-no-files-found: error
+
+  build-macos:
+    needs: verify-tag
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch built-in Talk
+        run: |
+          TALK_VERSION=$(node -p "require('./package.json').talk.stable")
+          git clone --branch="$TALK_VERSION" --depth=1 https://github.com/nextcloud/spreed out/.temp/spreed
+          npm ci --prefix out/.temp/spreed
+
+      - name: Build macOS app bundle (universal, unsigned)
+        env:
+          TALK_PATH: out/.temp/spreed
+        run: npm run build:mac
+
+      # Zip only, not DMG - the DMG maker is broken on Node 24 (XNT-80). Note this means
+      # macOS clients cannot auto-match an installer (currentInstallerExt is 'dmg' on
+      # macOS); they fall back to the release page link until XNT-80 is fixed.
+      - name: Make macOS .zip
+        env:
+          TALK_PATH: out/.temp/spreed
+        run: npm run package:mac:zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-macos
+          path: out/make/**
+          if-no-files-found: error
+
+  build-linux:
+    needs: verify-tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch built-in Talk
+        run: |
+          TALK_VERSION=$(node -p "require('./package.json').talk.stable")
+          git clone --branch="$TALK_VERSION" --depth=1 https://github.com/nextcloud/spreed out/.temp/spreed
+          npm ci --prefix out/.temp/spreed
+
+      - name: Set up Flatpak toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder elfutils
+          flatpak remote-add --if-not-exists --user \
+            flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install -y --user flathub \
+            org.freedesktop.Platform//25.08 \
+            org.freedesktop.Sdk//25.08 \
+            org.electronjs.Electron2.BaseApp//25.08
+
+      # No --targets here, deliberately - see the note in xenia-ci.yml.
+      - name: Build and package Linux (Flatpak + zip)
+        env:
+          TALK_PATH: out/.temp/spreed
+        run: |
+          npm run build:linux
+          npm run package:linux
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-linux
+          path: out/make/**
+          if-no-files-found: error
+
+  release:
+    needs:
+      - build-windows
+      - build-macos
+      - build-linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: release-*
+          path: artifacts
+
+      # Flatten: every maker nests its output differently (squirrel.windows/x64/,
+      # wix/x64/, zip/darwin/universal/, flatpak/x86_64/), and `gh release create`
+      # wants plain file paths. postMake has already given each file its final name.
+      - name: Collect distributables
+        run: |
+          mkdir -p dist
+          find artifacts -type f \
+            \( -name '*.msi' -o -name '*.exe' -o -name '*.zip' -o -name '*.flatpak' -o -name '*.dmg' \) \
+            -exec cp -v {} dist/ \;
+          ls -l dist
+
+      # The update checker matches an asset by filename, so a rename in forge.config.js
+      # or a maker silently changing its output would break updates for every installed
+      # client while the release itself still looked fine. Assert the names here.
+      - name: Verify asset names match what the update checker expects
+        run: |
+          missing=0
+          for expected in \
+            'Xenia.Talk-windows-x64.msi' \
+            'Xenia.Talk-windows-x64.exe' \
+            'Xenia.Talk-macos-universal.zip' \
+            'Xenia.Talk-linux-x64.flatpak' \
+            'Xenia.Talk-linux-x64.zip'
+          do
+            if [ ! -f "dist/$expected" ]; then
+              echo "::error::Missing expected release asset: $expected"
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || { echo 'Produced:'; ls dist; exit 1; }
+          echo 'OK: all expected assets present'
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Xenia Talk $GITHUB_REF_NAME" \
+            --generate-notes \
+            --verify-tag

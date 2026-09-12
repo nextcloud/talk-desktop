@@ -11,8 +11,11 @@ name: Xenia CI (unsigned build)
 #             util.isDate, removed in Node 23) - pre-existing upstream issue, not
 #             caused by the rebrand, tracked as XNT-80. The zip maker is selected
 #             explicitly with --targets=zip so that broken DMG maker is not invoked.
-#   Linux   - .zip only. Flatpak needs flatpak-builder, eu-strip and GB-scale
-#             runtimes; that belongs to XNT-63.
+#   Linux   - Flatpak (the shippable distribution artifact) + .zip. Flatpak needs
+#             flatpak-builder, eu-strip and GB-scale Flathub runtimes; they are
+#             installed in the Linux job below (XNT-63).
+#             There is deliberately no .deb/.rpm/AppImage here: this project has no
+#             makers for those formats, only maker-flatpak and maker-zip.
 
 on:
   push:
@@ -119,13 +122,50 @@ jobs:
           git clone --branch="$TALK_VERSION" --depth=1 https://github.com/nextcloud/spreed out/.temp/spreed
           npm ci --prefix out/.temp/spreed
 
-      # Zip only - see the Flatpak note in the workflow header.
-      - name: Build and package Linux (zip only)
+      # maker-flatpak shells out to flatpak-builder and eu-strip (elfutils), and
+      # flatpak-builder resolves the runtime/sdk/base refs that forge.config.js pins
+      # to 25.08. None of them ship on the runner, so install them before making.
+      # User-scope installs keep flatpak out of sudo for everything but apt.
+      - name: Set up Flatpak toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder elfutils
+          flatpak remote-add --if-not-exists --user \
+            flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install -y --user flathub \
+            org.freedesktop.Platform//25.08 \
+            org.freedesktop.Sdk//25.08 \
+            org.electronjs.Electron2.BaseApp//25.08
+
+      # No --targets here, deliberately. --platform=linux already selects exactly the
+      # makers this project configures for Linux (flatpak + zip), each keeping its
+      # forge.config.js config. Naming them explicitly is a trap in both spellings:
+      #   --targets=@electron-forge/maker-flatpak matches no configured maker (forge
+      #     matches on Maker.name, i.e. "flatpak"), so it builds a bare MakerFlatpak
+      #     with NO config - losing the Xenia app id, icon, productName, the pinned
+      #     25.08 runtime and every finishArg, and silently shipping an unbranded app.
+      #   --targets=zip matches the FIRST maker named "zip", which is the macOS one
+      #     (platforms: darwin); the platform filter then drops it and no .zip is made.
+      - name: Build and package Linux (Flatpak + zip)
         env:
           TALK_PATH: out/.temp/spreed
         run: |
           npm run build:linux
-          npx electron-forge make --skip-package --platform=linux --targets=@electron-forge/maker-zip
+          npm run package:linux
+
+      # Belt and braces: forge throws if a maker is unsupported, but it cannot tell
+      # us the .flatpak actually landed in out/make (postMake renames artifacts).
+      # Assert it exists so an empty upload cannot pass as a green check.
+      - name: Verify Flatpak artifact was produced
+        run: |
+          shopt -s globstar nullglob
+          artifacts=(out/make/**/*.flatpak)
+          if [ ${#artifacts[@]} -eq 0 ]; then
+            echo "::error::No .flatpak artifact in out/make - the flatpak maker was skipped."
+            find out/make -type f -print
+            exit 1
+          fi
+          printf 'Flatpak artifact: %s\n' "${artifacts[@]}"
 
       - uses: actions/upload-artifact@v4
         with:

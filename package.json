@@ -92,7 +92,7 @@
     "dotenv": "^17.4.2",
     "electron": "^44.3.0",
     "esbuild-loader": "^4.5.0",
-    "eslint": "^10.9.1",
+    "eslint": "^10.10.0",
     "globals": "^17.12.0",
     "icon-gen": "^5.0.0",
     "mini-css-extract-plugin": "^2.10.2",

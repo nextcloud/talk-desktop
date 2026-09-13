@@ -6,11 +6,12 @@ name: Xenia CI (unsigned build)
 #
 # Distribution-artifact coverage differs by platform on purpose:
 #   Windows - full: MSI (WiX) + one-click EXE (Squirrel). This is XNT-61's scope.
-#   macOS   - .app bundle + .zip. The .zip is the shippable distribution artifact.
-#             The DMG maker is still broken on Node 24 (appdmg -> macos-alias calls
-#             util.isDate, removed in Node 23) - pre-existing upstream issue, not
-#             caused by the rebrand, tracked as XNT-80. The zip maker is selected
-#             explicitly with --targets=zip so that broken DMG maker is not invoked.
+#   macOS   - .app bundle + .zip + .dmg. Both the zip and the dmg are shippable.
+#             The DMG maker used to fail on Node 23+ (appdmg -> macos-alias calls
+#             util.isDate, removed in Node 23); that is fixed by
+#             patches/macos-alias+0.2.11.patch, applied on install by patch-package
+#             (XNT-80). `package:mac` builds every darwin target, so a regression in
+#             that patch fails this job instead of going unnoticed.
 #   Linux   - Flatpak (the shippable distribution artifact) + .zip. Flatpak needs
 #             flatpak-builder, eu-strip and GB-scale Flathub runtimes; they are
 #             installed in the Linux job below (XNT-63).
@@ -85,12 +86,12 @@ jobs:
           TALK_PATH: out/.temp/spreed
         run: npm run build:mac
 
-      # Zips the bundle built above (--skip-package reuses it). Zip only, not DMG -
-      # see the macOS note in the workflow header.
-      - name: Make macOS .zip
+      # Makes every darwin distributable from the bundle built above
+      # (--skip-package reuses it): .zip and .dmg.
+      - name: Make macOS .zip and .dmg
         env:
           TALK_PATH: out/.temp/spreed
-        run: npm run package:mac:zip
+        run: npm run package:mac
 
       - uses: actions/upload-artifact@v4
         with:
@@ -101,7 +102,13 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: xenia-talk-macos-zip
-          path: out/make/**
+          path: out/make/zip/**
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xenia-talk-macos-dmg
+          path: out/make/dmg/**
           if-no-files-found: error
 
   build-linux:

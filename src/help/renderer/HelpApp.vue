@@ -53,7 +53,10 @@ function close() {
 						draggable="false"
 						@click="logoClicked += 1">
 					<p><strong>{{ BUILD_CONFIG.applicationName }}{{ isDevMode ? ' 👾' : '' }}</strong></p>
-					<p v-if="!BUILD_CONFIG.isBranded">
+					<!-- AGPL-3.0 requires the attribution/disclaimer be reachable inside the
+					     running app, not just in OS-level package metadata - stays visible on
+					     branded builds too, same reasoning as the Source Code link below. -->
+					<p>
 						{{ BUILD_CONFIG.description }}
 					</p>
 					<p>

@@ -7,7 +7,7 @@ name: Xenia Release
 # release whose assets are named differently is silently useless to installed clients.
 #
 # The build jobs mirror .github/workflows/xenia-ci.yml - same platform caveats apply
-# (no DMG: XNT-80; Flatpak needs a toolchain; macOS ships the .zip). The difference is
+# (Flatpak needs a toolchain; macOS ships both the .zip and the .dmg). The difference is
 # CHANNEL=stable, which selects the Talk version bundled (package.json talk.stable) and
 # drops the channel infix from artifact names.
 #
@@ -106,13 +106,14 @@ jobs:
           TALK_PATH: out/.temp/spreed
         run: npm run build:mac
 
-      # Zip only, not DMG - the DMG maker is broken on Node 24 (XNT-80). Note this means
-      # macOS clients cannot auto-match an installer (currentInstallerExt is 'dmg' on
-      # macOS); they fall back to the release page link until XNT-80 is fixed.
-      - name: Make macOS .zip
+      # Builds every darwin distributable: .zip and .dmg. The DMG maker used to fail on
+      # Node 23+ (appdmg -> macos-alias util.isDate); fixed by patch-package (XNT-80).
+      # Shipping the .dmg is what lets macOS clients auto-match an installer, since
+      # currentInstallerExt is 'dmg' on macOS.
+      - name: Make macOS .zip and .dmg
         env:
           TALK_PATH: out/.temp/spreed
-        run: npm run package:mac:zip
+        run: npm run package:mac
 
       - uses: actions/upload-artifact@v4
         with:

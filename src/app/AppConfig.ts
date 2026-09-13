@@ -11,6 +11,13 @@ import { isMac } from './system.utils.ts'
 
 const APP_CONFIG_FILE_NAME = 'config.json'
 
+type WindowBounds = {
+	x: number
+	y: number
+	width: number
+	height: number
+}
+
 // Memoize the path to the application config file
 let APP_CONFIG_FILE_PATH: string | null = null
 
@@ -40,6 +47,11 @@ export type AppConfig = {
 	 * Last application version when the app was running
 	 */
 	lastAppVersion?: string
+
+	/**
+	 * Last position and size of the main Talk window.
+	 */
+	talkWindowBounds?: WindowBounds
 
 	/**
 	 * List of the accounts in the app in the {user}@{server} or {server} format,

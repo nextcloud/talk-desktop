@@ -1,0 +1,13 @@
+diff --git a/node_modules/macos-alias/lib/encode.js b/node_modules/macos-alias/lib/encode.js
+index ee47929..d43dae2 100644
+--- a/node_modules/macos-alias/lib/encode.js
++++ b/node_modules/macos-alias/lib/encode.js
+@@ -5,7 +5,7 @@ var values = require('./values')
+ 
+ var appleEpoch = Date.UTC(1904, 0, 1)
+ var appleDate = function (value) {
+-  if (util.isDate(value) === false) {
++  if (!(value instanceof Date)) {
+     // value = new Date(value);
+     throw new TypeError('Not a date: ' + value)
+   }

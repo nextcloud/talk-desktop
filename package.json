@@ -43,6 +43,7 @@
     "package:windows:x64:exe": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=squirrel",
     "package:windows:x64:msi": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=wix",
     "release:package": "npx -y zx ./scripts/prepare-release-packages.mjs",
+    "postinstall": "patch-package",
     "start": "npm run dev",
     "ts:check": "vue-tsc --noEmit"
   },
@@ -99,6 +100,7 @@
     "mini-css-extract-plugin": "^2.10.2",
     "node-loader": "^2.1.0",
     "node-polyfill-webpack-plugin": "4.0.0",
+    "patch-package": "^8.0.1",
     "postcss": "8.5.23",
     "sass": "^1.104.0",
     "sass-loader": "^17.0.1",

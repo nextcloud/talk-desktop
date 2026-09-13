@@ -343,11 +343,10 @@ module.exports = {
 			},
 		}),
 
-		// Plain .zip of the .app bundle. This is the macOS distribution artifact we can
-		// actually ship today: MakerDMG cannot run on the Node version this project
-		// requires (appdmg -> macos-alias calls util.isDate, removed in Node 23), see
-		// XNT-80. Build it with `npm run package:mac:zip`, which selects this maker via
-		// --targets=zip so the broken DMG maker is not invoked.
+		// Plain .zip of the .app bundle, shipped alongside the .dmg above.
+		// MakerDMG used to be unusable here because appdmg -> macos-alias calls
+		// util.isDate, removed in Node 23. That is fixed by patches/macos-alias+0.2.11.patch,
+		// applied on install via the `postinstall` script (see XNT-80).
 		BUILD_CONFIG.macosZip && new MakerZIP({}, ['darwin']),
 
 		// https://js.electronforge.io/classes/_electron_forge_maker_flatpak.MakerFlatpak-1.html

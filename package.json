@@ -43,7 +43,7 @@
     "package:windows:x64:exe": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=squirrel",
     "package:windows:x64:msi": "electron-forge make --skip-package --platform=win32 --arch=x64 --targets=wix",
     "release:package": "npx -y zx ./scripts/prepare-release-packages.mjs",
-    "postinstall": "patch-package",
+    "postinstall": "node ./scripts/apply-patches.mjs",
     "start": "npm run dev",
     "ts:check": "vue-tsc --noEmit"
   },

@@ -112,8 +112,8 @@ async function generateIcons() {
 	await generate(IconPlainLight, 'IconTrayMacTemplate.png', MACOS_TRAY_ICON_SIZES, output)
 	// Windows
 	await generate(IconMain, 'IconTrayWin32.ico', WINDOWS_TRAY_ICON_SIZES, output)
-	await generate(IconPlainSpacedLight, 'IconTrayWin32Light.ico', WINDOWS_ICON_SIZES, output)
-	await generate(IconPlainSpacedDark, 'IconTrayWin32Dark.ico', WINDOWS_ICON_SIZES, output)
+	await generate(IconPlainSpacedLight, 'IconTrayWin32Light.ico', WINDOWS_TRAY_ICON_SIZES, output)
+	await generate(IconPlainSpacedDark, 'IconTrayWin32Dark.ico', WINDOWS_TRAY_ICON_SIZES, output)
 }
 
 generateIcons()

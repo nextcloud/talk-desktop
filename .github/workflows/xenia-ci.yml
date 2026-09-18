@@ -17,6 +17,14 @@ name: Xenia CI (unsigned build)
 #             installed in the Linux job below (XNT-63).
 #             There is deliberately no .deb/.rpm/AppImage here: this project has no
 #             makers for those formats, only maker-flatpak and maker-zip.
+#
+# CHANNEL=stable is set on every build job on purpose (XNT-134). The default differs
+# either side of the build: forge.config.js and prepare-release-packages.mjs default to
+# 'stable', but webpack.{base,renderer}.config.js default to 'dev'. Left unset, the
+# artifact is named as a stable release while its renderer is compiled as a dev build,
+# so getFullVersion() appends "-<hash> (<branch>)" and the login footer renders it.
+# Windows was already stable via release:package's own default; it is spelled out here
+# so all three jobs declare the channel the same way.
 
 on:
   push:
@@ -55,6 +63,8 @@ jobs:
           $bin | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Package Windows (MSI + EXE)
+        env:
+          CHANNEL: stable
         run: npm run release:package -- --windows
 
       - uses: actions/upload-artifact@v4
@@ -84,6 +94,7 @@ jobs:
       - name: Build macOS app bundle (universal, unsigned)
         env:
           TALK_PATH: out/.temp/spreed
+          CHANNEL: stable
         run: npm run build:mac
 
       # Makes every darwin distributable from the bundle built above
@@ -91,6 +102,7 @@ jobs:
       - name: Make macOS .zip and .dmg
         env:
           TALK_PATH: out/.temp/spreed
+          CHANNEL: stable
         run: npm run package:mac
 
       - uses: actions/upload-artifact@v4
@@ -156,6 +168,7 @@ jobs:
       - name: Build and package Linux (Flatpak + zip)
         env:
           TALK_PATH: out/.temp/spreed
+          CHANNEL: stable
         run: |
           npm run build:linux
           npm run package:linux

@@ -53,6 +53,8 @@ function createTalkWindow() {
 			width: 1400,
 			height: 900,
 		}),
+		name: 'talk-primary',
+		windowStatePersistence: true,
 		show: false,
 	})
 
@@ -69,6 +71,8 @@ function createTalkWindow() {
 			width: 800,
 			height: 600,
 		}),
+		name: 'talk-secondary',
+		windowStatePersistence: false,
 	})
 
 	applyContextMenu(window)

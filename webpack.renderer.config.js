@@ -116,7 +116,7 @@ const webpackRendererConfig = {
 			},
 			{
 				test: /\.(png|jpe?g|gif|webp|svg|woff2?|eot|ttf)$/,
-				type: 'asset/inline',
+				type: 'asset/resource',
 			},
 			// Talk specific rules
 			{

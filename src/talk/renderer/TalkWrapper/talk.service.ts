@@ -5,8 +5,8 @@
 
 import type { Router } from 'vue-router'
 
-import { isNavigationFailure, NavigationFailureType } from '@talk/node_modules/vue-router'
 import { useTalkHashStore } from '@talk/src/stores/talkHash.js'
+import { isNavigationFailure, NavigationFailureType } from 'vue-router'
 
 /**
  * Get the Talk instance

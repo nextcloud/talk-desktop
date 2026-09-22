@@ -9,6 +9,7 @@ const { EsbuildPlugin } = require('esbuild-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 const { spawnSync } = require('node:child_process')
+const { existsSync } = require('node:fs')
 const path = require('node:path')
 const { VueLoaderPlugin } = require('vue-loader')
 const webpack = require('webpack')
@@ -60,10 +61,13 @@ function createPatcherAliases(packageName) {
  * @return {string} - The described version
  */
 function getFullVersion(cwd = __dirname) {
+	// Built-in talk is an npm dependency, not a git repo
+	const isGitRepo = existsSync(path.join(cwd, '.git'))
+
 	// Currently specified version from the package.json, e.g. "21.0.0-dev.0"
 	const packageVersion = require(`${cwd}/package.json`).version
 
-	if (CHANNEL === 'stable') {
+	if (CHANNEL === 'stable' || !isGitRepo) {
 		return `v${packageVersion}`
 	}
 
@@ -175,6 +179,19 @@ const webpackRendererConfig = {
 			{
 				test: /\.ogg$/,
 				type: 'asset/resource',
+			},
+			{
+				// Talk requests assets from @mediapipe/tasks-vision and @sapphi-red/web-noise-suppressor by a path relative to Talk
+				// For example, new URL('../../node_modules/@sapphi-red/web-noise-suppressor/dist/rnnoise.wasm', import.meta.url)
+				// A normal module request is not available for Talk because these assets are not listed in those dependencies' package.json/exports field ...
+				// A workaround: fallback to local node_modules
+				include: TALK_PATH,
+				resolve: {
+					fallback: {
+						'../../node_modules': path.resolve(__dirname, 'node_modules'),
+						'../../../../../node_modules': path.resolve(__dirname, 'node_modules'),
+					},
+				},
 			},
 		],
 	},

@@ -111,16 +111,17 @@ By default, Talk Desktop bundles a specific Talk frontend installed as an npm de
 To develop with a different version, an unreleased branch or local version, clone it to `.overrides/spreed/`:
 
 ```sh
-# Clone to .overrides/spreed
-git clone https://github.com/nextcloud/spreed .overrides/spreed
-# And install dependencies in spreed override as well
-npm --prefix=.overrides/spreed ci
+npm run dev:talk:clone
+# on a specific version/branch
+npm run dev:talk:clone stable34
+# Or clone manually to .overrides/spreed/ and install dependencies
 ```
 
 To use local Talk from a different path, for example, a local Nextcloud server setup, set a symlink:
 
 ```sh
-# 🐧Linux / 🍎 macOS
+npm run dev:talk:link /path/to/nextcloud/server/apps-extra/spreed/
+# or manually
 ln -s /path/to/nextcloud/server/apps-extra/spreed/ .overrides/spreed
 ```
 

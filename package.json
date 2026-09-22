@@ -68,6 +68,7 @@
     "mri": "^1.2.0",
     "pinia": "^4.0.3",
     "semver": "^7.8.5",
+    "talk": "github:nextcloud-releases/spreed#semver:*",
     "unzip-crx-3": "^0.2.0",
     "vue": "^3.5.42",
     "vue-material-design-icons": "^5.3.1",
@@ -125,10 +126,5 @@
     "sharp": true
   },
   "desktopName": "com.nextcloud.talk.desktop",
-  "productName": "Nextcloud Talk",
-  "talk": {
-    "stable": "v25.0.0",
-    "beta": "v25.0.0",
-    "dev": "main"
-  }
+  "productName": "Nextcloud Talk"
 }

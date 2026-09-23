@@ -8,10 +8,11 @@ import { isRTL, register, setLanguage, setLocale } from '@nextcloud/l10n'
 import { appData } from '../app/AppData.js'
 import { refetchAppData } from '../app/appData.service.js'
 import { TITLE_BAR_HEIGHT } from '../constants.js'
-import { initAppConfig } from './appConfig.service.ts'
+import { getAppConfigValue, initAppConfig } from './appConfig.service.ts'
 import { BUILD_CONFIG } from './build.config.ts'
 import { initGlobals } from './globals/globals.js'
 import { setupInitialState } from './initialState.service.js'
+import { setTheming } from './theme.utils.ts'
 
 /**
  * @param {string} lang - language code, TS type: `${lang}_${countryCode}`|`${lang}`
@@ -258,6 +259,11 @@ export async function setupWebPage() {
 	appData.fromJSON(await window.TALK_DESKTOP.getAppData())
 	await initAppConfig()
 	await applyL10n()
+	setTheming({
+		theme: getAppConfigValue('theme'),
+		highContrast: getAppConfigValue('highContrast'),
+		openDyslexic: getAppConfigValue('dyslexicFont'),
+	})
 	applyInitialState()
 	initGlobals()
 	applyUserData()

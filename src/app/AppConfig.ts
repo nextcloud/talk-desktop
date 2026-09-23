@@ -97,6 +97,16 @@ export type AppConfig = {
 	// Nothing yet...
 
 	// ----------------------
+	// Conversations settings
+	// ----------------------
+
+	/**
+	 * Whether to automatically unarchive an archived conversation when a new message is posted in it.
+	 * Default: false.
+	 */
+	unarchiveOnNewMessage: boolean
+
+	// ----------------------
 	// Notifications settings
 	// ----------------------
 
@@ -150,6 +160,7 @@ const defaultAppConfig: AppConfig = {
 	systemTitleBar: false,
 	monochromeTrayIcon: isMac,
 	zoomFactor: 1,
+	unarchiveOnNewMessage: false,
 	playSoundChat: 'respect-dnd',
 	playSoundCall: 'respect-dnd',
 	enableCallbox: 'respect-dnd',

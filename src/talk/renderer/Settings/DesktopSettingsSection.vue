@@ -32,6 +32,8 @@ const systemTitleBar = useAppConfigValue('systemTitleBar')
 const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
 const zoomFactor = useAppConfigValue('zoomFactor')
 
+const unarchiveOnNewMessage = useAppConfigValue('unarchiveOnNewMessage')
+
 const playSoundChat = useAppConfigValue('playSoundChat')
 const playSoundCall = useAppConfigValue('playSoundCall')
 const enableCallbox = useAppConfigValue('enableCallbox')
@@ -80,6 +82,15 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 		</NcFormGroup>
 
 		<UiFormGroupZoom v-model="zoomFactor" />
+
+		<NcFormGroup :label="t('talk_desktop', 'Conversations')">
+			<NcFormBox>
+				<NcFormBoxSwitch
+					v-model="unarchiveOnNewMessage"
+					:label="t('talk_desktop', 'Unarchive conversations automatically')"
+					:description="t('talk_desktop', 'An archived conversation is moved back to the conversation list when a new message is posted in it')" />
+			</NcFormBox>
+		</NcFormGroup>
 
 		<NcFormGroup :label="t('talk_desktop', 'Notifications & Sounds')">
 			<NcFormBox>

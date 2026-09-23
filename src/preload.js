@@ -66,6 +66,12 @@ const TALK_DESKTOP = {
 		return () => ipcRenderer.removeListener('app:prefersContrastMore:change', handler)
 	},
 	/**
+	 * Get system theme
+	 *
+	 * @return {Promise<'light' | 'dark'>} - System theme
+	 */
+	getSystemTheme: () => ipcRenderer.sendSync('app:getSystemTheme'),
+	/**
 	 * Enable web request intercepting
 	 *
 	 * @type {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor}

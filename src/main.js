@@ -19,7 +19,7 @@ const { setupReleaseNotificationScheduler, checkForUpdate } = require('./app/git
 const { initLaunchAtStartupListener } = require('./app/launchAtStartup.config.ts')
 const { runMigrations } = require('./app/migration.service.ts')
 const { systemInfo, isMac, isWindows, isSameExecution, isSquirrel, relaunchApp } = require('./app/system.utils.ts')
-const { applyTheme } = require('./app/theme.config.ts')
+const { applyTheme, getSystemTheme } = require('./app/theme.config.ts')
 const { buildTitle, onReadyToShow } = require('./app/utils.ts')
 const { enableWebRequestInterceptor, disableWebRequestInterceptor } = require('./app/webRequestInterceptor.js')
 const { createAuthenticationWindow } = require('./authentication/authentication.window.js')
@@ -68,6 +68,9 @@ if (!app.requestSingleInstanceLock()) {
 
 ipcMain.on('app:quit', () => app.quit())
 ipcMain.handle('app:getSystemInfo', () => systemInfo)
+ipcMain.on('app:getSystemTheme', (event) => {
+	event.returnValue = getSystemTheme()
+})
 ipcMain.handle('app:buildTitle', (event, title) => buildTitle(title))
 ipcMain.handle('app:getSystemL10n', () => ({
 	locale: app.getLocale().replace('-', '_') ?? 'en',

@@ -10,11 +10,6 @@ import { storeToRefs } from 'pinia'
 import NcFormBox from '@nextcloud/vue/components/NcFormBox'
 import NcFormBoxSwitch from '@nextcloud/vue/components/NcFormBoxSwitch'
 import NcFormGroup from '@nextcloud/vue/components/NcFormGroup'
-import NcRadioGroup from '@nextcloud/vue/components/NcRadioGroup'
-import NcRadioGroupButton from '@nextcloud/vue/components/NcRadioGroupButton'
-import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
-import IconWeatherNight from 'vue-material-design-icons/WeatherNight.vue'
-import IconWeatherSunny from 'vue-material-design-icons/WeatherSunny.vue'
 import DesktopSettingsSectionRelaunchNote from './components/DesktopSettingsSectionRelaunchNote.vue'
 import UiFormBoxAudioOutput from './components/UiFormBoxAudioOutput.vue'
 import UiFormBoxSelectNative from './components/UiFormBoxSelectNative.vue'
@@ -31,7 +26,13 @@ const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 const launchAtStartup = useAppConfigValue('launchAtStartup')
 const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackground')
 
-const theme = useAppConfigValue('theme')
+const themeToggle = useTristateToggle(
+	useAppConfigValue('theme'),
+	// prefers-color-scheme cannot be used here because its value it overridden by Electron on theme change
+	() => window.TALK_DESKTOP.getSystemTheme() === 'dark',
+	['default', 'dark', 'light'],
+)
+
 const highContrastToggle = useTristateToggle(
 	useAppConfigValue('highContrast'),
 	usePrefersContrastMore(),
@@ -66,23 +67,13 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 			<NcFormBoxSwitch v-if="launchAtStartup" v-model="launchAtStartupInBackground" :label="t('talk_desktop', 'Launch in background')" />
 		</NcFormBox>
 
-		<NcRadioGroup v-model="theme" :label="t('talk_desktop', 'Theme')">
-			<NcRadioGroupButton :label="t('talk_desktop', 'System default')" value="default">
-				<template #icon>
-					<IconThemeLightDark :size="20" />
-				</template>
-			</NcRadioGroupButton>
-			<NcRadioGroupButton :label="t('talk_desktop', 'Light')" value="light">
-				<template #icon>
-					<IconWeatherSunny :size="20" />
-				</template>
-			</NcRadioGroupButton>
-			<NcRadioGroupButton :label="t('talk_desktop', 'Dark')" value="dark">
-				<template #icon>
-					<IconWeatherNight :size="20" />
-				</template>
-			</NcRadioGroupButton>
-		</NcRadioGroup>
+		<NcFormGroup :label="t('talk_desktop', 'Appearance')">
+			<NcFormBox>
+				<NcFormBoxSwitch
+					v-model="themeToggle"
+					:label="t('talk_desktop', 'Dark mode')" />
+			</NcFormBox>
+		</NcFormGroup>
 
 		<NcFormGroup :label="t('talk_desktop', 'System integration')">
 			<NcFormBox>

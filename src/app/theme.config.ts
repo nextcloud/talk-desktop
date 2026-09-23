@@ -35,3 +35,23 @@ nativeTheme.on('updated', () => {
 ipcMain.on('app:prefersContrastMore:get', (event) => {
 	event.returnValue = nativeTheme.shouldUseHighContrastColors
 })
+
+/**
+ * Get original system theme.
+ * Once theme is overridden in Electron, it only returns the overridden values.
+ * The only way to get the system theme is to switch to the system and then back.
+ * This API is sync and should not trigger any flickering...
+ */
+export function getSystemTheme() {
+	const themeSource = nativeTheme.themeSource
+
+	nativeTheme.themeSource = 'system'
+	const isDark = nativeTheme.shouldUseDarkColors
+	nativeTheme.themeSource = themeSource
+
+	return isDark ? 'dark' : 'light'
+}
+
+ipcMain.on('app:systemTheme:get', (event) => {
+	event.returnValue = getSystemTheme()
+})

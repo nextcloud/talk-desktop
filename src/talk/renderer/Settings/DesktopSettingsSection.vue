@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import { t } from '@nextcloud/l10n'
+import { useMediaQuery } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import NcFormBox from '@nextcloud/vue/components/NcFormBox'
 import NcFormBoxSwitch from '@nextcloud/vue/components/NcFormBoxSwitch'

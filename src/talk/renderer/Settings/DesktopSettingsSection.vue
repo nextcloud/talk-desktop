@@ -18,8 +18,10 @@ import DesktopSettingsSectionRelaunchNote from './components/DesktopSettingsSect
 import UiFormBoxAudioOutput from './components/UiFormBoxAudioOutput.vue'
 import UiFormBoxSelectNative from './components/UiFormBoxSelectNative.vue'
 import UiFormGroupZoom from './components/UiFormGroupZoom.vue'
+import { usePrefersContrastMore } from '../../../shared/usePrefersContrastMore.ts'
 import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
+import { useTristateToggle } from './useTristateToggle.ts'
 
 const isLinux = window.systemInfo.isLinux
 
@@ -27,7 +29,16 @@ const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
 const launchAtStartup = useAppConfigValue('launchAtStartup')
 const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackground')
+
 const theme = useAppConfigValue('theme')
+const highContrastToggle = useTristateToggle(
+	useAppConfigValue('highContrast'),
+	usePrefersContrastMore(),
+	['default', 'enabled', 'disabled'],
+)
+
+const dyslexicFont = useAppConfigValue('dyslexicFont')
+
 const systemTitleBar = useAppConfigValue('systemTitleBar')
 const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
 const zoomFactor = useAppConfigValue('zoomFactor')
@@ -72,10 +83,22 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 			</NcRadioGroupButton>
 		</NcRadioGroup>
 
-		<NcFormGroup :label="t('talk_desktop', 'Appearance')">
+		<NcFormGroup :label="t('talk_desktop', 'System integration')">
 			<NcFormBox>
 				<NcFormBoxSwitch v-model="monochromeTrayIcon" :label="t('talk_desktop', 'Use monochrome tray icon')" />
 				<NcFormBoxSwitch v-model="systemTitleBar" :label="t('talk_desktop', 'Use system title bar')" />
+			</NcFormBox>
+		</NcFormGroup>
+
+		<NcFormGroup :label="t('talk_desktop', 'Accessibility')">
+			<NcFormBox>
+				<NcFormBoxSwitch
+					v-model="highContrastToggle"
+					:label="t('talk_desktop', 'High contrast')" />
+				<NcFormBoxSwitch
+					v-model="dyslexicFont"
+					:label="t('talk_desktop', 'Dyslexia font')"
+					:description="t('talk_desktop', 'Use OpenDyslexic font, created to help with some symptoms of dyslexia')" />
 			</NcFormBox>
 		</NcFormGroup>
 

@@ -49,6 +49,23 @@ const TALK_DESKTOP = {
 	 */
 	getSystemL10n: () => ipcRenderer.invoke('app:getSystemL10n'),
 	/**
+	 * Get whether (prefers-contrast: more) should match
+	 *
+	 * @return {boolean} - whether (prefers-contrast: more) should match
+	 */
+	getPrefersContrastMore: () => ipcRenderer.sendSync('app:prefersContrastMore:get'),
+	/**
+	 * Subscribe on (prefers-contrast: more) change
+	 *
+	 * @param {(value: boolean) => void} callback - Callback to be called when (prefers-contrast: more) changes
+	 * @return {() => void} - Unsubscribe
+	 */
+	onPrefersContrastMoreChange: (callback) => {
+		const handler = (event, value) => callback(value)
+		ipcRenderer.on('app:prefersContrastMore:change', handler)
+		return () => ipcRenderer.removeListener('app:prefersContrastMore:change', handler)
+	},
+	/**
 	 * Enable web request intercepting
 	 *
 	 * @type {typeof import('./app/webRequestInterceptor').enableWebRequestInterceptor}

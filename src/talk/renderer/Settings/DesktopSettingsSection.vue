@@ -33,7 +33,9 @@ const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackgrou
 
 const updateChannel = useAppConfigValue('updateChannel')
 const updateChannelOptions = [
+	// TRANSLATORS: Stable release update channel
 	{ label: t('talk_desktop', 'Stable'), value: 'stable' },
+	// TRANSLATORS: Beta release update channel
 	{ label: t('talk_desktop', 'Beta'), value: 'beta' },
 ]
 const theme = useAppConfigValue('theme')
@@ -72,6 +74,7 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 		</NcFormBox>
 
 		<NcFormBox v-if="!BUILD_CONFIG.isBranded">
+			<!-- TRANSLATORS: A distribution channel where an app will be updated from -->
 			<UiFormBoxSelectNative v-model="updateChannel" :label="t('talk_desktop', 'Update channel')" :options="updateChannelOptions" />
 		</NcFormBox>
 

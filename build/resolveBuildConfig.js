@@ -4,7 +4,7 @@
  */
 
 const { existsSync, readFileSync } = require('node:fs')
-const { join, resolve } = require('node:path')
+const { dirname, join, resolve } = require('node:path')
 const { getAppInfo } = require('./appinfo.utils.js')
 const buildConfigDefaults = require('./build.config.json')
 const { UUIDv5 } = require('./UUIDv5.js')
@@ -76,7 +76,16 @@ function resolveBuildConfig() {
  * Resolve path to the build-in Talk
  */
 function resolveTalkPath() {
-	return process.env.TALK_PATH ? resolve(process.env.TALK_PATH) : resolve(__dirname, '../spreed')
+	// TODO: migrate to .overrides/spreed/
+	const talkOverridesPath = resolve(process.env.TALK_PATH || join(__dirname, '../spreed'))
+
+	// Currently in npm this is always "./node_modules/talk"
+	// But "require.resolve" allows to have the path independent from a specific package manager and its setup
+	const talkInstalledModulePath = dirname(require.resolve('talk/package.json'))
+
+	return existsSync(talkOverridesPath)
+		? talkOverridesPath
+		: talkInstalledModulePath
 }
 
 /**

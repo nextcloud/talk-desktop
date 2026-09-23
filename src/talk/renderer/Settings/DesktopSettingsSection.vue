@@ -18,6 +18,7 @@ import DesktopSettingsSectionRelaunchNote from './components/DesktopSettingsSect
 import UiFormBoxAudioOutput from './components/UiFormBoxAudioOutput.vue'
 import UiFormBoxSelectNative from './components/UiFormBoxSelectNative.vue'
 import UiFormGroupZoom from './components/UiFormGroupZoom.vue'
+import { BUILD_CONFIG } from '../../../shared/build.config.ts'
 import { usePrefersContrastMore } from '../../../shared/usePrefersContrastMore.ts'
 import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
@@ -30,6 +31,11 @@ const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 const launchAtStartup = useAppConfigValue('launchAtStartup')
 const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackground')
 
+const updateChannel = useAppConfigValue('updateChannel')
+const updateChannelOptions = [
+	{ label: t('talk_desktop', 'Stable'), value: 'stable' },
+	{ label: t('talk_desktop', 'Beta'), value: 'beta' },
+]
 const theme = useAppConfigValue('theme')
 const highContrastToggle = useTristateToggle(
 	useAppConfigValue('highContrast'),
@@ -63,6 +69,10 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 		<NcFormBox v-if="!isLinux">
 			<NcFormBoxSwitch v-model="launchAtStartup" :label="t('talk_desktop', 'Launch at startup')" />
 			<NcFormBoxSwitch v-if="launchAtStartup" v-model="launchAtStartupInBackground" :label="t('talk_desktop', 'Launch in background')" />
+		</NcFormBox>
+
+		<NcFormBox v-if="!BUILD_CONFIG.isBranded">
+			<UiFormBoxSelectNative v-model="updateChannel" :label="t('talk_desktop', 'Update channel')" :options="updateChannelOptions" />
 		</NcFormBox>
 
 		<NcRadioGroup v-model="theme" :label="t('talk_desktop', 'Theme')">

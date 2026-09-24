@@ -93,9 +93,19 @@ const TALK_DESKTOP = {
 	/**
 	 * Get available desktop capture sources: screens and windows
 	 *
-	 * @return {Promise<{ id: string, name: string, icon?: string }[]|null>}
+	 * @return {Promise<import('./screensharing/screensharing.types.ts').ScreensharingSource[]|null>}
 	 */
 	getDesktopCapturerSources: () => ipcRenderer.invoke('app:getDesktopCapturerSources'),
+	/**
+	 * Mark the screens captured by the shared source as being shared
+	 *
+	 * @param {import('./screensharing/screensharing.types.ts').SharedScreensharingSource} source - The shared source
+	 */
+	showScreensharingMarker: (source) => ipcRenderer.send('screensharing:marker:show', source),
+	/**
+	 * Remove the marker from the shared screens
+	 */
+	hideScreensharingMarker: () => ipcRenderer.send('screensharing:marker:hide'),
 	/**
 	 * Relaunch an entire application
 	 */

@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import type { ScreensharingSource, ScreensharingSourceId } from './screensharing.types.ts'
+import type { ScreensharingSource, ScreensharingSourceId } from '../../../screensharing/screensharing.types.ts'
 
 import IconCancel from '@mdi/svg/svg/cancel.svg?raw'
 import IconMonitorShare from '@mdi/svg/svg/monitor-share.svg?raw'
@@ -19,7 +19,7 @@ import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import DesktopMediaSourcePreview from './DesktopMediaSourcePreview.vue'
 
 const emit = defineEmits<{
-	submit: [ScreensharingSourceId]
+	submit: [ScreensharingSource]
 	cancel: []
 }>()
 
@@ -76,6 +76,7 @@ async function requestDesktopCapturerSources() {
 	const entireDesktop: ScreensharingSource = {
 		id: 'entire-desktop:0:0',
 		name: screens.length > 1 ? t('talk_desktop', 'Audio + All screens') : t('talk_desktop', 'Audio + Screen'),
+		display_id: '',
 		icon: null,
 		thumbnail: null,
 	}
@@ -108,7 +109,7 @@ function handleVideoSuspend(source: ScreensharingSource) {
  * Handle the submit event of the dialog
  */
 function handleSubmit() {
-	emit('submit', selectedSourceId.value!)
+	emit('submit', sources.value!.find((source) => source.id === selectedSourceId.value)!)
 }
 
 /**

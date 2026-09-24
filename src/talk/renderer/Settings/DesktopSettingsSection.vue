@@ -31,8 +31,8 @@ const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 const launchAtStartup = useAppConfigValue('launchAtStartup')
 const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackground')
 
-const updateChannel = useAppConfigValue('updateChannel')
-const updateChannelOptions = [
+const releaseChannel = useAppConfigValue('releaseChannel')
+const releaseChannelOptions = [
 	// TRANSLATORS: Stable release update channel
 	{ label: t('talk_desktop', 'Stable'), value: 'stable' },
 	// TRANSLATORS: Beta release update channel
@@ -75,7 +75,7 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 
 		<NcFormBox v-if="!BUILD_CONFIG.isBranded">
 			<!-- TRANSLATORS: A distribution channel where an app will be updated from -->
-			<UiFormBoxSelectNative v-model="updateChannel" :label="t('talk_desktop', 'Update channel')" :options="updateChannelOptions" />
+			<UiFormBoxSelectNative v-model="releaseChannel" :label="t('talk_desktop', 'Update channel')" :options="releaseChannelOptions" />
 		</NcFormBox>
 
 		<NcRadioGroup v-model="theme" :label="t('talk_desktop', 'Theme')">

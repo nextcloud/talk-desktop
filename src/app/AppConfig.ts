@@ -67,7 +67,7 @@ export type AppConfig = {
 	 * Release channel to check for updates.
 	 * Default: 'beta' when running a beta or dev build, 'stable' otherwise.
 	 */
-	updateChannel: 'stable' | 'beta'
+	releaseChannel: 'stable' | 'beta'
 
 	// -------------------
 	// Appearance settings
@@ -161,7 +161,7 @@ const defaultAppConfig: AppConfig = {
 	accounts: [],
 	launchAtStartup: false,
 	launchAtStartupInBackground: true,
-	updateChannel: __CHANNEL__ === 'stable' ? 'stable' : 'beta',
+	releaseChannel: __CHANNEL__ === 'stable' ? 'stable' : 'beta',
 	theme: 'default',
 	highContrast: 'default',
 	dyslexicFont: false,

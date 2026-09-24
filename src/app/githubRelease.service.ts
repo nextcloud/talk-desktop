@@ -8,7 +8,7 @@ import lte from 'semver/functions/lte.js'
 import rcompare from 'semver/functions/rcompare.js'
 import { version } from '../../package.json'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
-import { getAppConfig, onAppConfigChange, setAppConfig } from './AppConfig.ts'
+import { getAppConfig, onAppConfigChange } from './AppConfig.ts'
 import { currentInstallerExt, isMac, platformTitle } from './system.utils.ts'
 
 export type ReleaseInfo = {
@@ -117,7 +117,7 @@ export async function checkForUpdate({ forceRequest = false }: { forceRequest?: 
 		return cachedNewRelease
 	}
 
-	const latest = (await getLatestRelease())[getAppConfig('updateChannel') === 'stable' ? 'stable' : 'latest']
+	const latest = (await getLatestRelease())[getAppConfig('releaseChannel') === 'stable' ? 'stable' : 'latest']
 
 	// Something went wrong...
 	if (!latest) {
@@ -138,7 +138,7 @@ export async function checkForUpdate({ forceRequest = false }: { forceRequest?: 
 	return latest
 }
 
-onAppConfigChange('updateChannel', () => checkForUpdate({ forceRequest: true }))
+onAppConfigChange('releaseChannel', () => checkForUpdate({ forceRequest: true }))
 
 let schedulerIntervalId: NodeJS.Timeout | undefined
 
@@ -150,11 +150,6 @@ let schedulerIntervalId: NodeJS.Timeout | undefined
 export function setupReleaseNotificationScheduler(intervalInMin: number = 60) {
 	if (schedulerIntervalId !== undefined) {
 		stopReleaseNotificationScheduler()
-	}
-
-	// Persist the beta channel on beta builds, so it is not lost after updating to an intermediate stable build
-	if (__CHANNEL__ !== 'stable') {
-		setAppConfig('updateChannel', getAppConfig('updateChannel'))
 	}
 
 	checkForUpdate()

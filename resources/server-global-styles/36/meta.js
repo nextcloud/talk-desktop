@@ -14,7 +14,7 @@ export const version = "36.0.0.0"
 /** Version from $OC_VersionString, e.g. "34.0.0 RC 1" */
 export const versionString = "36.0.0 dev"
 /** Commit hash, e.g. "a1b2c3d" */
-export const versionCommitHash = "4e0993c0"
+export const versionCommitHash = "70aa8657"
 
 /** Available theming configurations */
 export const themingConfigs = [{"name":"","primaryColor":"","backgroundColor":"","prefix":""}]

@@ -260,7 +260,7 @@ export async function setupWebPage() {
 	await initAppConfig()
 	await applyL10n()
 	setTheming({
-		theme: getAppConfigValue('theme'),
+		colorScheme: getAppConfigValue('theme'),
 		highContrast: getAppConfigValue('highContrast'),
 		openDyslexic: getAppConfigValue('dyslexicFont'),
 	})

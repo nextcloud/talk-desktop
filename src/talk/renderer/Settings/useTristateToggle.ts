@@ -44,8 +44,7 @@ export function useTristateToggle<DefaultOption extends string, TrueOption exten
 				? toValue(defaultToggleValue)
 				: tristate.value === trueOption
 		},
-		set: async (toggleValue: boolean) => {
-			console.log('useTristateToggle set', toggleValue, toValue(defaultToggleValue), defaultOption, trueOption, falseOption, toggleValue ? trueOption : falseOption)
+		set: (toggleValue: boolean) => {
 			tristate.value = toggleValue === toValue(defaultToggleValue)
 				? defaultOption
 				: (toggleValue ? trueOption : falseOption)

@@ -48,7 +48,7 @@ export function setTheming({
 		themes.add('opendyslexic')
 	}
 
-	applyThemingThemes([...themes])
+	applyThemes([...themes])
 }
 
 /**
@@ -56,7 +56,7 @@ export function setTheming({
  *
  * @param themes - Themes list
  */
-function applyThemingThemes(themes: NextcloudTheme[]) {
+function applyThemes(themes: NextcloudTheme[]) {
 	const currentThemeAttrs = document.body.getAttributeNames().filter((attr) => attr.startsWith('data-theme-'))
 	const newThemeAttrs = themes.map((theme) => `data-theme-${theme}`)
 

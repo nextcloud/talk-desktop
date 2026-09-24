@@ -27,11 +27,13 @@ export function setTheming({
 }) {
 	const themes: Set<NextcloudTheme> = new Set()
 
-	if (colorScheme !== 'default') {
-		themes.add(colorScheme)
-	}
-
-	if (highContrast !== 'default') {
+	if (highContrast === 'default') {
+		// Normal contrast themes
+		if (colorScheme !== 'default') {
+			themes.add(colorScheme)
+		}
+	} else {
+		// High contrast themes
 		const currentColorScheme = colorScheme === 'default' ? defaultColorScheme : colorScheme
 
 		if (highContrast === 'enabled') {
@@ -70,5 +72,5 @@ function applyThemes(themes: NextcloudTheme[]) {
 		document.body.setAttribute(attr, '')
 	}
 
-	document.body.setAttribute('data-themes', themes.join(' '))
+	document.body.setAttribute('data-themes', themes.join(','))
 }

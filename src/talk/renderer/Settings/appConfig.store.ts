@@ -7,8 +7,11 @@ import type { Ref } from 'vue'
 import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
 
 import { defineStore } from 'pinia'
-import { readonly, ref, watch } from 'vue'
+import { readonly, ref, watch, watchEffect } from 'vue'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
+import { setTheming } from '../../../shared/theme.utils.ts'
+import { useMatchMedia } from '../../../shared/useMatchMedia.ts'
+import { usePrefersContrastMore } from '../../../shared/usePrefersContrastMore.ts'
 
 export const useAppConfigStore = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
@@ -26,6 +29,21 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 			unwatchRelaunch()
 		},
 	)
+
+	const prefersDark = useMatchMedia('(prefers-color-scheme: dark)')
+	const prefersContrastMore = usePrefersContrastMore()
+
+	watchEffect(() => {
+		setTheming({
+			colorScheme: appConfig.value.theme,
+			// Because (prefers-contrast: more) is not set in Electron, default value must be resolved manually
+			highContrast: appConfig.value.highContrast === 'default'
+				? prefersContrastMore.value ? 'enabled' : 'disabled'
+				: appConfig.value.highContrast,
+			openDyslexic: appConfig.value.dyslexicFont,
+			defaultColorScheme: prefersDark.value ? 'dark' : 'light',
+		})
+	})
 
 	/**
 	 * Get an application config value

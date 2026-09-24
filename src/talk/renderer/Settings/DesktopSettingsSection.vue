@@ -18,6 +18,7 @@ import DesktopSettingsSectionRelaunchNote from './components/DesktopSettingsSect
 import UiFormBoxAudioOutput from './components/UiFormBoxAudioOutput.vue'
 import UiFormBoxSelectNative from './components/UiFormBoxSelectNative.vue'
 import UiFormGroupZoom from './components/UiFormGroupZoom.vue'
+import { usePrefersContrastMore } from '../../../shared/usePrefersContrastMore.ts'
 import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
 import { useTristateToggle } from './useTristateToggle.ts'
@@ -28,10 +29,11 @@ const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
 const launchAtStartup = useAppConfigValue('launchAtStartup')
 const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackground')
+
 const theme = useAppConfigValue('theme')
 const highContrastToggle = useTristateToggle(
 	useAppConfigValue('highContrast'),
-	() => window.TALK_DESKTOP.getPrefersContrastMore(),
+	usePrefersContrastMore(),
 	['default', 'enabled', 'disabled'],
 )
 

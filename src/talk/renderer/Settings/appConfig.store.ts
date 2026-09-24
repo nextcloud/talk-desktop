@@ -7,10 +7,11 @@ import type { Ref } from 'vue'
 import type { AppConfig, AppConfigKey } from '../../../app/AppConfig.ts'
 
 import { defineStore } from 'pinia'
-import { computed, onScopeDispose, readonly, ref, watch, watchEffect } from 'vue'
+import { readonly, ref, watch, watchEffect } from 'vue'
 import { getAppConfig } from '../../../shared/appConfig.service.ts'
 import { setTheming } from '../../../shared/theme.utils.ts'
 import { useMatchMedia } from '../../../shared/useMatchMedia.ts'
+import { usePrefersContrastMore } from '../../../shared/usePrefersContrastMore.ts'
 
 export const useAppConfigStore = defineStore('appConfig', () => {
 	const appConfig: Ref<AppConfig> = ref(getAppConfig())
@@ -30,14 +31,7 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 	)
 
 	const prefersDark = useMatchMedia('(prefers-color-scheme: dark)')
-
-	// Unlike `prefers-color-scheme`, Electron does not set `prefers-contrast` ...
-	// It must be requested from the main process
-	const prefersContrastMore = ref(window.TALK_DESKTOP.getPrefersContrastMore())
-	const unsubscribe = window.TALK_DESKTOP.onPrefersContrastMoreChange((value: boolean) => {
-		prefersContrastMore.value = value
-	})
-	onScopeDispose(unsubscribe)
+	const prefersContrastMore = usePrefersContrastMore()
 
 	watchEffect(() => {
 		setTheming({

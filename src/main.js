@@ -27,6 +27,7 @@ const { openLoginWebView } = require('./authentication/login.window.js')
 const { createCallboxWindow } = require('./callbox/callbox.window.ts')
 const { createHelpWindow } = require('./help/help.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
+const { applyNativeWindowCaptureBorder } = require('./screensharing/screensharing.config.ts')
 const { showScreensharingMarker, hideScreensharingMarker } = require('./screensharing/screensharingMarker.service.ts')
 const { BUILD_CONFIG } = require('./shared/build.config.ts')
 const { createTalkWindow } = require('./talk/talk.window.js')
@@ -51,6 +52,11 @@ if (isWindows && process.env.NODE_ENV === 'production') {
 		app.setAppUserModelId(BUILD_CONFIG.winAppId)
 	}
 }
+
+/**
+ * Chromium command line switches must be applied before the app is ready
+ */
+applyNativeWindowCaptureBorder()
 
 /**
  * Handle creating/removing shortcuts on Windows when installing/uninstalling

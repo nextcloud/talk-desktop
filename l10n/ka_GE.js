@@ -19,6 +19,8 @@ OC.L10N.register(
     "Yes" : "დიახ",
     "Never" : "არასდროს",
     "Theme" : "ვიზუალური თემა",
+    "Accessibility" : "ხელმისაწვდომობა",
+    "Dyslexia font" : "შრიფტი Dyslexia ",
     "Reset" : "საწყის მდოგმარეობაში დაბრუნება",
     "Menu" : "მენიუ",
     "Update" : "განახლება",

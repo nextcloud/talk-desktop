@@ -17,6 +17,8 @@ OC.L10N.register(
     "Theme" : "Tem",
     "Light" : "Lugernus",
     "Dark" : "Teñval",
+    "Accessibility" : "Monedusted",
+    "Dyslexia font" : "Font evit an dud dislegiezhek",
     "Reload" : "Adkargañ",
     "Menu" : "Roll",
     "Update" : "Hizivaat",

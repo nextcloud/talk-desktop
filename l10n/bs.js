@@ -11,6 +11,8 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Ne",
     "Yes" : "Da",
+    "Accessibility" : "Pristupačnost",
+    "Dyslexia font" : "Font za disleksičare",
     "Update" : "Ažuriraj",
     "Today" : "Danas",
     "None" : "Ništa",

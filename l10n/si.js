@@ -14,6 +14,7 @@ OC.L10N.register(
     "No" : "නැහැ",
     "Theme" : "තේමාව",
     "Dark" : "අඳුරු",
+    "Dyslexia font" : "Dyslexia අකුරු වර්ගය",
     "Update" : "යාවත්කාල",
     "Back" : "ආපසු",
     "Log out" : "නික්මෙන්න",

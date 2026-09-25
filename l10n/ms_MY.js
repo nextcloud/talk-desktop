@@ -11,6 +11,8 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Tidak",
     "Yes" : "Ya",
+    "Accessibility" : "Kebolehcapaian",
+    "Dyslexia font" : "Tulisan disleksia",
     "Update" : "Kemaskini",
     "Quit" : "Berhenti",
     "Today" : "Hari ini"

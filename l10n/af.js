@@ -10,6 +10,8 @@ OC.L10N.register(
     "Valid until" : "Geldig tot",
     "About" : "Aangaande",
     "License" : "Lisensie",
+    "Accessibility" : "Toeganklikheid",
+    "Dyslexia font" : "Disleksie-font",
     "Reset" : "Herstel",
     "Menu" : "Kieslys",
     "Update" : "Werk by",

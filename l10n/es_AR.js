@@ -17,6 +17,8 @@ OC.L10N.register(
     "Yes" : "Sí",
     "Never" : "Nunca",
     "Dark" : "Oscuro",
+    "Accessibility" : "Accesibilidad",
+    "Dyslexia font" : "Dislexia fuente",
     "Reload" : "Recargar",
     "Reset" : "Restablecer",
     "Menu" : "Menú",

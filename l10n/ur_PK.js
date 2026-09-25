@@ -9,6 +9,8 @@ OC.L10N.register(
     "Ok" : "اوکے",
     "No" : "نہیں",
     "Yes" : "ہاں",
+    "Accessibility" : "رسائی ",
+    "Dyslexia font" : "ڈیسلیکسیا کا فونٹ",
     "Reset" : "ری سیٹ",
     "Today" : "آج"
 },

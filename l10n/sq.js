@@ -21,6 +21,8 @@ OC.L10N.register(
     "Never" : "Kurrë",
     "Theme" : "Shabllon",
     "Light" : "E çelët",
+    "Accessibility" : "Aksesueshmëria",
+    "Dyslexia font" : "Fonti Dyslexia",
     "Reload" : "Ringarkoje",
     "Reset" : "Rivendos",
     "Menu" : "Menu",

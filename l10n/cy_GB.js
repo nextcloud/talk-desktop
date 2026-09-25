@@ -15,6 +15,8 @@ OC.L10N.register(
     "Yes" : "Ie",
     "Light" : "Golau",
     "Dark" : "Tywyll",
+    "Accessibility" : "Hygyrchedd",
+    "Dyslexia font" : "Ffont dyslecsia",
     "Update" : "Diweddaru",
     "Quit" : "Gadael",
     "Today" : "Heddiw",

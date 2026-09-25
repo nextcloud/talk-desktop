@@ -14,6 +14,8 @@ OC.L10N.register(
     "Always" : "সর্বদা",
     "Light" : "হাল্কা",
     "Dark" : "গাঢ়",
+    "Accessibility" : "অ্যাক্সেসযোগ্যতা",
+    "Dyslexia font" : "ডিসলেক্সিয়া হরফ",
     "Reload" : "পূনরায় লোড কর",
     "Reset" : "পূণঃনির্ধানণ",
     "Update" : "পরিবর্ধন",

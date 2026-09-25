@@ -20,6 +20,8 @@ OC.L10N.register(
     "Theme" : "Etoso",
     "Light" : "Luma",
     "Dark" : "Malluma",
+    "Accessibility" : "Alirebleco",
+    "Dyslexia font" : "Vortblindeca tiparo",
     "Reload" : "Reŝargi",
     "Reset" : "Restarigi",
     "Update" : "Ĝisdatigi",

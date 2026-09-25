@@ -15,6 +15,8 @@ OC.L10N.register(
     "No" : "Ոչ",
     "Yes" : "Այո",
     "Never" : "Երբեք",
+    "Accessibility" : "Մատչելիություն",
+    "Dyslexia font" : "Դիքսլեքսիկ տառատեսակ",
     "Update" : "Թարմացնել",
     "Today" : "Այսօր",
     "This week" : "այս շաբաթ"

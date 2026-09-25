@@ -26,7 +26,7 @@ OC.L10N.register(
     "Theme" : "Asentel",
     "Light" : "Aceɛlal",
     "Dark" : "Ubrik",
-    "Appearance" : "Apparence",
+    "Accessibility" : "Tuffart",
     "Restart" : "Ales tanekra",
     "Reload" : "Smiren",
     "Zoom" : "Semɣeṛ",

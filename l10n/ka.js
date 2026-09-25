@@ -28,6 +28,8 @@ OC.L10N.register(
     "Theme" : "Theme",
     "Light" : "Light",
     "Dark" : "Dark",
+    "Accessibility" : "ხელმისაწვდომობა",
+    "Dyslexia font" : "დისლექსიის შრიფტი",
     "Reload" : "Reload",
     "Zoom" : "Zoom",
     "Reset" : "Reset",

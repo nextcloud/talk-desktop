@@ -17,6 +17,8 @@ OC.L10N.register(
     "Never" : "Ni",
     "Light" : "Hell",
     "Dark" : "Däischter",
+    "Accessibility" : "Accessibilitéit",
+    "Dyslexia font" : "Schrëftaart fir Dyslexiker",
     "Reset" : "Zeréck setzen",
     "Menu" : "Menü",
     "Update" : "Update",

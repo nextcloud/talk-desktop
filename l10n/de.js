@@ -63,7 +63,6 @@ OC.L10N.register(
     "System default" : "Systemstandard",
     "Light" : "Hell",
     "Dark" : "Dunkel",
-    "Appearance" : "Aussehen",
     "Use monochrome tray icon" : "Monochromes Tray-Symbol verwenden",
     "Use system title bar" : "Systemtitelleiste verwenden",
     "Notifications & Sounds" : "Benachrichtigungen und Töne",

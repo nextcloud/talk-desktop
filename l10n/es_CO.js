@@ -17,6 +17,8 @@ OC.L10N.register(
     "Never" : "Nunca",
     "Theme" : "Tema",
     "Dark" : "Oscuro",
+    "Accessibility" : "Accesibilidad",
+    "Dyslexia font" : "Ayuda para disléxicos",
     "Reset" : "Reiniciar",
     "Menu" : "Menú",
     "Update" : "Actualizar",

@@ -40,7 +40,6 @@ OC.L10N.register(
     "System default" : "القيمة التلقائية للنظام",
     "Light" : "فاتح",
     "Dark" : "داكن",
-    "Appearance" : "المظهر",
     "Use monochrome tray icon" : "استعمل أيقونة الدرج أحادية اللون",
     "Use system title bar" : "استعمل شريط عنوان النظام",
     "Play chat notification sound" : "قم بتشغيل صوت الإشعار بالدردشة",

@@ -20,6 +20,9 @@ updates:
       versions: [ "^8.5.24" ]
   cooldown:
     default-days: 7
+    exclude:
+      - "@nextcloud/*"
+      - "talk"
 
 - package-ecosystem: "github-actions"
   directory: ".github/workflows"

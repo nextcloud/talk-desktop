@@ -20,28 +20,9 @@ updates:
       versions: [ "^8.5.24" ]
   cooldown:
     default-days: 7
-
-- package-ecosystem: npm
-  target-branch: stable1
-  directory: "/"
-  commit-message:
-    prefix: "chore"
-    include: "scope"
-  versioning-strategy: "increase"
-  schedule:
-    interval: weekly
-    day: saturday
-    time: "03:00"
-    timezone: Europe/Berlin
-  ignore:
-    - dependency-name: "node-polyfill-webpack-plugin"
-      # ignore versions > 4.0.0
-      versions: [ "^4.1.0" ]
-    - dependency-name: "postcss"
-      # ignore versions > 8.5.23
-      versions: [ "^8.5.24" ]
-  cooldown:
-    default-days: 7
+    exclude:
+      - "@nextcloud/*"
+      - "talk"
 
 - package-ecosystem: "github-actions"
   directory: ".github/workflows"

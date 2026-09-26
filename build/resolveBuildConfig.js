@@ -55,7 +55,7 @@ function resolveBuildConfig() {
 		appleAppBundleId: `${appIdHost}.talk.mac`,
 		linuxAppId: `${appIdHost}.talk`,
 		winAppId: `${appIdHost}.talk`,
-		description: `Official desktop client for ${buildConfig.applicationName}`,
+		description: 'Desktop chat, calls, and webinars',
 
 		// Custom config with defaults
 		...buildConfig,

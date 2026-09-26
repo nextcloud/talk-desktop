@@ -18,7 +18,7 @@ export type BuildConfigFile = {
 	/**
 	 * Description.
 	 * Used in metadata and help.
-	 * Default: 'Official Desktop client for {applicationName}'
+	 * Default: 'Desktop chat, calls, and webinars'
 	 */
 	description: string
 

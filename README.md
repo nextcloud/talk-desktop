@@ -10,7 +10,7 @@
 [![GitHub Release Beta](https://img.shields.io/github/v/release/nextcloud-releases/talk-desktop?include_prereleases&sort=semver&display_name=tag&style=flat)](https://github.com/nextcloud-releases/talk-desktop/releases/)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/nextcloud-releases/talk-desktop/total?style=flat)
 
-> Nextcloud Talk desktop client -- Chat, calls, and webinars
+> Use [Nextcloud Talk](https://github.com/nextcloud/spreed/) on your desktop without opening a web browser
 
 ![Nextcloud Talk](./Nextcloud-Talk-light.png#gh-light-mode-only)
 ![Nextcloud Talk](./Nextcloud-Talk-dark.png#gh-dark-mode-only)

@@ -26,6 +26,8 @@ OC.L10N.register(
     "Theme" : "Estilu",
     "Light" : "Claridá",
     "Dark" : "Escuridá",
+    "Accessibility" : "Accesibilidá",
+    "Dyslexia font" : "Fonte pa persones dislexiques",
     "Reload" : "Volver cargar",
     "Zoom" : "Zoom",
     "Zoom out" : "Alloñar",

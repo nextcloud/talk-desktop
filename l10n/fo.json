@@ -1,0 +1,11 @@
+{ "translations": {
+    "Close" : "Close",
+    "Dismiss" : "Dismiss",
+    "Cancel" : "Cancel",
+    "Done" : "Gjørt",
+    "Never" : "ongantíð",
+    "Accessibility" : "Atkomuligt",
+    "Dyslexia font" : "Stavsnið fyri orðblind",
+    "Today" : "Ídag"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

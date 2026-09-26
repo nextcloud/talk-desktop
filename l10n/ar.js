@@ -42,6 +42,8 @@ OC.L10N.register(
     "Dark" : "داكن",
     "Use monochrome tray icon" : "استعمل أيقونة الدرج أحادية اللون",
     "Use system title bar" : "استعمل شريط عنوان النظام",
+    "Accessibility" : "إمكانية الوصول",
+    "Dyslexia font" : "خط خاص بالمصابين بعسر القراءة",
     "Play chat notification sound" : "قم بتشغيل صوت الإشعار بالدردشة",
     "Play call notification sound" : "قم بتشغيل صوت الإشعار بالمكالمة",
     "Show call notification popup" : "إظهار نافذة منبثقة للإشعار بالمكالمة",

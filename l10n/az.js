@@ -19,6 +19,8 @@ OC.L10N.register(
     "Never" : "Heç vaxt",
     "Light" : "İşıqlı",
     "Dark" : "Qaranlıq",
+    "Accessibility" : "Əlçatanlıq",
+    "Dyslexia font" : "Disleksiya fontu",
     "Reload" : "Yenidən yüklə",
     "Reset" : "Sıfırla",
     "Menu" : "Menyu",

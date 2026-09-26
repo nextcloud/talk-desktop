@@ -9,6 +9,8 @@ OC.L10N.register(
     "No" : "No",
     "Yes" : "Si",
     "Never" : "Nunca",
+    "Accessibility" : "Accesibilidat",
+    "Dyslexia font" : "Fuent de dislexia",
     "Back" : "Ta zaga",
     "Today" : "Hue",
     "None" : "Denguno"

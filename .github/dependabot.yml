@@ -13,11 +13,7 @@ updates:
     timezone: Europe/Berlin
   ignore:
     - dependency-name: "node-polyfill-webpack-plugin"
-      # ignore versions > 4.0.0
       versions: [ "^4.1.0" ]
-    - dependency-name: "postcss"
-      # ignore versions > 8.5.23
-      versions: [ "^8.5.24" ]
   cooldown:
     default-days: 7
 

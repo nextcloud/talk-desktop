@@ -165,13 +165,41 @@ const TALK_DESKTOP = {
 	 */
 	getAppData: () => ipcRenderer.invoke('appData:get'),
 	/**
-	 * Open a web-view modal window with Nextcloud Server login page
+	 * Initiate the login flow v2 process
 	 *
 	 * @param {string} server - Server URL
-	 * @param {string} [user] - Preset User ID
-	 * @return {Promise<import('./authentication/loginFlow.utils.ts').Credentials|Error>}
+	 * @return {Promise<string>} Login page URL
 	 */
-	openLoginWebView: (server, user) => ipcRenderer.invoke('authentication:openLoginWebView', server, user),
+	loginFlowV2Init: (server) => ipcRenderer.invoke('authentication:loginFlowV2:init', server),
+	/**
+	 * Login via initialized login flow v2: wait for the flow to complete and get the result
+	 *
+	 * @return {Promise<import('./authentication/loginFlow.utils.ts').Credentials | Error>}
+	 */
+	loginFlowV2Login: () => ipcRenderer.invoke('authentication:loginFlowV2:login'),
+	/**
+	 * Open Login Flow v2 landing page in the default web browser
+	 */
+	loginFlowV2Open: () => ipcRenderer.send('authentication:loginFlowV2:open'),
+	/**
+	 * Immediately check the login flow v2 status
+	 */
+	loginFlowV2Refresh: () => ipcRenderer.send('authentication:loginFlowV2:refresh'),
+	/**
+	 * Abort the login flow v2 process
+	 */
+	loginFlowV2Abort: () => ipcRenderer.send('authentication:loginFlowV2:abort'),
+	/**
+	 * Listen for login flow v2 polling state change
+	 *
+	 * @param {(isPolling: boolean) => void} callback - Login flow v2 polling state change callback
+	 * @return {() => void} unsubscribe
+	 */
+	loginFlowV2OnPollingChange: (callback) => {
+		const handler = (event, isPolling) => callback(isPolling)
+		ipcRenderer.on('authentication:loginFlowV2:polling:change', handler)
+		return () => ipcRenderer.removeListener('authentication:loginFlowV2:polling:change', handler)
+	},
 	/**
 	 * Open main window after logging in
 	 *

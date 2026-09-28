@@ -5,7 +5,7 @@
 
 import type { BrowserWindow } from 'electron'
 
-import { screen } from 'electron'
+import { screen, shell } from 'electron'
 import { APP_ORIGIN } from '../constants.js'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { getAppConfig } from './AppConfig.ts'
@@ -203,4 +203,13 @@ export function onReadyToShow(window: BrowserWindow, callback: () => void) {
 		}
 		callback()
 	})
+}
+
+/**
+ * Open a URL in the default browser
+ *
+ * @param url - URL to open in the default browser
+ */
+export async function openInBrowser(url: string) {
+	await shell.openExternal(url)
 }

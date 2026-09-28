@@ -3,12 +3,15 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+import type { LoginFlowV2 } from './loginFlowV2.ts'
+
 import { BrowserWindow } from 'electron'
 import { getAppConfig } from '../app/AppConfig.ts'
 import { applyContextMenu } from '../app/applyContextMenu.js'
 import { applyZoom, buildTitle, getScaledWindowSize, getTitleBarSymbolColor, getWindowUrl } from '../app/utils.ts'
 import { TITLE_BAR_HEIGHT } from '../constants.js'
 import { getBrowserWindowIcon } from '../shared/icons.utils.js'
+import { createLoginFlowV2 } from './loginFlowV2.ts'
 
 /**
  * Create the authentication window
@@ -51,7 +54,36 @@ export function createAuthenticationWindow() {
 	applyContextMenu(window)
 	applyZoom(window)
 
+	let flow: LoginFlowV2 | null = null
+
+	window.webContents.ipc.handle('authentication:loginFlowV2:init', async (event, serverUrl: string) => {
+		flow?.abort()
+		flow = await createLoginFlowV2(serverUrl, (isPolling) => {
+			if (!window.isDestroyed()) {
+				window.webContents.send('authentication:loginFlowV2:polling:change', isPolling)
+			}
+		})
+		return flow.loginUrl
+	})
+
+	window.webContents.ipc.handle('authentication:loginFlowV2:login', async () => {
+		if (!flow) {
+			throw new Error('Unexpected loginFlowV2 login attempt before init')
+		}
+		try {
+			return await flow.login()
+		} finally {
+			flow = null
+		}
+	})
+
+	window.webContents.ipc.on('authentication:loginFlowV2:open', () => flow?.open())
+	window.webContents.ipc.on('authentication:loginFlowV2:refresh', () => flow?.refresh())
+	window.webContents.ipc.on('authentication:loginFlowV2:abort', () => flow?.abort())
+
 	window.loadURL(getWindowUrl('authentication'))
+
+	window.addListener('closed', () => flow?.abort())
 
 	return window
 }

@@ -1,28 +1,27 @@
-/**
+/*!
  * SPDX-FileCopyrightText: 2022 Nextcloud GmbH and Nextcloud contributors
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-const { BrowserWindow, app } = require('electron')
-const os = require('node:os')
-const { getAppConfig } = require('../app/AppConfig.ts')
-const { applyContextMenu } = require('../app/applyContextMenu.js')
-const { osTitle } = require('../app/system.utils.ts')
-const { getScaledWindowMinSize, getScaledWindowSize, applyZoom } = require('../app/utils.ts')
-const { BUILD_CONFIG } = require('../shared/build.config.ts')
-const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { parseLoginRedirectUrl } = require('./login.service.js')
+import { app, BrowserWindow } from 'electron'
+import os from 'node:os'
+import { getAppConfig } from '../app/AppConfig.ts'
+import { applyContextMenu } from '../app/applyContextMenu.js'
+import { osTitle } from '../app/system.utils.ts'
+import { applyZoom, getScaledWindowMinSize, getScaledWindowSize } from '../app/utils.ts'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
+import { getBrowserWindowIcon } from '../shared/icons.utils.js'
+import { parseLoginRedirectUrl } from './loginFlowV1.service.ts'
 
 const genId = () => Math.random().toString(36).slice(2, 9)
 
 /**
  * Open a web-view modal window with Nextcloud Server login page
  *
- * @param {import('electron').BrowserWindow} parentWindow - Parent window
- * @param {string} serverUrl - Server URL
- * @return {Promise<import('./login.service.js').Credentials|Error>}
+ * @param parentWindow - Parent window
+ * @param serverUrl - Server URL
  */
-function openLoginWebView(parentWindow, serverUrl) {
+export function openLoginWebView(parentWindow: BrowserWindow, serverUrl: string) {
 	return new Promise((resolve) => {
 		const WIDTH = 750
 		const HEIGHT = 750
@@ -35,8 +34,8 @@ function openLoginWebView(parentWindow, serverUrl) {
 				height: HEIGHT,
 			}),
 			...getScaledWindowMinSize({
-				width: WIDTH,
-				height: HEIGHT,
+				minWidth: WIDTH,
+				minHeight: HEIGHT,
 			}),
 			backgroundColor: BUILD_CONFIG.backgroundColor,
 			useContentSize: true,
@@ -98,8 +97,4 @@ function openLoginWebView(parentWindow, serverUrl) {
 			resolve(new Error('Login window was closed'))
 		})
 	})
-}
-
-module.exports = {
-	openLoginWebView,
 }

@@ -11,7 +11,7 @@ const { osTitle } = require('../app/system.utils.ts')
 const { getScaledWindowMinSize, getScaledWindowSize, applyZoom } = require('../app/utils.ts')
 const { BUILD_CONFIG } = require('../shared/build.config.ts')
 const { getBrowserWindowIcon } = require('../shared/icons.utils.js')
-const { parseLoginRedirectUrl } = require('./login.service.js')
+const { parseLoginRedirectUrl } = require('./loginFlowV1.service.ts')
 
 const genId = () => Math.random().toString(36).slice(2, 9)
 
@@ -20,7 +20,7 @@ const genId = () => Math.random().toString(36).slice(2, 9)
  *
  * @param {import('electron').BrowserWindow} parentWindow - Parent window
  * @param {string} serverUrl - Server URL
- * @return {Promise<import('./login.service.js').Credentials|Error>}
+ * @return {Promise<import('./loginFlowV1.service.ts').Credentials|Error>}
  */
 function openLoginWebView(parentWindow, serverUrl) {
 	return new Promise((resolve) => {

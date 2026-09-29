@@ -346,7 +346,9 @@ module.exports = {
 		BUILD_CONFIG.windowsMsix && new MakerMSIX({
 			// Custom tile/logo assets, see: node_modules/electron-windows-msix/static/assets
 			// for the required filenames and sizes. Falls back to generic default assets if omitted.
-			packageAssets: path.join(__dirname, 'img/icons/msix'),
+			...(fs.existsSync(path.join(__dirname, 'img/icons/msix'))
+				? { packageAssets: path.join(__dirname, 'img/icons/msix') }
+				: {}),
 			manifestVariables: {
 				// Reverse-DNS style, no spaces - unlike applicationName (the default fallback),
 				// which contains a space and is not a valid MSIX package identity.

@@ -169,7 +169,7 @@ const TALK_DESKTOP = {
 	 *
 	 * @param {string} server - Server URL
 	 * @param {string} [user] - Preset User ID
-	 * @return {Promise<import('./authentication/loginFlowV1.service.ts').Credentials|Error>}
+	 * @return {Promise<import('./authentication/loginFlowV1.utils.ts').Credentials|Error>}
 	 */
 	openLoginWebView: (server, user) => ipcRenderer.invoke('authentication:openLoginWebView', server, user),
 	/**

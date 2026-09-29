@@ -11,7 +11,7 @@ import { osTitle } from '../app/system.utils.ts'
 import { applyZoom, getScaledWindowMinSize, getScaledWindowSize } from '../app/utils.ts'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { getBrowserWindowIcon } from '../shared/icons.utils.js'
-import { parseLoginRedirectUrl } from './loginFlowV1.service.ts'
+import { parseLoginRedirectUrl } from './loginFlowV1.utils.ts'
 
 const genId = () => Math.random().toString(36).slice(2, 9)
 

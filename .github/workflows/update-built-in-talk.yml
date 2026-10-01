@@ -1,0 +1,108 @@
+# SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
+# SPDX-License-Identifier: CC0-1.0
+
+name: Update built-in Talk
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-built-in-talk:
+    runs-on: ubuntu-latest-low
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Read package.json
+        uses: nextcloud-libraries/parse-package-engines-action@122ae05d4257008180a514e1ddeb0c1b9d094bdd # v0.1.0
+        id: versions
+
+      - name: Set up node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ steps.versions.outputs.node-version }}
+
+      - name: Set up npm
+        run: npm i -g 'npm@${{ steps.versions.outputs.package-manager-version }}'
+
+      - name: Check the latest Talk release
+        id: spreed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          # Get all tags sorted with version sort including pre-releases (suffixes) and parse versions from git refs
+          tags=$(
+            git -c versionsort.suffix=- ls-remote --tags --refs --sort=-v:refname https://github.com/nextcloud-releases/spreed |
+            sed 's|.*refs/tags/||'
+          )
+          latest_tag=$(echo "$tags" | head -n 1)
+          current_tag=$(npm pkg get dependencies.@nextcloud/talk | grep -oP 'spreed#\Kv[-0-9.a-z]*')
+
+          if ! grep -qxF "$current_tag" <<< "$tags"; then
+            echo "::error::Current Talk tag '$current_tag' not found in nextcloud-releases/spreed tags. Please update version manually."
+            exit 1
+          fi
+
+          if [ "$latest_tag" = "$current_tag" ]; then
+            echo "Built-in Talk is already up to date ($current_tag)"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          release_notes=$(for tag in $tags; do
+            [ "$tag" = "$current_tag" ] && break
+            echo "# [Talk $tag](https://github.com/nextcloud-releases/spreed/releases/tag/$tag)"
+            echo
+            gh release view "$tag" --repo nextcloud-releases/spreed --json body -q '.body'
+            echo
+          done)
+
+          echo "current_tag=$current_tag" >> "$GITHUB_OUTPUT"
+          echo "latest_tag=$latest_tag" >> "$GITHUB_OUTPUT"
+          echo "release_notes<<EOF
+          $release_notes
+          EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Update built-in Talk
+        if: steps.spreed.outputs.skip != 'true'
+        env:
+          LATEST_TAG: ${{ steps.spreed.outputs.latest_tag }}
+        run: |
+          # --allow-git=all is required due to unexpected EALLOWGIT error
+          # Related issue is closed but the problem persists
+          # https://github.com/npm/cli/issues/9189
+          npm install --allow-git=all "@nextcloud/talk@github:nextcloud-releases/spreed#$LATEST_TAG"
+
+      - name: Create Pull Request
+        if: steps.spreed.outputs.skip != 'true'
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ secrets.COMMAND_BOT_PAT }}
+          commit-message: 'build(deps): update built-in Talk to ${{ steps.spreed.outputs.latest_tag }}'
+          committer: GitHub <noreply@github.com>
+          author: nextcloud-command <nextcloud-command@users.noreply.github.com>
+          signoff: true
+          branch: 'build/update-built-in-talk'
+          delete-branch: true
+          labels: |
+            dependencies
+          reviewers: ${{ github.actor }}
+          title: 'build(deps): update built-in Talk ${{ steps.spreed.outputs.current_tag }} -> ${{ steps.spreed.outputs.latest_tag }}'
+          body: |
+            Update built-in Talk from ${{ steps.spreed.outputs.current_tag }} to ${{ steps.spreed.outputs.latest_tag }}
+
+            ---
+
+            <details>
+            <summary>Release notes</summary>
+
+            ${{ steps.spreed.outputs.release_notes }}
+
+            </details>

@@ -29,7 +29,7 @@ OC.L10N.register(
     "Proceed" : "Pokračovať",
     "View certificate" : "Zobraziť certifikát",
     "Cancel" : "Zrušiť",
-    "Certificate details" : "Certificate details",
+    "Certificate details" : "Detaily certifikátu",
     "Issued by" : "Issued by",
     "Issued to" : "Issued to",
     "Validity period" : "Doba platnosti",

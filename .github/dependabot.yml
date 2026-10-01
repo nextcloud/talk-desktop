@@ -18,7 +18,7 @@ updates:
     default-days: 7
     exclude:
       - "@nextcloud/*"
-      - "talk"
+      - "@nextcloud/talk"
 
 - package-ecosystem: "github-actions"
   directory: ".github/workflows"

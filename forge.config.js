@@ -160,7 +160,7 @@ module.exports = {
 				throw new Error(`No Nextcloud Talk (spreed repository) has been found in TALK_PATH=${TALK_PATH}`)
 			}
 
-			if (talkPackageJson.name !== 'talk') {
+			if (talkPackageJson.name !== '@nextcloud/talk' && talkPackageJson.name !== 'talk') {
 				throw new Error(`No Nextcloud Talk (spreed repository) but "${talkPackageJson.name}" has been found in TALK_PATH=${TALK_PATH}`)
 			}
 

@@ -17,6 +17,7 @@ OC.L10N.register(
     "Issues" : "Avarias",
     "No" : "Non",
     "Yes" : "Òc",
+    "Beta" : "Bèta",
     "Always" : "Totjorn",
     "Never" : "Jamai",
     "Theme" : "Tèma",

@@ -13,6 +13,7 @@ OC.L10N.register(
     "License" : "Aotre",
     "Done" : "Graet",
     "No" : "Nann",
+    "Beta" : "Beta",
     "Never" : "James",
     "Theme" : "Tem",
     "Light" : "Lugernus",

@@ -53,6 +53,7 @@ OC.L10N.register(
     "Ok" : "ОК",
     "No" : "Не",
     "Yes" : "Так",
+    "Beta" : "Бэта",
     "Always" : "Заўсёды",
     "When not in \"Do not disturb\"" : "Калі не ў рэжыме \"Не турбаваць\"",
     "Never" : "Ніколі",

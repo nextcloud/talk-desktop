@@ -54,6 +54,8 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nein",
     "Yes" : "Ja",
+    "Stable" : "Stabil",
+    "Beta" : "Beta",
     "Always" : "Immer",
     "When not in \"Do not disturb\"" : "Wenn du nicht im \"Nicht stören\"-Modus bist",
     "Never" : "Niemals",

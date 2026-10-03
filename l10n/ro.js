@@ -20,6 +20,7 @@ OC.L10N.register(
     "Ok" : "Ok",
     "No" : "Nu",
     "Yes" : "Da",
+    "Beta" : "Beta",
     "Always" : "Întotdeauna",
     "Never" : "Niciodată",
     "Theme" : "Temă",

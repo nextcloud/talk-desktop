@@ -18,6 +18,7 @@ OC.L10N.register(
     "Ok" : "Labi",
     "No" : "Nē",
     "Yes" : "Jā",
+    "Beta" : "Beta",
     "Never" : "Nekad",
     "Theme" : "Izskats",
     "Use monochrome tray icon" : "Izmantot vienkrāsainu ikonjoslas ikonu",

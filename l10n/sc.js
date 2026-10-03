@@ -19,6 +19,8 @@ OC.L10N.register(
     "Ok" : "AB",
     "No" : "No",
     "Yes" : "Si",
+    "Stable" : "Istàbile",
+    "Beta" : "Beta",
     "Always" : "Semper",
     "Never" : "Mai",
     "Theme" : "Tema",

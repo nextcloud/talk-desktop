@@ -18,6 +18,8 @@ OC.L10N.register(
     "Issues" : "תקלות",
     "Done" : "הסתיים",
     "Ok" : "אישור",
+    "Stable" : "יציב",
+    "Beta" : "בטא",
     "Never" : "מעולם לא",
     "Theme" : "ערכת עיצוב",
     "Light" : "בהירה",

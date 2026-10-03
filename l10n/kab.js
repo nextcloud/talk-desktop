@@ -22,6 +22,7 @@ OC.L10N.register(
     "Ok" : "Ih",
     "No" : "Uhu",
     "Yes" : "Ih",
+    "Beta" : "Beta",
     "Never" : "Weṛǧin",
     "Theme" : "Asentel",
     "Light" : "Aceɛlal",

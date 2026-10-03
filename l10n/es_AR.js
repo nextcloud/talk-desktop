@@ -15,6 +15,8 @@ OC.L10N.register(
     "Issues" : "Temas",
     "Done" : "Terminado",
     "Yes" : "Sí",
+    "Stable" : "Estable",
+    "Beta" : "Beta",
     "Never" : "Nunca",
     "Dark" : "Oscuro",
     "Accessibility" : "Accesibilidad",

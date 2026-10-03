@@ -79,9 +79,9 @@ function resolveTalkPath() {
 	// TODO: migrate to .overrides/spreed/
 	const talkOverridesPath = resolve(process.env.TALK_PATH || join(__dirname, '../spreed'))
 
-	// Currently in npm this is always "./node_modules/talk"
+	// Currently in npm this is always "./node_modules/@nextcloud/talk"
 	// But "require.resolve" allows to have the path independent from a specific package manager and its setup
-	const talkInstalledModulePath = dirname(require.resolve('talk/package.json'))
+	const talkInstalledModulePath = dirname(require.resolve('@nextcloud/talk/package.json'))
 
 	return existsSync(talkOverridesPath)
 		? talkOverridesPath

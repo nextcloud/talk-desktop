@@ -76,8 +76,7 @@ function resolveBuildConfig() {
  * Resolve path to the build-in Talk
  */
 function resolveTalkPath() {
-	// TODO: migrate to .overrides/spreed/
-	const talkOverridesPath = resolve(process.env.TALK_PATH || join(__dirname, '../spreed'))
+	const talkOverridesPath = resolve(__dirname, '../.overrides/spreed')
 
 	// Currently in npm this is always "./node_modules/talk"
 	// But "require.resolve" allows to have the path independent from a specific package manager and its setup

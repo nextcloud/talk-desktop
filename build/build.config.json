@@ -11,6 +11,7 @@
 	"backgroundColor": "#00679e",
 	"windowsExe": true,
 	"windowsMsi": true,
+	"windowsMsix": true,
 	"macosDmg": true,
 	"linuxFlatpak": true,
 	"linuxZip": true

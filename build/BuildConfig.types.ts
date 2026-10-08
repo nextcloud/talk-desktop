@@ -103,6 +103,14 @@ export type BuildConfigFile = {
 	windowsMsi: boolean
 
 	/**
+	 * Windows installer via MSIX. Experimental (electron-forge's maker-msix is still
+	 * experimental upstream). Intended to eventually replace windowsExe/windowsMsi,
+	 * see https://github.com/nextcloud/talk-desktop/issues/1519
+	 * Default: true
+	 */
+	windowsMsix: boolean
+
+	/**
 	 * macOS DMG installer.
 	 * Default: true
 	 */

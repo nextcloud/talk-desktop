@@ -18,6 +18,8 @@ body /* Theming overrides */{
 	/* It is IMPORTANT to set value in "px" for further calculations */
 	--body-container-margin: 0px !important;
 	--body-container-radius: 0 !important;
+	/* Make it more desktop-like and less a web-page: remove the image, keep only plain color */
+	--image-background: none;
 }
 
 /* TODO: fix upstream */

@@ -15,7 +15,7 @@ OC.L10N.register(
     "Log in to {applicationName}" : "Log ind på {applicationName}",
     "Server address" : "Serveradresse",
     "Log in" : "Log ind",
-    "Logging in …" : "Logger på ...",
+    "Logging in …" : "Logger ind …",
     "Incoming call" : "Indkommende opkald",
     "Close" : "Luk",
     "Dismiss" : "Afvis",

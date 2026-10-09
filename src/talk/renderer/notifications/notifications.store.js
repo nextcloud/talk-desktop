@@ -23,7 +23,7 @@ import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { useAppConfigValue } from '../Settings/useAppConfigValue.ts'
 import { openConversation } from '../TalkWrapper/talk.service.ts'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
-import { getNotificationsData } from './notifications.service.js'
+import { getNotificationsData, STATUS_NETWORK_ERROR } from './notifications.service.js'
 
 const isTestNotificationApp = (notificationApp) => ['admin_notification_talk', 'admin_notifications'].includes(notificationApp)
 
@@ -260,6 +260,13 @@ export function createNotificationStore() {
 		} else if (response.status === 304) {
 			// 304 - Not modified
 			console.debug('No new notification data received')
+			_setPollingInterval(state.pollIntervalBase)
+		} else if (response.status === STATUS_NETWORK_ERROR) {
+			// The request never reached the server. This says nothing about the
+			// server's health and usually lasts seconds, so keep the normal
+			// interval: backing off 10x here is what left polling at 2.5 hours
+			// (15 min base with notify_push) after a brief network blip.
+			console.debug('Notifications request did not reach the server, keeping the polling interval')
 			_setPollingInterval(state.pollIntervalBase)
 		} else if (response.status === 503) {
 			// 503 - Maintenance mode

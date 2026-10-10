@@ -78,7 +78,7 @@
   "devDependencies": {
     "@electron-forge/cli": "^8.0.0-alpha.10",
     "@electron-forge/maker-dmg": "^8.0.0-alpha.10",
-    "@electron-forge/maker-flatpak": "^8.0.0-alpha.10",
+    "@electron-forge/maker-flatpak": "^8.0.1",
     "@electron-forge/maker-squirrel": "^8.0.0-alpha.10",
     "@electron-forge/maker-wix": "^8.0.0-alpha.10",
     "@electron-forge/maker-zip": "^8.0.0-alpha.10",

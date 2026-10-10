@@ -134,7 +134,7 @@ OC.L10N.register(
     "Upgrade required" : "Vyžaduje sa aktualizácia",
     "The client version is too old and no longer supported by this server. Update is required." : "Verzia klienta je príliš stará a tento server ju už nepodporuje. Vyžaduje sa aktualizácia.",
     "Update Talk Desktop" : "Update Talk Desktop",
-    "Continue in web browser" : "Continue in web browser",
+    "Continue in web browser" : "Pokračovať v webovom prehliadači",
     "None" : "Žiadne",
     "Application" : "Aplikácia",
     "Online" : "Pripojený",

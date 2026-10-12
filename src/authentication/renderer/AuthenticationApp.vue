@@ -23,7 +23,9 @@ const channel = __CHANNEL__
 const version = __VERSION_TAG__
 
 // Pre-fill server url with the last used one or set in the config
-const prefilledServer = parseAccountId(getAppConfigValue('accounts')?.[0])?.serverUrl
+const prefilledAccount = parseAccountId(getAppConfigValue('accounts')?.[0])
+const prefilledServer = prefilledAccount?.serverUrl
+const prefilledUser = prefilledAccount?.userId
 
 const rawServerUrl = ref(BUILD_CONFIG.domain ?? prefilledServer)
 const enforceDomain = Boolean(BUILD_CONFIG.domain && BUILD_CONFIG.enforceDomain)
@@ -145,7 +147,7 @@ async function login() {
 	// Login with web view
 	let credentials
 	try {
-		const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(serverUrl.value)
+		const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(serverUrl.value, prefilledUser)
 		if (maybeCredentials instanceof Error) {
 			return setError(maybeCredentials.message)
 		}

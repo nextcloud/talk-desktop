@@ -5,6 +5,25 @@
 
 # Changelog
 
+## v2.3.3 - 2026-10-15
+
+### Features
+- Add high contrast toggle and dyslexia font [#1930](https://github.com/nextcloud/talk-desktop/pull/1930)
+- Persist beta channel choice and allow changing the release channel [#1928](https://github.com/nextcloud/talk-desktop/pull/1928)
+- Preserve window position [#1921](https://github.com/nextcloud/talk-desktop/pull/1921)
+
+### Fixes
+- Quit button is not clickable on welcome screen [#1963](https://github.com/nextcloud/talk-desktop/pull/1963)
+- User menu uses incorrectly generated server logo instead of server favicon [#1932](https://github.com/nextcloud/talk-desktop/pull/1932)
+- Performance: decrease application size by avoiding bundling many unused images multiple times [#1923](https://github.com/nextcloud/talk-desktop/pull/1923)
+
+### Changes
+- Update built-in Talk v25.0.3 -> v25.0.6 [#1994](https://github.com/nextcloud/talk-desktop/pull/1994)
+- Migrate to `electron-forge` v8 [#1983](https://github.com/nextcloud/talk-desktop/pull/1983)
+- Update Nextcloud styles and add Nextcloud 36 styles [#1931](https://github.com/nextcloud/talk-desktop/pull/1931)
+- Update app description [#1947](https://github.com/nextcloud/talk-desktop/pull/1947)
+- Use Talk as an npm `github:nextcloud-releases/spreed` dependency instead of manually cloned repository [#1925](https://github.com/nextcloud/talk-desktop/pull/1925), [#1968](https://github.com/nextcloud/talk-desktop/pull/1968)
+
 ## v2.3.2 - 2026-09-16
 
 ### Fixes

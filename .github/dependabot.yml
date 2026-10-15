@@ -11,6 +11,10 @@ updates:
     day: saturday
     time: "03:00"
     timezone: Europe/Berlin
+  groups:
+    electron-forge:
+      patterns:
+        - "@electron-forge/*"
   ignore:
     - dependency-name: "node-polyfill-webpack-plugin"
       versions: [ "^4.1.0" ]

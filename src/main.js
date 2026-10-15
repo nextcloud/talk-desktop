@@ -149,13 +149,6 @@ app.whenReady().then(async () => {
 		console.error(error)
 	}
 
-	if (process.env.NODE_ENV === 'development') {
-		console.log()
-		console.log('Nextcloud Talk is running via development server')
-		console.log('Hint: type "rs" to restart app without restarting the build')
-		console.log()
-	}
-
 	// TODO: add windows manager
 	/**
 	 * @type {import('electron').BrowserWindow}

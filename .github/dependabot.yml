@@ -18,11 +18,11 @@ updates:
   ignore:
     - dependency-name: "node-polyfill-webpack-plugin"
       versions: [ "^4.1.0" ]
+    - dependency-name: "@nextcloud/talk"
   cooldown:
     default-days: 7
     exclude:
       - "@nextcloud/*"
-      - "@nextcloud/talk"
 
 - package-ecosystem: "github-actions"
   directory: ".github/workflows"

@@ -51,7 +51,7 @@ OC.L10N.register(
     "Diagnosis report" : "Отчёт о диагностике",
     "Copy report" : "Скопировать отчёт",
     "Done" : "Готово",
-    "Ok" : "OK",
+    "Ok" : "ОК",
     "No" : "Нет",
     "Yes" : "Да",
     "Stable" : "Стабильный",
@@ -67,7 +67,7 @@ OC.L10N.register(
     "Light" : "Светлое",
     "Dark" : "Тёмное",
     "System integration" : "Интеграция с системой",
-    "Use monochrome tray icon" : "Использовать монохромный значок в трее",
+    "Use monochrome tray icon" : "Использовать монохромный значок в области уведомлений",
     "Use system title bar" : "Использовать системный заголовок окна",
     "Accessibility" : "Доступность",
     "High contrast" : "Высокая контрастность",
@@ -144,7 +144,7 @@ OC.L10N.register(
     "Invisible" : "Невидимый",
     "Offline" : "Не в сети",
     "Unknown status" : "Неизвестный статус",
-    "You missed a call from {user}" : "Вы пропустили вызов от {user}",
+    "You missed a call from {user}" : "Вы пропустили вызов пользователя {user}",
     "You missed a group call in {call}" : "Вы пропустили вызов в обсуждении {call}"
 },
 "nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);");

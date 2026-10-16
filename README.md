@@ -108,20 +108,20 @@ npm ci
 ### Advanced setup
 
 By default, Talk Desktop bundles a specific Talk frontend installed as an npm dependency.
-To develop with a different version, an unreleased branch or local version, clone it to `./spreed`:
+To develop with a different version, an unreleased branch or local version, clone it to `.overrides/spreed/`:
 
 ```sh
-# Clone to ./spreed
-git clone https://github.com/nextcloud/spreed
-
-# And install dependencies in spreed as well
-npm --prefix=spreed ci
+# Clone to .overrides/spreed
+git clone https://github.com/nextcloud/spreed .overrides/spreed
+# And install dependencies in spreed override as well
+npm --prefix=.overrides/spreed ci
 ```
 
-To use local Talk from a different path, for example, a local Nextcloud server setup, set `TALK_PATH` ENV variable or edit `.env` file:
+To use local Talk from a different path, for example, a local Nextcloud server setup, set a symlink:
 
 ```sh
-TALK_PATH=/path/to/nextcloud/server/apps-extra/spreed/
+# 🐧Linux / 🍎 macOS
+ln -s /path/to/nextcloud/server/apps-extra/spreed/ .overrides/spreed
 ```
 
 ## 🧑‍💻 Development

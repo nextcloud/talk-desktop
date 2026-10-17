@@ -49,8 +49,20 @@ export async function createTrayIconWithBadge(baseIconPath: string, count: numbe
 		},
 	})
 
+	// On macOS the tray icon is a template image: a black silhouette with an alpha
+	// channel that the system tints to match the menu bar. To stay a template, the
+	// badge must not introduce any color - it is drawn as an opaque shape with the
+	// count punched out, separated from the icon by a transparent ring.
+	// Electron recognises template images by the "Template" filename suffix.
+	const isTemplateIcon = baseIconPath.includes('Template')
+
 	const displayText = count > 99 ? '99+' : String(count)
-	const fontSize = count > 99 ? 11 : 16
+	// macOS renders the icon at 16x16 points, where a badge as large as on Linux
+	// and Windows would cover too much of the silhouette
+	const badgeRadius = isTemplateIcon ? 9 : 11
+	const fontSize = isTemplateIcon
+		? (count > 99 ? 9 : 13)
+		: (count > 99 ? 11 : 16)
 
 	// Generate HTML with canvas to draw the icon + badge
 	const html = `
@@ -74,27 +86,48 @@ export async function createTrayIconWithBadge(baseIconPath: string, count: numbe
 					ctx.drawImage(img, 0, 0, 32, 32);
 					
 					// Badge dimensions
-					const badgeRadius = 11;
+					const badgeRadius = ${badgeRadius};
 					const badgeCenterX = 32 - badgeRadius;
 					const badgeCenterY = 32 - badgeRadius;
-					
-					// Draw badge background (red circle)
-					ctx.beginPath();
-					ctx.arc(badgeCenterX, badgeCenterY, badgeRadius, 0, 2 * Math.PI);
-					ctx.fillStyle = '#E53935';
-					ctx.fill();
-					
-					// Draw badge border
-					ctx.strokeStyle = '#FFFFFF';
-					ctx.lineWidth = 1;
-					ctx.stroke();
-					
-					// Draw count text
+
 					ctx.font = 'bold ${fontSize}px sans-serif';
 					ctx.textAlign = 'center';
 					ctx.textBaseline = 'middle';
-					ctx.fillStyle = '#FFFFFF';
-					ctx.fillText('${displayText}', badgeCenterX, badgeCenterY + 1);
+
+					if (${isTemplateIcon}) {
+						// Template image: monochrome only, the system tints it.
+						// Punch a transparent ring so the badge stays visually separate
+						// from the icon once both are tinted the same color.
+						ctx.globalCompositeOperation = 'destination-out';
+						ctx.beginPath();
+						ctx.arc(badgeCenterX, badgeCenterY, badgeRadius + 1.5, 0, 2 * Math.PI);
+						ctx.fill();
+
+						// Opaque badge disc
+						ctx.globalCompositeOperation = 'source-over';
+						ctx.beginPath();
+						ctx.arc(badgeCenterX, badgeCenterY, badgeRadius, 0, 2 * Math.PI);
+						ctx.fillStyle = '#000000';
+						ctx.fill();
+
+						// Punch out the count, so it shows through as the menu bar background
+						ctx.globalCompositeOperation = 'destination-out';
+						ctx.fillText('${displayText}', badgeCenterX, badgeCenterY + 1);
+						ctx.globalCompositeOperation = 'source-over';
+					} else {
+						// Colored badge for Windows and Linux
+						ctx.beginPath();
+						ctx.arc(badgeCenterX, badgeCenterY, badgeRadius, 0, 2 * Math.PI);
+						ctx.fillStyle = '#E53935';
+						ctx.fill();
+
+						ctx.strokeStyle = '#FFFFFF';
+						ctx.lineWidth = 1;
+						ctx.stroke();
+
+						ctx.fillStyle = '#FFFFFF';
+						ctx.fillText('${displayText}', badgeCenterX, badgeCenterY + 1);
+					}
 					
 					// Signal rendering complete
 					window.renderComplete = true;
@@ -128,6 +161,27 @@ export async function createTrayIconWithBadge(baseIconPath: string, count: numbe
 			width: 32,
 			height: 32,
 		})
+
+		if (isTemplateIcon) {
+			// The canvas renders 32x32 pixels, but a macOS menu bar icon is 16x16
+			// points (32x32 only as its @2x representation). Returning the bitmap
+			// as-is would make it a 32 point icon - twice the size of the original.
+			// Registering it as the @2x representation keeps the size correct and
+			// stays sharp on retina displays.
+			const scaledImage = nativeImage.createEmpty()
+			scaledImage.addRepresentation({
+				scaleFactor: 2,
+				width: 16,
+				height: 16,
+				dataURL: image.toDataURL(),
+			})
+			// A captured image is not a template image by default - mark it explicitly,
+			// otherwise macOS would draw the black silhouette as-is instead of tinting it
+			scaledImage.setTemplateImage(true)
+
+			win.destroy()
+			return scaledImage
+		}
 
 		win.destroy()
 		return image

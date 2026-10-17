@@ -1,0 +1,39 @@
+/*!
+ * SPDX-FileCopyrightText: 2026 Nextcloud GmbH and Nextcloud contributors
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	/* The window covers the entire screen, only the marker itself may be visible */
+	background: transparent;
+}
+
+.screensharing-marker {
+	position: fixed;
+	inset: 0;
+	/* Wide enough to be noticeable, narrow enough to not hide any content behind it */
+	border: 5px solid var(--marker-color);
+	/* A thin light line inside the border keeps the marker distinguishable on a dark background */
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+	animation: screensharing-marker-appear 300ms ease-out;
+}
+
+@keyframes screensharing-marker-appear {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.screensharing-marker {
+		animation: none;
+	}
+}

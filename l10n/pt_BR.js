@@ -66,7 +66,7 @@ OC.L10N.register(
     "System default" : "Padrão do sistema",
     "Light" : "Claro",
     "Dark" : "Escuro",
-    "System integration" : "Integração de sistemas",
+    "System integration" : "Integração com o sistema",
     "Use monochrome tray icon" : "Usar ícone da área de notificação monocromático",
     "Use system title bar" : "Usar a barra de título do sistema",
     "Accessibility" : "Acessibilidade",

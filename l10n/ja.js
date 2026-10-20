@@ -69,6 +69,6 @@ OC.L10N.register(
     "Offline" : "オフライン",
     "Unknown status" : "不明なステータス",
     "You missed a call from {user}" : "{user}からの着信に応答できませんでした。",
-    "You missed a group call in {call}" : "{user}からのグループ着信に応答できませんでした。"
+    "You missed a group call in {call}" : "{call}からのグループ着信に応答できませんでした。"
 },
 "nplurals=1; plural=0;");

@@ -1,6 +1,7 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Authentication" : "Autentifikacija",
     "Server address" : "Adresa servera",
     "Log in" : "Prijava",
     "Close" : "Zatvori",
@@ -8,13 +9,20 @@ OC.L10N.register(
     "Advanced" : "Napredno",
     "Cancel" : "Odustani",
     "Valid until" : "Validno do",
+    "Copy" : "Kopiraj",
+    "Issues" : "Problemi",
+    "Done" : "Gotovo",
     "Ok" : "Ok",
     "No" : "Ne",
     "Yes" : "Da",
     "Accessibility" : "Pristupačnost",
     "Dyslexia font" : "Font za disleksičare",
+    "Reset" : "Poništi",
     "Update" : "Ažuriraj",
     "Today" : "Danas",
+    "Layout" : "Raspored",
+    "Compact" : "Kompaktno",
+    "Live preview" : "Pregled uživo",
     "None" : "Ništa",
     "Busy" : "Zauzet"
 },

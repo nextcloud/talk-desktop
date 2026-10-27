@@ -65,6 +65,7 @@ OC.L10N.register(
     "Layout" : "Diseinua",
     "Compact" : "Trinkotu",
     "Wide" : "Zabala",
+    "Live preview" : "Zuzeneko aurrebista",
     "Share screen" : "Partekatu pantaila",
     "Upgrade required" : "Bertsio-berritzea beharrezkoa",
     "None" : "Bat ere ez",

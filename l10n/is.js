@@ -54,6 +54,8 @@ OC.L10N.register(
     "Emoji for your status message" : "Tákn fyrir stöðufærsluna þína",
     "Status message" : "Stöðuskilaboð",
     "Layout" : "Framsetning",
+    "Compact" : "Þjappað",
+    "Live preview" : "Forskoðun í rauntíma",
     "Share screen" : "Deila skjá",
     "None" : "Ekkert",
     "Application" : "Forrit",

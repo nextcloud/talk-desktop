@@ -57,6 +57,7 @@ OC.L10N.register(
     "Status message" : "ສະຖານະຂໍ້ຄວາມ",
     "Layout" : "Layout",
     "Compact" : "Compact",
+    "Live preview" : "ຕົວຢ່າງແບບສົດ",
     "None" : "ບໍ່ມີ",
     "Application" : "Application",
     "Online" : "ອອນລາຍ",

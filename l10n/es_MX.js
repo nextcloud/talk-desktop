@@ -43,6 +43,8 @@ OC.L10N.register(
     "Emoji for your status message" : "Emoji para su mensaje de estado",
     "Status message" : "Mensaje de estado",
     "Layout" : "Disposición",
+    "Compact" : "Compacto",
+    "Live preview" : "Vista previa en vivo",
     "Share screen" : "Compartir la pantalla",
     "None" : "Ninguno",
     "Application" : "Aplicación",

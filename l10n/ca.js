@@ -59,6 +59,7 @@ OC.L10N.register(
     "Status message" : "Missatge d'estat",
     "Layout" : "Disposició",
     "Compact" : "Compacte",
+    "Live preview" : "Previsualització en directe",
     "Share screen" : "Comparteix la pantalla",
     "None" : "Només una vegada",
     "Application" : "Aplicació",

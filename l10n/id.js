@@ -64,6 +64,7 @@ OC.L10N.register(
     "Status message" : "Pesan status",
     "Layout" : "Tata letak",
     "Compact" : "Ringkas",
+    "Live preview" : "Pratinjau langsung",
     "None" : "Tidak ada",
     "Application" : "Aplikasi",
     "Online" : "Online",

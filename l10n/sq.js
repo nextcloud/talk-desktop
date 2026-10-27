@@ -33,6 +33,9 @@ OC.L10N.register(
     "Quit" : "Dilni",
     "Today" : "Sot",
     "This week" : "Këtë javë",
+    "Layout" : "Paraqitje",
+    "Compact" : "Kompakte",
+    "Live preview" : "Paraparje e drejtpërdrejtë",
     "Share screen" : "Ndaje ekranin",
     "None" : "Asnjë",
     "Invisible" : "I padukshëm"

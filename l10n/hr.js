@@ -57,6 +57,7 @@ OC.L10N.register(
     "Status message" : "Poruka statusa",
     "Layout" : "Raspored",
     "Compact" : "Kompaktno",
+    "Live preview" : "Pretpregled uživo",
     "Share screen" : "Dijeli zaslon",
     "None" : "Nema",
     "Application" : "Aplikacija",

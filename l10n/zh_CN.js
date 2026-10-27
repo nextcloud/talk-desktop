@@ -67,6 +67,7 @@ OC.L10N.register(
     "Controls" : "控制",
     "Layout" : "布局",
     "Compact" : "紧凑",
+    "Live preview" : "实时预览",
     "Share screen" : "共享屏幕",
     "Upgrade required" : "需要升级",
     "The client version is too old and no longer supported by this server. Update is required." : "客户端版本过低，不再受服务器支持，请更新",

@@ -59,6 +59,8 @@ OC.L10N.register(
     "Emoji for your status message" : "Emoji tilaviestiisi",
     "Status message" : "Tilaviesti",
     "Layout" : "Asettelu",
+    "Compact" : "Tiivis",
+    "Live preview" : "Reaaliaikainen esikatselu",
     "Share screen" : "Jaa näyttö",
     "None" : "Ei mitään",
     "Application" : "Sovellus",

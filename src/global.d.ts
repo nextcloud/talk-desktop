@@ -37,21 +37,6 @@ declare module '@nextcloud/vue/components/*' {
 	const component: Component
 	export default component
 }
-declare module '@nextcloud/vue/composables/useHotKey' {
-	export function useHotKey(
-		keysOrFilter: string | string[] | ((event: KeyboardEvent) => boolean) | true,
-		callback: (event: KeyboardEvent) => void,
-		options?: {
-			push?: boolean
-			prevent?: boolean
-			stop?: boolean
-			ctrl?: boolean
-			alt?: boolean
-			shift?: boolean
-			caseSensitive?: boolean
-		},
-	): () => void
-}
 
 // Built-time constants
 declare const IS_DESKTOP: true

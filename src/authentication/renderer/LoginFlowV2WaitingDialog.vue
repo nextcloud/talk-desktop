@@ -11,7 +11,7 @@ import { onBeforeUnmount, ref } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcIconSvgWrapper from '@nextcloud/vue/components/NcIconSvgWrapper'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
-import ButtonCopy from '../../help/renderer/ButtonCopy.vue'
+import ButtonCopy from '../../shared/components/ButtonCopy.vue'
 
 defineProps<{
 	loginUrl: string

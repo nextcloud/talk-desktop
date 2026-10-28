@@ -41,6 +41,7 @@ OC.L10N.register(
     "Accessibility" : "Tilgjengelighet",
     "Dyslexia font" : "Dysleksi skrifttype",
     "Restart" : "Omstart",
+    "Loading …" : "Laster inn ...",
     "Reload" : "Last på nytt",
     "Zoom" : "Zoom",
     "Zoom out" : "Zoom ut",

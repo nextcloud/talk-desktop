@@ -40,3 +40,17 @@ kbd {
 kbd + kbd {
 	margin-inline-start: calc(1 * var(--default-grid-baseline));
 }
+
+/* @nextcloud/viewer uses 8px constant instead of var(--body-container-margin) */
+/* TODO: remove if https://github.com/nextcloud-libraries/nextcloud-viewer/pull/181 is merged and released */
+.viewer__modal[role="dialog"] div.modal-container {
+	top: calc(var(--header-height) + var(--body-container-margin)) !important;
+}
+
+/* Prevent full-size modal from overriding custom title bar (Window Controls Overlay) */
+/* TODO: should it be fixed in upstream NcModal to support PWA? */
+.modal-mask:has(>.modal-wrapper--full) {
+	top: env(titlebar-area-height, 0px) !important;
+	bottom: 0;
+	height: auto;
+}

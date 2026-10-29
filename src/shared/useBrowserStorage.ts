@@ -12,22 +12,22 @@ import { computed, shallowRef } from 'vue'
 type NextcloudStorage = ReturnType<ReturnType<typeof getBuilder>['build']>
 
 /**
- * Create a reactive variable that is stored in the @nextcloud/browser-storage instance and is synced
+ * Create a reactive variable that is stored in the nextcloud-browser-storage instance and is synced
  *
- * @param browserStorage - @nextcloud/browser-storage instance
+ * @param browserStorage - nextcloud-browser-storage instance
  * @param key - Key to store the value
  * @param defaultValue - Default value
  */
-export function useBrowserStorage<T extends unknown | null>(browserStorage: NextcloudStorage, key: string, defaultValue: T | null = null) {
-	const parse = (value: string | null) => value ? JSON.parse(value) as T : null
+export function useBrowserStorage<T>(browserStorage: NextcloudStorage, key: string, defaultValue: T) {
+	const parse = (value: string | null) => value ? JSON.parse(value) as T : undefined
 
-	const _data = shallowRef<T | null>(parse(browserStorage.getItem(key)) ?? defaultValue)
+	const _data = shallowRef<T>(parse(browserStorage.getItem(key)) ?? defaultValue)
 
-	const data = computed<T | null>({
+	const data = computed<T>({
 		get: () => _data.value,
-		set: (value: T | null) => {
+		set: (value: T) => {
 			_data.value = value
-			if (value === null) {
+			if (value === null || value === undefined) {
 				browserStorage.removeItem(key)
 			} else {
 				browserStorage.setItem(key, JSON.stringify(value))

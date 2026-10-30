@@ -601,6 +601,11 @@ module.exports = {
 							},
 						},
 						{
+							name: 'talk_desktop__window_screensharing_marker',
+							html: './src/screensharing/renderer/screensharingMarker.html',
+							js: './src/screensharing/renderer/screensharingMarker.main.ts',
+						},
+						{
 							name: 'talk_desktop__window_certificate',
 							html: './src/certificate/renderer/certificate.html',
 							js: './src/certificate/renderer/certificate.main.ts',

@@ -27,6 +27,8 @@ const { openLoginWebView } = require('./authentication/loginFlowV1.window.ts')
 const { createCallboxWindow } = require('./callbox/callbox.window.ts')
 const { createHelpWindow } = require('./help/help.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
+const { applyNativeWindowCaptureBorder } = require('./screensharing/screensharing.config.ts')
+const { showScreensharingMarker, hideScreensharingMarker } = require('./screensharing/screensharingMarker.service.ts')
 const { BUILD_CONFIG } = require('./shared/build.config.ts')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.ts')
@@ -50,6 +52,11 @@ if (isWindows && process.env.NODE_ENV === 'production') {
 		app.setAppUserModelId(BUILD_CONFIG.winAppId)
 	}
 }
+
+/**
+ * Chromium command line switches must be applied before the app is ready
+ */
+applyNativeWindowCaptureBorder()
 
 /**
  * Handle creating/removing shortcuts on Windows when installing/uninstalling
@@ -111,10 +118,13 @@ ipcMain.handle('app:getDesktopCapturerSources', async () => {
 	return sources.map((source) => ({
 		id: source.id,
 		name: source.name,
+		display_id: source.display_id,
 		icon: source.appIcon && !source.appIcon.isEmpty() ? source.appIcon.toDataURL() : null,
 		thumbnail: source.thumbnail && !source.thumbnail.isEmpty() ? source.thumbnail.toDataURL() : null,
 	}))
 })
+ipcMain.on('screensharing:marker:show', (event, source) => showScreensharingMarker(source, event.sender))
+ipcMain.on('screensharing:marker:hide', () => hideScreensharingMarker())
 
 /**
  * Whether the window is being relaunched.

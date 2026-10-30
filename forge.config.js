@@ -285,7 +285,7 @@ module.exports = {
 					$('<firewall:FirewallException></firewall:FirewallException>').attr({
 						Id: $executableFile.attr('Id') + '_firewall_exception',
 						Name: BUILD_CONFIG.applicationName,
-						Description: BUILD_CONFIG.description,
+						Description: `Allow network traffic for ${BUILD_CONFIG.applicationName}`,
 						Scope: 'any',
 						IgnoreFailure: 'yes',
 					}).appendTo($executableFile)

@@ -237,7 +237,12 @@ module.exports = {
 		// 2. Add C:\Program Files (x86)\WiX Toolset v3.14\bin\ to PATH
 		BUILD_CONFIG.windowsMsi && new MakerWix({
 			appUserModelId: BUILD_CONFIG.winAppId,
-			description: BUILD_CONFIG.description,
+			// electron-wix-msi tries to get FileDescription from the packaged app without using packagerConfig.win32metadata.FileDescription
+			// It may fail to read it and falls back to options.description, which is not correct:
+			// FileDescription is .exe's FriendlyApplicationName and must be the human readable application name, not a short description
+			// Workaround: using application name here to make sure the FileDescription is the executable name
+			// Caveats: losing the description in start menu/desktop shortcuts title on hover
+			description: BUILD_CONFIG.applicationName,
 			exe: `${BUILD_CONFIG.applicationName}.exe`,
 			name: BUILD_CONFIG.applicationName,
 			icon: path.join(__dirname, 'img/icons/icon.ico'),

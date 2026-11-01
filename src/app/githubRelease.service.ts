@@ -113,6 +113,10 @@ let cachedNewRelease: ReleaseInfo | null = null
  * @return true if there is a new version
  */
 export async function checkForUpdate({ forceRequest = false }: { forceRequest?: boolean } = {}): Promise<ReleaseInfo | null> {
+	if (getAppConfig('skipUpdateCheck')) {
+		return null
+	}
+
 	if (cachedNewRelease && !forceRequest) {
 		return cachedNewRelease
 	}
@@ -150,6 +154,14 @@ let schedulerIntervalId: NodeJS.Timeout | undefined
 export function setupReleaseNotificationScheduler(intervalInMin: number = 60) {
 	if (schedulerIntervalId !== undefined) {
 		stopReleaseNotificationScheduler()
+	}
+
+	if (process.env.NODE_ENV !== 'production') {
+		return
+	}
+
+	if (getAppConfig('skipUpdateCheck')) {
+		return
 	}
 
 	checkForUpdate()

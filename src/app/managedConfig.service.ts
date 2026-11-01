@@ -11,7 +11,7 @@ import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { isMac, isWindows } from './system.utils.ts'
 import { getWindowsRegistryItem } from './windows.utils.ts'
 
-type ManagedConfigKey = 'accounts' | 'serverUrl'
+type ManagedConfigKey = 'accounts' | 'serverUrl' | 'skipUpdateCheck'
 
 type ManagedConfigValueTypes = Pick<UserDefaultTypes, 'string' | 'boolean'>
 type ManagedConfigValueType = keyof ManagedConfigValueTypes
@@ -38,8 +38,12 @@ export function readManagedConfig() {
 		}
 	}
 
+	const skipUpdateCheck = !!readManagedConfigValue('skipUpdateCheck', 'boolean')
+
 	return {
 		accounts,
+		// TODO: should we only include skipUpdateCheck in managedConfig if it is explicitly set (to true)?
+		skipUpdateCheck,
 	}
 }
 

@@ -16,13 +16,16 @@ const emit = defineEmits<{
 }>()
 
 onMounted(async () => {
+	// Subscribe to Talk's unread counts before Talk is mounted,
+	// so the initial (immediate) talk:unread:updated event is not missed
+	useBadgeCountIntegration()
+
 	// Importing the main Talk entry point mounts a Vue app to the #content
 	await import('@talk/src/main.js')
 
 	// Additional integrations
 	registerTalkDesktopSettingsSection()
 	subscribeBroadcast('talk:conversation:open', ({ token, directCall }) => openConversation(token, { directCall }))
-	useBadgeCountIntegration()
 
 	// If there is a talkHash - set it initially
 	if (appData.talkHash) {

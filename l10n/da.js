@@ -16,7 +16,7 @@ OC.L10N.register(
     "Server address" : "Serveradresse",
     "Log in" : "Log ind",
     "Logging in …" : "Logger ind …",
-    "Incoming call" : "Indkommende opkald",
+    "Incoming call" : "Indgående opkald",
     "Close" : "Luk",
     "Dismiss" : "Afvis",
     "Join call" : "Deltag i opkaldet",
@@ -67,7 +67,7 @@ OC.L10N.register(
     "Light" : "Lys",
     "Dark" : "Mørk",
     "System integration" : "Systemintegration",
-    "Use monochrome tray icon" : "Brug monokromt ikon i systembakken",
+    "Use monochrome tray icon" : "Brug monokromt ikon i meddelelsesområdet",
     "Use system title bar" : "Brug systemets titellinje",
     "Accessibility" : "Tilgængelighed",
     "High contrast" : "Høj kontrast",
@@ -144,7 +144,7 @@ OC.L10N.register(
     "Invisible" : "Usynlig",
     "Offline" : "Offline",
     "Unknown status" : "Ukendt status",
-    "You missed a call from {user}" : "Du missede et opkald fra {user}",
-    "You missed a group call in {call}" : "Du missede et gruppeopkald i {call}"
+    "You missed a call from {user}" : "Du har et ubesvaret opkald fra {user}",
+    "You missed a group call in {call}" : "Du har et ubesvaret gruppeopkald i {call}"
 },
 "nplurals=2; plural=(n != 1);");

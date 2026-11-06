@@ -232,11 +232,19 @@ function applyInitialState() {
 }
 
 /**
- * Set CSS variable for --header-height
+ * Override --header-height according to the title-bar height on every theme
  */
 function applyHeaderHeight() {
-	document.body.style.setProperty('--header-height', `${TITLE_BAR_HEIGHT}px`)
-	document.documentElement.style.setProperty('--header-height', `${TITLE_BAR_HEIGHT}px`)
+	const style = document.createElement('style')
+	style.textContent = `:root,
+[data-theme-default],
+[data-theme-light],
+[data-theme-dark],
+[data-theme-dark-highcontrast],
+[data-theme-light-highcontrast] {
+  --header-height: ${TITLE_BAR_HEIGHT}px !important;
+}`
+	document.head.appendChild(style)
 }
 
 /**

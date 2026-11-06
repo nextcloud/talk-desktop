@@ -18,7 +18,6 @@ import DesktopSettingsSectionRelaunchNote from './components/DesktopSettingsSect
 import UiFormBoxAudioOutput from './components/UiFormBoxAudioOutput.vue'
 import UiFormBoxSelectNative from './components/UiFormBoxSelectNative.vue'
 import UiFormGroupZoom from './components/UiFormGroupZoom.vue'
-import { BUILD_CONFIG } from '../../../shared/build.config.ts'
 import { usePrefersContrastMore } from '../../../shared/usePrefersContrastMore.ts'
 import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
@@ -31,6 +30,7 @@ const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 const launchAtStartup = useAppConfigValue('launchAtStartup')
 const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackground')
 
+const skipUpdateCheck = useAppConfigValue('skipUpdateCheck')
 const releaseChannel = useAppConfigValue('releaseChannel')
 const releaseChannelOptions = [
 	// TRANSLATORS: Stable release update channel
@@ -73,7 +73,7 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 			<NcFormBoxSwitch v-if="launchAtStartup" v-model="launchAtStartupInBackground" :label="t('talk_desktop', 'Launch in background')" />
 		</NcFormBox>
 
-		<NcFormBox v-if="!BUILD_CONFIG.isBranded">
+		<NcFormBox v-if="!skipUpdateCheck">
 			<!-- TRANSLATORS: A distribution channel where an app will be updated from -->
 			<UiFormBoxSelectNative v-model="releaseChannel" :label="t('talk_desktop', 'Update channel')" :options="releaseChannelOptions" />
 		</NcFormBox>

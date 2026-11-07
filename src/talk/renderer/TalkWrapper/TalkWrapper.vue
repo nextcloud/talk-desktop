@@ -7,6 +7,7 @@
 import { onMounted } from 'vue'
 import { appData } from '../../../app/AppData.js'
 import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
+import { useScreensharingMarkerIntegration } from '../screensharing/screensharing.module.ts'
 import { registerTalkDesktopSettingsSection } from '../Settings/index.ts'
 import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from './talk.service.ts'
 import { useBadgeCountIntegration } from './useBadgeCountIntegration.ts'
@@ -23,6 +24,7 @@ onMounted(async () => {
 	registerTalkDesktopSettingsSection()
 	subscribeBroadcast('talk:conversation:open', ({ token, directCall }) => openConversation(token, { directCall }))
 	useBadgeCountIntegration()
+	await useScreensharingMarkerIntegration()
 
 	// If there is a talkHash - set it initially
 	if (appData.talkHash) {

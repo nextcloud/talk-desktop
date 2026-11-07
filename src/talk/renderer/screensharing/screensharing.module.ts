@@ -4,3 +4,4 @@
  */
 
 export { getDesktopMediaSource } from './getDesktopMediaSource.ts'
+export { useScreensharingMarkerIntegration } from './screensharingMarker.ts'

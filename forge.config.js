@@ -226,6 +226,7 @@ module.exports = {
 			appleIdPassword: process.env.APPLE_ID_PASSWORD,
 			teamId: process.env.APPLE_TEAM_ID,
 		},
+		windowsSign: hasWindowsSign && signWithParamsToWindowsSignOptions(process.env.WINDOWS_SIGN_PARAMS),
 	},
 
 	makers: [

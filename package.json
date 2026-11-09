@@ -84,6 +84,7 @@
     "@electron-forge/maker-squirrel": "^8.0.1",
     "@electron-forge/maker-wix": "^8.0.1",
     "@electron-forge/maker-zip": "^8.0.1",
+    "@electron-forge/plugin-fuses": "^8.0.1",
     "@electron-forge/plugin-webpack": "^8.0.1",
     "@electron/windows-sign": "^2.1.0",
     "@nextcloud/eslint-config": "^9.0.1",

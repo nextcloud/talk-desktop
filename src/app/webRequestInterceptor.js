@@ -10,7 +10,7 @@ const { session } = require('electron')
  *
  * @param {string} serverUrl - Nextcloud server URL
  * @param {object} [options] - Patching options
- * @param {import('../authentication/loginFlowV1.utils.ts').Credentials} [options.credentials] - User credentials for the Authentication header
+ * @param {import('../authentication/loginFlow.utils.ts').Credentials} [options.credentials] - User credentials for the Authentication header
  */
 function enableWebRequestInterceptor(serverUrl, { credentials } = {}) {
 	// Cleanup because Electron doesn't support an interceptor update

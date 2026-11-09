@@ -3,14 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-export type Credentials = {
-	/** Server URL */
-	server: string
-	/** User's Login (user@example.com, not userid) */
-	user: string
-	/** App password */
-	password: string
-}
+import type { Credentials } from './loginFlow.utils.ts'
 
 /**
  * Parse redirect URL

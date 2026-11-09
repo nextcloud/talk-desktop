@@ -4,13 +4,12 @@
  */
 
 import { app, BrowserWindow } from 'electron'
-import os from 'node:os'
 import { getAppConfig } from '../app/AppConfig.ts'
 import { applyContextMenu } from '../app/applyContextMenu.js'
-import { osTitle } from '../app/system.utils.ts'
 import { applyZoom, getScaledWindowMinSize, getScaledWindowSize } from '../app/utils.ts'
 import { BUILD_CONFIG } from '../shared/build.config.ts'
 import { getBrowserWindowIcon } from '../shared/icons.utils.js'
+import { getLoginFlowDeviceName } from './loginFlow.utils.ts'
 import { parseLoginRedirectUrl } from './loginFlowV1.utils.ts'
 
 const genId = () => Math.random().toString(36).slice(2, 9)
@@ -55,10 +54,10 @@ export function openLoginWebView(parentWindow: BrowserWindow, serverUrl: string)
 		window.removeMenu()
 
 		window.loadURL(`${serverUrl}/index.php/login/flow`, {
-			// User-Agent header is used as the app name, device and session
-			// On the login flow page and then on the Personal settings / Security / Devices & Sessions
-			// Format used by all the clients: {HostUsername} ({ApplicationName} - {OS})
-			userAgent: `${os.hostname()} (${BUILD_CONFIG.applicationName} - ${osTitle})`,
+			// Though device name does not have a valid User-Agent format,
+			// this is where the login flow API expects to find the device name.
+			// Used on login flow page and then on the Personal settings / Security / Devices & Sessions
+			userAgent: getLoginFlowDeviceName(),
 			extraHeaders: [
 				'OCS-APIRequest: true',
 				`Accept-Language: ${app.getPreferredSystemLanguages().join(',')}`,

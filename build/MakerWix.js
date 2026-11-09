@@ -6,6 +6,7 @@
 
 const { getNameFromAuthor } = require('@electron-forge/core-utils')
 const { MakerBase } = require('@electron-forge/maker-base')
+const { sign } = require('@electron/windows-sign')
 const { MSICreator } = require('electron-wix-msi')
 const path = require('node:path')
 const { styleText } = require('node:util')
@@ -73,7 +74,35 @@ class MakerWix extends MakerBase {
 		if (this.config.beforeCreate) {
 			await Promise.resolve(this.config.beforeCreate(creator))
 		}
-		await creator.create()
+
+		// ---- Begin: Added for nextcloud/talk-desktop
+
+		const { supportBinaries } = await creator.create()
+
+		const {
+			windowsSign,
+			signWithParams,
+			certificateFile,
+			certificatePassword,
+		} = this.config
+
+		// Additionally sign the stub executable and Update.exe
+		if (windowsSign) {
+			await sign({
+				...windowsSign,
+				files: supportBinaries,
+			})
+		} else if (signWithParams || certificateFile || certificatePassword) {
+			// Deprecated options
+			await sign({
+				signWithParams,
+				certificateFile,
+				certificatePassword,
+				files: supportBinaries,
+			})
+		}
+
+		// ---- End: Added for nextcloud/talk-desktop
 
 		const { msiFile } = await creator.compile()
 

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-import { app } from 'electron'
+import { app, ipcMain } from 'electron'
 import fs from 'node:fs'
 import path from 'node:path'
 import { once } from '../shared/utils.ts'
@@ -37,20 +37,21 @@ const getWindowsStubExecPath = once(() => {
 })
 
 /**
- * Set the application to launch at startup according to the configuration
+ * Set launch at startup config
+ *
+ * @param enabled - Whether launch at startup should be enabled
  */
-function applyLaunchAtStartup() {
+export function setLaunchAtStartup(enabled: boolean) {
+	const launchAtStartupInBackground = getAppConfig('launchAtStartupInBackground')
+
+	console.info('Setting launch at startup to', enabled, enabled ? (launchAtStartupInBackground ? 'in background' : 'in foreground') : '')
+
 	// In development, app runs through Electron's executable, which is not suitable for launch at startup
 	// This feature should only be tested with production build installation
 	if (process.env.NODE_ENV !== 'production') {
 		console.warn('Launch at startup config is disabled in development mode. Please, test and debug in the production build.')
 		return
 	}
-
-	const launchAtStartup = getAppConfig('launchAtStartup')
-	const launchAtStartupInBackground = getAppConfig('launchAtStartupInBackground')
-
-	console.info('Setting launch at startup to ', launchAtStartup, launchAtStartup ? (launchAtStartupInBackground ? 'in background' : 'in foreground') : '')
 
 	if (isWindows) {
 		app.setLoginItemSettings({
@@ -59,7 +60,7 @@ function applyLaunchAtStartup() {
 			openAtLogin: true,
 			// Toggles registry item in HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run
 			// Defines the "Task Manager / Startup Apps" toggle setting value (also Settings / Apps / Startup)
-			enabled: launchAtStartup,
+			enabled,
 			// Use application name as the entry name to share a single entry across multiple distributions (.exe, .msi) ensuring a single instance startup
 			name: app.getName(),
 			path: getWindowsStubExecPath(),
@@ -71,15 +72,42 @@ function applyLaunchAtStartup() {
 	if (isMac) {
 		// macOS 13+: SMAppService (System Settings / General / Login Items)
 		// Older macOS: ~/Library/Preferences/com.apple.loginitems.plist
-		app.setLoginItemSettings({ openAtLogin: launchAtStartup })
+		app.setLoginItemSettings({ openAtLogin: enabled })
 		return
 	}
 }
 
 /**
- * Initialize the listener for the launch at startup configurations
+ * Get launch at startup config
  */
-export function initLaunchAtStartupListener() {
-	onAppConfigChange('launchAtStartup', applyLaunchAtStartup)
-	onAppConfigChange('launchAtStartupInBackground', applyLaunchAtStartup)
+export function getLaunchAtStartup() {
+	// Not supported
+	if (!isWindows && !isMac) {
+		return false
+	}
+
+	const loginItemSettings = app.getLoginItemSettings()
+
+	// Electron's bug:
+	// openAtLogin on Windows has correct value only when name is unset (set as AppModelUserId "com.nextcloud.talk") instead of application name
+	// executableWillLaunchAtLogin is sufficient to determine whether the currently running app will launch at startup
+	return isWindows
+		? loginItemSettings.executableWillLaunchAtLogin
+		: loginItemSettings.openAtLogin
+}
+
+/**
+ * Setup launch at startup config handling
+ */
+export function setupLaunchAtStartup() {
+	ipcMain.handle('app:launchAtStartup:get', async () => await getLaunchAtStartup())
+	ipcMain.on('app:launchAtStartup:set', (event, launchAtStartup: boolean) => {
+		setLaunchAtStartup(launchAtStartup)
+	})
+
+	onAppConfigChange('launchAtStartupInBackground', () => {
+		// Re-setting launch at startup to update args
+		// Assuming that launchAtStartupInBackground is only changed when launch at startup is enabled
+		setLaunchAtStartup(true)
+	})
 }

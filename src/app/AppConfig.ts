@@ -55,11 +55,6 @@ export type AppConfig = {
 	// ----------------
 
 	/**
-	 * Whether to launch the application at startup
-	 * Default: false
-	 */
-	launchAtStartup: boolean
-	/**
 	 * Whether to launch the application at startup in background (without opening the window).
 	 * Default: true
 	 */
@@ -165,7 +160,6 @@ export type AppConfigKey = keyof AppConfig
  */
 const defaultAppConfig: AppConfig = {
 	accounts: [],
-	launchAtStartup: false,
 	launchAtStartupInBackground: true,
 	releaseChannel: __CHANNEL__ === 'stable' ? 'stable' : 'beta',
 	skipUpdateCheck: false,

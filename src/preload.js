@@ -126,6 +126,18 @@ const TALK_DESKTOP = {
 	 */
 	onAppConfigChange: (callback) => ipcRenderer.on('app:config:change', callback),
 	/**
+	 * Get launch at startup config
+	 *
+	 * @return {Promise<boolean>} Launch at startup setting
+	 */
+	getLaunchAtStartup: () => ipcRenderer.invoke('app:launchAtStartup:get'),
+	/**
+	 * Set launch at startup config
+	 *
+	 * @param {boolean} enabled - Whether launch at startup should be enabled
+	 */
+	setLaunchAtStartup: (enabled) => ipcRenderer.send('app:launchAtStartup:set', enabled),
+	/**
 	 * Grant a permission requiring a user gesture
 	 *
 	 * @param {string} id - Button ID to click on

@@ -7,6 +7,8 @@ const { MakerDMG } = require('@electron-forge/maker-dmg')
 const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
 const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerZIP } = require('@electron-forge/maker-zip')
+const { FusesPlugin } = require('@electron-forge/plugin-fuses')
+const { FuseV1Options, FuseVersion } = require('@electron/fuses')
 const cheerio = require('cheerio')
 const mri = require('mri')
 const fs = require('node:fs')
@@ -618,5 +620,10 @@ module.exports = {
 				},
 			},
 		},
+		new FusesPlugin({
+			version: FuseVersion.V1,
+			[FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
+			[FuseV1Options.OnlyLoadAppFromAsar]: true,
+		}),
 	],
 }

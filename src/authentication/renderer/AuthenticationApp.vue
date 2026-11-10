@@ -79,7 +79,6 @@ function setLoading() {
 function setError(error) {
 	state.value = 'error'
 	stateText.value = error
-	appData.reset()
 }
 
 /**
@@ -136,8 +135,6 @@ async function login() {
 	if (!talkCapabilities) {
 		return setError(t('talk_desktop', 'Nextcloud Talk is not installed in the server'))
 	}
-
-	appData.capabilities = capabilitiesResponse.capabilities
 
 	// Check versions compatibilities
 	const createVersionError = (componentName, minRequiredVersion, foundVersion) => t('talk_desktop', '{componentName} {minRequiredVersion} or higher is required but {foundVersion} is installed', {

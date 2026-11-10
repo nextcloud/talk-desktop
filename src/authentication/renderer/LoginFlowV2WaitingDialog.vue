@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import { mdiArrowLeft, mdiWeb } from '@mdi/js'
+import { mdiArrowLeft, mdiOpenInNew, mdiWeb } from '@mdi/js'
 import { t } from '@nextcloud/l10n'
 import { refDebounced, useEventListener } from '@vueuse/core'
 import { onBeforeUnmount, ref } from 'vue'
@@ -12,7 +12,6 @@ import NcButton from '@nextcloud/vue/components/NcButton'
 import NcIconSvgWrapper from '@nextcloud/vue/components/NcIconSvgWrapper'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import ButtonCopy from '../../help/renderer/ButtonCopy.vue'
-import AccountFavicon from '../../shared/components/AccountFavicon.vue'
 
 defineProps<{
 	loginUrl: string
@@ -51,8 +50,7 @@ useEventListener(window, 'focus', loginFlowV2Refresh)
 		@close="loginFlowV2Abort">
 		<div class="waiting-dialog__content">
 			<div class="waiting-dialog__heading">
-				<!-- It is expected that favicon looks good on 32px as one of the default sizes -->
-				<AccountFavicon :size="32" />
+				<NcIconSvgWrapper :path="mdiOpenInNew" :size="32" />
 				<h2 id="waiting-dialog-header" class="waiting-dialog__header">
 					{{ t('talk_desktop', 'Logging in …') }}
 				</h2>

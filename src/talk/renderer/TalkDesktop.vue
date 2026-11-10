@@ -22,7 +22,7 @@ registerViewerHandlers()
 <template>
 	<AppWindow>
 		<div id="skip-actions" />
-		<TitleBar id="header" />
+		<TitleBar />
 		<TalkWrapper @ready="isTalkInitialized = true" />
 	</AppWindow>
 </template>

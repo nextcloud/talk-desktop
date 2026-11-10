@@ -8,7 +8,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { once } from '../shared/utils.ts'
 import { getAppConfig, onAppConfigChange } from './AppConfig.ts'
-import { isWindows } from './system.utils.ts'
+import { isMac, isWindows } from './system.utils.ts'
 
 /**
  * Get executable path for Windows's stub launcher in Squirrel and WiX MSI installations.
@@ -52,15 +52,28 @@ function applyLaunchAtStartup() {
 
 	console.info('Setting launch at startup to ', launchAtStartup, launchAtStartup ? (launchAtStartupInBackground ? 'in background' : 'in foreground') : '')
 
-	// Windows: registry key HKCU\Software\Microsoft\Windows\CurrentVersion\Run
-	// macOS 13+: SMAppService (System Settings / General / Login Items)
-	// Older macOS: ~/Library/Preferences/com.apple.loginitems.plist
-	app.setLoginItemSettings({
-		openAtLogin: launchAtStartup,
-		name: app.getName(),
-		args: launchAtStartupInBackground ? ['--background'] : [],
-		path: isWindows ? getWindowsStubExecPath() : undefined,
-	})
+	if (isWindows) {
+		app.setLoginItemSettings({
+			// Adds registry item in HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+			// Adds the app to the "Task Manager / Startup Apps" settings (also Settings / Apps / Startup)
+			openAtLogin: true,
+			// Toggles registry item in HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run
+			// Defines the "Task Manager / Startup Apps" toggle setting value (also Settings / Apps / Startup)
+			enabled: launchAtStartup,
+			// Use application name as the entry name to share a single entry across multiple distributions (.exe, .msi) ensuring a single instance startup
+			name: app.getName(),
+			path: getWindowsStubExecPath(),
+			args: launchAtStartupInBackground ? ['--background'] : [],
+		})
+		return
+	}
+
+	if (isMac) {
+		// macOS 13+: SMAppService (System Settings / General / Login Items)
+		// Older macOS: ~/Library/Preferences/com.apple.loginitems.plist
+		app.setLoginItemSettings({ openAtLogin: launchAtStartup })
+		return
+	}
 }
 
 /**

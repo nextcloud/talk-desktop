@@ -7,8 +7,10 @@ import type { Migration } from '../migration.service.ts'
 
 import { clearFlatpakFontConfigCacheMigration } from './01-clearFlatpakFontConfigCache.migration.ts'
 import { persistBetaReleaseChannelMigration } from './02-persistBetaReleaseChannel.migration.ts'
+import { reapplyLaunchAtStartupMigration } from './03-reapplyLaunchAtStartup.migration.ts'
 
 export const migrations: Migration[] = [
 	clearFlatpakFontConfigCacheMigration,
 	persistBetaReleaseChannelMigration,
+	reapplyLaunchAtStartupMigration,
 ]

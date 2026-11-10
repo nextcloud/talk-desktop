@@ -71,7 +71,9 @@ function createTalkWindow() {
 			width: 800,
 			height: 600,
 		}),
-		name: 'talk-secondary',
+		// Window state is only saved for the primary window
+		// TODO: consider saving state per conversation
+		// Saving the same state for all the secondary windows at once is not possible in Electron
 		windowStatePersistence: false,
 	})
 

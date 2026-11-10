@@ -5,6 +5,28 @@
 
 # Changelog
 
+## v2.3.4 - 2026-11-11
+
+### Features
+- Switch to log in via the web browser to support SSO and other authentication methods requiring a browser [#2033](https://github.com/nextcloud/talk-desktop/pull/2033)
+- Add `skipUpdateCheck` config, also supported via managed configuration (Windows Policies/macOS User Defaults) [#2025](https://github.com/nextcloud/talk-desktop/pull/2025)
+
+### Fixes
+- Launch at startup setting in the app may be out of sync with the OS settings [#2043](https://github.com/nextcloud/talk-desktop/pull/2043), [#2044](https://github.com/nextcloud/talk-desktop/pull/2044)
+- Windows: launch at startup setting is lost after an update [#2042](https://github.com/nextcloud/talk-desktop/pull/2042), [#2045](https://github.com/nextcloud/talk-desktop/pull/2045)
+- App crashes when a secondary window is opened a second time [#2040](https://github.com/nextcloud/talk-desktop/pull/2040)
+- Windows/MSI: `.dll` files and the launcher stub `.exe` are not signed [#2034](https://github.com/nextcloud/talk-desktop/pull/2034), [#2035](https://github.com/nextcloud/talk-desktop/pull/2035)
+- Windows: incorrect friendly application name [#2018](https://github.com/nextcloud/talk-desktop/pull/2018)
+- Windows: incorrect firewall rule description [#2017](https://github.com/nextcloud/talk-desktop/pull/2017)
+- HTTP cache is not cleared on log out [#2010](https://github.com/nextcloud/talk-desktop/pull/2010)
+
+### Changes
+- Update built-in Talk v25.0.6 -> v25.0.7 [#2038](https://github.com/nextcloud/talk-desktop/pull/2038)
+- Bump Electron 44.4.5 -> 44.10.2 [#2016](https://github.com/nextcloud/talk-desktop/pull/2016)
+- Fix local build on Windows arm64 [#2039](https://github.com/nextcloud/talk-desktop/pull/2039)
+- Disable unneeded Electron fuses in production: `NODE_OPTIONS`, Node.js inspect (debug) arguments, and RunAsNode [#2037](https://github.com/nextcloud/talk-desktop/pull/2037)
+- Add and enforce an integrity check for JS and asset files (ASAR) [#2036](https://github.com/nextcloud/talk-desktop/pull/2036)
+
 ## v2.3.3 - 2026-10-15
 
 ### Features

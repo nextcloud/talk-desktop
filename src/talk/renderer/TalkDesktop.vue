@@ -9,11 +9,14 @@ import AppWindow from '../../shared/components/AppWindow.vue'
 import TalkWrapper from './TalkWrapper/TalkWrapper.vue'
 import TitleBar from './TitleBar/TitleBar.vue'
 import { useNotificationsStore } from './notifications/notifications.store.js'
+import { registerViewerHandlers } from './viewer/viewer.module.ts'
 
 const isTalkInitialized = ref(false)
 provide('talk:isInitialized', isTalkInitialized)
 
 useNotificationsStore()
+
+registerViewerHandlers()
 </script>
 
 <template>

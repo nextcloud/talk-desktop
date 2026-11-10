@@ -21,13 +21,14 @@ import UiFormGroupZoom from './components/UiFormGroupZoom.vue'
 import { usePrefersContrastMore } from '../../../shared/usePrefersContrastMore.ts'
 import { useAppConfigStore } from './appConfig.store.ts'
 import { useAppConfigValue } from './useAppConfigValue.ts'
+import { useLaunchAtStartup } from './useLaunchAtStartup.ts'
 import { useTristateToggle } from './useTristateToggle.ts'
 
 const isLinux = window.systemInfo.isLinux
 
 const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
-const launchAtStartup = useAppConfigValue('launchAtStartup')
+const launchAtStartup = useLaunchAtStartup()
 const launchAtStartupInBackground = useAppConfigValue('launchAtStartupInBackground')
 
 const skipUpdateCheck = useAppConfigValue('skipUpdateCheck')

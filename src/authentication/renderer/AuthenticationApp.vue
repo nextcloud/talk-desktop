@@ -5,12 +5,13 @@
 
 <script setup>
 import { translate as t } from '@nextcloud/l10n'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, useTemplateRef } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'
 import NcTextField from '@nextcloud/vue/components/NcTextField'
 import IconArrowRight from 'vue-material-design-icons/ArrowRight.vue'
 import AppWindow from '../../shared/components/AppWindow.vue'
+import LoginFlowV2WaitingDialog from './LoginFlowV2WaitingDialog.vue'
 import { appData } from '../../app/AppData.js'
 import { refetchAppData } from '../../app/appData.service.js'
 import { MIN_REQUIRED_NEXTCLOUD_VERSION, MIN_REQUIRED_TALK_VERSION } from '../../constants.js'
@@ -22,11 +23,18 @@ import { getCapabilities } from '../../shared/ocs.service.js'
 const channel = __CHANNEL__
 const version = __VERSION_TAG__
 
+const serverUrlFieldRef = useTemplateRef('serverUrlField')
+
+const serverLogoUrl = new URL('../../../img/server-logo-plain.svg', import.meta.url).href
+
 // Pre-fill server url with the last used one or set in the config
 const prefilledServer = parseAccountId(getAppConfigValue('accounts')?.[0])?.serverUrl
 
 const rawServerUrl = ref(BUILD_CONFIG.domain ?? prefilledServer)
 const enforceDomain = Boolean(BUILD_CONFIG.domain && BUILD_CONFIG.enforceDomain)
+
+/** @type {import('vue').Ref<string|null>} */
+const loginFlowV2Url = ref(null)
 
 const allowReset = computed(() => !!(rawServerUrl.value && !enforceDomain))
 
@@ -142,17 +150,23 @@ async function login() {
 		return setError(createVersionError('Nextcloud Talk', MIN_REQUIRED_TALK_VERSION, talkCapabilities.version))
 	}
 
-	// Login with web view
+	// Start the login flow
 	let credentials
 	try {
-		const maybeCredentials = await window.TALK_DESKTOP.openLoginWebView(serverUrl.value)
-		if (maybeCredentials instanceof Error) {
-			return setError(maybeCredentials.message)
+		loginFlowV2Url.value = await window.TALK_DESKTOP.loginFlowV2Init(serverUrl.value)
+		credentials = await window.TALK_DESKTOP.loginFlowV2Login()
+		if (credentials instanceof Error) {
+			const errorMessages = {
+				ABORTED: t('talk_desktop', 'Canceled'),
+				TIMEOUT: t('talk_desktop', 'Login timed out. Please try again.'),
+			}
+			return setError(errorMessages[credentials.message] ?? t('talk_desktop', 'Unexpected error'))
 		}
-		credentials = maybeCredentials
 	} catch (error) {
 		console.error(error)
 		return setError(t('talk_desktop', 'Unexpected error'))
+	} finally {
+		loginFlowV2Url.value = null
 	}
 
 	// Add credentials to the request
@@ -184,7 +198,7 @@ async function login() {
 <template>
 	<AppWindow :title="t('talk_desktop', 'Authentication')" class="wrapper">
 		<div class="spacer">
-			<div class="logo" />
+			<img class="logo" :src="serverLogoUrl" alt="">
 		</div>
 		<div class="login-box">
 			<form @submit.prevent="login">
@@ -193,6 +207,7 @@ async function login() {
 						{{ t('talk_desktop', 'Log in to {applicationName}', { applicationName: BUILD_CONFIG.applicationName }) }}
 					</h2>
 					<NcTextField
+						ref="serverUrlField"
 						v-model="rawServerUrl"
 						:label="!enforceDomain ? t('talk_desktop', 'Server address') : undefined"
 						:aria-label="enforceDomain ? t('talk_desktop', 'Server address') : undefined"
@@ -237,6 +252,7 @@ async function login() {
 				{{ BUILD_CONFIG.applicationName }} {{ version }}
 			</footer>
 		</div>
+		<LoginFlowV2WaitingDialog v-if="loginFlowV2Url" :loginUrl="loginFlowV2Url" @vue:unmounted="serverUrlFieldRef.focus()" />
 	</AppWindow>
 </template>
 
@@ -255,8 +271,6 @@ async function login() {
 }
 
 .logo {
-	background: no-repeat center url('~../../../img/server-logo-plain.svg');
-	background-size: contain;
 	width: 175px;
 	height: 130px;
 	margin-top: auto;

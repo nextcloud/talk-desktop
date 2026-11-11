@@ -61,7 +61,7 @@
     "@nextcloud/l10n": "^3.4.1",
     "@nextcloud/notify_push": "^1.4.0",
     "@nextcloud/router": "^3.2.0",
-    "@nextcloud/talk": "github:nextcloud-releases/spreed#v25.0.7",
+    "@nextcloud/talk": "github:nextcloud/spreed#feat/63954/viewer-library",
     "@nextcloud/viewer": "^2.0.0-beta.21",
     "@nextcloud/vue": "^9.14.0",
     "@vueuse/core": "^15.0.0",

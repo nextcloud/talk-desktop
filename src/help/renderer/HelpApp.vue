@@ -11,7 +11,7 @@ import { ref } from 'vue'
 import NcButton from '@nextcloud/vue/components/NcButton'
 import NcRichText from '@nextcloud/vue/components/NcRichText'
 import AppWindow from '../../shared/components/AppWindow.vue'
-import ButtonCopy from './ButtonCopy.vue'
+import ButtonCopy from '../../shared/components/ButtonCopy.vue'
 import TalkLogo from '../../../img/talk-icon-rounded.svg'
 import { BUILD_CONFIG } from '../../shared/build.config.ts'
 import { useDevMode } from '../../shared/useDevMode.ts'
@@ -68,9 +68,7 @@ function close() {
 			<div class="help__report-col">
 				<div class="help__report-heading-bar">
 					<h2>{{ t('talk_desktop', 'Diagnosis report') }}</h2>
-					<ButtonCopy :content="reportToCopy" variant="tertiary">
-						{{ t('talk_desktop', 'Copy report') }}
-					</ButtonCopy>
+					<ButtonCopy :label="t('talk_desktop', 'Copy report')" :content="reportToCopy" variant="tertiary" />
 				</div>
 				<NcRichText class="help__report" :text="report" useExtendedMarkdown />
 			</div>

@@ -1,9 +1,10 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Open in browser" : "Open in browser",
+    "Cancel" : "Cancel",
     "Close" : "Close",
     "Dismiss" : "Dismiss",
-    "Cancel" : "Cancel",
     "Done" : "Gjørt",
     "Never" : "ongantíð",
     "Accessibility" : "Atkomuligt",

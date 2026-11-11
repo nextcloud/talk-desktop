@@ -1,13 +1,16 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Canceled" : "Ofgesot",
     "Authentication" : "Authentifikatioun",
     "Server address" : "Server-Adress",
     "Log in" : "Umellen",
+    "Open in browser" : "Open in browser",
+    "Copy link" : "Link kopéieren",
+    "Cancel" : "Cancel",
     "Close" : "Zoumaachen",
     "Dismiss" : "Ofbriechen",
     "Advanced" : "Erweidert",
-    "Cancel" : "Cancel",
     "Country" : "Land",
     "Copy" : "Kopieren",
     "Done" : "Fäerdeg",

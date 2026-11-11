@@ -1,10 +1,14 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Canceled" : "キャンセル済み",
     "Authentication" : "認証",
     "Server address" : "サーバーアドレス",
     "Log in" : "ログイン",
     "Logging in …" : "ログイン中...",
+    "Open in browser" : "ブラウザーで開く",
+    "Copy link" : "リンクをコピー",
+    "Cancel" : "キャンセル",
     "Incoming call" : "着信",
     "Close" : "閉じる",
     "Dismiss" : "閉じる",
@@ -13,7 +17,6 @@ OC.L10N.register(
     "Advanced" : "高度な",
     "Proceed" : "続行する",
     "View certificate" : "証明書を表示",
-    "Cancel" : "キャンセル",
     "Certificate details" : "証明書の詳細",
     "Issued by" : "発行元",
     "Issued to" : "発行先",

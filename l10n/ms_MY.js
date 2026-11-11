@@ -3,10 +3,11 @@ OC.L10N.register(
     {
     "Server address" : "Alamat pelayan",
     "Log in" : "Log masuk",
+    "Open in browser" : "Open in browser",
+    "Cancel" : "Cancel",
     "Close" : "Tutup",
     "Dismiss" : "Dismiss",
     "Advanced" : "Maju",
-    "Cancel" : "Cancel",
     "Done" : "Selesai",
     "Ok" : "Ok",
     "No" : "Tidak",

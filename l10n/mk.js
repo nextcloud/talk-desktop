@@ -1,10 +1,14 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Canceled" : "Откажано",
     "Authentication" : "Автентикација",
     "Server address" : "Адреса на серверот",
     "Log in" : "Најава",
     "Logging in …" : "Најавување …",
+    "Open in browser" : "Отвори во прелистувач",
+    "Copy link" : "Копирај линк",
+    "Cancel" : "Откажи",
     "Incoming call" : "Дојдовен повик",
     "Close" : "Затвори",
     "Dismiss" : "Отфрли",
@@ -12,7 +16,6 @@ OC.L10N.register(
     "Security warning" : "Безбедносно предупредување",
     "Advanced" : "Напредно",
     "Proceed" : "Продолжи",
-    "Cancel" : "Откажи",
     "Valid until" : "Валиден до",
     "Copy" : "Копирај",
     "Copied" : "Копирано",

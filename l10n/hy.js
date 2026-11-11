@@ -3,10 +3,12 @@ OC.L10N.register(
     {
     "Server address" : "սերվերի հասցեն",
     "Log in" : "Մուտք գործել",
+    "Open in browser" : "Open in browser",
+    "Copy link" : "Պատճենել հղումը",
+    "Cancel" : "չեղարկել",
     "Close" : "Փակել",
     "Dismiss" : "Dismiss",
     "Security warning" : "Անվտանգության զգուշացում",
-    "Cancel" : "չեղարկել",
     "Copy" : "Պատճենել",
     "About" : "Մասին",
     "License" : "լիցենզիա",

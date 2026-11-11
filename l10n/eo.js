@@ -1,14 +1,17 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Canceled" : "Nuligita",
     "Authentication" : "Aŭtentigo",
     "Server address" : "Servila adreso",
     "Log in" : "Ensaluti",
+    "Open in browser" : "Malfermi per retumilo",
+    "Copy link" : "Kopii ligilon",
+    "Cancel" : "Cancel",
     "Close" : "Malfermi",
     "Dismiss" : "Preterpasi",
     "Security warning" : "Sekureca averto",
     "Advanced" : "Progresinta",
-    "Cancel" : "Cancel",
     "Valid until" : "Valida ĝis",
     "License" : "Permesilo",
     "Done" : "Farita",

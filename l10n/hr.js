@@ -1,11 +1,15 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Canceled" : "Otkazano",
     "Authentication" : "Autentifikacija",
     "Log in to {applicationName}" : "Prijava u {applicationName}",
     "Server address" : "Adresa poslužitelja",
     "Log in" : "Prijavite se",
     "Logging in …" : "Prijavljivanje …",
+    "Open in browser" : "Otvori u pregledniku",
+    "Copy link" : "Kopiraj poveznicu",
+    "Cancel" : "Odustani",
     "Incoming call" : "Dolazni poziv",
     "Close" : "Zatvori",
     "Dismiss" : "Odpusti",
@@ -13,7 +17,6 @@ OC.L10N.register(
     "Security warning" : "Sigurnosno upozorenje",
     "Advanced" : "Napredno",
     "Proceed" : "Nastavi",
-    "Cancel" : "Odustani",
     "Valid until" : "Vrijedi do",
     "Copy" : "Kopirajte",
     "Copied" : "Kopirano",

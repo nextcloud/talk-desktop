@@ -2,9 +2,11 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "Clàraich a-steach",
+    "Open in browser" : "Open in browser",
+    "Copy link" : "Dèan lethbhreac dhen cheangal",
+    "Cancel" : "Sguir dheth",
     "Close" : "Dùin",
     "Dismiss" : "Leig seachad",
-    "Cancel" : "Sguir dheth",
     "Copy" : "Dèan lethbhreac",
     "About" : "Mu dhèidhinn",
     "License" : "Ceadachas",

@@ -2,10 +2,11 @@ OC.L10N.register(
     "talk_desktop",
     {
     "Log in" : "لاگ ان",
+    "Open in browser" : "Open in browser",
+    "Cancel" : "Cancel",
     "Close" : "بند ",
     "Dismiss" : "Dismiss",
     "Advanced" : "ایڈوانسڈ",
-    "Cancel" : "Cancel",
     "Ok" : "اوکے",
     "No" : "نہیں",
     "Yes" : "ہاں",

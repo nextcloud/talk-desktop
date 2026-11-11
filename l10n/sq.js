@@ -1,14 +1,17 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Canceled" : "Anuluar",
     "Authentication" : "Mirëfilltësim",
     "Server address" : "Adresë serveri",
     "Log in" : "Hyni",
+    "Open in browser" : "Open in browser",
+    "Copy link" : "Kopjoje lidhjen",
+    "Cancel" : "Anuloje",
     "Close" : "Mbylleni",
     "Dismiss" : "Hiq",
     "Security warning" : "Sinjalizim sigurie",
     "Advanced" : "Të avancuara",
-    "Cancel" : "Anuloje",
     "Valid until" : "E vlefshme deri më",
     "Copy" : "Kopjoni",
     "About" : "Rreth",

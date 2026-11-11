@@ -1,14 +1,16 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Canceled" : "Nullet",
     "Server address" : "Chom-lec'h ar servijour",
     "Log in" : "Kennaskañ",
+    "Copy link" : "Eilañ al liamm",
+    "Cancel" : "Nullañ",
     "Close" : "Serriñ",
     "Dismiss" : "Disteurel",
     "Join call" : "Mont er gemenadenn",
     "Security warning" : "Kemmenadenn surentez",
     "Advanced" : "Araokadennet",
-    "Cancel" : "Nullañ",
     "Valid until" : "Gwir betek",
     "License" : "Aotre",
     "Done" : "Graet",

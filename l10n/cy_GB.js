@@ -1,12 +1,14 @@
 OC.L10N.register(
     "talk_desktop",
     {
+    "Canceled" : "Wedi diddymu",
     "Server address" : "Cyfeiriad gweinydd",
     "Log in" : "Mewngofnodi",
+    "Open in browser" : "Open in browser",
+    "Cancel" : "Cancel",
     "Close" : "Cau",
     "Dismiss" : "Dismiss",
     "Advanced" : "Uwch",
-    "Cancel" : "Cancel",
     "About" : "Ynglyn â",
     "License" : "Trwydded",
     "Issues" : "Materion",

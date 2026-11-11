@@ -3,9 +3,11 @@ OC.L10N.register(
     {
     "Server address" : "Serweriň salgysy",
     "Log in" : "Giriň",
+    "Open in browser" : "Open in browser",
+    "Copy link" : "Link-y nusgalaň",
+    "Cancel" : "ýatyrmak",
     "Close" : "Ýap",
     "Dismiss" : "Ýapmak.",
-    "Cancel" : "ýatyrmak",
     "Copy" : "Göçüriň",
     "About" : "Hakynda",
     "License" : "ygtyýarnamasy",

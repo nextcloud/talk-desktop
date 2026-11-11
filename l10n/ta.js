@@ -3,10 +3,11 @@ OC.L10N.register(
     {
     "Server address" : "சேவையக முகவரி",
     "Log in" : "புகுபதிகை",
+    "Open in browser" : "Open in browser",
+    "Cancel" : "ரத்து செய்",
     "Close" : "மூடுக",
     "Dismiss" : "Dismiss",
     "Advanced" : "உயர்ந்த",
-    "Cancel" : "ரத்து செய்",
     "Country" : "நாடு",
     "Copied" : "நகலெடுக்கப்பட்டது",
     "Done" : "Done",

@@ -1,10 +1,12 @@
 { "translations": {
     "Server address" : "អាសយដ្ឋាន​ម៉ាស៊ីន​បម្រើ",
     "Log in" : "ចូល",
+    "Open in browser" : "Open in browser",
+    "Copy link" : "ចម្លងតំណ",
+    "Cancel" : "លើកលែង",
     "Close" : "បិទ",
     "Dismiss" : "Dismiss",
     "Advanced" : "កម្រិត​ខ្ពស់",
-    "Cancel" : "លើកលែង",
     "Ok" : "ព្រម",
     "No" : "ទេ",
     "Yes" : "បាទ ឬចាស",

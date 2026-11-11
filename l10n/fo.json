@@ -1,7 +1,8 @@
 { "translations": {
+    "Open in browser" : "Open in browser",
+    "Cancel" : "Cancel",
     "Close" : "Close",
     "Dismiss" : "Dismiss",
-    "Cancel" : "Cancel",
     "Done" : "Gjørt",
     "Never" : "ongantíð",
     "Accessibility" : "Atkomuligt",

@@ -48,26 +48,6 @@ Installation of flatpak on Linux: Ensure you have Flatpak installed on your syst
 - [Nextcloud Server](https://github.com/nextcloud/server) version 27 or higher.
 - [Nextcloud Talk](https://github.com/nextcloud/spreed) version 17 or higher.
 
-## 👥 Multi-account
-
-Full multi-account currently [is not currently supported](https://github.com/nextcloud/talk-desktop/issues/7).
-
-However, using portable `zip` distribution, you can have several Nextcloud Talk instances run simultaneously. Just rename the executable from default  `Nextcloud Talk` to a custom name. For example: 
-
-```
-/path/to/apps/
-├── home-apps/
-│   └── Nextcloud Talk/
-│       ├── ...
-│       ├── Nextcloud Talk (Home).exe
-│       └── ...
-└── work-apps/
-    └── Nextcloud Talk/
-        ├── ...
-        ├── Nextcloud Talk (Work).exe
-        └── ...
-```
-
 ## ⌨️ CLI usage
 
 ### Application flags

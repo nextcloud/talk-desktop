@@ -9,6 +9,9 @@
 		"strictNullChecks": true,
 		"paths": {
 			"@global-styles/*": ["./resources/server-global-styles/master/*"],
+			// Dirty workaround to prevent TS from type checking Talk source files
+			// Making it a .js file allows skipping it by enabled skipLibCheck (in @vue/tsconfig/tsconfig.json)
+			"@nextcloud/talk/*.ts": ["./node_modules/@nextcloud/talk/src/main.js"],
 		},
 	},
 }

@@ -17,7 +17,7 @@ const emit = defineEmits<{
 
 onMounted(async () => {
 	// Importing the main Talk entry point mounts a Vue app to the #content
-	await import('@talk/src/main.js')
+	await import('@nextcloud/talk/src/main.js')
 
 	// Additional integrations
 	registerTalkDesktopSettingsSection()

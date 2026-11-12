@@ -69,7 +69,7 @@ async function applyL10n() {
 
 	if (language !== 'en') {
 		await Promise.all([
-			loadAndRegisterL10n('spreed', language, (lang) => import(`@talk/l10n/${lang}.json`)),
+			loadAndRegisterL10n('spreed', language, (lang) => import(`@nextcloud/talk/l10n/${lang}.json`)),
 			loadAndRegisterL10n('talk_desktop', language, (lang) => import(`../../l10n/${lang}.json`)),
 		])
 	}

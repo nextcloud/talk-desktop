@@ -23,7 +23,7 @@ declare module '*.svg?raw' {
 
 // Ignore types from Talk
 // No need to type check entire Talk codebase
-declare module '@talk/*'
+declare module '@nextcloud/talk/*'
 
 declare module 'vue-material-design-icons/*.vue' {
 	import type { Component } from 'vue'

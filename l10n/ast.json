@@ -1,9 +1,12 @@
 { "translations": {
     "Invalid server address" : "La direición del sirvidor ye inválida",
+    "Canceled" : "Anulóse",
     "Unexpected error" : "Error inesperáu",
     "Authentication" : "Autenticación",
     "Server address" : "Direición del sirvidor",
     "Log in" : "Aniciar la sesión",
+    "Open in browser" : "Abrir nel restolador",
+    "Copy link" : "Copiar l'enllaz",
     "Cancel" : "Encaboxar",
     "Close" : "Zarrar",
     "Dismiss" : "Escartar",

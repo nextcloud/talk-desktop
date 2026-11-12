@@ -4,6 +4,8 @@ OC.L10N.register(
     "Authentication" : "Autentifikasiya",
     "Server address" : "Server ünvanı",
     "Log in" : "Giriş",
+    "Open in browser" : "Open in browser",
+    "Copy link" : "linki nüsxələ",
     "Cancel" : "Cancel",
     "Close" : "Bağla",
     "Dismiss" : "Rədd et",

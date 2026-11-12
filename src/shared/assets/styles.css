@@ -54,3 +54,11 @@ kbd + kbd {
 	bottom: 0;
 	height: auto;
 }
+
+/* Prevent image editor from overlapping the custom title bar (Window Controls Overlay) */
+/* TODO: fix in @nextcloud/viewer IF the same fix is applied to full-size modals */
+.image-editor.viewer__image-editor {
+	inset: env(titlebar-area-height, 0px) 0 0 0 !important;
+	height: auto !important;
+	width: auto !important;
+}

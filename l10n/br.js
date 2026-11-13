@@ -4,6 +4,7 @@ OC.L10N.register(
     "Canceled" : "Nullet",
     "Server address" : "Chom-lec'h ar servijour",
     "Log in" : "Kennaskañ",
+    "Open in browser" : "Digeriñ er furcher",
     "Copy link" : "Eilañ al liamm",
     "Cancel" : "Nullañ",
     "Close" : "Serriñ",

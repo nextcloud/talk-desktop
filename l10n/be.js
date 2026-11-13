@@ -17,6 +17,7 @@ OC.L10N.register(
     "Server address" : "Адрас сервера",
     "Log in" : "Увайсці",
     "Logging in …" : "Уваход …",
+    "Open in browser" : "Адкрыць у браўзеры",
     "Copy link" : "Скапіяваць спасылку",
     "Cancel" : "Скасаваць",
     "Incoming call" : "Уваходны выклік",

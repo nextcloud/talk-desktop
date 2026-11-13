@@ -6,6 +6,7 @@ OC.L10N.register(
     "Unexpected error" : "Неочаквана грешка",
     "Authentication" : "Удостоверяване",
     "Server address" : "Адрес на сървъра",
+    "Open in browser" : "Отваряне в браузъра",
     "Copy link" : "Копиране на връзката",
     "Cancel" : "Отказ",
     "Close" : "Затваряне",

@@ -4,6 +4,7 @@ OC.L10N.register(
     "Authentication" : "Autentifikacija",
     "Server address" : "Adresa servera",
     "Log in" : "Prijava",
+    "Open in browser" : "Open in browser",
     "Copy link" : "Kopiraj vezu",
     "Cancel" : "Odustani",
     "Close" : "Zatvori",

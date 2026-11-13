@@ -38,6 +38,7 @@ OC.L10N.register(
     "Dyslexia font" : "Фонт за дислексија",
     "Restart" : "Рестартирај",
     "Loading …" : "Се вчитува …",
+    "Reload" : "Повторно вчитај",
     "Zoom" : "Зум",
     "Zoom out" : "Од зумирај",
     "Zoom in" : "Зумирај",

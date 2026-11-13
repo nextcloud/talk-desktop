@@ -495,7 +495,6 @@ module.exports = {
 					// libunity source: https://git.launchpad.net/libunity/tree/src/unity-launcher.vala
 					'--talk-name=com.canonical.Unity',
 
-					// Uncomment when used
 					// Safe Storage and Cookies encryption
 					// Electron uses Chromium: https://github.com/electron/electron/blob/v41.2.0/shell/browser/api/electron_api_safe_storage.cc#L7
 					// Chromium sources:
@@ -505,9 +504,9 @@ module.exports = {
 					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/sync/kwallet_dbus.cc;l=23-24
 					// - https://source.chromium.org/chromium/chromium/src/+/refs/tags/146.0.7680.179:components/os_crypt/async/browser/freedesktop_secret_key_provider.h
 					// (org.kde.kwalletd is ignored as legacy)
-					// '--talk-name=org.freedesktop.secrets',
-					// '--talk-name=org.kde.kwalletd5',
-					// '--talk-name=org.kde.kwalletd6',
+					'--talk-name=org.freedesktop.secrets',
+					'--talk-name=org.kde.kwalletd5',
+					'--talk-name=org.kde.kwalletd6',
 
 					// Uncomment when needed
 					// Makes sense for video/audio files playback, but currently it is triggered for calls as well  (TODO: find out why)
@@ -620,9 +619,11 @@ module.exports = {
 				},
 			},
 		},
+
 		new FusesPlugin({
 			version: FuseVersion.V1,
 			[FuseV1Options.RunAsNode]: false,
+			[FuseV1Options.EnableCookieEncryption]: true,
 			[FuseV1Options.EnableNodeOptionsEnvironmentVariable]: false,
 			[FuseV1Options.EnableNodeCliInspectArguments]: false,
 			[FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,

@@ -20,14 +20,14 @@ export function generateFilePath(app, type, file) {
 	if (app === 'spreed' && type === 'img') {
 		// Implicitly keep the extension so Webpack adds only this type of files to the build using require context
 		const requiresByExt = {
-			'.svg': () => require(`@talk/img/${filename}.svg`),
-			'.png': () => require(`@talk/img/${filename}.png`),
-			'.jpg': () => require(`@talk/img/${filename}.jpg`),
-			'.jpeg': () => require(`@talk/img/${filename}.jpeg`),
-			'.webp': () => require(`@talk/img/${filename}.webp`),
-			'.gif': () => require(`@talk/img/${filename}.gif`),
+			'.svg': () => require(`@nextcloud/talk/img/${filename}.svg`),
+			'.png': () => require(`@nextcloud/talk/img/${filename}.png`),
+			'.jpg': () => require(`@nextcloud/talk/img/${filename}.jpg`),
+			'.jpeg': () => require(`@nextcloud/talk/img/${filename}.jpeg`),
+			'.webp': () => require(`@nextcloud/talk/img/${filename}.webp`),
+			'.gif': () => require(`@nextcloud/talk/img/${filename}.gif`),
 			// Note: spreed uses img for both images and sounds
-			'.ogg': () => require(`@talk/img/${filename}.ogg`),
+			'.ogg': () => require(`@nextcloud/talk/img/${filename}.ogg`),
 		}
 		if (requiresByExt[ext]) {
 			return requiresByExt[ext]()

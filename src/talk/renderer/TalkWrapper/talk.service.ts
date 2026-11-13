@@ -5,7 +5,7 @@
 
 import type { Router } from 'vue-router'
 
-import { useTalkHashStore } from '@talk/src/stores/talkHash.js'
+import { useTalkHashStore } from '@nextcloud/talk/src/stores/talkHash.js'
 import { isNavigationFailure, NavigationFailureType } from 'vue-router'
 
 /**

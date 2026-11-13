@@ -7,7 +7,7 @@ import { setupWebPage } from '../../shared/setupWebPage.js'
 import { createTalkDesktopApp } from './TalkDesktop.app.ts'
 
 import '../../shared/assets/styles.css'
-import '@talk/src/icons.css'
+import '@nextcloud/talk/src/icons.css'
 import './talk.styles.css'
 
 await setupWebPage()

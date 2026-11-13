@@ -10,8 +10,8 @@ import axios from '@nextcloud/axios'
 import { generateOcsUrl } from '@nextcloud/router'
 import { appData } from '../../app/AppData.js'
 
-// @talk/src/types/openapi/openapi.ts/operations['call-get-peers-for-call']['responses'][200]['content']['application/json']
-// TODO: find a way to import from @talk without type errors on CI
+// @nextcloud/talk/src/types/openapi/openapi.ts/operations['call-get-peers-for-call']['responses'][200]['content']['application/json']
+// TODO: find a way to import from @nextcloud/talk without type errors on CI
 type CallGetParticipantsForCallResponse = {
 	ocs: {
 		meta: {

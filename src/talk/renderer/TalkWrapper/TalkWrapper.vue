@@ -11,6 +11,8 @@ import { registerTalkDesktopSettingsSection } from '../Settings/index.ts'
 import { onTalkHashDirty, onTalkHashUpdate, openConversation, setTalkHash } from './talk.service.ts'
 import { useBadgeCountIntegration } from './useBadgeCountIntegration.ts'
 
+import '@nextcloud/talk/src/integrations/reference/reference.ts'
+
 const emit = defineEmits<{
 	ready: []
 }>()

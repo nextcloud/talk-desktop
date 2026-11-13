@@ -13,7 +13,7 @@ import IconUnfoldMoreHorizontal from 'vue-material-design-icons/UnfoldMoreHorizo
 import NcFormBoxItem from './NcFormBoxItem.vue'
 
 /** Selected value */
-const modelValue = defineModel<T>({ required: true })
+const modelValue = defineModel<T | T[]>({ required: true })
 
 const {
 	label = undefined,
@@ -31,11 +31,17 @@ const {
 	unselected?: string
 	/** Disabled state */
 	disabled?: boolean
+	multiple?: boolean
 }>()
 
 const selectId = useId()
 const selectElement = useTemplateRef('select')
-const selectedLabel = computed(() => options.find((option) => option.value === modelValue.value)?.label || unselected)
+const selectedLabel = computed(() => {
+	if (Array.isArray(modelValue.value)) {
+		return modelValue.value.map((value) => options.find((option) => option.value === value)?.label || unselected).join(', ')
+	}
+	return options.find((option) => option.value === modelValue.value)?.label || unselected
+})
 </script>
 
 <template>
@@ -54,7 +60,10 @@ const selectedLabel = computed(() => options.find((option) => option.value === m
 				ref="select"
 				v-model="modelValue"
 				class="hidden-select"
-				:aria-describedby="descriptionId">
+				:aria-describedby="descriptionId"
+				size="1"
+				:multiple
+				:disabled>
 				<option v-for="option in options" :key="option.value || ''" :value="option.value">
 					{{ option.label }}
 				</option>

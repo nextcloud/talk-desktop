@@ -5,8 +5,20 @@
 
 export type ScreensharingSourceId = 'entire-desktop:0:0' | `${'screen' | 'window'}:${number}:${number}`
 
-export type ScreensharingSource = {
+/**
+ * The minimal description of a shared source, enough to tell which screens it captures.
+ * Only plain data, as it is passed to the main process.
+ */
+export type SharedScreensharingSource = {
 	id: ScreensharingSourceId
+	/**
+	 * ID of the display associated with a screen source, empty for a window source.
+	 * Note: not provided by all the platforms.
+	 */
+	display_id: string
+}
+
+export type ScreensharingSource = SharedScreensharingSource & {
 	name: string
 	/**
 	 * data:image/png;base64 encoded icon of the source

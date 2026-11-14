@@ -64,7 +64,7 @@
     "@nextcloud/talk": "github:nextcloud-releases/spreed#v25.0.8",
     "@nextcloud/vue": "^9.14.0",
     "@vueuse/core": "^15.0.0",
-    "core-js": "^3.50.0",
+    "core-js": "^3.51.0",
     "electron-squirrel-startup": "^1.0.1",
     "howler": "^2.2.4",
     "mri": "^1.2.0",

@@ -5,6 +5,17 @@
 
 # Changelog
 
+## v2.3.5 - 2026-11-16
+
+### Features
+- Add back/forward navigation keyboard shortcuts with <kbd>Alt ←</kbd> / <kbd>Alt →</kbd> on Windows/Linux and <kbd>Cmd [</kbd> / <kbd>Cmd ]</kbd> on macOS [#2054](https://github.com/nextcloud/talk-desktop/pull/2054)
+
+### Fixes
+- Support Talk reference widget for conversation/messages links [#2050](https://github.com/nextcloud/talk-desktop/pull/2050)
+
+### Changes
+- Update built-in Talk v25.0.7 -> v25.0.8 [#2053](https://github.com/nextcloud/talk-desktop/pull/2053)
+
 ## v2.3.4 - 2026-11-11
 
 ### Features

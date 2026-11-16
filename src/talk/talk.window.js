@@ -6,6 +6,7 @@
 const { BrowserWindow } = require('electron')
 const { setupTray } = require('../app/app.tray.js')
 const { getAppConfig } = require('../app/AppConfig.ts')
+const { applyBackForwardNavigation } = require('../app/applyBackForwardNavigation.ts')
 const { applyContextMenu } = require('../app/applyContextMenu.js')
 const { applyDownloadHandler } = require('../app/downloads.ts')
 const { applyExternalLinkHandler } = require('../app/externalLinkHandlers.ts')
@@ -81,6 +82,7 @@ function createTalkWindow() {
 	applyDownloadHandler(window)
 	applyWheelZoom(window)
 	applyZoom(window)
+	applyBackForwardNavigation(window)
 
 	setupTray(window)
 

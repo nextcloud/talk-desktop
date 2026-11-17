@@ -234,6 +234,10 @@ export function createNotificationStore() {
 	 */
 	async function _fetch() {
 		const response = await getNotificationsData(state.tabId, state.lastETag, !state.backgroundFetching, state.hasNotifyPush)
+		if (response.status === STATUS_NETWORK_ERROR) {
+			return
+		}
+
 		if (response.status === 204) {
 			// 204 No Content - Intercept when no notifiers are there.
 			console.debug('Fetching notifications but no content, slowing down polling to ' + state.pollIntervalBase * 10)
@@ -260,13 +264,6 @@ export function createNotificationStore() {
 		} else if (response.status === 304) {
 			// 304 - Not modified
 			console.debug('No new notification data received')
-			_setPollingInterval(state.pollIntervalBase)
-		} else if (response.status === STATUS_NETWORK_ERROR) {
-			// The request never reached the server. This says nothing about the
-			// server's health and usually lasts seconds, so keep the normal
-			// interval: backing off 10x here is what left polling at 2.5 hours
-			// (15 min base with notify_push) after a brief network blip.
-			console.debug('Notifications request did not reach the server, keeping the polling interval')
 			_setPollingInterval(state.pollIntervalBase)
 		} else if (response.status === 503) {
 			// 503 - Maintenance mode

@@ -17,9 +17,7 @@ import { generateOcsUrl } from '@nextcloud/router'
 const BrowserStorage = getBuilder('notifications').clearOnLogout().persist().build()
 
 /**
- * Synthetic status used when the request never reached the server, so that a
- * transient network failure is not mistaken for a server-side error.
- * Zero is never a real HTTP status.
+ * Synthetic response status for network failure
  */
 export const STATUS_NETWORK_ERROR = 0
 
@@ -78,9 +76,6 @@ async function refreshData(lastETag) {
 		if (error?.response?.status) {
 			BrowserStorage.setItem('status', '' + error.response.status)
 		} else {
-			// The request never reached the server (offline, DNS failure, connection
-			// reset). Report it as its own status so the caller can retry at the
-			// normal interval instead of treating it as a server-side failure.
 			BrowserStorage.setItem('status', '' + STATUS_NETWORK_ERROR)
 		}
 	}

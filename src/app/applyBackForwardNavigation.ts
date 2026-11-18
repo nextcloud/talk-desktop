@@ -16,21 +16,32 @@ export function applyBackForwardNavigation(window: BrowserWindow) {
 			return
 		}
 
-		const { navigationHistory } = window.webContents
+		let direction: 'back' | 'forward' | undefined
 
 		const isMac = process.platform === 'darwin'
 		if (isMac) {
-			if (input.meta && input.key === '[' && navigationHistory.canGoBack()) {
-				navigationHistory.goBack()
-			} else if (input.meta && input.key === ']' && navigationHistory.canGoForward()) {
-				navigationHistory.goForward()
+			if (input.meta && input.key === '[') {
+				direction = 'back'
+			} else if (input.meta && input.key === ']') {
+				direction = 'forward'
 			}
 		} else {
-			if (input.alt && input.key === 'ArrowLeft' && navigationHistory.canGoBack()) {
-				navigationHistory.goBack()
-			} else if (input.alt && input.key === 'ArrowRight' && navigationHistory.canGoForward()) {
-				navigationHistory.goForward()
+			if (input.alt && input.key === 'ArrowLeft') {
+				direction = 'back'
+			} else if (input.alt && input.key === 'ArrowRight') {
+				direction = 'forward'
 			}
+		}
+
+		// Prevent default for future-proofing in case Electron adds default navigation or other actions on the same shortcut (it was a case in the past)
+
+		const { navigationHistory } = window.webContents
+		if (direction === 'back' && navigationHistory.canGoBack()) {
+			event.preventDefault()
+			navigationHistory.goBack()
+		} else if (direction === 'forward' && navigationHistory.canGoForward()) {
+			event.preventDefault()
+			navigationHistory.goForward()
 		}
 	})
 

@@ -12,6 +12,10 @@ import type { BrowserWindow } from 'electron'
  */
 export function applyBackForwardNavigation(window: BrowserWindow) {
 	window.webContents.on('before-input-event', (event, input) => {
+		if (input.type !== 'keyDown') {
+			return
+		}
+
 		const { navigationHistory } = window.webContents
 
 		const isMac = process.platform === 'darwin'

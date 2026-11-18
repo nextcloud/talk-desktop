@@ -10,7 +10,7 @@ const path = require('node:path')
 const { setupMenu } = require('./app/app.menu.js')
 const { loadAppConfig, getAppConfig, setAppConfig } = require('./app/AppConfig.ts')
 const { appData } = require('./app/AppData.js')
-const { registerAppProtocolHandler } = require('./app/appProtocol.ts')
+const { getUserAgent, registerAppProtocolHandler } = require('./app/appProtocol.ts')
 const { verifyCertificate, promptCertificateTrust } = require('./app/certificate.service.ts')
 const { cli } = require('./app/cli.ts')
 const { openChromeWebRtcInternals } = require('./app/dev.utils.ts')
@@ -211,6 +211,8 @@ app.whenReady().then(async () => {
 		const isAccepted = request.errorCode === 0 || await promptCertificateTrust(mainWindow, request)
 		callback(isAccepted ? 0 : -3)
 	})
+
+	session.defaultSession.setUserAgent(getUserAgent())
 
 	// Allow web-view with accepted untrusted certificate (Login Flow)
 	app.on('certificate-error', async (event, webContents, url, error, certificate, callback) => {

@@ -8,10 +8,38 @@ import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import packageJson from '../../package.json'
 import { DEV_SERVER_ORIGIN } from '../constants.js'
+import { BUILD_CONFIG } from '../shared/build.config.ts'
+import { once } from '../shared/utils.ts'
 import { osTitle } from './system.utils.ts'
 import { isInternalUrl } from './utils.ts'
 
-const USER_AGENT = `Mozilla/5.0 (${osTitle}) Nextcloud-Talk v${packageJson.version}`
+/**
+ * Get application User-Agent
+ */
+export const getUserAgent = once(() => {
+	const uaOsInfo = app.userAgentFallback.match(/^Mozilla\/5.0 \((.+?)\)/)?.[1] ?? osTitle
+
+	const userAgent = [
+		// Partially invalid component with OS, client name and version
+		// Must be compatible with Nextcloud server parser
+		// See: https://github.com/nextcloud/server/blob/v35.0.0/lib/public/IRequest.php#L68
+		`Mozilla/5.0 (${osTitle}) Nextcloud-Talk v${packageJson.version}`,
+		// Application component (fixed as non-branded)
+		`NextcloudTalk/${packageJson.version} (${uaOsInfo})`,
+		// Optionally branded application component
+		BUILD_CONFIG.isBranded
+			? `${BUILD_CONFIG.applicationNameSanitized}/${packageJson.version}`
+			: null,
+		// Default Electron User-Agent components
+		'AppleWebKit/537.36 (KHTML, like Gecko)', // Chromium legacy, frozen
+		`Chrome/${process.versions.chrome}`,
+		`Electron/${process.versions.electron}`,
+		'Safari/537.36', // Chromium legacy, frozen
+	].filter(Boolean).join(' ')
+	console.log(`User-Agent: ${userAgent}`)
+
+	return userAgent
+})
 
 // Note: connecting to servers over http:// is not supported at the moment
 // Adding http:// support is doable
@@ -45,7 +73,7 @@ export function registerAppProtocolHandler() {
 		// Override default Electron's User-Agent
 		// Note: it is supposed to work via webRequest.onBeforeSendHeaders (according to the Electron documentation)
 		// But for User-Agent header in net.fetch request it does not...
-		request.headers.set('User-Agent', USER_AGENT)
+		request.headers.set('User-Agent', getUserAgent())
 
 		// Handle internal application resource
 		if (isInternalUrl(url)) {

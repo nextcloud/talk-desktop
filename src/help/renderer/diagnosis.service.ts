@@ -17,6 +17,8 @@ export function generateDiagnosisReport() {
 			version: __VERSION_TAG__,
 			builtInTalkVersion: __TALK_VERSION_TAG__,
 			execPath: window.systemInfo.execPath,
+			electronVersion: window.systemInfo.electronVersion,
+			chromiumVersion: window.systemInfo.chromiumVersion,
 		},
 		server: appData.credentials
 			? {
@@ -81,6 +83,8 @@ ${table([
 	['Version', report.talkDesktop.version],
 	['Built-in Talk version', report.talkDesktop.builtInTalkVersion],
 	['Release channel', __CHANNEL__],
+	['Electron version', `v${report.talkDesktop.electronVersion}`],
+	['Chromium version', `v${report.talkDesktop.chromiumVersion}`],
 
 	['SYSTEM', '{line}'],
 	['Operating system', report.platform.os],

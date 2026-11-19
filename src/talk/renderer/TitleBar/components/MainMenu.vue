@@ -39,6 +39,24 @@ onBeforeMount(async () => {
 	newRelease.value = await window.TALK_DESKTOP.checkForUpdate()
 })
 
+/**
+ * Re-check the latest release before download, the known one may be outdated
+ */
+async function downloadUpdate() {
+	const release = await window.TALK_DESKTOP.checkForUpdate() ?? newRelease.value
+	if (!release) {
+		return
+	}
+	newRelease.value = release
+	// Installer may not be available if the current installer type is not supported anymore in a new version
+	// Fallback to the release page link
+	if (release.installer) {
+		window.TALK_DESKTOP.downloadURL(release.installer.downloadUrl, release.installer.filename)
+	} else {
+		window.open(release.url, '_blank')
+	}
+}
+
 const unsubscribeNewVersion = window.TALK_DESKTOP.onUpdateAvailable((release: ReleaseInfo) => {
 	newRelease.value = release
 })
@@ -59,13 +77,7 @@ onBeforeUnmount(() => {
 		</template>
 
 		<template v-if="newRelease">
-			<!-- Installer may not be available if the current installer type is not supported anymore in a new version -->
-			<!-- Fallback to the release page link -->
-			<NcActionLink
-				:href="newRelease.installer?.downloadUrl || newRelease.url"
-				:download="newRelease.installer?.filename || undefined"
-				target="_blank"
-				closeAfterClick>
+			<NcActionButton closeAfterClick @click="downloadUpdate">
 				<template #icon>
 					<UiDotBadge
 						insetBlockStart="32%"
@@ -76,7 +88,7 @@ onBeforeUnmount(() => {
 					</UiDotBadge>
 				</template>
 				{{ t('talk_desktop', 'Update') }}
-			</NcActionLink>
+			</NcActionButton>
 
 			<NcActionSeparator />
 		</template>

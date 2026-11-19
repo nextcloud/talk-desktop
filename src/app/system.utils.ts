@@ -98,6 +98,8 @@ export const systemInfo = {
 	osVersion,
 	platform,
 	execPath: process.execPath,
+	electronVersion: process.versions.electron,
+	chromiumVersion: process.versions.chrome,
 }
 
 /**

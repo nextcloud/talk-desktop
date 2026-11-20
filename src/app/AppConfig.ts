@@ -105,6 +105,16 @@ export type AppConfig = {
 	 * Default: 1.
 	 */
 	zoomFactor: number
+	/**
+	 * Whether to enable spell checking in the app.
+	 * Default: true.
+	 */
+	enableSpellCheck: boolean
+	/**
+	 * List of languages to use for spell checking in addition to the system language.
+	 * Default: [], use system preferences
+	 */
+	spellCheckLanguages: string[]
 
 	// ----------------
 	// Privacy settings
@@ -169,6 +179,8 @@ const defaultAppConfig: AppConfig = {
 	systemTitleBar: false,
 	monochromeTrayIcon: isMac,
 	zoomFactor: 1,
+	enableSpellCheck: true,
+	spellCheckLanguages: [],
 	playSoundChat: 'respect-dnd',
 	playSoundCall: 'respect-dnd',
 	enableCallbox: 'respect-dnd',

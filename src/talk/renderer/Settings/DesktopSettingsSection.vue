@@ -15,6 +15,7 @@ import IconThemeLightDark from 'vue-material-design-icons/ThemeLightDark.vue'
 import IconWeatherNight from 'vue-material-design-icons/WeatherNight.vue'
 import IconWeatherSunny from 'vue-material-design-icons/WeatherSunny.vue'
 import DesktopSettingsSectionRelaunchNote from './components/DesktopSettingsSectionRelaunchNote.vue'
+import DesktopSettingsSectionSpellChecking from './components/DesktopSettingsSectionSpellChecking.vue'
 import UiFormBoxAudioOutput from './components/UiFormBoxAudioOutput.vue'
 import UiFormBoxSelectNative from './components/UiFormBoxSelectNative.vue'
 import UiFormGroupZoom from './components/UiFormGroupZoom.vue'
@@ -117,6 +118,8 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 		</NcFormGroup>
 
 		<UiFormGroupZoom v-model="zoomFactor" />
+
+		<DesktopSettingsSectionSpellChecking />
 
 		<NcFormGroup :label="t('talk_desktop', 'Notifications & Sounds')">
 			<NcFormBox>

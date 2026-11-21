@@ -67,7 +67,7 @@ function table(data: string[][]) {
 
 const printBool = (value: boolean) => value ? '✅ yes' : '❌ no'
 
-const SENSITIVE_CONFIG_KEYS: AppConfigKey[] = ['accounts', 'trustedFingerprints']
+const SENSITIVE_CONFIG_KEYS: AppConfigKey[] = ['accounts', 'trustedCertificates']
 
 const omit = <T extends Record<string, unknown>>(obj: T, keys: (keyof T)[]) => Object.fromEntries(Object.entries(obj).filter(([key]) => !keys.includes(key as keyof T)))
 

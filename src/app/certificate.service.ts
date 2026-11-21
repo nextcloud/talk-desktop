@@ -27,28 +27,34 @@ const pendingCertificateTrustPrompts: Map<string, Promise<boolean>> = new Map()
  * @return Whether the certificate is accepted as trusted
  */
 export async function promptCertificateTrust(window: BrowserWindow, details: UntrustedCertificateDetails): Promise<boolean> {
-	const fingerprint = details.certificate.fingerprint
-	const trustedFingerprints = getAppConfig('trustedFingerprints')
+	const { hostname, certificate: { fingerprint } } = details
+	const trustDialogKey = JSON.stringify({ hostname, fingerprint })
+	const trustedCertificates = getAppConfig('trustedCertificates')
 
 	// Already accepted
-	if (trustedFingerprints.includes(fingerprint)) {
+	if (trustedCertificates[hostname]?.fingerprint === fingerprint) {
 		return true
 	}
 
 	// Already in prompt in parallel
-	const existingPrompt = pendingCertificateTrustPrompts.get(fingerprint)
+	const existingPrompt = pendingCertificateTrustPrompts.get(trustDialogKey)
 	if (existingPrompt) {
 		return existingPrompt
 	}
 
 	// Prompt user acceptance
 	const pendingDialog = showCertificateTrustDialog(window, details)
-	pendingCertificateTrustPrompts.set(fingerprint, pendingDialog)
+	pendingCertificateTrustPrompts.set(trustDialogKey, pendingDialog)
 	const isAccepted = await pendingDialog
-	pendingCertificateTrustPrompts.delete(fingerprint)
+	pendingCertificateTrustPrompts.delete(trustDialogKey)
 
 	if (isAccepted) {
-		setAppConfig('trustedFingerprints', [...trustedFingerprints, fingerprint])
+		setAppConfig('trustedCertificates', {
+			...trustedCertificates,
+			[hostname]: {
+				fingerprint,
+			},
+		})
 	}
 
 	return isAccepted

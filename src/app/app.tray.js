@@ -35,7 +35,13 @@ function setupTray(browserWindow) {
 			role: 'quit',
 		},
 	]))
-	tray.on('click', () => browserWindow.show())
+	tray.on('click', () => {
+		if (browserWindow.isVisible()) {
+			browserWindow.hide()
+		} else {
+			browserWindow.show()
+		}
+	})
 
 	browserWindow.on('close', (event) => {
 		if (!isAppQuitting) {
@@ -54,3 +60,4 @@ function setupTray(browserWindow) {
 module.exports = {
 	setupTray,
 }
+

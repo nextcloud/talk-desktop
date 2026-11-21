@@ -107,7 +107,7 @@
     "node-loader": "^2.1.0",
     "node-polyfill-webpack-plugin": "4.0.0",
     "postcss": "^8.5.32",
-    "sass": "^1.106.1",
+    "sass": "^1.108.2",
     "sass-loader": "^17.1.0",
     "typescript": "^6.0.3",
     "vue-loader": "^17.4.2",

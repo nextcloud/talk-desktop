@@ -4,28 +4,28 @@
 -->
 
 <script setup lang="ts">
-import type { ScreensharingSourceId } from './screensharing.types.ts'
+import type { ScreensharingSource } from '../../../screensharing/screensharing.types.ts'
 
 import { ref } from 'vue'
 import DesktopMediaSourceDialog from './DesktopMediaSourceDialog.vue'
 
 const showDialog = ref<boolean>(false)
 
-let promiseWithResolvers: PromiseWithResolvers<{ sourceId: ScreensharingSourceId | '' }> | null = null
+let promiseWithResolvers: PromiseWithResolvers<ScreensharingSource | null> | null = null
 
 /**
- * @param sourceId - Selected screensharing sourceID
+ * @param source - Selected screensharing source or null if canceled
  */
-function handlePrompt(sourceId: ScreensharingSourceId | '') {
-	promiseWithResolvers!.resolve({ sourceId })
+function handlePrompt(source: ScreensharingSource | null) {
+	promiseWithResolvers!.resolve(source)
 	promiseWithResolvers = null
 	showDialog.value = false
 }
 
 /**
- * Prompt user to select a desktop media source to share and return the selected sourceId or an empty string if canceled
+ * Prompt user to select a desktop media source to share and return the selected source or null if canceled
  *
- * @return sourceId of the selected mediaSource or an empty string if canceled
+ * @return the selected mediaSource or null if canceled
  */
 function promptDesktopMediaSource() {
 	if (promiseWithResolvers) {
@@ -40,5 +40,5 @@ defineExpose({ promptDesktopMediaSource })
 </script>
 
 <template>
-	<DesktopMediaSourceDialog v-if="showDialog" @submit="handlePrompt($event)" @cancel="handlePrompt('')" />
+	<DesktopMediaSourceDialog v-if="showDialog" @submit="handlePrompt($event)" @cancel="handlePrompt(null)" />
 </template>

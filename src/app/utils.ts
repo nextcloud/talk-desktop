@@ -85,7 +85,7 @@ export function buildTitle(title?: string) {
 	return title ? `${title} - ${base}` : base
 }
 
-const windows = ['authentication', 'callbox', 'certificate', 'help', 'talk', 'upgrade', 'welcome'] as const
+const windows = ['authentication', 'callbox', 'certificate', 'help', 'screensharing_marker', 'talk', 'upgrade', 'welcome'] as const
 
 /**
  * Get the URL for a window to load

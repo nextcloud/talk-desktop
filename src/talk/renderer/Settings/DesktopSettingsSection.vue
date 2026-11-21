@@ -25,6 +25,13 @@ import { useLaunchAtStartup } from './useLaunchAtStartup.ts'
 import { useTristateToggle } from './useTristateToggle.ts'
 
 const isLinux = window.systemInfo.isLinux
+// On Wayland the compositor doesn't allow to place an overlay over the shared screen.
+// On Windows the overlay cannot be excluded from the captured screen.
+const isScreensharingMarkerAvailable = !window.systemInfo.isWayland && !window.systemInfo.isWindows
+// The marker is excluded from the captured stream on macOS, but not on Linux
+const screensharingMarkerDescription = isLinux
+	? undefined
+	: t('talk_desktop', 'The border is not visible to the other participants')
 
 const { isRelaunchRequired } = storeToRefs(useAppConfigStore())
 
@@ -51,6 +58,8 @@ const dyslexicFont = useAppConfigValue('dyslexicFont')
 const systemTitleBar = useAppConfigValue('systemTitleBar')
 const monochromeTrayIcon = useAppConfigValue('monochromeTrayIcon')
 const zoomFactor = useAppConfigValue('zoomFactor')
+
+const screensharingMarker = useAppConfigValue('screensharingMarker')
 
 const playSoundChat = useAppConfigValue('playSoundChat')
 const playSoundCall = useAppConfigValue('playSoundCall')
@@ -117,6 +126,15 @@ const secondarySpeakerDevice = useAppConfigValue('secondarySpeakerDevice')
 		</NcFormGroup>
 
 		<UiFormGroupZoom v-model="zoomFactor" />
+
+		<NcFormGroup v-if="isScreensharingMarkerAvailable" :label="t('talk_desktop', 'Screen sharing')">
+			<NcFormBox>
+				<NcFormBoxSwitch
+					v-model="screensharingMarker"
+					:label="t('talk_desktop', 'Highlight the screen being shared')"
+					:description="screensharingMarkerDescription" />
+			</NcFormBox>
+		</NcFormGroup>
 
 		<NcFormGroup :label="t('talk_desktop', 'Notifications & Sounds')">
 			<NcFormBox>

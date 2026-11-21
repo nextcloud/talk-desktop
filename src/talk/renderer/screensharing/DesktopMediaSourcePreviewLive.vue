@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import type { ScreensharingSourceId } from './screensharing.types.ts'
+import type { ScreensharingSourceId } from '../../../screensharing/screensharing.types.ts'
 
 import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import NcLoadingIcon from '@nextcloud/vue/components/NcLoadingIcon'

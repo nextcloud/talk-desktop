@@ -4,7 +4,7 @@
 -->
 
 <script setup lang="ts">
-import type { ScreensharingSource } from './screensharing.types.ts'
+import type { ScreensharingSource } from '../../../screensharing/screensharing.types.ts'
 
 import { t } from '@nextcloud/l10n'
 import IconApplicationOutline from 'vue-material-design-icons/ApplicationOutline.vue'

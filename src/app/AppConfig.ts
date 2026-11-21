@@ -110,7 +110,12 @@ export type AppConfig = {
 	// Privacy settings
 	// ----------------
 
-	// Nothing yet...
+	/**
+	 * Whether to mark a screen while it is being shared in a call.
+	 * Not available on Windows and on Linux on Wayland.
+	 * Default: true.
+	 */
+	screensharingMarker: boolean
 
 	// ----------------------
 	// Notifications settings
@@ -169,6 +174,7 @@ const defaultAppConfig: AppConfig = {
 	systemTitleBar: false,
 	monochromeTrayIcon: isMac,
 	zoomFactor: 1,
+	screensharingMarker: true,
 	playSoundChat: 'respect-dnd',
 	playSoundCall: 'respect-dnd',
 	enableCallbox: 'respect-dnd',

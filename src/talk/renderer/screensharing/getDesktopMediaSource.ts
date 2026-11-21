@@ -6,6 +6,7 @@
 import type AppGetDesktopMediaSource from './AppGetDesktopMediaSource.vue'
 
 import { createApp } from 'vue'
+import { setSelectedScreensharingSource } from './screensharingMarker.ts'
 
 let appGetDesktopMediaSourceInstance: InstanceType<typeof AppGetDesktopMediaSource> | null = null
 
@@ -21,5 +22,11 @@ export async function getDesktopMediaSource() {
 		appGetDesktopMediaSourceInstance = createApp(AppGetDesktopMediaSource).mount(container) as InstanceType<typeof AppGetDesktopMediaSource>
 	}
 
-	return appGetDesktopMediaSourceInstance.promptDesktopMediaSource()
+	const source = await appGetDesktopMediaSourceInstance.promptDesktopMediaSource()
+
+	if (source) {
+		setSelectedScreensharingSource(source)
+	}
+
+	return { sourceId: source?.id ?? '' }
 }

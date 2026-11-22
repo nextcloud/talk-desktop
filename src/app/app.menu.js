@@ -76,8 +76,15 @@ function setupMenu() {
 			{ label: 'Reset Zoom', accelerator: 'CommandOrControl+0', click: (event, browserWindow) => setZoom(browserWindow, 1) },
 			{ label: 'Zoom In', accelerator: 'CommandOrControl+=', click: (event, browserWindow) => increaseZoom(browserWindow) },
 			{ label: 'Zoom Out', accelerator: 'CommandOrControl+-', click: (event, browserWindow) => decreaseZoom(browserWindow) },
-			{ type: 'separator' },
-			{ role: 'togglefullscreen' },
+			// On macOS the system adds its own "Toggle Full Screen" entry,
+			// so the one below would show twice there (#2065). Windows and
+			// Linux get no such entry, so keep it for them.
+			...(isMac
+				? []
+				: [
+						{ type: 'separator' },
+						{ role: 'togglefullscreen' },
+					]),
 		],
 	}
 

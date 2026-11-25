@@ -1,0 +1,12 @@
+diff --git a/.github/workflows/lint-typescript.yml b/.github/workflows/lint-typescript.yml
+index 09fba338..94e694c4 100644
+--- a/.github/workflows/lint-typescript.yml
++++ b/.github/workflows/lint-typescript.yml
+@@ -44,6 +44,7 @@ jobs:
+               - 'package.json'
+               - 'package-lock.json'
+               - 'tsconfig.json'
++              - '**.js'
+               - '**.ts'
+               - '**.vue'
+ 

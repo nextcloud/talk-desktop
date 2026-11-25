@@ -1,0 +1,19 @@
+diff --git a/.github/workflows/sync-workflow-templates.yml b/.github/workflows/sync-workflow-templates.yml
+index 2af8ecb5..f8f61519 100644
+--- a/.github/workflows/sync-workflow-templates.yml
++++ b/.github/workflows/sync-workflow-templates.yml
+@@ -24,9 +24,6 @@ jobs:
+       matrix:
+         branches:
+           - ${{ github.event.repository.default_branch }}
+-          - 'stable35'
+-          - 'stable34'
+-          - 'stable33'
+ 
+     name: Update workflows in ${{ matrix.branches }}
+ 
+@@ -162,4 +159,3 @@ jobs:
+             ${{ env.SUMMARY }}
+           labels: |
+             dependencies
+-            3. to review

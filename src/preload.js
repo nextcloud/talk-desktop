@@ -49,6 +49,12 @@ const TALK_DESKTOP = {
 	 */
 	getSystemL10n: () => ipcRenderer.invoke('app:getSystemL10n'),
 	/**
+	 * Get available spell checker languages
+	 *
+	 * @return {Promise<string[]>}
+	 */
+	getAvailableSpellCheckerLanguages: () => ipcRenderer.invoke('app:getAvailableSpellCheckerLanguages'),
+	/**
 	 * Get whether (prefers-contrast: more) should match
 	 *
 	 * @return {boolean} - whether (prefers-contrast: more) should match

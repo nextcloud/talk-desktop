@@ -23,7 +23,7 @@ import { subscribeBroadcast } from '../../../shared/broadcast.service.ts'
 import { useAppConfigValue } from '../Settings/useAppConfigValue.ts'
 import { openConversation } from '../TalkWrapper/talk.service.ts'
 import { useUserStatusStore } from '../UserStatus/userStatus.store.ts'
-import { getNotificationsData } from './notifications.service.js'
+import { getNotificationsData, STATUS_NETWORK_ERROR } from './notifications.service.js'
 
 const isTestNotificationApp = (notificationApp) => ['admin_notification_talk', 'admin_notifications'].includes(notificationApp)
 
@@ -234,6 +234,10 @@ export function createNotificationStore() {
 	 */
 	async function _fetch() {
 		const response = await getNotificationsData(state.tabId, state.lastETag, !state.backgroundFetching, state.hasNotifyPush)
+		if (response.status === STATUS_NETWORK_ERROR) {
+			return
+		}
+
 		if (response.status === 204) {
 			// 204 No Content - Intercept when no notifiers are there.
 			console.debug('Fetching notifications but no content, slowing down polling to ' + state.pollIntervalBase * 10)

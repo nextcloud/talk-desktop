@@ -17,6 +17,11 @@ import { generateOcsUrl } from '@nextcloud/router'
 const BrowserStorage = getBuilder('notifications').clearOnLogout().persist().build()
 
 /**
+ * Synthetic response status for network failure
+ */
+export const STATUS_NETWORK_ERROR = 0
+
+/**
  * Remap snake_case to camelCase in the notification object
  *
  * @param {object} notification - Notification object
@@ -71,8 +76,7 @@ async function refreshData(lastETag) {
 		if (error?.response?.status) {
 			BrowserStorage.setItem('status', '' + error.response.status)
 		} else {
-			// Setting to 500 in case no request was made so it's retried on the next attempt
-			BrowserStorage.setItem('status', '500')
+			BrowserStorage.setItem('status', '' + STATUS_NETWORK_ERROR)
 		}
 	}
 }

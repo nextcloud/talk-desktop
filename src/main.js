@@ -26,6 +26,7 @@ const { createAuthenticationWindow } = require('./authentication/authentication.
 const { createCallboxWindow } = require('./callbox/callbox.window.ts')
 const { createHelpWindow } = require('./help/help.window.js')
 const { installVueDevtools } = require('./install-vue-devtools.js')
+const { enableWindowsCaptureBorder } = require('./screensharing/screensharing.config.ts')
 const { BUILD_CONFIG } = require('./shared/build.config.ts')
 const { createTalkWindow } = require('./talk/talk.window.js')
 const { createUpgradeWindow } = require('./upgrade/upgrade.window.ts')
@@ -49,6 +50,8 @@ if (isWindows && process.env.NODE_ENV === 'production') {
 		app.setAppUserModelId(BUILD_CONFIG.winAppId)
 	}
 }
+
+enableWindowsCaptureBorder()
 
 /**
  * Handle creating/removing shortcuts on Windows when installing/uninstalling

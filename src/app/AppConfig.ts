@@ -21,7 +21,7 @@ let APP_CONFIG_FILE_PATH: string | null = null
  * - Linux: ~/.config/Nextcloud Talk/config.json (or $XDG_CONFIG_HOME)
  * - macOS: ~/Library/Application Support/Nextcloud Talk/config.json
  */
-function getAppConfigFilePath() {
+export function getAppConfigFilePath() {
 	if (!APP_CONFIG_FILE_PATH) {
 		APP_CONFIG_FILE_PATH = join(app.getPath('userData'), APP_CONFIG_FILE_NAME)
 	}

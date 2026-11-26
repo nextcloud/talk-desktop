@@ -15,6 +15,7 @@ import IconApplicationBracketsOutline from 'vue-material-design-icons/Applicatio
 import IconCardAccountPhoneOutline from 'vue-material-design-icons/CardAccountPhoneOutline.vue'
 import IconConsole from 'vue-material-design-icons/Console.vue'
 import IconDeveloperBoard from 'vue-material-design-icons/DeveloperBoard.vue'
+import IconFolderCogOutline from 'vue-material-design-icons/FolderCogOutline.vue'
 import IconLan from 'vue-material-design-icons/Lan.vue'
 import IconMessageBadge from 'vue-material-design-icons/MessageBadge.vue'
 import IconMessageBadgeOutline from 'vue-material-design-icons/MessageBadgeOutline.vue'
@@ -94,6 +95,8 @@ function triggerCallbox() {
 	})
 }
 
+const showAppConfigInFolder = window.TALK_DESKTOP.showAppConfigInFolder
+
 async function invokeAnything() {
 	console.log(await window.TALK_DESKTOP.invokeAnything())
 }
@@ -118,6 +121,12 @@ async function openChromeWebRtcInternals() {
 				<IconApplicationBracketsOutline :size="20" />
 			</template>
 			Toggle Developer Tools
+		</NcActionButton>
+		<NcActionButton @click="showAppConfigInFolder">
+			<template #icon>
+				<IconFolderCogOutline :size="20" />
+			</template>
+			Show config file
 		</NcActionButton>
 
 		<NcActionSeparator />

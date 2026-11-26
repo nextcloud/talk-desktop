@@ -126,6 +126,10 @@ const TALK_DESKTOP = {
 	 */
 	onAppConfigChange: (callback) => ipcRenderer.on('app:config:change', callback),
 	/**
+	 * Show the application config file in the file manager
+	 */
+	showAppConfigInFolder: () => ipcRenderer.send('app:config:showInFolder'),
+	/**
 	 * Get launch at startup config
 	 *
 	 * @return {Promise<boolean>} Launch at startup setting

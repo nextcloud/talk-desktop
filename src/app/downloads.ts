@@ -76,20 +76,20 @@ export function applyDownloadHandler(browserWindow: BrowserWindow) {
 
 		item.once('done', (event, state) => {
 			const pathToFile = item.getSavePath()
-			const { base, dir } = path.parse(pathToFile)
+			const { base } = path.parse(pathToFile)
 			let notification: Notification | undefined
 
 			if (state === 'completed') {
 				notification = new Notification({
 					title: 'Download complete',
-					body: `File '${base}' can be found at '${dir}'.`,
+					body: base,
 				})
 				notification.on('click', () => {
 					shell.showItemInFolder(pathToFile)
 				})
 			} else if (state === 'interrupted') {
 				notification = new Notification({
-					title: 'Download Failed',
+					title: 'Download failed',
 					body: `Something went wrong with the download of '${base}'.`,
 				})
 			}
